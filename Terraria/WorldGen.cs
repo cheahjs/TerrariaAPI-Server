@@ -10499,6 +10499,10 @@ namespace Terraria
             if (Main.netMode == 1 || !Main.hardMode || (WorldGen.noTileActions || WorldGen.gen))
                 return;
             int num1 = WorldGen.altarCount % 3;
+            if (WorldHooks.OnSmashAltar())
+            {
+                return;
+            }
             int num2 = WorldGen.altarCount / 3 + 1;
             float num3 = (float)(Main.maxTilesX / 4200);
             int num4 = 1 - num1;
