@@ -10755,6 +10755,10 @@ namespace Terraria
 			{
 				return;
 			}
+            if (WorldHooks.OnSmashAltar())
+            {
+                return;
+            }
 			int num = WorldGen.altarCount % 3;
 			int num2 = WorldGen.altarCount / 3 + 1;
 			float num3 = (float)(Main.maxTilesX / 4200);
