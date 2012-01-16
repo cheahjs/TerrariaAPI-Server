@@ -6379,8 +6379,8 @@ namespace Terraria
 							{
 								if (this.direction == 1)
 								{
-                                    Main.tile[Player.tileTargetX, Player.tileTargetY].frameX += 18;
-                                    Main.tile[Player.tileTargetX, Player.tileTargetY - 1].frameX += 18;
+									Main.tile[Player.tileTargetX, Player.tileTargetY].frameX += 18;
+									Main.tile[Player.tileTargetX, Player.tileTargetY - 1].frameX += 18;
 								}
 								if (Main.netMode == 1)
 								{

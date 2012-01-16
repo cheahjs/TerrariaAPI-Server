@@ -16,7 +16,7 @@ namespace Terraria
 		public bool sticky = true;
 		public int timeLeft = Gore.goreTime;
 		public void Update()
-        {
+		{
 		}
 		public static int NewGore(Vector2 Position, Vector2 Velocity, int Type, float Scale = 1f)
 		{

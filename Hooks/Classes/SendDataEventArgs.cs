@@ -45,10 +45,10 @@ namespace Hooks
 			set;
 		}
 
-        public int number5
-        {
-            get; 
-            set; 
-        }
+		public int number5
+		{
+			get;
+			set;
+		}
 	}
 }

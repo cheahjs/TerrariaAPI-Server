@@ -56,10 +56,10 @@ public enum PacketTypes
 	NpcAddBuff,
 	NpcUpdateBuff,
 	PlayerAddBuff,
-    UpdateNPCName,
-    UpdateGoodEvil,
-    PlayHarp,
-    HitSwitch,
+	UpdateNPCName,
+	UpdateGoodEvil,
+	PlayHarp,
+	HitSwitch,
     UpdateNPCHome,
     SpawnBossorInvasion
 }

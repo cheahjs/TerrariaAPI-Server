@@ -30,15 +30,15 @@ namespace Hooks
 			get;
 			set;
 		}
-        public bool NoEffect 
-        { 
-            get; 
-            set; 
-        }
-        public double ReturnDamage
-        {
-            get; 
-            set; 
-        }
+		public bool NoEffect 
+		{ 
+			get;
+			set;
+		}
+		public double ReturnDamage
+		{
+			get;
+			set;
+		}
 	}
 }
