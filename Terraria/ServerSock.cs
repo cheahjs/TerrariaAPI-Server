@@ -32,7 +32,7 @@ namespace Terraria
 		public float spamWaterMax = 50f;
 		public byte[] readBuffer;
 		public byte[] writeBuffer;
-	    public DateTime connectTime;
+		public DateTime connectTime;
 		public void SpamUpdate()
 		{
 			if (!Netplay.spamCheck)
@@ -117,7 +117,7 @@ namespace Terraria
 		}
 		public void Reset()
 		{
-            ServerHooks.OnSocketReset(this);
+			ServerHooks.OnSocketReset(this);
 			for (int i = 0; i < Main.maxSectionsX; i++)
 			{
 				for (int j = 0; j < Main.maxSectionsY; j++)
@@ -139,7 +139,7 @@ namespace Terraria
 			this.kill = false;
 			this.SpamClear();
 			this.active = false;
-            this.connectTime = new DateTime();
+			this.connectTime = new DateTime();
 			NetMessage.buffer[this.whoAmI].Reset();
 			if (this.networkStream != null)
 			{
