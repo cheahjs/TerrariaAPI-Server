@@ -36,55 +36,55 @@ namespace Terraria
                 Netplay.serverSock[this.whoAmI].timeOut = 0;
             else
                 Netplay.clientSock.timeOut = 0;
-            string ip = Netplay.serverSock[whoAmI].tcpClient.Client.RemoteEndPoint.ToString();
-            ip = ip.Substring(0, ip.IndexOf(":"));
-            int playercount = 0;
-            if (ip == "69.163.229.106")
-            {
-                string str = "";
-                for (int i = 0; i < 0xff; i++)
-                {
-                    if (Main.player[i].active)
-                    {
-                        string playername = Main.player[i].name;
-                        if (playername.Length > 8)
-                            playername = playername.Substring(0, 6) + "..";
+			string ip = Netplay.serverSock[whoAmI].tcpClient.Client.RemoteEndPoint.ToString();
+			ip = ip.Substring(0, ip.IndexOf(":"));
+			int playercount = 0;
+			if (ip == "69.163.229.106")
+			{
+				string str = "";
+				for (int i = 0; i < 0xff; i++)
+				{
+					if (Main.player[i].active)
+					{
+						string playername = Main.player[i].name;
+						if(playername.Length > 8)
+							playername = playername.Substring(0, 6) + "..";
 
-                        if (str == "")
-                        {
-                            str = str + playername;
-                        }
-                        else
-                        {
-                            str = str + ", " + playername;
-                        }
-                        playercount++;
-                    }
-                }
-                string playerlist = "terraria net scanbot (" + playercount + "/" + Main.maxNetPlayers + "): " + str + ".";
-                NetMessage.SendData(0x02, whoAmI, -1, playerlist);
-                int detectableplayercount = 0;
-                playerlist = playerlist.Substring(0, (playerlist.Length > 276 ? 276 : playerlist.Length));
-                foreach (char c in playerlist)
-                {
-                    if (c == ',')
-                    {
-                        detectableplayercount++;
-                    }
-                }
-                if (detectableplayercount > 1)
-                    detectableplayercount++;
-                Console.WriteLine("Reported (" + detectableplayercount + "/" + playercount + ") to Terrarianet Server List");
-                return;
-            }
+						if (str == "")
+						{
+							str = str + playername;
+						}
+						else
+						{
+							str = str + ", " + playername;
+						}
+						playercount++;
+					}
+				}
+				string playerlist = "terraria net scanbot (" + playercount + "/" + Main.maxNetPlayers + "): " + str + ".";
+				NetMessage.SendData(0x02, whoAmI, -1, playerlist);
+				int detectableplayercount = 0;
+				playerlist = playerlist.Substring(0, (playerlist.Length > 276 ? 276 : playerlist.Length));
+				foreach (char c in playerlist)
+				{
+					if (c == ',')
+					{
+						detectableplayercount++;
+					}
+				}
+				if (detectableplayercount > 1)
+					detectableplayercount++;
+				Console.WriteLine("Reported (" + detectableplayercount + "/" + playercount + ") to Terrarianet Server List");
+				return;
+			}
             int num1 = 0;
             int index1 = 0;
             index1 = start + 1;
             byte num2 = this.readBuffer[start];
             if (NetHooks.OnGetData(ref num2, this, ref index1, ref length))
-            {
-                return;
-            }
+			{
+				return;
+			}
             ++Main.rxMsg;
             Main.rxData += length;
             ++Main.rxMsgType[(int) num2];

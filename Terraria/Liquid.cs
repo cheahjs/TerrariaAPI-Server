@@ -38,13 +38,9 @@ namespace Terraria
 				{
 					float num2 = (float)(maxY - i) / (float)(maxY - minY + 1);
 					num2 /= (float)verbose;
-				    Main.statusText = string.Concat(new object[4]
-				                                        {
-				                                            (object) Lang.gen[27],
-				                                            (object) " ",
-				                                            (object) (int) ((double) num2*100.0 + 1.0),
-				                                            (object) "%"
-				                                        });
+					Main.progressText = "Settling liquids";
+					Main.trackProgress = true;
+					Main.progressPercent = (int)Math.Floor(num2 * 100f + 1f);
 				}
 				else
 				{
@@ -107,7 +103,7 @@ namespace Terraria
 									{
 										num12 = (int)b;
 									}
-                                    Main.tile[num9, num10 + 1].liquid += (byte)num12;
+									Main.tile[num9, num10 + 1].liquid += (byte)num12;
 									b -= (byte)num12;
 									if (b <= 0)
 									{
@@ -224,7 +220,7 @@ namespace Terraria
 				{
 					b = Main.tile[this.x, this.y].liquid;
 				}
-                Main.tile[this.x, this.y].liquid -= b;
+				Main.tile[this.x, this.y].liquid -= b;
 			}
 			if (Main.tile[this.x, this.y].liquid == 0)
 			{
@@ -270,8 +266,8 @@ namespace Terraria
 				{
 					num = (float)Main.tile[this.x, this.y].liquid;
 				}
-                Main.tile[this.x, this.y].liquid -= (byte)num;
-                Main.tile[this.x, this.y + 1].liquid += (byte)num;
+				Main.tile[this.x, this.y].liquid -= (byte)num;
+				Main.tile[this.x, this.y + 1].liquid += (byte)num;
 				Main.tile[this.x, this.y + 1].lava = Main.tile[this.x, this.y].lava;
 				Liquid.AddWater(this.x, this.y + 1);
 				Main.tile[this.x, this.y + 1].skipLiquid = true;

@@ -1079,32 +1079,38 @@ namespace Terraria
 			WorldGen.noLiquidCheck = false;
 			Liquid.numLiquid = 0;
 			LiquidBuffer.numLiquidBuffer = 0;
-            Main.tile.SetSize(Main.maxTilesX + 10, Main.maxTilesY + 10);
+			Main.tile.SetSize(Main.maxTilesX + 10, Main.maxTilesY + 10);
 			if (Main.netMode == 1 || WorldGen.lastMaxTilesX > Main.maxTilesX || WorldGen.lastMaxTilesY > Main.maxTilesY)
 			{
+				Main.progressText = "Freeing unused resources";
 				for (int i = 0; i < WorldGen.lastMaxTilesX; i++)
 				{
 					float num = (float)i / (float)WorldGen.lastMaxTilesX;
-					Main.statusText = "Freeing unused resources: " + (int)(num * 100f + 1f) + "%";
+					Main.trackProgress = true;
+					Main.progressPercent = (int)Math.Floor(num * 100f + 1f);
 					for (int j = 0; j < WorldGen.lastMaxTilesY; j++)
 					{
 						Main.tile[i, j].Data = new TileData();
 					}
 				}
+				Main.ResetProgressTracking();
 			}
 			WorldGen.lastMaxTilesX = Main.maxTilesX;
 			WorldGen.lastMaxTilesY = Main.maxTilesY;
 			if (Main.netMode != 1)
 			{
+				Main.progressText = "Resetting game objects";
 				for (int k = 0; k < Main.maxTilesX; k++)
 				{
 					float num2 = (float)k / (float)Main.maxTilesX;
-					Main.statusText = "Resetting game objects: " + (int)(num2 * 100f + 1f) + "%";
+					Main.trackProgress = true;
+					Main.progressPercent = (int)Math.Floor(num2 * 100f + 1f);
 					for (int l = 0; l < Main.maxTilesY; l++)
 					{
 
 					}
 				}
+				Main.ResetProgressTracking();
 			}
 			for (int m = 0; m < 2000; m++)
 			{
@@ -1147,10 +1153,10 @@ namespace Terraria
 		}
         public static void saveWorld(bool resetTime = false)
         {
-            if (WorldHooks.OnSaveWorld(resetTime))
-            {
-                return;
-            }
+			if (WorldHooks.OnSaveWorld(resetTime))
+			{
+				return;
+			}
             realsaveWorld(resetTime);
         }
         public static void realsaveWorld(bool resetTime = false)
@@ -1229,6 +1235,7 @@ namespace Terraria
                         resource_0.Write(Main.invasionSize);
                         resource_0.Write(Main.invasionType);
                         resource_0.Write(Main.invasionX);
+								Main.progressText = "Saving world data";
                         for (int i = 0; i < Main.maxTilesX; i++)
                         {
                             float num = (float) i/(float) Main.maxTilesX;
@@ -1282,7 +1289,7 @@ namespace Terraria
                                 }
                                 resource_0.Write(tiledata.wire);
                                 int num2 = 1;
-                                while (j + num2 < Main.maxTilesY && Main.tile[i, j].isTheSameAs(Main.tile[i, j + num2]))
+										while (j + num2 < Main.maxTilesY && Main.tile[i, j].isTheSameAs(Main.tile[i, j + num2]))
                                 {
                                     num2++;
                                 }
@@ -1467,6 +1474,7 @@ namespace Terraria
                             {
                                 float num1 = (float)index1 / (float)Main.maxTilesX;
                                 Main.statusText = string.Concat(new object[4]
+								Main.progressPercent = (int)Math.Floor(num2 * 100f + 1f);
                 {
                   (object) Lang.gen[51],
                   (object) " ",
@@ -1643,6 +1651,7 @@ namespace Terraria
                 });
                                 WorldGen.CountTiles(X);
                             }
+								Main.ResetProgressTracking();
                             WorldGen.waterLine = Main.maxTilesY;
                             NPC.setNames();
                             Liquid.QuickWater(2, -1, -1);
@@ -1670,6 +1679,7 @@ namespace Terraria
                 });
                                 Liquid.UpdateLiquid();
                             }
+								Main.ResetProgressTracking();
                             Liquid.quickSettle = false;
                             WorldGen.WaterCheck();
                             WorldGen.gen = false;
@@ -3797,24 +3807,24 @@ namespace Terraria
 				float num216 = 0f;
 				switch (num215)
 				{
-				    case 67:
-				        num216 = (float)Main.maxTilesX * 0.5f;
-				        break;
-				    case 66:
-				        num216 = (float)Main.maxTilesX * 0.45f;
-				        break;
-				    case 63:
-				        num216 = (float)Main.maxTilesX * 0.3f;
-				        break;
-				    case 65:
-				        num216 = (float)Main.maxTilesX * 0.25f;
-				        break;
-				    case 64:
-				        num216 = (float)Main.maxTilesX * 0.1f;
-				        break;
-				    case 68:
-				        num216 = (float)Main.maxTilesX * 0.05f;
-				        break;
+					case 67:
+						num216 = (float)Main.maxTilesX * 0.5f;
+						break;
+					case 66:
+						num216 = (float)Main.maxTilesX * 0.45f;
+						break;
+					case 63:
+						num216 = (float)Main.maxTilesX * 0.3f;
+						break;
+					case 65:
+						num216 = (float)Main.maxTilesX * 0.25f;
+						break;
+					case 64:
+						num216 = (float)Main.maxTilesX * 0.1f;
+						break;
+					case 68:
+						num216 = (float)Main.maxTilesX * 0.05f;
+						break;
 				}
 				num216 *= 0.2f;
 				int num217 = 0;
@@ -5818,8 +5828,8 @@ namespace Terraria
 			{
 				return;
 			}
-            if (WorldHooks.OnStartHardMode())
-                return;
+			if (WorldHooks.OnStartHardMode())
+				return;
 			ThreadPool.QueueUserWorkItem(new WaitCallback(WorldGen.smCallBack), 1);
 		}
 		public static bool PlaceDoor(int i, int j, int type)
@@ -6286,13 +6296,13 @@ namespace Terraria
             int num1 = WorldGen.genRand.Next(3);
             int num2 = WorldGen.genRand.Next(3);
             if (num1 == 1)
-                tileType = 43;
+					tileType = 43;
             else if (num1 == 2)
-                tileType = 44;
+					tileType = 44;
             if (num2 == 1)
-                wallType = 8;
+					wallType = 8;
             else if (num2 == 2)
-                wallType = 9;
+					wallType = 9;
             WorldGen.numDDoors = 0;
             WorldGen.numDPlats = 0;
             WorldGen.numDRooms = 0;
@@ -10499,10 +10509,6 @@ namespace Terraria
             if (Main.netMode == 1 || !Main.hardMode || (WorldGen.noTileActions || WorldGen.gen))
                 return;
             int num1 = WorldGen.altarCount % 3;
-            if (WorldHooks.OnSmashAltar())
-            {
-                return;
-            }
             int num2 = WorldGen.altarCount / 3 + 1;
             float num3 = (float)(Main.maxTilesX / 4200);
             int num4 = 1 - num1;
@@ -10825,11 +10831,11 @@ namespace Terraria
 					{
 						if (Main.tile[l, m].frameX < 36)
 						{
-                            Main.tile[l, m].frameX += 36;
+							Main.tile[l, m].frameX += 36;
 						}
 						else
 						{
-                            Main.tile[l, m].frameX -= 36;
+							Main.tile[l, m].frameX -= 36;
 						}
 						WorldGen.noWireX[WorldGen.numNoWire] = l;
 						WorldGen.noWireY[WorldGen.numNoWire] = m;
@@ -13712,7 +13718,7 @@ namespace Terraria
 					{
 						if (Main.tile[k, l].type == 132)
 						{
-                            Main.tile[k, l].frameX += num2;
+							Main.tile[k, l].frameX += num2;
 						}
 					}
 				}
@@ -13757,7 +13763,7 @@ namespace Terraria
 				int liquid = (int)Main.tile[inX, inY].liquid;
 				if (liquid > 0)
 				{
-                    bool lava = Main.tile[inX, inY].lava;
+					bool lava = Main.tile[inX, inY].lava;
 					for (int j = 0; j < WorldGen.numOutPump; j++)
 					{
 						int outX = WorldGen.outPumpX[j];
@@ -13777,21 +13783,21 @@ namespace Terraria
 								{
 									num5 = 255 - liquid2;
 								}
-                                Main.tile[outX, outY].liquid += (byte)num5;
-                                Main.tile[inX, inY].liquid -= (byte)num5;
-                                liquid = (int)Main.tile[inX, inY].liquid;
+								Main.tile[outX, outY].liquid += (byte)num5;
+								Main.tile[inX, inY].liquid -= (byte)num5;
+								liquid = (int)Main.tile[inX, inY].liquid;
 								Main.tile[outX, outY].lava = lava;
 								WorldGen.SquareTileFrame(outX, outY, true);
-                                if (Main.tile[inX, inY].liquid == 0)
+								if (Main.tile[inX, inY].liquid == 0)
 								{
 									Main.tile[inX, inY].lava = false;
-                                    WorldGen.SquareTileFrame(inX, inY, true);
+									WorldGen.SquareTileFrame(inX, inY, true);
 									break;
 								}
 							}
 						}
 					}
-                    WorldGen.SquareTileFrame(inX, inY, true);
+					WorldGen.SquareTileFrame(inX, inY, true);
 				}
 			}
 		}
@@ -13838,458 +13844,458 @@ namespace Terraria
 			{
 				switch (type)
 				{
-				    case 144:
-				        WorldGen.hitSwitch(i, j);
-				        WorldGen.SquareTileFrame(i, j, true);
-				        NetMessage.SendTileSquare(-1, i, j, 1);
-				        break;
-				    case 130:
-				        Main.tile[i, j].type = 131;
-				        WorldGen.SquareTileFrame(i, j, true);
-				        NetMessage.SendTileSquare(-1, i, j, 1);
-				        break;
-				    case 131:
-				        Main.tile[i, j].type = 130;
-				        WorldGen.SquareTileFrame(i, j, true);
-				        NetMessage.SendTileSquare(-1, i, j, 1);
-				        break;
-				    case 11:
-				        if (WorldGen.CloseDoor(i, j, true))
-				        {
-				            NetMessage.SendData(19, -1, -1, "", 1, (float)i, (float)j, 0f, 0);
-				        }
-				        break;
-				    case 10:
-				        {
-				            int num = 1;
-				            if (Main.rand.Next(2) == 0)
-				            {
-				                num = -1;
-				            }
-				            if (!WorldGen.OpenDoor(i, j, num))
-				            {
-				                if (WorldGen.OpenDoor(i, j, -num))
-				                {
-				                    NetMessage.SendData(19, -1, -1, "", 0, (float)i, (float)j, (float)(-(float)num), 0);
-				                }
-				            }
-				            else
-				            {
-				                NetMessage.SendData(19, -1, -1, "", 0, (float)i, (float)j, (float)num, 0);
-				            }
-				        }
-				        break;
-				    case 4:
-				        if (Main.tile[i, j].frameX < 66)
-				        {
-                            Main.tile[i, j].frameX += 66;
-				        }
-				        else
-				        {
-                            Main.tile[i, j].frameX -= 66;
-				        }
-				        NetMessage.SendTileSquare(-1, i, j, 1);
-				        break;
-				    case 149:
-				        if (Main.tile[i, j].frameX < 54)
-				        {
-                            Main.tile[i, j].frameX += 54;
-				        }
-				        else
-				        {
-                            Main.tile[i, j].frameX -= 54;
-				        }
-				        NetMessage.SendTileSquare(-1, i, j, 1);
-				        break;
-				    case 42:
-				        {
-				            int num2 = j - (int)(Main.tile[i, j].frameY / 18);
-				            short num3 = 18;
-				            if (Main.tile[i, j].frameX > 0)
-				            {
-				                num3 = -18;
-				            }
-                            Main.tile[i, num2].frameX += num3;
-                            Main.tile[i, num2 + 1].frameX += num3;
-				            WorldGen.noWire(i, num2);
-				            WorldGen.noWire(i, num2 + 1);
-				            NetMessage.SendTileSquare(-1, i, j, 2);
-				        }
-				        break;
-				    case 93:
-				        {
-				            int num4 = j - (int)(Main.tile[i, j].frameY / 18);
-				            short num5 = 18;
-				            if (Main.tile[i, j].frameX > 0)
-				            {
-				                num5 = -18;
-				            }
-                            Main.tile[i, num4].frameX += num5;
-                            Main.tile[i, num4 + 1].frameX += num5;
-                            Main.tile[i, num4 + 2].frameX += num5;
-				            WorldGen.noWire(i, num4);
-				            WorldGen.noWire(i, num4 + 1);
-				            WorldGen.noWire(i, num4 + 2);
-				            NetMessage.SendTileSquare(-1, i, num4 + 1, 3);
-				        }
-				        break;
-				    case 95:
-				    case 100:
-				    case 126:
-				        {
-				            int num6 = j - (int)(Main.tile[i, j].frameY / 18);
-				            int num7 = (int)(Main.tile[i, j].frameX / 18);
-				            if (num7 > 1)
-				            {
-				                num7 -= 2;
-				            }
-				            num7 = i - num7;
-				            short num8 = 36;
-				            if (Main.tile[num7, num6].frameX > 0)
-				            {
-				                num8 = -36;
-				            }
-                            Main.tile[num7, num6].frameX += num8;
-                            Main.tile[num7, num6 + 1].frameX += num8;
-                            Main.tile[num7 + 1, num6].frameX += num8;
-                            Main.tile[num7 + 1, num6 + 1].frameX += num8;
-				            WorldGen.noWire(num7, num6);
-				            WorldGen.noWire(num7, num6 + 1);
-				            WorldGen.noWire(num7 + 1, num6);
-				            WorldGen.noWire(num7 + 1, num6 + 1);
-				            NetMessage.SendTileSquare(-1, num7, num6, 3);
-				        }
-				        break;
-				    case 36:
-				    case 35:
-				    case 34:
-				        {
-				            int num9 = j - (int)(Main.tile[i, j].frameY / 18);
-				            int num10 = (int)(Main.tile[i, j].frameX / 18);
-				            if (num10 > 2)
-				            {
-				                num10 -= 3;
-				            }
-				            num10 = i - num10;
-				            short num11 = 54;
-				            if (Main.tile[num10, num9].frameX > 0)
-				            {
-				                num11 = -54;
-				            }
-				            for (int m = num10; m < num10 + 3; m++)
-				            {
-				                for (int n = num9; n < num9 + 3; n++)
-				                {
-                                    Main.tile[m, n].frameX += num11;
-				                    WorldGen.noWire(m, n);
-				                }
-				            }
-				            NetMessage.SendTileSquare(-1, num10 + 1, num9 + 1, 3);
-				        }
-				        break;
-				    case 33:
-				        {
-				            short num12 = 18;
-				            if (Main.tile[i, j].frameX > 0)
-				            {
-				                num12 = -18;
-				            }
-                            Main.tile[i, j].frameX += num12;
-				            NetMessage.SendTileSquare(-1, i, j, 3);
-				        }
-				        break;
-				    case 92:
-				        {
-				            int num13 = j - (int)(Main.tile[i, j].frameY / 18);
-				            short num14 = 18;
-				            if (Main.tile[i, j].frameX > 0)
-				            {
-				                num14 = -18;
-				            }
-                            Main.tile[i, num13].frameX += num14;
-                            Main.tile[i, num13 + 1].frameX += num14;
-                            Main.tile[i, num13 + 2].frameX += num14;
-                            Main.tile[i, num13 + 3].frameX += num14;
-                            Main.tile[i, num13 + 4].frameX += num14;
-                            Main.tile[i, num13 + 5].frameX += num14;
-				            WorldGen.noWire(i, num13);
-				            WorldGen.noWire(i, num13 + 1);
-				            WorldGen.noWire(i, num13 + 2);
-				            WorldGen.noWire(i, num13 + 3);
-				            WorldGen.noWire(i, num13 + 4);
-				            WorldGen.noWire(i, num13 + 5);
-				            NetMessage.SendTileSquare(-1, i, num13 + 3, 7);
-				        }
-				        break;
-				    case 137:
-				        if (WorldGen.checkMech(i, j, 180))
-				        {
-				            int num15 = -1;
-				            if (Main.tile[i, j].frameX != 0)
-				            {
-				                num15 = 1;
-				            }
-				            float speedX = (float)(12 * num15);
-				            int damage = 20;
-				            int type2 = 98;
-				            Vector2 vector = new Vector2((float)(i * 16 + 8), (float)(j * 16 + 7));
-				            vector.X += (float)(10 * num15);
-				            vector.Y += 2f;
-				            Projectile.NewProjectile((float)((int)vector.X), (float)((int)vector.Y), speedX, 0f, type2, damage, 2f, Main.myPlayer);
-				        }
-				        break;
-				    case 139:
-				        WorldGen.SwitchMB(i, j);
-				        break;
-				    case 141:
-				        WorldGen.KillTile(i, j, false, false, true);
-				        NetMessage.SendTileSquare(-1, i, j, 1);
-				        Projectile.NewProjectile((float)(i * 16 + 8), (float)(j * 16 + 8), 0f, 0f, 108, 250, 10f, Main.myPlayer);
-				        break;
-				    case 143:
-				    case 142:
-				        {
-				            int num16 = j - (int)(Main.tile[i, j].frameY / 18);
-				            int num17 = (int)(Main.tile[i, j].frameX / 18);
-				            if (num17 > 1)
-				            {
-				                num17 -= 2;
-				            }
-				            num17 = i - num17;
-				            WorldGen.noWire(num17, num16);
-				            WorldGen.noWire(num17, num16 + 1);
-				            WorldGen.noWire(num17 + 1, num16);
-				            WorldGen.noWire(num17 + 1, num16 + 1);
-				            if (type == 142)
-				            {
-				                int num18 = num17;
-				                int num19 = num16;
-				                for (int num20 = 0; num20 < 4; num20++)
-				                {
-				                    if (WorldGen.numInPump >= WorldGen.maxPump - 1)
-				                    {
-				                        break;
-				                    }
-				                    switch (num20)
-				                    {
-				                        case 0:
-				                            num18 = num17;
-				                            num19 = num16 + 1;
-				                            break;
-				                        case 1:
-				                            num18 = num17 + 1;
-				                            num19 = num16 + 1;
-				                            break;
-				                        case 2:
-				                            num18 = num17;
-				                            num19 = num16;
-				                            break;
-				                        default:
-				                            num18 = num17 + 1;
-				                            num19 = num16;
-				                            break;
-				                    }
-				                    WorldGen.inPumpX[WorldGen.numInPump] = num18;
-				                    WorldGen.inPumpY[WorldGen.numInPump] = num19;
-				                    WorldGen.numInPump++;
-				                }
-				            }
-				            else
-				            {
-				                int num21 = num17;
-				                int num22 = num16;
-				                for (int num23 = 0; num23 < 4; num23++)
-				                {
-				                    if (WorldGen.numOutPump >= WorldGen.maxPump - 1)
-				                    {
-				                        break;
-				                    }
-				                    switch (num23)
-				                    {
-				                        case 0:
-				                            num21 = num17;
-				                            num22 = num16 + 1;
-				                            break;
-				                        case 1:
-				                            num21 = num17 + 1;
-				                            num22 = num16 + 1;
-				                            break;
-				                        case 2:
-				                            num21 = num17;
-				                            num22 = num16;
-				                            break;
-				                        default:
-				                            num21 = num17 + 1;
-				                            num22 = num16;
-				                            break;
-				                    }
-				                    WorldGen.outPumpX[WorldGen.numOutPump] = num21;
-				                    WorldGen.outPumpY[WorldGen.numOutPump] = num22;
-				                    WorldGen.numOutPump++;
-				                }
-				            }
-				        }
-				        break;
-				    case 105:
-				        {
-				            int num24 = j - (int)(Main.tile[i, j].frameY / 18);
-				            int num25 = (int)(Main.tile[i, j].frameX / 18);
-				            int num26 = 0;
-				            while (num25 >= 2)
-				            {
-				                num25 -= 2;
-				                num26++;
-				            }
-				            num25 = i - num25;
-				            WorldGen.noWire(num25, num24);
-				            WorldGen.noWire(num25, num24 + 1);
-				            WorldGen.noWire(num25, num24 + 2);
-				            WorldGen.noWire(num25 + 1, num24);
-				            WorldGen.noWire(num25 + 1, num24 + 1);
-				            WorldGen.noWire(num25 + 1, num24 + 2);
-				            int num27 = num25 * 16 + 16;
-				            int num28 = (num24 + 3) * 16;
-				            int num29 = -1;
-				            switch (num26)
-				            {
-				                case 4:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 1))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28 - 12, 1, 0);
-				                    }
-				                    break;
-				                case 7:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 49))
-				                    {
-				                        num29 = NPC.NewNPC(num27 - 4, num28 - 6, 49, 0);
-				                    }
-				                    break;
-				                case 8:
-                                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 55) && NPC.MechSpawn((float)num27, (float)num28, 57))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28 - 12, 55, 0);
-				                    }
-				                    break;
-				                case 9:
-                                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 46) && NPC.MechSpawn((float)num27, (float)num28, 47))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28 - 12, 46, 0);
-				                    }
-				                    break;
-				                case 10:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 21))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28, 21, 0);
-				                    }
-				                    break;
-				                case 18:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 67))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28 - 12, 67, 0);
-				                    }
-				                    break;
-				                case 23:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 63))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28 - 12, 63, 0);
-				                    }
-				                    break;
-				                case 27:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 85))
-				                    {
-				                        num29 = NPC.NewNPC(num27 - 9, num28, 85, 0);
-				                    }
-				                    break;
-				                case 28:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 74))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28 - 12, 74, 0);
-				                    }
-				                    break;
-				                case 42:
-				                    if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 58))
-				                    {
-				                        num29 = NPC.NewNPC(num27, num28 - 12, 58, 0);
-				                    }
-				                    break;
-				                case 37:
-				                    if (WorldGen.checkMech(i, j, 600) && Item.MechSpawn((float)num27, (float)num28, 58))
-				                    {
-				                        Item.NewItem(num27, num28 - 16, 0, 0, 58, 1, false, 0);
-				                    }
-				                    break;
-				                case 2:
-				                    if (WorldGen.checkMech(i, j, 600) && Item.MechSpawn((float)num27, (float)num28, 184))
-				                    {
-				                        Item.NewItem(num27, num28 - 16, 0, 0, 184, 1, false, 0);
-				                    }
-				                    break;
-				                case 17:
-				                    if (WorldGen.checkMech(i, j, 600) && Item.MechSpawn((float)num27, (float)num28, 166))
-				                    {
-				                        Item.NewItem(num27, num28 - 20, 0, 0, 166, 1, false, 0);
-				                    }
-				                    break;
-				                case 40:
-				                    if (WorldGen.checkMech(i, j, 300))
-				                    {
-				                        int[] array = new int[10];
-				                        int num30 = 0;
-				                        for (int num31 = 0; num31 < 200; num31++)
-				                        {
-				                            if (Main.npc[num31].active && (Main.npc[num31].type == 17 || Main.npc[num31].type == 19 || Main.npc[num31].type == 22 || Main.npc[num31].type == 38 || Main.npc[num31].type == 54 || Main.npc[num31].type == 107 || Main.npc[num31].type == 108))
-				                            {
-				                                array[num30] = num31;
-				                                num30++;
-				                                if (num30 >= 9)
-				                                {
-				                                    break;
-				                                }
-				                            }
-				                        }
-				                        if (num30 > 0)
-				                        {
-				                            int num32 = array[Main.rand.Next(num30)];
-				                            Main.npc[num32].position.X = (float)(num27 - Main.npc[num32].width / 2);
-				                            Main.npc[num32].position.Y = (float)(num28 - Main.npc[num32].height - 1);
-				                            NetMessage.SendData(23, -1, -1, "", num32, 0f, 0f, 0f, 0);
-				                        }
-				                    }
-				                    break;
-				                default:
-				                    if (num26 == 41 && WorldGen.checkMech(i, j, 300))
-				                    {
-				                        int[] array2 = new int[10];
-				                        int num33 = 0;
-				                        for (int num34 = 0; num34 < 200; num34++)
-				                        {
-				                            if (Main.npc[num34].active && (Main.npc[num34].type == 18 || Main.npc[num34].type == 20 || Main.npc[num34].type == 124))
-				                            {
-				                                array2[num33] = num34;
-				                                num33++;
-				                                if (num33 >= 9)
-				                                {
-				                                    break;
-				                                }
-				                            }
-				                        }
-				                        if (num33 > 0)
-				                        {
-				                            int num35 = array2[Main.rand.Next(num33)];
-				                            Main.npc[num35].position.X = (float)(num27 - Main.npc[num35].width / 2);
-				                            Main.npc[num35].position.Y = (float)(num28 - Main.npc[num35].height - 1);
-				                            NetMessage.SendData(23, -1, -1, "", num35, 0f, 0f, 0f, 0);
-				                        }
-				                    }
-				                    break;
-				            }
-				            if (num29 >= 0)
-				            {
-				                Main.npc[num29].value = 0f;
-				                Main.npc[num29].npcSlots = 0f;
-				            }
-				        }
-				        break;
+					case 144:
+						WorldGen.hitSwitch(i, j);
+						WorldGen.SquareTileFrame(i, j, true);
+						NetMessage.SendTileSquare(-1, i, j, 1);
+						break;
+					case 130:
+						Main.tile[i, j].type = 131;
+						WorldGen.SquareTileFrame(i, j, true);
+						NetMessage.SendTileSquare(-1, i, j, 1);
+						break;
+					case 131:
+						Main.tile[i, j].type = 130;
+						WorldGen.SquareTileFrame(i, j, true);
+						NetMessage.SendTileSquare(-1, i, j, 1);
+						break;
+					case 11:
+						if (WorldGen.CloseDoor(i, j, true))
+						{
+							NetMessage.SendData(19, -1, -1, "", 1, (float)i, (float)j, 0f, 0);
+						}
+						break;
+					case 10:
+						{
+							int num = 1;
+							if (Main.rand.Next(2) == 0)
+							{
+								num = -1;
+							}
+							if (!WorldGen.OpenDoor(i, j, num))
+							{
+								if (WorldGen.OpenDoor(i, j, -num))
+								{
+									NetMessage.SendData(19, -1, -1, "", 0, (float)i, (float)j, (float)(-(float)num), 0);
+								}
+							}
+							else
+							{
+								NetMessage.SendData(19, -1, -1, "", 0, (float)i, (float)j, (float)num, 0);
+							}
+						}
+						break;
+					case 4:
+						if (Main.tile[i, j].frameX < 66)
+						{
+							Main.tile[i, j].frameX += 66;
+						}
+						else
+						{
+							Main.tile[i, j].frameX -= 66;
+						}
+						NetMessage.SendTileSquare(-1, i, j, 1);
+						break;
+					case 149:
+						if (Main.tile[i, j].frameX < 54)
+						{
+							Main.tile[i, j].frameX += 54;
+						}
+						else
+						{
+							Main.tile[i, j].frameX -= 54;
+						}
+						NetMessage.SendTileSquare(-1, i, j, 1);
+						break;
+					case 42:
+						{
+							int num2 = j - (int)(Main.tile[i, j].frameY / 18);
+							short num3 = 18;
+							if (Main.tile[i, j].frameX > 0)
+							{
+								num3 = -18;
+							}
+							Main.tile[i, num2].frameX += num3;
+							Main.tile[i, num2 + 1].frameX += num3;
+							WorldGen.noWire(i, num2);
+							WorldGen.noWire(i, num2 + 1);
+							NetMessage.SendTileSquare(-1, i, j, 2);
+						}
+						break;
+					case 93:
+						{
+							int num4 = j - (int)(Main.tile[i, j].frameY / 18);
+							short num5 = 18;
+							if (Main.tile[i, j].frameX > 0)
+							{
+								num5 = -18;
+							}
+							Main.tile[i, num4].frameX += num5;
+							Main.tile[i, num4 + 1].frameX += num5;
+							Main.tile[i, num4 + 2].frameX += num5;
+							WorldGen.noWire(i, num4);
+							WorldGen.noWire(i, num4 + 1);
+							WorldGen.noWire(i, num4 + 2);
+							NetMessage.SendTileSquare(-1, i, num4 + 1, 3);
+						}
+						break;
+					case 95:
+					case 100:
+					case 126:
+						{
+							int num6 = j - (int)(Main.tile[i, j].frameY / 18);
+							int num7 = (int)(Main.tile[i, j].frameX / 18);
+							if (num7 > 1)
+							{
+								num7 -= 2;
+							}
+							num7 = i - num7;
+							short num8 = 36;
+							if (Main.tile[num7, num6].frameX > 0)
+							{
+								num8 = -36;
+							}
+							Main.tile[num7, num6].frameX += num8;
+							Main.tile[num7, num6 + 1].frameX += num8;
+							Main.tile[num7 + 1, num6].frameX += num8;
+							Main.tile[num7 + 1, num6 + 1].frameX += num8;
+							WorldGen.noWire(num7, num6);
+							WorldGen.noWire(num7, num6 + 1);
+							WorldGen.noWire(num7 + 1, num6);
+							WorldGen.noWire(num7 + 1, num6 + 1);
+							NetMessage.SendTileSquare(-1, num7, num6, 3);
+						}
+						break;
+					case 36:
+					case 35:
+					case 34:
+						{
+							int num9 = j - (int)(Main.tile[i, j].frameY / 18);
+							int num10 = (int)(Main.tile[i, j].frameX / 18);
+							if (num10 > 2)
+							{
+								num10 -= 3;
+							}
+							num10 = i - num10;
+							short num11 = 54;
+							if (Main.tile[num10, num9].frameX > 0)
+							{
+								num11 = -54;
+							}
+							for (int m = num10; m < num10 + 3; m++)
+							{
+								for (int n = num9; n < num9 + 3; n++)
+								{
+									Main.tile[m, n].frameX += num11;
+									WorldGen.noWire(m, n);
+								}
+							}
+							NetMessage.SendTileSquare(-1, num10 + 1, num9 + 1, 3);
+						}
+						break;
+					case 33:
+						{
+							short num12 = 18;
+							if (Main.tile[i, j].frameX > 0)
+							{
+								num12 = -18;
+							}
+							Main.tile[i, j].frameX += num12;
+							NetMessage.SendTileSquare(-1, i, j, 3);
+						}
+						break;
+					case 92:
+						{
+							int num13 = j - (int)(Main.tile[i, j].frameY / 18);
+							short num14 = 18;
+							if (Main.tile[i, j].frameX > 0)
+							{
+								num14 = -18;
+							}
+							Main.tile[i, num13].frameX += num14;
+							Main.tile[i, num13 + 1].frameX += num14;
+							Main.tile[i, num13 + 2].frameX += num14;
+							Main.tile[i, num13 + 3].frameX += num14;
+							Main.tile[i, num13 + 4].frameX += num14;
+							Main.tile[i, num13 + 5].frameX += num14;
+							WorldGen.noWire(i, num13);
+							WorldGen.noWire(i, num13 + 1);
+							WorldGen.noWire(i, num13 + 2);
+							WorldGen.noWire(i, num13 + 3);
+							WorldGen.noWire(i, num13 + 4);
+							WorldGen.noWire(i, num13 + 5);
+							NetMessage.SendTileSquare(-1, i, num13 + 3, 7);
+						}
+						break;
+					case 137:
+						if (WorldGen.checkMech(i, j, 180))
+						{
+							int num15 = -1;
+							if (Main.tile[i, j].frameX != 0)
+							{
+								num15 = 1;
+							}
+							float speedX = (float)(12 * num15);
+							int damage = 20;
+							int type2 = 98;
+							Vector2 vector = new Vector2((float)(i * 16 + 8), (float)(j * 16 + 7));
+							vector.X += (float)(10 * num15);
+							vector.Y += 2f;
+							Projectile.NewProjectile((float)((int)vector.X), (float)((int)vector.Y), speedX, 0f, type2, damage, 2f, Main.myPlayer);
+						}
+						break;
+					case 139:
+						WorldGen.SwitchMB(i, j);
+						break;
+					case 141:
+						WorldGen.KillTile(i, j, false, false, true);
+						NetMessage.SendTileSquare(-1, i, j, 1);
+						Projectile.NewProjectile((float)(i * 16 + 8), (float)(j * 16 + 8), 0f, 0f, 108, 250, 10f, Main.myPlayer);
+						break;
+					case 143:
+					case 142:
+						{
+							int num16 = j - (int)(Main.tile[i, j].frameY / 18);
+							int num17 = (int)(Main.tile[i, j].frameX / 18);
+							if (num17 > 1)
+							{
+								num17 -= 2;
+							}
+							num17 = i - num17;
+							WorldGen.noWire(num17, num16);
+							WorldGen.noWire(num17, num16 + 1);
+							WorldGen.noWire(num17 + 1, num16);
+							WorldGen.noWire(num17 + 1, num16 + 1);
+							if (type == 142)
+							{
+								int num18 = num17;
+								int num19 = num16;
+								for (int num20 = 0; num20 < 4; num20++)
+								{
+									if (WorldGen.numInPump >= WorldGen.maxPump - 1)
+									{
+										break;
+									}
+									switch (num20)
+									{
+										case 0:
+											num18 = num17;
+											num19 = num16 + 1;
+											break;
+										case 1:
+											num18 = num17 + 1;
+											num19 = num16 + 1;
+											break;
+										case 2:
+											num18 = num17;
+											num19 = num16;
+											break;
+										default:
+											num18 = num17 + 1;
+											num19 = num16;
+											break;
+									}
+									WorldGen.inPumpX[WorldGen.numInPump] = num18;
+									WorldGen.inPumpY[WorldGen.numInPump] = num19;
+									WorldGen.numInPump++;
+								}
+							}
+							else
+							{
+								int num21 = num17;
+								int num22 = num16;
+								for (int num23 = 0; num23 < 4; num23++)
+								{
+									if (WorldGen.numOutPump >= WorldGen.maxPump - 1)
+									{
+										break;
+									}
+									switch (num23)
+									{
+										case 0:
+											num21 = num17;
+											num22 = num16 + 1;
+											break;
+										case 1:
+											num21 = num17 + 1;
+											num22 = num16 + 1;
+											break;
+										case 2:
+											num21 = num17;
+											num22 = num16;
+											break;
+										default:
+											num21 = num17 + 1;
+											num22 = num16;
+											break;
+									}
+									WorldGen.outPumpX[WorldGen.numOutPump] = num21;
+									WorldGen.outPumpY[WorldGen.numOutPump] = num22;
+									WorldGen.numOutPump++;
+								}
+							}
+						}
+						break;
+					case 105:
+						{
+							int num24 = j - (int)(Main.tile[i, j].frameY / 18);
+							int num25 = (int)(Main.tile[i, j].frameX / 18);
+							int num26 = 0;
+							while (num25 >= 2)
+							{
+								num25 -= 2;
+								num26++;
+							}
+							num25 = i - num25;
+							WorldGen.noWire(num25, num24);
+							WorldGen.noWire(num25, num24 + 1);
+							WorldGen.noWire(num25, num24 + 2);
+							WorldGen.noWire(num25 + 1, num24);
+							WorldGen.noWire(num25 + 1, num24 + 1);
+							WorldGen.noWire(num25 + 1, num24 + 2);
+							int num27 = num25 * 16 + 16;
+							int num28 = (num24 + 3) * 16;
+							int num29 = -1;
+							switch (num26)
+							{
+								case 4:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 1))
+									{
+										num29 = NPC.NewNPC(num27, num28 - 12, 1, 0);
+									}
+									break;
+								case 7:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 49))
+									{
+										num29 = NPC.NewNPC(num27 - 4, num28 - 6, 49, 0);
+									}
+									break;
+								case 8:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 55) && NPC.MechSpawn((float)num27, (float)num28, 57))
+									{
+										num29 = NPC.NewNPC(num27, num28 - 12, 55, 0);
+									}
+									break;
+								case 9:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 46) && NPC.MechSpawn((float)num27, (float)num28, 47))
+									{
+										num29 = NPC.NewNPC(num27, num28 - 12, 46, 0);
+									}
+									break;
+								case 10:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 21))
+									{
+										num29 = NPC.NewNPC(num27, num28, 21, 0);
+									}
+									break;
+								case 18:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 67))
+									{
+										num29 = NPC.NewNPC(num27, num28 - 12, 67, 0);
+									}
+									break;
+								case 23:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 63))
+									{
+										num29 = NPC.NewNPC(num27, num28 - 12, 63, 0);
+									}
+									break;
+								case 27:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 85))
+									{
+										num29 = NPC.NewNPC(num27 - 9, num28, 85, 0);
+									}
+									break;
+								case 28:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 74))
+									{
+										num29 = NPC.NewNPC(num27, num28 - 12, 74, 0);
+									}
+									break;
+								case 42:
+									if (WorldGen.checkMech(i, j, 30) && NPC.MechSpawn((float)num27, (float)num28, 58))
+									{
+										num29 = NPC.NewNPC(num27, num28 - 12, 58, 0);
+									}
+									break;
+								case 37:
+									if (WorldGen.checkMech(i, j, 600) && Item.MechSpawn((float)num27, (float)num28, 58))
+									{
+										Item.NewItem(num27, num28 - 16, 0, 0, 58, 1, false, 0);
+									}
+									break;
+								case 2:
+									if (WorldGen.checkMech(i, j, 600) && Item.MechSpawn((float)num27, (float)num28, 184))
+									{
+										Item.NewItem(num27, num28 - 16, 0, 0, 184, 1, false, 0);
+									}
+									break;
+								case 17:
+									if (WorldGen.checkMech(i, j, 600) && Item.MechSpawn((float)num27, (float)num28, 166))
+									{
+										Item.NewItem(num27, num28 - 20, 0, 0, 166, 1, false, 0);
+									}
+									break;
+								case 40:
+									if (WorldGen.checkMech(i, j, 300))
+									{
+										int[] array = new int[10];
+										int num30 = 0;
+										for (int num31 = 0; num31 < 200; num31++)
+										{
+											if (Main.npc[num31].active && (Main.npc[num31].type == 17 || Main.npc[num31].type == 19 || Main.npc[num31].type == 22 || Main.npc[num31].type == 38 || Main.npc[num31].type == 54 || Main.npc[num31].type == 107 || Main.npc[num31].type == 108))
+											{
+												array[num30] = num31;
+												num30++;
+												if (num30 >= 9)
+												{
+													break;
+												}
+											}
+										}
+										if (num30 > 0)
+										{
+											int num32 = array[Main.rand.Next(num30)];
+											Main.npc[num32].position.X = (float)(num27 - Main.npc[num32].width / 2);
+											Main.npc[num32].position.Y = (float)(num28 - Main.npc[num32].height - 1);
+											NetMessage.SendData(23, -1, -1, "", num32, 0f, 0f, 0f, 0);
+										}
+									}
+									break;
+								default:
+									if (num26 == 41 && WorldGen.checkMech(i, j, 300))
+									{
+										int[] array2 = new int[10];
+										int num33 = 0;
+										for (int num34 = 0; num34 < 200; num34++)
+										{
+											if (Main.npc[num34].active && (Main.npc[num34].type == 18 || Main.npc[num34].type == 20 || Main.npc[num34].type == 124))
+											{
+												array2[num33] = num34;
+												num33++;
+												if (num33 >= 9)
+												{
+													break;
+												}
+											}
+										}
+										if (num33 > 0)
+										{
+											int num35 = array2[Main.rand.Next(num33)];
+											Main.npc[num35].position.X = (float)(num27 - Main.npc[num35].width / 2);
+											Main.npc[num35].position.Y = (float)(num28 - Main.npc[num35].height - 1);
+											NetMessage.SendData(23, -1, -1, "", num35, 0f, 0f, 0f, 0);
+										}
+									}
+									break;
+							}
+							if (num29 >= 0)
+							{
+								Main.npc[num29].value = 0f;
+								Main.npc[num29].npcSlots = 0f;
+							}
+						}
+						break;
 				}
 			}
 			WorldGen.hitWire(i - 1, j);
@@ -19345,10 +19351,13 @@ namespace Terraria
 		{
 			WorldGen.noLiquidCheck = true;
 			WorldGen.noTileActions = true;
+			Main.progressText = "Finding tile frames";
 			for (int i = 0; i < Main.maxTilesX; i++)
 			{
+				Main.trackProgress = true;
 				float num = (float)i / (float)Main.maxTilesX;
-				Main.statusText = "Finding tile frames: " + (int)(num * 100f + 1f) + "%";
+				Main.progressPercent = (int)Math.Floor(num * 100f + 1f);
+				Main.statusText = ": " + (int)(num * 100f + 1f) + "%";
 				for (int j = 0; j < Main.maxTilesY; j++)
 				{
 					if (Main.tile[i, j].active)
@@ -19361,6 +19370,7 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
 			WorldGen.noLiquidCheck = false;
 			WorldGen.noTileActions = false;
 		}

@@ -159,6 +159,10 @@ namespace Terraria
         public static int LogoB = 0;
         public static bool LogoT = false;
         public static string statusText = "";
+		public static bool trackProgress = false;
+		public static string progressText = "";
+		public static int progressPercent = 0;
+		public static int priorPercent = 0;
         public static string worldName = "";
         public static int background = 0;
         public static bool dayTime = true;
@@ -613,7 +617,7 @@ namespace Terraria
         public static Color mouseColor = new Color(255, 50, 95);
         public static Color cursorColor = Color.White;
         public static Color tileColor;
-        public static bool runningMono = false;
+		public static bool runningMono = false;
 
         public static void LoadWorlds()
         {
@@ -697,33 +701,33 @@ namespace Terraria
         private static string nextLoadPlayer()
         {
             int num = 1;
-            while (File.Exists(Path.Combine(
-                Main.PlayerPath,
-                "player" +
-                    num.ToString() +
-                        ".plr")))
+			while (File.Exists(Path.Combine(
+				Main.PlayerPath,
+				"player" +
+				num.ToString() +
+				".plr")))
             {
                 num++;
             }
-            return Path.Combine(
-                Main.PlayerPath,
-                "player" +
-                    num.ToString() +
-                        ".plr");
+			return Path.Combine(
+				Main.PlayerPath,
+				"player" +
+				num.ToString() +
+				".plr");
         }
 
         private static string nextLoadWorld()
         {
             int num = 1;
-            while (File.Exists(Path.Combine(
-                Main.WorldPath,
-                "world" + num.ToString() + ".wld")))
+			while (File.Exists(Path.Combine(
+				Main.WorldPath,
+				"world" + num.ToString() + ".wld")))
             {
                 num++;
             }
-            return Path.Combine(
-                Main.WorldPath,
-                "world" + num.ToString() + ".wld");
+			return Path.Combine(
+				Main.WorldPath,
+				"world" + num.ToString() + ".wld");
         }
 
         public void autoCreate(string newOpt)
@@ -796,28 +800,28 @@ namespace Terraria
                                     int num2 = Convert.ToInt32(value3);
                                     if (num2 >= 0 && num2 <= 5)
                                     {
-                                        Process currentProcess = Process.GetCurrentProcess();
-                                        switch (num2)
-                                        {
-                                            case 0:
-                                                currentProcess.PriorityClass = ProcessPriorityClass.RealTime;
-                                                break;
-                                            case 1:
-                                                currentProcess.PriorityClass = ProcessPriorityClass.High;
-                                                break;
-                                            case 2:
-                                                currentProcess.PriorityClass = ProcessPriorityClass.AboveNormal;
-                                                break;
-                                            case 3:
-                                                currentProcess.PriorityClass = ProcessPriorityClass.Normal;
-                                                break;
-                                            case 4:
-                                                currentProcess.PriorityClass = ProcessPriorityClass.BelowNormal;
-                                                break;
-                                            case 5:
-                                                currentProcess.PriorityClass = ProcessPriorityClass.Idle;
-                                                break;
-                                        }
+										Process currentProcess = Process.GetCurrentProcess();
+										switch (num2)
+										{
+											case 0:
+												currentProcess.PriorityClass = ProcessPriorityClass.RealTime;
+												break;
+											case 1:
+												currentProcess.PriorityClass = ProcessPriorityClass.High;
+												break;
+											case 2:
+												currentProcess.PriorityClass = ProcessPriorityClass.AboveNormal;
+												break;
+											case 3:
+												currentProcess.PriorityClass = ProcessPriorityClass.Normal;
+												break;
+											case 4:
+												currentProcess.PriorityClass = ProcessPriorityClass.BelowNormal;
+												break;
+											case 5:
+												currentProcess.PriorityClass = ProcessPriorityClass.Idle;
+												break;
+										}
                                     }
                                 }
                                 catch
@@ -836,28 +840,28 @@ namespace Terraria
                             }
                             if (text.Length > 11 && text.Substring(0, 11).ToLower() == "autocreate=")
                             {
-                                string a = text.Substring(11);
-                                switch (a)
-                                {
-                                    case "0":
-                                        Main.autoGen = false;
-                                        break;
-                                    case "1":
-                                        Main.maxTilesX = 4200;
-                                        Main.maxTilesY = 1200;
-                                        Main.autoGen = true;
-                                        break;
-                                    case "2":
-                                        Main.maxTilesX = 6300;
-                                        Main.maxTilesY = 1800;
-                                        Main.autoGen = true;
-                                        break;
-                                    case "3":
-                                        Main.maxTilesX = 8400;
-                                        Main.maxTilesY = 2400;
-                                        Main.autoGen = true;
-                                        break;
-                                }
+								string a = text.Substring(11);
+								switch (a)
+								{
+									case "0":
+										Main.autoGen = false;
+										break;
+									case "1":
+										Main.maxTilesX = 4200;
+										Main.maxTilesY = 1200;
+										Main.autoGen = true;
+										break;
+									case "2":
+										Main.maxTilesX = 6300;
+										Main.maxTilesY = 1800;
+										Main.autoGen = true;
+										break;
+									case "3":
+										Main.maxTilesX = 8400;
+										Main.maxTilesY = 2400;
+										Main.autoGen = true;
+										break;
+								}
                             }
                         }
                         catch
@@ -902,12 +906,20 @@ namespace Terraria
             Main.menuServer = true;
             Main.menuMode = 1;
         }
-
+		public static void ResetProgressTracking()
+		{
+			Main.progressPercent = 0;
+			Main.priorPercent = 0;
+			Main.progressText = "";
+			Main.trackProgress = false;
+			Console.SetCursorPosition(Console.WindowWidth - 9, Console.CursorTop);
+			Console.WriteLine("...Done!");
+		}
         public void DedServ()
         {
-            Type t = Type.GetType("Mono.Runtime");
-            Main.runningMono = (t != null);
-            GameHooks.OnInitialize(true);
+			Type t = Type.GetType("Mono.Runtime");
+			Main.runningMono = (t != null);
+			GameHooks.OnInitialize(true);
             Main.rand = new Random();
             Console.Title = "Terraria Server " + Main.versionNumber2;
             Main.dedServ = true;
@@ -1070,6 +1082,23 @@ namespace Terraria
                                 Main.oldStatusText = Main.statusText;
                                 Console.WriteLine(Main.statusText);
                             }
+							if (Main.trackProgress && Main.progressPercent <= 1)
+							{
+								Console.SetCursorPosition(0, Console.CursorTop);
+								Console.Write("{0}: [..................................................]", Main.progressText);
+								Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
+								Main.trackProgress = false;
+							}
+							else if (Main.trackProgress && (int)Math.Floor((Main.progressPercent - Main.priorPercent) / 2f) >= 1)
+							{
+								Console.Write(new String('O', (int)Math.Ceiling((Main.progressPercent - Main.priorPercent) / 2f)));
+								Main.priorPercent = Main.progressPercent;
+								Main.trackProgress = false;
+							}
+							else if (Main.trackProgress)
+							{
+								Main.trackProgress = false;
+							}
                         }
                         try
                         {
@@ -1151,6 +1180,23 @@ namespace Terraria
                     Main.oldStatusText = Main.statusText;
                     Console.WriteLine(Main.statusText);
                 }
+				if (Main.trackProgress && Main.progressPercent <= 1)
+				{
+					Console.SetCursorPosition(0, Console.CursorTop);
+					Console.Write("{0}: [..................................................]", Main.progressText);
+					Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
+					Main.trackProgress = false;
+				} 
+				else if (Main.trackProgress && (int)Math.Floor((Main.progressPercent - Main.priorPercent) / 2f) >= 1)
+				{
+					Console.Write(new String('O', (int)Math.Ceiling((Main.progressPercent - Main.priorPercent) / 2f)));
+					Main.priorPercent = Main.progressPercent;
+					Main.trackProgress = false;
+				}
+				else if (Main.trackProgress)
+				{
+					Main.trackProgress = false;
+				}
             }
             try
             {
@@ -1162,7 +1208,7 @@ namespace Terraria
             Console.WriteLine("Terraria Server " + Main.versionNumber);
             Console.WriteLine("");
             Console.WriteLine("Listening on {0}:{1}",
-                Netplay.serverListenIP != System.Net.IPAddress.Any ? Netplay.serverListenIP.ToString() : "*", Netplay.serverPort);
+				Netplay.serverListenIP != System.Net.IPAddress.Any ? Netplay.serverListenIP.ToString() : "*", Netplay.serverPort);
             Console.WriteLine("Type 'help' for a list of commands.");
             Console.WriteLine("");
             Console.Title = "Terraria Server: " + Main.worldName;
@@ -1171,7 +1217,7 @@ namespace Terraria
             {
                 Main.startDedInput();
             }
-            GameHooks.OnInitialize(false);
+			GameHooks.OnInitialize(false);
             stopwatch.Start();
             double num6 = 16.666666666666668;
             double num7 = 0.0;
@@ -1192,15 +1238,32 @@ namespace Terraria
                         Main.oldStatusText = Main.statusText;
                         Console.WriteLine(Main.statusText);
                     }
+					if (Main.trackProgress && Main.progressPercent <= 1)
+					{
+						Console.SetCursorPosition(0, Console.CursorTop);
+						Console.Write("{0}: [..................................................]", Main.progressText);
+						Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
+						Main.trackProgress = false;
+					}
+					else if (Main.trackProgress && (int)Math.Floor((Main.progressPercent - Main.priorPercent) / 2f) >= 1)
+					{
+						Console.Write(new String('O', (int)Math.Ceiling((Main.progressPercent - Main.priorPercent) / 2f)));
+						Main.priorPercent = Main.progressPercent;
+						Main.trackProgress = false;
+					}
+					else if (Main.trackProgress)
+					{
+						Main.trackProgress = false;
+					}
                     if (num7 > 1000.0)
                     {
                         num7 = 1000.0;
                     }
                     if (Netplay.anyClients)
                     {
-                        GameHooks.OnUpdate(true);
+						GameHooks.OnUpdate(true);
                         this.Update();
-                        GameHooks.OnUpdate(false);
+						GameHooks.OnUpdate(false);
                     }
                     double num10 = (double) stopwatch.ElapsedMilliseconds + num7;
                     if (num10 < num6)
@@ -1232,421 +1295,421 @@ namespace Terraria
             {
                 Console.Write(": ");
                 string text = Console.ReadLine();
-                if (!ServerHooks.OnCommand(text))
-                {
-                    string text2 = text;
-                    text = text.ToLower();
-                    try
-                    {
-                        switch (text)
-                        {
-                            case "help":
-                                Console.WriteLine("Available commands:");
-                                Console.WriteLine("");
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "help ",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Displays a list of commands."
-                                                                    }));
-                                Console.WriteLine("playing " + '\t' + " Shows the list of players");
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "clear ",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Clear the console window."
-                                                                    }));
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "exit ",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Shutdown the server and save."
-                                                                    }));
-                                Console.WriteLine("exit-nosave " + '\t' + " Shutdown the server without saving.");
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "save ",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Save the game world."
-                                                                    }));
-                                Console.WriteLine("kick <player> " + '\t' + " Kicks a player from the server.");
-                                Console.WriteLine("ban <player> " + '\t' + " Bans a player from the server.");
-                                Console.WriteLine("password" + '\t' + " Show password.");
-                                Console.WriteLine("password <pass>" + '\t' + " Change password.");
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "version",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Print version number."
-                                                                    }));
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "time",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Display game time."
-                                                                    }));
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "port",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Print the listening port."
-                                                                    }));
-                                Console.WriteLine("maxplayers" + '\t' + " Print the max number of players.");
-                                Console.WriteLine("say <words>" + '\t' + " Send a message.");
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "motd",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Print MOTD."
-                                                                    }));
-                                Console.WriteLine("motd <words>" + '\t' + " Change MOTD.");
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "dawn",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Change time to dawn."
-                                                                    }));
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "noon",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Change time to noon."
-                                                                    }));
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "dusk",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Change time to dusk."
-                                                                    }));
-                                Console.WriteLine("midnight" + '\t' + " Change time to midnight.");
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "settle",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Settle all water."
-                                                                    }));
-                                Console.WriteLine(string.Concat(new object[]
-                                                                    {
-                                                                        "reload",
-                                                                        '\t',
-                                                                        '\t',
-                                                                        " Reloads plugins."
-                                                                    }));
-                                break;
-                            case "settle":
-                                if (!Liquid.panicMode)
-                                {
-                                    Liquid.StartPanic();
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Water is already settling");
-                                }
-                                break;
-                            case "dawn":
-                                Main.dayTime = true;
-                                Main.time = 0.0;
-                                NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
-                                break;
-                            case "dusk":
-                                Main.dayTime = false;
-                                Main.time = 0.0;
-                                NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
-                                break;
-                            case "noon":
-                                Main.dayTime = true;
-                                Main.time = 27000.0;
-                                NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
-                                break;
-                            case "midnight":
-                                Main.dayTime = false;
-                                Main.time = 16200.0;
-                                NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
-                                break;
-                            case "exit-nosave":
-                                Netplay.disconnect = true;
-                                break;
-                            case "exit":
-                                WorldGen.saveWorld(false);
-                                Netplay.disconnect = true;
-                                break;
-                            case "save":
-                                WorldGen.saveWorld(false);
-                                break;
-                            case "time":
-                                {
-                                    string text3 = "AM";
-                                    double num = Main.time;
-                                    if (!Main.dayTime)
-                                    {
-                                        num += 54000.0;
-                                    }
-                                    num = num/86400.0*24.0;
-                                    double num2 = 7.5;
-                                    num = num - num2 - 12.0;
-                                    if (num < 0.0)
-                                    {
-                                        num += 24.0;
-                                    }
-                                    if (num >= 12.0)
-                                    {
-                                        text3 = "PM";
-                                    }
-                                    int num3 = (int) num;
-                                    double num4 = num - (double) num3;
-                                    num4 = (double) ((int) (num4*60.0));
-                                    string text4 = string.Concat(num4);
-                                    if (num4 < 10.0)
-                                    {
-                                        text4 = "0" + text4;
-                                    }
-                                    if (num3 > 12)
-                                    {
-                                        num3 -= 12;
-                                    }
-                                    if (num3 == 0)
-                                    {
-                                        num3 = 12;
-                                    }
-                                    Console.WriteLine(string.Concat(new object[]
-                                                                        {
-                                                                            "Time: ",
-                                                                            num3,
-                                                                            ":",
-                                                                            text4,
-                                                                            " ",
-                                                                            text3
-                                                                        }));
-                                }
-                                break;
-                            case "maxplayers":
-                                Console.WriteLine("Player limit: " + Main.maxNetPlayers);
-                                break;
-                            case "port":
-                                Console.WriteLine("Port: " + Netplay.serverPort);
-                                break;
-                            case "version":
-                                Console.WriteLine("Terraria Server " + Main.versionNumber);
-                                break;
-                            case "reload":
-                                Console.WriteLine("Reloading plugins");
-                                try
-                                {
-                                    ProgramServer.ReloadPlugins();
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex);
-                                }
-                                break;
-                            default:
-                                if (text == "clear")
-                                {
-                                    try
-                                    {
-                                        Console.Clear();
-                                        continue;
-                                    }
-                                    catch
-                                    {
-                                        continue;
-                                    }
-                                }
-                                if (text == "playing")
-                                {
-                                    int num5 = 0;
-                                    for (int i = 0; i < 255; i++)
-                                    {
-                                        if (Main.player[i].active)
-                                        {
-                                            num5++;
-                                            Console.WriteLine(string.Concat(new object[]
-                                                                                {
-                                                                                    Main.player[i].name,
-                                                                                    " (",
-                                                                                    Netplay.serverSock[i].tcpClient.Client.RemoteEndPoint,
-                                                                                    ")"
-                                                                                }));
-                                        }
-                                    }
-                                    if (num5 == 0)
-                                    {
-                                        Console.WriteLine("No players connected.");
-                                    }
-                                    else
-                                    {
-                                        if (num5 == 1)
-                                        {
-                                            Console.WriteLine("1 player connected.");
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine(num5 + " players connected.");
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    if (!(text == ""))
-                                    {
-                                        if (text == "motd")
-                                        {
-                                            if (Main.motd == "")
-                                            {
-                                                Console.WriteLine("Welcome to " + Main.worldName + "!");
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine("MOTD: " + Main.motd);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            if (text.Length >= 5 && text.Substring(0, 5) == "motd ")
-                                            {
-                                                string text5 = text2.Substring(5);
-                                                Main.motd = text5;
-                                            }
-                                            else
-                                            {
-                                                if (text.Length == 8 && text.Substring(0, 8) == "password")
-                                                {
-                                                    if (Netplay.password == "")
-                                                    {
-                                                        Console.WriteLine("No password set.");
-                                                    }
-                                                    else
-                                                    {
-                                                        Console.WriteLine("Password: " + Netplay.password);
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    if (text.Length >= 9 && text.Substring(0, 9) == "password ")
-                                                    {
-                                                        string text6 = text2.Substring(9);
-                                                        if (text6 == "")
-                                                        {
-                                                            Netplay.password = "";
-                                                            Console.WriteLine("Password disabled.");
-                                                        }
-                                                        else
-                                                        {
-                                                            Netplay.password = text6;
-                                                            Console.WriteLine("Password: " + Netplay.password);
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        if (text == "say")
-                                                        {
-                                                            Console.WriteLine("Usage: say <words>");
-                                                        }
-                                                        else
-                                                        {
-                                                            if (text.Length >= 4 && text.Substring(0, 4) == "say ")
-                                                            {
-                                                                string text7 = text2.Substring(4);
-                                                                if (text7 == "")
-                                                                {
-                                                                    Console.WriteLine("Usage: say <words>");
-                                                                }
-                                                                else
-                                                                {
-                                                                    Console.WriteLine("<Server> " + text7);
-                                                                    NetMessage.SendData(25, -1, -1, "<Server> " + text7, 255, 255f, 240f, 20f, 0);
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                if (text.Length == 4 && text.Substring(0, 4) == "kick")
-                                                                {
-                                                                    Console.WriteLine("Usage: kick <player>");
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (text.Length >= 5 && text.Substring(0, 5) == "kick ")
-                                                                    {
-                                                                        string text8 = text.Substring(5);
-                                                                        text8 = text8.ToLower();
-                                                                        if (text8 == "")
-                                                                        {
-                                                                            Console.WriteLine("Usage: kick <player>");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            for (int j = 0; j < 255; j++)
-                                                                            {
-                                                                                if (Main.player[j].active && Main.player[j].name.ToLower() == text8)
-                                                                                {
-                                                                                    NetMessage.SendData(2, j, -1, "Kicked from server.", 0, 0f, 0f, 0f, 0);
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        if (text.Length == 3 && text.Substring(0, 3) == "ban")
-                                                                        {
-                                                                            Console.WriteLine("Usage: ban <player>");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            if (text.Length >= 4 && text.Substring(0, 4) == "ban ")
-                                                                            {
-                                                                                string text9 = text.Substring(4);
-                                                                                text9 = text9.ToLower();
-                                                                                if (text9 == "")
-                                                                                {
-                                                                                    Console.WriteLine("Usage: ban <player>");
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    for (int k = 0; k < 255; k++)
-                                                                                    {
-                                                                                        if (Main.player[k].active && Main.player[k].name.ToLower() == text9)
-                                                                                        {
-                                                                                            Netplay.AddBan(k);
-                                                                                            NetMessage.SendData(2, k, -1, "Banned from server.", 0, 0f, 0f, 0f, 0);
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                Console.WriteLine("Invalid command.");
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Invalid command.");
-                    }
-                }
+				if (!ServerHooks.OnCommand(text))
+				{
+					string text2 = text;
+					text = text.ToLower();
+					try
+					{
+						switch (text)
+						{
+							case "help":
+								Console.WriteLine("Available commands:");
+								Console.WriteLine("");
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"help ",
+																		'\t',
+																		'\t',
+																		" Displays a list of commands."
+																	}));
+								Console.WriteLine("playing " + '\t' + " Shows the list of players");
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"clear ",
+																		'\t',
+																		'\t',
+																		" Clear the console window."
+																	}));
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"exit ",
+																		'\t',
+																		'\t',
+																		" Shutdown the server and save."
+																	}));
+								Console.WriteLine("exit-nosave " + '\t' + " Shutdown the server without saving.");
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"save ",
+																		'\t',
+																		'\t',
+																		" Save the game world."
+																	}));
+								Console.WriteLine("kick <player> " + '\t' + " Kicks a player from the server.");
+								Console.WriteLine("ban <player> " + '\t' + " Bans a player from the server.");
+								Console.WriteLine("password" + '\t' + " Show password.");
+								Console.WriteLine("password <pass>" + '\t' + " Change password.");
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"version",
+																		'\t',
+																		'\t',
+																		" Print version number."
+																	}));
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"time",
+																		'\t',
+																		'\t',
+																		" Display game time."
+																	}));
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"port",
+																		'\t',
+																		'\t',
+																		" Print the listening port."
+																	}));
+								Console.WriteLine("maxplayers" + '\t' + " Print the max number of players.");
+								Console.WriteLine("say <words>" + '\t' + " Send a message.");
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"motd",
+																		'\t',
+																		'\t',
+																		" Print MOTD."
+																	}));
+								Console.WriteLine("motd <words>" + '\t' + " Change MOTD.");
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"dawn",
+																		'\t',
+																		'\t',
+																		" Change time to dawn."
+																	}));
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"noon",
+																		'\t',
+																		'\t',
+																		" Change time to noon."
+																	}));
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"dusk",
+																		'\t',
+																		'\t',
+																		" Change time to dusk."
+																	}));
+								Console.WriteLine("midnight" + '\t' + " Change time to midnight.");
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"settle",
+																		'\t',
+																		'\t',
+																		" Settle all water."
+																	}));
+								Console.WriteLine(string.Concat(new object[]
+																	{
+																		"reload",
+																		'\t',
+																		'\t',
+																		" Reloads plugins."
+																	}));
+								break;
+							case "settle":
+								if (!Liquid.panicMode)
+								{
+									Liquid.StartPanic();
+								}
+								else
+								{
+									Console.WriteLine("Water is already settling");
+								}
+								break;
+							case "dawn":
+								Main.dayTime = true;
+								Main.time = 0.0;
+								NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
+								break;
+							case "dusk":
+								Main.dayTime = false;
+								Main.time = 0.0;
+								NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
+								break;
+							case "noon":
+								Main.dayTime = true;
+								Main.time = 27000.0;
+								NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
+								break;
+							case "midnight":
+								Main.dayTime = false;
+								Main.time = 16200.0;
+								NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
+								break;
+							case "exit-nosave":
+								Netplay.disconnect = true;
+								break;
+							case "exit":
+								WorldGen.saveWorld(false);
+								Netplay.disconnect = true;
+								break;
+							case "save":
+								WorldGen.saveWorld(false);
+								break;
+							case "time":
+								{
+									string text3 = "AM";
+									double num = Main.time;
+									if (!Main.dayTime)
+									{
+										num += 54000.0;
+									}
+									num = num/86400.0*24.0;
+									double num2 = 7.5;
+									num = num - num2 - 12.0;
+									if (num < 0.0)
+									{
+										num += 24.0;
+									}
+									if (num >= 12.0)
+									{
+										text3 = "PM";
+									}
+									int num3 = (int) num;
+									double num4 = num - (double) num3;
+									num4 = (double) ((int) (num4*60.0));
+									string text4 = string.Concat(num4);
+									if (num4 < 10.0)
+									{
+										text4 = "0" + text4;
+									}
+									if (num3 > 12)
+									{
+										num3 -= 12;
+									}
+									if (num3 == 0)
+									{
+										num3 = 12;
+									}
+									Console.WriteLine(string.Concat(new object[]
+																		{
+																			"Time: ",
+																			num3,
+																			":",
+																			text4,
+																			" ",
+																			text3
+																		}));
+								}
+								break;
+							case "maxplayers":
+								Console.WriteLine("Player limit: " + Main.maxNetPlayers);
+								break;
+							case "port":
+								Console.WriteLine("Port: " + Netplay.serverPort);
+								break;
+							case "version":
+								Console.WriteLine("Terraria Server " + Main.versionNumber);
+								break;
+							case "reload":
+								Console.WriteLine("Reloading plugins");
+								try
+								{
+									ProgramServer.ReloadPlugins();
+								}
+								catch (Exception ex)
+								{
+									Console.WriteLine(ex);
+								}
+								break;
+							default:
+								if (text == "clear")
+								{
+									try
+									{
+										Console.Clear();
+										continue;
+									}
+									catch
+									{
+										continue;
+									}
+								}
+								if (text == "playing")
+								{
+									int num5 = 0;
+									for (int i = 0; i < 255; i++)
+									{
+										if (Main.player[i].active)
+										{
+											num5++;
+											Console.WriteLine(string.Concat(new object[]
+																				{
+																					Main.player[i].name,
+																					" (",
+																					Netplay.serverSock[i].tcpClient.Client.RemoteEndPoint,
+																					")"
+																				}));
+										}
+									}
+									if (num5 == 0)
+									{
+										Console.WriteLine("No players connected.");
+									}
+									else
+									{
+										if (num5 == 1)
+										{
+											Console.WriteLine("1 player connected.");
+										}
+										else
+										{
+											Console.WriteLine(num5 + " players connected.");
+										}
+									}
+								}
+								else
+								{
+									if (!(text == ""))
+									{
+										if (text == "motd")
+										{
+											if (Main.motd == "")
+											{
+												Console.WriteLine("Welcome to " + Main.worldName + "!");
+											}
+											else
+											{
+												Console.WriteLine("MOTD: " + Main.motd);
+											}
+										}
+										else
+										{
+											if (text.Length >= 5 && text.Substring(0, 5) == "motd ")
+											{
+												string text5 = text2.Substring(5);
+												Main.motd = text5;
+											}
+											else
+											{
+												if (text.Length == 8 && text.Substring(0, 8) == "password")
+												{
+													if (Netplay.password == "")
+													{
+														Console.WriteLine("No password set.");
+													}
+													else
+													{
+														Console.WriteLine("Password: " + Netplay.password);
+													}
+												}
+												else
+												{
+													if (text.Length >= 9 && text.Substring(0, 9) == "password ")
+													{
+														string text6 = text2.Substring(9);
+														if (text6 == "")
+														{
+															Netplay.password = "";
+															Console.WriteLine("Password disabled.");
+														}
+														else
+														{
+															Netplay.password = text6;
+															Console.WriteLine("Password: " + Netplay.password);
+														}
+													}
+													else
+													{
+														if (text == "say")
+														{
+															Console.WriteLine("Usage: say <words>");
+														}
+														else
+														{
+															if (text.Length >= 4 && text.Substring(0, 4) == "say ")
+															{
+																string text7 = text2.Substring(4);
+																if (text7 == "")
+																{
+																	Console.WriteLine("Usage: say <words>");
+																}
+																else
+																{
+																	Console.WriteLine("<Server> " + text7);
+																	NetMessage.SendData(25, -1, -1, "<Server> " + text7, 255, 255f, 240f, 20f, 0);
+																}
+															}
+															else
+															{
+																if (text.Length == 4 && text.Substring(0, 4) == "kick")
+																{
+																	Console.WriteLine("Usage: kick <player>");
+																}
+																else
+																{
+																	if (text.Length >= 5 && text.Substring(0, 5) == "kick ")
+																	{
+																		string text8 = text.Substring(5);
+																		text8 = text8.ToLower();
+																		if (text8 == "")
+																		{
+																			Console.WriteLine("Usage: kick <player>");
+																		}
+																		else
+																		{
+																			for (int j = 0; j < 255; j++)
+																			{
+																				if (Main.player[j].active && Main.player[j].name.ToLower() == text8)
+																				{
+																					NetMessage.SendData(2, j, -1, "Kicked from server.", 0, 0f, 0f, 0f, 0);
+																				}
+																			}
+																		}
+																	}
+																	else
+																	{
+																		if (text.Length == 3 && text.Substring(0, 3) == "ban")
+																		{
+																			Console.WriteLine("Usage: ban <player>");
+																		}
+																		else
+																		{
+																			if (text.Length >= 4 && text.Substring(0, 4) == "ban ")
+																			{
+																				string text9 = text.Substring(4);
+																				text9 = text9.ToLower();
+																				if (text9 == "")
+																				{
+																					Console.WriteLine("Usage: ban <player>");
+																				}
+																				else
+																				{
+																					for (int k = 0; k < 255; k++)
+																					{
+																						if (Main.player[k].active && Main.player[k].name.ToLower() == text9)
+																						{
+																							Netplay.AddBan(k);
+																							NetMessage.SendData(2, k, -1, "Banned from server.", 0, 0f, 0f, 0f, 0);
+																						}
+																					}
+																				}
+																			}
+																			else
+																			{
+																				Console.WriteLine("Invalid command.");
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								break;
+						}
+					}
+					catch
+					{
+						Console.WriteLine("Invalid command.");
+					}
+				}
             }
         }
 
@@ -3852,6 +3915,9 @@ namespace Terraria
                     Main.npc[index].homeTileY = Main.dungeonY;
                 }
                 if (WorldGen.spawnNPC == 0 && num6 < 1)
+							{
+								Main.checkXMas();
+								if (num7 < 1)
                     WorldGen.spawnNPC = 22;
                 if (WorldGen.spawnNPC == 0 && (double)num15 > 5000.0 && num2 < 1)
                     WorldGen.spawnNPC = 17;
@@ -3874,6 +3940,7 @@ namespace Terraria
                 if (WorldGen.spawnNPC != 0 || !NPC.downedFrost || (num13 >= 1 || !Main.xMas))
                     return;
                 WorldGen.spawnNPC = 142;
+								}
             }
         }
 
