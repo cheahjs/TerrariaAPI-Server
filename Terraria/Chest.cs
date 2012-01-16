@@ -86,6 +86,10 @@ namespace Terraria
 			{
 				if (Main.chest[i] != null && Main.chest[i].x == X && Main.chest[i].y == Y)
 				{
+					if (IsLocked(X, Y))
+					{
+						return false;
+					}
 					foreach (Item item in Main.chest[i].item)
 					{
 						Item.NewItem(X * 16, Y * 16, 16, 16, item.type, item.stack, false, item.prefix);
@@ -95,6 +99,20 @@ namespace Terraria
 				}
 			}
 			return true;
+		}
+		public static bool IsLocked(int X, int Y)
+		{
+			for (int i = X; i <= X + 1; i++)
+			{
+				for (int j = Y; j <= Y + 1; j++)
+				{
+					if ((Main.tile[i, j].frameX >= 72 && Main.tile[i, j].frameX <= 106) || (Main.tile[i, j].frameX >= 144 && Main.tile[i, j].frameX <= 178))
+					{
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 		public void AddShop(Item newItem)
 		{
