@@ -38,7 +38,7 @@ namespace Terraria
 		public bool lavaWet;
 		public int[] buffType = new int[5];
 		public int[] buffTime = new int[5];
-		public bool[] buffImmune = new bool[40];
+		public bool[] buffImmune = new bool[41];
 		public bool onFire;
 		public bool onFire2;
 		public bool poisoned;

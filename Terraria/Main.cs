@@ -20,10 +20,10 @@ namespace Terraria
 		public const int maxItemText = 20;
 		public const int maxPlayers = 255;
 		public const int maxChests = 1000;
-		public const int maxItemTypes = 603;
+		public const int maxItemTypes = 604;
 		public const int maxItems = 200;
-		public const int maxBuffs = 40;
-		public const int maxProjectileTypes = 111;
+		public const int maxBuffs = 41;
+		public const int maxProjectileTypes = 112;
 		public const int maxProjectiles = 1000;
 		public const int maxNPCTypes = 147;
 		public const int maxNPCs = 200;
@@ -45,9 +45,9 @@ namespace Terraria
 		public const int maxClouds = 100;
 		public const int maxCloudTypes = 4;
 		public const int maxHair = 36;
-		public static int curRelease = 37;
-		public static string versionNumber = "v1.1.1";
-		public static string versionNumber2 = "v1.1.1";
+		public static int curRelease = 39;
+		public static string versionNumber = "v1.1.2";
+		public static string versionNumber2 = "v1.1.2";
 		public static bool skipMenu = false;
 		public static bool verboseNetplay = false;
 		public static bool stopTimeOuts = false;
@@ -56,6 +56,7 @@ namespace Terraria
 		public static int oldTempLightCount = 0;
 		public static int musicBox = -1;
 		public static int musicBox2 = -1;
+		public static bool cEd = false;
 		public static float upTimer;
 		public static float upTimerMax;
 		public static float upTimerMaxDelay;
@@ -79,12 +80,13 @@ namespace Terraria
 		public static bool gamePad = false;
 		public static bool xMas = false;
 		public static int snowDust = 0;
+		public static bool chTitle = false;
 		public static bool netDiag = false;
 		public static int txData = 0;
 		public static int rxData = 0;
 		public static int txMsg = 0;
 		public static int rxMsg = 0;
-		public static int maxMsg = 61;
+		public static int maxMsg = 62;
 		public static int[] rxMsgType = new int[Main.maxMsg];
 		public static int[] rxDataType = new int[Main.maxMsg];
 		public static int[] txMsgType = new int[Main.maxMsg];
@@ -109,9 +111,11 @@ namespace Terraria
 		public static int zoneX = 99;
 		public static int zoneY = 87;
 		public static float harpNote = 0f;
-		public static bool[] debuff = new bool[40];
-		public static string[] buffName = new string[40];
-		public static string[] buffTip = new string[40];
+		public static bool[] projHostile = new bool[112];
+		public static bool[] pvpBuff = new bool[41];
+		public static bool[] debuff = new bool[41];
+		public static string[] buffName = new string[41];
+		public static string[] buffTip = new string[41];
 		public static int maxMP = 10;
 		public static string[] recentWorld = new string[Main.maxMP];
 		public static string[] recentIP = new string[Main.maxMP];
@@ -152,7 +156,7 @@ namespace Terraria
 		public static bool armorHide = false;
 		public static float craftingAlpha = 1f;
 		public static float armorAlpha = 1f;
-		public static float[] buffAlpha = new float[40];
+		public static float[] buffAlpha = new float[41];
 		public static Item trashItem = new Item();
 		public static bool hardMode = false;
 		public float chestLootScale = 1f;
@@ -241,7 +245,7 @@ namespace Terraria
 		public static int helpText = 0;
 		public static bool autoGen = false;
 		public static bool autoPause = false;
-		public static int[] projFrames = new int[111];
+		public static int[] projFrames = new int[112];
 		public static float demonTorch = 1f;
 		public static int demonTorchDir = 1;
 		public static int numStars;
@@ -379,7 +383,7 @@ namespace Terraria
 		public static string SavePath;
 		public static string WorldPath;
 		public static string PlayerPath;
-		public static string[] itemName = new string[603];
+		public static string[] itemName = new string[604];
 		public static string[] npcName = new string[147];
 		public static int invasionType = 0;
 		public static double invasionX = 0.0;
@@ -888,6 +892,7 @@ namespace Terraria
 			Main.dedServ = true;
 			Main.showSplash = false;
 			this.Initialize();
+			Lang.setLang();
 			for (int i = 0; i < 147; i++)
 			{
 				NPC nPC = new NPC();
@@ -1627,7 +1632,7 @@ namespace Terraria
 			NPC.setNames();
 			Main.bgAlpha[0] = 1f;
 			Main.bgAlpha2[0] = 1f;
-			for (int i = 0; i < 111; i++)
+			for (int i = 0; i < 112; i++)
 			{
 				Main.projFrames[i] = 1;
 			}
@@ -1635,6 +1640,11 @@ namespace Terraria
 			Main.projFrames[86] = 4;
 			Main.projFrames[87] = 4;
 			Main.projFrames[102] = 2;
+			Main.projFrames[111] = 8;
+			Main.pvpBuff[20] = true;
+			Main.pvpBuff[24] = true;
+			Main.pvpBuff[31] = true;
+			Main.pvpBuff[39] = true;
 			Main.debuff[20] = true;
 			Main.debuff[21] = true;
 			Main.debuff[22] = true;
@@ -2427,7 +2437,7 @@ namespace Terraria
 			{
 				Main.itemText[num9] = new ItemText();
 			}
-			for (int num10 = 0; num10 < 603; num10++)
+			for (int num10 = 0; num10 < 604; num10++)
 			{
 				Item item = new Item();
 				item.SetDefaults(num10, false);

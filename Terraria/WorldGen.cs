@@ -19610,7 +19610,7 @@ namespace Terraria
 						{
 							if (Main.tile[i, j].active)
 							{
-								if (Main.tileWaterDeath[(int)Main.tile[i, j].type])
+								if (Main.tileWaterDeath[(int)Main.tile[i, j].type] && (Main.tile[i, j].type != 4 || Main.tile[i, j].frameY != 176))
 								{
 									WorldGen.KillTile(i, j, false, false, false);
 								}

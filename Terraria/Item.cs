@@ -1063,6 +1063,8 @@ namespace Terraria
 		public string AffixName()
 		{
 			string text = "";
+			if (Lang.lang <= 1)
+			{
 			switch (this.prefix)
 			{
 			    case 1:
@@ -1315,12 +1317,1376 @@ namespace Terraria
 			        text = "Mythical";
 			        break;
 			}
+				if (Lang.lang == 2)
+				{
+					if (this.prefix == 1)
+					{
+						text = "Gross";
+					}
+					if (this.prefix == 2)
+					{
+						text = "Massiv";
+					}
+					if (this.prefix == 3)
+					{
+						text = "Gefährlich";
+					}
+					if (this.prefix == 4)
+					{
+						text = "Barbarisch";
+					}
+					if (this.prefix == 5)
+					{
+						text = "Scharf";
+					}
+					if (this.prefix == 6)
+					{
+						text = "Spitze";
+					}
+					if (this.prefix == 7)
+					{
+						text = "Winzig";
+					}
+					if (this.prefix == 8)
+					{
+						text = "Schrecklicher";
+					}
+					if (this.prefix == 9)
+					{
+						text = "Klein";
+					}
+					if (this.prefix == 10)
+					{
+						text = "Stumpf";
+					}
+					if (this.prefix == 11)
+					{
+						text = "Unglücklich";
+					}
+					if (this.prefix == 12)
+					{
+						text = "Sperrig";
+					}
+					if (this.prefix == 13)
+					{
+						text = "Beschämend";
+					}
+					if (this.prefix == 14)
+					{
+						text = "Schwer";
+					}
+					if (this.prefix == 15)
+					{
+						text = "Locker";
+					}
+					if (this.prefix == 16)
+					{
+						text = "Gesichtet";
+					}
+					if (this.prefix == 17)
+					{
+						text = "Schnell";
+					}
+					if (this.prefix == 18)
+					{
+						text = "Hastig";
+					}
+					if (this.prefix == 19)
+					{
+						text = "Einschüchternd";
+					}
+					if (this.prefix == 20)
+					{
+						text = "Tödlich";
+					}
+					if (this.prefix == 21)
+					{
+						text = "Stillen";
+					}
+					if (this.prefix == 22)
+					{
+						text = "Schrecklich";
+					}
+					if (this.prefix == 23)
+					{
+						text = "Lethargisch";
+					}
+					if (this.prefix == 24)
+					{
+						text = "Unbeholfen";
+					}
+					if (this.prefix == 25)
+					{
+						text = "Mächtig";
+					}
+					if (this.prefix == 26)
+					{
+						text = "Mystisch";
+					}
+					if (this.prefix == 27)
+					{
+						text = "Geschickt";
+					}
+					if (this.prefix == 28)
+					{
+						text = "Meisterhaft";
+					}
+					if (this.prefix == 29)
+					{
+						text = "Ungeschickt";
+					}
+					if (this.prefix == 30)
+					{
+						text = "Unwissend";
+					}
+					if (this.prefix == 31)
+					{
+						text = "Gestört";
+					}
+					if (this.prefix == 32)
+					{
+						text = "Intensiv";
+					}
+					if (this.prefix == 33)
+					{
+						text = "Tabu";
+					}
+					if (this.prefix == 34)
+					{
+						text = "Himmlisch";
+					}
+					if (this.prefix == 35)
+					{
+						text = "Wütend";
+					}
+					if (this.prefix == 36)
+					{
+						text = "Scharf";
+					}
+					if (this.prefix == 37)
+					{
+						text = "Überlegen";
+					}
+					if (this.prefix == 38)
+					{
+						text = "Kraftvoll";
+					}
+					if (this.prefix == 39)
+					{
+						text = "Gebrochen";
+					}
+					if (this.prefix == 40)
+					{
+						text = "Beschädigt";
+					}
+					if (this.prefix == 41)
+					{
+						text = "Schäbig";
+					}
+					if (this.prefix == 42)
+					{
+						text = "Rasch";
+					}
+					if (this.prefix == 43)
+					{
+						text = "Tödlich";
+					}
+					if (this.prefix == 44)
+					{
+						text = "Agil";
+					}
+					if (this.prefix == 45)
+					{
+						text = "Wendig";
+					}
+					if (this.prefix == 46)
+					{
+						text = "Mörderisch";
+					}
+					if (this.prefix == 47)
+					{
+						text = "Langsam";
+					}
+					if (this.prefix == 48)
+					{
+						text = "Träge";
+					}
+					if (this.prefix == 49)
+					{
+						text = "Faul";
+					}
+					if (this.prefix == 50)
+					{
+						text = "Lästig";
+					}
+					if (this.prefix == 51)
+					{
+						text = "Böse";
+					}
+					if (this.prefix == 52)
+					{
+						text = "Manisch";
+					}
+					if (this.prefix == 53)
+					{
+						text = "Verletzend";
+					}
+					if (this.prefix == 54)
+					{
+						text = "Stark";
+					}
+					if (this.prefix == 55)
+					{
+						text = "Unangenehm";
+					}
+					if (this.prefix == 56)
+					{
+						text = "Schwach";
+					}
+					if (this.prefix == 57)
+					{
+						text = "Rücksichtslos";
+					}
+					if (this.prefix == 58)
+					{
+						text = "Rasend";
+					}
+					if (this.prefix == 59)
+					{
+						text = "Fromm";
+					}
+					if (this.prefix == 60)
+					{
+						text = "Dämonisch";
+					}
+					if (this.prefix == 61)
+					{
+						text = "Eifrig";
+					}
+					if (this.prefix == 62)
+					{
+						text = "Schwer";
+					}
+					if (this.prefix == 63)
+					{
+						text = "Schutz-";
+					}
+					if (this.prefix == 64)
+					{
+						text = "Gepanzert";
+					}
+					if (this.prefix == 65)
+					{
+						text = "Defensiv";
+					}
+					if (this.prefix == 66)
+					{
+						text = "Geheimnisvoll";
+					}
+					if (this.prefix == 67)
+					{
+						text = "Präzise";
+					}
+					if (this.prefix == 68)
+					{
+						text = "Glücklich";
+					}
+					if (this.prefix == 69)
+					{
+						text = "Gezackt";
+					}
+					if (this.prefix == 70)
+					{
+						text = "Spike";
+					}
+					if (this.prefix == 71)
+					{
+						text = "Wütend";
+					}
+					if (this.prefix == 72)
+					{
+						text = "Bedrohlich";
+					}
+					if (this.prefix == 73)
+					{
+						text = "Rege";
+					}
+					if (this.prefix == 74)
+					{
+						text = "Flüchtig";
+					}
+					if (this.prefix == 75)
+					{
+						text = "Hastig";
+					}
+					if (this.prefix == 76)
+					{
+						text = "Rasch";
+					}
+					if (this.prefix == 77)
+					{
+						text = "Wild";
+					}
+					if (this.prefix == 78)
+					{
+						text = "Voreilig";
+					}
+					if (this.prefix == 79)
+					{
+						text = "Unerschrocken";
+					}
+					if (this.prefix == 80)
+					{
+						text = "Gewalttätig";
+					}
+					if (this.prefix == 81)
+					{
+						text = "Legendär";
+					}
+					if (this.prefix == 82)
+					{
+						text = "Unwirklich";
+					}
+					if (this.prefix == 83)
+					{
+						text = "Mythisch";
+					}
+				}
+				else
+				{
+					if (Lang.lang == 3)
+					{
+						if (this.prefix == 1)
+						{
+							text = "Grande";
+						}
+						if (this.prefix == 2)
+						{
+							text = "Massiccio";
+						}
+						if (this.prefix == 3)
+						{
+							text = "Pericoloso";
+						}
+						if (this.prefix == 4)
+						{
+							text = "Selvaggio";
+						}
+						if (this.prefix == 5)
+						{
+							text = "Appuntito";
+						}
+						if (this.prefix == 6)
+						{
+							text = "Tagliente";
+						}
+						if (this.prefix == 7)
+						{
+							text = "Minuto";
+						}
+						if (this.prefix == 8)
+						{
+							text = "Terribile";
+						}
+						if (this.prefix == 9)
+						{
+							text = "Piccolo";
+						}
+						if (this.prefix == 10)
+						{
+							text = "Opaco";
+						}
+						if (this.prefix == 11)
+						{
+							text = "Infelice";
+						}
+						if (this.prefix == 12)
+						{
+							text = "Ingombrante";
+						}
+						if (this.prefix == 13)
+						{
+							text = "Vergognoso";
+						}
+						if (this.prefix == 14)
+						{
+							text = "Pesante";
+						}
+						if (this.prefix == 15)
+						{
+							text = "Luce";
+						}
+						if (this.prefix == 16)
+						{
+							text = "Avvistato";
+						}
+						if (this.prefix == 17)
+						{
+							text = "Rapido";
+						}
+						if (this.prefix == 18)
+						{
+							text = "Frettoloso";
+						}
+						if (this.prefix == 19)
+						{
+							text = "Intimidatorio";
+						}
+						if (this.prefix == 20)
+						{
+							text = "Mortale";
+						}
+						if (this.prefix == 21)
+						{
+							text = "Convinto";
+						}
+						if (this.prefix == 22)
+						{
+							text = "Orribile";
+						}
+						if (this.prefix == 23)
+						{
+							text = "Letargico";
+						}
+						if (this.prefix == 24)
+						{
+							text = "Scomodo";
+						}
+						if (this.prefix == 25)
+						{
+							text = "Potente";
+						}
+						if (this.prefix == 26)
+						{
+							text = "Mistico";
+						}
+						if (this.prefix == 27)
+						{
+							text = "Esperto";
+						}
+						if (this.prefix == 28)
+						{
+							text = "Magistrale";
+						}
+						if (this.prefix == 29)
+						{
+							text = "Inetto";
+						}
+						if (this.prefix == 30)
+						{
+							text = "Ignorante";
+						}
+						if (this.prefix == 31)
+						{
+							text = "Squilibrato";
+						}
+						if (this.prefix == 32)
+						{
+							text = "Intenso";
+						}
+						if (this.prefix == 33)
+						{
+							text = "Tabù";
+						}
+						if (this.prefix == 34)
+						{
+							text = "Celeste";
+						}
+						if (this.prefix == 35)
+						{
+							text = "Furioso";
+						}
+						if (this.prefix == 36)
+						{
+							text = "Appassionato";
+						}
+						if (this.prefix == 37)
+						{
+							text = "Superiore";
+						}
+						if (this.prefix == 38)
+						{
+							text = "Forte";
+						}
+						if (this.prefix == 39)
+						{
+							text = "Rotto";
+						}
+						if (this.prefix == 40)
+						{
+							text = "Danneggiato";
+						}
+						if (this.prefix == 41)
+						{
+							text = "Scadente";
+						}
+						if (this.prefix == 42)
+						{
+							text = "Veloce";
+						}
+						if (this.prefix == 43)
+						{
+							text = "Mortale";
+						}
+						if (this.prefix == 44)
+						{
+							text = "Agile";
+						}
+						if (this.prefix == 45)
+						{
+							text = "Lesto";
+						}
+						if (this.prefix == 46)
+						{
+							text = "Omicida";
+						}
+						if (this.prefix == 47)
+						{
+							text = "Lento";
+						}
+						if (this.prefix == 48)
+						{
+							text = "Pigro";
+						}
+						if (this.prefix == 49)
+						{
+							text = "Indolente";
+						}
+						if (this.prefix == 50)
+						{
+							text = "Fastidioso";
+						}
+						if (this.prefix == 51)
+						{
+							text = "Brutto";
+						}
+						if (this.prefix == 52)
+						{
+							text = "Maniaco";
+						}
+						if (this.prefix == 53)
+						{
+							text = "Offensivo";
+						}
+						if (this.prefix == 54)
+						{
+							text = "Robusto";
+						}
+						if (this.prefix == 55)
+						{
+							text = "Sgradevole";
+						}
+						if (this.prefix == 56)
+						{
+							text = "Debole";
+						}
+						if (this.prefix == 57)
+						{
+							text = "Spietato";
+						}
+						if (this.prefix == 58)
+						{
+							text = "Frenetico";
+						}
+						if (this.prefix == 59)
+						{
+							text = "Devoto";
+						}
+						if (this.prefix == 60)
+						{
+							text = "Demonico";
+						}
+						if (this.prefix == 61)
+						{
+							text = "Zelante";
+						}
+						if (this.prefix == 62)
+						{
+							text = "Duro";
+						}
+						if (this.prefix == 63)
+						{
+							text = "Protettivo";
+						}
+						if (this.prefix == 64)
+						{
+							text = "Corazzato";
+						}
+						if (this.prefix == 65)
+						{
+							text = "Difensivo";
+						}
+						if (this.prefix == 66)
+						{
+							text = "Arcano";
+						}
+						if (this.prefix == 67)
+						{
+							text = "Preciso";
+						}
+						if (this.prefix == 68)
+						{
+							text = "Fortunato";
+						}
+						if (this.prefix == 69)
+						{
+							text = "Frastagliato";
+						}
+						if (this.prefix == 70)
+						{
+							text = "Spillo";
+						}
+						if (this.prefix == 71)
+						{
+							text = "Arrabbiato";
+						}
+						if (this.prefix == 72)
+						{
+							text = "Minaccioso";
+						}
+						if (this.prefix == 73)
+						{
+							text = "Vivace";
+						}
+						if (this.prefix == 74)
+						{
+							text = "Fugace";
+						}
+						if (this.prefix == 75)
+						{
+							text = "Frettoloso";
+						}
+						if (this.prefix == 76)
+						{
+							text = "Veloce";
+						}
+						if (this.prefix == 77)
+						{
+							text = "Selvaggio";
+						}
+						if (this.prefix == 78)
+						{
+							text = "Temerario";
+						}
+						if (this.prefix == 79)
+						{
+							text = "Intrepido";
+						}
+						if (this.prefix == 80)
+						{
+							text = "Violento";
+						}
+						if (this.prefix == 81)
+						{
+							text = "Leggendario";
+						}
+						if (this.prefix == 82)
+						{
+							text = "Irreale";
+						}
+						if (this.prefix == 83)
+						{
+							text = "Mitico";
+						}
+					}
+					else
+					{
+						if (Lang.lang == 4)
+						{
+							if (this.prefix == 1)
+							{
+								text = "Grand";
+							}
+							if (this.prefix == 2)
+							{
+								text = "Massif";
+							}
+							if (this.prefix == 3)
+							{
+								text = "Dangereuses";
+							}
+							if (this.prefix == 4)
+							{
+								text = "Sauvages";
+							}
+							if (this.prefix == 5)
+							{
+								text = "Coupante";
+							}
+							if (this.prefix == 6)
+							{
+								text = "Pointues";
+							}
+							if (this.prefix == 7)
+							{
+								text = "Minuscules";
+							}
+							if (this.prefix == 8)
+							{
+								text = "Terrible";
+							}
+							if (this.prefix == 9)
+							{
+								text = "Petit";
+							}
+							if (this.prefix == 10)
+							{
+								text = "Terne";
+							}
+							if (this.prefix == 11)
+							{
+								text = "Malheureux";
+							}
+							if (this.prefix == 12)
+							{
+								text = "Volumineux";
+							}
+							if (this.prefix == 13)
+							{
+								text = "Honteux";
+							}
+							if (this.prefix == 14)
+							{
+								text = "Lourds";
+							}
+							if (this.prefix == 15)
+							{
+								text = "Léger";
+							}
+							if (this.prefix == 16)
+							{
+								text = "Voyants";
+							}
+							if (this.prefix == 17)
+							{
+								text = "Rapide";
+							}
+							if (this.prefix == 18)
+							{
+								text = "Hâtif";
+							}
+							if (this.prefix == 19)
+							{
+								text = "Intimidant";
+							}
+							if (this.prefix == 20)
+							{
+								text = "Mortelle";
+							}
+							if (this.prefix == 21)
+							{
+								text = "Dévoué";
+							}
+							if (this.prefix == 22)
+							{
+								text = "Affreux";
+							}
+							if (this.prefix == 23)
+							{
+								text = "Léthargique";
+							}
+							if (this.prefix == 24)
+							{
+								text = "Scomodo";
+							}
+							if (this.prefix == 25)
+							{
+								text = "Puissante";
+							}
+							if (this.prefix == 26)
+							{
+								text = "Mystique";
+							}
+							if (this.prefix == 27)
+							{
+								text = "Expert";
+							}
+							if (this.prefix == 28)
+							{
+								text = "Magistrale";
+							}
+							if (this.prefix == 29)
+							{
+								text = "Inepte";
+							}
+							if (this.prefix == 30)
+							{
+								text = "Ignorants";
+							}
+							if (this.prefix == 31)
+							{
+								text = "Dérangé";
+							}
+							if (this.prefix == 32)
+							{
+								text = "Intenses";
+							}
+							if (this.prefix == 33)
+							{
+								text = "Tabou";
+							}
+							if (this.prefix == 34)
+							{
+								text = "Célestes";
+							}
+							if (this.prefix == 35)
+							{
+								text = "Furieux";
+							}
+							if (this.prefix == 36)
+							{
+								text = "Vif";
+							}
+							if (this.prefix == 37)
+							{
+								text = "Supérieure";
+							}
+							if (this.prefix == 38)
+							{
+								text = "Énergique";
+							}
+							if (this.prefix == 39)
+							{
+								text = "Rompu";
+							}
+							if (this.prefix == 40)
+							{
+								text = "Endommagés";
+							}
+							if (this.prefix == 41)
+							{
+								text = "Mesquin";
+							}
+							if (this.prefix == 42)
+							{
+								text = "Prompt";
+							}
+							if (this.prefix == 43)
+							{
+								text = "Mortelle";
+							}
+							if (this.prefix == 44)
+							{
+								text = "Agile";
+							}
+							if (this.prefix == 45)
+							{
+								text = "Leste";
+							}
+							if (this.prefix == 46)
+							{
+								text = "Meurtrier";
+							}
+							if (this.prefix == 47)
+							{
+								text = "Lente";
+							}
+							if (this.prefix == 48)
+							{
+								text = "Paresseux";
+							}
+							if (this.prefix == 49)
+							{
+								text = "Fainéant";
+							}
+							if (this.prefix == 50)
+							{
+								text = "Ennuyeux";
+							}
+							if (this.prefix == 51)
+							{
+								text = "Méchant";
+							}
+							if (this.prefix == 52)
+							{
+								text = "Maniaco";
+							}
+							if (this.prefix == 53)
+							{
+								text = "Blessant";
+							}
+							if (this.prefix == 54)
+							{
+								text = "Robuste";
+							}
+							if (this.prefix == 55)
+							{
+								text = "Désagréables";
+							}
+							if (this.prefix == 56)
+							{
+								text = "Faibles";
+							}
+							if (this.prefix == 57)
+							{
+								text = "Impitoyable";
+							}
+							if (this.prefix == 58)
+							{
+								text = "Frénétique";
+							}
+							if (this.prefix == 59)
+							{
+								text = "Pieux";
+							}
+							if (this.prefix == 60)
+							{
+								text = "Démoniaque";
+							}
+							if (this.prefix == 61)
+							{
+								text = "Zélé";
+							}
+							if (this.prefix == 62)
+							{
+								text = "Durs";
+							}
+							if (this.prefix == 63)
+							{
+								text = "Protecteur";
+							}
+							if (this.prefix == 64)
+							{
+								text = "Blindés";
+							}
+							if (this.prefix == 65)
+							{
+								text = "Défensif";
+							}
+							if (this.prefix == 66)
+							{
+								text = "Ésotérique";
+							}
+							if (this.prefix == 67)
+							{
+								text = "Précise";
+							}
+							if (this.prefix == 68)
+							{
+								text = "Chanceux";
+							}
+							if (this.prefix == 69)
+							{
+								text = "Déchiqueté";
+							}
+							if (this.prefix == 70)
+							{
+								text = "Pointes";
+							}
+							if (this.prefix == 71)
+							{
+								text = "Fâché";
+							}
+							if (this.prefix == 72)
+							{
+								text = "Menaçant";
+							}
+							if (this.prefix == 73)
+							{
+								text = "Brusque";
+							}
+							if (this.prefix == 74)
+							{
+								text = "Fugace";
+							}
+							if (this.prefix == 75)
+							{
+								text = "Hâtif";
+							}
+							if (this.prefix == 76)
+							{
+								text = "Prompt";
+							}
+							if (this.prefix == 77)
+							{
+								text = "Sauvages";
+							}
+							if (this.prefix == 78)
+							{
+								text = "Téméraire";
+							}
+							if (this.prefix == 79)
+							{
+								text = "Intrépide";
+							}
+							if (this.prefix == 80)
+							{
+								text = "Violent";
+							}
+							if (this.prefix == 81)
+							{
+								text = "Légendaire";
+							}
+							if (this.prefix == 82)
+							{
+								text = "Irréel";
+							}
+							if (this.prefix == 83)
+							{
+								text = "Mythique";
+							}
+						}
+						else
+						{
+							if (Lang.lang == 5)
+							{
+								if (this.prefix == 1)
+								{
+									text = "Grande";
+								}
+								if (this.prefix == 2)
+								{
+									text = "Masivo";
+								}
+								if (this.prefix == 3)
+								{
+									text = "Peligroso";
+								}
+								if (this.prefix == 4)
+								{
+									text = "Salvaje";
+								}
+								if (this.prefix == 5)
+								{
+									text = "Puntiagudo";
+								}
+								if (this.prefix == 6)
+								{
+									text = "Agudo";
+								}
+								if (this.prefix == 7)
+								{
+									text = "Diminuto";
+								}
+								if (this.prefix == 8)
+								{
+									text = "Mala ";
+								}
+								if (this.prefix == 9)
+								{
+									text = "Pequeño";
+								}
+								if (this.prefix == 10)
+								{
+									text = "Aburrido";
+								}
+								if (this.prefix == 11)
+								{
+									text = "Infeliz";
+								}
+								if (this.prefix == 12)
+								{
+									text = "Voluminoso";
+								}
+								if (this.prefix == 13)
+								{
+									text = "Vergonzoso";
+								}
+								if (this.prefix == 14)
+								{
+									text = "Pesado";
+								}
+								if (this.prefix == 15)
+								{
+									text = "Ligero";
+								}
+								if (this.prefix == 16)
+								{
+									text = "Ámbito";
+								}
+								if (this.prefix == 17)
+								{
+									text = "Rápido";
+								}
+								if (this.prefix == 18)
+								{
+									text = "Precipitado";
+								}
+								if (this.prefix == 19)
+								{
+									text = "Intimidante";
+								}
+								if (this.prefix == 20)
+								{
+									text = "Mortal";
+								}
+								if (this.prefix == 21)
+								{
+									text = "Firme";
+								}
+								if (this.prefix == 22)
+								{
+									text = "Atroz";
+								}
+								if (this.prefix == 23)
+								{
+									text = "Letárgico";
+								}
+								if (this.prefix == 24)
+								{
+									text = "Torpe";
+								}
+								if (this.prefix == 25)
+								{
+									text = "Poderoso";
+								}
+								if (this.prefix == 26)
+								{
+									text = "Místico";
+								}
+								if (this.prefix == 27)
+								{
+									text = "Experto";
+								}
+								if (this.prefix == 28)
+								{
+									text = "Maestro";
+								}
+								if (this.prefix == 29)
+								{
+									text = "Inepto";
+								}
+								if (this.prefix == 30)
+								{
+									text = "Ignorante";
+								}
+								if (this.prefix == 31)
+								{
+									text = "Trastornado";
+								}
+								if (this.prefix == 32)
+								{
+									text = "Intenso";
+								}
+								if (this.prefix == 33)
+								{
+									text = "Tabú";
+								}
+								if (this.prefix == 34)
+								{
+									text = "Celeste";
+								}
+								if (this.prefix == 35)
+								{
+									text = "Furioso";
+								}
+								if (this.prefix == 36)
+								{
+									text = "Afilado";
+								}
+								if (this.prefix == 37)
+								{
+									text = "Superior";
+								}
+								if (this.prefix == 38)
+								{
+									text = "Fuerte";
+								}
+								if (this.prefix == 39)
+								{
+									text = "Roto";
+								}
+								if (this.prefix == 40)
+								{
+									text = "Estropeado";
+								}
+								if (this.prefix == 41)
+								{
+									text = "Regenerado";
+								}
+								if (this.prefix == 42)
+								{
+									text = "Pronto";
+								}
+								if (this.prefix == 43)
+								{
+									text = "Mortal";
+								}
+								if (this.prefix == 44)
+								{
+									text = "Ágil";
+								}
+								if (this.prefix == 45)
+								{
+									text = "Listo";
+								}
+								if (this.prefix == 46)
+								{
+									text = "Asesino";
+								}
+								if (this.prefix == 47)
+								{
+									text = "Lento";
+								}
+								if (this.prefix == 48)
+								{
+									text = "Perezoso";
+								}
+								if (this.prefix == 49)
+								{
+									text = "Gandul";
+								}
+								if (this.prefix == 50)
+								{
+									text = "Molesto";
+								}
+								if (this.prefix == 51)
+								{
+									text = "Feo";
+								}
+								if (this.prefix == 52)
+								{
+									text = "Maníacos";
+								}
+								if (this.prefix == 53)
+								{
+									text = "Hiriente";
+								}
+								if (this.prefix == 54)
+								{
+									text = "Vigoroso";
+								}
+								if (this.prefix == 55)
+								{
+									text = "Desagradable";
+								}
+								if (this.prefix == 56)
+								{
+									text = "Débil";
+								}
+								if (this.prefix == 57)
+								{
+									text = "Despiadado";
+								}
+								if (this.prefix == 58)
+								{
+									text = "Frenético";
+								}
+								if (this.prefix == 59)
+								{
+									text = "Piadoso";
+								}
+								if (this.prefix == 60)
+								{
+									text = "Demoníaco";
+								}
+								if (this.prefix == 61)
+								{
+									text = "Celoso";
+								}
+								if (this.prefix == 62)
+								{
+									text = "Duro";
+								}
+								if (this.prefix == 63)
+								{
+									text = "Protector";
+								}
+								if (this.prefix == 64)
+								{
+									text = "Blindado";
+								}
+								if (this.prefix == 65)
+								{
+									text = "Defensivo";
+								}
+								if (this.prefix == 66)
+								{
+									text = "Arcano";
+								}
+								if (this.prefix == 67)
+								{
+									text = "Preciso";
+								}
+								if (this.prefix == 68)
+								{
+									text = "Afortunado";
+								}
+								if (this.prefix == 69)
+								{
+									text = "Dentado";
+								}
+								if (this.prefix == 70)
+								{
+									text = "Claveteado";
+								}
+								if (this.prefix == 71)
+								{
+									text = "Enojado";
+								}
+								if (this.prefix == 72)
+								{
+									text = "Amenazador";
+								}
+								if (this.prefix == 73)
+								{
+									text = "Enérgico";
+								}
+								if (this.prefix == 74)
+								{
+									text = "Fugaz";
+								}
+								if (this.prefix == 75)
+								{
+									text = "Precipitado";
+								}
+								if (this.prefix == 76)
+								{
+									text = "Pronto";
+								}
+								if (this.prefix == 77)
+								{
+									text = "Salvaje";
+								}
+								if (this.prefix == 78)
+								{
+									text = "Temerario";
+								}
+								if (this.prefix == 79)
+								{
+									text = "Intrépido";
+								}
+								if (this.prefix == 80)
+								{
+									text = "Violento";
+								}
+								if (this.prefix == 81)
+								{
+									text = "Legendario";
+								}
+								if (this.prefix == 82)
+								{
+									text = "Irreal";
+								}
+								if (this.prefix == 83)
+								{
+									text = "Mítico";
+								}
+							}
+						}
+					}
+				}
+			}
 			string result = this.name;
 			if (text != "")
 			{
-				result = text + " " + this.name;
+				if( Lang.lang <= 1 )
+					result = text + " " + this.name;
+				else
+					result = this.name + " (" + text + ")";	
 			}
 			return result;
+		}
+		public void CheckTip()
+		{
+			if (this.toolTip != "")
+			{
+				this.toolTip = Lang.toolTip(this.netID);
+			}
+			if (this.toolTip2 != "")
+			{
+				this.toolTip2 = Lang.toolTip2(this.netID);
+			}
 		}
 		public void RealSetDefaults(string ItemName)
 		{
@@ -1573,7 +2939,7 @@ namespace Terraria
 			    default:
 			        if (ItemName != "")
 			        {
-			            for (int i = 0; i < 603; i++)
+			            for (int i = 0; i < 604; i++)
 			            {
 			                if (Main.itemName[i] == ItemName)
 			                {
@@ -1599,6 +2965,7 @@ namespace Terraria
 					this.checkMat();
 				}
 				this.name = ItemName;
+				this.name = Lang.itemName(this.netID);
 			}
 		}
 		public bool checkMat()
@@ -9803,6 +11170,9 @@ namespace Terraria
                     this.height = 28;
                     this.toolTip = "Summons the Frost Legion";
                     this.rare = 2;
+                    break;
+                case 603:
+                    this.name = "Carrot";
                     break;
             }
 		    if (!noMatCheck)

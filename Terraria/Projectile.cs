@@ -1579,7 +1579,7 @@ namespace Terraria
 		}
 		public void Damage()
 		{
-			if (this.type == 18 || this.type == 72 || this.type == 86 || this.type == 87)
+			if (this.type == 18 || this.type == 72 || this.type == 86 || this.type == 87 || this.type == 111)
 			{
 				return;
 			}
@@ -2128,7 +2128,7 @@ namespace Terraria
 							}
 						}
 					}
-					if (value2 != this.velocity)
+					if (value2 != this.velocity && this.type != 111)
 					{
 						if (this.type == 94)
 						{
@@ -2817,31 +2817,31 @@ namespace Terraria
 		            if (this.type == 83 && this.ai[1] == 0f)
 		            {
 		                this.ai[1] = 1f;
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 33);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 33);
 		            }
 		            if (this.type == 110 && this.ai[1] == 0f)
 		            {
 		                this.ai[1] = 1f;
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 11);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 11);
 		            }
 		            if (this.type == 84 && this.ai[1] == 0f)
 		            {
 		                this.ai[1] = 1f;
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 12);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 12);
 		            }
 		            if (this.type == 100 && this.ai[1] == 0f)
 		            {
 		                this.ai[1] = 1f;
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 33);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 33);
 		            }
 		            if (this.type == 98 && this.ai[1] == 0f)
 		            {
 		                this.ai[1] = 1f;
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 17);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 17);
 		            }
 		            if ((this.type == 81 || this.type == 82) && this.ai[1] == 0f)
 		            {
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 5);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 5);
 		                this.ai[1] = 1f;
 		            }
 		            if (this.type == 41)
@@ -2854,7 +2854,8 @@ namespace Terraria
 		                float arg_20A_5 = 0f;
 		                int arg_20A_6 = 100;
 		                Color newColor = default(Color);
-		                int num = Dust.NewDust(arg_20A_0, arg_20A_1, arg_20A_2, arg_20A_3, arg_20A_4, arg_20A_5, arg_20A_6, newColor, 1.6f);
+		                int num = Dust.NewDust(arg_20A_0, arg_20A_1, arg_20A_2, arg_20A_3, arg_20A_4, arg_20A_5, arg_20A_6,
+		                                       newColor, 1.6f);
 		                Main.dust[num].noGravity = true;
 		                Vector2 arg_260_0 = new Vector2(this.position.X, this.position.Y);
 		                int arg_260_1 = this.width;
@@ -2864,7 +2865,8 @@ namespace Terraria
 		                float arg_260_5 = 0f;
 		                int arg_260_6 = 100;
 		                newColor = default(Color);
-		                num = Dust.NewDust(arg_260_0, arg_260_1, arg_260_2, arg_260_3, arg_260_4, arg_260_5, arg_260_6, newColor, 2f);
+		                num = Dust.NewDust(arg_260_0, arg_260_1, arg_260_2, arg_260_3, arg_260_4, arg_260_5, arg_260_6,
+		                                   newColor, 2f);
 		                Main.dust[num].noGravity = true;
 		            }
 		            else
@@ -2879,7 +2881,8 @@ namespace Terraria
 		                    float arg_2C5_5 = 0f;
 		                    int arg_2C5_6 = 0;
 		                    Color newColor = default(Color);
-		                    int num2 = Dust.NewDust(arg_2C5_0, arg_2C5_1, arg_2C5_2, arg_2C5_3, arg_2C5_4, arg_2C5_5, arg_2C5_6, newColor, 0.9f);
+		                    int num2 = Dust.NewDust(arg_2C5_0, arg_2C5_1, arg_2C5_2, arg_2C5_3, arg_2C5_4, arg_2C5_5,
+		                                            arg_2C5_6, newColor, 0.9f);
 		                    Main.dust[num2].noGravity = true;
 		                }
 		                else
@@ -2899,17 +2902,19 @@ namespace Terraria
 		                        int arg_35A_1 = this.width;
 		                        int arg_35A_2 = this.height;
 		                        int arg_35A_3 = num3;
-		                        float arg_35A_4 = this.velocity.X * 0.25f;
-		                        float arg_35A_5 = this.velocity.Y * 0.25f;
+		                        float arg_35A_4 = this.velocity.X*0.25f;
+		                        float arg_35A_5 = this.velocity.Y*0.25f;
 		                        int arg_35A_6 = 150;
 		                        Color newColor = default(Color);
-		                        int num4 = Dust.NewDust(arg_35A_0, arg_35A_1, arg_35A_2, arg_35A_3, arg_35A_4, arg_35A_5, arg_35A_6, newColor, 0.9f);
+		                        int num4 = Dust.NewDust(arg_35A_0, arg_35A_1, arg_35A_2, arg_35A_3, arg_35A_4, arg_35A_5,
+		                                                arg_35A_6, newColor, 0.9f);
 		                        Dust expr_367 = Main.dust[num4];
 		                        expr_367.velocity *= 0.25f;
 		                    }
 		                }
 		            }
-		            if (this.type == 20 || this.type == 14 || this.type == 36 || this.type == 83 || this.type == 84 || this.type == 89 || this.type == 100 || this.type == 104 || this.type == 110)
+		            if (this.type == 20 || this.type == 14 || this.type == 36 || this.type == 83 || this.type == 84 ||
+		                this.type == 89 || this.type == 100 || this.type == 104 || this.type == 110)
 		            {
 		                if (this.alpha > 0)
 		                {
@@ -2931,7 +2936,9 @@ namespace Terraria
 		                    this.alpha = 0;
 		                }
 		            }
-		            if (this.type != 5 && this.type != 14 && this.type != 20 && this.type != 36 && this.type != 38 && this.type != 55 && this.type != 83 && this.type != 84 && this.type != 88 && this.type != 89 && this.type != 98 && this.type != 100 && this.type != 104 && this.type != 110)
+		            if (this.type != 5 && this.type != 14 && this.type != 20 && this.type != 36 && this.type != 38 &&
+		                this.type != 55 && this.type != 83 && this.type != 84 && this.type != 88 && this.type != 89 &&
+		                this.type != 98 && this.type != 100 && this.type != 104 && this.type != 110)
 		            {
 		                this.ai[0] += 1f;
 		            }
@@ -2951,7 +2958,7 @@ namespace Terraria
 		                    this.velocity.Y = this.velocity.Y + 0.1f;
 		                }
 		            }
-		            this.rotation = (float)Math.Atan2((double)this.velocity.Y, (double)this.velocity.X) + 1.57f;
+		            this.rotation = (float) Math.Atan2((double) this.velocity.Y, (double) this.velocity.X) + 1.57f;
 		            if (this.velocity.Y > 16f)
 		            {
 		                this.velocity.Y = 16f;
@@ -2965,24 +2972,25 @@ namespace Terraria
 		                int arg_62A_1 = this.width;
 		                int arg_62A_2 = this.height;
 		                int arg_62A_3 = 57;
-		                float arg_62A_4 = this.velocity.X * 0.2f + (float)(this.direction * 3);
-		                float arg_62A_5 = this.velocity.Y * 0.2f;
+		                float arg_62A_4 = this.velocity.X*0.2f + (float) (this.direction*3);
+		                float arg_62A_5 = this.velocity.Y*0.2f;
 		                int arg_62A_6 = 100;
 		                Color newColor = default(Color);
-		                int num5 = Dust.NewDust(arg_62A_0, arg_62A_1, arg_62A_2, arg_62A_3, arg_62A_4, arg_62A_5, arg_62A_6, newColor, 0.3f);
+		                int num5 = Dust.NewDust(arg_62A_0, arg_62A_1, arg_62A_2, arg_62A_3, arg_62A_4, arg_62A_5, arg_62A_6,
+		                                        newColor, 0.3f);
 		                Dust expr_63E_cp_0 = Main.dust[num5];
-		                expr_63E_cp_0.velocity.X = expr_63E_cp_0.velocity.X * 0.3f;
+		                expr_63E_cp_0.velocity.X = expr_63E_cp_0.velocity.X*0.3f;
 		                Dust expr_65C_cp_0 = Main.dust[num5];
-		                expr_65C_cp_0.velocity.Y = expr_65C_cp_0.velocity.Y * 0.3f;
+		                expr_65C_cp_0.velocity.Y = expr_65C_cp_0.velocity.Y*0.3f;
 		            }
-		            this.rotation += (Math.Abs(this.velocity.X) + Math.Abs(this.velocity.Y)) * 0.03f * (float)this.direction;
+		            this.rotation += (Math.Abs(this.velocity.X) + Math.Abs(this.velocity.Y))*0.03f*(float) this.direction;
 		            if (this.type == 69 || this.type == 70)
 		            {
 		                this.ai[0] += 1f;
 		                if (this.ai[0] >= 10f)
 		                {
 		                    this.velocity.Y = this.velocity.Y + 0.25f;
-		                    this.velocity.X = this.velocity.X * 0.99f;
+		                    this.velocity.X = this.velocity.X*0.99f;
 		                }
 		            }
 		            else
@@ -2991,13 +2999,13 @@ namespace Terraria
 		                if (this.ai[0] >= 20f)
 		                {
 		                    this.velocity.Y = this.velocity.Y + 0.4f;
-		                    this.velocity.X = this.velocity.X * 0.97f;
+		                    this.velocity.X = this.velocity.X*0.97f;
 		                }
 		                else
 		                {
 		                    if (this.type == 48 || this.type == 54 || this.type == 93)
 		                    {
-		                        this.rotation = (float)Math.Atan2((double)this.velocity.Y, (double)this.velocity.X) + 1.57f;
+		                        this.rotation = (float) Math.Atan2((double) this.velocity.Y, (double) this.velocity.X) + 1.57f;
 		                    }
 		                }
 		            }
@@ -3011,11 +3019,12 @@ namespace Terraria
 		                int arg_85E_1 = this.width;
 		                int arg_85E_2 = this.height;
 		                int arg_85E_3 = 40;
-		                float arg_85E_4 = this.velocity.X * 0.1f;
-		                float arg_85E_5 = this.velocity.Y * 0.1f;
+		                float arg_85E_4 = this.velocity.X*0.1f;
+		                float arg_85E_5 = this.velocity.Y*0.1f;
 		                int arg_85E_6 = 0;
 		                Color newColor = default(Color);
-		                Dust.NewDust(arg_85E_0, arg_85E_1, arg_85E_2, arg_85E_3, arg_85E_4, arg_85E_5, arg_85E_6, newColor, 0.75f);
+		                Dust.NewDust(arg_85E_0, arg_85E_1, arg_85E_2, arg_85E_3, arg_85E_4, arg_85E_5, arg_85E_6, newColor,
+		                             0.75f);
 		                return;
 		            }
 		            break;
@@ -3023,7 +3032,7 @@ namespace Terraria
 		            if (this.soundDelay == 0)
 		            {
 		                this.soundDelay = 8;
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 7);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 7);
 		            }
 		            if (this.type == 19)
 		            {
@@ -3033,16 +3042,17 @@ namespace Terraria
 		                    int arg_90F_1 = this.width;
 		                    int arg_90F_2 = this.height;
 		                    int arg_90F_3 = 6;
-		                    float arg_90F_4 = this.velocity.X * 0.2f;
-		                    float arg_90F_5 = this.velocity.Y * 0.2f;
+		                    float arg_90F_4 = this.velocity.X*0.2f;
+		                    float arg_90F_5 = this.velocity.Y*0.2f;
 		                    int arg_90F_6 = 100;
 		                    Color newColor = default(Color);
-		                    int num6 = Dust.NewDust(arg_90F_0, arg_90F_1, arg_90F_2, arg_90F_3, arg_90F_4, arg_90F_5, arg_90F_6, newColor, 2f);
+		                    int num6 = Dust.NewDust(arg_90F_0, arg_90F_1, arg_90F_2, arg_90F_3, arg_90F_4, arg_90F_5,
+		                                            arg_90F_6, newColor, 2f);
 		                    Main.dust[num6].noGravity = true;
 		                    Dust expr_931_cp_0 = Main.dust[num6];
-		                    expr_931_cp_0.velocity.X = expr_931_cp_0.velocity.X * 0.3f;
+		                    expr_931_cp_0.velocity.X = expr_931_cp_0.velocity.X*0.3f;
 		                    Dust expr_94F_cp_0 = Main.dust[num6];
-		                    expr_94F_cp_0.velocity.Y = expr_94F_cp_0.velocity.Y * 0.3f;
+		                    expr_94F_cp_0.velocity.Y = expr_94F_cp_0.velocity.Y*0.3f;
 		                }
 		            }
 		            else
@@ -3055,11 +3065,12 @@ namespace Terraria
 		                        int arg_9D3_1 = this.width;
 		                        int arg_9D3_2 = this.height;
 		                        int arg_9D3_3 = 40;
-		                        float arg_9D3_4 = this.velocity.X * 0.25f;
-		                        float arg_9D3_5 = this.velocity.Y * 0.25f;
+		                        float arg_9D3_4 = this.velocity.X*0.25f;
+		                        float arg_9D3_5 = this.velocity.Y*0.25f;
 		                        int arg_9D3_6 = 0;
 		                        Color newColor = default(Color);
-		                        int num7 = Dust.NewDust(arg_9D3_0, arg_9D3_1, arg_9D3_2, arg_9D3_3, arg_9D3_4, arg_9D3_5, arg_9D3_6, newColor, 1.4f);
+		                        int num7 = Dust.NewDust(arg_9D3_0, arg_9D3_1, arg_9D3_2, arg_9D3_3, arg_9D3_4, arg_9D3_5,
+		                                                arg_9D3_6, newColor, 1.4f);
 		                        Main.dust[num7].noGravity = true;
 		                    }
 		                }
@@ -3087,11 +3098,12 @@ namespace Terraria
 		                        int arg_A76_1 = this.width;
 		                        int arg_A76_2 = this.height;
 		                        int arg_A76_3 = num8;
-		                        float arg_A76_4 = this.velocity.X * 0.25f;
-		                        float arg_A76_5 = this.velocity.Y * 0.25f;
+		                        float arg_A76_4 = this.velocity.X*0.25f;
+		                        float arg_A76_5 = this.velocity.Y*0.25f;
 		                        int arg_A76_6 = 150;
 		                        Color newColor = default(Color);
-		                        Dust.NewDust(arg_A76_0, arg_A76_1, arg_A76_2, arg_A76_3, arg_A76_4, arg_A76_5, arg_A76_6, newColor, 0.7f);
+		                        Dust.NewDust(arg_A76_0, arg_A76_1, arg_A76_2, arg_A76_3, arg_A76_4, arg_A76_5, arg_A76_6,
+		                                     newColor, 0.7f);
 		                    }
 		                }
 		            }
@@ -3143,15 +3155,18 @@ namespace Terraria
 		                        }
 		                    }
 		                }
-		                Vector2 vector = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                float num11 = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - vector.X;
-		                float num12 = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - vector.Y;
-		                float num13 = (float)Math.Sqrt((double)(num11 * num11 + num12 * num12));
+		                Vector2 vector = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                             this.position.Y + (float) this.height*0.5f);
+		                float num11 = Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2) -
+		                              vector.X;
+		                float num12 = Main.player[this.owner].position.Y + (float) (Main.player[this.owner].height/2) -
+		                              vector.Y;
+		                float num13 = (float) Math.Sqrt((double) (num11*num11 + num12*num12));
 		                if (num13 > 3000f)
 		                {
 		                    this.Kill();
 		                }
-		                num13 = num9 / num13;
+		                num13 = num9/num13;
 		                num11 *= num13;
 		                num12 *= num13;
 		                if (this.velocity.X < num11)
@@ -3194,8 +3209,11 @@ namespace Terraria
 		                }
 		                if (Main.myPlayer == this.owner)
 		                {
-		                    Rectangle rectangle = new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height);
-		                    Rectangle value = new Rectangle((int)Main.player[this.owner].position.X, (int)Main.player[this.owner].position.Y, Main.player[this.owner].width, Main.player[this.owner].height);
+		                    Rectangle rectangle = new Rectangle((int) this.position.X, (int) this.position.Y, this.width,
+		                                                        this.height);
+		                    Rectangle value = new Rectangle((int) Main.player[this.owner].position.X,
+		                                                    (int) Main.player[this.owner].position.Y,
+		                                                    Main.player[this.owner].width, Main.player[this.owner].height);
 		                    if (rectangle.Intersects(value))
 		                    {
 		                        this.Kill();
@@ -3204,13 +3222,13 @@ namespace Terraria
 		            }
 		            if (this.type == 106)
 		            {
-		                this.rotation += 0.3f * (float)this.direction;
+		                this.rotation += 0.3f*(float) this.direction;
 		                return;
 		            }
-		            this.rotation += 0.4f * (float)this.direction;
+		            this.rotation += 0.4f*(float) this.direction;
 		            return;
 		        case 4:
-		            this.rotation = (float)Math.Atan2((double)this.velocity.Y, (double)this.velocity.X) + 1.57f;
+		            this.rotation = (float) Math.Atan2((double) this.velocity.Y, (double) this.velocity.X) + 1.57f;
 		            if (this.ai[0] == 0f)
 		            {
 		                this.alpha -= 50;
@@ -3221,7 +3239,7 @@ namespace Terraria
 		                    if (this.ai[1] == 0f)
 		                    {
 		                        this.ai[1] += 1f;
-		                        this.position += this.velocity * 1f;
+		                        this.position += this.velocity*1f;
 		                    }
 		                    if (this.type == 7 && Main.myPlayer == this.owner)
 		                    {
@@ -3230,7 +3248,11 @@ namespace Terraria
 		                        {
 		                            num14++;
 		                        }
-		                        int num15 = Projectile.NewProjectile(this.position.X + this.velocity.X + (float)(this.width / 2), this.position.Y + this.velocity.Y + (float)(this.height / 2), this.velocity.X, this.velocity.Y, num14, this.damage, this.knockBack, this.owner);
+		                        int num15 =
+		                            Projectile.NewProjectile(this.position.X + this.velocity.X + (float) (this.width/2),
+		                                                     this.position.Y + this.velocity.Y + (float) (this.height/2),
+		                                                     this.velocity.X, this.velocity.Y, num14, this.damage,
+		                                                     this.knockBack, this.owner);
 		                        Main.projectile[num15].damage = this.damage;
 		                        Main.projectile[num15].ai[1] = this.ai[1] + 1f;
 		                        NetMessage.SendData(27, -1, -1, "", num15, 0f, 0f, 0f, 0);
@@ -3249,11 +3271,12 @@ namespace Terraria
 		                        int arg_10C2_1 = this.width;
 		                        int arg_10C2_2 = this.height;
 		                        int arg_10C2_3 = 18;
-		                        float arg_10C2_4 = this.velocity.X * 0.025f;
-		                        float arg_10C2_5 = this.velocity.Y * 0.025f;
+		                        float arg_10C2_4 = this.velocity.X*0.025f;
+		                        float arg_10C2_5 = this.velocity.Y*0.025f;
 		                        int arg_10C2_6 = 170;
 		                        newColor = default(Color);
-		                        Dust.NewDust(arg_10C2_0, arg_10C2_1, arg_10C2_2, arg_10C2_3, arg_10C2_4, arg_10C2_5, arg_10C2_6, newColor, 1.2f);
+		                        Dust.NewDust(arg_10C2_0, arg_10C2_1, arg_10C2_2, arg_10C2_3, arg_10C2_4, arg_10C2_5,
+		                                     arg_10C2_6, newColor, 1.2f);
 		                    }
 		                    Vector2 arg_1105_0 = this.position;
 		                    int arg_1105_1 = this.width;
@@ -3263,7 +3286,8 @@ namespace Terraria
 		                    float arg_1105_5 = 0f;
 		                    int arg_1105_6 = 170;
 		                    newColor = default(Color);
-		                    Dust.NewDust(arg_1105_0, arg_1105_1, arg_1105_2, arg_1105_3, arg_1105_4, arg_1105_5, arg_1105_6, newColor, 1.1f);
+		                    Dust.NewDust(arg_1105_0, arg_1105_1, arg_1105_2, arg_1105_3, arg_1105_4, arg_1105_5, arg_1105_6,
+		                                 newColor, 1.1f);
 		                }
 		                this.alpha += 5;
 		                if (this.alpha >= 255)
@@ -3296,13 +3320,13 @@ namespace Terraria
 		            if (this.soundDelay == 0)
 		            {
 		                this.soundDelay = 20 + Main.rand.Next(40);
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 9);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 9);
 		            }
 		            if (this.localAI[0] == 0f)
 		            {
 		                this.localAI[0] = 1f;
 		            }
-		            this.alpha += (int)(25f * this.localAI[0]);
+		            this.alpha += (int) (25f*this.localAI[0]);
 		            if (this.alpha > 200)
 		            {
 		                this.alpha = 200;
@@ -3313,7 +3337,7 @@ namespace Terraria
 		                this.alpha = 0;
 		                this.localAI[0] = 1f;
 		            }
-		            this.rotation += (Math.Abs(this.velocity.X) + Math.Abs(this.velocity.Y)) * 0.01f * (float)this.direction;
+		            this.rotation += (Math.Abs(this.velocity.X) + Math.Abs(this.velocity.Y))*0.01f*(float) this.direction;
 		            if (this.ai[1] == 1f || this.type == 92)
 		            {
 		                this.light = 0.9f;
@@ -3323,15 +3347,17 @@ namespace Terraria
 		                    int arg_1328_1 = this.width;
 		                    int arg_1328_2 = this.height;
 		                    int arg_1328_3 = 58;
-		                    float arg_1328_4 = this.velocity.X * 0.5f;
-		                    float arg_1328_5 = this.velocity.Y * 0.5f;
+		                    float arg_1328_4 = this.velocity.X*0.5f;
+		                    float arg_1328_5 = this.velocity.Y*0.5f;
 		                    int arg_1328_6 = 150;
 		                    Color newColor = default(Color);
-		                    Dust.NewDust(arg_1328_0, arg_1328_1, arg_1328_2, arg_1328_3, arg_1328_4, arg_1328_5, arg_1328_6, newColor, 1.2f);
+		                    Dust.NewDust(arg_1328_0, arg_1328_1, arg_1328_2, arg_1328_3, arg_1328_4, arg_1328_5, arg_1328_6,
+		                                 newColor, 1.2f);
 		                }
 		                if (Main.rand.Next(20) == 0)
 		                {
-		                    Gore.NewGore(this.position, new Vector2(this.velocity.X * 0.2f, this.velocity.Y * 0.2f), Main.rand.Next(16, 18), 1f);
+		                    Gore.NewGore(this.position, new Vector2(this.velocity.X*0.2f, this.velocity.Y*0.2f),
+		                                 Main.rand.Next(16, 18), 1f);
 		                    return;
 		                }
 		            }
@@ -3356,15 +3382,16 @@ namespace Terraria
 		                    float arg_143D_5 = this.velocity.Y;
 		                    int arg_143D_6 = 50;
 		                    Color newColor = default(Color);
-		                    Dust.NewDust(arg_143D_0, arg_143D_1, arg_143D_2, arg_143D_3, arg_143D_4, arg_143D_5, arg_143D_6, newColor, 1f);
+		                    Dust.NewDust(arg_143D_0, arg_143D_1, arg_143D_2, arg_143D_3, arg_143D_4, arg_143D_5, arg_143D_6,
+		                                 newColor, 1f);
 		                }
 		            }
 		            if (this.type == 10 || this.type == 11)
 		            {
-		                int num16 = (int)(this.position.X / 16f) - 1;
-		                int num17 = (int)((this.position.X + (float)this.width) / 16f) + 2;
-		                int num18 = (int)(this.position.Y / 16f) - 1;
-		                int num19 = (int)((this.position.Y + (float)this.height) / 16f) + 2;
+		                int num16 = (int) (this.position.X/16f) - 1;
+		                int num17 = (int) ((this.position.X + (float) this.width)/16f) + 2;
+		                int num18 = (int) (this.position.Y/16f) - 1;
+		                int num19 = (int) ((this.position.Y + (float) this.height)/16f) + 2;
 		                if (num16 < 0)
 		                {
 		                    num16 = 0;
@@ -3386,9 +3413,11 @@ namespace Terraria
 		                    for (int m = num18; m < num19; m++)
 		                    {
 		                        Vector2 vector2;
-		                        vector2.X = (float)(l * 16);
-		                        vector2.Y = (float)(m * 16);
-		                        if (this.position.X + (float)this.width > vector2.X && this.position.X < vector2.X + 16f && this.position.Y + (float)this.height > vector2.Y && this.position.Y < vector2.Y + 16f && Main.myPlayer == this.owner && Main.tile[l, m].active)
+		                        vector2.X = (float) (l*16);
+		                        vector2.Y = (float) (m*16);
+		                        if (this.position.X + (float) this.width > vector2.X && this.position.X < vector2.X + 16f &&
+		                            this.position.Y + (float) this.height > vector2.Y && this.position.Y < vector2.Y + 16f &&
+		                            Main.myPlayer == this.owner && Main.tile[l, m].active)
 		                        {
 		                            if (this.type == 10)
 		                            {
@@ -3466,21 +3495,25 @@ namespace Terraria
 		                    this.Kill();
 		                    return;
 		                }
-		                Vector2 vector3 = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                float num20 = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - vector3.X;
-		                float num21 = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - vector3.Y;
-		                float num22 = (float)Math.Sqrt((double)(num20 * num20 + num21 * num21));
-		                this.rotation = (float)Math.Atan2((double)num21, (double)num20) - 1.57f;
+		                Vector2 vector3 = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                              this.position.Y + (float) this.height*0.5f);
+		                float num20 = Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2) -
+		                              vector3.X;
+		                float num21 = Main.player[this.owner].position.Y + (float) (Main.player[this.owner].height/2) -
+		                              vector3.Y;
+		                float num22 = (float) Math.Sqrt((double) (num20*num20 + num21*num21));
+		                this.rotation = (float) Math.Atan2((double) num21, (double) num20) - 1.57f;
 		                if (this.ai[0] == 0f)
 		                {
-		                    if ((num22 > 300f && this.type == 13) || (num22 > 400f && this.type == 32) || (num22 > 440f && this.type == 73) || (num22 > 440f && this.type == 74))
+		                    if ((num22 > 300f && this.type == 13) || (num22 > 400f && this.type == 32) ||
+		                        (num22 > 440f && this.type == 73) || (num22 > 440f && this.type == 74))
 		                    {
 		                        this.ai[0] = 1f;
 		                    }
-		                    int num23 = (int)(this.position.X / 16f) - 1;
-		                    int num24 = (int)((this.position.X + (float)this.width) / 16f) + 2;
-		                    int num25 = (int)(this.position.Y / 16f) - 1;
-		                    int num26 = (int)((this.position.Y + (float)this.height) / 16f) + 2;
+		                    int num23 = (int) (this.position.X/16f) - 1;
+		                    int num24 = (int) ((this.position.X + (float) this.width)/16f) + 2;
+		                    int num25 = (int) (this.position.Y/16f) - 1;
+		                    int num26 = (int) ((this.position.Y + (float) this.height)/16f) + 2;
 		                    if (num23 < 0)
 		                    {
 		                        num23 = 0;
@@ -3503,9 +3536,11 @@ namespace Terraria
 		                        while (num27 < num26)
 		                        {
 		                            Vector2 vector4;
-		                            vector4.X = (float)(n * 16);
-		                            vector4.Y = (float)(num27 * 16);
-		                            if (this.position.X + (float)this.width > vector4.X && this.position.X < vector4.X + 16f && this.position.Y + (float)this.height > vector4.Y && this.position.Y < vector4.Y + 16f && Main.tile[n, num27].active && Main.tileSolid[(int)Main.tile[n, num27].type])
+		                            vector4.X = (float) (n*16);
+		                            vector4.Y = (float) (num27*16);
+		                            if (this.position.X + (float) this.width > vector4.X && this.position.X < vector4.X + 16f &&
+		                                this.position.Y + (float) this.height > vector4.Y && this.position.Y < vector4.Y + 16f &&
+		                                Main.tile[n, num27].active && Main.tileSolid[(int) Main.tile[n, num27].type])
 		                            {
 		                                if (Main.player[this.owner].grapCount < 10)
 		                                {
@@ -3521,7 +3556,10 @@ namespace Terraria
 		                                    {
 		                                        for (int num31 = 0; num31 < 1000; num31++)
 		                                        {
-		                                            if (num31 != this.whoAmI && Main.projectile[num31].active && Main.projectile[num31].owner == this.owner && Main.projectile[num31].aiStyle == 7 && Main.projectile[num31].ai[0] == 2f)
+		                                            if (num31 != this.whoAmI && Main.projectile[num31].active &&
+		                                                Main.projectile[num31].owner == this.owner &&
+		                                                Main.projectile[num31].aiStyle == 7 &&
+		                                                Main.projectile[num31].ai[0] == 2f)
 		                                            {
 		                                                Main.projectile[num31].Kill();
 		                                            }
@@ -3531,7 +3569,9 @@ namespace Terraria
 		                                    {
 		                                        for (int num32 = 0; num32 < 1000; num32++)
 		                                        {
-		                                            if (Main.projectile[num32].active && Main.projectile[num32].owner == this.owner && Main.projectile[num32].aiStyle == 7)
+		                                            if (Main.projectile[num32].active &&
+		                                                Main.projectile[num32].owner == this.owner &&
+		                                                Main.projectile[num32].aiStyle == 7)
 		                                            {
 		                                                if (Main.projectile[num32].timeLeft < num30)
 		                                                {
@@ -3548,12 +3588,12 @@ namespace Terraria
 		                                    }
 		                                }
 		                                WorldGen.KillTile(n, num27, true, true, false);
-		                                Main.PlaySound(0, n * 16, num27 * 16, 1);
+		                                Main.PlaySound(0, n*16, num27*16, 1);
 		                                this.velocity.X = 0f;
 		                                this.velocity.Y = 0f;
 		                                this.ai[0] = 2f;
-		                                this.position.X = (float)(n * 16 + 8 - this.width / 2);
-		                                this.position.Y = (float)(num27 * 16 + 8 - this.height / 2);
+		                                this.position.X = (float) (n*16 + 8 - this.width/2);
+		                                this.position.Y = (float) (num27*16 + 8 - this.height/2);
 		                                this.damage = 0;
 		                                this.netUpdate = true;
 		                                if (Main.myPlayer == this.owner)
@@ -3590,7 +3630,7 @@ namespace Terraria
 		                    {
 		                        this.Kill();
 		                    }
-		                    num22 = num33 / num22;
+		                    num22 = num33/num22;
 		                    num20 *= num22;
 		                    num21 *= num22;
 		                    this.velocity.X = num20;
@@ -3599,10 +3639,10 @@ namespace Terraria
 		                }
 		                if (this.ai[0] == 2f)
 		                {
-		                    int num34 = (int)(this.position.X / 16f) - 1;
-		                    int num35 = (int)((this.position.X + (float)this.width) / 16f) + 2;
-		                    int num36 = (int)(this.position.Y / 16f) - 1;
-		                    int num37 = (int)((this.position.Y + (float)this.height) / 16f) + 2;
+		                    int num34 = (int) (this.position.X/16f) - 1;
+		                    int num35 = (int) ((this.position.X + (float) this.width)/16f) + 2;
+		                    int num36 = (int) (this.position.Y/16f) - 1;
+		                    int num37 = (int) ((this.position.Y + (float) this.height)/16f) + 2;
 		                    if (num34 < 0)
 		                    {
 		                        num34 = 0;
@@ -3625,9 +3665,13 @@ namespace Terraria
 		                        for (int num39 = num36; num39 < num37; num39++)
 		                        {
 		                            Vector2 vector5;
-		                            vector5.X = (float)(num38 * 16);
-		                            vector5.Y = (float)(num39 * 16);
-		                            if (this.position.X + (float)(this.width / 2) > vector5.X && this.position.X + (float)(this.width / 2) < vector5.X + 16f && this.position.Y + (float)(this.height / 2) > vector5.Y && this.position.Y + (float)(this.height / 2) < vector5.Y + 16f && Main.tile[num38, num39].active && Main.tileSolid[(int)Main.tile[num38, num39].type])
+		                            vector5.X = (float) (num38*16);
+		                            vector5.Y = (float) (num39*16);
+		                            if (this.position.X + (float) (this.width/2) > vector5.X &&
+		                                this.position.X + (float) (this.width/2) < vector5.X + 16f &&
+		                                this.position.Y + (float) (this.height/2) > vector5.Y &&
+		                                this.position.Y + (float) (this.height/2) < vector5.Y + 16f &&
+		                                Main.tile[num38, num39].active && Main.tileSolid[(int) Main.tile[num38, num39].type])
 		                            {
 		                                flag = false;
 		                            }
@@ -3651,7 +3695,7 @@ namespace Terraria
 		            if (this.type == 96 && this.localAI[0] == 0f)
 		            {
 		                this.localAI[0] = 1f;
-		                Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 20);
+		                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 20);
 		            }
 		            if (this.type == 27)
 		            {
@@ -3663,7 +3707,8 @@ namespace Terraria
 		                float arg_20B6_5 = this.velocity.Y;
 		                int arg_20B6_6 = 100;
 		                Color newColor = default(Color);
-		                int num40 = Dust.NewDust(arg_20B6_0, arg_20B6_1, arg_20B6_2, arg_20B6_3, arg_20B6_4, arg_20B6_5, arg_20B6_6, newColor, 3f);
+		                int num40 = Dust.NewDust(arg_20B6_0, arg_20B6_1, arg_20B6_2, arg_20B6_3, arg_20B6_4, arg_20B6_5,
+		                                         arg_20B6_6, newColor, 3f);
 		                Main.dust[num40].noGravity = true;
 		                if (Main.rand.Next(10) == 0)
 		                {
@@ -3675,14 +3720,16 @@ namespace Terraria
 		                    float arg_212C_5 = this.velocity.Y;
 		                    int arg_212C_6 = 100;
 		                    newColor = default(Color);
-		                    num40 = Dust.NewDust(arg_212C_0, arg_212C_1, arg_212C_2, arg_212C_3, arg_212C_4, arg_212C_5, arg_212C_6, newColor, 1.4f);
+		                    num40 = Dust.NewDust(arg_212C_0, arg_212C_1, arg_212C_2, arg_212C_3, arg_212C_4, arg_212C_5,
+		                                         arg_212C_6, newColor, 1.4f);
 		                }
 		            }
 		            else
 		            {
 		                if (this.type == 95 || this.type == 96)
 		                {
-		                    Vector2 arg_21BE_0 = new Vector2(this.position.X + this.velocity.X, this.position.Y + this.velocity.Y);
+		                    Vector2 arg_21BE_0 = new Vector2(this.position.X + this.velocity.X,
+		                                                     this.position.Y + this.velocity.Y);
 		                    int arg_21BE_1 = this.width;
 		                    int arg_21BE_2 = this.height;
 		                    int arg_21BE_3 = 75;
@@ -3690,7 +3737,8 @@ namespace Terraria
 		                    float arg_21BE_5 = this.velocity.Y;
 		                    int arg_21BE_6 = 100;
 		                    Color newColor = default(Color);
-		                    int num41 = Dust.NewDust(arg_21BE_0, arg_21BE_1, arg_21BE_2, arg_21BE_3, arg_21BE_4, arg_21BE_5, arg_21BE_6, newColor, 3f * this.scale);
+		                    int num41 = Dust.NewDust(arg_21BE_0, arg_21BE_1, arg_21BE_2, arg_21BE_3, arg_21BE_4, arg_21BE_5,
+		                                             arg_21BE_6, newColor, 3f*this.scale);
 		                    Main.dust[num41].noGravity = true;
 		                }
 		                else
@@ -3701,16 +3749,17 @@ namespace Terraria
 		                        int arg_223B_1 = this.width;
 		                        int arg_223B_2 = this.height;
 		                        int arg_223B_3 = 6;
-		                        float arg_223B_4 = this.velocity.X * 0.2f;
-		                        float arg_223B_5 = this.velocity.Y * 0.2f;
+		                        float arg_223B_4 = this.velocity.X*0.2f;
+		                        float arg_223B_5 = this.velocity.Y*0.2f;
 		                        int arg_223B_6 = 100;
 		                        Color newColor = default(Color);
-		                        int num43 = Dust.NewDust(arg_223B_0, arg_223B_1, arg_223B_2, arg_223B_3, arg_223B_4, arg_223B_5, arg_223B_6, newColor, 2f);
+		                        int num43 = Dust.NewDust(arg_223B_0, arg_223B_1, arg_223B_2, arg_223B_3, arg_223B_4,
+		                                                 arg_223B_5, arg_223B_6, newColor, 2f);
 		                        Main.dust[num43].noGravity = true;
 		                        Dust expr_225D_cp_0 = Main.dust[num43];
-		                        expr_225D_cp_0.velocity.X = expr_225D_cp_0.velocity.X * 0.3f;
+		                        expr_225D_cp_0.velocity.X = expr_225D_cp_0.velocity.X*0.3f;
 		                        Dust expr_227B_cp_0 = Main.dust[num43];
-		                        expr_227B_cp_0.velocity.Y = expr_227B_cp_0.velocity.Y * 0.3f;
+		                        expr_227B_cp_0.velocity.Y = expr_227B_cp_0.velocity.Y*0.3f;
 		                    }
 		                }
 		            }
@@ -3722,7 +3771,7 @@ namespace Terraria
 		            {
 		                this.velocity.Y = this.velocity.Y + 0.2f;
 		            }
-		            this.rotation += 0.3f * (float)this.direction;
+		            this.rotation += 0.3f*(float) this.direction;
 		            if (this.velocity.Y > 16f)
 		            {
 		                this.velocity.Y = 16f;
@@ -3736,11 +3785,12 @@ namespace Terraria
 		                int arg_23A6_1 = this.width;
 		                int arg_23A6_2 = this.height;
 		                int arg_23A6_3 = 6;
-		                float arg_23A6_4 = this.velocity.X * 0.2f;
-		                float arg_23A6_5 = this.velocity.Y * 0.2f;
+		                float arg_23A6_4 = this.velocity.X*0.2f;
+		                float arg_23A6_5 = this.velocity.Y*0.2f;
 		                int arg_23A6_6 = 100;
 		                Color newColor = default(Color);
-		                int num44 = Dust.NewDust(arg_23A6_0, arg_23A6_1, arg_23A6_2, arg_23A6_3, arg_23A6_4, arg_23A6_5, arg_23A6_6, newColor, 3.5f);
+		                int num44 = Dust.NewDust(arg_23A6_0, arg_23A6_1, arg_23A6_2, arg_23A6_3, arg_23A6_4, arg_23A6_5,
+		                                         arg_23A6_6, newColor, 3.5f);
 		                Main.dust[num44].noGravity = true;
 		                Dust expr_23C3 = Main.dust[num44];
 		                expr_23C3.velocity *= 1.4f;
@@ -3748,11 +3798,12 @@ namespace Terraria
 		                int arg_2433_1 = this.width;
 		                int arg_2433_2 = this.height;
 		                int arg_2433_3 = 6;
-		                float arg_2433_4 = this.velocity.X * 0.2f;
-		                float arg_2433_5 = this.velocity.Y * 0.2f;
+		                float arg_2433_4 = this.velocity.X*0.2f;
+		                float arg_2433_5 = this.velocity.Y*0.2f;
 		                int arg_2433_6 = 100;
 		                newColor = default(Color);
-		                num44 = Dust.NewDust(arg_2433_0, arg_2433_1, arg_2433_2, arg_2433_3, arg_2433_4, arg_2433_5, arg_2433_6, newColor, 1.5f);
+		                num44 = Dust.NewDust(arg_2433_0, arg_2433_1, arg_2433_2, arg_2433_3, arg_2433_4, arg_2433_5,
+		                                     arg_2433_6, newColor, 1.5f);
 		            }
 		            else
 		            {
@@ -3761,17 +3812,21 @@ namespace Terraria
 		                    if (this.soundDelay == 0 && Math.Abs(this.velocity.X) + Math.Abs(this.velocity.Y) > 2f)
 		                    {
 		                        this.soundDelay = 10;
-		                        Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 9);
+		                        Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 9);
 		                    }
 		                    for (int num45 = 0; num45 < 1; num45++)
 		                    {
-		                        int num46 = Dust.NewDust(new Vector2(this.position.X, this.position.Y), this.width, this.height, 66, 0f, 0f, 100, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 2.5f);
+		                        int num46 = Dust.NewDust(new Vector2(this.position.X, this.position.Y), this.width,
+		                                                 this.height, 66, 0f, 0f, 100,
+		                                                 new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 2.5f);
 		                        Dust expr_2509 = Main.dust[num46];
 		                        expr_2509.velocity *= 0.1f;
 		                        Dust expr_2526 = Main.dust[num46];
-		                        expr_2526.velocity += this.velocity * 0.2f;
-		                        Main.dust[num46].position.X = this.position.X + (float)(this.width / 2) + 4f + (float)Main.rand.Next(-2, 3);
-		                        Main.dust[num46].position.Y = this.position.Y + (float)(this.height / 2) + (float)Main.rand.Next(-2, 3);
+		                        expr_2526.velocity += this.velocity*0.2f;
+		                        Main.dust[num46].position.X = this.position.X + (float) (this.width/2) + 4f +
+		                                                      (float) Main.rand.Next(-2, 3);
+		                        Main.dust[num46].position.Y = this.position.Y + (float) (this.height/2) +
+		                                                      (float) Main.rand.Next(-2, 3);
 		                        Main.dust[num46].noGravity = true;
 		                    }
 		                }
@@ -3780,7 +3835,7 @@ namespace Terraria
 		                    if (this.soundDelay == 0 && Math.Abs(this.velocity.X) + Math.Abs(this.velocity.Y) > 2f)
 		                    {
 		                        this.soundDelay = 10;
-		                        Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 9);
+		                        Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 9);
 		                    }
 		                    Vector2 arg_2675_0 = new Vector2(this.position.X, this.position.Y);
 		                    int arg_2675_1 = this.width;
@@ -3790,11 +3845,14 @@ namespace Terraria
 		                    float arg_2675_5 = 0f;
 		                    int arg_2675_6 = 100;
 		                    Color newColor = default(Color);
-		                    int num47 = Dust.NewDust(arg_2675_0, arg_2675_1, arg_2675_2, arg_2675_3, arg_2675_4, arg_2675_5, arg_2675_6, newColor, 2f);
+		                    int num47 = Dust.NewDust(arg_2675_0, arg_2675_1, arg_2675_2, arg_2675_3, arg_2675_4, arg_2675_5,
+		                                             arg_2675_6, newColor, 2f);
 		                    Dust expr_2684 = Main.dust[num47];
 		                    expr_2684.velocity *= 0.3f;
-		                    Main.dust[num47].position.X = this.position.X + (float)(this.width / 2) + 4f + (float)Main.rand.Next(-4, 5);
-		                    Main.dust[num47].position.Y = this.position.Y + (float)(this.height / 2) + (float)Main.rand.Next(-4, 5);
+		                    Main.dust[num47].position.X = this.position.X + (float) (this.width/2) + 4f +
+		                                                  (float) Main.rand.Next(-4, 5);
+		                    Main.dust[num47].position.Y = this.position.Y + (float) (this.height/2) +
+		                                                  (float) Main.rand.Next(-4, 5);
 		                    Main.dust[num47].noGravity = true;
 		                }
 		            }
@@ -3807,20 +3865,21 @@ namespace Terraria
 		                    {
 		                        num48 = 15f;
 		                    }
-		                    Vector2 vector6 = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                    float num49 = (float)Main.mouseX + Main.screenPosition.X - vector6.X;
-		                    float num50 = (float)Main.mouseY + Main.screenPosition.Y - vector6.Y;
-		                    float num51 = (float)Math.Sqrt((double)(num49 * num49 + num50 * num50));
-		                    num51 = (float)Math.Sqrt((double)(num49 * num49 + num50 * num50));
+		                    Vector2 vector6 = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                                  this.position.Y + (float) this.height*0.5f);
+		                    float num49 = (float) Main.mouseX + Main.screenPosition.X - vector6.X;
+		                    float num50 = (float) Main.mouseY + Main.screenPosition.Y - vector6.Y;
+		                    float num51 = (float) Math.Sqrt((double) (num49*num49 + num50*num50));
+		                    num51 = (float) Math.Sqrt((double) (num49*num49 + num50*num50));
 		                    if (num51 > num48)
 		                    {
-		                        num51 = num48 / num51;
+		                        num51 = num48/num51;
 		                        num49 *= num51;
 		                        num50 *= num51;
-		                        int num52 = (int)(num49 * 1000f);
-		                        int num53 = (int)(this.velocity.X * 1000f);
-		                        int num54 = (int)(num50 * 1000f);
-		                        int num55 = (int)(this.velocity.Y * 1000f);
+		                        int num52 = (int) (num49*1000f);
+		                        int num53 = (int) (this.velocity.X*1000f);
+		                        int num54 = (int) (num50*1000f);
+		                        int num55 = (int) (this.velocity.Y*1000f);
 		                        if (num52 != num53 || num54 != num55)
 		                        {
 		                            this.netUpdate = true;
@@ -3830,10 +3889,10 @@ namespace Terraria
 		                    }
 		                    else
 		                    {
-		                        int num56 = (int)(num49 * 1000f);
-		                        int num57 = (int)(this.velocity.X * 1000f);
-		                        int num58 = (int)(num50 * 1000f);
-		                        int num59 = (int)(this.velocity.Y * 1000f);
+		                        int num56 = (int) (num49*1000f);
+		                        int num57 = (int) (this.velocity.X*1000f);
+		                        int num58 = (int) (num50*1000f);
+		                        int num59 = (int) (this.velocity.Y*1000f);
 		                        if (num56 != num57 || num58 != num59)
 		                        {
 		                            this.netUpdate = true;
@@ -3849,18 +3908,22 @@ namespace Terraria
 		                        this.ai[0] = 1f;
 		                        this.netUpdate = true;
 		                        float num60 = 12f;
-		                        Vector2 vector7 = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                        float num61 = (float)Main.mouseX + Main.screenPosition.X - vector7.X;
-		                        float num62 = (float)Main.mouseY + Main.screenPosition.Y - vector7.Y;
-		                        float num63 = (float)Math.Sqrt((double)(num61 * num61 + num62 * num62));
+		                        Vector2 vector7 = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                                      this.position.Y + (float) this.height*0.5f);
+		                        float num61 = (float) Main.mouseX + Main.screenPosition.X - vector7.X;
+		                        float num62 = (float) Main.mouseY + Main.screenPosition.Y - vector7.Y;
+		                        float num63 = (float) Math.Sqrt((double) (num61*num61 + num62*num62));
 		                        if (num63 == 0f)
 		                        {
-		                            vector7 = new Vector2(Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2), Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2));
-		                            num61 = this.position.X + (float)this.width * 0.5f - vector7.X;
-		                            num62 = this.position.Y + (float)this.height * 0.5f - vector7.Y;
-		                            num63 = (float)Math.Sqrt((double)(num61 * num61 + num62 * num62));
+		                            vector7 =
+		                                new Vector2(
+		                                    Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2),
+		                                    Main.player[this.owner].position.Y + (float) (Main.player[this.owner].height/2));
+		                            num61 = this.position.X + (float) this.width*0.5f - vector7.X;
+		                            num62 = this.position.Y + (float) this.height*0.5f - vector7.Y;
+		                            num63 = (float) Math.Sqrt((double) (num61*num61 + num62*num62));
 		                        }
-		                        num63 = num60 / num63;
+		                        num63 = num60/num63;
 		                        num61 *= num63;
 		                        num62 *= num63;
 		                        this.velocity.X = num61;
@@ -3874,13 +3937,13 @@ namespace Terraria
 		            }
 		            if (this.type == 34)
 		            {
-		                this.rotation += 0.3f * (float)this.direction;
+		                this.rotation += 0.3f*(float) this.direction;
 		            }
 		            else
 		            {
 		                if (this.velocity.X != 0f || this.velocity.Y != 0f)
 		                {
-		                    this.rotation = (float)Math.Atan2((double)this.velocity.Y, (double)this.velocity.X) - 2.355f;
+		                    this.rotation = (float) Math.Atan2((double) this.velocity.Y, (double) this.velocity.X) - 2.355f;
 		                }
 		            }
 		            if (this.velocity.Y > 16f)
@@ -3899,12 +3962,13 @@ namespace Terraria
 		                    int arg_2BEF_2 = this.height;
 		                    int arg_2BEF_3 = 32;
 		                    float arg_2BEF_4 = 0f;
-		                    float arg_2BEF_5 = this.velocity.Y / 2f;
+		                    float arg_2BEF_5 = this.velocity.Y/2f;
 		                    int arg_2BEF_6 = 0;
 		                    Color newColor = default(Color);
-		                    int num64 = Dust.NewDust(arg_2BEF_0, arg_2BEF_1, arg_2BEF_2, arg_2BEF_3, arg_2BEF_4, arg_2BEF_5, arg_2BEF_6, newColor, 1f);
+		                    int num64 = Dust.NewDust(arg_2BEF_0, arg_2BEF_1, arg_2BEF_2, arg_2BEF_3, arg_2BEF_4, arg_2BEF_5,
+		                                             arg_2BEF_6, newColor, 1f);
 		                    Dust expr_2C03_cp_0 = Main.dust[num64];
-		                    expr_2C03_cp_0.velocity.X = expr_2C03_cp_0.velocity.X * 0.4f;
+		                    expr_2C03_cp_0.velocity.X = expr_2C03_cp_0.velocity.X*0.4f;
 		                }
 		            }
 		            else
@@ -3918,12 +3982,13 @@ namespace Terraria
 		                        int arg_2C85_2 = this.height;
 		                        int arg_2C85_3 = 38;
 		                        float arg_2C85_4 = 0f;
-		                        float arg_2C85_5 = this.velocity.Y / 2f;
+		                        float arg_2C85_5 = this.velocity.Y/2f;
 		                        int arg_2C85_6 = 0;
 		                        Color newColor = default(Color);
-		                        int num65 = Dust.NewDust(arg_2C85_0, arg_2C85_1, arg_2C85_2, arg_2C85_3, arg_2C85_4, arg_2C85_5, arg_2C85_6, newColor, 1f);
+		                        int num65 = Dust.NewDust(arg_2C85_0, arg_2C85_1, arg_2C85_2, arg_2C85_3, arg_2C85_4,
+		                                                 arg_2C85_5, arg_2C85_6, newColor, 1f);
 		                        Dust expr_2C99_cp_0 = Main.dust[num65];
-		                        expr_2C99_cp_0.velocity.X = expr_2C99_cp_0.velocity.X * 0.4f;
+		                        expr_2C99_cp_0.velocity.X = expr_2C99_cp_0.velocity.X*0.4f;
 		                    }
 		                }
 		                else
@@ -3937,10 +4002,11 @@ namespace Terraria
 		                            int arg_2D1B_2 = this.height;
 		                            int arg_2D1B_3 = 36;
 		                            float arg_2D1B_4 = 0f;
-		                            float arg_2D1B_5 = this.velocity.Y / 2f;
+		                            float arg_2D1B_5 = this.velocity.Y/2f;
 		                            int arg_2D1B_6 = 0;
 		                            Color newColor = default(Color);
-		                            int num66 = Dust.NewDust(arg_2D1B_0, arg_2D1B_1, arg_2D1B_2, arg_2D1B_3, arg_2D1B_4, arg_2D1B_5, arg_2D1B_6, newColor, 1f);
+		                            int num66 = Dust.NewDust(arg_2D1B_0, arg_2D1B_1, arg_2D1B_2, arg_2D1B_3, arg_2D1B_4,
+		                                                     arg_2D1B_5, arg_2D1B_6, newColor, 1f);
 		                            Dust expr_2D2A = Main.dust[num66];
 		                            expr_2D2A.velocity *= 0.4f;
 		                        }
@@ -3959,9 +4025,10 @@ namespace Terraria
 		                                float arg_2DAB_5 = 0f;
 		                                int arg_2DAB_6 = 0;
 		                                Color newColor = default(Color);
-		                                int num67 = Dust.NewDust(arg_2DAB_0, arg_2DAB_1, arg_2DAB_2, arg_2DAB_3, arg_2DAB_4, arg_2DAB_5, arg_2DAB_6, newColor, 1f);
+		                                int num67 = Dust.NewDust(arg_2DAB_0, arg_2DAB_1, arg_2DAB_2, arg_2DAB_3, arg_2DAB_4,
+		                                                         arg_2DAB_5, arg_2DAB_6, newColor, 1f);
 		                                Dust expr_2DBF_cp_0 = Main.dust[num67];
-		                                expr_2DBF_cp_0.velocity.X = expr_2DBF_cp_0.velocity.X * 0.4f;
+		                                expr_2DBF_cp_0.velocity.X = expr_2DBF_cp_0.velocity.X*0.4f;
 		                            }
 		                        }
 		                        else
@@ -3978,9 +4045,10 @@ namespace Terraria
 		                                    float arg_2E3C_5 = 0f;
 		                                    int arg_2E3C_6 = 0;
 		                                    Color newColor = default(Color);
-		                                    int num68 = Dust.NewDust(arg_2E3C_0, arg_2E3C_1, arg_2E3C_2, arg_2E3C_3, arg_2E3C_4, arg_2E3C_5, arg_2E3C_6, newColor, 1f);
+		                                    int num68 = Dust.NewDust(arg_2E3C_0, arg_2E3C_1, arg_2E3C_2, arg_2E3C_3,
+		                                                             arg_2E3C_4, arg_2E3C_5, arg_2E3C_6, newColor, 1f);
 		                                    Dust expr_2E50_cp_0 = Main.dust[num68];
-		                                    expr_2E50_cp_0.velocity.X = expr_2E50_cp_0.velocity.X * 0.4f;
+		                                    expr_2E50_cp_0.velocity.X = expr_2E50_cp_0.velocity.X*0.4f;
 		                                }
 		                            }
 		                            else
@@ -3997,9 +4065,10 @@ namespace Terraria
 		                                        float arg_2ECD_5 = 0f;
 		                                        int arg_2ECD_6 = 0;
 		                                        Color newColor = default(Color);
-		                                        int num69 = Dust.NewDust(arg_2ECD_0, arg_2ECD_1, arg_2ECD_2, arg_2ECD_3, arg_2ECD_4, arg_2ECD_5, arg_2ECD_6, newColor, 1f);
+		                                        int num69 = Dust.NewDust(arg_2ECD_0, arg_2ECD_1, arg_2ECD_2, arg_2ECD_3,
+		                                                                 arg_2ECD_4, arg_2ECD_5, arg_2ECD_6, newColor, 1f);
 		                                        Dust expr_2EE1_cp_0 = Main.dust[num69];
-		                                        expr_2EE1_cp_0.velocity.X = expr_2EE1_cp_0.velocity.X * 0.4f;
+		                                        expr_2EE1_cp_0.velocity.X = expr_2EE1_cp_0.velocity.X*0.4f;
 		                                    }
 		                                }
 		                                else
@@ -4016,9 +4085,10 @@ namespace Terraria
 		                                            float arg_2F54_5 = 0f;
 		                                            int arg_2F54_6 = 0;
 		                                            Color newColor = default(Color);
-		                                            int num70 = Dust.NewDust(arg_2F54_0, arg_2F54_1, arg_2F54_2, arg_2F54_3, arg_2F54_4, arg_2F54_5, arg_2F54_6, newColor, 1f);
+		                                            int num70 = Dust.NewDust(arg_2F54_0, arg_2F54_1, arg_2F54_2, arg_2F54_3,
+		                                                                     arg_2F54_4, arg_2F54_5, arg_2F54_6, newColor, 1f);
 		                                            Dust expr_2F68_cp_0 = Main.dust[num70];
-		                                            expr_2F68_cp_0.velocity.X = expr_2F68_cp_0.velocity.X * 0.4f;
+		                                            expr_2F68_cp_0.velocity.X = expr_2F68_cp_0.velocity.X*0.4f;
 		                                        }
 		                                    }
 		                                    else
@@ -4033,7 +4103,8 @@ namespace Terraria
 		                                            float arg_2FD5_5 = 0f;
 		                                            int arg_2FD5_6 = 0;
 		                                            Color newColor = default(Color);
-		                                            Dust.NewDust(arg_2FD5_0, arg_2FD5_1, arg_2FD5_2, arg_2FD5_3, arg_2FD5_4, arg_2FD5_5, arg_2FD5_6, newColor, 1f);
+		                                            Dust.NewDust(arg_2FD5_0, arg_2FD5_1, arg_2FD5_2, arg_2FD5_3, arg_2FD5_4,
+		                                                         arg_2FD5_5, arg_2FD5_6, newColor, 1f);
 		                                        }
 		                                    }
 		                                }
@@ -4047,14 +4118,15 @@ namespace Terraria
 		                if (Main.player[this.owner].channel)
 		                {
 		                    float num71 = 12f;
-		                    Vector2 vector8 = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                    float num72 = (float)Main.mouseX + Main.screenPosition.X - vector8.X;
-		                    float num73 = (float)Main.mouseY + Main.screenPosition.Y - vector8.Y;
-		                    float num74 = (float)Math.Sqrt((double)(num72 * num72 + num73 * num73));
-		                    num74 = (float)Math.Sqrt((double)(num72 * num72 + num73 * num73));
+		                    Vector2 vector8 = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                                  this.position.Y + (float) this.height*0.5f);
+		                    float num72 = (float) Main.mouseX + Main.screenPosition.X - vector8.X;
+		                    float num73 = (float) Main.mouseY + Main.screenPosition.Y - vector8.Y;
+		                    float num74 = (float) Math.Sqrt((double) (num72*num72 + num73*num73));
+		                    num74 = (float) Math.Sqrt((double) (num72*num72 + num73*num73));
 		                    if (num74 > num71)
 		                    {
-		                        num74 = num71 / num74;
+		                        num74 = num71/num74;
 		                        num72 *= num74;
 		                        num73 *= num74;
 		                        if (num72 != this.velocity.X || num73 != this.velocity.Y)
@@ -4101,13 +4173,13 @@ namespace Terraria
 		                if (this.ai[0] == 2f && this.type != 109)
 		                {
 		                    this.velocity.Y = this.velocity.Y + 0.2f;
-		                    if ((double)this.velocity.X < -0.04)
+		                    if ((double) this.velocity.X < -0.04)
 		                    {
 		                        this.velocity.X = this.velocity.X + 0.04f;
 		                    }
 		                    else
 		                    {
-		                        if ((double)this.velocity.X > 0.04)
+		                        if ((double) this.velocity.X > 0.04)
 		                        {
 		                            this.velocity.X = this.velocity.X - 0.04f;
 		                        }
@@ -4140,7 +4212,7 @@ namespace Terraria
 		                            this.spriteDirection = 1;
 		                        }
 		                    }
-		                    this.rotation = this.velocity.X * 0.1f;
+		                    this.rotation = this.velocity.X*0.1f;
 		                    this.frameCounter++;
 		                    if (this.frameCounter >= 4)
 		                    {
@@ -4173,7 +4245,8 @@ namespace Terraria
 		                        float arg_340A_5 = 0f;
 		                        int arg_340A_6 = 200;
 		                        Color newColor = default(Color);
-		                        int num76 = Dust.NewDust(arg_340A_0, arg_340A_1, arg_340A_2, arg_340A_3, arg_340A_4, arg_340A_5, arg_340A_6, newColor, 0.8f);
+		                        int num76 = Dust.NewDust(arg_340A_0, arg_340A_1, arg_340A_2, arg_340A_3, arg_340A_4,
+		                                                 arg_340A_5, arg_340A_6, newColor, 0.8f);
 		                        Dust expr_3419 = Main.dust[num76];
 		                        expr_3419.velocity *= 0.3f;
 		                    }
@@ -4209,11 +4282,14 @@ namespace Terraria
 		                {
 		                    num77 = 3.5f;
 		                }
-		                Vector2 vector9 = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                float num78 = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - vector9.X;
-		                float num79 = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - vector9.Y;
-		                float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
-		                num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
+		                Vector2 vector9 = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                              this.position.Y + (float) this.height*0.5f);
+		                float num78 = Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2) -
+		                              vector9.X;
+		                float num79 = Main.player[this.owner].position.Y + (float) (Main.player[this.owner].height/2) -
+		                              vector9.Y;
+		                float num80 = (float) Math.Sqrt((double) (num78*num78 + num79*num79));
+		                num80 = (float) Math.Sqrt((double) (num78*num78 + num79*num79));
 		                int num81 = 70;
 		                if (this.type == 72 || this.type == 86 || this.type == 87)
 		                {
@@ -4221,13 +4297,15 @@ namespace Terraria
 		                }
 		                if (num80 > 800f)
 		                {
-		                    this.position.X = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - (float)(this.width / 2);
-		                    this.position.Y = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - (float)(this.height / 2);
+		                    this.position.X = Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2) -
+		                                      (float) (this.width/2);
+		                    this.position.Y = Main.player[this.owner].position.Y + (float) (Main.player[this.owner].height/2) -
+		                                      (float) (this.height/2);
 		                    return;
 		                }
-		                if (num80 > (float)num81)
+		                if (num80 > (float) num81)
 		                {
-		                    num80 = num77 / num80;
+		                    num80 = num77/num80;
 		                    num78 *= num80;
 		                    num79 *= num80;
 		                    this.velocity.X = num78;
@@ -4258,7 +4336,8 @@ namespace Terraria
 		                    float arg_376A_5 = this.velocity.Y;
 		                    int arg_376A_6 = 100;
 		                    Color newColor = default(Color);
-		                    int num82 = Dust.NewDust(arg_376A_0, arg_376A_1, arg_376A_2, arg_376A_3, arg_376A_4, arg_376A_5, arg_376A_6, newColor, 2.5f);
+		                    int num82 = Dust.NewDust(arg_376A_0, arg_376A_1, arg_376A_2, arg_376A_3, arg_376A_4, arg_376A_5,
+		                                             arg_376A_6, newColor, 2.5f);
 		                    Main.dust[num82].noGravity = true;
 		                    Vector2 arg_37CF_0 = new Vector2(this.position.X, this.position.Y);
 		                    int arg_37CF_1 = this.width;
@@ -4268,13 +4347,14 @@ namespace Terraria
 		                    float arg_37CF_5 = this.velocity.Y;
 		                    int arg_37CF_6 = 100;
 		                    newColor = default(Color);
-		                    Dust.NewDust(arg_37CF_0, arg_37CF_1, arg_37CF_2, arg_37CF_3, arg_37CF_4, arg_37CF_5, arg_37CF_6, newColor, 1.5f);
+		                    Dust.NewDust(arg_37CF_0, arg_37CF_1, arg_37CF_2, arg_37CF_3, arg_37CF_4, arg_37CF_5, arg_37CF_6,
+		                                 newColor, 1.5f);
 		                }
 		                else
 		                {
 		                    this.ai[0] += 1f;
 		                }
-		                this.rotation += 0.3f * (float)this.direction;
+		                this.rotation += 0.3f*(float) this.direction;
 		                return;
 		            }
 		            if (this.aiStyle == 13)
@@ -4286,7 +4366,8 @@ namespace Terraria
 		                }
 		                Main.player[this.owner].itemAnimation = 5;
 		                Main.player[this.owner].itemTime = 5;
-		                if (this.position.X + (float)(this.width / 2) > Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2))
+		                if (this.position.X + (float) (this.width/2) >
+		                    Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2))
 		                {
 		                    Main.player[this.owner].direction = 1;
 		                }
@@ -4294,17 +4375,20 @@ namespace Terraria
 		                {
 		                    Main.player[this.owner].direction = -1;
 		                }
-		                Vector2 vector10 = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                float num83 = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - vector10.X;
-		                float num84 = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - vector10.Y;
-		                float num85 = (float)Math.Sqrt((double)(num83 * num83 + num84 * num84));
+		                Vector2 vector10 = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                               this.position.Y + (float) this.height*0.5f);
+		                float num83 = Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2) -
+		                              vector10.X;
+		                float num84 = Main.player[this.owner].position.Y + (float) (Main.player[this.owner].height/2) -
+		                              vector10.Y;
+		                float num85 = (float) Math.Sqrt((double) (num83*num83 + num84*num84));
 		                if (this.ai[0] == 0f)
 		                {
 		                    if (num85 > 700f)
 		                    {
 		                        this.ai[0] = 1f;
 		                    }
-		                    this.rotation = (float)Math.Atan2((double)this.velocity.Y, (double)this.velocity.X) + 1.57f;
+		                    this.rotation = (float) Math.Atan2((double) this.velocity.Y, (double) this.velocity.X) + 1.57f;
 		                    this.ai[1] += 1f;
 		                    if (this.ai[1] > 2f)
 		                    {
@@ -4322,13 +4406,13 @@ namespace Terraria
 		                    if (this.ai[0] == 1f)
 		                    {
 		                        this.tileCollide = false;
-		                        this.rotation = (float)Math.Atan2((double)num84, (double)num83) - 1.57f;
+		                        this.rotation = (float) Math.Atan2((double) num84, (double) num83) - 1.57f;
 		                        float num86 = 20f;
 		                        if (num85 < 50f)
 		                        {
 		                            this.Kill();
 		                        }
-		                        num85 = num86 / num85;
+		                        num85 = num86/num85;
 		                        num83 *= num85;
 		                        num84 *= num85;
 		                        this.velocity.X = num83;
@@ -4345,11 +4429,12 @@ namespace Terraria
 		                    {
 		                        try
 		                        {
-		                            Vector2 value2 = Collision.TileCollision(this.position, this.velocity, this.width, this.height, false, false);
-		                            int num87 = (int)(this.position.X / 16f) - 1;
-		                            int num88 = (int)((this.position.X + (float)this.width) / 16f) + 2;
-		                            int num89 = (int)(this.position.Y / 16f) - 1;
-		                            int num90 = (int)((this.position.Y + (float)this.height) / 16f) + 2;
+		                            Vector2 value2 = Collision.TileCollision(this.position, this.velocity, this.width,
+		                                                                     this.height, false, false);
+		                            int num87 = (int) (this.position.X/16f) - 1;
+		                            int num88 = (int) ((this.position.X + (float) this.width)/16f) + 2;
+		                            int num89 = (int) (this.position.Y/16f) - 1;
+		                            int num90 = (int) ((this.position.Y + (float) this.height)/16f) + 2;
 		                            if (num87 < 0)
 		                            {
 		                                num87 = 0;
@@ -4370,12 +4455,18 @@ namespace Terraria
 		                            {
 		                                for (int num92 = num89; num92 < num90; num92++)
 		                                {
-		                                    if (Main.tile[num91, num92] != null && Main.tile[num91, num92].active && (Main.tileSolid[(int)Main.tile[num91, num92].type] || (Main.tileSolidTop[(int)Main.tile[num91, num92].type] && Main.tile[num91, num92].frameY == 0)))
+		                                    if (Main.tile[num91, num92] != null && Main.tile[num91, num92].active &&
+		                                        (Main.tileSolid[(int) Main.tile[num91, num92].type] ||
+		                                         (Main.tileSolidTop[(int) Main.tile[num91, num92].type] &&
+		                                          Main.tile[num91, num92].frameY == 0)))
 		                                    {
 		                                        Vector2 vector11;
-		                                        vector11.X = (float)(num91 * 16);
-		                                        vector11.Y = (float)(num92 * 16);
-		                                        if (this.position.X + (float)this.width > vector11.X && this.position.X < vector11.X + 16f && this.position.Y + (float)this.height > vector11.Y && this.position.Y < vector11.Y + 16f)
+		                                        vector11.X = (float) (num91*16);
+		                                        vector11.Y = (float) (num92*16);
+		                                        if (this.position.X + (float) this.width > vector11.X &&
+		                                            this.position.X < vector11.X + 16f &&
+		                                            this.position.Y + (float) this.height > vector11.Y &&
+		                                            this.position.Y < vector11.Y + 16f)
 		                                        {
 		                                            this.velocity.X = 0f;
 		                                            this.velocity.Y = -0.2f;
@@ -4394,8 +4485,8 @@ namespace Terraria
 		                        this.ai[0] = 5f;
 		                        if (this.velocity.Y == 0f && this.velocity.X != 0f)
 		                        {
-		                            this.velocity.X = this.velocity.X * 0.97f;
-		                            if ((double)this.velocity.X > -0.01 && (double)this.velocity.X < 0.01)
+		                            this.velocity.X = this.velocity.X*0.97f;
+		                            if ((double) this.velocity.X > -0.01 && (double) this.velocity.X < 0.01)
 		                            {
 		                                this.velocity.X = 0f;
 		                                this.netUpdate = true;
@@ -4403,7 +4494,7 @@ namespace Terraria
 		                        }
 		                        this.velocity.Y = this.velocity.Y + 0.2f;
 		                    }
-		                    this.rotation += this.velocity.X * 0.1f;
+		                    this.rotation += this.velocity.X*0.1f;
 		                    if (this.velocity.Y > 16f)
 		                    {
 		                        this.velocity.Y = 16f;
@@ -4426,7 +4517,8 @@ namespace Terraria
 		                                float arg_3E55_5 = 0f;
 		                                int arg_3E55_6 = 150;
 		                                Color newColor = default(Color);
-		                                Dust.NewDust(arg_3E55_0, arg_3E55_1, arg_3E55_2, arg_3E55_3, arg_3E55_4, arg_3E55_5, arg_3E55_6, newColor, 1.3f);
+		                                Dust.NewDust(arg_3E55_0, arg_3E55_1, arg_3E55_2, arg_3E55_3, arg_3E55_4, arg_3E55_5,
+		                                             arg_3E55_6, newColor, 1.3f);
 		                            }
 		                        }
 		                        else
@@ -4437,16 +4529,17 @@ namespace Terraria
 		                                int arg_3EB4_1 = this.width;
 		                                int arg_3EB4_2 = this.height;
 		                                int arg_3EB4_3 = 29;
-		                                float arg_3EB4_4 = this.velocity.X * 0.4f;
-		                                float arg_3EB4_5 = this.velocity.Y * 0.4f;
+		                                float arg_3EB4_4 = this.velocity.X*0.4f;
+		                                float arg_3EB4_5 = this.velocity.Y*0.4f;
 		                                int arg_3EB4_6 = 100;
 		                                Color newColor = default(Color);
-		                                int num93 = Dust.NewDust(arg_3EB4_0, arg_3EB4_1, arg_3EB4_2, arg_3EB4_3, arg_3EB4_4, arg_3EB4_5, arg_3EB4_6, newColor, 2.5f);
+		                                int num93 = Dust.NewDust(arg_3EB4_0, arg_3EB4_1, arg_3EB4_2, arg_3EB4_3, arg_3EB4_4,
+		                                                         arg_3EB4_5, arg_3EB4_6, newColor, 2.5f);
 		                                Main.dust[num93].noGravity = true;
 		                                Dust expr_3ED6_cp_0 = Main.dust[num93];
-		                                expr_3ED6_cp_0.velocity.X = expr_3ED6_cp_0.velocity.X / 2f;
+		                                expr_3ED6_cp_0.velocity.X = expr_3ED6_cp_0.velocity.X/2f;
 		                                Dust expr_3EF4_cp_0 = Main.dust[num93];
-		                                expr_3EF4_cp_0.velocity.Y = expr_3EF4_cp_0.velocity.Y / 2f;
+		                                expr_3EF4_cp_0.velocity.Y = expr_3EF4_cp_0.velocity.Y/2f;
 		                            }
 		                            else
 		                            {
@@ -4456,16 +4549,17 @@ namespace Terraria
 		                                    int arg_3F5D_1 = this.width;
 		                                    int arg_3F5D_2 = this.height;
 		                                    int arg_3F5D_3 = 6;
-		                                    float arg_3F5D_4 = this.velocity.X * 0.4f;
-		                                    float arg_3F5D_5 = this.velocity.Y * 0.4f;
+		                                    float arg_3F5D_4 = this.velocity.X*0.4f;
+		                                    float arg_3F5D_5 = this.velocity.Y*0.4f;
 		                                    int arg_3F5D_6 = 100;
 		                                    Color newColor = default(Color);
-		                                    int num94 = Dust.NewDust(arg_3F5D_0, arg_3F5D_1, arg_3F5D_2, arg_3F5D_3, arg_3F5D_4, arg_3F5D_5, arg_3F5D_6, newColor, 3f);
+		                                    int num94 = Dust.NewDust(arg_3F5D_0, arg_3F5D_1, arg_3F5D_2, arg_3F5D_3,
+		                                                             arg_3F5D_4, arg_3F5D_5, arg_3F5D_6, newColor, 3f);
 		                                    Main.dust[num94].noGravity = true;
 		                                    Dust expr_3F7F_cp_0 = Main.dust[num94];
-		                                    expr_3F7F_cp_0.velocity.X = expr_3F7F_cp_0.velocity.X * 2f;
+		                                    expr_3F7F_cp_0.velocity.X = expr_3F7F_cp_0.velocity.X*2f;
 		                                    Dust expr_3F9D_cp_0 = Main.dust[num94];
-		                                    expr_3F9D_cp_0.velocity.Y = expr_3F9D_cp_0.velocity.Y * 2f;
+		                                    expr_3F9D_cp_0.velocity.Y = expr_3F9D_cp_0.velocity.Y*2f;
 		                                }
 		                            }
 		                        }
@@ -4476,7 +4570,8 @@ namespace Terraria
 		                        }
 		                        Main.player[this.owner].itemAnimation = 10;
 		                        Main.player[this.owner].itemTime = 10;
-		                        if (this.position.X + (float)(this.width / 2) > Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2))
+		                        if (this.position.X + (float) (this.width/2) >
+		                            Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2))
 		                        {
 		                            Main.player[this.owner].direction = 1;
 		                            this.direction = 1;
@@ -4486,10 +4581,13 @@ namespace Terraria
 		                            Main.player[this.owner].direction = -1;
 		                            this.direction = -1;
 		                        }
-		                        Vector2 vector12 = new Vector2(this.position.X + (float)this.width * 0.5f, this.position.Y + (float)this.height * 0.5f);
-		                        float num95 = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - vector12.X;
-		                        float num96 = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - vector12.Y;
-		                        float num97 = (float)Math.Sqrt((double)(num95 * num95 + num96 * num96));
+		                        Vector2 vector12 = new Vector2(this.position.X + (float) this.width*0.5f,
+		                                                       this.position.Y + (float) this.height*0.5f);
+		                        float num95 = Main.player[this.owner].position.X + (float) (Main.player[this.owner].width/2) -
+		                                      vector12.X;
+		                        float num96 = Main.player[this.owner].position.Y + (float) (Main.player[this.owner].height/2) -
+		                                      vector12.Y;
+		                        float num97 = (float) Math.Sqrt((double) (num95*num95 + num96*num96));
 		                        if (this.ai[0] == 0f)
 		                        {
 		                            float num98 = 160f;
@@ -4509,10 +4607,10 @@ namespace Terraria
 		                                {
 		                                    if (this.velocity.Y < 0f)
 		                                    {
-		                                        this.velocity.Y = this.velocity.Y * 0.9f;
+		                                        this.velocity.Y = this.velocity.Y*0.9f;
 		                                    }
 		                                    this.velocity.Y = this.velocity.Y + 1f;
-		                                    this.velocity.X = this.velocity.X * 0.9f;
+		                                    this.velocity.X = this.velocity.X*0.9f;
 		                                }
 		                            }
 		                        }
@@ -4520,8 +4618,8 @@ namespace Terraria
 		                        {
 		                            if (this.ai[0] == 1f)
 		                            {
-		                                float num99 = 14f / Main.player[this.owner].meleeSpeed;
-		                                float num100 = 0.9f / Main.player[this.owner].meleeSpeed;
+		                                float num99 = 14f/Main.player[this.owner].meleeSpeed;
+		                                float num100 = 0.9f/Main.player[this.owner].meleeSpeed;
 		                                float num101 = 300f;
 		                                if (this.type == 63)
 		                                {
@@ -4554,18 +4652,18 @@ namespace Terraria
 		                                }
 		                                if (num97 > 60f || !this.tileCollide)
 		                                {
-		                                    num97 = num99 / num97;
+		                                    num97 = num99/num97;
 		                                    num95 *= num97;
 		                                    num96 *= num97;
 		                                    new Vector2(this.velocity.X, this.velocity.Y);
 		                                    float num102 = num95 - this.velocity.X;
 		                                    float num103 = num96 - this.velocity.Y;
-		                                    float num104 = (float)Math.Sqrt((double)(num102 * num102 + num103 * num103));
-		                                    num104 = num100 / num104;
+		                                    float num104 = (float) Math.Sqrt((double) (num102*num102 + num103*num103));
+		                                    num104 = num100/num104;
 		                                    num102 *= num104;
 		                                    num103 *= num104;
-		                                    this.velocity.X = this.velocity.X * 0.98f;
-		                                    this.velocity.Y = this.velocity.Y * 0.98f;
+		                                    this.velocity.X = this.velocity.X*0.98f;
+		                                    this.velocity.Y = this.velocity.Y*0.98f;
 		                                    this.velocity.X = this.velocity.X + num102;
 		                                    this.velocity.Y = this.velocity.Y + num103;
 		                                }
@@ -4573,17 +4671,17 @@ namespace Terraria
 		                                {
 		                                    if (Math.Abs(this.velocity.X) + Math.Abs(this.velocity.Y) < 6f)
 		                                    {
-		                                        this.velocity.X = this.velocity.X * 0.96f;
+		                                        this.velocity.X = this.velocity.X*0.96f;
 		                                        this.velocity.Y = this.velocity.Y + 0.2f;
 		                                    }
 		                                    if (Main.player[this.owner].velocity.X == 0f)
 		                                    {
-		                                        this.velocity.X = this.velocity.X * 0.96f;
+		                                        this.velocity.X = this.velocity.X*0.96f;
 		                                    }
 		                                }
 		                            }
 		                        }
-		                        this.rotation = (float)Math.Atan2((double)num96, (double)num95) - this.velocity.X * 0.1f;
+		                        this.rotation = (float) Math.Atan2((double) num96, (double) num95) - this.velocity.X*0.1f;
 		                        return;
 		                    }
 		                    else
@@ -4602,10 +4700,10 @@ namespace Terraria
 		                            {
 		                                try
 		                                {
-		                                    int num105 = (int)(this.position.X / 16f) - 1;
-		                                    int num106 = (int)((this.position.X + (float)this.width) / 16f) + 2;
-		                                    int num107 = (int)(this.position.Y / 16f) - 1;
-		                                    int num108 = (int)((this.position.Y + (float)this.height) / 16f) + 2;
+		                                    int num105 = (int) (this.position.X/16f) - 1;
+		                                    int num106 = (int) ((this.position.X + (float) this.width)/16f) + 2;
+		                                    int num107 = (int) (this.position.Y/16f) - 1;
+		                                    int num108 = (int) ((this.position.Y + (float) this.height)/16f) + 2;
 		                                    if (num105 < 0)
 		                                    {
 		                                        num105 = 0;
@@ -4626,12 +4724,18 @@ namespace Terraria
 		                                    {
 		                                        for (int num110 = num107; num110 < num108; num110++)
 		                                        {
-		                                            if (Main.tile[num109, num110] != null && Main.tile[num109, num110].active && (Main.tileSolid[(int)Main.tile[num109, num110].type] || (Main.tileSolidTop[(int)Main.tile[num109, num110].type] && Main.tile[num109, num110].frameY == 0)))
+		                                            if (Main.tile[num109, num110] != null && Main.tile[num109, num110].active &&
+		                                                (Main.tileSolid[(int) Main.tile[num109, num110].type] ||
+		                                                 (Main.tileSolidTop[(int) Main.tile[num109, num110].type] &&
+		                                                  Main.tile[num109, num110].frameY == 0)))
 		                                            {
 		                                                Vector2 vector13;
-		                                                vector13.X = (float)(num109 * 16);
-		                                                vector13.Y = (float)(num110 * 16);
-		                                                if (this.position.X + (float)this.width - 4f > vector13.X && this.position.X + 4f < vector13.X + 16f && this.position.Y + (float)this.height - 4f > vector13.Y && this.position.Y + 4f < vector13.Y + 16f)
+		                                                vector13.X = (float) (num109*16);
+		                                                vector13.Y = (float) (num110*16);
+		                                                if (this.position.X + (float) this.width - 4f > vector13.X &&
+		                                                    this.position.X + 4f < vector13.X + 16f &&
+		                                                    this.position.Y + (float) this.height - 4f > vector13.Y &&
+		                                                    this.position.Y + 4f < vector13.Y + 16f)
 		                                                {
 		                                                    this.velocity.X = 0f;
 		                                                    this.velocity.Y = -0.2f;
@@ -4653,7 +4757,7 @@ namespace Terraria
 		                                if (this.localAI[0] == 0f)
 		                                {
 		                                    this.localAI[0] = 1f;
-		                                    Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
+		                                    Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 10);
 		                                }
 		                                this.frameCounter++;
 		                                if (this.frameCounter > 3)
@@ -4667,12 +4771,12 @@ namespace Terraria
 		                                }
 		                                if (this.velocity.Y == 0f)
 		                                {
-		                                    this.position.X = this.position.X + (float)(this.width / 2);
-		                                    this.position.Y = this.position.Y + (float)(this.height / 2);
+		                                    this.position.X = this.position.X + (float) (this.width/2);
+		                                    this.position.Y = this.position.Y + (float) (this.height/2);
 		                                    this.width = 128;
 		                                    this.height = 128;
-		                                    this.position.X = this.position.X - (float)(this.width / 2);
-		                                    this.position.Y = this.position.Y - (float)(this.height / 2);
+		                                    this.position.X = this.position.X - (float) (this.width/2);
+		                                    this.position.Y = this.position.Y - (float) (this.height/2);
 		                                    this.damage = 40;
 		                                    this.knockBack = 8f;
 		                                    this.timeLeft = 3;
@@ -4685,12 +4789,12 @@ namespace Terraria
 		                                this.alpha = 255;
 		                                if (this.type == 28 || this.type == 37 || this.type == 75)
 		                                {
-		                                    this.position.X = this.position.X + (float)(this.width / 2);
-		                                    this.position.Y = this.position.Y + (float)(this.height / 2);
+		                                    this.position.X = this.position.X + (float) (this.width/2);
+		                                    this.position.Y = this.position.Y + (float) (this.height/2);
 		                                    this.width = 128;
 		                                    this.height = 128;
-		                                    this.position.X = this.position.X - (float)(this.width / 2);
-		                                    this.position.Y = this.position.Y - (float)(this.height / 2);
+		                                    this.position.X = this.position.X - (float) (this.width/2);
+		                                    this.position.Y = this.position.Y - (float) (this.height/2);
 		                                    this.damage = 100;
 		                                    this.knockBack = 8f;
 		                                }
@@ -4698,12 +4802,12 @@ namespace Terraria
 		                                {
 		                                    if (this.type == 29)
 		                                    {
-		                                        this.position.X = this.position.X + (float)(this.width / 2);
-		                                        this.position.Y = this.position.Y + (float)(this.height / 2);
+		                                        this.position.X = this.position.X + (float) (this.width/2);
+		                                        this.position.Y = this.position.Y + (float) (this.height/2);
 		                                        this.width = 250;
 		                                        this.height = 250;
-		                                        this.position.X = this.position.X - (float)(this.width / 2);
-		                                        this.position.Y = this.position.Y - (float)(this.height / 2);
+		                                        this.position.X = this.position.X - (float) (this.width/2);
+		                                        this.position.Y = this.position.Y - (float) (this.height/2);
 		                                        this.damage = 250;
 		                                        this.knockBack = 10f;
 		                                    }
@@ -4711,12 +4815,12 @@ namespace Terraria
 		                                    {
 		                                        if (this.type == 30)
 		                                        {
-		                                            this.position.X = this.position.X + (float)(this.width / 2);
-		                                            this.position.Y = this.position.Y + (float)(this.height / 2);
+		                                            this.position.X = this.position.X + (float) (this.width/2);
+		                                            this.position.Y = this.position.Y + (float) (this.height/2);
 		                                            this.width = 128;
 		                                            this.height = 128;
-		                                            this.position.X = this.position.X - (float)(this.width / 2);
-		                                            this.position.Y = this.position.Y - (float)(this.height / 2);
+		                                            this.position.X = this.position.X - (float) (this.width/2);
+		                                            this.position.Y = this.position.Y - (float) (this.height/2);
 		                                            this.knockBack = 8f;
 		                                        }
 		                                    }
@@ -4738,7 +4842,8 @@ namespace Terraria
 		                                    float arg_4ADF_5 = 0f;
 		                                    int arg_4ADF_6 = 100;
 		                                    Color newColor = default(Color);
-		                                    Dust.NewDust(arg_4ADF_0, arg_4ADF_1, arg_4ADF_2, arg_4ADF_3, arg_4ADF_4, arg_4ADF_5, arg_4ADF_6, newColor, 1f);
+		                                    Dust.NewDust(arg_4ADF_0, arg_4ADF_1, arg_4ADF_2, arg_4ADF_3, arg_4ADF_4,
+		                                                 arg_4ADF_5, arg_4ADF_6, newColor, 1f);
 		                                }
 		                            }
 		                            this.ai[0] += 1f;
@@ -4747,12 +4852,12 @@ namespace Terraria
 		                                this.ai[0] = 10f;
 		                                if (this.velocity.Y == 0f && this.velocity.X != 0f)
 		                                {
-		                                    this.velocity.X = this.velocity.X * 0.97f;
+		                                    this.velocity.X = this.velocity.X*0.97f;
 		                                    if (this.type == 29)
 		                                    {
-		                                        this.velocity.X = this.velocity.X * 0.99f;
+		                                        this.velocity.X = this.velocity.X*0.99f;
 		                                    }
-		                                    if ((double)this.velocity.X > -0.01 && (double)this.velocity.X < 0.01)
+		                                    if ((double) this.velocity.X > -0.01 && (double) this.velocity.X < 0.01)
 		                                    {
 		                                        this.velocity.X = 0f;
 		                                        this.netUpdate = true;
@@ -4760,21 +4865,21 @@ namespace Terraria
 		                                }
 		                                this.velocity.Y = this.velocity.Y + 0.2f;
 		                            }
-		                            this.rotation += this.velocity.X * 0.1f;
+		                            this.rotation += this.velocity.X*0.1f;
 		                            return;
 		                        }
 		                        if (this.aiStyle == 17)
 		                        {
 		                            if (this.velocity.Y == 0f)
 		                            {
-		                                this.velocity.X = this.velocity.X * 0.98f;
+		                                this.velocity.X = this.velocity.X*0.98f;
 		                            }
-		                            this.rotation += this.velocity.X * 0.1f;
+		                            this.rotation += this.velocity.X*0.1f;
 		                            this.velocity.Y = this.velocity.Y + 0.2f;
 		                            if (this.owner == Main.myPlayer)
 		                            {
-		                                int num111 = (int)((this.position.X + (float)(this.width / 2)) / 16f);
-		                                int num112 = (int)((this.position.Y + (float)this.height - 4f) / 16f);
+		                                int num111 = (int) ((this.position.X + (float) (this.width/2))/16f);
+		                                int num112 = (int) ((this.position.Y + (float) this.height - 4f)/16f);
 		                                if (Main.tile[num111, num112] != null && !Main.tile[num111, num112].active)
 		                                {
 		                                    WorldGen.PlaceTile(num111, num112, 85, false, false, -1, 0);
@@ -4782,7 +4887,8 @@ namespace Terraria
 		                                    {
 		                                        if (Main.netMode != 0)
 		                                        {
-		                                            NetMessage.SendData(17, -1, -1, "", 1, (float)num111, (float)num112, 85f, 0);
+		                                            NetMessage.SendData(17, -1, -1, "", 1, (float) num111, (float) num112, 85f,
+		                                                                0);
 		                                        }
 		                                        int num113 = Sign.ReadSign(num111, num112);
 		                                        if (num113 >= 0)
@@ -4802,9 +4908,9 @@ namespace Terraria
 		                                if (this.ai[1] == 0f && this.type == 44)
 		                                {
 		                                    this.ai[1] = 1f;
-		                                    Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 8);
+		                                    Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 8);
 		                                }
-		                                this.rotation += (float)this.direction * 0.8f;
+		                                this.rotation += (float) this.direction*0.8f;
 		                                this.ai[0] += 1f;
 		                                if (this.ai[0] >= 30f)
 		                                {
@@ -4827,7 +4933,8 @@ namespace Terraria
 		                                    float arg_4E8A_5 = 0f;
 		                                    int arg_4E8A_6 = 100;
 		                                    Color newColor = default(Color);
-		                                    int num115 = Dust.NewDust(arg_4E8A_0, arg_4E8A_1, arg_4E8A_2, arg_4E8A_3, arg_4E8A_4, arg_4E8A_5, arg_4E8A_6, newColor, 1f);
+		                                    int num115 = Dust.NewDust(arg_4E8A_0, arg_4E8A_1, arg_4E8A_2, arg_4E8A_3,
+		                                                              arg_4E8A_4, arg_4E8A_5, arg_4E8A_6, newColor, 1f);
 		                                    Main.dust[num115].noGravity = true;
 		                                }
 		                                return;
@@ -4837,8 +4944,10 @@ namespace Terraria
 		                                this.direction = Main.player[this.owner].direction;
 		                                Main.player[this.owner].heldProj = this.whoAmI;
 		                                Main.player[this.owner].itemTime = Main.player[this.owner].itemAnimation;
-		                                this.position.X = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - (float)(this.width / 2);
-		                                this.position.Y = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - (float)(this.height / 2);
+		                                this.position.X = Main.player[this.owner].position.X +
+		                                                  (float) (Main.player[this.owner].width/2) - (float) (this.width/2);
+		                                this.position.Y = Main.player[this.owner].position.Y +
+		                                                  (float) (Main.player[this.owner].height/2) - (float) (this.height/2);
 		                                if (this.type == 46)
 		                                {
 		                                    if (this.ai[0] == 0f)
@@ -4846,7 +4955,8 @@ namespace Terraria
 		                                        this.ai[0] = 3f;
 		                                        this.netUpdate = true;
 		                                    }
-		                                    if (Main.player[this.owner].itemAnimation < Main.player[this.owner].itemAnimationMax / 3)
+		                                    if (Main.player[this.owner].itemAnimation <
+		                                        Main.player[this.owner].itemAnimationMax/3)
 		                                    {
 		                                        this.ai[0] -= 1.6f;
 		                                    }
@@ -4864,7 +4974,8 @@ namespace Terraria
 		                                            this.ai[0] = 3f;
 		                                            this.netUpdate = true;
 		                                        }
-		                                        if (Main.player[this.owner].itemAnimation < Main.player[this.owner].itemAnimationMax / 3)
+		                                        if (Main.player[this.owner].itemAnimation <
+		                                            Main.player[this.owner].itemAnimationMax/3)
 		                                        {
 		                                            this.ai[0] -= 2.4f;
 		                                        }
@@ -4882,7 +4993,8 @@ namespace Terraria
 		                                                this.ai[0] = 4f;
 		                                                this.netUpdate = true;
 		                                            }
-		                                            if (Main.player[this.owner].itemAnimation < Main.player[this.owner].itemAnimationMax / 3)
+		                                            if (Main.player[this.owner].itemAnimation <
+		                                                Main.player[this.owner].itemAnimationMax/3)
 		                                            {
 		                                                this.ai[0] -= 1.2f;
 		                                            }
@@ -4900,7 +5012,8 @@ namespace Terraria
 		                                                    this.ai[0] = 4f;
 		                                                    this.netUpdate = true;
 		                                                }
-		                                                if (Main.player[this.owner].itemAnimation < Main.player[this.owner].itemAnimationMax / 3)
+		                                                if (Main.player[this.owner].itemAnimation <
+		                                                    Main.player[this.owner].itemAnimationMax/3)
 		                                                {
 		                                                    this.ai[0] -= 1.1f;
 		                                                }
@@ -4919,7 +5032,8 @@ namespace Terraria
 		                                                        this.ai[0] = 3f;
 		                                                        this.netUpdate = true;
 		                                                    }
-		                                                    if (Main.player[this.owner].itemAnimation < Main.player[this.owner].itemAnimationMax / 3)
+		                                                    if (Main.player[this.owner].itemAnimation <
+		                                                        Main.player[this.owner].itemAnimationMax/3)
 		                                                    {
 		                                                        this.ai[0] -= 1.9f;
 		                                                    }
@@ -4938,7 +5052,8 @@ namespace Terraria
 		                                                            this.ai[0] = 3f;
 		                                                            this.netUpdate = true;
 		                                                        }
-		                                                        if (Main.player[this.owner].itemAnimation < Main.player[this.owner].itemAnimationMax / 3)
+		                                                        if (Main.player[this.owner].itemAnimation <
+		                                                            Main.player[this.owner].itemAnimationMax/3)
 		                                                        {
 		                                                            this.ai[0] -= 2.1f;
 		                                                        }
@@ -4957,7 +5072,8 @@ namespace Terraria
 		                                                                this.ai[0] = 3f;
 		                                                                this.netUpdate = true;
 		                                                            }
-		                                                            if (Main.player[this.owner].itemAnimation < Main.player[this.owner].itemAnimationMax / 3)
+		                                                            if (Main.player[this.owner].itemAnimation <
+		                                                                Main.player[this.owner].itemAnimationMax/3)
 		                                                            {
 		                                                                this.ai[0] -= 1.6f;
 		                                                            }
@@ -4972,12 +5088,13 @@ namespace Terraria
 		                                        }
 		                                    }
 		                                }
-		                                this.position += this.velocity * this.ai[0];
+		                                this.position += this.velocity*this.ai[0];
 		                                if (Main.player[this.owner].itemAnimation == 0)
 		                                {
 		                                    this.Kill();
 		                                }
-		                                this.rotation = (float)Math.Atan2((double)this.velocity.Y, (double)this.velocity.X) + 2.355f;
+		                                this.rotation =
+		                                    (float) Math.Atan2((double) this.velocity.Y, (double) this.velocity.X) + 2.355f;
 		                                if (this.spriteDirection == -1)
 		                                {
 		                                    this.rotation -= 1.57f;
@@ -4995,23 +5112,25 @@ namespace Terraria
 		                                        float arg_54B5_5 = 0f;
 		                                        int arg_54B5_6 = 150;
 		                                        newColor = default(Color);
-		                                        Dust.NewDust(arg_54B5_0, arg_54B5_1, arg_54B5_2, arg_54B5_3, arg_54B5_4, arg_54B5_5, arg_54B5_6, newColor, 1.4f);
+		                                        Dust.NewDust(arg_54B5_0, arg_54B5_1, arg_54B5_2, arg_54B5_3, arg_54B5_4,
+		                                                     arg_54B5_5, arg_54B5_6, newColor, 1.4f);
 		                                    }
 		                                    Vector2 arg_550C_0 = this.position;
 		                                    int arg_550C_1 = this.width;
 		                                    int arg_550C_2 = this.height;
 		                                    int arg_550C_3 = 27;
-		                                    float arg_550C_4 = this.velocity.X * 0.2f + (float)(this.direction * 3);
-		                                    float arg_550C_5 = this.velocity.Y * 0.2f;
+		                                    float arg_550C_4 = this.velocity.X*0.2f + (float) (this.direction*3);
+		                                    float arg_550C_5 = this.velocity.Y*0.2f;
 		                                    int arg_550C_6 = 100;
 		                                    newColor = default(Color);
-		                                    int num116 = Dust.NewDust(arg_550C_0, arg_550C_1, arg_550C_2, arg_550C_3, arg_550C_4, arg_550C_5, arg_550C_6, newColor, 1.2f);
+		                                    int num116 = Dust.NewDust(arg_550C_0, arg_550C_1, arg_550C_2, arg_550C_3,
+		                                                              arg_550C_4, arg_550C_5, arg_550C_6, newColor, 1.2f);
 		                                    Main.dust[num116].noGravity = true;
 		                                    Dust expr_552E_cp_0 = Main.dust[num116];
-		                                    expr_552E_cp_0.velocity.X = expr_552E_cp_0.velocity.X / 2f;
+		                                    expr_552E_cp_0.velocity.X = expr_552E_cp_0.velocity.X/2f;
 		                                    Dust expr_554C_cp_0 = Main.dust[num116];
-		                                    expr_554C_cp_0.velocity.Y = expr_554C_cp_0.velocity.Y / 2f;
-		                                    Vector2 arg_55A4_0 = this.position - this.velocity * 2f;
+		                                    expr_554C_cp_0.velocity.Y = expr_554C_cp_0.velocity.Y/2f;
+		                                    Vector2 arg_55A4_0 = this.position - this.velocity*2f;
 		                                    int arg_55A4_1 = this.width;
 		                                    int arg_55A4_2 = this.height;
 		                                    int arg_55A4_3 = 27;
@@ -5019,11 +5138,12 @@ namespace Terraria
 		                                    float arg_55A4_5 = 0f;
 		                                    int arg_55A4_6 = 150;
 		                                    newColor = default(Color);
-		                                    num116 = Dust.NewDust(arg_55A4_0, arg_55A4_1, arg_55A4_2, arg_55A4_3, arg_55A4_4, arg_55A4_5, arg_55A4_6, newColor, 1.4f);
+		                                    num116 = Dust.NewDust(arg_55A4_0, arg_55A4_1, arg_55A4_2, arg_55A4_3, arg_55A4_4,
+		                                                          arg_55A4_5, arg_55A4_6, newColor, 1.4f);
 		                                    Dust expr_55B8_cp_0 = Main.dust[num116];
-		                                    expr_55B8_cp_0.velocity.X = expr_55B8_cp_0.velocity.X / 5f;
+		                                    expr_55B8_cp_0.velocity.X = expr_55B8_cp_0.velocity.X/5f;
 		                                    Dust expr_55D6_cp_0 = Main.dust[num116];
-		                                    expr_55D6_cp_0.velocity.Y = expr_55D6_cp_0.velocity.Y / 5f;
+		                                    expr_55D6_cp_0.velocity.Y = expr_55D6_cp_0.velocity.Y/5f;
 		                                    return;
 		                                }
 		                                if (this.type == 105)
@@ -5034,13 +5154,14 @@ namespace Terraria
 		                                        int arg_5664_1 = this.width;
 		                                        int arg_5664_2 = this.height;
 		                                        int arg_5664_3 = 57;
-		                                        float arg_5664_4 = this.velocity.X * 0.2f;
-		                                        float arg_5664_5 = this.velocity.Y * 0.2f;
+		                                        float arg_5664_4 = this.velocity.X*0.2f;
+		                                        float arg_5664_5 = this.velocity.Y*0.2f;
 		                                        int arg_5664_6 = 200;
 		                                        Color newColor = default(Color);
-		                                        int num117 = Dust.NewDust(arg_5664_0, arg_5664_1, arg_5664_2, arg_5664_3, arg_5664_4, arg_5664_5, arg_5664_6, newColor, 1.2f);
+		                                        int num117 = Dust.NewDust(arg_5664_0, arg_5664_1, arg_5664_2, arg_5664_3,
+		                                                                  arg_5664_4, arg_5664_5, arg_5664_6, newColor, 1.2f);
 		                                        Dust expr_5673 = Main.dust[num117];
-		                                        expr_5673.velocity += this.velocity * 0.3f;
+		                                        expr_5673.velocity += this.velocity*0.3f;
 		                                        Dust expr_569B = Main.dust[num117];
 		                                        expr_569B.velocity *= 0.2f;
 		                                    }
@@ -5054,9 +5175,10 @@ namespace Terraria
 		                                        float arg_5707_5 = 0f;
 		                                        int arg_5707_6 = 254;
 		                                        Color newColor = default(Color);
-		                                        int num118 = Dust.NewDust(arg_5707_0, arg_5707_1, arg_5707_2, arg_5707_3, arg_5707_4, arg_5707_5, arg_5707_6, newColor, 0.3f);
+		                                        int num118 = Dust.NewDust(arg_5707_0, arg_5707_1, arg_5707_2, arg_5707_3,
+		                                                                  arg_5707_4, arg_5707_5, arg_5707_6, newColor, 0.3f);
 		                                        Dust expr_5716 = Main.dust[num118];
-		                                        expr_5716.velocity += this.velocity * 0.5f;
+		                                        expr_5716.velocity += this.velocity*0.5f;
 		                                        Dust expr_573E = Main.dust[num118];
 		                                        expr_573E.velocity *= 0.5f;
 		                                        return;
@@ -5069,20 +5191,27 @@ namespace Terraria
 		                                {
 		                                    if (this.soundDelay <= 0)
 		                                    {
-		                                        Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 22);
+		                                        Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 22);
 		                                        this.soundDelay = 30;
 		                                    }
 		                                    if (Main.myPlayer == this.owner)
 		                                    {
 		                                        if (Main.player[this.owner].channel)
 		                                        {
-		                                            float num119 = Main.player[this.owner].inventory[Main.player[this.owner].selectedItem].shootSpeed * this.scale;
-		                                            Vector2 vector14 = new Vector2(Main.player[this.owner].position.X + (float)Main.player[this.owner].width * 0.5f, Main.player[this.owner].position.Y + (float)Main.player[this.owner].height * 0.5f);
-		                                            float num120 = (float)Main.mouseX + Main.screenPosition.X - vector14.X;
-		                                            float num121 = (float)Main.mouseY + Main.screenPosition.Y - vector14.Y;
-		                                            float num122 = (float)Math.Sqrt((double)(num120 * num120 + num121 * num121));
-		                                            num122 = (float)Math.Sqrt((double)(num120 * num120 + num121 * num121));
-		                                            num122 = num119 / num122;
+		                                            float num119 =
+		                                                Main.player[this.owner].inventory[Main.player[this.owner].selectedItem
+		                                                    ].shootSpeed*this.scale;
+		                                            Vector2 vector14 =
+		                                                new Vector2(
+		                                                    Main.player[this.owner].position.X +
+		                                                    (float) Main.player[this.owner].width*0.5f,
+		                                                    Main.player[this.owner].position.Y +
+		                                                    (float) Main.player[this.owner].height*0.5f);
+		                                            float num120 = (float) Main.mouseX + Main.screenPosition.X - vector14.X;
+		                                            float num121 = (float) Main.mouseY + Main.screenPosition.Y - vector14.Y;
+		                                            float num122 = (float) Math.Sqrt((double) (num120*num120 + num121*num121));
+		                                            num122 = (float) Math.Sqrt((double) (num120*num120 + num121*num121));
+		                                            num122 = num119/num122;
 		                                            num120 *= num122;
 		                                            num121 *= num122;
 		                                            if (num120 != this.velocity.X || num121 != this.velocity.Y)
@@ -5113,21 +5242,35 @@ namespace Terraria
 		                                    Main.player[this.owner].heldProj = this.whoAmI;
 		                                    Main.player[this.owner].itemTime = 2;
 		                                    Main.player[this.owner].itemAnimation = 2;
-		                                    this.position.X = Main.player[this.owner].position.X + (float)(Main.player[this.owner].width / 2) - (float)(this.width / 2);
-		                                    this.position.Y = Main.player[this.owner].position.Y + (float)(Main.player[this.owner].height / 2) - (float)(this.height / 2);
-		                                    this.rotation = (float)(Math.Atan2((double)this.velocity.Y, (double)this.velocity.X) + 1.5700000524520874);
+		                                    this.position.X = Main.player[this.owner].position.X +
+		                                                      (float) (Main.player[this.owner].width/2) -
+		                                                      (float) (this.width/2);
+		                                    this.position.Y = Main.player[this.owner].position.Y +
+		                                                      (float) (Main.player[this.owner].height/2) -
+		                                                      (float) (this.height/2);
+		                                    this.rotation =
+		                                        (float)
+		                                        (Math.Atan2((double) this.velocity.Y, (double) this.velocity.X) +
+		                                         1.5700000524520874);
 		                                    if (Main.player[this.owner].direction == 1)
 		                                    {
-		                                        Main.player[this.owner].itemRotation = (float)Math.Atan2((double)(this.velocity.Y * (float)this.direction), (double)(this.velocity.X * (float)this.direction));
+		                                        Main.player[this.owner].itemRotation =
+		                                            (float)
+		                                            Math.Atan2((double) (this.velocity.Y*(float) this.direction),
+		                                                       (double) (this.velocity.X*(float) this.direction));
 		                                    }
 		                                    else
 		                                    {
-		                                        Main.player[this.owner].itemRotation = (float)Math.Atan2((double)(this.velocity.Y * (float)this.direction), (double)(this.velocity.X * (float)this.direction));
+		                                        Main.player[this.owner].itemRotation =
+		                                            (float)
+		                                            Math.Atan2((double) (this.velocity.Y*(float) this.direction),
+		                                                       (double) (this.velocity.X*(float) this.direction));
 		                                    }
-		                                    this.velocity.X = this.velocity.X * (1f + (float)Main.rand.Next(-3, 4) * 0.01f);
+		                                    this.velocity.X = this.velocity.X*(1f + (float) Main.rand.Next(-3, 4)*0.01f);
 		                                    if (Main.rand.Next(6) == 0)
 		                                    {
-		                                        Vector2 arg_5B85_0 = this.position + this.velocity * (float)Main.rand.Next(6, 10) * 0.1f;
+		                                        Vector2 arg_5B85_0 = this.position +
+		                                                             this.velocity*(float) Main.rand.Next(6, 10)*0.1f;
 		                                        int arg_5B85_1 = this.width;
 		                                        int arg_5B85_2 = this.height;
 		                                        int arg_5B85_3 = 31;
@@ -5135,13 +5278,14 @@ namespace Terraria
 		                                        float arg_5B85_5 = 0f;
 		                                        int arg_5B85_6 = 80;
 		                                        Color newColor = default(Color);
-		                                        int num123 = Dust.NewDust(arg_5B85_0, arg_5B85_1, arg_5B85_2, arg_5B85_3, arg_5B85_4, arg_5B85_5, arg_5B85_6, newColor, 1.4f);
+		                                        int num123 = Dust.NewDust(arg_5B85_0, arg_5B85_1, arg_5B85_2, arg_5B85_3,
+		                                                                  arg_5B85_4, arg_5B85_5, arg_5B85_6, newColor, 1.4f);
 		                                        Dust expr_5B99_cp_0 = Main.dust[num123];
 		                                        expr_5B99_cp_0.position.X = expr_5B99_cp_0.position.X - 4f;
 		                                        Main.dust[num123].noGravity = true;
 		                                        Dust expr_5BC0 = Main.dust[num123];
 		                                        expr_5BC0.velocity *= 0.2f;
-		                                        Main.dust[num123].velocity.Y = (float)(-(float)Main.rand.Next(7, 13)) * 0.15f;
+		                                        Main.dust[num123].velocity.Y = (float) (-(float) Main.rand.Next(7, 13))*0.15f;
 		                                        return;
 		                                    }
 		                                }
@@ -5149,7 +5293,7 @@ namespace Terraria
 		                                {
 		                                    if (this.aiStyle == 21)
 		                                    {
-		                                        this.rotation = this.velocity.X * 0.1f;
+		                                        this.rotation = this.velocity.X*0.1f;
 		                                        this.spriteDirection = -this.direction;
 		                                        if (Main.rand.Next(3) == 0)
 		                                        {
@@ -5161,7 +5305,8 @@ namespace Terraria
 		                                            float arg_5C6A_5 = 0f;
 		                                            int arg_5C6A_6 = 80;
 		                                            Color newColor = default(Color);
-		                                            int num124 = Dust.NewDust(arg_5C6A_0, arg_5C6A_1, arg_5C6A_2, arg_5C6A_3, arg_5C6A_4, arg_5C6A_5, arg_5C6A_6, newColor, 1f);
+		                                            int num124 = Dust.NewDust(arg_5C6A_0, arg_5C6A_1, arg_5C6A_2, arg_5C6A_3,
+		                                                                      arg_5C6A_4, arg_5C6A_5, arg_5C6A_6, newColor, 1f);
 		                                            Main.dust[num124].noGravity = true;
 		                                            Dust expr_5C87 = Main.dust[num124];
 		                                            expr_5C87.velocity *= 0.2f;
@@ -5170,7 +5315,7 @@ namespace Terraria
 		                                        {
 		                                            this.ai[1] = 0f;
 		                                            Main.harpNote = this.ai[0];
-		                                            Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 26);
+		                                            Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 26);
 		                                            return;
 		                                        }
 		                                    }
@@ -5192,10 +5337,10 @@ namespace Terraria
 		                                                {
 		                                                    this.rotation -= 0.3f;
 		                                                }
-		                                                int num125 = (int)(this.position.X / 16f) - 1;
-		                                                int num126 = (int)((this.position.X + (float)this.width) / 16f) + 2;
-		                                                int num127 = (int)(this.position.Y / 16f) - 1;
-		                                                int num128 = (int)((this.position.Y + (float)this.height) / 16f) + 2;
+		                                                int num125 = (int) (this.position.X/16f) - 1;
+		                                                int num126 = (int) ((this.position.X + (float) this.width)/16f) + 2;
+		                                                int num127 = (int) (this.position.Y/16f) - 1;
+		                                                int num128 = (int) ((this.position.Y + (float) this.height)/16f) + 2;
 		                                                if (num125 < 0)
 		                                                {
 		                                                    num125 = 0;
@@ -5212,18 +5357,25 @@ namespace Terraria
 		                                                {
 		                                                    num128 = Main.maxTilesY;
 		                                                }
-		                                                int num129 = (int)this.position.X + 4;
-		                                                int num130 = (int)this.position.Y + 4;
+		                                                int num129 = (int) this.position.X + 4;
+		                                                int num130 = (int) this.position.Y + 4;
 		                                                for (int num131 = num125; num131 < num126; num131++)
 		                                                {
 		                                                    for (int num132 = num127; num132 < num128; num132++)
 		                                                    {
-		                                                        if (Main.tile[num131, num132] != null && Main.tile[num131, num132].active && Main.tile[num131, num132].type != 127 && Main.tileSolid[(int)Main.tile[num131, num132].type] && !Main.tileSolidTop[(int)Main.tile[num131, num132].type])
+		                                                        if (Main.tile[num131, num132] != null &&
+		                                                            Main.tile[num131, num132].active &&
+		                                                            Main.tile[num131, num132].type != 127 &&
+		                                                            Main.tileSolid[(int) Main.tile[num131, num132].type] &&
+		                                                            !Main.tileSolidTop[(int) Main.tile[num131, num132].type])
 		                                                        {
 		                                                            Vector2 vector15;
-		                                                            vector15.X = (float)(num131 * 16);
-		                                                            vector15.Y = (float)(num132 * 16);
-		                                                            if ((float)(num129 + 8) > vector15.X && (float)num129 < vector15.X + 16f && (float)(num130 + 8) > vector15.Y && (float)num130 < vector15.Y + 16f)
+		                                                            vector15.X = (float) (num131*16);
+		                                                            vector15.Y = (float) (num132*16);
+		                                                            if ((float) (num129 + 8) > vector15.X &&
+		                                                                (float) num129 < vector15.X + 16f &&
+		                                                                (float) (num130 + 8) > vector15.Y &&
+		                                                                (float) num130 < vector15.Y + 16f)
 		                                                            {
 		                                                                this.Kill();
 		                                                            }
@@ -5238,7 +5390,9 @@ namespace Terraria
 		                                                float arg_5F75_5 = 0f;
 		                                                int arg_5F75_6 = 0;
 		                                                Color newColor = default(Color);
-		                                                int num133 = Dust.NewDust(arg_5F75_0, arg_5F75_1, arg_5F75_2, arg_5F75_3, arg_5F75_4, arg_5F75_5, arg_5F75_6, newColor, 1f);
+		                                                int num133 = Dust.NewDust(arg_5F75_0, arg_5F75_1, arg_5F75_2,
+		                                                                          arg_5F75_3, arg_5F75_4, arg_5F75_5,
+		                                                                          arg_5F75_6, newColor, 1f);
 		                                                Main.dust[num133].noGravity = true;
 		                                                Dust expr_5F92 = Main.dust[num133];
 		                                                expr_5F92.velocity *= 0.3f;
@@ -5250,7 +5404,8 @@ namespace Terraria
 		                                                {
 		                                                    for (int num134 = 0; num134 < 10; num134++)
 		                                                    {
-		                                                        Vector2 arg_6014_0 = new Vector2(this.position.X, this.position.Y);
+		                                                        Vector2 arg_6014_0 = new Vector2(this.position.X,
+		                                                                                         this.position.Y);
 		                                                        int arg_6014_1 = this.width;
 		                                                        int arg_6014_2 = this.height;
 		                                                        int arg_6014_3 = 67;
@@ -5258,7 +5413,9 @@ namespace Terraria
 		                                                        float arg_6014_5 = 0f;
 		                                                        int arg_6014_6 = 0;
 		                                                        Color newColor = default(Color);
-		                                                        int num135 = Dust.NewDust(arg_6014_0, arg_6014_1, arg_6014_2, arg_6014_3, arg_6014_4, arg_6014_5, arg_6014_6, newColor, 1.1f);
+		                                                        int num135 = Dust.NewDust(arg_6014_0, arg_6014_1, arg_6014_2,
+		                                                                                  arg_6014_3, arg_6014_4, arg_6014_5,
+		                                                                                  arg_6014_6, newColor, 1.1f);
 		                                                        Main.dust[num135].noGravity = true;
 		                                                        Dust expr_6031 = Main.dust[num135];
 		                                                        expr_6031.velocity *= 1.3f;
@@ -5268,7 +5425,8 @@ namespace Terraria
 		                                                {
 		                                                    if (Main.rand.Next(30) == 0)
 		                                                    {
-		                                                        Vector2 arg_60A9_0 = new Vector2(this.position.X, this.position.Y);
+		                                                        Vector2 arg_60A9_0 = new Vector2(this.position.X,
+		                                                                                         this.position.Y);
 		                                                        int arg_60A9_1 = this.width;
 		                                                        int arg_60A9_2 = this.height;
 		                                                        int arg_60A9_3 = 67;
@@ -5276,24 +5434,31 @@ namespace Terraria
 		                                                        float arg_60A9_5 = 0f;
 		                                                        int arg_60A9_6 = 100;
 		                                                        Color newColor = default(Color);
-		                                                        int num136 = Dust.NewDust(arg_60A9_0, arg_60A9_1, arg_60A9_2, arg_60A9_3, arg_60A9_4, arg_60A9_5, arg_60A9_6, newColor, 1f);
+		                                                        int num136 = Dust.NewDust(arg_60A9_0, arg_60A9_1, arg_60A9_2,
+		                                                                                  arg_60A9_3, arg_60A9_4, arg_60A9_5,
+		                                                                                  arg_60A9_6, newColor, 1f);
 		                                                        Dust expr_60B8 = Main.dust[num136];
 		                                                        expr_60B8.velocity *= 0.2f;
 		                                                    }
 		                                                }
-		                                                int num137 = (int)this.position.X / 16;
-		                                                int num138 = (int)this.position.Y / 16;
-		                                                if (Main.tile[num137, num138] == null || !Main.tile[num137, num138].active)
+		                                                int num137 = (int) this.position.X/16;
+		                                                int num138 = (int) this.position.Y/16;
+		                                                if (Main.tile[num137, num138] == null ||
+		                                                    !Main.tile[num137, num138].active)
 		                                                {
 		                                                    this.Kill();
 		                                                }
 		                                                this.ai[0] -= 1f;
-		                                                if (this.ai[0] <= -300f && (Main.myPlayer == this.owner || Main.netMode == 2) && Main.tile[num137, num138].active && Main.tile[num137, num138].type == 127)
+		                                                if (this.ai[0] <= -300f &&
+		                                                    (Main.myPlayer == this.owner || Main.netMode == 2) &&
+		                                                    Main.tile[num137, num138].active &&
+		                                                    Main.tile[num137, num138].type == 127)
 		                                                {
 		                                                    WorldGen.KillTile(num137, num138, false, false, false);
 		                                                    if (Main.netMode == 1)
 		                                                    {
-		                                                        NetMessage.SendData(17, -1, -1, "", 0, (float)num137, (float)num138, 0f, 0);
+		                                                        NetMessage.SendData(17, -1, -1, "", 0, (float) num137,
+		                                                                            (float) num138, 0f, 0);
 		                                                    }
 		                                                    this.Kill();
 		                                                    return;
@@ -5301,10 +5466,10 @@ namespace Terraria
 		                                            }
 		                                            else
 		                                            {
-		                                                int num139 = (int)(this.position.X / 16f) - 1;
-		                                                int num140 = (int)((this.position.X + (float)this.width) / 16f) + 2;
-		                                                int num141 = (int)(this.position.Y / 16f) - 1;
-		                                                int num142 = (int)((this.position.Y + (float)this.height) / 16f) + 2;
+		                                                int num139 = (int) (this.position.X/16f) - 1;
+		                                                int num140 = (int) ((this.position.X + (float) this.width)/16f) + 2;
+		                                                int num141 = (int) (this.position.Y/16f) - 1;
+		                                                int num142 = (int) ((this.position.Y + (float) this.height)/16f) + 2;
 		                                                if (num139 < 0)
 		                                                {
 		                                                    num139 = 0;
@@ -5321,18 +5486,25 @@ namespace Terraria
 		                                                {
 		                                                    num142 = Main.maxTilesY;
 		                                                }
-		                                                int num143 = (int)this.position.X + 4;
-		                                                int num144 = (int)this.position.Y + 4;
+		                                                int num143 = (int) this.position.X + 4;
+		                                                int num144 = (int) this.position.Y + 4;
 		                                                for (int num145 = num139; num145 < num140; num145++)
 		                                                {
 		                                                    for (int num146 = num141; num146 < num142; num146++)
 		                                                    {
-		                                                        if (Main.tile[num145, num146] != null && Main.tile[num145, num146].active && Main.tile[num145, num146].type != 127 && Main.tileSolid[(int)Main.tile[num145, num146].type] && !Main.tileSolidTop[(int)Main.tile[num145, num146].type])
+		                                                        if (Main.tile[num145, num146] != null &&
+		                                                            Main.tile[num145, num146].active &&
+		                                                            Main.tile[num145, num146].type != 127 &&
+		                                                            Main.tileSolid[(int) Main.tile[num145, num146].type] &&
+		                                                            !Main.tileSolidTop[(int) Main.tile[num145, num146].type])
 		                                                        {
 		                                                            Vector2 vector16;
-		                                                            vector16.X = (float)(num145 * 16);
-		                                                            vector16.Y = (float)(num146 * 16);
-		                                                            if ((float)(num143 + 8) > vector16.X && (float)num143 < vector16.X + 16f && (float)(num144 + 8) > vector16.Y && (float)num144 < vector16.Y + 16f)
+		                                                            vector16.X = (float) (num145*16);
+		                                                            vector16.Y = (float) (num146*16);
+		                                                            if ((float) (num143 + 8) > vector16.X &&
+		                                                                (float) num143 < vector16.X + 16f &&
+		                                                                (float) (num144 + 8) > vector16.Y &&
+		                                                                (float) num144 < vector16.Y + 16f)
 		                                                            {
 		                                                                this.Kill();
 		                                                            }
@@ -5353,12 +5525,14 @@ namespace Terraria
 		                                                    float arg_63E8_5 = 0f;
 		                                                    int arg_63E8_6 = 0;
 		                                                    Color newColor = default(Color);
-		                                                    int num147 = Dust.NewDust(arg_63E8_0, arg_63E8_1, arg_63E8_2, arg_63E8_3, arg_63E8_4, arg_63E8_5, arg_63E8_6, newColor, 1f);
+		                                                    int num147 = Dust.NewDust(arg_63E8_0, arg_63E8_1, arg_63E8_2,
+		                                                                              arg_63E8_3, arg_63E8_4, arg_63E8_5,
+		                                                                              arg_63E8_6, newColor, 1f);
 		                                                    Main.dust[num147].noGravity = true;
 		                                                    Dust expr_6405 = Main.dust[num147];
 		                                                    expr_6405.velocity *= 0.3f;
-		                                                    int num148 = (int)this.ai[0];
-		                                                    int num149 = (int)this.ai[1];
+		                                                    int num148 = (int) this.ai[0];
+		                                                    int num149 = (int) this.ai[1];
 		                                                    if (this.velocity.X > 0f)
 		                                                    {
 		                                                        this.rotation += 0.3f;
@@ -5369,31 +5543,40 @@ namespace Terraria
 		                                                    }
 		                                                    if (Main.myPlayer == this.owner)
 		                                                    {
-		                                                        int num150 = (int)((this.position.X + (float)(this.width / 2)) / 16f);
-		                                                        int num151 = (int)((this.position.Y + (float)(this.height / 2)) / 16f);
+		                                                        int num150 =
+		                                                            (int) ((this.position.X + (float) (this.width/2))/16f);
+		                                                        int num151 =
+		                                                            (int) ((this.position.Y + (float) (this.height/2))/16f);
 		                                                        bool flag2 = false;
 		                                                        if (num150 == num148 && num151 == num149)
 		                                                        {
 		                                                            flag2 = true;
 		                                                        }
-		                                                        if (((this.velocity.X <= 0f && num150 <= num148) || (this.velocity.X >= 0f && num150 >= num148)) && ((this.velocity.Y <= 0f && num151 <= num149) || (this.velocity.Y >= 0f && num151 >= num149)))
+		                                                        if (((this.velocity.X <= 0f && num150 <= num148) ||
+		                                                             (this.velocity.X >= 0f && num150 >= num148)) &&
+		                                                            ((this.velocity.Y <= 0f && num151 <= num149) ||
+		                                                             (this.velocity.Y >= 0f && num151 >= num149)))
 		                                                        {
 		                                                            flag2 = true;
 		                                                        }
 		                                                        if (flag2)
 		                                                        {
-		                                                            if (WorldGen.PlaceTile(num148, num149, 127, false, false, this.owner, 0))
+		                                                            if (WorldGen.PlaceTile(num148, num149, 127, false, false,
+		                                                                                   this.owner, 0))
 		                                                            {
 		                                                                if (Main.netMode == 1)
 		                                                                {
-		                                                                    NetMessage.SendData(17, -1, -1, "", 1, (float)((int)this.ai[0]), (float)((int)this.ai[1]), 127f, 0);
+		                                                                    NetMessage.SendData(17, -1, -1, "", 1,
+		                                                                                        (float) ((int) this.ai[0]),
+		                                                                                        (float) ((int) this.ai[1]),
+		                                                                                        127f, 0);
 		                                                                }
 		                                                                this.damage = 0;
 		                                                                this.ai[0] = -1f;
 		                                                                this.velocity *= 0f;
 		                                                                this.alpha = 255;
-		                                                                this.position.X = (float)(num148 * 16);
-		                                                                this.position.Y = (float)(num149 * 16);
+		                                                                this.position.X = (float) (num148*16);
+		                                                                this.position.Y = (float) (num149*16);
 		                                                                this.netUpdate = true;
 		                                                                return;
 		                                                            }
@@ -5443,29 +5626,36 @@ namespace Terraria
 		                                                    {
 		                                                        for (int num154 = 0; num154 < 1; num154++)
 		                                                        {
-		                                                            Vector2 arg_670C_0 = new Vector2(this.position.X, this.position.Y);
+		                                                            Vector2 arg_670C_0 = new Vector2(this.position.X,
+		                                                                                             this.position.Y);
 		                                                            int arg_670C_1 = this.width;
 		                                                            int arg_670C_2 = this.height;
 		                                                            int arg_670C_3 = num153;
-		                                                            float arg_670C_4 = this.velocity.X * 0.2f;
-		                                                            float arg_670C_5 = this.velocity.Y * 0.2f;
+		                                                            float arg_670C_4 = this.velocity.X*0.2f;
+		                                                            float arg_670C_5 = this.velocity.Y*0.2f;
 		                                                            int arg_670C_6 = 100;
 		                                                            Color newColor = default(Color);
-		                                                            int num155 = Dust.NewDust(arg_670C_0, arg_670C_1, arg_670C_2, arg_670C_3, arg_670C_4, arg_670C_5, arg_670C_6, newColor, 1f);
-		                                                            if (Main.rand.Next(3) != 0 || (num153 == 75 && Main.rand.Next(3) == 0))
+		                                                            int num155 = Dust.NewDust(arg_670C_0, arg_670C_1,
+		                                                                                      arg_670C_2, arg_670C_3,
+		                                                                                      arg_670C_4, arg_670C_5,
+		                                                                                      arg_670C_6, newColor, 1f);
+		                                                            if (Main.rand.Next(3) != 0 ||
+		                                                                (num153 == 75 && Main.rand.Next(3) == 0))
 		                                                            {
 		                                                                Main.dust[num155].noGravity = true;
 		                                                                Main.dust[num155].scale *= 3f;
 		                                                                Dust expr_6767_cp_0 = Main.dust[num155];
-		                                                                expr_6767_cp_0.velocity.X = expr_6767_cp_0.velocity.X * 2f;
+		                                                                expr_6767_cp_0.velocity.X = expr_6767_cp_0.velocity.X*
+		                                                                                            2f;
 		                                                                Dust expr_6785_cp_0 = Main.dust[num155];
-		                                                                expr_6785_cp_0.velocity.Y = expr_6785_cp_0.velocity.Y * 2f;
+		                                                                expr_6785_cp_0.velocity.Y = expr_6785_cp_0.velocity.Y*
+		                                                                                            2f;
 		                                                            }
 		                                                            Main.dust[num155].scale *= 1.5f;
 		                                                            Dust expr_67BC_cp_0 = Main.dust[num155];
-		                                                            expr_67BC_cp_0.velocity.X = expr_67BC_cp_0.velocity.X * 1.2f;
+		                                                            expr_67BC_cp_0.velocity.X = expr_67BC_cp_0.velocity.X*1.2f;
 		                                                            Dust expr_67DA_cp_0 = Main.dust[num155];
-		                                                            expr_67DA_cp_0.velocity.Y = expr_67DA_cp_0.velocity.Y * 1.2f;
+		                                                            expr_67DA_cp_0.velocity.Y = expr_67DA_cp_0.velocity.Y*1.2f;
 		                                                            Main.dust[num155].scale *= num152;
 		                                                            if (num153 == 75)
 		                                                            {
@@ -5484,19 +5674,20 @@ namespace Terraria
 		                                                {
 		                                                    this.ai[0] += 1f;
 		                                                }
-		                                                this.rotation += 0.3f * (float)this.direction;
+		                                                this.rotation += 0.3f*(float) this.direction;
 		                                                return;
 		                                            }
 		                                            if (this.aiStyle == 24)
 		                                            {
-		                                                this.light = this.scale * 0.5f;
-		                                                this.rotation += this.velocity.X * 0.2f;
+		                                                this.light = this.scale*0.5f;
+		                                                this.rotation += this.velocity.X*0.2f;
 		                                                this.ai[1] += 1f;
 		                                                if (this.type == 94)
 		                                                {
 		                                                    if (Main.rand.Next(4) == 0)
 		                                                    {
-		                                                        Vector2 arg_6953_0 = new Vector2(this.position.X, this.position.Y);
+		                                                        Vector2 arg_6953_0 = new Vector2(this.position.X,
+		                                                                                         this.position.Y);
 		                                                        int arg_6953_1 = this.width;
 		                                                        int arg_6953_2 = this.height;
 		                                                        int arg_6953_3 = 70;
@@ -5504,7 +5695,9 @@ namespace Terraria
 		                                                        float arg_6953_5 = 0f;
 		                                                        int arg_6953_6 = 0;
 		                                                        Color newColor = default(Color);
-		                                                        int num156 = Dust.NewDust(arg_6953_0, arg_6953_1, arg_6953_2, arg_6953_3, arg_6953_4, arg_6953_5, arg_6953_6, newColor, 1f);
+		                                                        int num156 = Dust.NewDust(arg_6953_0, arg_6953_1, arg_6953_2,
+		                                                                                  arg_6953_3, arg_6953_4, arg_6953_5,
+		                                                                                  arg_6953_6, newColor, 1f);
 		                                                        Main.dust[num156].noGravity = true;
 		                                                        Dust expr_6970 = Main.dust[num156];
 		                                                        expr_6970.velocity *= 0.5f;
@@ -5514,7 +5707,7 @@ namespace Terraria
 		                                                    if (this.ai[1] > 130f)
 		                                                    {
 		                                                        this.scale -= 0.05f;
-		                                                        if ((double)this.scale <= 0.2)
+		                                                        if ((double) this.scale <= 0.2)
 		                                                        {
 		                                                            this.scale = 0.2f;
 		                                                            this.Kill();
@@ -5528,7 +5721,7 @@ namespace Terraria
 		                                                    if (this.ai[1] > 15f)
 		                                                    {
 		                                                        this.scale -= 0.05f;
-		                                                        if ((double)this.scale <= 0.2)
+		                                                        if ((double) this.scale <= 0.2)
 		                                                        {
 		                                                            this.scale = 0.2f;
 		                                                            this.Kill();
@@ -5541,19 +5734,22 @@ namespace Terraria
 		                                            {
 		                                                if (this.aiStyle == 25)
 		                                                {
-		                                                    if (this.ai[0] != 0f && this.velocity.Y <= 0f && this.velocity.X == 0f)
+		                                                    if (this.ai[0] != 0f && this.velocity.Y <= 0f &&
+		                                                        this.velocity.X == 0f)
 		                                                    {
 		                                                        float num157 = 0.5f;
-		                                                        int i2 = (int)((this.position.X - 8f) / 16f);
-		                                                        int num158 = (int)(this.position.Y / 16f);
+		                                                        int i2 = (int) ((this.position.X - 8f)/16f);
+		                                                        int num158 = (int) (this.position.Y/16f);
 		                                                        bool flag3 = false;
 		                                                        bool flag4 = false;
-		                                                        if (WorldGen.SolidTile(i2, num158) || WorldGen.SolidTile(i2, num158 + 1))
+		                                                        if (WorldGen.SolidTile(i2, num158) ||
+		                                                            WorldGen.SolidTile(i2, num158 + 1))
 		                                                        {
 		                                                            flag3 = true;
 		                                                        }
-		                                                        i2 = (int)((this.position.X + (float)this.width + 8f) / 16f);
-		                                                        if (WorldGen.SolidTile(i2, num158) || WorldGen.SolidTile(i2, num158 + 1))
+		                                                        i2 = (int) ((this.position.X + (float) this.width + 8f)/16f);
+		                                                        if (WorldGen.SolidTile(i2, num158) ||
+		                                                            WorldGen.SolidTile(i2, num158 + 1))
 		                                                        {
 		                                                            flag4 = true;
 		                                                        }
@@ -5569,16 +5765,21 @@ namespace Terraria
 		                                                            }
 		                                                            else
 		                                                            {
-		                                                                i2 = (int)((this.position.X - 8f - 16f) / 16f);
-		                                                                num158 = (int)(this.position.Y / 16f);
+		                                                                i2 = (int) ((this.position.X - 8f - 16f)/16f);
+		                                                                num158 = (int) (this.position.Y/16f);
 		                                                                flag3 = false;
 		                                                                flag4 = false;
-		                                                                if (WorldGen.SolidTile(i2, num158) || WorldGen.SolidTile(i2, num158 + 1))
+		                                                                if (WorldGen.SolidTile(i2, num158) ||
+		                                                                    WorldGen.SolidTile(i2, num158 + 1))
 		                                                                {
 		                                                                    flag3 = true;
 		                                                                }
-		                                                                i2 = (int)((this.position.X + (float)this.width + 8f + 16f) / 16f);
-		                                                                if (WorldGen.SolidTile(i2, num158) || WorldGen.SolidTile(i2, num158 + 1))
+		                                                                i2 =
+		                                                                    (int)
+		                                                                    ((this.position.X + (float) this.width + 8f + 16f)/
+		                                                                     16f);
+		                                                                if (WorldGen.SolidTile(i2, num158) ||
+		                                                                    WorldGen.SolidTile(i2, num158 + 1))
 		                                                                {
 		                                                                    flag4 = true;
 		                                                                }
@@ -5594,9 +5795,13 @@ namespace Terraria
 		                                                                    }
 		                                                                    else
 		                                                                    {
-		                                                                        i2 = (int)((this.position.X + 4f) / 16f);
-		                                                                        num158 = (int)((this.position.Y + (float)this.height + 8f) / 16f);
-		                                                                        if (WorldGen.SolidTile(i2, num158) || WorldGen.SolidTile(i2, num158 + 1))
+		                                                                        i2 = (int) ((this.position.X + 4f)/16f);
+		                                                                        num158 =
+		                                                                            (int)
+		                                                                            ((this.position.Y + (float) this.height +
+		                                                                              8f)/16f);
+		                                                                        if (WorldGen.SolidTile(i2, num158) ||
+		                                                                            WorldGen.SolidTile(i2, num158 + 1))
 		                                                                        {
 		                                                                            flag3 = true;
 		                                                                        }
@@ -5613,7 +5818,7 @@ namespace Terraria
 		                                                            }
 		                                                        }
 		                                                    }
-		                                                    this.rotation += this.velocity.X * 0.06f;
+		                                                    this.rotation += this.velocity.X*0.06f;
 		                                                    this.ai[0] = 1f;
 		                                                    if (this.velocity.Y > 16f)
 		                                                    {
@@ -5631,6 +5836,372 @@ namespace Terraria
 		                                                        }
 		                                                    }
 		                                                    this.velocity.Y = this.velocity.Y + 0.3f;
+		                                                    return;
+		                                                }
+		                                                if (this.aiStyle == 26)
+		                                                {
+		                                                    bool flag5 = false;
+		                                                    bool flag6 = false;
+		                                                    bool flag7 = false;
+		                                                    bool flag8 = false;
+		                                                    int num159 = 60;
+		                                                    if (Main.myPlayer == this.owner)
+		                                                    {
+		                                                        if (Main.player[Main.myPlayer].dead)
+		                                                        {
+		                                                            Main.player[Main.myPlayer].bunny = false;
+		                                                        }
+		                                                        if (Main.player[Main.myPlayer].bunny)
+		                                                        {
+		                                                            this.timeLeft = 2;
+		                                                        }
+		                                                    }
+		                                                    if (Main.player[this.owner].position.X +
+		                                                        (float) (Main.player[this.owner].width/2) <
+		                                                        this.position.X + (float) (this.width/2) - (float) num159)
+		                                                    {
+		                                                        flag5 = true;
+		                                                    }
+		                                                    else
+		                                                    {
+		                                                        if (Main.player[this.owner].position.X +
+		                                                            (float) (Main.player[this.owner].width/2) >
+		                                                            this.position.X + (float) (this.width/2) + (float) num159)
+		                                                        {
+		                                                            flag6 = true;
+		                                                        }
+		                                                    }
+		                                                    if (Main.player[this.owner].rocketDelay2 > 0)
+		                                                    {
+		                                                        this.ai[0] = 1f;
+		                                                    }
+		                                                    Vector2 vector17 =
+		                                                        new Vector2(this.position.X + (float) this.width*0.5f,
+		                                                                    this.position.Y + (float) this.height*0.5f);
+		                                                    float num160 = Main.player[this.owner].position.X +
+		                                                                   (float) (Main.player[this.owner].width/2) -
+		                                                                   vector17.X;
+		                                                    float num161 = Main.player[this.owner].position.Y +
+		                                                                   (float) (Main.player[this.owner].height/2) -
+		                                                                   vector17.Y;
+		                                                    float num162 =
+		                                                        (float) Math.Sqrt((double) (num160*num160 + num161*num161));
+		                                                    if (num162 > 2000f)
+		                                                    {
+		                                                        this.position.X = Main.player[this.owner].position.X +
+		                                                                          (float) (Main.player[this.owner].width/2) -
+		                                                                          (float) (this.width/2);
+		                                                        this.position.Y = Main.player[this.owner].position.Y +
+		                                                                          (float) (Main.player[this.owner].height/2) -
+		                                                                          (float) (this.height/2);
+		                                                    }
+		                                                    else
+		                                                    {
+		                                                        if (num162 > 500f || Math.Abs(num161) > 300f)
+		                                                        {
+		                                                            this.ai[0] = 1f;
+		                                                            if (num161 > 0f && this.velocity.Y < 0f)
+		                                                            {
+		                                                                this.velocity.Y = 0f;
+		                                                            }
+		                                                            if (num161 < 0f && this.velocity.Y > 0f)
+		                                                            {
+		                                                                this.velocity.Y = 0f;
+		                                                            }
+		                                                        }
+		                                                    }
+		                                                    if (this.ai[0] != 0f)
+		                                                    {
+		                                                        this.tileCollide = false;
+		                                                        Vector2 vector18 =
+		                                                            new Vector2(this.position.X + (float) this.width*0.5f,
+		                                                                        this.position.Y + (float) this.height*0.5f);
+		                                                        float num163 = Main.player[this.owner].position.X +
+		                                                                       (float) (Main.player[this.owner].width/2) -
+		                                                                       vector18.X;
+		                                                        float num164 = Main.player[this.owner].position.Y +
+		                                                                       (float) (Main.player[this.owner].height/2) -
+		                                                                       vector18.Y;
+		                                                        float num165 =
+		                                                            (float)
+		                                                            Math.Sqrt((double) (num163*num163 + num164*num164));
+		                                                        float num166 = 10f;
+		                                                        if (num165 < 200f && Main.player[this.owner].velocity.Y == 0f &&
+		                                                            this.position.Y + (float) this.height <=
+		                                                            Main.player[this.owner].position.Y +
+		                                                            (float) Main.player[this.owner].height &&
+		                                                            !Collision.SolidCollision(this.position, this.width,
+		                                                                                      this.height))
+		                                                        {
+		                                                            this.ai[0] = 0f;
+		                                                            if (this.velocity.Y < -6f)
+		                                                            {
+		                                                                this.velocity.Y = -6f;
+		                                                            }
+		                                                        }
+		                                                        if (num165 < 60f)
+		                                                        {
+		                                                            num163 = this.velocity.X;
+		                                                            num164 = this.velocity.Y;
+		                                                        }
+		                                                        else
+		                                                        {
+		                                                            num165 = num166/num165;
+		                                                            num163 *= num165;
+		                                                            num164 *= num165;
+		                                                        }
+		                                                        if (this.velocity.X < num163)
+		                                                        {
+		                                                            this.velocity.X = this.velocity.X + 0.2f;
+		                                                            if (this.velocity.X < 0f)
+		                                                            {
+		                                                                this.velocity.X = this.velocity.X + 0.3f;
+		                                                            }
+		                                                        }
+		                                                        if (this.velocity.X > num163)
+		                                                        {
+		                                                            this.velocity.X = this.velocity.X - 0.2f;
+		                                                            if (this.velocity.X > 0f)
+		                                                            {
+		                                                                this.velocity.X = this.velocity.X - 0.3f;
+		                                                            }
+		                                                        }
+		                                                        if (this.velocity.Y < num164)
+		                                                        {
+		                                                            this.velocity.Y = this.velocity.Y + 0.2f;
+		                                                            if (this.velocity.Y < 0f)
+		                                                            {
+		                                                                this.velocity.Y = this.velocity.Y + 0.3f;
+		                                                            }
+		                                                        }
+		                                                        if (this.velocity.Y > num164)
+		                                                        {
+		                                                            this.velocity.Y = this.velocity.Y - 0.2f;
+		                                                            if (this.velocity.Y > 0f)
+		                                                            {
+		                                                                this.velocity.Y = this.velocity.Y - 0.3f;
+		                                                            }
+		                                                        }
+		                                                        this.frame = 7;
+		                                                        if ((double) this.velocity.X > 0.5)
+		                                                        {
+		                                                            this.spriteDirection = -1;
+		                                                        }
+		                                                        else
+		                                                        {
+		                                                            if ((double) this.velocity.X < -0.5)
+		                                                            {
+		                                                                this.spriteDirection = 1;
+		                                                            }
+		                                                        }
+		                                                        if (this.spriteDirection == -1)
+		                                                        {
+		                                                            this.rotation =
+		                                                                (float)
+		                                                                Math.Atan2((double) this.velocity.Y,
+		                                                                           (double) this.velocity.X);
+		                                                        }
+		                                                        else
+		                                                        {
+		                                                            this.rotation =
+		                                                                (float)
+		                                                                Math.Atan2((double) this.velocity.Y,
+		                                                                           (double) this.velocity.X) + 3.14f;
+		                                                        }
+		                                                        Vector2 arg_7485_0 =
+		                                                            new Vector2(
+		                                                                this.position.X + (float) (this.width/2) - 4f,
+		                                                                this.position.Y + (float) (this.height/2) - 4f) -
+		                                                            this.velocity;
+		                                                        int arg_7485_1 = 8;
+		                                                        int arg_7485_2 = 8;
+		                                                        int arg_7485_3 = 16;
+		                                                        float arg_7485_4 = -this.velocity.X*0.5f;
+		                                                        float arg_7485_5 = this.velocity.Y*0.5f;
+		                                                        int arg_7485_6 = 50;
+		                                                        Color newColor = default(Color);
+		                                                        int num167 = Dust.NewDust(arg_7485_0, arg_7485_1, arg_7485_2,
+		                                                                                  arg_7485_3, arg_7485_4, arg_7485_5,
+		                                                                                  arg_7485_6, newColor, 1.7f);
+		                                                        Main.dust[num167].velocity.X = Main.dust[num167].velocity.X*
+		                                                                                       0.2f;
+		                                                        Main.dust[num167].velocity.Y = Main.dust[num167].velocity.Y*
+		                                                                                       0.2f;
+		                                                        Main.dust[num167].noGravity = true;
+		                                                        return;
+		                                                    }
+		                                                    this.rotation = 0f;
+		                                                    this.tileCollide = true;
+		                                                    if (flag5)
+		                                                    {
+		                                                        if ((double) this.velocity.X > -3.5)
+		                                                        {
+		                                                            this.velocity.X = this.velocity.X - 0.08f;
+		                                                        }
+		                                                        else
+		                                                        {
+		                                                            this.velocity.X = this.velocity.X - 0.02f;
+		                                                        }
+		                                                    }
+		                                                    else
+		                                                    {
+		                                                        if (flag6)
+		                                                        {
+		                                                            if ((double) this.velocity.X < 3.5)
+		                                                            {
+		                                                                this.velocity.X = this.velocity.X + 0.08f;
+		                                                            }
+		                                                            else
+		                                                            {
+		                                                                this.velocity.X = this.velocity.X + 0.02f;
+		                                                            }
+		                                                        }
+		                                                        else
+		                                                        {
+		                                                            this.velocity.X = this.velocity.X*0.9f;
+		                                                            if ((double) this.velocity.X >= -0.08 &&
+		                                                                (double) this.velocity.X <= 0.08)
+		                                                            {
+		                                                                this.velocity.X = 0f;
+		                                                            }
+		                                                        }
+		                                                    }
+		                                                    if (flag5 || flag6)
+		                                                    {
+		                                                        int num168 = (int) (this.position.X + (float) (this.width/2))/
+		                                                                     16;
+		                                                        int j2 = (int) (this.position.Y + (float) (this.width/2))/16;
+		                                                        if (flag5)
+		                                                        {
+		                                                            num168--;
+		                                                        }
+		                                                        if (flag6)
+		                                                        {
+		                                                            num168++;
+		                                                        }
+		                                                        num168 += (int) this.velocity.X;
+		                                                        if (WorldGen.SolidTile(num168, j2))
+		                                                        {
+		                                                            flag8 = true;
+		                                                        }
+		                                                    }
+		                                                    if (Main.player[this.owner].position.Y +
+		                                                        (float) Main.player[this.owner].height >
+		                                                        this.position.Y + (float) this.height)
+		                                                    {
+		                                                        flag7 = true;
+		                                                    }
+		                                                    if (this.velocity.Y == 0f)
+		                                                    {
+		                                                        if (!flag7 && (this.velocity.X < 0f || this.velocity.X > 0f))
+		                                                        {
+		                                                            int num169 =
+		                                                                (int) (this.position.X + (float) (this.width/2))/16;
+		                                                            int j3 =
+		                                                                (int) (this.position.Y + (float) (this.height/2))/16 +
+		                                                                1;
+		                                                            if (flag5)
+		                                                            {
+		                                                                num169--;
+		                                                            }
+		                                                            if (flag6)
+		                                                            {
+		                                                                num169++;
+		                                                            }
+		                                                            if (!WorldGen.SolidTile(num169, j3))
+		                                                            {
+		                                                                flag8 = true;
+		                                                            }
+		                                                        }
+		                                                        if (flag8)
+		                                                        {
+		                                                            int i3 = (int) (this.position.X + (float) (this.width/2))/
+		                                                                     16;
+		                                                            int j4 =
+		                                                                (int) (this.position.Y + (float) (this.height/2))/16 +
+		                                                                1;
+		                                                            if (WorldGen.SolidTile(i3, j4))
+		                                                            {
+		                                                                this.velocity.Y = -9.1f;
+		                                                            }
+		                                                        }
+		                                                    }
+		                                                    if (this.velocity.X > 6.5f)
+		                                                    {
+		                                                        this.velocity.X = 6.5f;
+		                                                    }
+		                                                    if (this.velocity.X < -6.5f)
+		                                                    {
+		                                                        this.velocity.X = -6.5f;
+		                                                    }
+		                                                    if ((double) this.velocity.X > 0.07 && flag6)
+		                                                    {
+		                                                        this.direction = 1;
+		                                                    }
+		                                                    if ((double) this.velocity.X < -0.07 && flag5)
+		                                                    {
+		                                                        this.direction = -1;
+		                                                    }
+		                                                    if (this.direction == -1)
+		                                                    {
+		                                                        this.spriteDirection = 1;
+		                                                    }
+		                                                    if (this.direction == 1)
+		                                                    {
+		                                                        this.spriteDirection = -1;
+		                                                    }
+		                                                    if (this.velocity.Y == 0f)
+		                                                    {
+		                                                        if (this.velocity.X == 0f)
+		                                                        {
+		                                                            this.frame = 0;
+		                                                            this.frameCounter = 0;
+		                                                        }
+		                                                        else
+		                                                        {
+		                                                            if ((double) this.velocity.X < -0.8 ||
+		                                                                (double) this.velocity.X > 0.8)
+		                                                            {
+		                                                                this.frameCounter += (int) Math.Abs(this.velocity.X);
+		                                                                this.frameCounter++;
+		                                                                if (this.frameCounter > 6)
+		                                                                {
+		                                                                    this.frame++;
+		                                                                    this.frameCounter = 0;
+		                                                                }
+		                                                                if (this.frame >= 7)
+		                                                                {
+		                                                                    this.frame = 0;
+		                                                                }
+		                                                            }
+		                                                            else
+		                                                            {
+		                                                                this.frame = 0;
+		                                                                this.frameCounter = 0;
+		                                                            }
+		                                                        }
+		                                                    }
+		                                                    else
+		                                                    {
+		                                                        if (this.velocity.Y < 0f)
+		                                                        {
+		                                                            this.frameCounter = 0;
+		                                                            this.frame = 4;
+		                                                        }
+		                                                        else
+		                                                        {
+		                                                            if (this.velocity.Y > 0f)
+		                                                            {
+		                                                                this.frameCounter = 0;
+		                                                                this.frame = 6;
+		                                                            }
+		                                                        }
+		                                                    }
+		                                                    this.velocity.Y = this.velocity.Y + 0.4f;
+		                                                    if (this.velocity.Y > 10f)
+		                                                    {
+		                                                        this.velocity.Y = 10f;
+		                                                    }
 		                                                }
 		                                            }
 		                                        }
@@ -5640,1490 +6211,5217 @@ namespace Terraria
 		                        }
 		                    }
 		                }
+		                break;
 		            }
-		            break;
+		        break;
 		    }
 		}
-	    public void Kill()
-		{
-			if (!this.active)
-			{
-				return;
-			}
-			this.timeLeft = 0;
-			if (this.type == 1 || this.type == 81 || this.type == 98)
-			{
-				Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-				for (int i = 0; i < 10; i++)
-				{
-					Vector2 arg_92_0 = new Vector2(this.position.X, this.position.Y);
-					int arg_92_1 = this.width;
-					int arg_92_2 = this.height;
-					int arg_92_3 = 7;
-					float arg_92_4 = 0f;
-					float arg_92_5 = 0f;
-					int arg_92_6 = 0;
-					Color newColor = default(Color);
-					Dust.NewDust(arg_92_0, arg_92_1, arg_92_2, arg_92_3, arg_92_4, arg_92_5, arg_92_6, newColor, 1f);
-				}
-			}
-			else
-			{
-				if (this.type == 93)
-				{
-					Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-					for (int j = 0; j < 10; j++)
-					{
-						Vector2 arg_105_0 = this.position;
-						int arg_105_1 = this.width;
-						int arg_105_2 = this.height;
-						int arg_105_3 = 57;
-						float arg_105_4 = 0f;
-						float arg_105_5 = 0f;
-						int arg_105_6 = 100;
-						Color newColor = default(Color);
-						int num = Dust.NewDust(arg_105_0, arg_105_1, arg_105_2, arg_105_3, arg_105_4, arg_105_5, arg_105_6, newColor, 0.5f);
-						Dust expr_117_cp_0 = Main.dust[num];
-						expr_117_cp_0.velocity.X = expr_117_cp_0.velocity.X * 2f;
-						Dust expr_134_cp_0 = Main.dust[num];
-						expr_134_cp_0.velocity.Y = expr_134_cp_0.velocity.Y * 2f;
-					}
-				}
-				else
-				{
-					if (this.type == 99)
-					{
-						Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-						for (int k = 0; k < 30; k++)
-						{
-							Vector2 arg_1B0_0 = this.position;
-							int arg_1B0_1 = this.width;
-							int arg_1B0_2 = this.height;
-							int arg_1B0_3 = 1;
-							float arg_1B0_4 = 0f;
-							float arg_1B0_5 = 0f;
-							int arg_1B0_6 = 0;
-							Color newColor = default(Color);
-							int num2 = Dust.NewDust(arg_1B0_0, arg_1B0_1, arg_1B0_2, arg_1B0_3, arg_1B0_4, arg_1B0_5, arg_1B0_6, newColor, 1f);
-							if (Main.rand.Next(2) == 0)
-							{
-								Main.dust[num2].scale *= 1.4f;
-							}
-							this.velocity *= 1.9f;
-						}
-					}
-					else
-					{
-						if (this.type == 91 || this.type == 92)
-						{
-							Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-							for (int l = 0; l < 10; l++)
-							{
-								Vector2 arg_287_0 = this.position;
-								int arg_287_1 = this.width;
-								int arg_287_2 = this.height;
-								int arg_287_3 = 58;
-								float arg_287_4 = this.velocity.X * 0.1f;
-								float arg_287_5 = this.velocity.Y * 0.1f;
-								int arg_287_6 = 150;
-								Color newColor = default(Color);
-								Dust.NewDust(arg_287_0, arg_287_1, arg_287_2, arg_287_3, arg_287_4, arg_287_5, arg_287_6, newColor, 1.2f);
-							}
-							for (int m = 0; m < 3; m++)
-							{
-								Gore.NewGore(this.position, new Vector2(this.velocity.X * 0.05f, this.velocity.Y * 0.05f), Main.rand.Next(16, 18), 1f);
-							}
-							if (this.type == 12 && this.damage < 500)
-							{
-								for (int n = 0; n < 10; n++)
-								{
-									Vector2 arg_35B_0 = this.position;
-									int arg_35B_1 = this.width;
-									int arg_35B_2 = this.height;
-									int arg_35B_3 = 57;
-									float arg_35B_4 = this.velocity.X * 0.1f;
-									float arg_35B_5 = this.velocity.Y * 0.1f;
-									int arg_35B_6 = 150;
-									Color newColor = default(Color);
-									Dust.NewDust(arg_35B_0, arg_35B_1, arg_35B_2, arg_35B_3, arg_35B_4, arg_35B_5, arg_35B_6, newColor, 1.2f);
-								}
-								for (int num3 = 0; num3 < 3; num3++)
-								{
-									Gore.NewGore(this.position, new Vector2(this.velocity.X * 0.05f, this.velocity.Y * 0.05f), Main.rand.Next(16, 18), 1f);
-								}
-							}
-							if ((this.type == 91 || (this.type == 92 && this.ai[0] > 0f)) && this.owner == Main.myPlayer)
-							{
-								float x = this.position.X + (float)Main.rand.Next(-400, 400);
-								float y = this.position.Y - (float)Main.rand.Next(600, 900);
-								Vector2 vector = new Vector2(x, y);
-								float num4 = this.position.X + (float)(this.width / 2) - vector.X;
-								float num5 = this.position.Y + (float)(this.height / 2) - vector.Y;
-								int num6 = 22;
-								float num7 = (float)Math.Sqrt((double)(num4 * num4 + num5 * num5));
-								num7 = (float)num6 / num7;
-								num4 *= num7;
-								num5 *= num7;
-								int num8 = this.damage;
-								if (this.type == 91)
-								{
-									num8 = (int)((float)num8 * 0.5f);
-								}
-								int num9 = Projectile.NewProjectile(x, y, num4, num5, 92, num8, this.knockBack, this.owner);
-								if (this.type == 91)
-								{
-									Main.projectile[num9].ai[1] = this.position.Y;
-									Main.projectile[num9].ai[0] = 1f;
-								}
-								else
-								{
-									Main.projectile[num9].ai[1] = this.position.Y;
-								}
-							}
-						}
-						else
-						{
-							if (this.type == 89)
-							{
-								Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-								for (int num10 = 0; num10 < 5; num10++)
-								{
-									Vector2 arg_5C9_0 = new Vector2(this.position.X, this.position.Y);
-									int arg_5C9_1 = this.width;
-									int arg_5C9_2 = this.height;
-									int arg_5C9_3 = 68;
-									float arg_5C9_4 = 0f;
-									float arg_5C9_5 = 0f;
-									int arg_5C9_6 = 0;
-									Color newColor = default(Color);
-									int num11 = Dust.NewDust(arg_5C9_0, arg_5C9_1, arg_5C9_2, arg_5C9_3, arg_5C9_4, arg_5C9_5, arg_5C9_6, newColor, 1f);
-									Main.dust[num11].noGravity = true;
-									Dust expr_5E6 = Main.dust[num11];
-									expr_5E6.velocity *= 1.5f;
-									Main.dust[num11].scale *= 0.9f;
-								}
-								if (this.type == 89 && this.owner == Main.myPlayer)
-								{
-									for (int num12 = 0; num12 < 3; num12++)
-									{
-										float num13 = -this.velocity.X * (float)Main.rand.Next(40, 70) * 0.01f + (float)Main.rand.Next(-20, 21) * 0.4f;
-										float num14 = -this.velocity.Y * (float)Main.rand.Next(40, 70) * 0.01f + (float)Main.rand.Next(-20, 21) * 0.4f;
-										Projectile.NewProjectile(this.position.X + num13, this.position.Y + num14, num13, num14, 90, (int)((double)this.damage * 0.6), 0f, this.owner);
-									}
-								}
-							}
-							else
-							{
-								if (this.type == 80)
-								{
-									if (this.ai[0] >= 0f)
-									{
-										Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 27);
-										for (int num15 = 0; num15 < 10; num15++)
-										{
-											Vector2 arg_797_0 = new Vector2(this.position.X, this.position.Y);
-											int arg_797_1 = this.width;
-											int arg_797_2 = this.height;
-											int arg_797_3 = 67;
-											float arg_797_4 = 0f;
-											float arg_797_5 = 0f;
-											int arg_797_6 = 0;
-											Color newColor = default(Color);
-											Dust.NewDust(arg_797_0, arg_797_1, arg_797_2, arg_797_3, arg_797_4, arg_797_5, arg_797_6, newColor, 1f);
-										}
-									}
-									int num16 = (int)this.position.X / 16;
-									int num17 = (int)this.position.Y / 16;
-									if (Main.tile[num16, num17].type == 127 && Main.tile[num16, num17].active)
-									{
-										WorldGen.KillTile(num16, num17, false, false, false);
-									}
-								}
-								else
-								{
-									if (this.type == 76 || this.type == 77 || this.type == 78)
-									{
-										for (int num18 = 0; num18 < 5; num18++)
-										{
-											Vector2 arg_883_0 = this.position;
-											int arg_883_1 = this.width;
-											int arg_883_2 = this.height;
-											int arg_883_3 = 27;
-											float arg_883_4 = 0f;
-											float arg_883_5 = 0f;
-											int arg_883_6 = 80;
-											Color newColor = default(Color);
-											int num19 = Dust.NewDust(arg_883_0, arg_883_1, arg_883_2, arg_883_3, arg_883_4, arg_883_5, arg_883_6, newColor, 1.5f);
-											Main.dust[num19].noGravity = true;
-										}
-									}
-									else
-									{
-										if (this.type == 55)
-										{
-											for (int num20 = 0; num20 < 5; num20++)
-											{
-												Vector2 arg_8FA_0 = new Vector2(this.position.X, this.position.Y);
-												int arg_8FA_1 = this.width;
-												int arg_8FA_2 = this.height;
-												int arg_8FA_3 = 18;
-												float arg_8FA_4 = 0f;
-												float arg_8FA_5 = 0f;
-												int arg_8FA_6 = 0;
-												Color newColor = default(Color);
-												int num21 = Dust.NewDust(arg_8FA_0, arg_8FA_1, arg_8FA_2, arg_8FA_3, arg_8FA_4, arg_8FA_5, arg_8FA_6, newColor, 1.5f);
-												Main.dust[num21].noGravity = true;
-											}
-										}
-										else
-										{
-											if (this.type == 51)
-											{
-												Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-												for (int num22 = 0; num22 < 5; num22++)
-												{
-													Vector2 arg_98F_0 = new Vector2(this.position.X, this.position.Y);
-													int arg_98F_1 = this.width;
-													int arg_98F_2 = this.height;
-													int arg_98F_3 = 0;
-													float arg_98F_4 = 0f;
-													float arg_98F_5 = 0f;
-													int arg_98F_6 = 0;
-													Color newColor = default(Color);
-													Dust.NewDust(arg_98F_0, arg_98F_1, arg_98F_2, arg_98F_3, arg_98F_4, arg_98F_5, arg_98F_6, newColor, 0.7f);
-												}
-											}
-											else
-											{
-												if (this.type == 2 || this.type == 82)
-												{
-													Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-													for (int num23 = 0; num23 < 20; num23++)
-													{
-														Vector2 arg_A1F_0 = new Vector2(this.position.X, this.position.Y);
-														int arg_A1F_1 = this.width;
-														int arg_A1F_2 = this.height;
-														int arg_A1F_3 = 6;
-														float arg_A1F_4 = 0f;
-														float arg_A1F_5 = 0f;
-														int arg_A1F_6 = 100;
-														Color newColor = default(Color);
-														Dust.NewDust(arg_A1F_0, arg_A1F_1, arg_A1F_2, arg_A1F_3, arg_A1F_4, arg_A1F_5, arg_A1F_6, newColor, 1f);
-													}
-												}
-												else
-												{
-													if (this.type == 103)
-													{
-														Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-														for (int num24 = 0; num24 < 20; num24++)
-														{
-															Vector2 arg_AAE_0 = new Vector2(this.position.X, this.position.Y);
-															int arg_AAE_1 = this.width;
-															int arg_AAE_2 = this.height;
-															int arg_AAE_3 = 75;
-															float arg_AAE_4 = 0f;
-															float arg_AAE_5 = 0f;
-															int arg_AAE_6 = 100;
-															Color newColor = default(Color);
-															int num25 = Dust.NewDust(arg_AAE_0, arg_AAE_1, arg_AAE_2, arg_AAE_3, arg_AAE_4, arg_AAE_5, arg_AAE_6, newColor, 1f);
-															if (Main.rand.Next(2) == 0)
-															{
-																Main.dust[num25].scale *= 2.5f;
-																Main.dust[num25].noGravity = true;
-																Dust expr_AF1 = Main.dust[num25];
-																expr_AF1.velocity *= 5f;
-															}
-														}
-													}
-													else
-													{
-														if (this.type == 3 || this.type == 48 || this.type == 54)
-														{
-															Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-															for (int num26 = 0; num26 < 10; num26++)
-															{
-																Vector2 arg_BB8_0 = new Vector2(this.position.X, this.position.Y);
-																int arg_BB8_1 = this.width;
-																int arg_BB8_2 = this.height;
-																int arg_BB8_3 = 1;
-																float arg_BB8_4 = this.velocity.X * 0.1f;
-																float arg_BB8_5 = this.velocity.Y * 0.1f;
-																int arg_BB8_6 = 0;
-																Color newColor = default(Color);
-																Dust.NewDust(arg_BB8_0, arg_BB8_1, arg_BB8_2, arg_BB8_3, arg_BB8_4, arg_BB8_5, arg_BB8_6, newColor, 0.75f);
-															}
-														}
-														else
-														{
-															if (this.type == 4)
-															{
-																Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																for (int num27 = 0; num27 < 10; num27++)
-																{
-																	Vector2 arg_C46_0 = new Vector2(this.position.X, this.position.Y);
-																	int arg_C46_1 = this.width;
-																	int arg_C46_2 = this.height;
-																	int arg_C46_3 = 14;
-																	float arg_C46_4 = 0f;
-																	float arg_C46_5 = 0f;
-																	int arg_C46_6 = 150;
-																	Color newColor = default(Color);
-																	Dust.NewDust(arg_C46_0, arg_C46_1, arg_C46_2, arg_C46_3, arg_C46_4, arg_C46_5, arg_C46_6, newColor, 1.1f);
-																}
-															}
-															else
-															{
-																if (this.type == 5)
-																{
-																	Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																	for (int num28 = 0; num28 < 60; num28++)
-																	{
-																		int num29 = Main.rand.Next(3);
-																		if (num29 == 0)
-																		{
-																			num29 = 15;
-																		}
-																		else
-																		{
-																			if (num29 == 1)
-																			{
-																				num29 = 57;
-																			}
-																			else
-																			{
-																				num29 = 58;
-																			}
-																		}
-																		Vector2 arg_CFE_0 = this.position;
-																		int arg_CFE_1 = this.width;
-																		int arg_CFE_2 = this.height;
-																		int arg_CFE_3 = num29;
-																		float arg_CFE_4 = this.velocity.X * 0.5f;
-																		float arg_CFE_5 = this.velocity.Y * 0.5f;
-																		int arg_CFE_6 = 150;
-																		Color newColor = default(Color);
-																		Dust.NewDust(arg_CFE_0, arg_CFE_1, arg_CFE_2, arg_CFE_3, arg_CFE_4, arg_CFE_5, arg_CFE_6, newColor, 1.5f);
-																	}
-																}
-																else
-																{
-																	if (this.type == 9 || this.type == 12)
-																	{
-																		Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																		for (int num30 = 0; num30 < 10; num30++)
-																		{
-																			Vector2 arg_D9E_0 = this.position;
-																			int arg_D9E_1 = this.width;
-																			int arg_D9E_2 = this.height;
-																			int arg_D9E_3 = 58;
-																			float arg_D9E_4 = this.velocity.X * 0.1f;
-																			float arg_D9E_5 = this.velocity.Y * 0.1f;
-																			int arg_D9E_6 = 150;
-																			Color newColor = default(Color);
-																			Dust.NewDust(arg_D9E_0, arg_D9E_1, arg_D9E_2, arg_D9E_3, arg_D9E_4, arg_D9E_5, arg_D9E_6, newColor, 1.2f);
-																		}
-																		for (int num31 = 0; num31 < 3; num31++)
-																		{
-																			Gore.NewGore(this.position, new Vector2(this.velocity.X * 0.05f, this.velocity.Y * 0.05f), Main.rand.Next(16, 18), 1f);
-																		}
-																		if (this.type == 12 && this.damage < 100)
-																		{
-																			for (int num32 = 0; num32 < 10; num32++)
-																			{
-																				Vector2 arg_E6F_0 = this.position;
-																				int arg_E6F_1 = this.width;
-																				int arg_E6F_2 = this.height;
-																				int arg_E6F_3 = 57;
-																				float arg_E6F_4 = this.velocity.X * 0.1f;
-																				float arg_E6F_5 = this.velocity.Y * 0.1f;
-																				int arg_E6F_6 = 150;
-																				Color newColor = default(Color);
-																				Dust.NewDust(arg_E6F_0, arg_E6F_1, arg_E6F_2, arg_E6F_3, arg_E6F_4, arg_E6F_5, arg_E6F_6, newColor, 1.2f);
-																			}
-																			for (int num33 = 0; num33 < 3; num33++)
-																			{
-																				Gore.NewGore(this.position, new Vector2(this.velocity.X * 0.05f, this.velocity.Y * 0.05f), Main.rand.Next(16, 18), 1f);
-																			}
-																		}
-																	}
-																	else
-																	{
-																		if (this.type == 14 || this.type == 20 || this.type == 36 || this.type == 83 || this.type == 84 || this.type == 100 || this.type == 110)
-																		{
-																			Collision.HitTiles(this.position, this.velocity, this.width, this.height);
-																			Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																		}
-																		else
-																		{
-																			if (this.type == 15 || this.type == 34)
-																			{
-																				Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																				for (int num34 = 0; num34 < 20; num34++)
-																				{
-																					Vector2 arg_1000_0 = new Vector2(this.position.X, this.position.Y);
-																					int arg_1000_1 = this.width;
-																					int arg_1000_2 = this.height;
-																					int arg_1000_3 = 6;
-																					float arg_1000_4 = -this.velocity.X * 0.2f;
-																					float arg_1000_5 = -this.velocity.Y * 0.2f;
-																					int arg_1000_6 = 100;
-																					Color newColor = default(Color);
-																					int num35 = Dust.NewDust(arg_1000_0, arg_1000_1, arg_1000_2, arg_1000_3, arg_1000_4, arg_1000_5, arg_1000_6, newColor, 2f);
-																					Main.dust[num35].noGravity = true;
-																					Dust expr_101D = Main.dust[num35];
-																					expr_101D.velocity *= 2f;
-																					Vector2 arg_108F_0 = new Vector2(this.position.X, this.position.Y);
-																					int arg_108F_1 = this.width;
-																					int arg_108F_2 = this.height;
-																					int arg_108F_3 = 6;
-																					float arg_108F_4 = -this.velocity.X * 0.2f;
-																					float arg_108F_5 = -this.velocity.Y * 0.2f;
-																					int arg_108F_6 = 100;
-																					newColor = default(Color);
-																					num35 = Dust.NewDust(arg_108F_0, arg_108F_1, arg_108F_2, arg_108F_3, arg_108F_4, arg_108F_5, arg_108F_6, newColor, 1f);
-																					Dust expr_109E = Main.dust[num35];
-																					expr_109E.velocity *= 2f;
-																				}
-																			}
-																			else
-																			{
-																				if (this.type == 95 || this.type == 96)
-																				{
-																					Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																					for (int num36 = 0; num36 < 20; num36++)
-																					{
-																						Vector2 arg_116B_0 = new Vector2(this.position.X, this.position.Y);
-																						int arg_116B_1 = this.width;
-																						int arg_116B_2 = this.height;
-																						int arg_116B_3 = 75;
-																						float arg_116B_4 = -this.velocity.X * 0.2f;
-																						float arg_116B_5 = -this.velocity.Y * 0.2f;
-																						int arg_116B_6 = 100;
-																						Color newColor = default(Color);
-																						int num37 = Dust.NewDust(arg_116B_0, arg_116B_1, arg_116B_2, arg_116B_3, arg_116B_4, arg_116B_5, arg_116B_6, newColor, 2f * this.scale);
-																						Main.dust[num37].noGravity = true;
-																						Dust expr_1188 = Main.dust[num37];
-																						expr_1188.velocity *= 2f;
-																						Vector2 arg_1202_0 = new Vector2(this.position.X, this.position.Y);
-																						int arg_1202_1 = this.width;
-																						int arg_1202_2 = this.height;
-																						int arg_1202_3 = 75;
-																						float arg_1202_4 = -this.velocity.X * 0.2f;
-																						float arg_1202_5 = -this.velocity.Y * 0.2f;
-																						int arg_1202_6 = 100;
-																						newColor = default(Color);
-																						num37 = Dust.NewDust(arg_1202_0, arg_1202_1, arg_1202_2, arg_1202_3, arg_1202_4, arg_1202_5, arg_1202_6, newColor, 1f * this.scale);
-																						Dust expr_1211 = Main.dust[num37];
-																						expr_1211.velocity *= 2f;
-																					}
-																				}
-																				else
-																				{
-																					if (this.type == 79)
-																					{
-																						Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																						for (int num38 = 0; num38 < 20; num38++)
-																						{
-																							int num39 = Dust.NewDust(new Vector2(this.position.X, this.position.Y), this.width, this.height, 66, 0f, 0f, 100, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 2f);
-																							Main.dust[num39].noGravity = true;
-																							Dust expr_12DA = Main.dust[num39];
-																							expr_12DA.velocity *= 4f;
-																						}
-																					}
-																					else
-																					{
-																						if (this.type == 16)
-																						{
-																							Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																							for (int num40 = 0; num40 < 20; num40++)
-																							{
-																								Vector2 arg_1394_0 = new Vector2(this.position.X - this.velocity.X, this.position.Y - this.velocity.Y);
-																								int arg_1394_1 = this.width;
-																								int arg_1394_2 = this.height;
-																								int arg_1394_3 = 15;
-																								float arg_1394_4 = 0f;
-																								float arg_1394_5 = 0f;
-																								int arg_1394_6 = 100;
-																								Color newColor = default(Color);
-																								int num41 = Dust.NewDust(arg_1394_0, arg_1394_1, arg_1394_2, arg_1394_3, arg_1394_4, arg_1394_5, arg_1394_6, newColor, 2f);
-																								Main.dust[num41].noGravity = true;
-																								Dust expr_13B1 = Main.dust[num41];
-																								expr_13B1.velocity *= 2f;
-																								Vector2 arg_1422_0 = new Vector2(this.position.X - this.velocity.X, this.position.Y - this.velocity.Y);
-																								int arg_1422_1 = this.width;
-																								int arg_1422_2 = this.height;
-																								int arg_1422_3 = 15;
-																								float arg_1422_4 = 0f;
-																								float arg_1422_5 = 0f;
-																								int arg_1422_6 = 100;
-																								newColor = default(Color);
-																								num41 = Dust.NewDust(arg_1422_0, arg_1422_1, arg_1422_2, arg_1422_3, arg_1422_4, arg_1422_5, arg_1422_6, newColor, 1f);
-																							}
-																						}
-																						else
-																						{
-																							if (this.type == 17)
-																							{
-																								Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																								for (int num42 = 0; num42 < 5; num42++)
-																								{
-																									Vector2 arg_14AD_0 = new Vector2(this.position.X, this.position.Y);
-																									int arg_14AD_1 = this.width;
-																									int arg_14AD_2 = this.height;
-																									int arg_14AD_3 = 0;
-																									float arg_14AD_4 = 0f;
-																									float arg_14AD_5 = 0f;
-																									int arg_14AD_6 = 0;
-																									Color newColor = default(Color);
-																									Dust.NewDust(arg_14AD_0, arg_14AD_1, arg_14AD_2, arg_14AD_3, arg_14AD_4, arg_14AD_5, arg_14AD_6, newColor, 1f);
-																								}
-																							}
-																							else
-																							{
-																								if (this.type == 31 || this.type == 42)
-																								{
-																									Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																									for (int num43 = 0; num43 < 5; num43++)
-																									{
-																										Vector2 arg_1541_0 = new Vector2(this.position.X, this.position.Y);
-																										int arg_1541_1 = this.width;
-																										int arg_1541_2 = this.height;
-																										int arg_1541_3 = 32;
-																										float arg_1541_4 = 0f;
-																										float arg_1541_5 = 0f;
-																										int arg_1541_6 = 0;
-																										Color newColor = default(Color);
-																										int num44 = Dust.NewDust(arg_1541_0, arg_1541_1, arg_1541_2, arg_1541_3, arg_1541_4, arg_1541_5, arg_1541_6, newColor, 1f);
-																										Dust expr_1550 = Main.dust[num44];
-																										expr_1550.velocity *= 0.6f;
-																									}
-																								}
-																								else
-																								{
-																									if (this.type == 109)
-																									{
-																										Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																										for (int num45 = 0; num45 < 5; num45++)
-																										{
-																											Vector2 arg_15E9_0 = new Vector2(this.position.X, this.position.Y);
-																											int arg_15E9_1 = this.width;
-																											int arg_15E9_2 = this.height;
-																											int arg_15E9_3 = 51;
-																											float arg_15E9_4 = 0f;
-																											float arg_15E9_5 = 0f;
-																											int arg_15E9_6 = 0;
-																											Color newColor = default(Color);
-																											int num46 = Dust.NewDust(arg_15E9_0, arg_15E9_1, arg_15E9_2, arg_15E9_3, arg_15E9_4, arg_15E9_5, arg_15E9_6, newColor, 0.6f);
-																											Dust expr_15F8 = Main.dust[num46];
-																											expr_15F8.velocity *= 0.6f;
-																										}
-																									}
-																									else
-																									{
-																										if (this.type == 39)
-																										{
-																											Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																											for (int num47 = 0; num47 < 5; num47++)
-																											{
-																												Vector2 arg_1691_0 = new Vector2(this.position.X, this.position.Y);
-																												int arg_1691_1 = this.width;
-																												int arg_1691_2 = this.height;
-																												int arg_1691_3 = 38;
-																												float arg_1691_4 = 0f;
-																												float arg_1691_5 = 0f;
-																												int arg_1691_6 = 0;
-																												Color newColor = default(Color);
-																												int num48 = Dust.NewDust(arg_1691_0, arg_1691_1, arg_1691_2, arg_1691_3, arg_1691_4, arg_1691_5, arg_1691_6, newColor, 1f);
-																												Dust expr_16A0 = Main.dust[num48];
-																												expr_16A0.velocity *= 0.6f;
-																											}
-																										}
-																										else
-																										{
-																											if (this.type == 71)
-																											{
-																												Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																												for (int num49 = 0; num49 < 5; num49++)
-																												{
-																													Vector2 arg_1739_0 = new Vector2(this.position.X, this.position.Y);
-																													int arg_1739_1 = this.width;
-																													int arg_1739_2 = this.height;
-																													int arg_1739_3 = 53;
-																													float arg_1739_4 = 0f;
-																													float arg_1739_5 = 0f;
-																													int arg_1739_6 = 0;
-																													Color newColor = default(Color);
-																													int num50 = Dust.NewDust(arg_1739_0, arg_1739_1, arg_1739_2, arg_1739_3, arg_1739_4, arg_1739_5, arg_1739_6, newColor, 1f);
-																													Dust expr_1748 = Main.dust[num50];
-																													expr_1748.velocity *= 0.6f;
-																												}
-																											}
-																											else
-																											{
-																												if (this.type == 40)
-																												{
-																													Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																													for (int num51 = 0; num51 < 5; num51++)
-																													{
-																														Vector2 arg_17E1_0 = new Vector2(this.position.X, this.position.Y);
-																														int arg_17E1_1 = this.width;
-																														int arg_17E1_2 = this.height;
-																														int arg_17E1_3 = 36;
-																														float arg_17E1_4 = 0f;
-																														float arg_17E1_5 = 0f;
-																														int arg_17E1_6 = 0;
-																														Color newColor = default(Color);
-																														int num52 = Dust.NewDust(arg_17E1_0, arg_17E1_1, arg_17E1_2, arg_17E1_3, arg_17E1_4, arg_17E1_5, arg_17E1_6, newColor, 1f);
-																														Dust expr_17F0 = Main.dust[num52];
-																														expr_17F0.velocity *= 0.6f;
-																													}
-																												}
-																												else
-																												{
-																													if (this.type == 21)
-																													{
-																														Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
-																														for (int num53 = 0; num53 < 10; num53++)
-																														{
-																															Vector2 arg_1886_0 = new Vector2(this.position.X, this.position.Y);
-																															int arg_1886_1 = this.width;
-																															int arg_1886_2 = this.height;
-																															int arg_1886_3 = 26;
-																															float arg_1886_4 = 0f;
-																															float arg_1886_5 = 0f;
-																															int arg_1886_6 = 0;
-																															Color newColor = default(Color);
-																															Dust.NewDust(arg_1886_0, arg_1886_1, arg_1886_2, arg_1886_3, arg_1886_4, arg_1886_5, arg_1886_6, newColor, 0.8f);
-																														}
-																													}
-																													else
-																													{
-																														if (this.type == 24)
-																														{
-																															for (int num54 = 0; num54 < 10; num54++)
-																															{
-																																Vector2 arg_1906_0 = new Vector2(this.position.X, this.position.Y);
-																																int arg_1906_1 = this.width;
-																																int arg_1906_2 = this.height;
-																																int arg_1906_3 = 1;
-																																float arg_1906_4 = this.velocity.X * 0.1f;
-																																float arg_1906_5 = this.velocity.Y * 0.1f;
-																																int arg_1906_6 = 0;
-																																Color newColor = default(Color);
-																																Dust.NewDust(arg_1906_0, arg_1906_1, arg_1906_2, arg_1906_3, arg_1906_4, arg_1906_5, arg_1906_6, newColor, 0.75f);
-																															}
-																														}
-																														else
-																														{
-																															if (this.type == 27)
-																															{
-																																Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																																for (int num55 = 0; num55 < 30; num55++)
-																																{
-																																	Vector2 arg_19AE_0 = new Vector2(this.position.X, this.position.Y);
-																																	int arg_19AE_1 = this.width;
-																																	int arg_19AE_2 = this.height;
-																																	int arg_19AE_3 = 29;
-																																	float arg_19AE_4 = this.velocity.X * 0.1f;
-																																	float arg_19AE_5 = this.velocity.Y * 0.1f;
-																																	int arg_19AE_6 = 100;
-																																	Color newColor = default(Color);
-																																	int num56 = Dust.NewDust(arg_19AE_0, arg_19AE_1, arg_19AE_2, arg_19AE_3, arg_19AE_4, arg_19AE_5, arg_19AE_6, newColor, 3f);
-																																	Main.dust[num56].noGravity = true;
-																																	Vector2 arg_1A1F_0 = new Vector2(this.position.X, this.position.Y);
-																																	int arg_1A1F_1 = this.width;
-																																	int arg_1A1F_2 = this.height;
-																																	int arg_1A1F_3 = 29;
-																																	float arg_1A1F_4 = this.velocity.X * 0.1f;
-																																	float arg_1A1F_5 = this.velocity.Y * 0.1f;
-																																	int arg_1A1F_6 = 100;
-																																	newColor = default(Color);
-																																	Dust.NewDust(arg_1A1F_0, arg_1A1F_1, arg_1A1F_2, arg_1A1F_3, arg_1A1F_4, arg_1A1F_5, arg_1A1F_6, newColor, 2f);
-																																}
-																															}
-																															else
-																															{
-																																if (this.type == 38)
-																																{
-																																	for (int num57 = 0; num57 < 10; num57++)
-																																	{
-																																		Vector2 arg_1AA3_0 = new Vector2(this.position.X, this.position.Y);
-																																		int arg_1AA3_1 = this.width;
-																																		int arg_1AA3_2 = this.height;
-																																		int arg_1AA3_3 = 42;
-																																		float arg_1AA3_4 = this.velocity.X * 0.1f;
-																																		float arg_1AA3_5 = this.velocity.Y * 0.1f;
-																																		int arg_1AA3_6 = 0;
-																																		Color newColor = default(Color);
-																																		Dust.NewDust(arg_1AA3_0, arg_1AA3_1, arg_1AA3_2, arg_1AA3_3, arg_1AA3_4, arg_1AA3_5, arg_1AA3_6, newColor, 1f);
-																																	}
-																																}
-																																else
-																																{
-																																	if (this.type == 44 || this.type == 45)
-																																	{
-																																		Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 10);
-																																		for (int num58 = 0; num58 < 30; num58++)
-																																		{
-																																			Vector2 arg_1B49_0 = new Vector2(this.position.X, this.position.Y);
-																																			int arg_1B49_1 = this.width;
-																																			int arg_1B49_2 = this.height;
-																																			int arg_1B49_3 = 27;
-																																			float arg_1B49_4 = this.velocity.X;
-																																			float arg_1B49_5 = this.velocity.Y;
-																																			int arg_1B49_6 = 100;
-																																			Color newColor = default(Color);
-																																			int num59 = Dust.NewDust(arg_1B49_0, arg_1B49_1, arg_1B49_2, arg_1B49_3, arg_1B49_4, arg_1B49_5, arg_1B49_6, newColor, 1.7f);
-																																			Main.dust[num59].noGravity = true;
-																																			Vector2 arg_1BAE_0 = new Vector2(this.position.X, this.position.Y);
-																																			int arg_1BAE_1 = this.width;
-																																			int arg_1BAE_2 = this.height;
-																																			int arg_1BAE_3 = 27;
-																																			float arg_1BAE_4 = this.velocity.X;
-																																			float arg_1BAE_5 = this.velocity.Y;
-																																			int arg_1BAE_6 = 100;
-																																			newColor = default(Color);
-																																			Dust.NewDust(arg_1BAE_0, arg_1BAE_1, arg_1BAE_2, arg_1BAE_3, arg_1BAE_4, arg_1BAE_5, arg_1BAE_6, newColor, 1f);
-																																		}
-																																	}
-																																	else
-																																	{
-																																		if (this.type == 41)
-																																		{
-																																			Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 14);
-																																			for (int num60 = 0; num60 < 10; num60++)
-																																			{
-																																				Vector2 arg_1C3E_0 = new Vector2(this.position.X, this.position.Y);
-																																				int arg_1C3E_1 = this.width;
-																																				int arg_1C3E_2 = this.height;
-																																				int arg_1C3E_3 = 31;
-																																				float arg_1C3E_4 = 0f;
-																																				float arg_1C3E_5 = 0f;
-																																				int arg_1C3E_6 = 100;
-																																				Color newColor = default(Color);
-																																				Dust.NewDust(arg_1C3E_0, arg_1C3E_1, arg_1C3E_2, arg_1C3E_3, arg_1C3E_4, arg_1C3E_5, arg_1C3E_6, newColor, 1.5f);
-																																			}
-																																			for (int num61 = 0; num61 < 5; num61++)
-																																			{
-																																				Vector2 arg_1C9B_0 = new Vector2(this.position.X, this.position.Y);
-																																				int arg_1C9B_1 = this.width;
-																																				int arg_1C9B_2 = this.height;
-																																				int arg_1C9B_3 = 6;
-																																				float arg_1C9B_4 = 0f;
-																																				float arg_1C9B_5 = 0f;
-																																				int arg_1C9B_6 = 100;
-																																				Color newColor = default(Color);
-																																				int num62 = Dust.NewDust(arg_1C9B_0, arg_1C9B_1, arg_1C9B_2, arg_1C9B_3, arg_1C9B_4, arg_1C9B_5, arg_1C9B_6, newColor, 2.5f);
-																																				Main.dust[num62].noGravity = true;
-																																				Dust expr_1CB8 = Main.dust[num62];
-																																				expr_1CB8.velocity *= 3f;
-																																				Vector2 arg_1D10_0 = new Vector2(this.position.X, this.position.Y);
-																																				int arg_1D10_1 = this.width;
-																																				int arg_1D10_2 = this.height;
-																																				int arg_1D10_3 = 6;
-																																				float arg_1D10_4 = 0f;
-																																				float arg_1D10_5 = 0f;
-																																				int arg_1D10_6 = 100;
-																																				newColor = default(Color);
-																																				num62 = Dust.NewDust(arg_1D10_0, arg_1D10_1, arg_1D10_2, arg_1D10_3, arg_1D10_4, arg_1D10_5, arg_1D10_6, newColor, 1.5f);
-																																				Dust expr_1D1F = Main.dust[num62];
-																																				expr_1D1F.velocity *= 2f;
-																																			}
-																																			Vector2 arg_1D7A_0 = new Vector2(this.position.X, this.position.Y);
-																																			Vector2 vector2 = default(Vector2);
-																																			int num63 = Gore.NewGore(arg_1D7A_0, vector2, Main.rand.Next(61, 64), 1f);
-																																			Gore expr_1D89 = Main.gore[num63];
-																																			expr_1D89.velocity *= 0.4f;
-																																			Gore expr_1DAB_cp_0 = Main.gore[num63];
-																																			expr_1DAB_cp_0.velocity.X = expr_1DAB_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.1f;
-																																			Gore expr_1DD9_cp_0 = Main.gore[num63];
-																																			expr_1DD9_cp_0.velocity.Y = expr_1DD9_cp_0.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.1f;
-																																			Vector2 arg_1E32_0 = new Vector2(this.position.X, this.position.Y);
-																																			vector2 = default(Vector2);
-																																			num63 = Gore.NewGore(arg_1E32_0, vector2, Main.rand.Next(61, 64), 1f);
-																																			Gore expr_1E41 = Main.gore[num63];
-																																			expr_1E41.velocity *= 0.4f;
-																																			Gore expr_1E63_cp_0 = Main.gore[num63];
-																																			expr_1E63_cp_0.velocity.X = expr_1E63_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.1f;
-																																			Gore expr_1E91_cp_0 = Main.gore[num63];
-																																			expr_1E91_cp_0.velocity.Y = expr_1E91_cp_0.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.1f;
-																																			if (this.owner == Main.myPlayer)
-																																			{
-																																				this.penetrate = -1;
-																																				this.position.X = this.position.X + (float)(this.width / 2);
-																																				this.position.Y = this.position.Y + (float)(this.height / 2);
-																																				this.width = 64;
-																																				this.height = 64;
-																																				this.position.X = this.position.X - (float)(this.width / 2);
-																																				this.position.Y = this.position.Y - (float)(this.height / 2);
-																																				this.Damage();
-																																			}
-																																		}
-																																		else
-																																		{
-																																			if (this.type == 28 || this.type == 30 || this.type == 37 || this.type == 75 || this.type == 102)
-																																			{
-																																				Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 14);
-																																				this.position.X = this.position.X + (float)(this.width / 2);
-																																				this.position.Y = this.position.Y + (float)(this.height / 2);
-																																				this.width = 22;
-																																				this.height = 22;
-																																				this.position.X = this.position.X - (float)(this.width / 2);
-																																				this.position.Y = this.position.Y - (float)(this.height / 2);
-																																				for (int num64 = 0; num64 < 20; num64++)
-																																				{
-																																					Vector2 arg_206A_0 = new Vector2(this.position.X, this.position.Y);
-																																					int arg_206A_1 = this.width;
-																																					int arg_206A_2 = this.height;
-																																					int arg_206A_3 = 31;
-																																					float arg_206A_4 = 0f;
-																																					float arg_206A_5 = 0f;
-																																					int arg_206A_6 = 100;
-																																					Color newColor = default(Color);
-																																					int num65 = Dust.NewDust(arg_206A_0, arg_206A_1, arg_206A_2, arg_206A_3, arg_206A_4, arg_206A_5, arg_206A_6, newColor, 1.5f);
-																																					Dust expr_2079 = Main.dust[num65];
-																																					expr_2079.velocity *= 1.4f;
-																																				}
-																																				for (int num66 = 0; num66 < 10; num66++)
-																																				{
-																																					Vector2 arg_20E5_0 = new Vector2(this.position.X, this.position.Y);
-																																					int arg_20E5_1 = this.width;
-																																					int arg_20E5_2 = this.height;
-																																					int arg_20E5_3 = 6;
-																																					float arg_20E5_4 = 0f;
-																																					float arg_20E5_5 = 0f;
-																																					int arg_20E5_6 = 100;
-																																					Color newColor = default(Color);
-																																					int num67 = Dust.NewDust(arg_20E5_0, arg_20E5_1, arg_20E5_2, arg_20E5_3, arg_20E5_4, arg_20E5_5, arg_20E5_6, newColor, 2.5f);
-																																					Main.dust[num67].noGravity = true;
-																																					Dust expr_2102 = Main.dust[num67];
-																																					expr_2102.velocity *= 5f;
-																																					Vector2 arg_215A_0 = new Vector2(this.position.X, this.position.Y);
-																																					int arg_215A_1 = this.width;
-																																					int arg_215A_2 = this.height;
-																																					int arg_215A_3 = 6;
-																																					float arg_215A_4 = 0f;
-																																					float arg_215A_5 = 0f;
-																																					int arg_215A_6 = 100;
-																																					newColor = default(Color);
-																																					num67 = Dust.NewDust(arg_215A_0, arg_215A_1, arg_215A_2, arg_215A_3, arg_215A_4, arg_215A_5, arg_215A_6, newColor, 1.5f);
-																																					Dust expr_2169 = Main.dust[num67];
-																																					expr_2169.velocity *= 3f;
-																																				}
-																																				Vector2 arg_21C5_0 = new Vector2(this.position.X, this.position.Y);
-																																				Vector2 vector2 = default(Vector2);
-																																				int num68 = Gore.NewGore(arg_21C5_0, vector2, Main.rand.Next(61, 64), 1f);
-																																				Gore expr_21D4 = Main.gore[num68];
-																																				expr_21D4.velocity *= 0.4f;
-																																				Gore expr_21F6_cp_0 = Main.gore[num68];
-																																				expr_21F6_cp_0.velocity.X = expr_21F6_cp_0.velocity.X + 1f;
-																																				Gore expr_2214_cp_0 = Main.gore[num68];
-																																				expr_2214_cp_0.velocity.Y = expr_2214_cp_0.velocity.Y + 1f;
-																																				Vector2 arg_225D_0 = new Vector2(this.position.X, this.position.Y);
-																																				vector2 = default(Vector2);
-																																				num68 = Gore.NewGore(arg_225D_0, vector2, Main.rand.Next(61, 64), 1f);
-																																				Gore expr_226C = Main.gore[num68];
-																																				expr_226C.velocity *= 0.4f;
-																																				Gore expr_228E_cp_0 = Main.gore[num68];
-																																				expr_228E_cp_0.velocity.X = expr_228E_cp_0.velocity.X - 1f;
-																																				Gore expr_22AC_cp_0 = Main.gore[num68];
-																																				expr_22AC_cp_0.velocity.Y = expr_22AC_cp_0.velocity.Y + 1f;
-																																				Vector2 arg_22F5_0 = new Vector2(this.position.X, this.position.Y);
-																																				vector2 = default(Vector2);
-																																				num68 = Gore.NewGore(arg_22F5_0, vector2, Main.rand.Next(61, 64), 1f);
-																																				Gore expr_2304 = Main.gore[num68];
-																																				expr_2304.velocity *= 0.4f;
-																																				Gore expr_2326_cp_0 = Main.gore[num68];
-																																				expr_2326_cp_0.velocity.X = expr_2326_cp_0.velocity.X + 1f;
-																																				Gore expr_2344_cp_0 = Main.gore[num68];
-																																				expr_2344_cp_0.velocity.Y = expr_2344_cp_0.velocity.Y - 1f;
-																																				Vector2 arg_238D_0 = new Vector2(this.position.X, this.position.Y);
-																																				vector2 = default(Vector2);
-																																				num68 = Gore.NewGore(arg_238D_0, vector2, Main.rand.Next(61, 64), 1f);
-																																				Gore expr_239C = Main.gore[num68];
-																																				expr_239C.velocity *= 0.4f;
-																																				Gore expr_23BE_cp_0 = Main.gore[num68];
-																																				expr_23BE_cp_0.velocity.X = expr_23BE_cp_0.velocity.X - 1f;
-																																				Gore expr_23DC_cp_0 = Main.gore[num68];
-																																				expr_23DC_cp_0.velocity.Y = expr_23DC_cp_0.velocity.Y - 1f;
-																																			}
-																																			else
-																																			{
-																																				if (this.type == 29 || this.type == 108)
-																																				{
-																																					Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 14);
-																																					if (this.type == 29)
-																																					{
-																																						this.position.X = this.position.X + (float)(this.width / 2);
-																																						this.position.Y = this.position.Y + (float)(this.height / 2);
-																																						this.width = 200;
-																																						this.height = 200;
-																																						this.position.X = this.position.X - (float)(this.width / 2);
-																																						this.position.Y = this.position.Y - (float)(this.height / 2);
-																																					}
-																																					for (int num69 = 0; num69 < 50; num69++)
-																																					{
-																																						Vector2 arg_2501_0 = new Vector2(this.position.X, this.position.Y);
-																																						int arg_2501_1 = this.width;
-																																						int arg_2501_2 = this.height;
-																																						int arg_2501_3 = 31;
-																																						float arg_2501_4 = 0f;
-																																						float arg_2501_5 = 0f;
-																																						int arg_2501_6 = 100;
-																																						Color newColor = default(Color);
-																																						int num70 = Dust.NewDust(arg_2501_0, arg_2501_1, arg_2501_2, arg_2501_3, arg_2501_4, arg_2501_5, arg_2501_6, newColor, 2f);
-																																						Dust expr_2510 = Main.dust[num70];
-																																						expr_2510.velocity *= 1.4f;
-																																					}
-																																					for (int num71 = 0; num71 < 80; num71++)
-																																					{
-																																						Vector2 arg_257C_0 = new Vector2(this.position.X, this.position.Y);
-																																						int arg_257C_1 = this.width;
-																																						int arg_257C_2 = this.height;
-																																						int arg_257C_3 = 6;
-																																						float arg_257C_4 = 0f;
-																																						float arg_257C_5 = 0f;
-																																						int arg_257C_6 = 100;
-																																						Color newColor = default(Color);
-																																						int num72 = Dust.NewDust(arg_257C_0, arg_257C_1, arg_257C_2, arg_257C_3, arg_257C_4, arg_257C_5, arg_257C_6, newColor, 3f);
-																																						Main.dust[num72].noGravity = true;
-																																						Dust expr_2599 = Main.dust[num72];
-																																						expr_2599.velocity *= 5f;
-																																						Vector2 arg_25F1_0 = new Vector2(this.position.X, this.position.Y);
-																																						int arg_25F1_1 = this.width;
-																																						int arg_25F1_2 = this.height;
-																																						int arg_25F1_3 = 6;
-																																						float arg_25F1_4 = 0f;
-																																						float arg_25F1_5 = 0f;
-																																						int arg_25F1_6 = 100;
-																																						newColor = default(Color);
-																																						num72 = Dust.NewDust(arg_25F1_0, arg_25F1_1, arg_25F1_2, arg_25F1_3, arg_25F1_4, arg_25F1_5, arg_25F1_6, newColor, 2f);
-																																						Dust expr_2600 = Main.dust[num72];
-																																						expr_2600.velocity *= 3f;
-																																					}
-																																					for (int num73 = 0; num73 < 2; num73++)
-																																					{
-																																						Vector2 arg_2684_0 = new Vector2(this.position.X + (float)(this.width / 2) - 24f, this.position.Y + (float)(this.height / 2) - 24f);
-																																						Vector2 vector2 = default(Vector2);
-																																						int num74 = Gore.NewGore(arg_2684_0, vector2, Main.rand.Next(61, 64), 1f);
-																																						Main.gore[num74].scale = 1.5f;
-																																						Gore expr_26AA_cp_0 = Main.gore[num74];
-																																						expr_26AA_cp_0.velocity.X = expr_26AA_cp_0.velocity.X + 1.5f;
-																																						Gore expr_26C8_cp_0 = Main.gore[num74];
-																																						expr_26C8_cp_0.velocity.Y = expr_26C8_cp_0.velocity.Y + 1.5f;
-																																						Vector2 arg_2731_0 = new Vector2(this.position.X + (float)(this.width / 2) - 24f, this.position.Y + (float)(this.height / 2) - 24f);
-																																						vector2 = default(Vector2);
-																																						num74 = Gore.NewGore(arg_2731_0, vector2, Main.rand.Next(61, 64), 1f);
-																																						Main.gore[num74].scale = 1.5f;
-																																						Gore expr_2757_cp_0 = Main.gore[num74];
-																																						expr_2757_cp_0.velocity.X = expr_2757_cp_0.velocity.X - 1.5f;
-																																						Gore expr_2775_cp_0 = Main.gore[num74];
-																																						expr_2775_cp_0.velocity.Y = expr_2775_cp_0.velocity.Y + 1.5f;
-																																						Vector2 arg_27DE_0 = new Vector2(this.position.X + (float)(this.width / 2) - 24f, this.position.Y + (float)(this.height / 2) - 24f);
-																																						vector2 = default(Vector2);
-																																						num74 = Gore.NewGore(arg_27DE_0, vector2, Main.rand.Next(61, 64), 1f);
-																																						Main.gore[num74].scale = 1.5f;
-																																						Gore expr_2804_cp_0 = Main.gore[num74];
-																																						expr_2804_cp_0.velocity.X = expr_2804_cp_0.velocity.X + 1.5f;
-																																						Gore expr_2822_cp_0 = Main.gore[num74];
-																																						expr_2822_cp_0.velocity.Y = expr_2822_cp_0.velocity.Y - 1.5f;
-																																						Vector2 arg_288B_0 = new Vector2(this.position.X + (float)(this.width / 2) - 24f, this.position.Y + (float)(this.height / 2) - 24f);
-																																						vector2 = default(Vector2);
-																																						num74 = Gore.NewGore(arg_288B_0, vector2, Main.rand.Next(61, 64), 1f);
-																																						Main.gore[num74].scale = 1.5f;
-																																						Gore expr_28B1_cp_0 = Main.gore[num74];
-																																						expr_28B1_cp_0.velocity.X = expr_28B1_cp_0.velocity.X - 1.5f;
-																																						Gore expr_28CF_cp_0 = Main.gore[num74];
-																																						expr_28CF_cp_0.velocity.Y = expr_28CF_cp_0.velocity.Y - 1.5f;
-																																					}
-																																					this.position.X = this.position.X + (float)(this.width / 2);
-																																					this.position.Y = this.position.Y + (float)(this.height / 2);
-																																					this.width = 10;
-																																					this.height = 10;
-																																					this.position.X = this.position.X - (float)(this.width / 2);
-																																					this.position.Y = this.position.Y - (float)(this.height / 2);
-																																				}
-																																				else
-																																				{
-																																					if (this.type == 69)
-																																					{
-																																						Main.PlaySound(13, (int)this.position.X, (int)this.position.Y, 1);
-																																						for (int num75 = 0; num75 < 5; num75++)
-																																						{
-																																							Vector2 arg_29E4_0 = new Vector2(this.position.X, this.position.Y);
-																																							int arg_29E4_1 = this.width;
-																																							int arg_29E4_2 = this.height;
-																																							int arg_29E4_3 = 13;
-																																							float arg_29E4_4 = 0f;
-																																							float arg_29E4_5 = 0f;
-																																							int arg_29E4_6 = 0;
-																																							Color newColor = default(Color);
-																																							Dust.NewDust(arg_29E4_0, arg_29E4_1, arg_29E4_2, arg_29E4_3, arg_29E4_4, arg_29E4_5, arg_29E4_6, newColor, 1f);
-																																						}
-																																						for (int num76 = 0; num76 < 30; num76++)
-																																						{
-																																							Vector2 arg_2A40_0 = new Vector2(this.position.X, this.position.Y);
-																																							int arg_2A40_1 = this.width;
-																																							int arg_2A40_2 = this.height;
-																																							int arg_2A40_3 = 33;
-																																							float arg_2A40_4 = 0f;
-																																							float arg_2A40_5 = -2f;
-																																							int arg_2A40_6 = 0;
-																																							Color newColor = default(Color);
-																																							int num77 = Dust.NewDust(arg_2A40_0, arg_2A40_1, arg_2A40_2, arg_2A40_3, arg_2A40_4, arg_2A40_5, arg_2A40_6, newColor, 1.1f);
-																																							Main.dust[num77].alpha = 100;
-																																							Dust expr_2A63_cp_0 = Main.dust[num77];
-																																							expr_2A63_cp_0.velocity.X = expr_2A63_cp_0.velocity.X * 1.5f;
-																																							Dust expr_2A7C = Main.dust[num77];
-																																							expr_2A7C.velocity *= 3f;
-																																						}
-																																					}
-																																					else
-																																					{
-																																						if (this.type == 70)
-																																						{
-																																							Main.PlaySound(13, (int)this.position.X, (int)this.position.Y, 1);
-																																							for (int num78 = 0; num78 < 5; num78++)
-																																							{
-																																								Vector2 arg_2B1A_0 = new Vector2(this.position.X, this.position.Y);
-																																								int arg_2B1A_1 = this.width;
-																																								int arg_2B1A_2 = this.height;
-																																								int arg_2B1A_3 = 13;
-																																								float arg_2B1A_4 = 0f;
-																																								float arg_2B1A_5 = 0f;
-																																								int arg_2B1A_6 = 0;
-																																								Color newColor = default(Color);
-																																								Dust.NewDust(arg_2B1A_0, arg_2B1A_1, arg_2B1A_2, arg_2B1A_3, arg_2B1A_4, arg_2B1A_5, arg_2B1A_6, newColor, 1f);
-																																							}
-																																							for (int num79 = 0; num79 < 30; num79++)
-																																							{
-																																								Vector2 arg_2B76_0 = new Vector2(this.position.X, this.position.Y);
-																																								int arg_2B76_1 = this.width;
-																																								int arg_2B76_2 = this.height;
-																																								int arg_2B76_3 = 52;
-																																								float arg_2B76_4 = 0f;
-																																								float arg_2B76_5 = -2f;
-																																								int arg_2B76_6 = 0;
-																																								Color newColor = default(Color);
-																																								int num80 = Dust.NewDust(arg_2B76_0, arg_2B76_1, arg_2B76_2, arg_2B76_3, arg_2B76_4, arg_2B76_5, arg_2B76_6, newColor, 1.1f);
-																																								Main.dust[num80].alpha = 100;
-																																								Dust expr_2B99_cp_0 = Main.dust[num80];
-																																								expr_2B99_cp_0.velocity.X = expr_2B99_cp_0.velocity.X * 1.5f;
-																																								Dust expr_2BB2 = Main.dust[num80];
-																																								expr_2BB2.velocity *= 3f;
-																																							}
-																																						}
-																																					}
-																																				}
-																																			}
-																																		}
-																																	}
-																																}
-																															}
-																														}
-																													}
-																												}
-																											}
-																										}
-																									}
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			if (this.owner == Main.myPlayer)
-			{
-				if (this.type == 28 || this.type == 29 || this.type == 37 || this.type == 75 || this.type == 108)
-				{
-					int num81 = 3;
-					if (this.type == 29)
-					{
-						num81 = 7;
-					}
-					if (this.type == 108)
-					{
-						num81 = 10;
-					}
-					int num82 = (int)(this.position.X / 16f - (float)num81);
-					int num83 = (int)(this.position.X / 16f + (float)num81);
-					int num84 = (int)(this.position.Y / 16f - (float)num81);
-					int num85 = (int)(this.position.Y / 16f + (float)num81);
-					if (num82 < 0)
-					{
-						num82 = 0;
-					}
-					if (num83 > Main.maxTilesX)
-					{
-						num83 = Main.maxTilesX;
-					}
-					if (num84 < 0)
-					{
-						num84 = 0;
-					}
-					if (num85 > Main.maxTilesY)
-					{
-						num85 = Main.maxTilesY;
-					}
-					bool flag = false;
-					for (int num86 = num82; num86 <= num83; num86++)
-					{
-						for (int num87 = num84; num87 <= num85; num87++)
-						{
-							float num88 = Math.Abs((float)num86 - this.position.X / 16f);
-							float num89 = Math.Abs((float)num87 - this.position.Y / 16f);
-							double num90 = Math.Sqrt((double)(num88 * num88 + num89 * num89));
-							if (num90 < (double)num81 && Main.tile[num86, num87] != null && Main.tile[num86, num87].wall == 0)
-							{
-								flag = true;
-								break;
-							}
-						}
-					}
-					for (int num91 = num82; num91 <= num83; num91++)
-					{
-						for (int num92 = num84; num92 <= num85; num92++)
-						{
-							float num93 = Math.Abs((float)num91 - this.position.X / 16f);
-							float num94 = Math.Abs((float)num92 - this.position.Y / 16f);
-							double num95 = Math.Sqrt((double)(num93 * num93 + num94 * num94));
-							if (num95 < (double)num81)
-							{
-								bool flag2 = true;
-								if (Main.tile[num91, num92] != null && Main.tile[num91, num92].active)
-								{
-									flag2 = true;
-									if (Main.tileDungeon[(int)Main.tile[num91, num92].type] || Main.tile[num91, num92].type == 21 || Main.tile[num91, num92].type == 26 || Main.tile[num91, num92].type == 107 || Main.tile[num91, num92].type == 108 || Main.tile[num91, num92].type == 111)
-									{
-										flag2 = false;
-									}
-									if (!Main.hardMode && Main.tile[num91, num92].type == 58)
-									{
-										flag2 = false;
-									}
-									if (flag2)
-									{
-										WorldGen.KillTile(num91, num92, false, false, false);
-										if (!Main.tile[num91, num92].active && Main.netMode != 0)
-										{
-											NetMessage.SendData(17, -1, -1, "", 0, (float)num91, (float)num92, 0f, 0);
-										}
-									}
-								}
-								if (flag2)
-								{
-									for (int num96 = num91 - 1; num96 <= num91 + 1; num96++)
-									{
-										for (int num97 = num92 - 1; num97 <= num92 + 1; num97++)
-										{
-											if (Main.tile[num96, num97] != null && Main.tile[num96, num97].wall > 0 && flag)
-											{
-												WorldGen.KillWall(num96, num97, false);
-												if (Main.tile[num96, num97].wall == 0 && Main.netMode != 0)
-												{
-													NetMessage.SendData(17, -1, -1, "", 2, (float)num96, (float)num97, 0f, 0);
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				if (Main.netMode != 0)
-				{
-					NetMessage.SendData(29, -1, -1, "", this.identity, (float)this.owner, 0f, 0f, 0);
-				}
-				int num98 = -1;
-				if (this.aiStyle == 10)
-				{
-					int num99 = (int)(this.position.X + (float)(this.width / 2)) / 16;
-					int num100 = (int)(this.position.Y + (float)(this.width / 2)) / 16;
-					int num101 = 0;
-					int num102 = 2;
-					if (this.type == 109)
-					{
-						num101 = 147;
-						num102 = 0;
-					}
-					if (this.type == 31)
-					{
-						num101 = 53;
-						num102 = 0;
-					}
-					if (this.type == 42)
-					{
-						num101 = 53;
-						num102 = 0;
-					}
-					if (this.type == 56)
-					{
-						num101 = 112;
-						num102 = 0;
-					}
-					if (this.type == 65)
-					{
-						num101 = 112;
-						num102 = 0;
-					}
-					if (this.type == 67)
-					{
-						num101 = 116;
-						num102 = 0;
-					}
-					if (this.type == 68)
-					{
-						num101 = 116;
-						num102 = 0;
-					}
-					if (this.type == 71)
-					{
-						num101 = 123;
-						num102 = 0;
-					}
-					if (this.type == 39)
-					{
-						num101 = 59;
-						num102 = 176;
-					}
-					if (this.type == 40)
-					{
-						num101 = 57;
-						num102 = 172;
-					}
-					if (!Main.tile[num99, num100].active)
-					{
-						WorldGen.PlaceTile(num99, num100, num101, false, true, -1, 0);
-						if (Main.tile[num99, num100].active && (int)Main.tile[num99, num100].type == num101)
-						{
-							NetMessage.SendData(17, -1, -1, "", 1, (float)num99, (float)num100, (float)num101, 0);
-						}
-						else
-						{
-							if (num102 > 0)
-							{
-								num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, num102, 1, false, 0);
-							}
-						}
-					}
-					else
-					{
-						if (num102 > 0)
-						{
-							num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, num102, 1, false, 0);
-						}
-					}
-				}
-				if (this.type == 1 && Main.rand.Next(3) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 40, 1, false, 0);
-				}
-				if (this.type == 103 && Main.rand.Next(6) == 0)
-				{
-					if (Main.rand.Next(3) == 0)
-					{
-						num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 545, 1, false, 0);
-					}
-					else
-					{
-						num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 40, 1, false, 0);
-					}
-				}
-				if (this.type == 2 && Main.rand.Next(3) == 0)
-				{
-					if (Main.rand.Next(3) == 0)
-					{
-						num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 41, 1, false, 0);
-					}
-					else
-					{
-						num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 40, 1, false, 0);
-					}
-				}
-				if (this.type == 91 && Main.rand.Next(6) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 516, 1, false, 0);
-				}
-				if (this.type == 50 && Main.rand.Next(3) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 282, 1, false, 0);
-				}
-				if (this.type == 53 && Main.rand.Next(3) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 286, 1, false, 0);
-				}
-				if (this.type == 48 && Main.rand.Next(2) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 279, 1, false, 0);
-				}
-				if (this.type == 54 && Main.rand.Next(2) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 287, 1, false, 0);
-				}
-				if (this.type == 3 && Main.rand.Next(2) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 42, 1, false, 0);
-				}
-				if (this.type == 4 && Main.rand.Next(4) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 47, 1, false, 0);
-				}
-				if (this.type == 12 && this.damage > 100)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 75, 1, false, 0);
-				}
-				if (this.type == 69 || this.type == 70)
-				{
-					int num103 = (int)(this.position.X + (float)(this.width / 2)) / 16;
-					int num104 = (int)(this.position.Y + (float)(this.height / 2)) / 16;
-					for (int num105 = num103 - 4; num105 <= num103 + 4; num105++)
-					{
-						for (int num106 = num104 - 4; num106 <= num104 + 4; num106++)
-						{
-							if (Math.Abs(num105 - num103) + Math.Abs(num106 - num104) < 6)
-							{
-								if (this.type == 69)
-								{
-									if (Main.tile[num105, num106].type == 2)
-									{
-										Main.tile[num105, num106].type = 109;
-										WorldGen.SquareTileFrame(num105, num106, true);
-										NetMessage.SendTileSquare(-1, num105, num106, 1);
-									}
-									else
-									{
-										if (Main.tile[num105, num106].type == 1)
-										{
-											Main.tile[num105, num106].type = 117;
-											WorldGen.SquareTileFrame(num105, num106, true);
-											NetMessage.SendTileSquare(-1, num105, num106, 1);
-										}
-										else
-										{
-											if (Main.tile[num105, num106].type == 53)
-											{
-												Main.tile[num105, num106].type = 116;
-												WorldGen.SquareTileFrame(num105, num106, true);
-												NetMessage.SendTileSquare(-1, num105, num106, 1);
-											}
-											else
-											{
-												if (Main.tile[num105, num106].type == 23)
-												{
-													Main.tile[num105, num106].type = 109;
-													WorldGen.SquareTileFrame(num105, num106, true);
-													NetMessage.SendTileSquare(-1, num105, num106, 1);
-												}
-												else
-												{
-													if (Main.tile[num105, num106].type == 25)
-													{
-														Main.tile[num105, num106].type = 117;
-														WorldGen.SquareTileFrame(num105, num106, true);
-														NetMessage.SendTileSquare(-1, num105, num106, 1);
-													}
-													else
-													{
-														if (Main.tile[num105, num106].type == 112)
-														{
-															Main.tile[num105, num106].type = 116;
-															WorldGen.SquareTileFrame(num105, num106, true);
-															NetMessage.SendTileSquare(-1, num105, num106, 1);
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-								else
-								{
-									if (Main.tile[num105, num106].type == 2)
-									{
-										Main.tile[num105, num106].type = 23;
-										WorldGen.SquareTileFrame(num105, num106, true);
-										NetMessage.SendTileSquare(-1, num105, num106, 1);
-									}
-									else
-									{
-										if (Main.tile[num105, num106].type == 1)
-										{
-											Main.tile[num105, num106].type = 25;
-											WorldGen.SquareTileFrame(num105, num106, true);
-											NetMessage.SendTileSquare(-1, num105, num106, 1);
-										}
-										else
-										{
-											if (Main.tile[num105, num106].type == 53)
-											{
-												Main.tile[num105, num106].type = 112;
-												WorldGen.SquareTileFrame(num105, num106, true);
-												NetMessage.SendTileSquare(-1, num105, num106, 1);
-											}
-											else
-											{
-												if (Main.tile[num105, num106].type == 109)
-												{
-													Main.tile[num105, num106].type = 23;
-													WorldGen.SquareTileFrame(num105, num106, true);
-													NetMessage.SendTileSquare(-1, num105, num106, 1);
-												}
-												else
-												{
-													if (Main.tile[num105, num106].type == 117)
-													{
-														Main.tile[num105, num106].type = 25;
-														WorldGen.SquareTileFrame(num105, num106, true);
-														NetMessage.SendTileSquare(-1, num105, num106, 1);
-													}
-													else
-													{
-														if (Main.tile[num105, num106].type == 116)
-														{
-															Main.tile[num105, num106].type = 112;
-															WorldGen.SquareTileFrame(num105, num106, true);
-															NetMessage.SendTileSquare(-1, num105, num106, 1);
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				if (this.type == 21 && Main.rand.Next(2) == 0)
-				{
-					num98 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 154, 1, false, 0);
-				}
-				if (Main.netMode == 1 && num98 >= 0)
-				{
-					NetMessage.SendData(21, -1, -1, "", num98, 0f, 0f, 0f, 0);
-				}
-			}
-			this.active = false;
-		}
-		public Color GetAlpha(Color newColor)
+        public void Kill()
+        {
+            if (!this.active)
+            {
+                return;
+            }
+            this.timeLeft = 0;
+            if (this.type == 1 || this.type == 81 || this.type == 98)
+            {
+                Main.PlaySound(0, (int) this.position.X, (int) this.position.Y, 1);
+                for (int i = 0; i < 10; i++)
+                {
+                    Vector2 arg_92_0 = new Vector2(this.position.X, this.position.Y);
+                    int arg_92_1 = this.width;
+                    int arg_92_2 = this.height;
+                    int arg_92_3 = 7;
+                    float arg_92_4 = 0f;
+                    float arg_92_5 = 0f;
+                    int arg_92_6 = 0;
+                    Color newColor = default(Color);
+                    Dust.NewDust(arg_92_0, arg_92_1, arg_92_2, arg_92_3, arg_92_4, arg_92_5, arg_92_6, newColor, 1f);
+                }
+            }
+            else
+            {
+                if (this.type == 111)
+                {
+                    int num =
+                        Gore.NewGore(
+                            new Vector2(this.position.X - (float) (this.width/2),
+                                        this.position.Y - (float) (this.height/2)), new Vector2(0f, 0f),
+                            Main.rand.Next(11, 14), this.scale);
+                    Gore expr_10F = Main.gore[num];
+                    expr_10F.velocity *= 0.1f;
+                }
+                else
+                {
+                    if (this.type == 93)
+                    {
+                        Main.PlaySound(0, (int) this.position.X, (int) this.position.Y, 1);
+                        for (int j = 0; j < 10; j++)
+                        {
+                            Vector2 arg_105_0 = this.position;
+                            int arg_105_1 = this.width;
+                            int arg_105_2 = this.height;
+                            int arg_105_3 = 57;
+                            float arg_105_4 = 0f;
+                            float arg_105_5 = 0f;
+                            int arg_105_6 = 100;
+                            Color newColor = default(Color);
+                            int num = Dust.NewDust(arg_105_0, arg_105_1, arg_105_2, arg_105_3, arg_105_4, arg_105_5,
+                                                   arg_105_6, newColor, 0.5f);
+                            Dust expr_117_cp_0 = Main.dust[num];
+                            expr_117_cp_0.velocity.X = expr_117_cp_0.velocity.X*2f;
+                            Dust expr_134_cp_0 = Main.dust[num];
+                            expr_134_cp_0.velocity.Y = expr_134_cp_0.velocity.Y*2f;
+                        }
+                    }
+                    else
+                    {
+                        if (this.type == 99)
+                        {
+                            Main.PlaySound(0, (int) this.position.X, (int) this.position.Y, 1);
+                            for (int k = 0; k < 30; k++)
+                            {
+                                Vector2 arg_1B0_0 = this.position;
+                                int arg_1B0_1 = this.width;
+                                int arg_1B0_2 = this.height;
+                                int arg_1B0_3 = 1;
+                                float arg_1B0_4 = 0f;
+                                float arg_1B0_5 = 0f;
+                                int arg_1B0_6 = 0;
+                                Color newColor = default(Color);
+                                int num2 = Dust.NewDust(arg_1B0_0, arg_1B0_1, arg_1B0_2, arg_1B0_3, arg_1B0_4, arg_1B0_5,
+                                                        arg_1B0_6, newColor, 1f);
+                                if (Main.rand.Next(2) == 0)
+                                {
+                                    Main.dust[num2].scale *= 1.4f;
+                                }
+                                this.velocity *= 1.9f;
+                            }
+                        }
+                        else
+                        {
+                            if (this.type == 91 || this.type == 92)
+                            {
+                                Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 10);
+                                for (int l = 0; l < 10; l++)
+                                {
+                                    Vector2 arg_287_0 = this.position;
+                                    int arg_287_1 = this.width;
+                                    int arg_287_2 = this.height;
+                                    int arg_287_3 = 58;
+                                    float arg_287_4 = this.velocity.X*0.1f;
+                                    float arg_287_5 = this.velocity.Y*0.1f;
+                                    int arg_287_6 = 150;
+                                    Color newColor = default(Color);
+                                    Dust.NewDust(arg_287_0, arg_287_1, arg_287_2, arg_287_3, arg_287_4, arg_287_5,
+                                                 arg_287_6, newColor, 1.2f);
+                                }
+                                for (int m = 0; m < 3; m++)
+                                {
+                                    Gore.NewGore(this.position,
+                                                 new Vector2(this.velocity.X*0.05f, this.velocity.Y*0.05f),
+                                                 Main.rand.Next(16, 18), 1f);
+                                }
+                                if (this.type == 12 && this.damage < 500)
+                                {
+                                    for (int n = 0; n < 10; n++)
+                                    {
+                                        Vector2 arg_35B_0 = this.position;
+                                        int arg_35B_1 = this.width;
+                                        int arg_35B_2 = this.height;
+                                        int arg_35B_3 = 57;
+                                        float arg_35B_4 = this.velocity.X*0.1f;
+                                        float arg_35B_5 = this.velocity.Y*0.1f;
+                                        int arg_35B_6 = 150;
+                                        Color newColor = default(Color);
+                                        Dust.NewDust(arg_35B_0, arg_35B_1, arg_35B_2, arg_35B_3, arg_35B_4, arg_35B_5,
+                                                     arg_35B_6, newColor, 1.2f);
+                                    }
+                                    for (int num3 = 0; num3 < 3; num3++)
+                                    {
+                                        Gore.NewGore(this.position,
+                                                     new Vector2(this.velocity.X*0.05f, this.velocity.Y*0.05f),
+                                                     Main.rand.Next(16, 18), 1f);
+                                    }
+                                }
+                                if ((this.type == 91 || (this.type == 92 && this.ai[0] > 0f)) &&
+                                    this.owner == Main.myPlayer)
+                                {
+                                    float x = this.position.X + (float) Main.rand.Next(-400, 400);
+                                    float y = this.position.Y - (float) Main.rand.Next(600, 900);
+                                    Vector2 vector = new Vector2(x, y);
+                                    float num4 = this.position.X + (float) (this.width/2) - vector.X;
+                                    float num5 = this.position.Y + (float) (this.height/2) - vector.Y;
+                                    int num6 = 22;
+                                    float num7 = (float) Math.Sqrt((double) (num4*num4 + num5*num5));
+                                    num7 = (float) num6/num7;
+                                    num4 *= num7;
+                                    num5 *= num7;
+                                    int num8 = this.damage;
+                                    if (this.type == 91)
+                                    {
+                                        num8 = (int) ((float) num8*0.5f);
+                                    }
+                                    int num9 = Projectile.NewProjectile(x, y, num4, num5, 92, num8, this.knockBack,
+                                                                        this.owner);
+                                    if (this.type == 91)
+                                    {
+                                        Main.projectile[num9].ai[1] = this.position.Y;
+                                        Main.projectile[num9].ai[0] = 1f;
+                                    }
+                                    else
+                                    {
+                                        Main.projectile[num9].ai[1] = this.position.Y;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (this.type == 89)
+                                {
+                                    Main.PlaySound(0, (int) this.position.X, (int) this.position.Y, 1);
+                                    for (int num10 = 0; num10 < 5; num10++)
+                                    {
+                                        Vector2 arg_5C9_0 = new Vector2(this.position.X, this.position.Y);
+                                        int arg_5C9_1 = this.width;
+                                        int arg_5C9_2 = this.height;
+                                        int arg_5C9_3 = 68;
+                                        float arg_5C9_4 = 0f;
+                                        float arg_5C9_5 = 0f;
+                                        int arg_5C9_6 = 0;
+                                        Color newColor = default(Color);
+                                        int num11 = Dust.NewDust(arg_5C9_0, arg_5C9_1, arg_5C9_2, arg_5C9_3, arg_5C9_4,
+                                                                 arg_5C9_5, arg_5C9_6, newColor, 1f);
+                                        Main.dust[num11].noGravity = true;
+                                        Dust expr_5E6 = Main.dust[num11];
+                                        expr_5E6.velocity *= 1.5f;
+                                        Main.dust[num11].scale *= 0.9f;
+                                    }
+                                    if (this.type == 89 && this.owner == Main.myPlayer)
+                                    {
+                                        for (int num12 = 0; num12 < 3; num12++)
+                                        {
+                                            float num13 = -this.velocity.X*(float) Main.rand.Next(40, 70)*0.01f +
+                                                          (float) Main.rand.Next(-20, 21)*0.4f;
+                                            float num14 = -this.velocity.Y*(float) Main.rand.Next(40, 70)*0.01f +
+                                                          (float) Main.rand.Next(-20, 21)*0.4f;
+                                            Projectile.NewProjectile(this.position.X + num13, this.position.Y + num14,
+                                                                     num13, num14, 90, (int) ((double) this.damage*0.6),
+                                                                     0f, this.owner);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (this.type == 80)
+                                    {
+                                        if (this.ai[0] >= 0f)
+                                        {
+                                            Main.PlaySound(2, (int) this.position.X, (int) this.position.Y, 27);
+                                            for (int num15 = 0; num15 < 10; num15++)
+                                            {
+                                                Vector2 arg_797_0 = new Vector2(this.position.X, this.position.Y);
+                                                int arg_797_1 = this.width;
+                                                int arg_797_2 = this.height;
+                                                int arg_797_3 = 67;
+                                                float arg_797_4 = 0f;
+                                                float arg_797_5 = 0f;
+                                                int arg_797_6 = 0;
+                                                Color newColor = default(Color);
+                                                Dust.NewDust(arg_797_0, arg_797_1, arg_797_2, arg_797_3, arg_797_4,
+                                                             arg_797_5, arg_797_6, newColor, 1f);
+                                            }
+                                        }
+                                        int num16 = (int) this.position.X/16;
+                                        int num17 = (int) this.position.Y/16;
+                                        if (Main.tile[num16, num17].type == 127 && Main.tile[num16, num17].active)
+                                        {
+                                            WorldGen.KillTile(num16, num17, false, false, false);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (this.type == 76 || this.type == 77 || this.type == 78)
+                                        {
+                                            for (int num18 = 0; num18 < 5; num18++)
+                                            {
+                                                Vector2 arg_883_0 = this.position;
+                                                int arg_883_1 = this.width;
+                                                int arg_883_2 = this.height;
+                                                int arg_883_3 = 27;
+                                                float arg_883_4 = 0f;
+                                                float arg_883_5 = 0f;
+                                                int arg_883_6 = 80;
+                                                Color newColor = default(Color);
+                                                int num19 = Dust.NewDust(arg_883_0, arg_883_1, arg_883_2, arg_883_3,
+                                                                         arg_883_4, arg_883_5, arg_883_6, newColor, 1.5f);
+                                                Main.dust[num19].noGravity = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (this.type == 55)
+                                            {
+                                                for (int num20 = 0; num20 < 5; num20++)
+                                                {
+                                                    Vector2 arg_8FA_0 = new Vector2(this.position.X, this.position.Y);
+                                                    int arg_8FA_1 = this.width;
+                                                    int arg_8FA_2 = this.height;
+                                                    int arg_8FA_3 = 18;
+                                                    float arg_8FA_4 = 0f;
+                                                    float arg_8FA_5 = 0f;
+                                                    int arg_8FA_6 = 0;
+                                                    Color newColor = default(Color);
+                                                    int num21 = Dust.NewDust(arg_8FA_0, arg_8FA_1, arg_8FA_2, arg_8FA_3,
+                                                                             arg_8FA_4, arg_8FA_5, arg_8FA_6, newColor,
+                                                                             1.5f);
+                                                    Main.dust[num21].noGravity = true;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (this.type == 51)
+                                                {
+                                                    Main.PlaySound(0, (int) this.position.X, (int) this.position.Y, 1);
+                                                    for (int num22 = 0; num22 < 5; num22++)
+                                                    {
+                                                        Vector2 arg_98F_0 = new Vector2(this.position.X, this.position.Y);
+                                                        int arg_98F_1 = this.width;
+                                                        int arg_98F_2 = this.height;
+                                                        int arg_98F_3 = 0;
+                                                        float arg_98F_4 = 0f;
+                                                        float arg_98F_5 = 0f;
+                                                        int arg_98F_6 = 0;
+                                                        Color newColor = default(Color);
+                                                        Dust.NewDust(arg_98F_0, arg_98F_1, arg_98F_2, arg_98F_3,
+                                                                     arg_98F_4, arg_98F_5, arg_98F_6, newColor, 0.7f);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if (this.type == 2 || this.type == 82)
+                                                    {
+                                                        Main.PlaySound(0, (int) this.position.X, (int) this.position.Y,
+                                                                       1);
+                                                        for (int num23 = 0; num23 < 20; num23++)
+                                                        {
+                                                            Vector2 arg_A1F_0 = new Vector2(this.position.X,
+                                                                                            this.position.Y);
+                                                            int arg_A1F_1 = this.width;
+                                                            int arg_A1F_2 = this.height;
+                                                            int arg_A1F_3 = 6;
+                                                            float arg_A1F_4 = 0f;
+                                                            float arg_A1F_5 = 0f;
+                                                            int arg_A1F_6 = 100;
+                                                            Color newColor = default(Color);
+                                                            Dust.NewDust(arg_A1F_0, arg_A1F_1, arg_A1F_2, arg_A1F_3,
+                                                                         arg_A1F_4, arg_A1F_5, arg_A1F_6, newColor, 1f);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (this.type == 103)
+                                                        {
+                                                            Main.PlaySound(0, (int) this.position.X,
+                                                                           (int) this.position.Y, 1);
+                                                            for (int num24 = 0; num24 < 20; num24++)
+                                                            {
+                                                                Vector2 arg_AAE_0 = new Vector2(this.position.X,
+                                                                                                this.position.Y);
+                                                                int arg_AAE_1 = this.width;
+                                                                int arg_AAE_2 = this.height;
+                                                                int arg_AAE_3 = 75;
+                                                                float arg_AAE_4 = 0f;
+                                                                float arg_AAE_5 = 0f;
+                                                                int arg_AAE_6 = 100;
+                                                                Color newColor = default(Color);
+                                                                int num25 = Dust.NewDust(arg_AAE_0, arg_AAE_1, arg_AAE_2,
+                                                                                         arg_AAE_3, arg_AAE_4, arg_AAE_5,
+                                                                                         arg_AAE_6, newColor, 1f);
+                                                                if (Main.rand.Next(2) == 0)
+                                                                {
+                                                                    Main.dust[num25].scale *= 2.5f;
+                                                                    Main.dust[num25].noGravity = true;
+                                                                    Dust expr_AF1 = Main.dust[num25];
+                                                                    expr_AF1.velocity *= 5f;
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            if (this.type == 3 || this.type == 48 || this.type == 54)
+                                                            {
+                                                                Main.PlaySound(0, (int) this.position.X,
+                                                                               (int) this.position.Y, 1);
+                                                                for (int num26 = 0; num26 < 10; num26++)
+                                                                {
+                                                                    Vector2 arg_BB8_0 = new Vector2(this.position.X,
+                                                                                                    this.position.Y);
+                                                                    int arg_BB8_1 = this.width;
+                                                                    int arg_BB8_2 = this.height;
+                                                                    int arg_BB8_3 = 1;
+                                                                    float arg_BB8_4 = this.velocity.X*0.1f;
+                                                                    float arg_BB8_5 = this.velocity.Y*0.1f;
+                                                                    int arg_BB8_6 = 0;
+                                                                    Color newColor = default(Color);
+                                                                    Dust.NewDust(arg_BB8_0, arg_BB8_1, arg_BB8_2,
+                                                                                 arg_BB8_3, arg_BB8_4, arg_BB8_5,
+                                                                                 arg_BB8_6, newColor, 0.75f);
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                if (this.type == 4)
+                                                                {
+                                                                    Main.PlaySound(0, (int) this.position.X,
+                                                                                   (int) this.position.Y, 1);
+                                                                    for (int num27 = 0; num27 < 10; num27++)
+                                                                    {
+                                                                        Vector2 arg_C46_0 = new Vector2(
+                                                                            this.position.X, this.position.Y);
+                                                                        int arg_C46_1 = this.width;
+                                                                        int arg_C46_2 = this.height;
+                                                                        int arg_C46_3 = 14;
+                                                                        float arg_C46_4 = 0f;
+                                                                        float arg_C46_5 = 0f;
+                                                                        int arg_C46_6 = 150;
+                                                                        Color newColor = default(Color);
+                                                                        Dust.NewDust(arg_C46_0, arg_C46_1, arg_C46_2,
+                                                                                     arg_C46_3, arg_C46_4, arg_C46_5,
+                                                                                     arg_C46_6, newColor, 1.1f);
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (this.type == 5)
+                                                                    {
+                                                                        Main.PlaySound(2, (int) this.position.X,
+                                                                                       (int) this.position.Y, 10);
+                                                                        for (int num28 = 0; num28 < 60; num28++)
+                                                                        {
+                                                                            int num29 = Main.rand.Next(3);
+                                                                            if (num29 == 0)
+                                                                            {
+                                                                                num29 = 15;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (num29 == 1)
+                                                                                {
+                                                                                    num29 = 57;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    num29 = 58;
+                                                                                }
+                                                                            }
+                                                                            Vector2 arg_CFE_0 = this.position;
+                                                                            int arg_CFE_1 = this.width;
+                                                                            int arg_CFE_2 = this.height;
+                                                                            int arg_CFE_3 = num29;
+                                                                            float arg_CFE_4 = this.velocity.X*0.5f;
+                                                                            float arg_CFE_5 = this.velocity.Y*0.5f;
+                                                                            int arg_CFE_6 = 150;
+                                                                            Color newColor = default(Color);
+                                                                            Dust.NewDust(arg_CFE_0, arg_CFE_1, arg_CFE_2,
+                                                                                         arg_CFE_3, arg_CFE_4, arg_CFE_5,
+                                                                                         arg_CFE_6, newColor, 1.5f);
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (this.type == 9 || this.type == 12)
+                                                                        {
+                                                                            Main.PlaySound(2, (int) this.position.X,
+                                                                                           (int) this.position.Y, 10);
+                                                                            for (int num30 = 0; num30 < 10; num30++)
+                                                                            {
+                                                                                Vector2 arg_D9E_0 = this.position;
+                                                                                int arg_D9E_1 = this.width;
+                                                                                int arg_D9E_2 = this.height;
+                                                                                int arg_D9E_3 = 58;
+                                                                                float arg_D9E_4 = this.velocity.X*0.1f;
+                                                                                float arg_D9E_5 = this.velocity.Y*0.1f;
+                                                                                int arg_D9E_6 = 150;
+                                                                                Color newColor = default(Color);
+                                                                                Dust.NewDust(arg_D9E_0, arg_D9E_1,
+                                                                                             arg_D9E_2, arg_D9E_3,
+                                                                                             arg_D9E_4, arg_D9E_5,
+                                                                                             arg_D9E_6, newColor, 1.2f);
+                                                                            }
+                                                                            for (int num31 = 0; num31 < 3; num31++)
+                                                                            {
+                                                                                Gore.NewGore(this.position,
+                                                                                             new Vector2(
+                                                                                                 this.velocity.X*0.05f,
+                                                                                                 this.velocity.Y*0.05f),
+                                                                                             Main.rand.Next(16, 18), 1f);
+                                                                            }
+                                                                            if (this.type == 12 && this.damage < 100)
+                                                                            {
+                                                                                for (int num32 = 0; num32 < 10; num32++)
+                                                                                {
+                                                                                    Vector2 arg_E6F_0 = this.position;
+                                                                                    int arg_E6F_1 = this.width;
+                                                                                    int arg_E6F_2 = this.height;
+                                                                                    int arg_E6F_3 = 57;
+                                                                                    float arg_E6F_4 = this.velocity.X*
+                                                                                                      0.1f;
+                                                                                    float arg_E6F_5 = this.velocity.Y*
+                                                                                                      0.1f;
+                                                                                    int arg_E6F_6 = 150;
+                                                                                    Color newColor = default(Color);
+                                                                                    Dust.NewDust(arg_E6F_0, arg_E6F_1,
+                                                                                                 arg_E6F_2, arg_E6F_3,
+                                                                                                 arg_E6F_4, arg_E6F_5,
+                                                                                                 arg_E6F_6, newColor,
+                                                                                                 1.2f);
+                                                                                }
+                                                                                for (int num33 = 0; num33 < 3; num33++)
+                                                                                {
+                                                                                    Gore.NewGore(this.position,
+                                                                                                 new Vector2(
+                                                                                                     this.velocity.X*
+                                                                                                     0.05f,
+                                                                                                     this.velocity.Y*
+                                                                                                     0.05f),
+                                                                                                 Main.rand.Next(16, 18),
+                                                                                                 1f);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (this.type == 14 || this.type == 20 ||
+                                                                                this.type == 36 || this.type == 83 ||
+                                                                                this.type == 84 || this.type == 100 ||
+                                                                                this.type == 110)
+                                                                            {
+                                                                                Collision.HitTiles(this.position,
+                                                                                                   this.velocity,
+                                                                                                   this.width,
+                                                                                                   this.height);
+                                                                                Main.PlaySound(2, (int) this.position.X,
+                                                                                               (int) this.position.Y, 10);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (this.type == 15 || this.type == 34)
+                                                                                {
+                                                                                    Main.PlaySound(2,
+                                                                                                   (int) this.position.X,
+                                                                                                   (int) this.position.Y,
+                                                                                                   10);
+                                                                                    for (int num34 = 0;
+                                                                                         num34 < 20;
+                                                                                         num34++)
+                                                                                    {
+                                                                                        Vector2 arg_1000_0 =
+                                                                                            new Vector2(
+                                                                                                this.position.X,
+                                                                                                this.position.Y);
+                                                                                        int arg_1000_1 = this.width;
+                                                                                        int arg_1000_2 = this.height;
+                                                                                        int arg_1000_3 = 6;
+                                                                                        float arg_1000_4 =
+                                                                                            -this.velocity.X*0.2f;
+                                                                                        float arg_1000_5 =
+                                                                                            -this.velocity.Y*0.2f;
+                                                                                        int arg_1000_6 = 100;
+                                                                                        Color newColor = default(Color);
+                                                                                        int num35 =
+                                                                                            Dust.NewDust(arg_1000_0,
+                                                                                                         arg_1000_1,
+                                                                                                         arg_1000_2,
+                                                                                                         arg_1000_3,
+                                                                                                         arg_1000_4,
+                                                                                                         arg_1000_5,
+                                                                                                         arg_1000_6,
+                                                                                                         newColor, 2f);
+                                                                                        Main.dust[num35].noGravity =
+                                                                                            true;
+                                                                                        Dust expr_101D =
+                                                                                            Main.dust[num35];
+                                                                                        expr_101D.velocity *= 2f;
+                                                                                        Vector2 arg_108F_0 =
+                                                                                            new Vector2(
+                                                                                                this.position.X,
+                                                                                                this.position.Y);
+                                                                                        int arg_108F_1 = this.width;
+                                                                                        int arg_108F_2 = this.height;
+                                                                                        int arg_108F_3 = 6;
+                                                                                        float arg_108F_4 =
+                                                                                            -this.velocity.X*0.2f;
+                                                                                        float arg_108F_5 =
+                                                                                            -this.velocity.Y*0.2f;
+                                                                                        int arg_108F_6 = 100;
+                                                                                        newColor = default(Color);
+                                                                                        num35 = Dust.NewDust(
+                                                                                            arg_108F_0, arg_108F_1,
+                                                                                            arg_108F_2, arg_108F_3,
+                                                                                            arg_108F_4, arg_108F_5,
+                                                                                            arg_108F_6, newColor, 1f);
+                                                                                        Dust expr_109E =
+                                                                                            Main.dust[num35];
+                                                                                        expr_109E.velocity *= 2f;
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (this.type == 95 ||
+                                                                                        this.type == 96)
+                                                                                    {
+                                                                                        Main.PlaySound(2,
+                                                                                                       (int)
+                                                                                                       this.position.X,
+                                                                                                       (int)
+                                                                                                       this.position.Y,
+                                                                                                       10);
+                                                                                        for (int num36 = 0;
+                                                                                             num36 < 20;
+                                                                                             num36++)
+                                                                                        {
+                                                                                            Vector2 arg_116B_0 =
+                                                                                                new Vector2(
+                                                                                                    this.position.X,
+                                                                                                    this.position.Y);
+                                                                                            int arg_116B_1 = this.width;
+                                                                                            int arg_116B_2 = this.height;
+                                                                                            int arg_116B_3 = 75;
+                                                                                            float arg_116B_4 =
+                                                                                                -this.velocity.X*0.2f;
+                                                                                            float arg_116B_5 =
+                                                                                                -this.velocity.Y*0.2f;
+                                                                                            int arg_116B_6 = 100;
+                                                                                            Color newColor =
+                                                                                                default(Color);
+                                                                                            int num37 =
+                                                                                                Dust.NewDust(
+                                                                                                    arg_116B_0,
+                                                                                                    arg_116B_1,
+                                                                                                    arg_116B_2,
+                                                                                                    arg_116B_3,
+                                                                                                    arg_116B_4,
+                                                                                                    arg_116B_5,
+                                                                                                    arg_116B_6, newColor,
+                                                                                                    2f*this.scale);
+                                                                                            Main.dust[num37].noGravity =
+                                                                                                true;
+                                                                                            Dust expr_1188 =
+                                                                                                Main.dust[num37];
+                                                                                            expr_1188.velocity *= 2f;
+                                                                                            Vector2 arg_1202_0 =
+                                                                                                new Vector2(
+                                                                                                    this.position.X,
+                                                                                                    this.position.Y);
+                                                                                            int arg_1202_1 = this.width;
+                                                                                            int arg_1202_2 = this.height;
+                                                                                            int arg_1202_3 = 75;
+                                                                                            float arg_1202_4 =
+                                                                                                -this.velocity.X*0.2f;
+                                                                                            float arg_1202_5 =
+                                                                                                -this.velocity.Y*0.2f;
+                                                                                            int arg_1202_6 = 100;
+                                                                                            newColor = default(Color);
+                                                                                            num37 =
+                                                                                                Dust.NewDust(
+                                                                                                    arg_1202_0,
+                                                                                                    arg_1202_1,
+                                                                                                    arg_1202_2,
+                                                                                                    arg_1202_3,
+                                                                                                    arg_1202_4,
+                                                                                                    arg_1202_5,
+                                                                                                    arg_1202_6, newColor,
+                                                                                                    1f*this.scale);
+                                                                                            Dust expr_1211 =
+                                                                                                Main.dust[num37];
+                                                                                            expr_1211.velocity *= 2f;
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        if (this.type == 79)
+                                                                                        {
+                                                                                            Main.PlaySound(2,
+                                                                                                           (int)
+                                                                                                           this.position
+                                                                                                               .X,
+                                                                                                           (int)
+                                                                                                           this.position
+                                                                                                               .Y, 10);
+                                                                                            for (int num38 = 0;
+                                                                                                 num38 < 20;
+                                                                                                 num38++)
+                                                                                            {
+                                                                                                int num39 =
+                                                                                                    Dust.NewDust(
+                                                                                                        new Vector2(
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .X,
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .Y),
+                                                                                                        this.width,
+                                                                                                        this.height, 66,
+                                                                                                        0f, 0f, 100,
+                                                                                                        new Color(
+                                                                                                            Main.DiscoR,
+                                                                                                            Main.DiscoG,
+                                                                                                            Main.DiscoB),
+                                                                                                        2f);
+                                                                                                Main.dust[num39].
+                                                                                                    noGravity = true;
+                                                                                                Dust expr_12DA =
+                                                                                                    Main.dust[num39];
+                                                                                                expr_12DA.velocity *= 4f;
+                                                                                            }
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (this.type == 16)
+                                                                                            {
+                                                                                                Main.PlaySound(2,
+                                                                                                               (int)
+                                                                                                               this.
+                                                                                                                   position
+                                                                                                                   .X,
+                                                                                                               (int)
+                                                                                                               this.
+                                                                                                                   position
+                                                                                                                   .Y,
+                                                                                                               10);
+                                                                                                for (int num40 = 0;
+                                                                                                     num40 < 20;
+                                                                                                     num40++)
+                                                                                                {
+                                                                                                    Vector2 arg_1394_0 =
+                                                                                                        new Vector2(
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .X -
+                                                                                                            this.
+                                                                                                                velocity
+                                                                                                                .X,
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .Y -
+                                                                                                            this.
+                                                                                                                velocity
+                                                                                                                .Y);
+                                                                                                    int arg_1394_1 =
+                                                                                                        this.width;
+                                                                                                    int arg_1394_2 =
+                                                                                                        this.height;
+                                                                                                    int arg_1394_3 = 15;
+                                                                                                    float arg_1394_4 =
+                                                                                                        0f;
+                                                                                                    float arg_1394_5 =
+                                                                                                        0f;
+                                                                                                    int arg_1394_6 = 100;
+                                                                                                    Color newColor =
+                                                                                                        default(Color);
+                                                                                                    int num41 =
+                                                                                                        Dust.NewDust(
+                                                                                                            arg_1394_0,
+                                                                                                            arg_1394_1,
+                                                                                                            arg_1394_2,
+                                                                                                            arg_1394_3,
+                                                                                                            arg_1394_4,
+                                                                                                            arg_1394_5,
+                                                                                                            arg_1394_6,
+                                                                                                            newColor, 2f);
+                                                                                                    Main.dust[num41].
+                                                                                                        noGravity = true;
+                                                                                                    Dust expr_13B1 =
+                                                                                                        Main.dust[num41];
+                                                                                                    expr_13B1.velocity
+                                                                                                        *= 2f;
+                                                                                                    Vector2 arg_1422_0 =
+                                                                                                        new Vector2(
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .X -
+                                                                                                            this.
+                                                                                                                velocity
+                                                                                                                .X,
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .Y -
+                                                                                                            this.
+                                                                                                                velocity
+                                                                                                                .Y);
+                                                                                                    int arg_1422_1 =
+                                                                                                        this.width;
+                                                                                                    int arg_1422_2 =
+                                                                                                        this.height;
+                                                                                                    int arg_1422_3 = 15;
+                                                                                                    float arg_1422_4 =
+                                                                                                        0f;
+                                                                                                    float arg_1422_5 =
+                                                                                                        0f;
+                                                                                                    int arg_1422_6 = 100;
+                                                                                                    newColor =
+                                                                                                        default(Color);
+                                                                                                    num41 =
+                                                                                                        Dust.NewDust(
+                                                                                                            arg_1422_0,
+                                                                                                            arg_1422_1,
+                                                                                                            arg_1422_2,
+                                                                                                            arg_1422_3,
+                                                                                                            arg_1422_4,
+                                                                                                            arg_1422_5,
+                                                                                                            arg_1422_6,
+                                                                                                            newColor, 1f);
+                                                                                                }
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (this.type == 17)
+                                                                                                {
+                                                                                                    Main.PlaySound(0,
+                                                                                                                   (int)
+                                                                                                                   this.
+                                                                                                                       position
+                                                                                                                       .
+                                                                                                                       X,
+                                                                                                                   (int)
+                                                                                                                   this.
+                                                                                                                       position
+                                                                                                                       .
+                                                                                                                       Y,
+                                                                                                                   1);
+                                                                                                    for (int num42 = 0;
+                                                                                                         num42 < 5;
+                                                                                                         num42++)
+                                                                                                    {
+                                                                                                        Vector2
+                                                                                                            arg_14AD_0 =
+                                                                                                                new Vector2
+                                                                                                                    (this
+                                                                                                                         .
+                                                                                                                         position
+                                                                                                                         .
+                                                                                                                         X,
+                                                                                                                     this
+                                                                                                                         .
+                                                                                                                         position
+                                                                                                                         .
+                                                                                                                         Y);
+                                                                                                        int arg_14AD_1 =
+                                                                                                            this.width;
+                                                                                                        int arg_14AD_2 =
+                                                                                                            this.height;
+                                                                                                        int arg_14AD_3 =
+                                                                                                            0;
+                                                                                                        float arg_14AD_4
+                                                                                                            = 0f;
+                                                                                                        float arg_14AD_5
+                                                                                                            = 0f;
+                                                                                                        int arg_14AD_6 =
+                                                                                                            0;
+                                                                                                        Color newColor =
+                                                                                                            default(
+                                                                                                                Color);
+                                                                                                        Dust.NewDust(
+                                                                                                            arg_14AD_0,
+                                                                                                            arg_14AD_1,
+                                                                                                            arg_14AD_2,
+                                                                                                            arg_14AD_3,
+                                                                                                            arg_14AD_4,
+                                                                                                            arg_14AD_5,
+                                                                                                            arg_14AD_6,
+                                                                                                            newColor, 1f);
+                                                                                                    }
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (this.type == 31 ||
+                                                                                                        this.type == 42)
+                                                                                                    {
+                                                                                                        Main.PlaySound(
+                                                                                                            0,
+                                                                                                            (int)
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .X,
+                                                                                                            (int)
+                                                                                                            this.
+                                                                                                                position
+                                                                                                                .Y, 1);
+                                                                                                        for (
+                                                                                                            int num43 =
+                                                                                                                0;
+                                                                                                            num43 < 5;
+                                                                                                            num43++)
+                                                                                                        {
+                                                                                                            Vector2
+                                                                                                                arg_1541_0
+                                                                                                                    =
+                                                                                                                    new Vector2
+                                                                                                                        (this
+                                                                                                                             .
+                                                                                                                             position
+                                                                                                                             .
+                                                                                                                             X,
+                                                                                                                         this
+                                                                                                                             .
+                                                                                                                             position
+                                                                                                                             .
+                                                                                                                             Y);
+                                                                                                            int
+                                                                                                                arg_1541_1
+                                                                                                                    =
+                                                                                                                    this
+                                                                                                                        .
+                                                                                                                        width;
+                                                                                                            int
+                                                                                                                arg_1541_2
+                                                                                                                    =
+                                                                                                                    this
+                                                                                                                        .
+                                                                                                                        height;
+                                                                                                            int
+                                                                                                                arg_1541_3
+                                                                                                                    = 32;
+                                                                                                            float
+                                                                                                                arg_1541_4
+                                                                                                                    = 0f;
+                                                                                                            float
+                                                                                                                arg_1541_5
+                                                                                                                    = 0f;
+                                                                                                            int
+                                                                                                                arg_1541_6
+                                                                                                                    = 0;
+                                                                                                            Color
+                                                                                                                newColor
+                                                                                                                    =
+                                                                                                                    default
+                                                                                                                        (
+                                                                                                                        Color
+                                                                                                                        );
+                                                                                                            int num44 =
+                                                                                                                Dust.
+                                                                                                                    NewDust
+                                                                                                                    (arg_1541_0,
+                                                                                                                     arg_1541_1,
+                                                                                                                     arg_1541_2,
+                                                                                                                     arg_1541_3,
+                                                                                                                     arg_1541_4,
+                                                                                                                     arg_1541_5,
+                                                                                                                     arg_1541_6,
+                                                                                                                     newColor,
+                                                                                                                     1f);
+                                                                                                            Dust
+                                                                                                                expr_1550
+                                                                                                                    =
+                                                                                                                    Main
+                                                                                                                        .
+                                                                                                                        dust
+                                                                                                                        [
+                                                                                                                            num44
+                                                                                                                        ];
+                                                                                                            expr_1550.
+                                                                                                                velocity
+                                                                                                                *= 0.6f;
+                                                                                                        }
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (this.type ==
+                                                                                                            109)
+                                                                                                        {
+                                                                                                            Main.
+                                                                                                                PlaySound
+                                                                                                                (0,
+                                                                                                                 (int)
+                                                                                                                 this.
+                                                                                                                     position
+                                                                                                                     .X,
+                                                                                                                 (int)
+                                                                                                                 this.
+                                                                                                                     position
+                                                                                                                     .Y,
+                                                                                                                 1);
+                                                                                                            for (
+                                                                                                                int
+                                                                                                                    num45
+                                                                                                                    = 0;
+                                                                                                                num45 <
+                                                                                                                5;
+                                                                                                                num45++)
+                                                                                                            {
+                                                                                                                Vector2
+                                                                                                                    arg_15E9_0
+                                                                                                                        =
+                                                                                                                        new Vector2
+                                                                                                                            (this
+                                                                                                                                 .
+                                                                                                                                 position
+                                                                                                                                 .
+                                                                                                                                 X,
+                                                                                                                             this
+                                                                                                                                 .
+                                                                                                                                 position
+                                                                                                                                 .
+                                                                                                                                 Y);
+                                                                                                                int
+                                                                                                                    arg_15E9_1
+                                                                                                                        =
+                                                                                                                        this
+                                                                                                                            .
+                                                                                                                            width;
+                                                                                                                int
+                                                                                                                    arg_15E9_2
+                                                                                                                        =
+                                                                                                                        this
+                                                                                                                            .
+                                                                                                                            height;
+                                                                                                                int
+                                                                                                                    arg_15E9_3
+                                                                                                                        =
+                                                                                                                        51;
+                                                                                                                float
+                                                                                                                    arg_15E9_4
+                                                                                                                        =
+                                                                                                                        0f;
+                                                                                                                float
+                                                                                                                    arg_15E9_5
+                                                                                                                        =
+                                                                                                                        0f;
+                                                                                                                int
+                                                                                                                    arg_15E9_6
+                                                                                                                        =
+                                                                                                                        0;
+                                                                                                                Color
+                                                                                                                    newColor
+                                                                                                                        =
+                                                                                                                        default
+                                                                                                                            (
+                                                                                                                            Color
+                                                                                                                            );
+                                                                                                                int
+                                                                                                                    num46
+                                                                                                                        =
+                                                                                                                        Dust
+                                                                                                                            .
+                                                                                                                            NewDust
+                                                                                                                            (arg_15E9_0,
+                                                                                                                             arg_15E9_1,
+                                                                                                                             arg_15E9_2,
+                                                                                                                             arg_15E9_3,
+                                                                                                                             arg_15E9_4,
+                                                                                                                             arg_15E9_5,
+                                                                                                                             arg_15E9_6,
+                                                                                                                             newColor,
+                                                                                                                             0.6f);
+                                                                                                                Dust
+                                                                                                                    expr_15F8
+                                                                                                                        =
+                                                                                                                        Main
+                                                                                                                            .
+                                                                                                                            dust
+                                                                                                                            [
+                                                                                                                                num46
+                                                                                                                            ];
+                                                                                                                expr_15F8
+                                                                                                                    .
+                                                                                                                    velocity
+                                                                                                                    *=
+                                                                                                                    0.6f;
+                                                                                                            }
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (
+                                                                                                                this.
+                                                                                                                    type ==
+                                                                                                                39)
+                                                                                                            {
+                                                                                                                Main.
+                                                                                                                    PlaySound
+                                                                                                                    (0,
+                                                                                                                     (
+                                                                                                                     int
+                                                                                                                     )
+                                                                                                                     this
+                                                                                                                         .
+                                                                                                                         position
+                                                                                                                         .
+                                                                                                                         X,
+                                                                                                                     (
+                                                                                                                     int
+                                                                                                                     )
+                                                                                                                     this
+                                                                                                                         .
+                                                                                                                         position
+                                                                                                                         .
+                                                                                                                         Y,
+                                                                                                                     1);
+                                                                                                                for (
+                                                                                                                    int
+                                                                                                                        num47
+                                                                                                                        =
+                                                                                                                        0;
+                                                                                                                    num47 <
+                                                                                                                    5;
+                                                                                                                    num47
+                                                                                                                        ++)
+                                                                                                                {
+                                                                                                                    Vector2
+                                                                                                                        arg_1691_0
+                                                                                                                            =
+                                                                                                                            new Vector2
+                                                                                                                                (this
+                                                                                                                                     .
+                                                                                                                                     position
+                                                                                                                                     .
+                                                                                                                                     X,
+                                                                                                                                 this
+                                                                                                                                     .
+                                                                                                                                     position
+                                                                                                                                     .
+                                                                                                                                     Y);
+                                                                                                                    int
+                                                                                                                        arg_1691_1
+                                                                                                                            =
+                                                                                                                            this
+                                                                                                                                .
+                                                                                                                                width;
+                                                                                                                    int
+                                                                                                                        arg_1691_2
+                                                                                                                            =
+                                                                                                                            this
+                                                                                                                                .
+                                                                                                                                height;
+                                                                                                                    int
+                                                                                                                        arg_1691_3
+                                                                                                                            =
+                                                                                                                            38;
+                                                                                                                    float
+                                                                                                                        arg_1691_4
+                                                                                                                            =
+                                                                                                                            0f;
+                                                                                                                    float
+                                                                                                                        arg_1691_5
+                                                                                                                            =
+                                                                                                                            0f;
+                                                                                                                    int
+                                                                                                                        arg_1691_6
+                                                                                                                            =
+                                                                                                                            0;
+                                                                                                                    Color
+                                                                                                                        newColor
+                                                                                                                            =
+                                                                                                                            default
+                                                                                                                                (
+                                                                                                                                Color
+                                                                                                                                );
+                                                                                                                    int
+                                                                                                                        num48
+                                                                                                                            =
+                                                                                                                            Dust
+                                                                                                                                .
+                                                                                                                                NewDust
+                                                                                                                                (arg_1691_0,
+                                                                                                                                 arg_1691_1,
+                                                                                                                                 arg_1691_2,
+                                                                                                                                 arg_1691_3,
+                                                                                                                                 arg_1691_4,
+                                                                                                                                 arg_1691_5,
+                                                                                                                                 arg_1691_6,
+                                                                                                                                 newColor,
+                                                                                                                                 1f);
+                                                                                                                    Dust
+                                                                                                                        expr_16A0
+                                                                                                                            =
+                                                                                                                            Main
+                                                                                                                                .
+                                                                                                                                dust
+                                                                                                                                [
+                                                                                                                                    num48
+                                                                                                                                ];
+                                                                                                                    expr_16A0
+                                                                                                                        .
+                                                                                                                        velocity
+                                                                                                                        *=
+                                                                                                                        0.6f;
+                                                                                                                }
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (
+                                                                                                                    this
+                                                                                                                        .
+                                                                                                                        type ==
+                                                                                                                    71)
+                                                                                                                {
+                                                                                                                    Main
+                                                                                                                        .
+                                                                                                                        PlaySound
+                                                                                                                        (0,
+                                                                                                                         (
+                                                                                                                         int
+                                                                                                                         )
+                                                                                                                         this
+                                                                                                                             .
+                                                                                                                             position
+                                                                                                                             .
+                                                                                                                             X,
+                                                                                                                         (
+                                                                                                                         int
+                                                                                                                         )
+                                                                                                                         this
+                                                                                                                             .
+                                                                                                                             position
+                                                                                                                             .
+                                                                                                                             Y,
+                                                                                                                         1);
+                                                                                                                    for
+                                                                                                                        (
+                                                                                                                        int
+                                                                                                                            num49
+                                                                                                                            =
+                                                                                                                            0;
+                                                                                                                        num49 <
+                                                                                                                        5;
+                                                                                                                        num49
+                                                                                                                            ++)
+                                                                                                                    {
+                                                                                                                        Vector2
+                                                                                                                            arg_1739_0
+                                                                                                                                =
+                                                                                                                                new Vector2
+                                                                                                                                    (this
+                                                                                                                                         .
+                                                                                                                                         position
+                                                                                                                                         .
+                                                                                                                                         X,
+                                                                                                                                     this
+                                                                                                                                         .
+                                                                                                                                         position
+                                                                                                                                         .
+                                                                                                                                         Y);
+                                                                                                                        int
+                                                                                                                            arg_1739_1
+                                                                                                                                =
+                                                                                                                                this
+                                                                                                                                    .
+                                                                                                                                    width;
+                                                                                                                        int
+                                                                                                                            arg_1739_2
+                                                                                                                                =
+                                                                                                                                this
+                                                                                                                                    .
+                                                                                                                                    height;
+                                                                                                                        int
+                                                                                                                            arg_1739_3
+                                                                                                                                =
+                                                                                                                                53;
+                                                                                                                        float
+                                                                                                                            arg_1739_4
+                                                                                                                                =
+                                                                                                                                0f;
+                                                                                                                        float
+                                                                                                                            arg_1739_5
+                                                                                                                                =
+                                                                                                                                0f;
+                                                                                                                        int
+                                                                                                                            arg_1739_6
+                                                                                                                                =
+                                                                                                                                0;
+                                                                                                                        Color
+                                                                                                                            newColor
+                                                                                                                                =
+                                                                                                                                default
+                                                                                                                                    (
+                                                                                                                                    Color
+                                                                                                                                    );
+                                                                                                                        int
+                                                                                                                            num50
+                                                                                                                                =
+                                                                                                                                Dust
+                                                                                                                                    .
+                                                                                                                                    NewDust
+                                                                                                                                    (arg_1739_0,
+                                                                                                                                     arg_1739_1,
+                                                                                                                                     arg_1739_2,
+                                                                                                                                     arg_1739_3,
+                                                                                                                                     arg_1739_4,
+                                                                                                                                     arg_1739_5,
+                                                                                                                                     arg_1739_6,
+                                                                                                                                     newColor,
+                                                                                                                                     1f);
+                                                                                                                        Dust
+                                                                                                                            expr_1748
+                                                                                                                                =
+                                                                                                                                Main
+                                                                                                                                    .
+                                                                                                                                    dust
+                                                                                                                                    [
+                                                                                                                                        num50
+                                                                                                                                    ];
+                                                                                                                        expr_1748
+                                                                                                                            .
+                                                                                                                            velocity
+                                                                                                                            *=
+                                                                                                                            0.6f;
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (
+                                                                                                                        this
+                                                                                                                            .
+                                                                                                                            type ==
+                                                                                                                        40)
+                                                                                                                    {
+                                                                                                                        Main
+                                                                                                                            .
+                                                                                                                            PlaySound
+                                                                                                                            (0,
+                                                                                                                             (
+                                                                                                                             int
+                                                                                                                             )
+                                                                                                                             this
+                                                                                                                                 .
+                                                                                                                                 position
+                                                                                                                                 .
+                                                                                                                                 X,
+                                                                                                                             (
+                                                                                                                             int
+                                                                                                                             )
+                                                                                                                             this
+                                                                                                                                 .
+                                                                                                                                 position
+                                                                                                                                 .
+                                                                                                                                 Y,
+                                                                                                                             1);
+                                                                                                                        for
+                                                                                                                            (
+                                                                                                                            int
+                                                                                                                                num51
+                                                                                                                                =
+                                                                                                                                0;
+                                                                                                                            num51 <
+                                                                                                                            5;
+                                                                                                                            num51
+                                                                                                                                ++)
+                                                                                                                        {
+                                                                                                                            Vector2
+                                                                                                                                arg_17E1_0
+                                                                                                                                    =
+                                                                                                                                    new Vector2
+                                                                                                                                        (this
+                                                                                                                                             .
+                                                                                                                                             position
+                                                                                                                                             .
+                                                                                                                                             X,
+                                                                                                                                         this
+                                                                                                                                             .
+                                                                                                                                             position
+                                                                                                                                             .
+                                                                                                                                             Y);
+                                                                                                                            int
+                                                                                                                                arg_17E1_1
+                                                                                                                                    =
+                                                                                                                                    this
+                                                                                                                                        .
+                                                                                                                                        width;
+                                                                                                                            int
+                                                                                                                                arg_17E1_2
+                                                                                                                                    =
+                                                                                                                                    this
+                                                                                                                                        .
+                                                                                                                                        height;
+                                                                                                                            int
+                                                                                                                                arg_17E1_3
+                                                                                                                                    =
+                                                                                                                                    36;
+                                                                                                                            float
+                                                                                                                                arg_17E1_4
+                                                                                                                                    =
+                                                                                                                                    0f;
+                                                                                                                            float
+                                                                                                                                arg_17E1_5
+                                                                                                                                    =
+                                                                                                                                    0f;
+                                                                                                                            int
+                                                                                                                                arg_17E1_6
+                                                                                                                                    =
+                                                                                                                                    0;
+                                                                                                                            Color
+                                                                                                                                newColor
+                                                                                                                                    =
+                                                                                                                                    default
+                                                                                                                                        (
+                                                                                                                                        Color
+                                                                                                                                        );
+                                                                                                                            int
+                                                                                                                                num52
+                                                                                                                                    =
+                                                                                                                                    Dust
+                                                                                                                                        .
+                                                                                                                                        NewDust
+                                                                                                                                        (arg_17E1_0,
+                                                                                                                                         arg_17E1_1,
+                                                                                                                                         arg_17E1_2,
+                                                                                                                                         arg_17E1_3,
+                                                                                                                                         arg_17E1_4,
+                                                                                                                                         arg_17E1_5,
+                                                                                                                                         arg_17E1_6,
+                                                                                                                                         newColor,
+                                                                                                                                         1f);
+                                                                                                                            Dust
+                                                                                                                                expr_17F0
+                                                                                                                                    =
+                                                                                                                                    Main
+                                                                                                                                        .
+                                                                                                                                        dust
+                                                                                                                                        [
+                                                                                                                                            num52
+                                                                                                                                        ];
+                                                                                                                            expr_17F0
+                                                                                                                                .
+                                                                                                                                velocity
+                                                                                                                                *=
+                                                                                                                                0.6f;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        if
+                                                                                                                            (
+                                                                                                                            this
+                                                                                                                                .
+                                                                                                                                type ==
+                                                                                                                            21)
+                                                                                                                        {
+                                                                                                                            Main
+                                                                                                                                .
+                                                                                                                                PlaySound
+                                                                                                                                (0,
+                                                                                                                                 (
+                                                                                                                                 int
+                                                                                                                                 )
+                                                                                                                                 this
+                                                                                                                                     .
+                                                                                                                                     position
+                                                                                                                                     .
+                                                                                                                                     X,
+                                                                                                                                 (
+                                                                                                                                 int
+                                                                                                                                 )
+                                                                                                                                 this
+                                                                                                                                     .
+                                                                                                                                     position
+                                                                                                                                     .
+                                                                                                                                     Y,
+                                                                                                                                 1);
+                                                                                                                            for
+                                                                                                                                (
+                                                                                                                                int
+                                                                                                                                    num53
+                                                                                                                                    =
+                                                                                                                                    0;
+                                                                                                                                num53 <
+                                                                                                                                10;
+                                                                                                                                num53
+                                                                                                                                    ++)
+                                                                                                                            {
+                                                                                                                                Vector2
+                                                                                                                                    arg_1886_0
+                                                                                                                                        =
+                                                                                                                                        new Vector2
+                                                                                                                                            (this
+                                                                                                                                                 .
+                                                                                                                                                 position
+                                                                                                                                                 .
+                                                                                                                                                 X,
+                                                                                                                                             this
+                                                                                                                                                 .
+                                                                                                                                                 position
+                                                                                                                                                 .
+                                                                                                                                                 Y);
+                                                                                                                                int
+                                                                                                                                    arg_1886_1
+                                                                                                                                        =
+                                                                                                                                        this
+                                                                                                                                            .
+                                                                                                                                            width;
+                                                                                                                                int
+                                                                                                                                    arg_1886_2
+                                                                                                                                        =
+                                                                                                                                        this
+                                                                                                                                            .
+                                                                                                                                            height;
+                                                                                                                                int
+                                                                                                                                    arg_1886_3
+                                                                                                                                        =
+                                                                                                                                        26;
+                                                                                                                                float
+                                                                                                                                    arg_1886_4
+                                                                                                                                        =
+                                                                                                                                        0f;
+                                                                                                                                float
+                                                                                                                                    arg_1886_5
+                                                                                                                                        =
+                                                                                                                                        0f;
+                                                                                                                                int
+                                                                                                                                    arg_1886_6
+                                                                                                                                        =
+                                                                                                                                        0;
+                                                                                                                                Color
+                                                                                                                                    newColor
+                                                                                                                                        =
+                                                                                                                                        default
+                                                                                                                                            (
+                                                                                                                                            Color
+                                                                                                                                            );
+                                                                                                                                Dust
+                                                                                                                                    .
+                                                                                                                                    NewDust
+                                                                                                                                    (arg_1886_0,
+                                                                                                                                     arg_1886_1,
+                                                                                                                                     arg_1886_2,
+                                                                                                                                     arg_1886_3,
+                                                                                                                                     arg_1886_4,
+                                                                                                                                     arg_1886_5,
+                                                                                                                                     arg_1886_6,
+                                                                                                                                     newColor,
+                                                                                                                                     0.8f);
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            if
+                                                                                                                                (
+                                                                                                                                this
+                                                                                                                                    .
+                                                                                                                                    type ==
+                                                                                                                                24)
+                                                                                                                            {
+                                                                                                                                for
+                                                                                                                                    (
+                                                                                                                                    int
+                                                                                                                                        num54
+                                                                                                                                        =
+                                                                                                                                        0;
+                                                                                                                                    num54 <
+                                                                                                                                    10;
+                                                                                                                                    num54
+                                                                                                                                        ++)
+                                                                                                                                {
+                                                                                                                                    Vector2
+                                                                                                                                        arg_1906_0
+                                                                                                                                            =
+                                                                                                                                            new Vector2
+                                                                                                                                                (this
+                                                                                                                                                     .
+                                                                                                                                                     position
+                                                                                                                                                     .
+                                                                                                                                                     X,
+                                                                                                                                                 this
+                                                                                                                                                     .
+                                                                                                                                                     position
+                                                                                                                                                     .
+                                                                                                                                                     Y);
+                                                                                                                                    int
+                                                                                                                                        arg_1906_1
+                                                                                                                                            =
+                                                                                                                                            this
+                                                                                                                                                .
+                                                                                                                                                width;
+                                                                                                                                    int
+                                                                                                                                        arg_1906_2
+                                                                                                                                            =
+                                                                                                                                            this
+                                                                                                                                                .
+                                                                                                                                                height;
+                                                                                                                                    int
+                                                                                                                                        arg_1906_3
+                                                                                                                                            =
+                                                                                                                                            1;
+                                                                                                                                    float
+                                                                                                                                        arg_1906_4
+                                                                                                                                            =
+                                                                                                                                            this
+                                                                                                                                                .
+                                                                                                                                                velocity
+                                                                                                                                                .
+                                                                                                                                                X*
+                                                                                                                                            0.1f;
+                                                                                                                                    float
+                                                                                                                                        arg_1906_5
+                                                                                                                                            =
+                                                                                                                                            this
+                                                                                                                                                .
+                                                                                                                                                velocity
+                                                                                                                                                .
+                                                                                                                                                Y*
+                                                                                                                                            0.1f;
+                                                                                                                                    int
+                                                                                                                                        arg_1906_6
+                                                                                                                                            =
+                                                                                                                                            0;
+                                                                                                                                    Color
+                                                                                                                                        newColor
+                                                                                                                                            =
+                                                                                                                                            default
+                                                                                                                                                (
+                                                                                                                                                Color
+                                                                                                                                                );
+                                                                                                                                    Dust
+                                                                                                                                        .
+                                                                                                                                        NewDust
+                                                                                                                                        (arg_1906_0,
+                                                                                                                                         arg_1906_1,
+                                                                                                                                         arg_1906_2,
+                                                                                                                                         arg_1906_3,
+                                                                                                                                         arg_1906_4,
+                                                                                                                                         arg_1906_5,
+                                                                                                                                         arg_1906_6,
+                                                                                                                                         newColor,
+                                                                                                                                         0.75f);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            else
+                                                                                                                            {
+                                                                                                                                if
+                                                                                                                                    (
+                                                                                                                                    this
+                                                                                                                                        .
+                                                                                                                                        type ==
+                                                                                                                                    27)
+                                                                                                                                {
+                                                                                                                                    Main
+                                                                                                                                        .
+                                                                                                                                        PlaySound
+                                                                                                                                        (2,
+                                                                                                                                         (
+                                                                                                                                         int
+                                                                                                                                         )
+                                                                                                                                         this
+                                                                                                                                             .
+                                                                                                                                             position
+                                                                                                                                             .
+                                                                                                                                             X,
+                                                                                                                                         (
+                                                                                                                                         int
+                                                                                                                                         )
+                                                                                                                                         this
+                                                                                                                                             .
+                                                                                                                                             position
+                                                                                                                                             .
+                                                                                                                                             Y,
+                                                                                                                                         10);
+                                                                                                                                    for
+                                                                                                                                        (
+                                                                                                                                        int
+                                                                                                                                            num55
+                                                                                                                                            =
+                                                                                                                                            0;
+                                                                                                                                        num55 <
+                                                                                                                                        30;
+                                                                                                                                        num55
+                                                                                                                                            ++)
+                                                                                                                                    {
+                                                                                                                                        Vector2
+                                                                                                                                            arg_19AE_0
+                                                                                                                                                =
+                                                                                                                                                new Vector2
+                                                                                                                                                    (this
+                                                                                                                                                         .
+                                                                                                                                                         position
+                                                                                                                                                         .
+                                                                                                                                                         X,
+                                                                                                                                                     this
+                                                                                                                                                         .
+                                                                                                                                                         position
+                                                                                                                                                         .
+                                                                                                                                                         Y);
+                                                                                                                                        int
+                                                                                                                                            arg_19AE_1
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    width;
+                                                                                                                                        int
+                                                                                                                                            arg_19AE_2
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    height;
+                                                                                                                                        int
+                                                                                                                                            arg_19AE_3
+                                                                                                                                                =
+                                                                                                                                                29;
+                                                                                                                                        float
+                                                                                                                                            arg_19AE_4
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    X*
+                                                                                                                                                0.1f;
+                                                                                                                                        float
+                                                                                                                                            arg_19AE_5
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    Y*
+                                                                                                                                                0.1f;
+                                                                                                                                        int
+                                                                                                                                            arg_19AE_6
+                                                                                                                                                =
+                                                                                                                                                100;
+                                                                                                                                        Color
+                                                                                                                                            newColor
+                                                                                                                                                =
+                                                                                                                                                default
+                                                                                                                                                    (
+                                                                                                                                                    Color
+                                                                                                                                                    );
+                                                                                                                                        int
+                                                                                                                                            num56
+                                                                                                                                                =
+                                                                                                                                                Dust
+                                                                                                                                                    .
+                                                                                                                                                    NewDust
+                                                                                                                                                    (arg_19AE_0,
+                                                                                                                                                     arg_19AE_1,
+                                                                                                                                                     arg_19AE_2,
+                                                                                                                                                     arg_19AE_3,
+                                                                                                                                                     arg_19AE_4,
+                                                                                                                                                     arg_19AE_5,
+                                                                                                                                                     arg_19AE_6,
+                                                                                                                                                     newColor,
+                                                                                                                                                     3f);
+                                                                                                                                        Main
+                                                                                                                                            .
+                                                                                                                                            dust
+                                                                                                                                            [
+                                                                                                                                                num56
+                                                                                                                                            ]
+                                                                                                                                            .
+                                                                                                                                            noGravity
+                                                                                                                                            =
+                                                                                                                                            true;
+                                                                                                                                        Vector2
+                                                                                                                                            arg_1A1F_0
+                                                                                                                                                =
+                                                                                                                                                new Vector2
+                                                                                                                                                    (this
+                                                                                                                                                         .
+                                                                                                                                                         position
+                                                                                                                                                         .
+                                                                                                                                                         X,
+                                                                                                                                                     this
+                                                                                                                                                         .
+                                                                                                                                                         position
+                                                                                                                                                         .
+                                                                                                                                                         Y);
+                                                                                                                                        int
+                                                                                                                                            arg_1A1F_1
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    width;
+                                                                                                                                        int
+                                                                                                                                            arg_1A1F_2
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    height;
+                                                                                                                                        int
+                                                                                                                                            arg_1A1F_3
+                                                                                                                                                =
+                                                                                                                                                29;
+                                                                                                                                        float
+                                                                                                                                            arg_1A1F_4
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    X*
+                                                                                                                                                0.1f;
+                                                                                                                                        float
+                                                                                                                                            arg_1A1F_5
+                                                                                                                                                =
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    Y*
+                                                                                                                                                0.1f;
+                                                                                                                                        int
+                                                                                                                                            arg_1A1F_6
+                                                                                                                                                =
+                                                                                                                                                100;
+                                                                                                                                        newColor
+                                                                                                                                            =
+                                                                                                                                            default
+                                                                                                                                                (
+                                                                                                                                                Color
+                                                                                                                                                );
+                                                                                                                                        Dust
+                                                                                                                                            .
+                                                                                                                                            NewDust
+                                                                                                                                            (arg_1A1F_0,
+                                                                                                                                             arg_1A1F_1,
+                                                                                                                                             arg_1A1F_2,
+                                                                                                                                             arg_1A1F_3,
+                                                                                                                                             arg_1A1F_4,
+                                                                                                                                             arg_1A1F_5,
+                                                                                                                                             arg_1A1F_6,
+                                                                                                                                             newColor,
+                                                                                                                                             2f);
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                {
+                                                                                                                                    if
+                                                                                                                                        (
+                                                                                                                                        this
+                                                                                                                                            .
+                                                                                                                                            type ==
+                                                                                                                                        38)
+                                                                                                                                    {
+                                                                                                                                        for
+                                                                                                                                            (
+                                                                                                                                            int
+                                                                                                                                                num57
+                                                                                                                                                =
+                                                                                                                                                0;
+                                                                                                                                            num57 <
+                                                                                                                                            10;
+                                                                                                                                            num57
+                                                                                                                                                ++)
+                                                                                                                                        {
+                                                                                                                                            Vector2
+                                                                                                                                                arg_1AA3_0
+                                                                                                                                                    =
+                                                                                                                                                    new Vector2
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             position
+                                                                                                                                                             .
+                                                                                                                                                             X,
+                                                                                                                                                         this
+                                                                                                                                                             .
+                                                                                                                                                             position
+                                                                                                                                                             .
+                                                                                                                                                             Y);
+                                                                                                                                            int
+                                                                                                                                                arg_1AA3_1
+                                                                                                                                                    =
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        width;
+                                                                                                                                            int
+                                                                                                                                                arg_1AA3_2
+                                                                                                                                                    =
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        height;
+                                                                                                                                            int
+                                                                                                                                                arg_1AA3_3
+                                                                                                                                                    =
+                                                                                                                                                    42;
+                                                                                                                                            float
+                                                                                                                                                arg_1AA3_4
+                                                                                                                                                    =
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        X*
+                                                                                                                                                    0.1f;
+                                                                                                                                            float
+                                                                                                                                                arg_1AA3_5
+                                                                                                                                                    =
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        Y*
+                                                                                                                                                    0.1f;
+                                                                                                                                            int
+                                                                                                                                                arg_1AA3_6
+                                                                                                                                                    =
+                                                                                                                                                    0;
+                                                                                                                                            Color
+                                                                                                                                                newColor
+                                                                                                                                                    =
+                                                                                                                                                    default
+                                                                                                                                                        (
+                                                                                                                                                        Color
+                                                                                                                                                        );
+                                                                                                                                            Dust
+                                                                                                                                                .
+                                                                                                                                                NewDust
+                                                                                                                                                (arg_1AA3_0,
+                                                                                                                                                 arg_1AA3_1,
+                                                                                                                                                 arg_1AA3_2,
+                                                                                                                                                 arg_1AA3_3,
+                                                                                                                                                 arg_1AA3_4,
+                                                                                                                                                 arg_1AA3_5,
+                                                                                                                                                 arg_1AA3_6,
+                                                                                                                                                 newColor,
+                                                                                                                                                 1f);
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                    else
+                                                                                                                                    {
+                                                                                                                                        if
+                                                                                                                                            (
+                                                                                                                                            this
+                                                                                                                                                .
+                                                                                                                                                type ==
+                                                                                                                                            44 ||
+                                                                                                                                            this
+                                                                                                                                                .
+                                                                                                                                                type ==
+                                                                                                                                            45)
+                                                                                                                                        {
+                                                                                                                                            Main
+                                                                                                                                                .
+                                                                                                                                                PlaySound
+                                                                                                                                                (2,
+                                                                                                                                                 (
+                                                                                                                                                 int
+                                                                                                                                                 )
+                                                                                                                                                 this
+                                                                                                                                                     .
+                                                                                                                                                     position
+                                                                                                                                                     .
+                                                                                                                                                     X,
+                                                                                                                                                 (
+                                                                                                                                                 int
+                                                                                                                                                 )
+                                                                                                                                                 this
+                                                                                                                                                     .
+                                                                                                                                                     position
+                                                                                                                                                     .
+                                                                                                                                                     Y,
+                                                                                                                                                 10);
+                                                                                                                                            for
+                                                                                                                                                (
+                                                                                                                                                int
+                                                                                                                                                    num58
+                                                                                                                                                    =
+                                                                                                                                                    0;
+                                                                                                                                                num58 <
+                                                                                                                                                30;
+                                                                                                                                                num58
+                                                                                                                                                    ++)
+                                                                                                                                            {
+                                                                                                                                                Vector2
+                                                                                                                                                    arg_1B49_0
+                                                                                                                                                        =
+                                                                                                                                                        new Vector2
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 X,
+                                                                                                                                                             this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 Y);
+                                                                                                                                                int
+                                                                                                                                                    arg_1B49_1
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            width;
+                                                                                                                                                int
+                                                                                                                                                    arg_1B49_2
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            height;
+                                                                                                                                                int
+                                                                                                                                                    arg_1B49_3
+                                                                                                                                                        =
+                                                                                                                                                        27;
+                                                                                                                                                float
+                                                                                                                                                    arg_1B49_4
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            X;
+                                                                                                                                                float
+                                                                                                                                                    arg_1B49_5
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            Y;
+                                                                                                                                                int
+                                                                                                                                                    arg_1B49_6
+                                                                                                                                                        =
+                                                                                                                                                        100;
+                                                                                                                                                Color
+                                                                                                                                                    newColor
+                                                                                                                                                        =
+                                                                                                                                                        default
+                                                                                                                                                            (
+                                                                                                                                                            Color
+                                                                                                                                                            );
+                                                                                                                                                int
+                                                                                                                                                    num59
+                                                                                                                                                        =
+                                                                                                                                                        Dust
+                                                                                                                                                            .
+                                                                                                                                                            NewDust
+                                                                                                                                                            (arg_1B49_0,
+                                                                                                                                                             arg_1B49_1,
+                                                                                                                                                             arg_1B49_2,
+                                                                                                                                                             arg_1B49_3,
+                                                                                                                                                             arg_1B49_4,
+                                                                                                                                                             arg_1B49_5,
+                                                                                                                                                             arg_1B49_6,
+                                                                                                                                                             newColor,
+                                                                                                                                                             1.7f);
+                                                                                                                                                Main
+                                                                                                                                                    .
+                                                                                                                                                    dust
+                                                                                                                                                    [
+                                                                                                                                                        num59
+                                                                                                                                                    ]
+                                                                                                                                                    .
+                                                                                                                                                    noGravity
+                                                                                                                                                    =
+                                                                                                                                                    true;
+                                                                                                                                                Vector2
+                                                                                                                                                    arg_1BAE_0
+                                                                                                                                                        =
+                                                                                                                                                        new Vector2
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 X,
+                                                                                                                                                             this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 Y);
+                                                                                                                                                int
+                                                                                                                                                    arg_1BAE_1
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            width;
+                                                                                                                                                int
+                                                                                                                                                    arg_1BAE_2
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            height;
+                                                                                                                                                int
+                                                                                                                                                    arg_1BAE_3
+                                                                                                                                                        =
+                                                                                                                                                        27;
+                                                                                                                                                float
+                                                                                                                                                    arg_1BAE_4
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            X;
+                                                                                                                                                float
+                                                                                                                                                    arg_1BAE_5
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            Y;
+                                                                                                                                                int
+                                                                                                                                                    arg_1BAE_6
+                                                                                                                                                        =
+                                                                                                                                                        100;
+                                                                                                                                                newColor
+                                                                                                                                                    =
+                                                                                                                                                    default
+                                                                                                                                                        (
+                                                                                                                                                        Color
+                                                                                                                                                        );
+                                                                                                                                                Dust
+                                                                                                                                                    .
+                                                                                                                                                    NewDust
+                                                                                                                                                    (arg_1BAE_0,
+                                                                                                                                                     arg_1BAE_1,
+                                                                                                                                                     arg_1BAE_2,
+                                                                                                                                                     arg_1BAE_3,
+                                                                                                                                                     arg_1BAE_4,
+                                                                                                                                                     arg_1BAE_5,
+                                                                                                                                                     arg_1BAE_6,
+                                                                                                                                                     newColor,
+                                                                                                                                                     1f);
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if
+                                                                                                                                                (
+                                                                                                                                                this
+                                                                                                                                                    .
+                                                                                                                                                    type ==
+                                                                                                                                                41)
+                                                                                                                                            {
+                                                                                                                                                Main
+                                                                                                                                                    .
+                                                                                                                                                    PlaySound
+                                                                                                                                                    (2,
+                                                                                                                                                     (
+                                                                                                                                                     int
+                                                                                                                                                     )
+                                                                                                                                                     this
+                                                                                                                                                         .
+                                                                                                                                                         position
+                                                                                                                                                         .
+                                                                                                                                                         X,
+                                                                                                                                                     (
+                                                                                                                                                     int
+                                                                                                                                                     )
+                                                                                                                                                     this
+                                                                                                                                                         .
+                                                                                                                                                         position
+                                                                                                                                                         .
+                                                                                                                                                         Y,
+                                                                                                                                                     14);
+                                                                                                                                                for
+                                                                                                                                                    (
+                                                                                                                                                    int
+                                                                                                                                                        num60
+                                                                                                                                                        =
+                                                                                                                                                        0;
+                                                                                                                                                    num60 <
+                                                                                                                                                    10;
+                                                                                                                                                    num60
+                                                                                                                                                        ++)
+                                                                                                                                                {
+                                                                                                                                                    Vector2
+                                                                                                                                                        arg_1C3E_0
+                                                                                                                                                            =
+                                                                                                                                                            new Vector2
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y);
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C3E_1
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                width;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C3E_2
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                height;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C3E_3
+                                                                                                                                                            =
+                                                                                                                                                            31;
+                                                                                                                                                    float
+                                                                                                                                                        arg_1C3E_4
+                                                                                                                                                            =
+                                                                                                                                                            0f;
+                                                                                                                                                    float
+                                                                                                                                                        arg_1C3E_5
+                                                                                                                                                            =
+                                                                                                                                                            0f;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C3E_6
+                                                                                                                                                            =
+                                                                                                                                                            100;
+                                                                                                                                                    Color
+                                                                                                                                                        newColor
+                                                                                                                                                            =
+                                                                                                                                                            default
+                                                                                                                                                                (
+                                                                                                                                                                Color
+                                                                                                                                                                );
+                                                                                                                                                    Dust
+                                                                                                                                                        .
+                                                                                                                                                        NewDust
+                                                                                                                                                        (arg_1C3E_0,
+                                                                                                                                                         arg_1C3E_1,
+                                                                                                                                                         arg_1C3E_2,
+                                                                                                                                                         arg_1C3E_3,
+                                                                                                                                                         arg_1C3E_4,
+                                                                                                                                                         arg_1C3E_5,
+                                                                                                                                                         arg_1C3E_6,
+                                                                                                                                                         newColor,
+                                                                                                                                                         1.5f);
+                                                                                                                                                }
+                                                                                                                                                for
+                                                                                                                                                    (
+                                                                                                                                                    int
+                                                                                                                                                        num61
+                                                                                                                                                        =
+                                                                                                                                                        0;
+                                                                                                                                                    num61 <
+                                                                                                                                                    5;
+                                                                                                                                                    num61
+                                                                                                                                                        ++)
+                                                                                                                                                {
+                                                                                                                                                    Vector2
+                                                                                                                                                        arg_1C9B_0
+                                                                                                                                                            =
+                                                                                                                                                            new Vector2
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y);
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C9B_1
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                width;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C9B_2
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                height;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C9B_3
+                                                                                                                                                            =
+                                                                                                                                                            6;
+                                                                                                                                                    float
+                                                                                                                                                        arg_1C9B_4
+                                                                                                                                                            =
+                                                                                                                                                            0f;
+                                                                                                                                                    float
+                                                                                                                                                        arg_1C9B_5
+                                                                                                                                                            =
+                                                                                                                                                            0f;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1C9B_6
+                                                                                                                                                            =
+                                                                                                                                                            100;
+                                                                                                                                                    Color
+                                                                                                                                                        newColor
+                                                                                                                                                            =
+                                                                                                                                                            default
+                                                                                                                                                                (
+                                                                                                                                                                Color
+                                                                                                                                                                );
+                                                                                                                                                    int
+                                                                                                                                                        num62
+                                                                                                                                                            =
+                                                                                                                                                            Dust
+                                                                                                                                                                .
+                                                                                                                                                                NewDust
+                                                                                                                                                                (arg_1C9B_0,
+                                                                                                                                                                 arg_1C9B_1,
+                                                                                                                                                                 arg_1C9B_2,
+                                                                                                                                                                 arg_1C9B_3,
+                                                                                                                                                                 arg_1C9B_4,
+                                                                                                                                                                 arg_1C9B_5,
+                                                                                                                                                                 arg_1C9B_6,
+                                                                                                                                                                 newColor,
+                                                                                                                                                                 2.5f);
+                                                                                                                                                    Main
+                                                                                                                                                        .
+                                                                                                                                                        dust
+                                                                                                                                                        [
+                                                                                                                                                            num62
+                                                                                                                                                        ]
+                                                                                                                                                        .
+                                                                                                                                                        noGravity
+                                                                                                                                                        =
+                                                                                                                                                        true;
+                                                                                                                                                    Dust
+                                                                                                                                                        expr_1CB8
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                dust
+                                                                                                                                                                [
+                                                                                                                                                                    num62
+                                                                                                                                                                ];
+                                                                                                                                                    expr_1CB8
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        *=
+                                                                                                                                                        3f;
+                                                                                                                                                    Vector2
+                                                                                                                                                        arg_1D10_0
+                                                                                                                                                            =
+                                                                                                                                                            new Vector2
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y);
+                                                                                                                                                    int
+                                                                                                                                                        arg_1D10_1
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                width;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1D10_2
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                height;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1D10_3
+                                                                                                                                                            =
+                                                                                                                                                            6;
+                                                                                                                                                    float
+                                                                                                                                                        arg_1D10_4
+                                                                                                                                                            =
+                                                                                                                                                            0f;
+                                                                                                                                                    float
+                                                                                                                                                        arg_1D10_5
+                                                                                                                                                            =
+                                                                                                                                                            0f;
+                                                                                                                                                    int
+                                                                                                                                                        arg_1D10_6
+                                                                                                                                                            =
+                                                                                                                                                            100;
+                                                                                                                                                    newColor
+                                                                                                                                                        =
+                                                                                                                                                        default
+                                                                                                                                                            (
+                                                                                                                                                            Color
+                                                                                                                                                            );
+                                                                                                                                                    num62
+                                                                                                                                                        =
+                                                                                                                                                        Dust
+                                                                                                                                                            .
+                                                                                                                                                            NewDust
+                                                                                                                                                            (arg_1D10_0,
+                                                                                                                                                             arg_1D10_1,
+                                                                                                                                                             arg_1D10_2,
+                                                                                                                                                             arg_1D10_3,
+                                                                                                                                                             arg_1D10_4,
+                                                                                                                                                             arg_1D10_5,
+                                                                                                                                                             arg_1D10_6,
+                                                                                                                                                             newColor,
+                                                                                                                                                             1.5f);
+                                                                                                                                                    Dust
+                                                                                                                                                        expr_1D1F
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                dust
+                                                                                                                                                                [
+                                                                                                                                                                    num62
+                                                                                                                                                                ];
+                                                                                                                                                    expr_1D1F
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        *=
+                                                                                                                                                        2f;
+                                                                                                                                                }
+                                                                                                                                                Vector2
+                                                                                                                                                    arg_1D7A_0
+                                                                                                                                                        =
+                                                                                                                                                        new Vector2
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 X,
+                                                                                                                                                             this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 Y);
+                                                                                                                                                Vector2
+                                                                                                                                                    vector2
+                                                                                                                                                        =
+                                                                                                                                                        default
+                                                                                                                                                            (
+                                                                                                                                                            Vector2
+                                                                                                                                                            );
+                                                                                                                                                int
+                                                                                                                                                    num63
+                                                                                                                                                        =
+                                                                                                                                                        Gore
+                                                                                                                                                            .
+                                                                                                                                                            NewGore
+                                                                                                                                                            (arg_1D7A_0,
+                                                                                                                                                             vector2,
+                                                                                                                                                             Main
+                                                                                                                                                                 .
+                                                                                                                                                                 rand
+                                                                                                                                                                 .
+                                                                                                                                                                 Next
+                                                                                                                                                                 (61,
+                                                                                                                                                                  64),
+                                                                                                                                                             1f);
+                                                                                                                                                Gore
+                                                                                                                                                    expr_1D89
+                                                                                                                                                        =
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            gore
+                                                                                                                                                            [
+                                                                                                                                                                num63
+                                                                                                                                                            ];
+                                                                                                                                                expr_1D89
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    *=
+                                                                                                                                                    0.4f;
+                                                                                                                                                Gore
+                                                                                                                                                    expr_1DAB_cp_0
+                                                                                                                                                        =
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            gore
+                                                                                                                                                            [
+                                                                                                                                                                num63
+                                                                                                                                                            ];
+                                                                                                                                                expr_1DAB_cp_0
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    X
+                                                                                                                                                    =
+                                                                                                                                                    expr_1DAB_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        X +
+                                                                                                                                                    (
+                                                                                                                                                    float
+                                                                                                                                                    )
+                                                                                                                                                    Main
+                                                                                                                                                        .
+                                                                                                                                                        rand
+                                                                                                                                                        .
+                                                                                                                                                        Next
+                                                                                                                                                        (-10,
+                                                                                                                                                         11)*
+                                                                                                                                                    0.1f;
+                                                                                                                                                Gore
+                                                                                                                                                    expr_1DD9_cp_0
+                                                                                                                                                        =
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            gore
+                                                                                                                                                            [
+                                                                                                                                                                num63
+                                                                                                                                                            ];
+                                                                                                                                                expr_1DD9_cp_0
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    Y
+                                                                                                                                                    =
+                                                                                                                                                    expr_1DD9_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        Y +
+                                                                                                                                                    (
+                                                                                                                                                    float
+                                                                                                                                                    )
+                                                                                                                                                    Main
+                                                                                                                                                        .
+                                                                                                                                                        rand
+                                                                                                                                                        .
+                                                                                                                                                        Next
+                                                                                                                                                        (-10,
+                                                                                                                                                         11)*
+                                                                                                                                                    0.1f;
+                                                                                                                                                Vector2
+                                                                                                                                                    arg_1E32_0
+                                                                                                                                                        =
+                                                                                                                                                        new Vector2
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 X,
+                                                                                                                                                             this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 Y);
+                                                                                                                                                vector2
+                                                                                                                                                    =
+                                                                                                                                                    default
+                                                                                                                                                        (
+                                                                                                                                                        Vector2
+                                                                                                                                                        );
+                                                                                                                                                num63
+                                                                                                                                                    =
+                                                                                                                                                    Gore
+                                                                                                                                                        .
+                                                                                                                                                        NewGore
+                                                                                                                                                        (arg_1E32_0,
+                                                                                                                                                         vector2,
+                                                                                                                                                         Main
+                                                                                                                                                             .
+                                                                                                                                                             rand
+                                                                                                                                                             .
+                                                                                                                                                             Next
+                                                                                                                                                             (61,
+                                                                                                                                                              64),
+                                                                                                                                                         1f);
+                                                                                                                                                Gore
+                                                                                                                                                    expr_1E41
+                                                                                                                                                        =
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            gore
+                                                                                                                                                            [
+                                                                                                                                                                num63
+                                                                                                                                                            ];
+                                                                                                                                                expr_1E41
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    *=
+                                                                                                                                                    0.4f;
+                                                                                                                                                Gore
+                                                                                                                                                    expr_1E63_cp_0
+                                                                                                                                                        =
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            gore
+                                                                                                                                                            [
+                                                                                                                                                                num63
+                                                                                                                                                            ];
+                                                                                                                                                expr_1E63_cp_0
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    X
+                                                                                                                                                    =
+                                                                                                                                                    expr_1E63_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        X +
+                                                                                                                                                    (
+                                                                                                                                                    float
+                                                                                                                                                    )
+                                                                                                                                                    Main
+                                                                                                                                                        .
+                                                                                                                                                        rand
+                                                                                                                                                        .
+                                                                                                                                                        Next
+                                                                                                                                                        (-10,
+                                                                                                                                                         11)*
+                                                                                                                                                    0.1f;
+                                                                                                                                                Gore
+                                                                                                                                                    expr_1E91_cp_0
+                                                                                                                                                        =
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            gore
+                                                                                                                                                            [
+                                                                                                                                                                num63
+                                                                                                                                                            ];
+                                                                                                                                                expr_1E91_cp_0
+                                                                                                                                                    .
+                                                                                                                                                    velocity
+                                                                                                                                                    .
+                                                                                                                                                    Y
+                                                                                                                                                    =
+                                                                                                                                                    expr_1E91_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        Y +
+                                                                                                                                                    (
+                                                                                                                                                    float
+                                                                                                                                                    )
+                                                                                                                                                    Main
+                                                                                                                                                        .
+                                                                                                                                                        rand
+                                                                                                                                                        .
+                                                                                                                                                        Next
+                                                                                                                                                        (-10,
+                                                                                                                                                         11)*
+                                                                                                                                                    0.1f;
+                                                                                                                                                if
+                                                                                                                                                    (
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        owner ==
+                                                                                                                                                    Main
+                                                                                                                                                        .
+                                                                                                                                                        myPlayer)
+                                                                                                                                                {
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        penetrate
+                                                                                                                                                        =
+                                                                                                                                                        -1;
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            X +
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             width/
+                                                                                                                                                         2);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            Y +
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             height/
+                                                                                                                                                         2);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        width
+                                                                                                                                                        =
+                                                                                                                                                        64;
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        height
+                                                                                                                                                        =
+                                                                                                                                                        64;
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            X -
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             width/
+                                                                                                                                                         2);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            Y -
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             height/
+                                                                                                                                                         2);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        Damage
+                                                                                                                                                        ();
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if
+                                                                                                                                                    (
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        type ==
+                                                                                                                                                    28 ||
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        type ==
+                                                                                                                                                    30 ||
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        type ==
+                                                                                                                                                    37 ||
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        type ==
+                                                                                                                                                    75 ||
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        type ==
+                                                                                                                                                    102)
+                                                                                                                                                {
+                                                                                                                                                    Main
+                                                                                                                                                        .
+                                                                                                                                                        PlaySound
+                                                                                                                                                        (2,
+                                                                                                                                                         (
+                                                                                                                                                         int
+                                                                                                                                                         )
+                                                                                                                                                         this
+                                                                                                                                                             .
+                                                                                                                                                             position
+                                                                                                                                                             .
+                                                                                                                                                             X,
+                                                                                                                                                         (
+                                                                                                                                                         int
+                                                                                                                                                         )
+                                                                                                                                                         this
+                                                                                                                                                             .
+                                                                                                                                                             position
+                                                                                                                                                             .
+                                                                                                                                                             Y,
+                                                                                                                                                         14);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            X +
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             width/
+                                                                                                                                                         2);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            Y +
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             height/
+                                                                                                                                                         2);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        width
+                                                                                                                                                        =
+                                                                                                                                                        22;
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        height
+                                                                                                                                                        =
+                                                                                                                                                        22;
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            X -
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             width/
+                                                                                                                                                         2);
+                                                                                                                                                    this
+                                                                                                                                                        .
+                                                                                                                                                        position
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            Y -
+                                                                                                                                                        (
+                                                                                                                                                        float
+                                                                                                                                                        )
+                                                                                                                                                        (this
+                                                                                                                                                             .
+                                                                                                                                                             height/
+                                                                                                                                                         2);
+                                                                                                                                                    for
+                                                                                                                                                        (
+                                                                                                                                                        int
+                                                                                                                                                            num64
+                                                                                                                                                            =
+                                                                                                                                                            0;
+                                                                                                                                                        num64 <
+                                                                                                                                                        20;
+                                                                                                                                                        num64
+                                                                                                                                                            ++)
+                                                                                                                                                    {
+                                                                                                                                                        Vector2
+                                                                                                                                                            arg_206A_0
+                                                                                                                                                                =
+                                                                                                                                                                new Vector2
+                                                                                                                                                                    (this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         X,
+                                                                                                                                                                     this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         Y);
+                                                                                                                                                        int
+                                                                                                                                                            arg_206A_1
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    width;
+                                                                                                                                                        int
+                                                                                                                                                            arg_206A_2
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    height;
+                                                                                                                                                        int
+                                                                                                                                                            arg_206A_3
+                                                                                                                                                                =
+                                                                                                                                                                31;
+                                                                                                                                                        float
+                                                                                                                                                            arg_206A_4
+                                                                                                                                                                =
+                                                                                                                                                                0f;
+                                                                                                                                                        float
+                                                                                                                                                            arg_206A_5
+                                                                                                                                                                =
+                                                                                                                                                                0f;
+                                                                                                                                                        int
+                                                                                                                                                            arg_206A_6
+                                                                                                                                                                =
+                                                                                                                                                                100;
+                                                                                                                                                        Color
+                                                                                                                                                            newColor
+                                                                                                                                                                =
+                                                                                                                                                                default
+                                                                                                                                                                    (
+                                                                                                                                                                    Color
+                                                                                                                                                                    );
+                                                                                                                                                        int
+                                                                                                                                                            num65
+                                                                                                                                                                =
+                                                                                                                                                                Dust
+                                                                                                                                                                    .
+                                                                                                                                                                    NewDust
+                                                                                                                                                                    (arg_206A_0,
+                                                                                                                                                                     arg_206A_1,
+                                                                                                                                                                     arg_206A_2,
+                                                                                                                                                                     arg_206A_3,
+                                                                                                                                                                     arg_206A_4,
+                                                                                                                                                                     arg_206A_5,
+                                                                                                                                                                     arg_206A_6,
+                                                                                                                                                                     newColor,
+                                                                                                                                                                     1.5f);
+                                                                                                                                                        Dust
+                                                                                                                                                            expr_2079
+                                                                                                                                                                =
+                                                                                                                                                                Main
+                                                                                                                                                                    .
+                                                                                                                                                                    dust
+                                                                                                                                                                    [
+                                                                                                                                                                        num65
+                                                                                                                                                                    ];
+                                                                                                                                                        expr_2079
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            *=
+                                                                                                                                                            1.4f;
+                                                                                                                                                    }
+                                                                                                                                                    for
+                                                                                                                                                        (
+                                                                                                                                                        int
+                                                                                                                                                            num66
+                                                                                                                                                            =
+                                                                                                                                                            0;
+                                                                                                                                                        num66 <
+                                                                                                                                                        10;
+                                                                                                                                                        num66
+                                                                                                                                                            ++)
+                                                                                                                                                    {
+                                                                                                                                                        Vector2
+                                                                                                                                                            arg_20E5_0
+                                                                                                                                                                =
+                                                                                                                                                                new Vector2
+                                                                                                                                                                    (this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         X,
+                                                                                                                                                                     this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         Y);
+                                                                                                                                                        int
+                                                                                                                                                            arg_20E5_1
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    width;
+                                                                                                                                                        int
+                                                                                                                                                            arg_20E5_2
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    height;
+                                                                                                                                                        int
+                                                                                                                                                            arg_20E5_3
+                                                                                                                                                                =
+                                                                                                                                                                6;
+                                                                                                                                                        float
+                                                                                                                                                            arg_20E5_4
+                                                                                                                                                                =
+                                                                                                                                                                0f;
+                                                                                                                                                        float
+                                                                                                                                                            arg_20E5_5
+                                                                                                                                                                =
+                                                                                                                                                                0f;
+                                                                                                                                                        int
+                                                                                                                                                            arg_20E5_6
+                                                                                                                                                                =
+                                                                                                                                                                100;
+                                                                                                                                                        Color
+                                                                                                                                                            newColor
+                                                                                                                                                                =
+                                                                                                                                                                default
+                                                                                                                                                                    (
+                                                                                                                                                                    Color
+                                                                                                                                                                    );
+                                                                                                                                                        int
+                                                                                                                                                            num67
+                                                                                                                                                                =
+                                                                                                                                                                Dust
+                                                                                                                                                                    .
+                                                                                                                                                                    NewDust
+                                                                                                                                                                    (arg_20E5_0,
+                                                                                                                                                                     arg_20E5_1,
+                                                                                                                                                                     arg_20E5_2,
+                                                                                                                                                                     arg_20E5_3,
+                                                                                                                                                                     arg_20E5_4,
+                                                                                                                                                                     arg_20E5_5,
+                                                                                                                                                                     arg_20E5_6,
+                                                                                                                                                                     newColor,
+                                                                                                                                                                     2.5f);
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            dust
+                                                                                                                                                            [
+                                                                                                                                                                num67
+                                                                                                                                                            ]
+                                                                                                                                                            .
+                                                                                                                                                            noGravity
+                                                                                                                                                            =
+                                                                                                                                                            true;
+                                                                                                                                                        Dust
+                                                                                                                                                            expr_2102
+                                                                                                                                                                =
+                                                                                                                                                                Main
+                                                                                                                                                                    .
+                                                                                                                                                                    dust
+                                                                                                                                                                    [
+                                                                                                                                                                        num67
+                                                                                                                                                                    ];
+                                                                                                                                                        expr_2102
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            *=
+                                                                                                                                                            5f;
+                                                                                                                                                        Vector2
+                                                                                                                                                            arg_215A_0
+                                                                                                                                                                =
+                                                                                                                                                                new Vector2
+                                                                                                                                                                    (this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         X,
+                                                                                                                                                                     this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         Y);
+                                                                                                                                                        int
+                                                                                                                                                            arg_215A_1
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    width;
+                                                                                                                                                        int
+                                                                                                                                                            arg_215A_2
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    height;
+                                                                                                                                                        int
+                                                                                                                                                            arg_215A_3
+                                                                                                                                                                =
+                                                                                                                                                                6;
+                                                                                                                                                        float
+                                                                                                                                                            arg_215A_4
+                                                                                                                                                                =
+                                                                                                                                                                0f;
+                                                                                                                                                        float
+                                                                                                                                                            arg_215A_5
+                                                                                                                                                                =
+                                                                                                                                                                0f;
+                                                                                                                                                        int
+                                                                                                                                                            arg_215A_6
+                                                                                                                                                                =
+                                                                                                                                                                100;
+                                                                                                                                                        newColor
+                                                                                                                                                            =
+                                                                                                                                                            default
+                                                                                                                                                                (
+                                                                                                                                                                Color
+                                                                                                                                                                );
+                                                                                                                                                        num67
+                                                                                                                                                            =
+                                                                                                                                                            Dust
+                                                                                                                                                                .
+                                                                                                                                                                NewDust
+                                                                                                                                                                (arg_215A_0,
+                                                                                                                                                                 arg_215A_1,
+                                                                                                                                                                 arg_215A_2,
+                                                                                                                                                                 arg_215A_3,
+                                                                                                                                                                 arg_215A_4,
+                                                                                                                                                                 arg_215A_5,
+                                                                                                                                                                 arg_215A_6,
+                                                                                                                                                                 newColor,
+                                                                                                                                                                 1.5f);
+                                                                                                                                                        Dust
+                                                                                                                                                            expr_2169
+                                                                                                                                                                =
+                                                                                                                                                                Main
+                                                                                                                                                                    .
+                                                                                                                                                                    dust
+                                                                                                                                                                    [
+                                                                                                                                                                        num67
+                                                                                                                                                                    ];
+                                                                                                                                                        expr_2169
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            *=
+                                                                                                                                                            3f;
+                                                                                                                                                    }
+                                                                                                                                                    Vector2
+                                                                                                                                                        arg_21C5_0
+                                                                                                                                                            =
+                                                                                                                                                            new Vector2
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y);
+                                                                                                                                                    Vector2
+                                                                                                                                                        vector2
+                                                                                                                                                            =
+                                                                                                                                                            default
+                                                                                                                                                                (
+                                                                                                                                                                Vector2
+                                                                                                                                                                );
+                                                                                                                                                    int
+                                                                                                                                                        num68
+                                                                                                                                                            =
+                                                                                                                                                            Gore
+                                                                                                                                                                .
+                                                                                                                                                                NewGore
+                                                                                                                                                                (arg_21C5_0,
+                                                                                                                                                                 vector2,
+                                                                                                                                                                 Main
+                                                                                                                                                                     .
+                                                                                                                                                                     rand
+                                                                                                                                                                     .
+                                                                                                                                                                     Next
+                                                                                                                                                                     (61,
+                                                                                                                                                                      64),
+                                                                                                                                                                 1f);
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_21D4
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_21D4
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        *=
+                                                                                                                                                        0.4f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_21F6_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_21F6_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        expr_21F6_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            X +
+                                                                                                                                                        1f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_2214_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_2214_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        expr_2214_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            Y +
+                                                                                                                                                        1f;
+                                                                                                                                                    Vector2
+                                                                                                                                                        arg_225D_0
+                                                                                                                                                            =
+                                                                                                                                                            new Vector2
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y);
+                                                                                                                                                    vector2
+                                                                                                                                                        =
+                                                                                                                                                        default
+                                                                                                                                                            (
+                                                                                                                                                            Vector2
+                                                                                                                                                            );
+                                                                                                                                                    num68
+                                                                                                                                                        =
+                                                                                                                                                        Gore
+                                                                                                                                                            .
+                                                                                                                                                            NewGore
+                                                                                                                                                            (arg_225D_0,
+                                                                                                                                                             vector2,
+                                                                                                                                                             Main
+                                                                                                                                                                 .
+                                                                                                                                                                 rand
+                                                                                                                                                                 .
+                                                                                                                                                                 Next
+                                                                                                                                                                 (61,
+                                                                                                                                                                  64),
+                                                                                                                                                             1f);
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_226C
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_226C
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        *=
+                                                                                                                                                        0.4f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_228E_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_228E_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        expr_228E_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            X -
+                                                                                                                                                        1f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_22AC_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_22AC_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        expr_22AC_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            Y +
+                                                                                                                                                        1f;
+                                                                                                                                                    Vector2
+                                                                                                                                                        arg_22F5_0
+                                                                                                                                                            =
+                                                                                                                                                            new Vector2
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y);
+                                                                                                                                                    vector2
+                                                                                                                                                        =
+                                                                                                                                                        default
+                                                                                                                                                            (
+                                                                                                                                                            Vector2
+                                                                                                                                                            );
+                                                                                                                                                    num68
+                                                                                                                                                        =
+                                                                                                                                                        Gore
+                                                                                                                                                            .
+                                                                                                                                                            NewGore
+                                                                                                                                                            (arg_22F5_0,
+                                                                                                                                                             vector2,
+                                                                                                                                                             Main
+                                                                                                                                                                 .
+                                                                                                                                                                 rand
+                                                                                                                                                                 .
+                                                                                                                                                                 Next
+                                                                                                                                                                 (61,
+                                                                                                                                                                  64),
+                                                                                                                                                             1f);
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_2304
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_2304
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        *=
+                                                                                                                                                        0.4f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_2326_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_2326_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        expr_2326_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            X +
+                                                                                                                                                        1f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_2344_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_2344_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        expr_2344_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            Y -
+                                                                                                                                                        1f;
+                                                                                                                                                    Vector2
+                                                                                                                                                        arg_238D_0
+                                                                                                                                                            =
+                                                                                                                                                            new Vector2
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y);
+                                                                                                                                                    vector2
+                                                                                                                                                        =
+                                                                                                                                                        default
+                                                                                                                                                            (
+                                                                                                                                                            Vector2
+                                                                                                                                                            );
+                                                                                                                                                    num68
+                                                                                                                                                        =
+                                                                                                                                                        Gore
+                                                                                                                                                            .
+                                                                                                                                                            NewGore
+                                                                                                                                                            (arg_238D_0,
+                                                                                                                                                             vector2,
+                                                                                                                                                             Main
+                                                                                                                                                                 .
+                                                                                                                                                                 rand
+                                                                                                                                                                 .
+                                                                                                                                                                 Next
+                                                                                                                                                                 (61,
+                                                                                                                                                                  64),
+                                                                                                                                                             1f);
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_239C
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_239C
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        *=
+                                                                                                                                                        0.4f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_23BE_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_23BE_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        X
+                                                                                                                                                        =
+                                                                                                                                                        expr_23BE_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            X -
+                                                                                                                                                        1f;
+                                                                                                                                                    Gore
+                                                                                                                                                        expr_23DC_cp_0
+                                                                                                                                                            =
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num68
+                                                                                                                                                                ];
+                                                                                                                                                    expr_23DC_cp_0
+                                                                                                                                                        .
+                                                                                                                                                        velocity
+                                                                                                                                                        .
+                                                                                                                                                        Y
+                                                                                                                                                        =
+                                                                                                                                                        expr_23DC_cp_0
+                                                                                                                                                            .
+                                                                                                                                                            velocity
+                                                                                                                                                            .
+                                                                                                                                                            Y -
+                                                                                                                                                        1f;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if
+                                                                                                                                                        (
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            type ==
+                                                                                                                                                        29 ||
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            type ==
+                                                                                                                                                        108)
+                                                                                                                                                    {
+                                                                                                                                                        Main
+                                                                                                                                                            .
+                                                                                                                                                            PlaySound
+                                                                                                                                                            (2,
+                                                                                                                                                             (
+                                                                                                                                                             int
+                                                                                                                                                             )
+                                                                                                                                                             this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 X,
+                                                                                                                                                             (
+                                                                                                                                                             int
+                                                                                                                                                             )
+                                                                                                                                                             this
+                                                                                                                                                                 .
+                                                                                                                                                                 position
+                                                                                                                                                                 .
+                                                                                                                                                                 Y,
+                                                                                                                                                             14);
+                                                                                                                                                        if
+                                                                                                                                                            (
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                type ==
+                                                                                                                                                            29)
+                                                                                                                                                        {
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                X
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    position
+                                                                                                                                                                    .
+                                                                                                                                                                    X +
+                                                                                                                                                                (
+                                                                                                                                                                float
+                                                                                                                                                                )
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     width/
+                                                                                                                                                                 2);
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                Y
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    position
+                                                                                                                                                                    .
+                                                                                                                                                                    Y +
+                                                                                                                                                                (
+                                                                                                                                                                float
+                                                                                                                                                                )
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     height/
+                                                                                                                                                                 2);
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                width
+                                                                                                                                                                =
+                                                                                                                                                                200;
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                height
+                                                                                                                                                                =
+                                                                                                                                                                200;
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                X
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    position
+                                                                                                                                                                    .
+                                                                                                                                                                    X -
+                                                                                                                                                                (
+                                                                                                                                                                float
+                                                                                                                                                                )
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     width/
+                                                                                                                                                                 2);
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                Y
+                                                                                                                                                                =
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    position
+                                                                                                                                                                    .
+                                                                                                                                                                    Y -
+                                                                                                                                                                (
+                                                                                                                                                                float
+                                                                                                                                                                )
+                                                                                                                                                                (this
+                                                                                                                                                                     .
+                                                                                                                                                                     height/
+                                                                                                                                                                 2);
+                                                                                                                                                        }
+                                                                                                                                                        for
+                                                                                                                                                            (
+                                                                                                                                                            int
+                                                                                                                                                                num69
+                                                                                                                                                                =
+                                                                                                                                                                0;
+                                                                                                                                                            num69 <
+                                                                                                                                                            50;
+                                                                                                                                                            num69
+                                                                                                                                                                ++)
+                                                                                                                                                        {
+                                                                                                                                                            Vector2
+                                                                                                                                                                arg_2501_0
+                                                                                                                                                                    =
+                                                                                                                                                                    new Vector2
+                                                                                                                                                                        (this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             X,
+                                                                                                                                                                         this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             Y);
+                                                                                                                                                            int
+                                                                                                                                                                arg_2501_1
+                                                                                                                                                                    =
+                                                                                                                                                                    this
+                                                                                                                                                                        .
+                                                                                                                                                                        width;
+                                                                                                                                                            int
+                                                                                                                                                                arg_2501_2
+                                                                                                                                                                    =
+                                                                                                                                                                    this
+                                                                                                                                                                        .
+                                                                                                                                                                        height;
+                                                                                                                                                            int
+                                                                                                                                                                arg_2501_3
+                                                                                                                                                                    =
+                                                                                                                                                                    31;
+                                                                                                                                                            float
+                                                                                                                                                                arg_2501_4
+                                                                                                                                                                    =
+                                                                                                                                                                    0f;
+                                                                                                                                                            float
+                                                                                                                                                                arg_2501_5
+                                                                                                                                                                    =
+                                                                                                                                                                    0f;
+                                                                                                                                                            int
+                                                                                                                                                                arg_2501_6
+                                                                                                                                                                    =
+                                                                                                                                                                    100;
+                                                                                                                                                            Color
+                                                                                                                                                                newColor
+                                                                                                                                                                    =
+                                                                                                                                                                    default
+                                                                                                                                                                        (
+                                                                                                                                                                        Color
+                                                                                                                                                                        );
+                                                                                                                                                            int
+                                                                                                                                                                num70
+                                                                                                                                                                    =
+                                                                                                                                                                    Dust
+                                                                                                                                                                        .
+                                                                                                                                                                        NewDust
+                                                                                                                                                                        (arg_2501_0,
+                                                                                                                                                                         arg_2501_1,
+                                                                                                                                                                         arg_2501_2,
+                                                                                                                                                                         arg_2501_3,
+                                                                                                                                                                         arg_2501_4,
+                                                                                                                                                                         arg_2501_5,
+                                                                                                                                                                         arg_2501_6,
+                                                                                                                                                                         newColor,
+                                                                                                                                                                         2f);
+                                                                                                                                                            Dust
+                                                                                                                                                                expr_2510
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        dust
+                                                                                                                                                                        [
+                                                                                                                                                                            num70
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_2510
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                *=
+                                                                                                                                                                1.4f;
+                                                                                                                                                        }
+                                                                                                                                                        for
+                                                                                                                                                            (
+                                                                                                                                                            int
+                                                                                                                                                                num71
+                                                                                                                                                                =
+                                                                                                                                                                0;
+                                                                                                                                                            num71 <
+                                                                                                                                                            80;
+                                                                                                                                                            num71
+                                                                                                                                                                ++)
+                                                                                                                                                        {
+                                                                                                                                                            Vector2
+                                                                                                                                                                arg_257C_0
+                                                                                                                                                                    =
+                                                                                                                                                                    new Vector2
+                                                                                                                                                                        (this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             X,
+                                                                                                                                                                         this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             Y);
+                                                                                                                                                            int
+                                                                                                                                                                arg_257C_1
+                                                                                                                                                                    =
+                                                                                                                                                                    this
+                                                                                                                                                                        .
+                                                                                                                                                                        width;
+                                                                                                                                                            int
+                                                                                                                                                                arg_257C_2
+                                                                                                                                                                    =
+                                                                                                                                                                    this
+                                                                                                                                                                        .
+                                                                                                                                                                        height;
+                                                                                                                                                            int
+                                                                                                                                                                arg_257C_3
+                                                                                                                                                                    =
+                                                                                                                                                                    6;
+                                                                                                                                                            float
+                                                                                                                                                                arg_257C_4
+                                                                                                                                                                    =
+                                                                                                                                                                    0f;
+                                                                                                                                                            float
+                                                                                                                                                                arg_257C_5
+                                                                                                                                                                    =
+                                                                                                                                                                    0f;
+                                                                                                                                                            int
+                                                                                                                                                                arg_257C_6
+                                                                                                                                                                    =
+                                                                                                                                                                    100;
+                                                                                                                                                            Color
+                                                                                                                                                                newColor
+                                                                                                                                                                    =
+                                                                                                                                                                    default
+                                                                                                                                                                        (
+                                                                                                                                                                        Color
+                                                                                                                                                                        );
+                                                                                                                                                            int
+                                                                                                                                                                num72
+                                                                                                                                                                    =
+                                                                                                                                                                    Dust
+                                                                                                                                                                        .
+                                                                                                                                                                        NewDust
+                                                                                                                                                                        (arg_257C_0,
+                                                                                                                                                                         arg_257C_1,
+                                                                                                                                                                         arg_257C_2,
+                                                                                                                                                                         arg_257C_3,
+                                                                                                                                                                         arg_257C_4,
+                                                                                                                                                                         arg_257C_5,
+                                                                                                                                                                         arg_257C_6,
+                                                                                                                                                                         newColor,
+                                                                                                                                                                         3f);
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                dust
+                                                                                                                                                                [
+                                                                                                                                                                    num72
+                                                                                                                                                                ]
+                                                                                                                                                                .
+                                                                                                                                                                noGravity
+                                                                                                                                                                =
+                                                                                                                                                                true;
+                                                                                                                                                            Dust
+                                                                                                                                                                expr_2599
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        dust
+                                                                                                                                                                        [
+                                                                                                                                                                            num72
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_2599
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                *=
+                                                                                                                                                                5f;
+                                                                                                                                                            Vector2
+                                                                                                                                                                arg_25F1_0
+                                                                                                                                                                    =
+                                                                                                                                                                    new Vector2
+                                                                                                                                                                        (this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             X,
+                                                                                                                                                                         this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             Y);
+                                                                                                                                                            int
+                                                                                                                                                                arg_25F1_1
+                                                                                                                                                                    =
+                                                                                                                                                                    this
+                                                                                                                                                                        .
+                                                                                                                                                                        width;
+                                                                                                                                                            int
+                                                                                                                                                                arg_25F1_2
+                                                                                                                                                                    =
+                                                                                                                                                                    this
+                                                                                                                                                                        .
+                                                                                                                                                                        height;
+                                                                                                                                                            int
+                                                                                                                                                                arg_25F1_3
+                                                                                                                                                                    =
+                                                                                                                                                                    6;
+                                                                                                                                                            float
+                                                                                                                                                                arg_25F1_4
+                                                                                                                                                                    =
+                                                                                                                                                                    0f;
+                                                                                                                                                            float
+                                                                                                                                                                arg_25F1_5
+                                                                                                                                                                    =
+                                                                                                                                                                    0f;
+                                                                                                                                                            int
+                                                                                                                                                                arg_25F1_6
+                                                                                                                                                                    =
+                                                                                                                                                                    100;
+                                                                                                                                                            newColor
+                                                                                                                                                                =
+                                                                                                                                                                default
+                                                                                                                                                                    (
+                                                                                                                                                                    Color
+                                                                                                                                                                    );
+                                                                                                                                                            num72
+                                                                                                                                                                =
+                                                                                                                                                                Dust
+                                                                                                                                                                    .
+                                                                                                                                                                    NewDust
+                                                                                                                                                                    (arg_25F1_0,
+                                                                                                                                                                     arg_25F1_1,
+                                                                                                                                                                     arg_25F1_2,
+                                                                                                                                                                     arg_25F1_3,
+                                                                                                                                                                     arg_25F1_4,
+                                                                                                                                                                     arg_25F1_5,
+                                                                                                                                                                     arg_25F1_6,
+                                                                                                                                                                     newColor,
+                                                                                                                                                                     2f);
+                                                                                                                                                            Dust
+                                                                                                                                                                expr_2600
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        dust
+                                                                                                                                                                        [
+                                                                                                                                                                            num72
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_2600
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                *=
+                                                                                                                                                                3f;
+                                                                                                                                                        }
+                                                                                                                                                        for
+                                                                                                                                                            (
+                                                                                                                                                            int
+                                                                                                                                                                num73
+                                                                                                                                                                =
+                                                                                                                                                                0;
+                                                                                                                                                            num73 <
+                                                                                                                                                            2;
+                                                                                                                                                            num73
+                                                                                                                                                                ++)
+                                                                                                                                                        {
+                                                                                                                                                            Vector2
+                                                                                                                                                                arg_2684_0
+                                                                                                                                                                    =
+                                                                                                                                                                    new Vector2
+                                                                                                                                                                        (this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             X +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              width/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f,
+                                                                                                                                                                         this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             Y +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              height/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f);
+                                                                                                                                                            Vector2
+                                                                                                                                                                vector2
+                                                                                                                                                                    =
+                                                                                                                                                                    default
+                                                                                                                                                                        (
+                                                                                                                                                                        Vector2
+                                                                                                                                                                        );
+                                                                                                                                                            int
+                                                                                                                                                                num74
+                                                                                                                                                                    =
+                                                                                                                                                                    Gore
+                                                                                                                                                                        .
+                                                                                                                                                                        NewGore
+                                                                                                                                                                        (arg_2684_0,
+                                                                                                                                                                         vector2,
+                                                                                                                                                                         Main
+                                                                                                                                                                             .
+                                                                                                                                                                             rand
+                                                                                                                                                                             .
+                                                                                                                                                                             Next
+                                                                                                                                                                             (61,
+                                                                                                                                                                              64),
+                                                                                                                                                                         1f);
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num74
+                                                                                                                                                                ]
+                                                                                                                                                                .
+                                                                                                                                                                scale
+                                                                                                                                                                =
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_26AA_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_26AA_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                X
+                                                                                                                                                                =
+                                                                                                                                                                expr_26AA_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    X +
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_26C8_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_26C8_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                Y
+                                                                                                                                                                =
+                                                                                                                                                                expr_26C8_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    Y +
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Vector2
+                                                                                                                                                                arg_2731_0
+                                                                                                                                                                    =
+                                                                                                                                                                    new Vector2
+                                                                                                                                                                        (this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             X +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              width/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f,
+                                                                                                                                                                         this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             Y +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              height/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f);
+                                                                                                                                                            vector2
+                                                                                                                                                                =
+                                                                                                                                                                default
+                                                                                                                                                                    (
+                                                                                                                                                                    Vector2
+                                                                                                                                                                    );
+                                                                                                                                                            num74
+                                                                                                                                                                =
+                                                                                                                                                                Gore
+                                                                                                                                                                    .
+                                                                                                                                                                    NewGore
+                                                                                                                                                                    (arg_2731_0,
+                                                                                                                                                                     vector2,
+                                                                                                                                                                     Main
+                                                                                                                                                                         .
+                                                                                                                                                                         rand
+                                                                                                                                                                         .
+                                                                                                                                                                         Next
+                                                                                                                                                                         (61,
+                                                                                                                                                                          64),
+                                                                                                                                                                     1f);
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num74
+                                                                                                                                                                ]
+                                                                                                                                                                .
+                                                                                                                                                                scale
+                                                                                                                                                                =
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_2757_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_2757_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                X
+                                                                                                                                                                =
+                                                                                                                                                                expr_2757_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    X -
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_2775_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_2775_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                Y
+                                                                                                                                                                =
+                                                                                                                                                                expr_2775_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    Y +
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Vector2
+                                                                                                                                                                arg_27DE_0
+                                                                                                                                                                    =
+                                                                                                                                                                    new Vector2
+                                                                                                                                                                        (this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             X +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              width/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f,
+                                                                                                                                                                         this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             Y +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              height/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f);
+                                                                                                                                                            vector2
+                                                                                                                                                                =
+                                                                                                                                                                default
+                                                                                                                                                                    (
+                                                                                                                                                                    Vector2
+                                                                                                                                                                    );
+                                                                                                                                                            num74
+                                                                                                                                                                =
+                                                                                                                                                                Gore
+                                                                                                                                                                    .
+                                                                                                                                                                    NewGore
+                                                                                                                                                                    (arg_27DE_0,
+                                                                                                                                                                     vector2,
+                                                                                                                                                                     Main
+                                                                                                                                                                         .
+                                                                                                                                                                         rand
+                                                                                                                                                                         .
+                                                                                                                                                                         Next
+                                                                                                                                                                         (61,
+                                                                                                                                                                          64),
+                                                                                                                                                                     1f);
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num74
+                                                                                                                                                                ]
+                                                                                                                                                                .
+                                                                                                                                                                scale
+                                                                                                                                                                =
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_2804_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_2804_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                X
+                                                                                                                                                                =
+                                                                                                                                                                expr_2804_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    X +
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_2822_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_2822_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                Y
+                                                                                                                                                                =
+                                                                                                                                                                expr_2822_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    Y -
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Vector2
+                                                                                                                                                                arg_288B_0
+                                                                                                                                                                    =
+                                                                                                                                                                    new Vector2
+                                                                                                                                                                        (this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             X +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              width/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f,
+                                                                                                                                                                         this
+                                                                                                                                                                             .
+                                                                                                                                                                             position
+                                                                                                                                                                             .
+                                                                                                                                                                             Y +
+                                                                                                                                                                         (
+                                                                                                                                                                         float
+                                                                                                                                                                         )
+                                                                                                                                                                         (this
+                                                                                                                                                                              .
+                                                                                                                                                                              height/
+                                                                                                                                                                          2) -
+                                                                                                                                                                         24f);
+                                                                                                                                                            vector2
+                                                                                                                                                                =
+                                                                                                                                                                default
+                                                                                                                                                                    (
+                                                                                                                                                                    Vector2
+                                                                                                                                                                    );
+                                                                                                                                                            num74
+                                                                                                                                                                =
+                                                                                                                                                                Gore
+                                                                                                                                                                    .
+                                                                                                                                                                    NewGore
+                                                                                                                                                                    (arg_288B_0,
+                                                                                                                                                                     vector2,
+                                                                                                                                                                     Main
+                                                                                                                                                                         .
+                                                                                                                                                                         rand
+                                                                                                                                                                         .
+                                                                                                                                                                         Next
+                                                                                                                                                                         (61,
+                                                                                                                                                                          64),
+                                                                                                                                                                     1f);
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                gore
+                                                                                                                                                                [
+                                                                                                                                                                    num74
+                                                                                                                                                                ]
+                                                                                                                                                                .
+                                                                                                                                                                scale
+                                                                                                                                                                =
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_28B1_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_28B1_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                X
+                                                                                                                                                                =
+                                                                                                                                                                expr_28B1_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    X -
+                                                                                                                                                                1.5f;
+                                                                                                                                                            Gore
+                                                                                                                                                                expr_28CF_cp_0
+                                                                                                                                                                    =
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        gore
+                                                                                                                                                                        [
+                                                                                                                                                                            num74
+                                                                                                                                                                        ];
+                                                                                                                                                            expr_28CF_cp_0
+                                                                                                                                                                .
+                                                                                                                                                                velocity
+                                                                                                                                                                .
+                                                                                                                                                                Y
+                                                                                                                                                                =
+                                                                                                                                                                expr_28CF_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    Y -
+                                                                                                                                                                1.5f;
+                                                                                                                                                        }
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            X
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                X +
+                                                                                                                                                            (
+                                                                                                                                                            float
+                                                                                                                                                            )
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 width/
+                                                                                                                                                             2);
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            Y
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                Y +
+                                                                                                                                                            (
+                                                                                                                                                            float
+                                                                                                                                                            )
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 height/
+                                                                                                                                                             2);
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            width
+                                                                                                                                                            =
+                                                                                                                                                            10;
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            height
+                                                                                                                                                            =
+                                                                                                                                                            10;
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            X
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                X -
+                                                                                                                                                            (
+                                                                                                                                                            float
+                                                                                                                                                            )
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 width/
+                                                                                                                                                             2);
+                                                                                                                                                        this
+                                                                                                                                                            .
+                                                                                                                                                            position
+                                                                                                                                                            .
+                                                                                                                                                            Y
+                                                                                                                                                            =
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                position
+                                                                                                                                                                .
+                                                                                                                                                                Y -
+                                                                                                                                                            (
+                                                                                                                                                            float
+                                                                                                                                                            )
+                                                                                                                                                            (this
+                                                                                                                                                                 .
+                                                                                                                                                                 height/
+                                                                                                                                                             2);
+                                                                                                                                                    }
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        if
+                                                                                                                                                            (
+                                                                                                                                                            this
+                                                                                                                                                                .
+                                                                                                                                                                type ==
+                                                                                                                                                            69)
+                                                                                                                                                        {
+                                                                                                                                                            Main
+                                                                                                                                                                .
+                                                                                                                                                                PlaySound
+                                                                                                                                                                (13,
+                                                                                                                                                                 (
+                                                                                                                                                                 int
+                                                                                                                                                                 )
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     X,
+                                                                                                                                                                 (
+                                                                                                                                                                 int
+                                                                                                                                                                 )
+                                                                                                                                                                 this
+                                                                                                                                                                     .
+                                                                                                                                                                     position
+                                                                                                                                                                     .
+                                                                                                                                                                     Y,
+                                                                                                                                                                 1);
+                                                                                                                                                            for
+                                                                                                                                                                (
+                                                                                                                                                                int
+                                                                                                                                                                    num75
+                                                                                                                                                                    =
+                                                                                                                                                                    0;
+                                                                                                                                                                num75 <
+                                                                                                                                                                5;
+                                                                                                                                                                num75
+                                                                                                                                                                    ++)
+                                                                                                                                                            {
+                                                                                                                                                                Vector2
+                                                                                                                                                                    arg_29E4_0
+                                                                                                                                                                        =
+                                                                                                                                                                        new Vector2
+                                                                                                                                                                            (this
+                                                                                                                                                                                 .
+                                                                                                                                                                                 position
+                                                                                                                                                                                 .
+                                                                                                                                                                                 X,
+                                                                                                                                                                             this
+                                                                                                                                                                                 .
+                                                                                                                                                                                 position
+                                                                                                                                                                                 .
+                                                                                                                                                                                 Y);
+                                                                                                                                                                int
+                                                                                                                                                                    arg_29E4_1
+                                                                                                                                                                        =
+                                                                                                                                                                        this
+                                                                                                                                                                            .
+                                                                                                                                                                            width;
+                                                                                                                                                                int
+                                                                                                                                                                    arg_29E4_2
+                                                                                                                                                                        =
+                                                                                                                                                                        this
+                                                                                                                                                                            .
+                                                                                                                                                                            height;
+                                                                                                                                                                int
+                                                                                                                                                                    arg_29E4_3
+                                                                                                                                                                        =
+                                                                                                                                                                        13;
+                                                                                                                                                                float
+                                                                                                                                                                    arg_29E4_4
+                                                                                                                                                                        =
+                                                                                                                                                                        0f;
+                                                                                                                                                                float
+                                                                                                                                                                    arg_29E4_5
+                                                                                                                                                                        =
+                                                                                                                                                                        0f;
+                                                                                                                                                                int
+                                                                                                                                                                    arg_29E4_6
+                                                                                                                                                                        =
+                                                                                                                                                                        0;
+                                                                                                                                                                Color
+                                                                                                                                                                    newColor
+                                                                                                                                                                        =
+                                                                                                                                                                        default
+                                                                                                                                                                            (
+                                                                                                                                                                            Color
+                                                                                                                                                                            );
+                                                                                                                                                                Dust
+                                                                                                                                                                    .
+                                                                                                                                                                    NewDust
+                                                                                                                                                                    (arg_29E4_0,
+                                                                                                                                                                     arg_29E4_1,
+                                                                                                                                                                     arg_29E4_2,
+                                                                                                                                                                     arg_29E4_3,
+                                                                                                                                                                     arg_29E4_4,
+                                                                                                                                                                     arg_29E4_5,
+                                                                                                                                                                     arg_29E4_6,
+                                                                                                                                                                     newColor,
+                                                                                                                                                                     1f);
+                                                                                                                                                            }
+                                                                                                                                                            for
+                                                                                                                                                                (
+                                                                                                                                                                int
+                                                                                                                                                                    num76
+                                                                                                                                                                    =
+                                                                                                                                                                    0;
+                                                                                                                                                                num76 <
+                                                                                                                                                                30;
+                                                                                                                                                                num76
+                                                                                                                                                                    ++)
+                                                                                                                                                            {
+                                                                                                                                                                Vector2
+                                                                                                                                                                    arg_2A40_0
+                                                                                                                                                                        =
+                                                                                                                                                                        new Vector2
+                                                                                                                                                                            (this
+                                                                                                                                                                                 .
+                                                                                                                                                                                 position
+                                                                                                                                                                                 .
+                                                                                                                                                                                 X,
+                                                                                                                                                                             this
+                                                                                                                                                                                 .
+                                                                                                                                                                                 position
+                                                                                                                                                                                 .
+                                                                                                                                                                                 Y);
+                                                                                                                                                                int
+                                                                                                                                                                    arg_2A40_1
+                                                                                                                                                                        =
+                                                                                                                                                                        this
+                                                                                                                                                                            .
+                                                                                                                                                                            width;
+                                                                                                                                                                int
+                                                                                                                                                                    arg_2A40_2
+                                                                                                                                                                        =
+                                                                                                                                                                        this
+                                                                                                                                                                            .
+                                                                                                                                                                            height;
+                                                                                                                                                                int
+                                                                                                                                                                    arg_2A40_3
+                                                                                                                                                                        =
+                                                                                                                                                                        33;
+                                                                                                                                                                float
+                                                                                                                                                                    arg_2A40_4
+                                                                                                                                                                        =
+                                                                                                                                                                        0f;
+                                                                                                                                                                float
+                                                                                                                                                                    arg_2A40_5
+                                                                                                                                                                        =
+                                                                                                                                                                        -2f;
+                                                                                                                                                                int
+                                                                                                                                                                    arg_2A40_6
+                                                                                                                                                                        =
+                                                                                                                                                                        0;
+                                                                                                                                                                Color
+                                                                                                                                                                    newColor
+                                                                                                                                                                        =
+                                                                                                                                                                        default
+                                                                                                                                                                            (
+                                                                                                                                                                            Color
+                                                                                                                                                                            );
+                                                                                                                                                                int
+                                                                                                                                                                    num77
+                                                                                                                                                                        =
+                                                                                                                                                                        Dust
+                                                                                                                                                                            .
+                                                                                                                                                                            NewDust
+                                                                                                                                                                            (arg_2A40_0,
+                                                                                                                                                                             arg_2A40_1,
+                                                                                                                                                                             arg_2A40_2,
+                                                                                                                                                                             arg_2A40_3,
+                                                                                                                                                                             arg_2A40_4,
+                                                                                                                                                                             arg_2A40_5,
+                                                                                                                                                                             arg_2A40_6,
+                                                                                                                                                                             newColor,
+                                                                                                                                                                             1.1f);
+                                                                                                                                                                Main
+                                                                                                                                                                    .
+                                                                                                                                                                    dust
+                                                                                                                                                                    [
+                                                                                                                                                                        num77
+                                                                                                                                                                    ]
+                                                                                                                                                                    .
+                                                                                                                                                                    alpha
+                                                                                                                                                                    =
+                                                                                                                                                                    100;
+                                                                                                                                                                Dust
+                                                                                                                                                                    expr_2A63_cp_0
+                                                                                                                                                                        =
+                                                                                                                                                                        Main
+                                                                                                                                                                            .
+                                                                                                                                                                            dust
+                                                                                                                                                                            [
+                                                                                                                                                                                num77
+                                                                                                                                                                            ];
+                                                                                                                                                                expr_2A63_cp_0
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    .
+                                                                                                                                                                    X
+                                                                                                                                                                    =
+                                                                                                                                                                    expr_2A63_cp_0
+                                                                                                                                                                        .
+                                                                                                                                                                        velocity
+                                                                                                                                                                        .
+                                                                                                                                                                        X*
+                                                                                                                                                                    1.5f;
+                                                                                                                                                                Dust
+                                                                                                                                                                    expr_2A7C
+                                                                                                                                                                        =
+                                                                                                                                                                        Main
+                                                                                                                                                                            .
+                                                                                                                                                                            dust
+                                                                                                                                                                            [
+                                                                                                                                                                                num77
+                                                                                                                                                                            ];
+                                                                                                                                                                expr_2A7C
+                                                                                                                                                                    .
+                                                                                                                                                                    velocity
+                                                                                                                                                                    *=
+                                                                                                                                                                    3f;
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                        else
+                                                                                                                                                        {
+                                                                                                                                                            if
+                                                                                                                                                                (
+                                                                                                                                                                this
+                                                                                                                                                                    .
+                                                                                                                                                                    type ==
+                                                                                                                                                                70)
+                                                                                                                                                            {
+                                                                                                                                                                Main
+                                                                                                                                                                    .
+                                                                                                                                                                    PlaySound
+                                                                                                                                                                    (13,
+                                                                                                                                                                     (
+                                                                                                                                                                     int
+                                                                                                                                                                     )
+                                                                                                                                                                     this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         X,
+                                                                                                                                                                     (
+                                                                                                                                                                     int
+                                                                                                                                                                     )
+                                                                                                                                                                     this
+                                                                                                                                                                         .
+                                                                                                                                                                         position
+                                                                                                                                                                         .
+                                                                                                                                                                         Y,
+                                                                                                                                                                     1);
+                                                                                                                                                                for
+                                                                                                                                                                    (
+                                                                                                                                                                    int
+                                                                                                                                                                        num78
+                                                                                                                                                                        =
+                                                                                                                                                                        0;
+                                                                                                                                                                    num78 <
+                                                                                                                                                                    5;
+                                                                                                                                                                    num78
+                                                                                                                                                                        ++)
+                                                                                                                                                                {
+                                                                                                                                                                    Vector2
+                                                                                                                                                                        arg_2B1A_0
+                                                                                                                                                                            =
+                                                                                                                                                                            new Vector2
+                                                                                                                                                                                (this
+                                                                                                                                                                                     .
+                                                                                                                                                                                     position
+                                                                                                                                                                                     .
+                                                                                                                                                                                     X,
+                                                                                                                                                                                 this
+                                                                                                                                                                                     .
+                                                                                                                                                                                     position
+                                                                                                                                                                                     .
+                                                                                                                                                                                     Y);
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B1A_1
+                                                                                                                                                                            =
+                                                                                                                                                                            this
+                                                                                                                                                                                .
+                                                                                                                                                                                width;
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B1A_2
+                                                                                                                                                                            =
+                                                                                                                                                                            this
+                                                                                                                                                                                .
+                                                                                                                                                                                height;
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B1A_3
+                                                                                                                                                                            =
+                                                                                                                                                                            13;
+                                                                                                                                                                    float
+                                                                                                                                                                        arg_2B1A_4
+                                                                                                                                                                            =
+                                                                                                                                                                            0f;
+                                                                                                                                                                    float
+                                                                                                                                                                        arg_2B1A_5
+                                                                                                                                                                            =
+                                                                                                                                                                            0f;
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B1A_6
+                                                                                                                                                                            =
+                                                                                                                                                                            0;
+                                                                                                                                                                    Color
+                                                                                                                                                                        newColor
+                                                                                                                                                                            =
+                                                                                                                                                                            default
+                                                                                                                                                                                (
+                                                                                                                                                                                Color
+                                                                                                                                                                                );
+                                                                                                                                                                    Dust
+                                                                                                                                                                        .
+                                                                                                                                                                        NewDust
+                                                                                                                                                                        (arg_2B1A_0,
+                                                                                                                                                                         arg_2B1A_1,
+                                                                                                                                                                         arg_2B1A_2,
+                                                                                                                                                                         arg_2B1A_3,
+                                                                                                                                                                         arg_2B1A_4,
+                                                                                                                                                                         arg_2B1A_5,
+                                                                                                                                                                         arg_2B1A_6,
+                                                                                                                                                                         newColor,
+                                                                                                                                                                         1f);
+                                                                                                                                                                }
+                                                                                                                                                                for
+                                                                                                                                                                    (
+                                                                                                                                                                    int
+                                                                                                                                                                        num79
+                                                                                                                                                                        =
+                                                                                                                                                                        0;
+                                                                                                                                                                    num79 <
+                                                                                                                                                                    30;
+                                                                                                                                                                    num79
+                                                                                                                                                                        ++)
+                                                                                                                                                                {
+                                                                                                                                                                    Vector2
+                                                                                                                                                                        arg_2B76_0
+                                                                                                                                                                            =
+                                                                                                                                                                            new Vector2
+                                                                                                                                                                                (this
+                                                                                                                                                                                     .
+                                                                                                                                                                                     position
+                                                                                                                                                                                     .
+                                                                                                                                                                                     X,
+                                                                                                                                                                                 this
+                                                                                                                                                                                     .
+                                                                                                                                                                                     position
+                                                                                                                                                                                     .
+                                                                                                                                                                                     Y);
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B76_1
+                                                                                                                                                                            =
+                                                                                                                                                                            this
+                                                                                                                                                                                .
+                                                                                                                                                                                width;
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B76_2
+                                                                                                                                                                            =
+                                                                                                                                                                            this
+                                                                                                                                                                                .
+                                                                                                                                                                                height;
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B76_3
+                                                                                                                                                                            =
+                                                                                                                                                                            52;
+                                                                                                                                                                    float
+                                                                                                                                                                        arg_2B76_4
+                                                                                                                                                                            =
+                                                                                                                                                                            0f;
+                                                                                                                                                                    float
+                                                                                                                                                                        arg_2B76_5
+                                                                                                                                                                            =
+                                                                                                                                                                            -2f;
+                                                                                                                                                                    int
+                                                                                                                                                                        arg_2B76_6
+                                                                                                                                                                            =
+                                                                                                                                                                            0;
+                                                                                                                                                                    Color
+                                                                                                                                                                        newColor
+                                                                                                                                                                            =
+                                                                                                                                                                            default
+                                                                                                                                                                                (
+                                                                                                                                                                                Color
+                                                                                                                                                                                );
+                                                                                                                                                                    int
+                                                                                                                                                                        num80
+                                                                                                                                                                            =
+                                                                                                                                                                            Dust
+                                                                                                                                                                                .
+                                                                                                                                                                                NewDust
+                                                                                                                                                                                (arg_2B76_0,
+                                                                                                                                                                                 arg_2B76_1,
+                                                                                                                                                                                 arg_2B76_2,
+                                                                                                                                                                                 arg_2B76_3,
+                                                                                                                                                                                 arg_2B76_4,
+                                                                                                                                                                                 arg_2B76_5,
+                                                                                                                                                                                 arg_2B76_6,
+                                                                                                                                                                                 newColor,
+                                                                                                                                                                                 1.1f);
+                                                                                                                                                                    Main
+                                                                                                                                                                        .
+                                                                                                                                                                        dust
+                                                                                                                                                                        [
+                                                                                                                                                                            num80
+                                                                                                                                                                        ]
+                                                                                                                                                                        .
+                                                                                                                                                                        alpha
+                                                                                                                                                                        =
+                                                                                                                                                                        100;
+                                                                                                                                                                    Dust
+                                                                                                                                                                        expr_2B99_cp_0
+                                                                                                                                                                            =
+                                                                                                                                                                            Main
+                                                                                                                                                                                .
+                                                                                                                                                                                dust
+                                                                                                                                                                                [
+                                                                                                                                                                                    num80
+                                                                                                                                                                                ];
+                                                                                                                                                                    expr_2B99_cp_0
+                                                                                                                                                                        .
+                                                                                                                                                                        velocity
+                                                                                                                                                                        .
+                                                                                                                                                                        X
+                                                                                                                                                                        =
+                                                                                                                                                                        expr_2B99_cp_0
+                                                                                                                                                                            .
+                                                                                                                                                                            velocity
+                                                                                                                                                                            .
+                                                                                                                                                                            X*
+                                                                                                                                                                        1.5f;
+                                                                                                                                                                    Dust
+                                                                                                                                                                        expr_2BB2
+                                                                                                                                                                            =
+                                                                                                                                                                            Main
+                                                                                                                                                                                .
+                                                                                                                                                                                dust
+                                                                                                                                                                                [
+                                                                                                                                                                                    num80
+                                                                                                                                                                                ];
+                                                                                                                                                                    expr_2BB2
+                                                                                                                                                                        .
+                                                                                                                                                                        velocity
+                                                                                                                                                                        *=
+                                                                                                                                                                        3f;
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (this.owner == Main.myPlayer)
+                {
+                    if (this.type == 28 || this.type == 29 || this.type == 37 || this.type == 75 || this.type == 108)
+                    {
+                        int num81 = 3;
+                        if (this.type == 29)
+                        {
+                            num81 = 7;
+                        }
+                        if (this.type == 108)
+                        {
+                            num81 = 10;
+                        }
+                        int num82 = (int) (this.position.X/16f - (float) num81);
+                        int num83 = (int) (this.position.X/16f + (float) num81);
+                        int num84 = (int) (this.position.Y/16f - (float) num81);
+                        int num85 = (int) (this.position.Y/16f + (float) num81);
+                        if (num82 < 0)
+                        {
+                            num82 = 0;
+                        }
+                        if (num83 > Main.maxTilesX)
+                        {
+                            num83 = Main.maxTilesX;
+                        }
+                        if (num84 < 0)
+                        {
+                            num84 = 0;
+                        }
+                        if (num85 > Main.maxTilesY)
+                        {
+                            num85 = Main.maxTilesY;
+                        }
+                        bool flag = false;
+                        for (int num86 = num82; num86 <= num83; num86++)
+                        {
+                            for (int num87 = num84; num87 <= num85; num87++)
+                            {
+                                float num88 = Math.Abs((float) num86 - this.position.X/16f);
+                                float num89 = Math.Abs((float) num87 - this.position.Y/16f);
+                                double num90 = Math.Sqrt((double) (num88*num88 + num89*num89));
+                                if (num90 < (double) num81 && Main.tile[num86, num87] != null &&
+                                    Main.tile[num86, num87].wall == 0)
+                                {
+                                    flag = true;
+                                    break;
+                                }
+                            }
+                        }
+                        for (int num91 = num82; num91 <= num83; num91++)
+                        {
+                            for (int num92 = num84; num92 <= num85; num92++)
+                            {
+                                float num93 = Math.Abs((float) num91 - this.position.X/16f);
+                                float num94 = Math.Abs((float) num92 - this.position.Y/16f);
+                                double num95 = Math.Sqrt((double) (num93*num93 + num94*num94));
+                                if (num95 < (double) num81)
+                                {
+                                    bool flag2 = true;
+                                    if (Main.tile[num91, num92] != null && Main.tile[num91, num92].active)
+                                    {
+                                        flag2 = true;
+                                        if (Main.tileDungeon[(int) Main.tile[num91, num92].type] ||
+                                            Main.tile[num91, num92].type == 21 || Main.tile[num91, num92].type == 26 ||
+                                            Main.tile[num91, num92].type == 107 || Main.tile[num91, num92].type == 108 ||
+                                            Main.tile[num91, num92].type == 111)
+                                        {
+                                            flag2 = false;
+                                        }
+                                        if (!Main.hardMode && Main.tile[num91, num92].type == 58)
+                                        {
+                                            flag2 = false;
+                                        }
+                                        if (flag2)
+                                        {
+                                            WorldGen.KillTile(num91, num92, false, false, false);
+                                            if (!Main.tile[num91, num92].active && Main.netMode != 0)
+                                            {
+                                                NetMessage.SendData(17, -1, -1, "", 0, (float) num91, (float) num92, 0f,
+                                                                    0);
+                                            }
+                                        }
+                                    }
+                                    if (flag2)
+                                    {
+                                        for (int num96 = num91 - 1; num96 <= num91 + 1; num96++)
+                                        {
+                                            for (int num97 = num92 - 1; num97 <= num92 + 1; num97++)
+                                            {
+                                                if (Main.tile[num96, num97] != null && Main.tile[num96, num97].wall > 0 &&
+                                                    flag)
+                                                {
+                                                    WorldGen.KillWall(num96, num97, false);
+                                                    if (Main.tile[num96, num97].wall == 0 && Main.netMode != 0)
+                                                    {
+                                                        NetMessage.SendData(17, -1, -1, "", 2, (float) num96,
+                                                                            (float) num97, 0f, 0);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (Main.netMode != 0)
+                    {
+                        NetMessage.SendData(29, -1, -1, "", this.identity, (float) this.owner, 0f, 0f, 0);
+                    }
+                    int num98 = -1;
+                    if (this.aiStyle == 10)
+                    {
+                        int num99 = (int) (this.position.X + (float) (this.width/2))/16;
+                        int num100 = (int) (this.position.Y + (float) (this.width/2))/16;
+                        int num101 = 0;
+                        int num102 = 2;
+                        if (this.type == 109)
+                        {
+                            num101 = 147;
+                            num102 = 0;
+                        }
+                        if (this.type == 31)
+                        {
+                            num101 = 53;
+                            num102 = 0;
+                        }
+                        if (this.type == 42)
+                        {
+                            num101 = 53;
+                            num102 = 0;
+                        }
+                        if (this.type == 56)
+                        {
+                            num101 = 112;
+                            num102 = 0;
+                        }
+                        if (this.type == 65)
+                        {
+                            num101 = 112;
+                            num102 = 0;
+                        }
+                        if (this.type == 67)
+                        {
+                            num101 = 116;
+                            num102 = 0;
+                        }
+                        if (this.type == 68)
+                        {
+                            num101 = 116;
+                            num102 = 0;
+                        }
+                        if (this.type == 71)
+                        {
+                            num101 = 123;
+                            num102 = 0;
+                        }
+                        if (this.type == 39)
+                        {
+                            num101 = 59;
+                            num102 = 176;
+                        }
+                        if (this.type == 40)
+                        {
+                            num101 = 57;
+                            num102 = 172;
+                        }
+                        if (!Main.tile[num99, num100].active)
+                        {
+                            WorldGen.PlaceTile(num99, num100, num101, false, true, -1, 0);
+                            if (Main.tile[num99, num100].active && (int) Main.tile[num99, num100].type == num101)
+                            {
+                                NetMessage.SendData(17, -1, -1, "", 1, (float) num99, (float) num100, (float) num101, 0);
+                            }
+                            else
+                            {
+                                if (num102 > 0)
+                                {
+                                    num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width,
+                                                         this.height, num102, 1, false, 0);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (num102 > 0)
+                            {
+                                num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width,
+                                                     this.height, num102, 1, false, 0);
+                            }
+                        }
+                    }
+                    if (this.type == 1 && Main.rand.Next(3) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 40,
+                                             1, false, 0);
+                    }
+                    if (this.type == 103 && Main.rand.Next(6) == 0)
+                    {
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height,
+                                                 545, 1, false, 0);
+                        }
+                        else
+                        {
+                            num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height,
+                                                 40, 1, false, 0);
+                        }
+                    }
+                    if (this.type == 2 && Main.rand.Next(3) == 0)
+                    {
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height,
+                                                 41, 1, false, 0);
+                        }
+                        else
+                        {
+                            num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height,
+                                                 40, 1, false, 0);
+                        }
+                    }
+                    if (this.type == 91 && Main.rand.Next(6) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 516,
+                                             1, false, 0);
+                    }
+                    if (this.type == 50 && Main.rand.Next(3) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 282,
+                                             1, false, 0);
+                    }
+                    if (this.type == 53 && Main.rand.Next(3) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 286,
+                                             1, false, 0);
+                    }
+                    if (this.type == 48 && Main.rand.Next(2) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 279,
+                                             1, false, 0);
+                    }
+                    if (this.type == 54 && Main.rand.Next(2) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 287,
+                                             1, false, 0);
+                    }
+                    if (this.type == 3 && Main.rand.Next(2) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 42,
+                                             1, false, 0);
+                    }
+                    if (this.type == 4 && Main.rand.Next(4) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 47,
+                                             1, false, 0);
+                    }
+                    if (this.type == 12 && this.damage > 100)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 75,
+                                             1, false, 0);
+                    }
+                    if (this.type == 69 || this.type == 70)
+                    {
+                        int num103 = (int) (this.position.X + (float) (this.width/2))/16;
+                        int num104 = (int) (this.position.Y + (float) (this.height/2))/16;
+                        for (int num105 = num103 - 4; num105 <= num103 + 4; num105++)
+                        {
+                            for (int num106 = num104 - 4; num106 <= num104 + 4; num106++)
+                            {
+                                if (Math.Abs(num105 - num103) + Math.Abs(num106 - num104) < 6)
+                                {
+                                    if (this.type == 69)
+                                    {
+                                        if (Main.tile[num105, num106].type == 2)
+                                        {
+                                            Main.tile[num105, num106].type = 109;
+                                            WorldGen.SquareTileFrame(num105, num106, true);
+                                            NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                        }
+                                        else
+                                        {
+                                            if (Main.tile[num105, num106].type == 1)
+                                            {
+                                                Main.tile[num105, num106].type = 117;
+                                                WorldGen.SquareTileFrame(num105, num106, true);
+                                                NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                            }
+                                            else
+                                            {
+                                                if (Main.tile[num105, num106].type == 53)
+                                                {
+                                                    Main.tile[num105, num106].type = 116;
+                                                    WorldGen.SquareTileFrame(num105, num106, true);
+                                                    NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                }
+                                                else
+                                                {
+                                                    if (Main.tile[num105, num106].type == 23)
+                                                    {
+                                                        Main.tile[num105, num106].type = 109;
+                                                        WorldGen.SquareTileFrame(num105, num106, true);
+                                                        NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                    }
+                                                    else
+                                                    {
+                                                        if (Main.tile[num105, num106].type == 25)
+                                                        {
+                                                            Main.tile[num105, num106].type = 117;
+                                                            WorldGen.SquareTileFrame(num105, num106, true);
+                                                            NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                        }
+                                                        else
+                                                        {
+                                                            if (Main.tile[num105, num106].type == 112)
+                                                            {
+                                                                Main.tile[num105, num106].type = 116;
+                                                                WorldGen.SquareTileFrame(num105, num106, true);
+                                                                NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Main.tile[num105, num106].type == 2)
+                                        {
+                                            Main.tile[num105, num106].type = 23;
+                                            WorldGen.SquareTileFrame(num105, num106, true);
+                                            NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                        }
+                                        else
+                                        {
+                                            if (Main.tile[num105, num106].type == 1)
+                                            {
+                                                Main.tile[num105, num106].type = 25;
+                                                WorldGen.SquareTileFrame(num105, num106, true);
+                                                NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                            }
+                                            else
+                                            {
+                                                if (Main.tile[num105, num106].type == 53)
+                                                {
+                                                    Main.tile[num105, num106].type = 112;
+                                                    WorldGen.SquareTileFrame(num105, num106, true);
+                                                    NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                }
+                                                else
+                                                {
+                                                    if (Main.tile[num105, num106].type == 109)
+                                                    {
+                                                        Main.tile[num105, num106].type = 23;
+                                                        WorldGen.SquareTileFrame(num105, num106, true);
+                                                        NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                    }
+                                                    else
+                                                    {
+                                                        if (Main.tile[num105, num106].type == 117)
+                                                        {
+                                                            Main.tile[num105, num106].type = 25;
+                                                            WorldGen.SquareTileFrame(num105, num106, true);
+                                                            NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                        }
+                                                        else
+                                                        {
+                                                            if (Main.tile[num105, num106].type == 116)
+                                                            {
+                                                                Main.tile[num105, num106].type = 112;
+                                                                WorldGen.SquareTileFrame(num105, num106, true);
+                                                                NetMessage.SendTileSquare(-1, num105, num106, 1);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (this.type == 21 && Main.rand.Next(2) == 0)
+                    {
+                        num98 = Item.NewItem((int) this.position.X, (int) this.position.Y, this.width, this.height, 154,
+                                             1, false, 0);
+                    }
+                    if (Main.netMode == 1 && num98 >= 0)
+                    {
+                        NetMessage.SendData(21, -1, -1, "", num98, 0f, 0f, 0f, 0);
+                    }
+                }
+                this.active = false;
+            }
+        }
+
+	    public Color GetAlpha(Color newColor)
 		{
 			if (this.type == 34 || this.type == 15 || this.type == 93 || this.type == 94 || this.type == 95 || this.type == 96 || (this.type == 102 && this.alpha < 255))
 			{
