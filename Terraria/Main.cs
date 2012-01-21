@@ -5,49 +5,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Hooks;
+
 namespace Terraria
 {
 	public class Main
 	{
-		private const int MF_BYPOSITION = 1024;
-		public const int sectionWidth = 200;
-		public const int sectionHeight = 150;
-		public const int maxTileSets = 150;
-		public const int maxWallTypes = 32;
-		public const int maxBackgrounds = 32;
-		public const int maxDust = 2000;
-		public const int maxCombatText = 100;
-		public const int maxItemText = 20;
-		public const int maxPlayers = 255;
-		public const int maxChests = 1000;
-		public const int maxItemTypes = 603;
-		public const int maxItems = 200;
-		public const int maxBuffs = 40;
-		public const int maxProjectileTypes = 111;
-		public const int maxProjectiles = 1000;
-		public const int maxNPCTypes = 147;
-		public const int maxNPCs = 200;
-		public const int maxGoreTypes = 160;
-		public const int maxGore = 200;
-		public const int maxInventory = 48;
-		public const int maxItemSounds = 37;
-		public const int maxNPCHitSounds = 11;
-		public const int maxNPCKilledSounds = 15;
-		public const int maxLiquidTypes = 2;
-		public const int maxMusic = 14;
-		public const int numArmorHead = 45;
-		public const int numArmorBody = 26;
-		public const int numArmorLegs = 25;
-		public const double dayLength = 54000.0;
-		public const double nightLength = 32400.0;
-		public const int maxStars = 130;
-		public const int maxStarTypes = 5;
-		public const int maxClouds = 100;
-		public const int maxCloudTypes = 4;
-		public const int maxHair = 36;
-		public static int curRelease = 37;
-		public static string versionNumber = "v1.1.1";
-		public static string versionNumber2 = "v1.1.1";
+		public static int curRelease = 39;
+		public static string versionNumber = "v1.1.2";
+		public static string versionNumber2 = "v1.1.2";
 		public static bool skipMenu = false;
 		public static bool verboseNetplay = false;
 		public static bool stopTimeOuts = false;
@@ -56,9 +21,7 @@ namespace Terraria
 		public static int oldTempLightCount = 0;
 		public static int musicBox = -1;
 		public static int musicBox2 = -1;
-		public static float upTimer;
-		public static float upTimerMax;
-		public static float upTimerMaxDelay;
+		public static bool cEd = false;
 		public static float[] drawTimer = new float[10];
 		public static float[] drawTimerMax = new float[10];
 		public static float[] drawTimerMaxDelay = new float[10];
@@ -69,32 +32,31 @@ namespace Terraria
 		public static bool renderNow = false;
 		public static bool drawToScreen = false;
 		public static bool targetSet = false;
-		public static int mouseX;
-		public static int mouseY;
-		public static bool mouseLeft;
-		public static bool mouseRight;
 		public static float essScale = 1f;
 		public static int essDir = -1;
 		public static string debugWords = "";
 		public static bool gamePad = false;
 		public static bool xMas = false;
 		public static int snowDust = 0;
+		public static bool chTitle = false;
+		public static int keyCount = 0;
+		public static string[] keyString = new string[10];
+		public static int[] keyInt = new int[10];
 		public static bool netDiag = false;
 		public static int txData = 0;
 		public static int rxData = 0;
 		public static int txMsg = 0;
 		public static int rxMsg = 0;
-		public static int maxMsg = 61;
+		public static int maxMsg = 62;
 		public static int[] rxMsgType = new int[Main.maxMsg];
 		public static int[] rxDataType = new int[Main.maxMsg];
 		public static int[] txMsgType = new int[Main.maxMsg];
 		public static int[] txDataType = new int[Main.maxMsg];
-		public static float uCarry = 0f;
+		public static float uCarry = 0.0f;
 		public static bool drawSkip = false;
 		public static int fpsCount = 0;
 		public static Stopwatch fpsTimer = new Stopwatch();
 		public static Stopwatch updateTimer = new Stopwatch();
-		public bool gammaTest;
 		public static bool showSplash = true;
 		public static bool ignoreErrors = true;
 		public static string defaultIP = "";
@@ -108,10 +70,12 @@ namespace Terraria
 		public static int qaStyle = 0;
 		public static int zoneX = 99;
 		public static int zoneY = 87;
-		public static float harpNote = 0f;
-		public static bool[] debuff = new bool[40];
-		public static string[] buffName = new string[40];
-		public static string[] buffTip = new string[40];
+		public static float harpNote = 0.0f;
+		public static bool[] projHostile = new bool[112];
+		public static bool[] pvpBuff = new bool[41];
+		public static bool[] debuff = new bool[41];
+		public static string[] buffName = new string[41];
+		public static string[] buffTip = new string[41];
 		public static int maxMP = 10;
 		public static string[] recentWorld = new string[Main.maxMP];
 		public static string[] recentIP = new string[Main.maxMP];
@@ -123,55 +87,30 @@ namespace Terraria
 		public static int bgStyle = 0;
 		public static float[] bgAlpha = new float[10];
 		public static float[] bgAlpha2 = new float[10];
-		public bool showNPCs;
-		public int mouseNPC = -1;
 		public static int wof = -1;
-		public static int wofT;
-		public static int wofB;
 		public static int wofF = 0;
 		private static int offScreenRange = 200;
-		private int firstTileX;
-		private int lastTileX;
-		private int firstTileY;
-		private int lastTileY;
-		private double bgParrallax;
-		private int bgStart;
-		private int bgLoops;
-		private int bgStartY;
-		private int bgLoopsY;
-		private int bgTop;
 		public static int renderCount = 99;
-		private Process tServer = new Process();
 		private static Stopwatch saveTime = new Stopwatch();
-		public static Color mcColor = new Color(125, 125, 255);
-		public static Color hcColor = new Color(200, 125, 255);
-		public static Color bgColor;
 		public static bool mouseHC = false;
 		public static string chestText = "Chest";
 		public static bool craftingHide = false;
 		public static bool armorHide = false;
 		public static float craftingAlpha = 1f;
 		public static float armorAlpha = 1f;
-		public static float[] buffAlpha = new float[40];
+		public static float[] buffAlpha = new float[41];
 		public static Item trashItem = new Item();
 		public static bool hardMode = false;
-		public float chestLootScale = 1f;
-		public bool chestLootHover;
-		public float chestStackScale = 1f;
-		public bool chestStackHover;
-		public float chestDepositScale = 1f;
-		public bool chestDepositHover;
 		public static bool drawScene = false;
-		public static Vector2 sceneWaterPos = default(Vector2);
-		public static Vector2 sceneTilePos = default(Vector2);
-		public static Vector2 sceneTile2Pos = default(Vector2);
-		public static Vector2 sceneWallPos = default(Vector2);
-		public static Vector2 sceneBackgroundPos = default(Vector2);
+		public static Vector2 sceneWaterPos = new Vector2();
+		public static Vector2 sceneTilePos = new Vector2();
+		public static Vector2 sceneTile2Pos = new Vector2();
+		public static Vector2 sceneWallPos = new Vector2();
+		public static Vector2 sceneBackgroundPos = new Vector2();
 		public static bool maxQ = true;
 		public static float gfxQuality = 1f;
 		public static float gfxRate = 0.01f;
-		public int DiscoStyle;
-		public static int DiscoR = 255;
+		public static int DiscoR = (int) byte.MaxValue;
 		public static int DiscoB = 0;
 		public static int DiscoG = 0;
 		public static int teamCooldown = 0;
@@ -192,34 +131,31 @@ namespace Terraria
 		public static int saveTimer = 0;
 		public static bool autoJoin = false;
 		public static bool serverStarting = false;
-		public static float leftWorld = 0f;
+		public static float leftWorld = 0.0f;
 		public static float rightWorld = 134400f;
-		public static float topWorld = 0f;
+		public static float topWorld = 0.0f;
 		public static float bottomWorld = 38400f;
-		public static int maxTilesX = (int)Main.rightWorld / 16 + 1;
-		public static int maxTilesY = (int)Main.bottomWorld / 16 + 1;
-		public static int maxSectionsX = Main.maxTilesX / 200;
-		public static int maxSectionsY = Main.maxTilesY / 150;
+		public static int maxTilesX = (int) Main.rightWorld/16 + 1;
+		public static int maxTilesY = (int) Main.bottomWorld/16 + 1;
+		public static int maxSectionsX = Main.maxTilesX/200;
+		public static int maxSectionsY = Main.maxTilesY/150;
 		public static int numDust = 2000;
-		public static int maxNetPlayers = 255;
+		public static int maxNetPlayers = (int) byte.MaxValue;
 		public static string[] chrName = new string[147];
 		public static int worldRate = 1;
 		public static float caveParrallax = 1f;
 		public static string[] tileName = new string[150];
-		public static int dungeonX;
-		public static int dungeonY;
 		public static Liquid[] liquid = new Liquid[Liquid.resLiquid];
 		public static LiquidBuffer[] liquidBuffer = new LiquidBuffer[10000];
 		public static bool dedServ = false;
 		public static int spamCount = 0;
 		public static int curMusic = 0;
-		public int newMusic;
 		public static bool showItemText = true;
 		public static bool autoSave = true;
 		public static string buffString = "";
 		public static string libPath = "";
 		public static int lo = 0;
-		public static int LogoA = 255;
+		public static int LogoA = (int) byte.MaxValue;
 		public static int LogoB = 0;
 		public static bool LogoT = false;
 		public static string statusText = "";
@@ -228,45 +164,30 @@ namespace Terraria
 		public static int progressPercent = 0;
 		public static int priorPercent = 0;
 		public static string worldName = "";
-		public static int worldID;
 		public static int background = 0;
-		public static Color tileColor;
-		public static double worldSurface;
-		public static double rockLayer;
-		public static Color[] teamColor = new Color[5];
 		public static bool dayTime = true;
 		public static double time = 13500.0;
 		public static int moonPhase = 0;
-		public static short sunModY = 0;
-		public static short moonModY = 0;
+		public static short sunModY = (short) 0;
+		public static short moonModY = (short) 0;
 		public static bool grabSky = false;
 		public static bool bloodMoon = false;
 		public static int checkForSpawns = 0;
 		public static int helpText = 0;
 		public static bool autoGen = false;
 		public static bool autoPause = false;
-		public static int[] projFrames = new int[111];
+		public static int[] projFrames = new int[112];
 		public static float demonTorch = 1f;
 		public static int demonTorchDir = 1;
-		public static int numStars;
 		public static int cloudLimit = 100;
 		public static int numClouds = Main.cloudLimit;
-		public static float windSpeed = 0f;
-		public static float windSpeedSpeed = 0f;
+		public static float windSpeed = 0.0f;
+		public static float windSpeedSpeed = 0.0f;
 		public static Cloud[] cloud = new Cloud[100];
 		public static bool resetClouds = true;
-		public static int sandTiles;
-		public static int evilTiles;
-		public static int snowTiles;
-		public static int holyTiles;
-		public static int meteorTiles;
-		public static int jungleTiles;
-		public static int dungeonTiles;
 		public static int fadeCounter = 0;
 		public static float invAlpha = 1f;
 		public static float invDir = 1f;
-		[ThreadStatic]
-		public static Random rand;
 		public static float[] musicFade = new float[14];
 		public static float musicVolume = 0.75f;
 		public static float soundVolume = 1f;
@@ -307,8 +228,6 @@ namespace Terraria
 		public static ItemText[] itemText = new ItemText[20];
 		public static Chest[] chest = new Chest[1000];
 		public static Sign[] sign = new Sign[1000];
-		public static Vector2 screenPosition;
-		public static Vector2 screenLastPosition;
 		public static int screenWidth = 800;
 		public static int screenHeight = 600;
 		public static int chatLength = 600;
@@ -318,7 +237,8 @@ namespace Terraria
 		public static string chatText = "";
 		public static ChatLine[] chatLine = new ChatLine[Main.numChatLines];
 		public static bool inputTextEnter = false;
-		public static float[] hotbarScale = new float[]
+
+		public static float[] hotbarScale = new float[10]
 		{
 			1f, 
 			0.75f, 
@@ -331,12 +251,12 @@ namespace Terraria
 			0.75f, 
 			0.75f
 		};
-		public static byte mouseTextColor = 0;
+
+		public static byte mouseTextColor = (byte) 0;
 		public static int mouseTextColorChange = 1;
 		public static bool mouseLeftRelease = false;
 		public static bool mouseRightRelease = false;
 		public static bool playerInventory = false;
-		public static int stackSplit;
 		public static int stackCounter = 0;
 		public static int stackDelay = 7;
 		public static Item mouseItem = new Item();
@@ -347,12 +267,8 @@ namespace Terraria
 		public static Recipe[] recipe = new Recipe[Recipe.maxRecipes];
 		public static int[] availableRecipe = new int[Recipe.maxRecipes];
 		public static float[] availableRecipeY = new float[Recipe.maxRecipes];
-		public static int numAvailableRecipes;
-		public static int focusRecipe;
 		public static int myPlayer = 0;
 		public static Player[] player = new Player[256];
-		public static int spawnTileX;
-		public static int spawnTileY;
 		public static bool npcChatRelease = false;
 		public static bool editSign = false;
 		public static string signText = "";
@@ -361,36 +277,30 @@ namespace Terraria
 		public static bool npcChatFocus2 = false;
 		public static bool npcChatFocus3 = false;
 		public static int npcShop = 0;
-		public Chest[] shop = new Chest[10];
 		public static bool craftGuide = false;
 		public static bool reforge = false;
 		private static Item toolTip = new Item();
 		private static int backSpaceCount = 0;
 		public static string motd = "";
-		public bool toggleFullscreen;
-		private int numDisplayModes;
-		private int[] displayWidth = new int[99];
-		private int[] displayHeight = new int[99];
 		public static bool gameMenu = true;
 		public static Player[] loadPlayer = new Player[5];
 		public static string[] loadPlayerPath = new string[5];
 		private static int numLoadPlayers = 0;
-		public static string playerPathName;
 		public static string[] loadWorld = new string[999];
 		public static string[] loadWorldPath = new string[999];
 		private static int numLoadWorlds = 0;
-		public static string worldPathName;
-		public static string SavePath;
-		public static string WorldPath;
-		public static string PlayerPath;
-		public static string[] itemName = new string[603];
+		public static string SavePath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + Path.DirectorySeparatorChar + "My Games" + Path.DirectorySeparatorChar + "Terraria";
+		public static string WorldPath = Main.SavePath + (object) Path.DirectorySeparatorChar + "Worlds";
+			public static string PlayerPath = Main.SavePath + (object) Path.DirectorySeparatorChar + "Players";
+		public static string[] itemName = new string[604];
 		public static string[] npcName = new string[147];
 		public static int invasionType = 0;
 		public static double invasionX = 0.0;
 		public static int invasionSize = 0;
 		public static int invasionDelay = 0;
 		public static int invasionWarn = 0;
-		public static int[] npcFrameCount = new int[]
+
+		public static int[] npcFrameCount = new int[147]
 		{
 			1, 
 			2, 
@@ -540,6 +450,7 @@ namespace Terraria
 			7, 
 			3
 		};
+
 		private static bool mouseExit = false;
 		private static float exitScale = 0.8f;
 		private static bool mouseReforge = false;
@@ -551,9 +462,6 @@ namespace Terraria
 		public static bool menuServer = false;
 		public static int netMode = 0;
 		public static int timeOut = 120;
-		public static int netPlayCounter;
-		public static int lastNPCUpdate;
-		public static int lastItemUpdate;
 		public static int maxNPCUpdates = 5;
 		public static int maxItemUpdates = 5;
 		public static string cUp = "W";
@@ -568,47 +476,149 @@ namespace Terraria
 		public static string cBuff = "B";
 		public static string cHook = "E";
 		public static string cTorch = "LeftShift";
-		public static Color mouseColor = new Color(255, 50, 95);
-		public static Color cursorColor = Color.White;
 		public static int cursorColorDirection = 1;
-		public static float cursorAlpha = 0f;
-		public static float cursorScale = 0f;
+		public static float cursorAlpha = 0.0f;
+		public static float cursorScale = 0.0f;
 		public static bool signBubble = false;
 		public static int signX = 0;
 		public static int signY = 0;
 		public static bool hideUI = false;
 		public static bool releaseUI = false;
 		public static bool fixedTiming = false;
-		private int splashCounter;
 		public static string oldStatusText = "";
 		public static bool autoShutdown = false;
-		private float logoRotation;
+		private static int maxMenuItems = 14;
+		public static int menuMode = 0;
+		private static Item cpItem = new Item();
+		public static string newWorldName = "";
+		private static int accSlotCount = 0;
+		public static bool autoPass = false;
+		public static int menuFocus = 0;
+		public int mouseNPC = -1;
+		private Process tServer = new Process();
+		public float chestLootScale = 1f;
+		public float chestStackScale = 1f;
+		public float chestDepositScale = 1f;
+		public Chest[] shop = new Chest[10];
+		private int[] displayWidth = new int[99];
+		private int[] displayHeight = new int[99];
 		private float logoRotationDirection = 1f;
 		private float logoRotationSpeed = 1f;
 		private float logoScale = 1f;
 		private float logoScaleDirection = 1f;
 		private float logoScaleSpeed = 1f;
-		private static int maxMenuItems = 14;
 		private float[] menuItemScale = new float[Main.maxMenuItems];
 		private int focusMenu = -1;
 		private int selectedMenu = -1;
 		private int selectedMenu2 = -1;
+		private int setKey = -1;
+		private const int MF_BYPOSITION = 1024;
+		public const int sectionWidth = 200;
+		public const int sectionHeight = 150;
+		public const int maxTileSets = 150;
+		public const int maxWallTypes = 32;
+		public const int maxBackgrounds = 32;
+		public const int maxDust = 2000;
+		public const int maxCombatText = 100;
+		public const int maxItemText = 20;
+		public const int maxPlayers = 255;
+		public const int maxChests = 1000;
+		public const int maxItemTypes = 604;
+		public const int maxItems = 200;
+		public const int maxBuffs = 41;
+		public const int maxProjectileTypes = 112;
+		public const int maxProjectiles = 1000;
+		public const int maxNPCTypes = 147;
+		public const int maxNPCs = 200;
+		public const int maxGoreTypes = 160;
+		public const int maxGore = 200;
+		public const int maxInventory = 48;
+		public const int maxItemSounds = 37;
+		public const int maxNPCHitSounds = 11;
+		public const int maxNPCKilledSounds = 15;
+		public const int maxLiquidTypes = 2;
+		public const int maxMusic = 14;
+		public const int numArmorHead = 45;
+		public const int numArmorBody = 26;
+		public const int numArmorLegs = 25;
+		public const double dayLength = 54000.0;
+		public const double nightLength = 32400.0;
+		public const int maxStars = 130;
+		public const int maxStarTypes = 5;
+		public const int maxClouds = 100;
+		public const int maxCloudTypes = 4;
+		public const int maxHair = 36;
+		public static float upTimer;
+		public static float upTimerMax;
+		public static float upTimerMaxDelay;
+		public static int mouseX;
+		public static int mouseY;
+		public static bool mouseLeft;
+		public static bool mouseRight;
+		public bool gammaTest;
+		public bool showNPCs;
+		public static int wofT;
+		public static int wofB;
+		private int firstTileX;
+		private int lastTileX;
+		private int firstTileY;
+		private int lastTileY;
+		private double bgParrallax;
+		private int bgStart;
+		private int bgLoops;
+		private int bgStartY;
+		private int bgLoopsY;
+		private int bgTop;
+		public bool chestLootHover;
+		public bool chestStackHover;
+		public bool chestDepositHover;
+		public int DiscoStyle;
+		public static int dungeonX;
+		public static int dungeonY;
+		public int newMusic;
+		public static int worldID;
+		public static double worldSurface;
+		public static double rockLayer;
+		public static int numStars;
+		public static int sandTiles;
+		public static int evilTiles;
+		public static int snowTiles;
+		public static int holyTiles;
+		public static int meteorTiles;
+		public static int jungleTiles;
+		public static int dungeonTiles;
+		[ThreadStatic] public static Random rand;
+		public static Vector2 screenPosition;
+		public static Vector2 screenLastPosition;
+		public static int stackSplit;
+		public static int numAvailableRecipes;
+		public static int focusRecipe;
+		public static int spawnTileX;
+		public static int spawnTileY;
+		public bool toggleFullscreen;
+		private int numDisplayModes;
+		public static string playerPathName;
+		public static string worldPathName;
+		public static int netPlayCounter;
+		public static int lastNPCUpdate;
+		public static int lastItemUpdate;
+		private int splashCounter;
+		private float logoRotation;
 		private int selectedPlayer;
 		private int selectedWorld;
-		public static int menuMode = 0;
-		private static Item cpItem = new Item();
 		private int textBlinkerCount;
 		private int textBlinkerState;
-		public static string newWorldName = "";
-		private static int accSlotCount = 0;
-		private Color selColor = Color.White;
 		private int focusColor;
 		private int colorDelay;
-		private int setKey = -1;
 		private int bgScroll;
-		public static bool autoPass = false;
-		public static int menuFocus = 0;
+		public static Color mcColor = new Color(125, 125, 255);
+		public static Color hcColor = new Color(200, 125, 255);
+		public static Color[] teamColor = new Color[5];
+		public static Color mouseColor = new Color(255, 50, 95);
+		public static Color cursorColor = Color.White;
+		public static Color tileColor;
 		public static bool runningMono = false;
+
 		public static void LoadWorlds()
 		{
 			Directory.CreateDirectory(Main.WorldPath);
@@ -640,6 +650,7 @@ namespace Terraria
 			}
 			Main.numLoadWorlds = num;
 		}
+
 		private static void LoadPlayers()
 		{
 			Directory.CreateDirectory(Main.PlayerPath);
@@ -660,6 +671,7 @@ namespace Terraria
 			}
 			Main.numLoadPlayers = num;
 		}
+
 		private static void ErasePlayer(int i)
 		{
 			try
@@ -672,6 +684,7 @@ namespace Terraria
 			{
 			}
 		}
+
 		private static void EraseWorld(int i)
 		{
 			try
@@ -684,6 +697,7 @@ namespace Terraria
 			{
 			}
 		}
+
 		private static string nextLoadPlayer()
 		{
 			int num = 1;
@@ -701,6 +715,7 @@ namespace Terraria
 				num.ToString() +
 				".plr");
 		}
+
 		private static string nextLoadWorld()
 		{
 			int num = 1;
@@ -714,6 +729,7 @@ namespace Terraria
 				Main.WorldPath,
 				"world" + num.ToString() + ".wld");
 		}
+
 		public void autoCreate(string newOpt)
 		{
 			if (newOpt == "0")
@@ -742,10 +758,12 @@ namespace Terraria
 				Main.autoGen = true;
 			}
 		}
+
 		public void NewMOTD(string newMOTD)
 		{
 			Main.motd = newMOTD;
 		}
+
 		public void LoadDedConfig(string configPath)
 		{
 			if (File.Exists(configPath))
@@ -853,22 +871,27 @@ namespace Terraria
 				}
 			}
 		}
+
 		public void SetWorld(string wrold)
 		{
 			Main.worldPathName = wrold;
 		}
+
 		public void SetWorldName(string wrold)
 		{
 			Main.worldName = wrold;
 		}
+
 		public void autoShut()
 		{
 			Main.autoShutdown = true;
 		}
+
 		public void AutoPass()
 		{
 			Main.autoPass = true;
 		}
+
 		public void AutoJoin(string IP)
 		{
 			Main.defaultIP = IP;
@@ -876,6 +899,7 @@ namespace Terraria
 			Netplay.SetIP(Main.defaultIP);
 			Main.autoJoin = true;
 		}
+
 		public void AutoHost()
 		{
 			Main.menuMultiplayer = true;
@@ -901,6 +925,7 @@ namespace Terraria
 			Main.dedServ = true;
 			Main.showSplash = false;
 			this.Initialize();
+			Lang.setLang();
 			for (int i = 0; i < 147; i++)
 			{
 				NPC nPC = new NPC();
@@ -1182,7 +1207,7 @@ namespace Terraria
 			}
 			Console.WriteLine("Terraria Server " + Main.versionNumber);
 			Console.WriteLine("");
-			Console.WriteLine("Listening on {0}:{1}", 
+			Console.WriteLine("Listening on {0}:{1}",
 				Netplay.serverListenIP != System.Net.IPAddress.Any ? Netplay.serverListenIP.ToString() : "*", Netplay.serverPort);
 			Console.WriteLine("Type 'help' for a list of commands.");
 			Console.WriteLine("");
@@ -1201,7 +1226,7 @@ namespace Terraria
 			stopwatch2.Start();
 			while (!Netplay.disconnect)
 			{
-				double num9 = (double)stopwatch.ElapsedMilliseconds;
+				double num9 = (double) stopwatch.ElapsedMilliseconds;
 				if (num9 + num7 >= num6)
 				{
 					num8++;
@@ -1240,10 +1265,10 @@ namespace Terraria
 						this.Update();
 						GameHooks.OnUpdate(false);
 					}
-					double num10 = (double)stopwatch.ElapsedMilliseconds + num7;
+					double num10 = (double) stopwatch.ElapsedMilliseconds + num7;
 					if (num10 < num6)
 					{
-						int num11 = (int)(num6 - num10) - 1;
+						int num11 = (int) (num6 - num10) - 1;
 						if (num11 > 1)
 						{
 							Thread.Sleep(num11);
@@ -1258,10 +1283,12 @@ namespace Terraria
 				Thread.Sleep(0);
 			}
 		}
+
 		public static void startDedInput()
 		{
 			ThreadPool.QueueUserWorkItem(new WaitCallback(Main.startDedInputCallBack), 1);
 		}
+
 		public static void startDedInputCallBack(object threadContext)
 		{
 			while (!Netplay.disconnect)
@@ -1685,20 +1712,24 @@ namespace Terraria
 				}
 			}
 		}
+
 		protected void Initialize()
 		{
 			NPC.clrNames();
 			NPC.setNames();
 			Main.bgAlpha[0] = 1f;
 			Main.bgAlpha2[0] = 1f;
-			for (int i = 0; i < 111; i++)
-			{
-				Main.projFrames[i] = 1;
-			}
+			for (int index = 0; index < 112; ++index)
+				Main.projFrames[index] = 1;
 			Main.projFrames[72] = 4;
 			Main.projFrames[86] = 4;
 			Main.projFrames[87] = 4;
 			Main.projFrames[102] = 2;
+			Main.projFrames[111] = 8;
+			Main.pvpBuff[20] = true;
+			Main.pvpBuff[24] = true;
+			Main.pvpBuff[31] = true;
+			Main.pvpBuff[39] = true;
 			Main.debuff[20] = true;
 			Main.debuff[21] = true;
 			Main.debuff[22] = true;
@@ -1716,99 +1747,17 @@ namespace Terraria
 			Main.debuff[37] = true;
 			Main.debuff[38] = true;
 			Main.debuff[39] = true;
-			Main.buffName[1] = "Obsidian Skin";
-			Main.buffTip[1] = "Immune to lava";
-			Main.buffName[2] = "Regeneration";
-			Main.buffTip[2] = "Provides life regeneration";
-			Main.buffName[3] = "Swiftness";
-			Main.buffTip[3] = "25% increased movement speed";
-			Main.buffName[4] = "Gills";
-			Main.buffTip[4] = "Breathe water instead of air";
-			Main.buffName[5] = "Ironskin";
-			Main.buffTip[5] = "Increase defense by 8";
-			Main.buffName[6] = "Mana Regeneration";
-			Main.buffTip[6] = "Increased mana regeneration";
-			Main.buffName[7] = "Magic Power";
-			Main.buffTip[7] = "20% increased magic damage";
-			Main.buffName[8] = "Featherfall";
-			Main.buffTip[8] = "Press UP or DOWN to control speed of descent";
-			Main.buffName[9] = "Spelunker";
-			Main.buffTip[9] = "Shows the location of treasure and ore";
-			Main.buffName[10] = "Invisibility";
-			Main.buffTip[10] = "Grants invisibility";
-			Main.buffName[11] = "Shine";
-			Main.buffTip[11] = "Emitting light";
-			Main.buffName[12] = "Night Owl";
-			Main.buffTip[12] = "Increased night vision";
-			Main.buffName[13] = "Battle";
-			Main.buffTip[13] = "Increased enemy spawn rate";
-			Main.buffName[14] = "Thorns";
-			Main.buffTip[14] = "Attackers also take damage";
-			Main.buffName[15] = "Water Walking";
-			Main.buffTip[15] = "Press DOWN to enter water";
-			Main.buffName[16] = "Archery";
-			Main.buffTip[16] = "20% increased arrow damage and speed";
-			Main.buffName[17] = "Hunter";
-			Main.buffTip[17] = "Shows the location of enemies";
-			Main.buffName[18] = "Gravitation";
-			Main.buffTip[18] = "Press UP or DOWN to reverse gravity";
-			Main.buffName[19] = "Orb of Light";
-			Main.buffTip[19] = "A magical orb that provides light";
-			Main.buffName[20] = "Poisoned";
-			Main.buffTip[20] = "Slowly losing life";
-			Main.buffName[21] = "Potion Sickness";
-			Main.buffTip[21] = "Cannot consume anymore healing items";
-			Main.buffName[22] = "Darkness";
-			Main.buffTip[22] = "Decreased light vision";
-			Main.buffName[23] = "Cursed";
-			Main.buffTip[23] = "Cannot use any items";
-			Main.buffName[24] = "On Fire!";
-			Main.buffTip[24] = "Slowly losing life";
-			Main.buffName[25] = "Tipsy";
-			Main.buffTip[25] = "Increased melee abilities, lowered defense";
-			Main.buffName[26] = "Well Fed";
-			Main.buffTip[26] = "Minor improvements to all stats";
-			Main.buffName[27] = "Fairy";
-			Main.buffTip[27] = "A fairy is following you";
-			Main.buffName[28] = "Werewolf";
-			Main.buffTip[28] = "Physical abilities are increased";
-			Main.buffName[29] = "Clairvoyance";
-			Main.buffTip[29] = "Magic powers are increased";
-			Main.buffName[30] = "Bleeding";
-			Main.buffTip[30] = "Cannot regenerate life";
-			Main.buffName[31] = "Confused";
-			Main.buffTip[31] = "Movement is reversed";
-			Main.buffName[32] = "Slow";
-			Main.buffTip[32] = "Movement speed is reduced";
-			Main.buffName[33] = "Weak";
-			Main.buffTip[33] = "Physical abilities are decreased";
-			Main.buffName[34] = "Merfolk";
-			Main.buffTip[34] = "Can breathe and move easily underwater";
-			Main.buffName[35] = "Silenced";
-			Main.buffTip[35] = "Cannot use items that require mana";
-			Main.buffName[36] = "Broken Armor";
-			Main.buffTip[36] = "Defense is cut in half";
-			Main.buffName[37] = "Horrified";
-			Main.buffTip[37] = "You have seen something nasty, there is no escape.";
-			Main.buffName[38] = "The Tongue";
-			Main.buffTip[38] = "You are being sucked into the mouth";
-			Main.buffName[39] = "Cursed Inferno";
-			Main.buffTip[39] = "Losing life";
-			for (int j = 0; j < 10; j++)
+			for (int index = 0; index < 10; ++index)
 			{
-				Main.recentWorld[j] = "";
-				Main.recentIP[j] = "";
-				Main.recentPort[j] = 0;
+				Main.recentWorld[index] = "";
+				Main.recentIP[index] = "";
+				Main.recentPort[index] = 0;
 			}
 			if (Main.rand == null)
-			{
 				Main.rand = new Random((int)DateTime.Now.Ticks);
-			}
 			if (WorldGen.genRand == null)
-			{
 				WorldGen.genRand = new Random((int)DateTime.Now.Ticks);
-			}
-			int num = Main.rand.Next(15);
+			this.SetTitle();
 			Main.lo = Main.rand.Next(6);
 			Main.tileShine2[6] = true;
 			Main.tileShine2[7] = true;
@@ -2126,7 +2075,7 @@ namespace Terraria
 			Main.tileLavaDeath[110] = true;
 			Main.tileLavaDeath[113] = true;
 			Main.tileLavaDeath[115] = true;
-			Main.tileSolid[127] = true;
+			Main.tileSolid[(int)sbyte.MaxValue] = true;
 			Main.tileSolid[130] = true;
 			Main.tileBlockLight[130] = true;
 			Main.tileBlockLight[131] = true;
@@ -2424,109 +2373,64 @@ namespace Terraria
 			Main.tileNoFail[84] = true;
 			Main.tileNoFail[110] = true;
 			Main.tileNoFail[113] = true;
-			for (int l = 0; l < 150; l++)
+			for (int index = 0; index < 150; ++index)
 			{
-				Main.tileName[l] = "";
-				if (Main.tileSolid[l])
-				{
-					Main.tileNoSunLight[l] = true;
-				}
+				Main.tileName[index] = "";
+				if (Main.tileSolid[index])
+					Main.tileNoSunLight[index] = true;
 			}
 			Main.tileNoSunLight[19] = false;
 			Main.tileNoSunLight[11] = true;
-			Main.tileName[13] = "Bottle";
-			Main.tileName[14] = "Table";
-			Main.tileName[15] = "Chair";
-			Main.tileName[16] = "Anvil";
-			Main.tileName[17] = "Furnace";
-			Main.tileName[18] = "Workbench";
-			Main.tileName[26] = "Demon Altar";
-			Main.tileName[77] = "Hellforge";
-			Main.tileName[86] = "Loom";
-			Main.tileName[94] = "Keg";
-			Main.tileName[96] = "Cooking Pot";
-			Main.tileName[101] = "Bookcase";
-			Main.tileName[106] = "Sawmill";
-			Main.tileName[114] = "Tinkerer's Workshop";
-			Main.tileName[133] = "Adamantite Forge";
-			Main.tileName[134] = "Mythril Anvil";
-			for (int m = 0; m < Main.maxMenuItems; m++)
+			for (int index = 0; index < Main.maxMenuItems; ++index)
+				this.menuItemScale[index] = 0.8f;
+			for (int index = 0; index < 2001; ++index)
+				Main.dust[index] = new Dust();
+			for (int index = 0; index < 201; ++index)
+				Main.item[index] = new Item();
+			for (int index = 0; index < 201; ++index)
 			{
-				this.menuItemScale[m] = 0.8f;
+				Main.npc[index] = new NPC();
+				Main.npc[index].whoAmI = index;
 			}
-			for (int n = 0; n < 2001; n++)
+			for (int index = 0; index < 256; ++index)
+				Main.player[index] = new Player();
+			for (int index = 0; index < 1001; ++index)
+				Main.projectile[index] = new Projectile();
+			for (int index = 0; index < 201; ++index)
+				Main.gore[index] = new Gore();
+			for (int index = 0; index < 100; ++index)
+				Main.cloud[index] = new Cloud();
+			for (int index = 0; index < 100; ++index)
+				Main.combatText[index] = new CombatText();
+			for (int index = 0; index < 20; ++index)
+				Main.itemText[index] = new ItemText();
+			var orilang = Lang.lang;
+			Lang.lang = 1;
+			for (int Type = 0; Type < 604; ++Type)
 			{
-				Main.dust[n] = new Dust();
+				Item obj = new Item();
+				obj.SetDefaults(Type, false);
+				Main.itemName[Type] = obj.name;
+				if (obj.headSlot > 0)
+					Item.headType[obj.headSlot] = obj.type;
+				if (obj.bodySlot > 0)
+					Item.bodyType[obj.bodySlot] = obj.type;
+				if (obj.legSlot > 0)
+					Item.legType[obj.legSlot] = obj.type;
 			}
-			for (int num2 = 0; num2 < 201; num2++)
+			Lang.lang = orilang;
+			for (int index = 0; index < Recipe.maxRecipes; ++index)
 			{
-				Main.item[num2] = new Item();
-			}
-			for (int num3 = 0; num3 < 201; num3++)
-			{
-				Main.npc[num3] = new NPC();
-				Main.npc[num3].whoAmI = num3;
-			}
-			for (int num4 = 0; num4 < 256; num4++)
-			{
-				Main.player[num4] = new Player();
-			}
-			for (int num5 = 0; num5 < 1001; num5++)
-			{
-				Main.projectile[num5] = new Projectile();
-			}
-			for (int num6 = 0; num6 < 201; num6++)
-			{
-				Main.gore[num6] = new Gore();
-			}
-			for (int num7 = 0; num7 < 100; num7++)
-			{
-				Main.cloud[num7] = new Cloud();
-			}
-			for (int num8 = 0; num8 < 100; num8++)
-			{
-				Main.combatText[num8] = new CombatText();
-			}
-			for (int num9 = 0; num9 < 20; num9++)
-			{
-				Main.itemText[num9] = new ItemText();
-			}
-			for (int num10 = 0; num10 < 603; num10++)
-			{
-				Item item = new Item();
-				item.SetDefaults(num10, false);
-				Main.itemName[num10] = item.name;
-				if (item.headSlot > 0)
-				{
-					Item.headType[item.headSlot] = item.type;
-				}
-				if (item.bodySlot > 0)
-				{
-					Item.bodyType[item.bodySlot] = item.type;
-				}
-				if (item.legSlot > 0)
-				{
-					Item.legType[item.legSlot] = item.type;
-				}
-			}
-			for (int num11 = 0; num11 < Recipe.maxRecipes; num11++)
-			{
-				Main.recipe[num11] = new Recipe();
-				Main.availableRecipeY[num11] = (float)(65 * num11);
+				Main.recipe[index] = new Recipe();
+				Main.availableRecipeY[index] = (float)(65 * index);
 			}
 			Recipe.SetupRecipes();
-			for (int num12 = 0; num12 < Main.numChatLines; num12++)
-			{
-				Main.chatLine[num12] = new ChatLine();
-			}
-			for (int num13 = 0; num13 < Liquid.resLiquid; num13++)
-			{
-				Main.liquid[num13] = new Liquid();
-			}
-			for (int num14 = 0; num14 < 10000; num14++)
-			{
-				Main.liquidBuffer[num14] = new LiquidBuffer();
-			}
+			for (int index = 0; index < Main.numChatLines; ++index)
+				Main.chatLine[index] = new ChatLine();
+			for (int index = 0; index < Liquid.resLiquid; ++index)
+				Main.liquid[index] = new Liquid();
+			for (int index = 0; index < 10000; ++index)
+				Main.liquidBuffer[index] = new LiquidBuffer();
 			this.shop[0] = new Chest();
 			this.shop[1] = new Chest();
 			this.shop[1].SetupShop(1);
@@ -2549,8 +2453,17 @@ namespace Terraria
 			Main.teamColor[0] = Color.White;
 			Main.teamColor[1] = new Color(230, 40, 20);
 			Main.teamColor[2] = new Color(20, 200, 30);
-			Main.teamColor[3] = new Color(75, 90, 255);
+			Main.teamColor[3] = new Color(75, 90, (int)byte.MaxValue);
 			Main.teamColor[4] = new Color(200, 180, 0);
+			if (Main.menuMode == 1)
+				Main.LoadPlayers();
+			for (int Type = 1; Type < 112; ++Type)
+			{
+				Projectile projectile = new Projectile();
+				projectile.SetDefaults(Type);
+				if (projectile.hostile)
+					Main.projHostile[Type] = true;
+			}
 			Netplay.Init();
 			if (Main.skipMenu)
 			{
@@ -2564,14 +2477,8 @@ namespace Terraria
 				WorldGen.EveryTileFrame();
 				Main.player[Main.myPlayer].Spawn();
 			}
-			else
-			{
-			}
-			if (Main.dedServ)
-			{
-				return;
-			}
 		}
+
 		public static void checkXMas()
 		{
 			DateTime now = DateTime.Now;
@@ -2584,8 +2491,14 @@ namespace Terraria
 			}
 			Main.xMas = false;
 		}
+
 		protected void Update()
 		{
+			if (Main.chTitle)
+			{
+				Main.chTitle = false;
+				this.SetTitle();
+			}
 			Stopwatch stopwatch = new Stopwatch();
 			stopwatch.Start();
 			WorldGen.destroyObject = false;
@@ -2835,7 +2748,7 @@ namespace Terraria
 			}
 			goto IL_187D;
 			IL_18B6:
-			Main.upTimer = (float)stopwatch.ElapsedMilliseconds;
+			Main.upTimer = (float) stopwatch.ElapsedMilliseconds;
 			if (Main.upTimerMaxDelay > 0f)
 			{
 				Main.upTimerMaxDelay -= 1f;
@@ -2865,31 +2778,32 @@ namespace Terraria
 				Main.upTimerMaxDelay = 400f;
 			}
 		}
+
 		public static Color shine(Color newColor, int type)
 		{
-			int num = (int)newColor.R;
-			int num2 = (int)newColor.R;
-			int num3 = (int)newColor.R;
+			int num = (int) newColor.R;
+			int num2 = (int) newColor.R;
+			int num3 = (int) newColor.R;
 			float num4 = 0.6f;
 			if (type == 25)
 			{
-				num = (int)((float)newColor.R * 0.95f);
-				num2 = (int)((float)newColor.G * 0.85f);
-				num3 = (int)((double)((float)newColor.B) * 1.1);
+				num = (int) ((float) newColor.R*0.95f);
+				num2 = (int) ((float) newColor.G*0.85f);
+				num3 = (int) ((double) ((float) newColor.B)*1.1);
 			}
 			else
 			{
 				if (type == 117)
 				{
-					num = (int)((float)newColor.R * 1.1f);
-					num2 = (int)((float)newColor.G * 1f);
-					num3 = (int)((double)((float)newColor.B) * 1.2);
+					num = (int) ((float) newColor.R*1.1f);
+					num2 = (int) ((float) newColor.G*1f);
+					num3 = (int) ((double) ((float) newColor.B)*1.2);
 				}
 				else
 				{
-					num = (int)((float)newColor.R * (1f + num4));
-					num2 = (int)((float)newColor.G * (1f + num4));
-					num3 = (int)((float)newColor.B * (1f + num4));
+					num = (int) ((float) newColor.R*(1f + num4));
+					num2 = (int) ((float) newColor.G*(1f + num4));
+					num3 = (int) ((float) newColor.B*(1f + num4));
 				}
 			}
 			if (num > 255)
@@ -2904,19 +2818,21 @@ namespace Terraria
 			{
 				num3 = 255;
 			}
-			newColor.R = (byte)num;
-			newColor.G = (byte)num2;
-			newColor.B = (byte)num3;
-			return new Color((int)((byte)num), (int)((byte)num2), (int)((byte)num3), (int)newColor.A);
+			newColor.R = (byte) num;
+			newColor.G = (byte) num2;
+			newColor.B = (byte) num3;
+			return new Color((int) ((byte) num), (int) ((byte) num2), (int) ((byte) num3), (int) newColor.A);
 		}
+
 		private static Color buffColor(Color newColor, float R, float G, float B, float A)
 		{
-			newColor.R = (byte)((float)newColor.R * R);
-			newColor.G = (byte)((float)newColor.G * G);
-			newColor.B = (byte)((float)newColor.B * B);
-			newColor.A = (byte)((float)newColor.A * A);
+			newColor.R = (byte) ((float) newColor.R*R);
+			newColor.G = (byte) ((float) newColor.G*G);
+			newColor.B = (byte) ((float) newColor.B*B);
+			newColor.A = (byte) ((float) newColor.A*A);
 			return newColor;
 		}
+
 		private static void HelpText()
 		{
 			bool flag = false;
@@ -3374,6 +3290,7 @@ namespace Terraria
 			Block_156:
 			Main.npcChatText = "Souls can sometimes be gathered from fallen creatures in places of extreme light or dark.";
 		}
+
 		private static bool AccCheck(Item newItem, int slot)
 		{
 			if (Main.player[Main.myPlayer].armor[slot].IsTheSameAs(newItem))
@@ -3389,6 +3306,7 @@ namespace Terraria
 			}
 			return false;
 		}
+
 		public static Item armorSwap(Item newItem)
 		{
 			for (int i = 0; i < Main.player[Main.myPlayer].armor.Length; i++)
@@ -3405,22 +3323,22 @@ namespace Terraria
 			Item result = newItem;
 			if (newItem.headSlot != -1)
 			{
-				result = (Item)Main.player[Main.myPlayer].armor[0].Clone();
-				Main.player[Main.myPlayer].armor[0] = (Item)newItem.Clone();
+				result = (Item) Main.player[Main.myPlayer].armor[0].Clone();
+				Main.player[Main.myPlayer].armor[0] = (Item) newItem.Clone();
 			}
 			else
 			{
 				if (newItem.bodySlot != -1)
 				{
-					result = (Item)Main.player[Main.myPlayer].armor[1].Clone();
-					Main.player[Main.myPlayer].armor[1] = (Item)newItem.Clone();
+					result = (Item) Main.player[Main.myPlayer].armor[1].Clone();
+					Main.player[Main.myPlayer].armor[1] = (Item) newItem.Clone();
 				}
 				else
 				{
 					if (newItem.legSlot != -1)
 					{
-						result = (Item)Main.player[Main.myPlayer].armor[2].Clone();
-						Main.player[Main.myPlayer].armor[2] = (Item)newItem.Clone();
+						result = (Item) Main.player[Main.myPlayer].armor[2].Clone();
+						Main.player[Main.myPlayer].armor[2] = (Item) newItem.Clone();
 					}
 					else
 					{
@@ -3449,8 +3367,8 @@ namespace Terraria
 							{
 								Main.accSlotCount = 4;
 							}
-							result = (Item)Main.player[Main.myPlayer].armor[3 + Main.accSlotCount].Clone();
-							Main.player[Main.myPlayer].armor[3 + Main.accSlotCount] = (Item)newItem.Clone();
+							result = (Item) Main.player[Main.myPlayer].armor[3 + Main.accSlotCount].Clone();
+							Main.player[Main.myPlayer].armor[3 + Main.accSlotCount] = (Item) newItem.Clone();
 							Main.accSlotCount++;
 							if (Main.accSlotCount >= 5)
 							{
@@ -3464,6 +3382,7 @@ namespace Terraria
 			Recipe.FindRecipes();
 			return result;
 		}
+
 		public static void BankCoins()
 		{
 			for (int i = 0; i < 20; i++)
@@ -3483,6 +3402,7 @@ namespace Terraria
 				}
 			}
 		}
+
 		public static void ChestCoins()
 		{
 			for (int i = 0; i < 20; i++)
@@ -3496,7 +3416,7 @@ namespace Terraria
 						{
 							if (Main.netMode == 1)
 							{
-								NetMessage.SendData(32, -1, -1, "", Main.player[Main.myPlayer].chest, (float)j, 0f, 0f, 0);
+								NetMessage.SendData(32, -1, -1, "", Main.player[Main.myPlayer].chest, (float) j, 0f, 0f, 0);
 							}
 							Main.chest[Main.player[Main.myPlayer].chest].item[j].stack++;
 							Main.chest[Main.player[Main.myPlayer].chest].item[i].SetDefaults(0, false);
@@ -3506,6 +3426,7 @@ namespace Terraria
 				}
 			}
 		}
+
 		protected Color randColor()
 		{
 			int num = 0;
@@ -3519,33 +3440,35 @@ namespace Terraria
 			}
 			return new Color(num, num2, num3, 255);
 		}
+
 		public static void CursorColor()
 		{
-			Main.cursorAlpha += (float)Main.cursorColorDirection * 0.015f;
+			Main.cursorAlpha += (float) Main.cursorColorDirection*0.015f;
 			if (Main.cursorAlpha >= 1f)
 			{
 				Main.cursorAlpha = 1f;
 				Main.cursorColorDirection = -1;
 			}
-			if ((double)Main.cursorAlpha <= 0.6)
+			if ((double) Main.cursorAlpha <= 0.6)
 			{
 				Main.cursorAlpha = 0.6f;
 				Main.cursorColorDirection = 1;
 			}
-			float num = Main.cursorAlpha * 0.3f + 0.7f;
-			byte r = (byte)((float)Main.mouseColor.R * Main.cursorAlpha);
-			byte g = (byte)((float)Main.mouseColor.G * Main.cursorAlpha);
-			byte b = (byte)((float)Main.mouseColor.B * Main.cursorAlpha);
-			byte a = (byte)(255f * num);
-			Main.cursorColor = new Color((int)r, (int)g, (int)b, (int)a);
-			Main.cursorScale = Main.cursorAlpha * 0.3f + 0.7f + 0.1f;
+			float num = Main.cursorAlpha*0.3f + 0.7f;
+			byte r = (byte) ((float) Main.mouseColor.R*Main.cursorAlpha);
+			byte g = (byte) ((float) Main.mouseColor.G*Main.cursorAlpha);
+			byte b = (byte) ((float) Main.mouseColor.B*Main.cursorAlpha);
+			byte a = (byte) (255f*num);
+			Main.cursorColor = new Color((int) r, (int) g, (int) b, (int) a);
+			Main.cursorScale = Main.cursorAlpha*0.3f + 0.7f + 0.1f;
 		}
+
 		protected bool FullTile(int x, int y)
 		{
-			if (Main.tile[x, y].active && Main.tileSolid[(int)Main.tile[x, y].type] && !Main.tileSolidTop[(int)Main.tile[x, y].type] && Main.tile[x, y].type != 10 && Main.tile[x, y].type != 54 && Main.tile[x, y].type != 138)
+			if (Main.tile[x, y].active && Main.tileSolid[(int) Main.tile[x, y].type] && !Main.tileSolidTop[(int) Main.tile[x, y].type] && Main.tile[x, y].type != 10 && Main.tile[x, y].type != 54 && Main.tile[x, y].type != 138)
 			{
-				int frameX = (int)Main.tile[x, y].frameX;
-				int frameY = (int)Main.tile[x, y].frameY;
+				int frameX = (int) Main.tile[x, y].frameX;
+				int frameY = (int) Main.tile[x, y].frameY;
 				if (frameY == 18)
 				{
 					if (frameX >= 18 && frameX <= 54)
@@ -3574,6 +3497,7 @@ namespace Terraria
 			}
 			return false;
 		}
+
 		private static void UpdateInvasion()
 		{
 			if (Main.invasionType > 0)
@@ -3599,17 +3523,17 @@ namespace Terraria
 					Main.invasionType = 0;
 					Main.invasionDelay = 7;
 				}
-				if (Main.invasionX == (double)Main.spawnTileX)
+				if (Main.invasionX == (double) Main.spawnTileX)
 				{
 					return;
 				}
 				float num = 1f;
-				if (Main.invasionX > (double)Main.spawnTileX)
+				if (Main.invasionX > (double) Main.spawnTileX)
 				{
-					Main.invasionX -= (double)num;
-					if (Main.invasionX <= (double)Main.spawnTileX)
+					Main.invasionX -= (double) num;
+					if (Main.invasionX <= (double) Main.spawnTileX)
 					{
-						Main.invasionX = (double)Main.spawnTileX;
+						Main.invasionX = (double) Main.spawnTileX;
 						Main.InvasionWarning();
 					}
 					else
@@ -3619,12 +3543,12 @@ namespace Terraria
 				}
 				else
 				{
-					if (Main.invasionX < (double)Main.spawnTileX)
+					if (Main.invasionX < (double) Main.spawnTileX)
 					{
-						Main.invasionX += (double)num;
-						if (Main.invasionX >= (double)Main.spawnTileX)
+						Main.invasionX += (double) num;
+						if (Main.invasionX >= (double) Main.spawnTileX)
 						{
-							Main.invasionX = (double)Main.spawnTileX;
+							Main.invasionX = (double) Main.spawnTileX;
 							Main.InvasionWarning();
 						}
 						else
@@ -3640,6 +3564,7 @@ namespace Terraria
 				}
 			}
 		}
+
 		private static void InvasionWarning()
 		{
 			string str = "The goblin army";
@@ -3661,25 +3586,20 @@ namespace Terraria
 				else
 				{
 					if (Main.invasionX > (double)Main.spawnTileX)
-					{
-						text = str + " is approaching from the east!";
-					}
-					else
-					{
-						text = str + " has arrived!";
-					}
-				}
-			}
+			string str1 = "";
+			string str2 = Main.invasionSize > 0 ? (Main.invasionX >= (double)Main.spawnTileX ? (Main.invasionX <= (double)Main.spawnTileX ? (Main.invasionType != 2 ? (str1 = Lang.misc[3]) : Lang.misc[7]) : (Main.invasionType != 2 ? (str1 = Lang.misc[2]) : Lang.misc[6])) : (Main.invasionType != 2 ? (str1 = Lang.misc[1]) : Lang.misc[5])) : (Main.invasionType != 2 ? (str1 = Lang.misc[0]) : Lang.misc[4]);
 			if (Main.netMode == 0)
 			{
-				Main.NewText(text, 175, 75, 255);
-				return;
+				Main.NewText(str2, (byte)175, (byte)75, byte.MaxValue);
 			}
-			if (Main.netMode == 2)
+			else
 			{
-				NetMessage.SendData(25, -1, -1, text, 255, 175f, 75f, 255f, 0);
+				if (Main.netMode != 2)
+					return;
+				NetMessage.SendData(25, -1, -1, str2, (int)byte.MaxValue, 175f, 75f, (float)byte.MaxValue, 0);
 			}
 		}
+
 		public static void StartInvasion(int type = 1)
 		{
 			if (Main.invasionType == 0 && Main.invasionDelay == 0)
@@ -3695,17 +3615,18 @@ namespace Terraria
 				if (num > 0)
 				{
 					Main.invasionType = type;
-					Main.invasionSize = 80 + 40 * num;
+					Main.invasionSize = 80 + 40*num;
 					Main.invasionWarn = 0;
 					if (Main.rand.Next(2) == 0)
 					{
 						Main.invasionX = 0.0;
 						return;
 					}
-					Main.invasionX = (double)Main.maxTilesX;
+					Main.invasionX = (double) Main.maxTilesX;
 				}
 			}
 		}
+
 		private static void UpdateServer()
 		{
 			Main.netPlayCounter++;
@@ -3722,7 +3643,7 @@ namespace Terraria
 					Netplay.serverSock[i].SpamUpdate();
 				}
 			}
-			if (Math.IEEERemainder((double)Main.netPlayCounter, 900.0) == 0.0)
+			if (Math.IEEERemainder((double) Main.netPlayCounter, 900.0) == 0.0)
 			{
 				bool flag = true;
 				int num = Main.lastItemUpdate;
@@ -3758,15 +3679,15 @@ namespace Terraria
 				if (Netplay.serverSock[k].active)
 				{
 					Netplay.serverSock[k].timeOut++;
-					if (!Main.stopTimeOuts && Netplay.serverSock[k].timeOut > 60 * Main.timeOut)
+					if (!Main.stopTimeOuts && Netplay.serverSock[k].timeOut > 60*Main.timeOut)
 					{
 						Netplay.serverSock[k].kill = true;
 					}
 				}
 				if (Main.player[k].active)
 				{
-					int sectionX = Netplay.GetSectionX((int)(Main.player[k].position.X / 16f));
-					int sectionY = Netplay.GetSectionY((int)(Main.player[k].position.Y / 16f));
+					int sectionX = Netplay.GetSectionX((int) (Main.player[k].position.X/16f));
+					int sectionY = Netplay.GetSectionY((int) (Main.player[k].position.Y/16f));
 					int num3 = 0;
 					for (int l = sectionX - 1; l < sectionX + 2; l++)
 					{
@@ -3780,7 +3701,7 @@ namespace Terraria
 					}
 					if (num3 > 0)
 					{
-						int num4 = num3 * 150;
+						int num4 = num3*150;
 						NetMessage.SendData(9, k, -1, "Receiving tile data", num4, 0f, 0f, 0f, 0);
 						Netplay.serverSock[k].statusText2 = "is receiving tile data";
 						Netplay.serverSock[k].statusMax += num4;
@@ -3791,7 +3712,7 @@ namespace Terraria
 								if (n >= 0 && n < Main.maxSectionsX && num5 >= 0 && num5 < Main.maxSectionsY && !Netplay.serverSock[k].tileSection[n, num5])
 								{
 									NetMessage.SendSection(k, n, num5);
-									NetMessage.SendData(11, k, -1, "", n, (float)num5, (float)n, (float)num5, 0);
+									NetMessage.SendData(11, k, -1, "", n, (float) num5, (float) n, (float) num5, 0);
 								}
 							}
 						}
@@ -3799,6 +3720,7 @@ namespace Terraria
 				}
 			}
 		}
+
 		public static void NewText(string newText, byte R = 255, byte G = 255, byte B = 255)
 		{
 			for (int i = Main.numChatLines - 1; i > 0; i--)
@@ -3813,12 +3735,13 @@ namespace Terraria
 			}
 			else
 			{
-				Main.chatLine[0].color = new Color((int)R, (int)G, (int)B);
+				Main.chatLine[0].color = new Color((int) R, (int) G, (int) B);
 			}
 			Main.chatLine[0].text = newText;
 			Main.chatLine[0].showTime = Main.chatLength;
 			Main.PlaySound(12, -1, -1, 1);
 		}
+
 		private static void UpdateTime()
 		{
 			Main.time += (double)Main.dayRate;
@@ -3826,11 +3749,11 @@ namespace Terraria
 			{
 				if (WorldGen.spawnEye && Main.netMode != 1 && Main.time > 4860.0)
 				{
-					for (int i = 0; i < 255; i++)
+					for (int plr = 0; plr < (int)byte.MaxValue; ++plr)
 					{
-						if (Main.player[i].active && !Main.player[i].dead && (double)Main.player[i].position.Y < Main.worldSurface * 16.0)
+						if (Main.player[plr].active && !Main.player[plr].dead && (double)Main.player[plr].position.Y < Main.worldSurface * 16.0)
 						{
-							NPC.SpawnOnPlayer(i, 4);
+							NPC.SpawnOnPlayer(plr, 4);
 							WorldGen.spawnEye = false;
 							break;
 						}
@@ -3840,22 +3763,18 @@ namespace Terraria
 				{
 					Main.checkXMas();
 					if (Main.invasionDelay > 0)
-					{
-						Main.invasionDelay--;
-					}
+						--Main.invasionDelay;
 					WorldGen.spawnNPC = 0;
 					Main.checkForSpawns = 0;
 					Main.time = 0.0;
 					Main.bloodMoon = false;
 					Main.dayTime = true;
-					Main.moonPhase++;
+					++Main.moonPhase;
 					if (Main.moonPhase >= 8)
-					{
 						Main.moonPhase = 0;
-					}
 					if (Main.netMode == 2)
 					{
-						NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
+						NetMessage.SendData(7, -1, -1, "", 0, 0.0f, 0.0f, 0.0f, 0);
 						WorldGen.saveAndPlay();
 					}
 					if (Main.netMode != 1 && WorldGen.shadowOrbSmashed)
@@ -3863,25 +3782,16 @@ namespace Terraria
 						if (!NPC.downedGoblins)
 						{
 							if (Main.rand.Next(3) == 0)
-							{
 								Main.StartInvasion(1);
-							}
 						}
-						else
-						{
-							if (Main.rand.Next(15) == 0)
-							{
-								Main.StartInvasion(1);
-							}
-						}
+						else if (Main.rand.Next(15) == 0)
+							Main.StartInvasion(1);
 					}
 				}
-				if (Main.time > 16200.0 && WorldGen.spawnMeteor)
-				{
-					WorldGen.spawnMeteor = false;
-					WorldGen.dropMeteor();
+				if (Main.time <= 16200.0 || !WorldGen.spawnMeteor)
 					return;
-				}
+				WorldGen.spawnMeteor = false;
+				WorldGen.dropMeteor();
 			}
 			else
 			{
@@ -3891,15 +3801,13 @@ namespace Terraria
 					WorldGen.spawnNPC = 0;
 					Main.checkForSpawns = 0;
 					if (Main.rand.Next(50) == 0 && Main.netMode != 1 && WorldGen.shadowOrbSmashed)
-					{
 						WorldGen.spawnMeteor = true;
-					}
 					if (!NPC.downedBoss1 && Main.netMode != 1)
 					{
 						bool flag = false;
-						for (int j = 0; j < 255; j++)
+						for (int index = 0; index < (int)byte.MaxValue; ++index)
 						{
-							if (Main.player[j].active && Main.player[j].statLifeMax >= 200 && Main.player[j].statDefense > 10)
+							if (Main.player[index].active && Main.player[index].statLifeMax >= 200 && Main.player[index].statDefense > 10)
 							{
 								flag = true;
 								break;
@@ -3908,35 +3816,26 @@ namespace Terraria
 						if (flag && Main.rand.Next(3) == 0)
 						{
 							int num = 0;
-							for (int k = 0; k < 200; k++)
+							for (int index = 0; index < 200; ++index)
 							{
-								if (Main.npc[k].active && Main.npc[k].townNPC)
-								{
-									num++;
-								}
+								if (Main.npc[index].active && Main.npc[index].townNPC)
+									++num;
 							}
 							if (num >= 4)
 							{
 								WorldGen.spawnEye = true;
 								if (Main.netMode == 0)
-								{
-									Main.NewText("You feel an evil presence watching you...", 50, 255, 130);
-								}
-								else
-								{
-									if (Main.netMode == 2)
-									{
-										NetMessage.SendData(25, -1, -1, "You feel an evil presence watching you...", 255, 50f, 255f, 130f, 0);
-									}
-								}
+									Main.NewText(Lang.misc[9], (byte)50, byte.MaxValue, (byte)130);
+								else if (Main.netMode == 2)
+									NetMessage.SendData(25, -1, -1, Lang.misc[9], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
 							}
 						}
 					}
-					if (!WorldGen.spawnEye && Main.moonPhase != 4 && Main.rand.Next(9) == 0 && Main.netMode != 1)
+					if (!WorldGen.spawnEye && Main.moonPhase != 4 && (Main.rand.Next(9) == 0 && Main.netMode != 1))
 					{
-						for (int l = 0; l < 255; l++)
+						for (int index = 0; index < (int)byte.MaxValue; ++index)
 						{
-							if (Main.player[l].active && Main.player[l].statLifeMax > 120)
+							if (Main.player[index].active && Main.player[index].statLifeMax > 120)
 							{
 								Main.bloodMoon = true;
 								break;
@@ -3945,236 +3844,164 @@ namespace Terraria
 						if (Main.bloodMoon)
 						{
 							if (Main.netMode == 0)
-							{
-								Main.NewText("The Blood Moon is rising...", 50, 255, 130);
-							}
-							else
-							{
-								if (Main.netMode == 2)
-								{
-									NetMessage.SendData(25, -1, -1, "The Blood Moon is rising...", 255, 50f, 255f, 130f, 0);
-								}
-							}
+								Main.NewText(Lang.misc[8], (byte)50, byte.MaxValue, (byte)130);
+							else if (Main.netMode == 2)
+								NetMessage.SendData(25, -1, -1, Lang.misc[8], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
 						}
 					}
 					Main.time = 0.0;
 					Main.dayTime = false;
 					if (Main.netMode == 2)
-					{
-						NetMessage.SendData(7, -1, -1, "", 0, 0f, 0f, 0f, 0);
-					}
+						NetMessage.SendData(7, -1, -1, "", 0, 0.0f, 0.0f, 0.0f, 0);
 				}
-				if (Main.netMode != 1)
+				if (Main.netMode == 1)
+					return;
+				++Main.checkForSpawns;
+				if (Main.checkForSpawns < 7200)
+					return;
+				int num1 = 0;
+				for (int index = 0; index < (int)byte.MaxValue; ++index)
 				{
-					Main.checkForSpawns++;
-					if (Main.checkForSpawns >= 7200)
+					if (Main.player[index].active)
+						++num1;
+				}
+				Main.checkForSpawns = 0;
+				WorldGen.spawnNPC = 0;
+				int num2 = 0;
+				int num3 = 0;
+				int num4 = 0;
+				int num5 = 0;
+				int num6 = 0;
+				int num7 = 0;
+				int num8 = 0;
+				int num9 = 0;
+				int num10 = 0;
+				int num11 = 0;
+				int num12 = 0;
+				int num13 = 0;
+				int num14 = 0;
+				for (int npc = 0; npc < 200; ++npc)
+				{
+					if (Main.npc[npc].active && Main.npc[npc].townNPC)
 					{
-						int num2 = 0;
-						for (int m = 0; m < 255; m++)
-						{
-							if (Main.player[m].active)
-							{
-								num2++;
-							}
-						}
-						Main.checkForSpawns = 0;
-						WorldGen.spawnNPC = 0;
-						int num3 = 0;
-						int num4 = 0;
-						int num5 = 0;
-						int num6 = 0;
-						int num7 = 0;
-						int num8 = 0;
-						int num9 = 0;
-						int num10 = 0;
-						int num11 = 0;
-						int num12 = 0;
-						int num13 = 0;
-						int num14 = 0;
-						int num15 = 0;
-						for (int n = 0; n < 200; n++)
-						{
-							if (Main.npc[n].active && Main.npc[n].townNPC)
-							{
-								if (Main.npc[n].type != 37 && !Main.npc[n].homeless)
-								{
-									WorldGen.QuickFindHome(n);
-								}
-								if (Main.npc[n].type == 37)
-								{
-									num8++;
-								}
-								if (Main.npc[n].type == 17)
-								{
-									num3++;
-								}
-								if (Main.npc[n].type == 18)
-								{
-									num4++;
-								}
-								if (Main.npc[n].type == 19)
-								{
-									num6++;
-								}
-								if (Main.npc[n].type == 20)
-								{
-									num5++;
-								}
-								if (Main.npc[n].type == 22)
-								{
-									num7++;
-								}
-								if (Main.npc[n].type == 38)
-								{
-									num9++;
-								}
-								if (Main.npc[n].type == 54)
-								{
-									num10++;
-								}
-								if (Main.npc[n].type == 107)
-								{
-									num12++;
-								}
-								if (Main.npc[n].type == 108)
-								{
-									num11++;
-								}
-								if (Main.npc[n].type == 124)
-								{
-									num13++;
-								}
-								if (Main.npc[n].type == 142)
-								{
-									num14++;
-								}
-								num15++;
-							}
-						}
-						if (WorldGen.spawnNPC == 0)
-						{
-							int num16 = 0;
-							bool flag2 = false;
-							int num17 = 0;
-							bool flag3 = false;
-							bool flag4 = false;
-							for (int num18 = 0; num18 < 255; num18++)
-							{
-								if (Main.player[num18].active)
-								{
-									for (int num19 = 0; num19 < 48; num19++)
-									{
-										if (Main.player[num18].inventory[num19] != null & Main.player[num18].inventory[num19].stack > 0)
-										{
-											if (Main.player[num18].inventory[num19].type == 71)
-											{
-												num16 += Main.player[num18].inventory[num19].stack;
-											}
-											if (Main.player[num18].inventory[num19].type == 72)
-											{
-												num16 += Main.player[num18].inventory[num19].stack * 100;
-											}
-											if (Main.player[num18].inventory[num19].type == 73)
-											{
-												num16 += Main.player[num18].inventory[num19].stack * 10000;
-											}
-											if (Main.player[num18].inventory[num19].type == 74)
-											{
-												num16 += Main.player[num18].inventory[num19].stack * 1000000;
-											}
-											if (Main.player[num18].inventory[num19].ammo == 14 || Main.player[num18].inventory[num19].useAmmo == 14)
-											{
-												flag3 = true;
-											}
-											if (Main.player[num18].inventory[num19].type == 166 || Main.player[num18].inventory[num19].type == 167 || Main.player[num18].inventory[num19].type == 168 || Main.player[num18].inventory[num19].type == 235)
-											{
-												flag4 = true;
-											}
-										}
-									}
-									int num20 = Main.player[num18].statLifeMax / 20;
-									if (num20 > 5)
-									{
-										flag2 = true;
-									}
-									num17 += num20;
-								}
-							}
-							if (!NPC.downedBoss3 && num8 == 0)
-							{
-								int num21 = NPC.NewNPC(Main.dungeonX * 16 + 8, Main.dungeonY * 16, 37, 0);
-								Main.npc[num21].homeless = false;
-								Main.npc[num21].homeTileX = Main.dungeonX;
-								Main.npc[num21].homeTileY = Main.dungeonY;
-							}
-							if (WorldGen.spawnNPC == 0)
-							{
-								Main.checkXMas();
-								if (num7 < 1)
-								{
-									WorldGen.spawnNPC = 22;
-								}
-								if ((double)num16 > 5000.0 && num3 < 1)
-								{
-									WorldGen.spawnNPC = 17;
-								}
-								if (flag2 && num4 < 1)
-								{
-									WorldGen.spawnNPC = 18;
-								}
-								if (flag3 && num6 < 1)
-								{
-									WorldGen.spawnNPC = 19;
-								}
-								if ((NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3) && num5 < 1)
-								{
-									WorldGen.spawnNPC = 20;
-								}
-								if (flag4 && num3 > 0 && num9 < 1)
-								{
-									WorldGen.spawnNPC = 38;
-								}
-								if (NPC.downedBoss3 && num10 < 1)
-								{
-									WorldGen.spawnNPC = 54;
-								}
-								if (NPC.savedGoblin && num12 < 1)
-								{
-									WorldGen.spawnNPC = 107;
-								}
-								if (NPC.savedWizard && num11 < 1)
-								{
-									WorldGen.spawnNPC = 108;
-								}
-								if (NPC.savedMech && num13 < 1)
-								{
-									WorldGen.spawnNPC = 124;
-								}
-								if (NPC.downedFrost && num14 < 1 && Main.xMas)
-								{
-									WorldGen.spawnNPC = 142;
-								}
-							}
-						}
+						if (Main.npc[npc].type != 37 && !Main.npc[npc].homeless)
+							WorldGen.QuickFindHome(npc);
+						if (Main.npc[npc].type == 37)
+							++num7;
+						if (Main.npc[npc].type == 17)
+							++num2;
+						if (Main.npc[npc].type == 18)
+							++num3;
+						if (Main.npc[npc].type == 19)
+							++num5;
+						if (Main.npc[npc].type == 20)
+							++num4;
+						if (Main.npc[npc].type == 22)
+							++num6;
+						if (Main.npc[npc].type == 38)
+							++num8;
+						if (Main.npc[npc].type == 54)
+							++num9;
+						if (Main.npc[npc].type == 107)
+							++num11;
+						if (Main.npc[npc].type == 108)
+							++num10;
+						if (Main.npc[npc].type == 124)
+							++num12;
+						if (Main.npc[npc].type == 142)
+							++num13;
+						++num14;
 					}
 				}
+				if (WorldGen.spawnNPC != 0)
+					return;
+				int num15 = 0;
+				bool flag1 = false;
+				int num16 = 0;
+				bool flag2 = false;
+				bool flag3 = false;
+				for (int index1 = 0; index1 < (int)byte.MaxValue; ++index1)
+				{
+					if (Main.player[index1].active)
+					{
+						for (int index2 = 0; index2 < 48; ++index2)
+						{
+							if (Main.player[index1].inventory[index2] != null & Main.player[index1].inventory[index2].stack > 0)
+							{
+								if (Main.player[index1].inventory[index2].type == 71)
+									num15 += Main.player[index1].inventory[index2].stack;
+								if (Main.player[index1].inventory[index2].type == 72)
+									num15 += Main.player[index1].inventory[index2].stack * 100;
+								if (Main.player[index1].inventory[index2].type == 73)
+									num15 += Main.player[index1].inventory[index2].stack * 10000;
+								if (Main.player[index1].inventory[index2].type == 74)
+									num15 += Main.player[index1].inventory[index2].stack * 1000000;
+								if (Main.player[index1].inventory[index2].ammo == 14 || Main.player[index1].inventory[index2].useAmmo == 14)
+									flag2 = true;
+								if (Main.player[index1].inventory[index2].type == 166 || Main.player[index1].inventory[index2].type == 167 || (Main.player[index1].inventory[index2].type == 168 || Main.player[index1].inventory[index2].type == 235))
+									flag3 = true;
+							}
+						}
+						int num17 = Main.player[index1].statLifeMax / 20;
+						if (num17 > 5)
+							flag1 = true;
+						num16 += num17;
+					}
+				}
+				if (!NPC.downedBoss3 && num7 == 0)
+				{
+					int index = NPC.NewNPC(Main.dungeonX * 16 + 8, Main.dungeonY * 16, 37, 0);
+					Main.npc[index].homeless = false;
+					Main.npc[index].homeTileX = Main.dungeonX;
+					Main.npc[index].homeTileY = Main.dungeonY;
+				}
+				if (WorldGen.spawnNPC == 0 && num6 < 1)
+					WorldGen.spawnNPC = 22;
+				if (WorldGen.spawnNPC == 0 && (double)num15 > 5000.0 && num2 < 1)
+					WorldGen.spawnNPC = 17;
+				if (WorldGen.spawnNPC == 0 && flag1 && num3 < 1)
+					WorldGen.spawnNPC = 18;
+				if (WorldGen.spawnNPC == 0 && flag2 && num5 < 1)
+					WorldGen.spawnNPC = 19;
+				if (WorldGen.spawnNPC == 0 && (NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3) && num4 < 1)
+					WorldGen.spawnNPC = 20;
+				if (WorldGen.spawnNPC == 0 && flag3 && (num2 > 0 && num8 < 1))
+					WorldGen.spawnNPC = 38;
+				if (WorldGen.spawnNPC == 0 && NPC.downedBoss3 && num9 < 1)
+					WorldGen.spawnNPC = 54;
+				if (WorldGen.spawnNPC == 0 && NPC.savedGoblin && num11 < 1)
+					WorldGen.spawnNPC = 107;
+				if (WorldGen.spawnNPC == 0 && NPC.savedWizard && num10 < 1)
+					WorldGen.spawnNPC = 108;
+				if (WorldGen.spawnNPC == 0 && NPC.savedMech && num12 < 1)
+					WorldGen.spawnNPC = 124;
+				if (WorldGen.spawnNPC != 0 || !NPC.downedFrost || (num13 >= 1 || !Main.xMas))
+					return;
+				WorldGen.spawnNPC = 142;
 			}
 		}
+
 		public static int DamageVar(float dmg)
 		{
-			float num = dmg * (1f + (float)Main.rand.Next(-15, 16) * 0.01f);
-			return (int)Math.Round((double)num);
+			float num = dmg*(1f + (float) Main.rand.Next(-15, 16)*0.01f);
+			return (int) Math.Round((double) num);
 		}
+
 		public static double CalculateDamage(int Damage, int Defense)
 		{
-			double num = (double)Damage - (double)Defense * 0.5;
+			double num = (double) Damage - (double) Defense*0.5;
 			if (num < 1.0)
 			{
 				num = 1.0;
 			}
 			return num;
 		}
+
 		public static void PlaySound(int type, int x = -1, int y = -1, int Style = 1)
+		{
+		}
+
+		protected void SetTitle()
 		{
 		}
 	}
