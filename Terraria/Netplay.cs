@@ -216,7 +216,7 @@ namespace Terraria
 					if (killInactive && serverSock[k].active && serverSock[k].state == 0 && (DateTime.UtcNow - serverSock[k].connectTime).TotalSeconds > 5)
 						Netplay.serverSock[k].kill = true;
 
-<<<<<<< HEAD
+
                     if (Netplay.serverSock[k].kill)
                     {
                         ServerHooks.OnLeave(Netplay.serverSock[k].whoAmI);
