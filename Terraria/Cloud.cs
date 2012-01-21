@@ -176,8 +176,8 @@ namespace Terraria
 				Cloud.addCloud();
 			}
 		}
-        public void Update()
-        {
-        }
+		public void Update()
+		{
+		}
 	}
 }
