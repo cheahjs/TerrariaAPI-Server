@@ -38,7 +38,7 @@ namespace Terraria
 				{
 					float num2 = (float)(maxY - i) / (float)(maxY - minY + 1);
 					num2 /= (float)verbose;
-					Main.progressText = "Settling liquids";
+					Main.progressText = Lang.gen[27];
 					Main.trackProgress = true;
 					Main.progressPercent = (int)Math.Floor(num2 * 100f + 1f);
 				}

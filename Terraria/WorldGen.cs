@@ -1082,7 +1082,7 @@ namespace Terraria
 			Main.tile.SetSize(Main.maxTilesX + 10, Main.maxTilesY + 10);
 			if (Main.netMode == 1 || WorldGen.lastMaxTilesX > Main.maxTilesX || WorldGen.lastMaxTilesY > Main.maxTilesY)
 			{
-				Main.progressText = "Freeing unused resources";
+				Main.progressText = Lang.gen[46];
 				for (int i = 0; i < WorldGen.lastMaxTilesX; i++)
 				{
 					float num = (float)i / (float)WorldGen.lastMaxTilesX;
@@ -1099,15 +1099,16 @@ namespace Terraria
 			WorldGen.lastMaxTilesY = Main.maxTilesY;
 			if (Main.netMode != 1)
 			{
-				Main.progressText = "Resetting game objects";
+				Main.progressText = Lang.gen[47];
 				for (int k = 0; k < Main.maxTilesX; k++)
 				{
 					float num2 = (float)k / (float)Main.maxTilesX;
 					Main.trackProgress = true;
+				//	Main.progressPercent = 1;
 					Main.progressPercent = (int)Math.Floor(num2 * 100f + 1f);
 					for (int l = 0; l < Main.maxTilesY; l++)
 					{
-
+						
 					}
 				}
 				Main.ResetProgressTracking();
@@ -1235,17 +1236,12 @@ namespace Terraria
 						resource_0.Write(Main.invasionSize);
 						resource_0.Write(Main.invasionType);
 						resource_0.Write(Main.invasionX);
-								Main.progressText = "Saving world data";
+						Main.progressText = Lang.gen[49];
 						for (int i = 0; i < Main.maxTilesX; i++)
 						{
 							float num = (float) i/(float) Main.maxTilesX;
-							Main.statusText = string.Concat(new object[4]
-																{
-																	(object) Lang.gen[49],
-																	(object) " ",
-																	(object) (int) ((double) num*100.0 + 1.0),
-																	(object) "%"
-																});
+							Main.trackProgress = true;
+							Main.progressPercent = (int)Math.Floor(num * 100f + 1f);
 							for (int j = 0; j < Main.maxTilesY; j++)
 							{
 								if (Main.tile[i, j].type == 127 && Main.tile[i, j].active)
@@ -1298,6 +1294,7 @@ namespace Terraria
 								j += num2;
 							}
 						}
+						Main.ResetProgressTracking();
 						for (int local_10 = 0; local_10 < 1000; ++local_10)
 						{
 							if (Main.chest[local_10] == null)
@@ -1470,9 +1467,11 @@ namespace Terraria
 							Main.invasionSize = binaryReader.ReadInt32();
 							Main.invasionType = binaryReader.ReadInt32();
 							Main.invasionX = binaryReader.ReadDouble();
+							Main.progressText = Lang.gen[51];
 							for (int index1 = 0; index1 < Main.maxTilesX; ++index1)
 							{
 								float num1 = (float)index1 / (float)Main.maxTilesX;
+								Main.trackProgress = true;
 								Main.progressPercent = (int)Math.Floor(num1 * 100f + 1f);
 								for (int index2 = 0; index2 < Main.maxTilesY; ++index2)
 								{
@@ -1535,6 +1534,7 @@ namespace Terraria
 									}
 								}
 							}
+							Main.ResetProgressTracking();
 							for (int index1 = 0; index1 < 1000; ++index1)
 							{
 								if (binaryReader.ReadBoolean())
@@ -1632,19 +1632,15 @@ namespace Terraria
 							if (WorldGen.loadFailed || !WorldGen.loadSuccess)
 								return;
 							WorldGen.gen = true;
+							Main.progressText = Lang.gen[52];
 							for (int X = 0; X < Main.maxTilesX; ++X)
 							{
 								float num = (float)X / (float)Main.maxTilesX;
-								Main.statusText = string.Concat(new object[4]
-				{
-				  (object) Lang.gen[52],
-				  (object) " ",
-				  (object) (int) ((double) num * 100.0 + 1.0),
-				  (object) "%"
-				});
+								Main.trackProgress = true;
+								Main.progressPercent = (int)Math.Floor(num * 100f + 1f);
 								WorldGen.CountTiles(X);
 							}
-								Main.ResetProgressTracking();
+							Main.ResetProgressTracking();
 							WorldGen.waterLine = Main.maxTilesY;
 							NPC.setNames();
 							Liquid.QuickWater(2, -1, -1);
@@ -1653,6 +1649,7 @@ namespace Terraria
 							Liquid.quickSettle = true;
 							int num4 = Liquid.numLiquid + LiquidBuffer.numLiquidBuffer;
 							float num5 = 0.0f;
+							Main.progressText = Lang.gen[27];
 							while (Liquid.numLiquid > 0 && num3 < 100000)
 							{
 								++num3;
@@ -1663,16 +1660,11 @@ namespace Terraria
 									num5 = num1;
 								else
 									num1 = num5;
-								Main.statusText = string.Concat(new object[4]
-				{
-				  (object) Lang.gen[27],
-				  (object) " ",
-				  (object) (int) ((double) num1 * 100.0 / 2.0 + 50.0),
-				  (object) "%"
-				});
+								Main.trackProgress = true;
+								Main.progressPercent = (int)Math.Floor(num1 * 100f + 1f);
 								Liquid.UpdateLiquid();
 							}
-								Main.ResetProgressTracking();
+							Main.ResetProgressTracking();
 							Liquid.quickSettle = false;
 							WorldGen.WaterCheck();
 							WorldGen.gen = false;
@@ -2041,10 +2033,12 @@ namespace Terraria
 			{
 				num9 = 1;
 			}
+			Main.progressText = Lang.gen[0];
 			for (int i = 0; i < Main.maxTilesX; i++)
 			{
 				float num10 = (float)i / (float)Main.maxTilesX;
-				Main.statusText = "Generating world terrain: " + (int)(num10 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num10 * 100f + 1f);
 				if (num3 < num5)
 				{
 					num5 = num3;
@@ -2190,6 +2184,7 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
 			Main.worldSurface = num6 + 25.0;
 			Main.rockLayer = num8;
 			double num12 = (double)((int)((Main.rockLayer - Main.worldSurface) / 6.0) * 6);
@@ -2220,7 +2215,7 @@ namespace Terraria
 					WorldGen.TileRunner(array[m], array2[m], (double)WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(6, 9), 0, true, 2f, -0.3f, false, true);
 				}
 			}
-			Main.statusText = "Adding sand...";
+			Main.statusText = Lang.gen[1];
 			int num16 = WorldGen.genRand.Next((int)((double)Main.maxTilesX * 0.0008), (int)((double)Main.maxTilesX * 0.0025));
 			num16 += 2;
 			for (int n = 0; n < num16; n++)
@@ -2332,7 +2327,7 @@ namespace Terraria
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.worldSurface, (int)Main.rockLayer), (double)WorldGen.genRand.Next(15, 70), WorldGen.genRand.Next(20, 130), 53, false, 0f, 0f, false, true);
 			}
 			WorldGen.numMCaves = 0;
-			Main.statusText = "Generating hills...";
+			Main.statusText = Lang.gen[2];
 			for (int num28 = 0; num28 < (int)((double)Main.maxTilesX * 0.0008); num28++)
 			{
 				int num29 = 0;
@@ -2392,7 +2387,7 @@ namespace Terraria
 			}
 			if (flag3)
 			{
-				Main.statusText = "Adding snow...";
+				Main.statusText = Lang.gen[56];
 				int num33 = WorldGen.genRand.Next(Main.maxTilesX);
 				while ((float)num33 < (float)Main.maxTilesX * 0.35f || (float)num33 > (float)Main.maxTilesX * 0.65f)
 				{
@@ -2458,10 +2453,12 @@ namespace Terraria
 					}
 				}
 			}
+			Main.progressText = Lang.gen[3];
 			for (int num43 = 1; num43 < Main.maxTilesX - 1; num43++)
 			{
 				float num44 = (float)num43 / (float)Main.maxTilesX;
-				Main.statusText = "Puttin dirt behind dirt: " + (int)(num44 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num44 * 100f + 1f);
 				bool flag4 = false;
 				num13 += WorldGen.genRand.Next(-1, 2);
 				if (num13 < 0)
@@ -2486,7 +2483,8 @@ namespace Terraria
 					num45++;
 				}
 			}
-			Main.statusText = "Placing rocks in the dirt...";
+			Main.ResetProgressTracking();
+			Main.statusText = Lang.gen[4];
 			for (int num46 = 0; num46 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.0002); num46++)
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(0, (int)num5 + 1), (double)WorldGen.genRand.Next(4, 15), WorldGen.genRand.Next(5, 40), 1, false, 0f, 0f, false, true);
@@ -2499,12 +2497,12 @@ namespace Terraria
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num6, (int)num8 + 1), (double)WorldGen.genRand.Next(2, 7), WorldGen.genRand.Next(2, 23), 1, false, 0f, 0f, false, true);
 			}
-			Main.statusText = "Placing dirt in the rocks...";
+			Main.statusText = Lang.gen[5];
 			for (int num49 = 0; num49 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.005); num49++)
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num7, Main.maxTilesY), (double)WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(2, 40), 0, false, 0f, 0f, false, true);
 			}
-			Main.statusText = "Adding clay...";
+			Main.statusText = Lang.gen[6];
 			for (int num50 = 0; num50 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 2E-05); num50++)
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(0, (int)num5), (double)WorldGen.genRand.Next(4, 14), WorldGen.genRand.Next(10, 50), 40, false, 0f, 0f, false, true);
@@ -2537,10 +2535,12 @@ namespace Terraria
 				}
 			}
 			int num56 = 0;
+			Main.progressText = Lang.gen[7];
 			for (int num57 = 0; num57 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.0015); num57++)
 			{
 				float num58 = (float)((double)num57 / ((double)(Main.maxTilesX * Main.maxTilesY) * 0.0015));
-				Main.statusText = "Making random holes: " + (int)(num58 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num58 * 100f + 1f);
 				int type = -1;
 				if (WorldGen.genRand.Next(5) == 0)
 				{
@@ -2549,10 +2549,13 @@ namespace Terraria
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num6, Main.maxTilesY), (double)WorldGen.genRand.Next(2, 5), WorldGen.genRand.Next(2, 20), type, false, 0f, 0f, false, true);
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num6, Main.maxTilesY), (double)WorldGen.genRand.Next(8, 15), WorldGen.genRand.Next(7, 30), type, false, 0f, 0f, false, true);
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[8];
 			for (int num59 = 0; num59 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 3E-05); num59++)
 			{
 				float num60 = (float)((double)num59 / ((double)(Main.maxTilesX * Main.maxTilesY) * 3E-05));
-				Main.statusText = "Generating small caves: " + (int)(num60 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num60 * 100f + 1f);
 				if (num8 <= (double)Main.maxTilesY)
 				{
 					int type2 = -1;
@@ -2563,10 +2566,13 @@ namespace Terraria
 					WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num5, (int)num8 + 1), (double)WorldGen.genRand.Next(5, 15), WorldGen.genRand.Next(30, 200), type2, false, 0f, 0f, false, true);
 				}
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[9];
 			for (int num61 = 0; num61 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.00013); num61++)
 			{
 				float num62 = (float)((double)num61 / ((double)(Main.maxTilesX * Main.maxTilesY) * 0.00013));
-				Main.statusText = "Generating large caves: " + (int)(num62 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num62 * 100f + 1f);
 				if (num8 <= (double)Main.maxTilesY)
 				{
 					int type3 = -1;
@@ -2577,7 +2583,8 @@ namespace Terraria
 					WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num8, Main.maxTilesY), (double)WorldGen.genRand.Next(6, 20), WorldGen.genRand.Next(50, 300), type3, false, 0f, 0f, false, true);
 				}
 			}
-			Main.statusText = "Generating surface caves...";
+			Main.ResetProgressTracking();
+			Main.statusText = Lang.gen[10];
 			for (int num63 = 0; num63 < (int)((double)Main.maxTilesX * 0.0025); num63++)
 			{
 				num56 = WorldGen.genRand.Next(0, Main.maxTilesX);
@@ -2674,7 +2681,9 @@ namespace Terraria
 					Main.tile[num74, num75].type = 2;
 				}
 			}
-			Main.statusText = "Generating jungle: 0%";
+			Main.progressText = Lang.gen[11];
+			Main.trackProgress = true;
+			Main.progressPercent = 0;
 			float num76 = (float)(Main.maxTilesX / 4200);
 			num76 *= 1.5f;
 			int num77 = 0;
@@ -2701,7 +2710,8 @@ namespace Terraria
 				num82++;
 			}
 			WorldGen.mudWall = true;
-			Main.statusText = "Generating jungle: 15%";
+			Main.trackProgress = true;
+			Main.progressPercent = 15;
 			num77 += WorldGen.genRand.Next((int)(-250f * num76), (int)(251f * num76));
 			num79 += WorldGen.genRand.Next((int)(-150f * num76), (int)(151f * num76));
 			int num83 = num77;
@@ -2717,7 +2727,8 @@ namespace Terraria
 				num87++;
 			}
 			WorldGen.mudWall = true;
-			Main.statusText = "Generating jungle: 30%";
+			Main.trackProgress = true;
+			Main.progressPercent = 30;
 			num77 += WorldGen.genRand.Next((int)(-400f * num76), (int)(401f * num76));
 			num79 += WorldGen.genRand.Next((int)(-150f * num76), (int)(151f * num76));
 			int num88 = num77;
@@ -2731,12 +2742,14 @@ namespace Terraria
 				num90++;
 			}
 			WorldGen.mudWall = true;
-			Main.statusText = "Generating jungle: 45%";
+			Main.trackProgress = true;
+			Main.progressPercent = 45;
 			num77 = (num80 + num83 + num88) / 3;
 			num79 = (num81 + num84 + num89) / 3;
 			WorldGen.TileRunner(num77, num79, (double)WorldGen.genRand.Next((int)(400f * num76), (int)(600f * num76)), 10000, 59, false, 0f, -20f, true, true);
 			WorldGen.JungleRunner(num77, num79);
-			Main.statusText = "Generating jungle: 60%";
+			Main.trackProgress = true;
+			Main.progressPercent = 60;
 			WorldGen.mudWall = false;
 			for (int num91 = 0; num91 < Main.maxTilesX / 10; num91++)
 			{
@@ -2754,7 +2767,8 @@ namespace Terraria
 			int num92 = 0;
 			while ((float)num92 <= 20f * num76)
 			{
-				Main.statusText = "Generating jungle: " + (int)(60f + (float)num92 / num76) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num92 / num76 + 60f);
 				num77 += WorldGen.genRand.Next((int)(-5f * num76), (int)(6f * num76));
 				num79 += WorldGen.genRand.Next((int)(-5f * num76), (int)(6f * num76));
 				WorldGen.TileRunner(num77, num79, (double)WorldGen.genRand.Next(40, 100), WorldGen.genRand.Next(300, 500), 59, false, 0f, 0f, false, true);
@@ -2763,7 +2777,8 @@ namespace Terraria
 			int num93 = 0;
 			while ((float)num93 <= 10f * num76)
 			{
-				Main.statusText = "Generating jungle: " + (int)(80f + (float)num93 / num76 * 2f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor((float)num93 / num76 + 80f);
 				num77 = num85 + WorldGen.genRand.Next((int)(-600f * num76), (int)(600f * num76));
 				num79 = num86 + WorldGen.genRand.Next((int)(-200f * num76), (int)(200f * num76));
 				while (num77 < 1 || num77 >= Main.maxTilesX - 1 || num79 < 1 || num79 >= Main.maxTilesY - 1 || Main.tile[num77, num79].type != 59)
@@ -2786,6 +2801,7 @@ namespace Terraria
 				}
 				num93++;
 			}
+			Main.ResetProgressTracking();
 			int num95 = 0;
 			while ((float)num95 <= 300f * num76)
 			{
@@ -2918,7 +2934,7 @@ namespace Terraria
 			}
 			WorldGen.numIslandHouses = 0;
 			WorldGen.houseCount = 0;
-			Main.statusText = "Generating floating islands...";
+			Main.statusText = Lang.gen[12];
 			for (int num119 = 0; num119 < (int)((double)Main.maxTilesX * 0.0008); num119++)
 			{
 				int num120 = 0;
@@ -2970,7 +2986,7 @@ namespace Terraria
 					}
 				}
 			}
-			Main.statusText = "Adding mushroom patches...";
+			Main.statusText = Lang.gen[13];
 			for (int num126 = 0; num126 < Main.maxTilesX / 500; num126++)
 			{
 				int i2 = WorldGen.genRand.Next((int)((double)Main.maxTilesX * 0.3), (int)((double)Main.maxTilesX * 0.7));
@@ -2988,12 +3004,12 @@ namespace Terraria
 					}
 				}
 			}
-			Main.statusText = "Placing mud in the dirt...";
+			Main.statusText = Lang.gen[14];
 			for (int num129 = 0; num129 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.001); num129++)
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num7, Main.maxTilesY), (double)WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(2, 40), 59, false, 0f, 0f, false, true);
 			}
-			Main.statusText = "Adding silt...";
+			Main.statusText = Lang.gen[15];
 			for (int num130 = 0; num130 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.0001); num130++)
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num8, Main.maxTilesY), (double)WorldGen.genRand.Next(5, 12), WorldGen.genRand.Next(15, 50), 123, false, 0f, 0f, false, true);
@@ -3002,7 +3018,7 @@ namespace Terraria
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num8, Main.maxTilesY), (double)WorldGen.genRand.Next(2, 5), WorldGen.genRand.Next(2, 5), 123, false, 0f, 0f, false, true);
 			}
-			Main.statusText = "Adding shinies...";
+			Main.statusText = Lang.gen[16];
 			for (int num132 = 0; num132 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); num132++)
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num5, (int)num6), (double)WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), 7, false, 0f, 0f, false, true);
@@ -3051,7 +3067,7 @@ namespace Terraria
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)num7, Main.maxTilesY), (double)WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(3, 6), 22, false, 0f, 0f, false, true);
 			}
-			Main.statusText = "Adding webs...";
+			Main.statusText = Lang.gen[17];
 			for (int num144 = 0; num144 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.0006); num144++)
 			{
 				int num145 = WorldGen.genRand.Next(20, Main.maxTilesX - 20);
@@ -3092,7 +3108,9 @@ namespace Terraria
 				}
 				IL_335A:;
 			}
-			Main.statusText = "Creating underworld: 0%";
+			Main.progressText = Lang.gen[18];
+			Main.trackProgress = true;
+			Main.progressPercent = 0;
 			int num148 = Main.maxTilesY - WorldGen.genRand.Next(150, 190);
 			for (int num149 = 0; num149 < Main.maxTilesX; num149++)
 			{
@@ -3156,7 +3174,8 @@ namespace Terraria
 			for (int num156 = 0; num156 < Main.maxTilesX; num156++)
 			{
 				float num157 = (float)num156 / (float)(Main.maxTilesX - 1);
-				Main.statusText = "Creating underworld: " + (int)(num157 * 100f / 2f + 50f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num157 * 100f / 2f + 50f);
 				if (WorldGen.genRand.Next(13) == 0)
 				{
 					int num158 = Main.maxTilesY - 65;
@@ -3190,6 +3209,7 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
 			for (int num160 = 0; num160 < Main.maxTilesX; num160++)
 			{
 				WorldGen.TileRunner(WorldGen.genRand.Next(20, Main.maxTilesX - 20), WorldGen.genRand.Next(Main.maxTilesY - 180, Main.maxTilesY - 10), (double)WorldGen.genRand.Next(2, 7), WorldGen.genRand.Next(2, 7), -2, false, 0f, 0f, false, true);
@@ -3213,10 +3233,12 @@ namespace Terraria
 			}
 			WorldGen.AddHellHouses();
 			int num163 = WorldGen.genRand.Next(2, (int)((double)Main.maxTilesX * 0.005));
+			Main.progressText = Lang.gen[19];
 			for (int num164 = 0; num164 < num163; num164++)
 			{
 				float num165 = (float)num164 / (float)num163;
-				Main.statusText = "Adding water bodies: " + (int)(num165 * 100f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num165 * 100f + 1f);
 				int num166 = WorldGen.genRand.Next(300, Main.maxTilesX - 300);
 				while (num166 > Main.maxTilesX / 2 - 50 && num166 < Main.maxTilesX / 2 + 50)
 				{
@@ -3229,6 +3251,7 @@ namespace Terraria
 				}
 				WorldGen.Lakinater(num166, num167);
 			}
+			Main.ResetProgressTracking();
 			int x = 0;
 			if (num9 == -1)
 			{
@@ -3243,10 +3266,12 @@ namespace Terraria
 			int y = (int)((Main.rockLayer + (double)Main.maxTilesY) / 2.0) + WorldGen.genRand.Next(-200, 200);
 			WorldGen.MakeDungeon(x, y, 41, 7);
 			int num168 = 0;
+			Main.progressText = Lang.gen[20];
 			while ((double)num168 < (double)Main.maxTilesX * 0.00045)
 			{
 				float num169 = (float)((double)num168 / ((double)Main.maxTilesX * 0.00045));
-				Main.statusText = "Making the world evil: " + (int)(num169 * 100f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num169 * 100f);
 				bool flag9 = false;
 				int num170 = 0;
 				int num171 = 0;
@@ -3432,7 +3457,8 @@ namespace Terraria
 				}
 				num168++;
 			}
-			Main.statusText = "Generating mountain caves...";
+			Main.ResetProgressTracking();
+			Main.statusText = Lang.gen[21];
 			for (int num195 = 0; num195 < WorldGen.numMCaves; num195++)
 			{
 				int i3 = WorldGen.mCaveX[num195];
@@ -3444,7 +3470,7 @@ namespace Terraria
 			int num197 = 0;
 			int num198 = 20;
 			int num199 = Main.maxTilesX - 20;
-			Main.statusText = "Creating beaches...";
+			Main.statusText = Lang.gen[22];
 			for (int num200 = 0; num200 < 2; num200++)
 			{
 				int num201 = 0;
@@ -3794,7 +3820,7 @@ namespace Terraria
 				num197++;
 			}
 			num197++;
-			Main.statusText = "Adding gems...";
+			Main.statusText = Lang.gen[23];
 			for (int num215 = 63; num215 <= 68; num215++)
 			{
 				float num216 = 0f;
@@ -3868,10 +3894,12 @@ namespace Terraria
 					}
 				}
 			}
+			Main.progressText = Lang.gen[24];
 			for (int num228 = 0; num228 < Main.maxTilesX; num228++)
 			{
 				float num229 = (float)num228 / (float)(Main.maxTilesX - 1);
-				Main.statusText = "Gravitating sand: " + (int)(num229 * 100f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num229 * 100f);
 				for (int num230 = Main.maxTilesY - 5; num230 > 0; num230--)
 				{
 					if (Main.tile[num228, num230].active)
@@ -3907,10 +3935,13 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[25];
 			for (int num233 = 3; num233 < Main.maxTilesX - 3; num233++)
 			{
 				float num234 = (float)num233 / (float)Main.maxTilesX;
-				Main.statusText = "Cleaning up dirt backgrounds: " + (int)(num234 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num234 * 100f + 1f);
 				bool flag11 = true;
 				int num235 = 0;
 				while ((double)num235 < Main.worldSurface)
@@ -3963,10 +3994,13 @@ namespace Terraria
 					num235++;
 				}
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[26];
 			for (int num236 = 0; num236 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 2E-05); num236++)
 			{
 				float num237 = (float)((double)num236 / ((double)(Main.maxTilesX * Main.maxTilesY) * 2E-05));
-				Main.statusText = "Placing altars: " + (int)(num237 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num237 * 100f + 1f);
 				bool flag12 = false;
 				int num238 = 0;
 				while (!flag12)
@@ -3988,6 +4022,7 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
 			for (int num241 = 0; num241 < Main.maxTilesX; num241++)
 			{
 				num56 = num241;
@@ -4040,6 +4075,7 @@ namespace Terraria
 			WorldGen.WaterCheck();
 			int num246 = 0;
 			Liquid.quickSettle = true;
+			Main.progressText = Lang.gen[27];
 			while (num246 < 10)
 			{
 				int num247 = Liquid.numLiquid + LiquidBuffer.numLiquidBuffer;
@@ -4062,7 +4098,8 @@ namespace Terraria
 					}
 					if (num246 == 1)
 					{
-						Main.statusText = "Settling liquids: " + (int)(num249 * 100f / 3f + 33f) + "%";
+						Main.trackProgress = true;
+						Main.progressPercent = (int)Math.Floor(num249 * 100f / 3f + 33f);
 					}
 					int num250 = 10;
 					if (num246 <= num250)
@@ -4073,14 +4110,18 @@ namespace Terraria
 					Liquid.UpdateLiquid();
 				}
 				WorldGen.WaterCheck();
-				Main.statusText = "Settling liquids: " + (int)((float)num246 * 10f / 3f + 66f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor((float)num246 * 10f + 66f);
 			}
+			Main.ResetProgressTracking();
 			Liquid.quickSettle = false;
 			float num251 = (float)(Main.maxTilesX / 4200);
+			Main.progressText = Lang.gen[28];
 			for (int num252 = 0; num252 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 2E-05); num252++)
 			{
 				float num253 = (float)((double)num252 / ((double)(Main.maxTilesX * Main.maxTilesY) * 2E-05));
-				Main.statusText = "Placing life crystals: " + (int)(num253 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num253 * 100f + 1f);
 				bool flag13 = false;
 				int num254 = 0;
 				while (!flag13)
@@ -4099,8 +4140,10 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
 			int num255 = 0;
 			int num256 = 0;
+			Main.progressText = Lang.gen[29];
 			while ((float)num256 < 82f * num251)
 			{
 				if (num255 > 41)
@@ -4108,7 +4151,8 @@ namespace Terraria
 					num255 = 0;
 				}
 				float num257 = (float)num256 / (200f * num251);
-				Main.statusText = "Placing statues: " + (int)(num257 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num257 * 100f + 1f);
 				bool flag14 = false;
 				int num258 = 0;
 				while (!flag14)
@@ -4137,10 +4181,13 @@ namespace Terraria
 				}
 				num256++;
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[30];
 			for (int num261 = 0; num261 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 1.6E-05); num261++)
 			{
 				float num262 = (float)((double)num261 / ((double)(Main.maxTilesX * Main.maxTilesY) * 1.6E-05));
-				Main.statusText = "Hiding treasure: " + (int)(num262 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num262 * 100f + 1f);
 				bool flag15 = false;
 				int num263 = 0;
 				while (!flag15)
@@ -4186,10 +4233,13 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[31];
 			for (int num267 = 0; num267 < (int)((double)Main.maxTilesX * 0.005); num267++)
 			{
 				float num268 = (float)((double)num267 / ((double)Main.maxTilesX * 0.005));
-				Main.statusText = "Hiding more treasure: " + (int)(num268 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num268 * 100f + 1f);
 				bool flag16 = false;
 				int num269 = 0;
 				while (!flag16)
@@ -4215,11 +4265,14 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
 			int num272 = 0;
+			Main.progressText = Lang.gen[32];
 			for (int num273 = 0; num273 < WorldGen.numJChests; num273++)
 			{
 				float num274 = (float)(num273 / WorldGen.numJChests);
-				Main.statusText = "Hiding jungle treasure: " + (int)(num274 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num274 * 100f + 1f);
 				num272++;
 				int contain = 211;
 				if (num272 == 1)
@@ -4256,12 +4309,15 @@ namespace Terraria
 					WorldGen.AddBuriedChest(WorldGen.JChestX[num273], WorldGen.JChestY[num273], contain, false, -1);
 				}
 			}
+			Main.ResetProgressTracking();
 			int num277 = 0;
 			int num278 = 0;
+			Main.progressText = Lang.gen[33];
 			while ((float)num278 < 9f * num251)
 			{
 				float num279 = (float)num278 / (9f * num251);
-				Main.statusText = "Hiding water treasure: " + (int)(num279 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num279 * 100f + 1f);
 				int contain2 = 0;
 				num277++;
 				if (num277 == 1)
@@ -4294,14 +4350,17 @@ namespace Terraria
 				}
 				num278++;
 			}
+			Main.ResetProgressTracking();
 			for (int num282 = 0; num282 < WorldGen.numIslandHouses; num282++)
 			{
 				WorldGen.IslandHouse(WorldGen.fihX[num282], WorldGen.fihY[num282]);
 			}
+			Main.progressText = Lang.gen[34];
 			for (int num283 = 0; num283 < (int)((double)Main.maxTilesX * 0.05); num283++)
 			{
 				float num284 = (float)((double)num283 / ((double)Main.maxTilesX * 0.05));
-				Main.statusText = "Placing traps: " + (int)(num284 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num284 * 100f + 1f);
 				for (int num285 = 0; num285 < 1000; num285++)
 				{
 					int num286 = Main.rand.Next(200, Main.maxTilesX - 200);
@@ -4312,10 +4371,13 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[35];
 			for (int num288 = 0; num288 < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 0.0008); num288++)
 			{
 				float num289 = (float)((double)num288 / ((double)(Main.maxTilesX * Main.maxTilesY) * 0.0008));
-				Main.statusText = "Placing breakables: " + (int)(num289 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num289 * 100f + 1f);
 				bool flag19 = false;
 				int num290 = 0;
 				while (!flag19)
@@ -4360,10 +4422,13 @@ namespace Terraria
 					}
 				}
 			}
+			Main.ResetProgressTracking();
+			Main.progressText = Lang.gen[36];
 			for (int num294 = 0; num294 < Main.maxTilesX / 200; num294++)
 			{
 				float num295 = (float)(num294 / (Main.maxTilesX / 200));
-				Main.statusText = "Placing hellforges: " + (int)(num295 * 100f + 1f) + "%";
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor(num295 * 100f + 1f);
 				bool flag21 = false;
 				int num296 = 0;
 				while (!flag21)
@@ -4403,7 +4468,8 @@ namespace Terraria
 					}
 				}
 			}
-			Main.statusText = "Spreading grass...";
+			Main.ResetProgressTracking();
+			Main.statusText = Lang.gen[37];
 			for (int num299 = 0; num299 < Main.maxTilesX; num299++)
 			{
 				num56 = num299;
@@ -4442,7 +4508,7 @@ namespace Terraria
 					num300++;
 				}
 			}
-			Main.statusText = "Growing cacti...";
+			Main.statusText = Lang.gen[38];
 			for (int num301 = 5; num301 < Main.maxTilesX - 5; num301++)
 			{
 				if (WorldGen.genRand.Next(8) == 0)
@@ -4516,7 +4582,7 @@ namespace Terraria
 			Main.npc[num309].homeTileY = Main.spawnTileY;
 			Main.npc[num309].direction = 1;
 			Main.npc[num309].homeless = true;
-			Main.statusText = "Planting sunflowers...";
+			Main.statusText = Lang.gen[39];
 			int num310 = 0;
 			while ((double)num310 < (double)Main.maxTilesX * 0.002)
 			{
@@ -4552,7 +4618,7 @@ namespace Terraria
 				}
 				num310++;
 			}
-			Main.statusText = "Planting trees...";
+			Main.statusText = Lang.gen[40];
 			int num316 = 0;
 			while ((double)num316 < (double)Main.maxTilesX * 0.003)
 			{
@@ -4570,14 +4636,14 @@ namespace Terraria
 				num316++;
 			}
 			WorldGen.AddTrees();
-			Main.statusText = "Planting herbs...";
+			Main.statusText = Lang.gen[41];
 			int num321 = 0;
 			while ((double)num321 < (double)Main.maxTilesX * 1.7)
 			{
 				WorldGen.PlantAlch();
 				num321++;
 			}
-			Main.statusText = "Planting weeds...";
+			Main.statusText = Lang.gen[42];
 			WorldGen.AddPlants();
 			for (int num322 = 0; num322 < Main.maxTilesX; num322++)
 			{
@@ -4600,7 +4666,7 @@ namespace Terraria
 					}
 				}
 			}
-			Main.statusText = "Growing vines...";
+			Main.statusText = Lang.gen[43];
 			for (int num324 = 0; num324 < Main.maxTilesX; num324++)
 			{
 				int num325 = 0;
@@ -4642,7 +4708,7 @@ namespace Terraria
 					}
 				}
 			}
-			Main.statusText = "Planting flowers...";
+			Main.statusText = Lang.gen[44];
 			int num328 = 0;
 			while ((double)num328 < (double)Main.maxTilesX * 0.005)
 			{
@@ -4670,7 +4736,7 @@ namespace Terraria
 				}
 				num328++;
 			}
-			Main.statusText = "Planting mushrooms...";
+			Main.statusText = Lang.gen[45];
 			int num335 = 0;
 			while ((double)num335 < (double)Main.maxTilesX * 0.002)
 			{
@@ -6314,6 +6380,7 @@ namespace Terraria
 			float num5 = num4;
 			int num6 = 5;
 			WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+			Main.progressText = Lang.gen[58];
 			while ((double)num4 > 0.0)
 			{
 				if (WorldGen.dungeonX < WorldGen.dMinX)
@@ -6323,13 +6390,8 @@ namespace Terraria
 				if (WorldGen.dungeonY > WorldGen.dMaxY)
 					WorldGen.dMaxY = WorldGen.dungeonY;
 				--num4;
-				Main.statusText = string.Concat(new object[4]
-		{
-		  (object) Lang.gen[58],
-		  (object) " ",
-		  (object) (int) (((double) num5 - (double) num4) / (double) num5 * 60.0),
-		  (object) "%"
-		});
+				Main.trackProgress = true;
+				Main.progressPercent = (int)Math.Floor((double) (num5 - num4) / (double) num5 * 60f);
 				if (num6 > 0)
 					--num6;
 				if (num6 == 0 & WorldGen.genRand.Next(3) == 0)
@@ -6385,7 +6447,8 @@ namespace Terraria
 				WorldGen.DungeonStairs(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
 			}
 			WorldGen.DungeonEnt(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-			Main.statusText = Lang.gen[58] + " 65%";
+			Main.trackProgress = true;
+			Main.progressPercent = 65;
 			for (int index1 = 0; index1 < WorldGen.numDRooms; ++index1)
 			{
 				for (int index2 = WorldGen.dRoomL[index1]; index2 <= WorldGen.dRoomR[index1]; ++index2)
@@ -6431,7 +6494,8 @@ namespace Terraria
 					}
 				}
 			}
-			Main.statusText = Lang.gen[58] + " 70%";
+			Main.trackProgress = true;
+			Main.progressPercent = 70;
 			int num12 = 0;
 			int num13 = 1000;
 			int num14 = 0;
@@ -6483,7 +6547,8 @@ namespace Terraria
 			int num16 = 0;
 			int num17 = 1000;
 			int num18 = 0;
-			Main.statusText = Lang.gen[58] + " 75%";
+			Main.trackProgress = true;
+			Main.progressPercent = 75;
 			while (num18 < Main.maxTilesX / 100)
 			{
 				++num16;
@@ -6529,7 +6594,8 @@ namespace Terraria
 					++num18;
 				}
 			}
-			Main.statusText = Lang.gen[58] + " 80%";
+			Main.trackProgress = true;
+			Main.progressPercent = 80;
 			for (int index1 = 0; index1 < WorldGen.numDDoors; ++index1)
 			{
 				int num7 = WorldGen.DDoorX[index1] - 10;
@@ -6648,7 +6714,8 @@ namespace Terraria
 					Main.tile[num21 + 1, index9].type = (byte)tileType;
 				}
 			}
-			Main.statusText = Lang.gen[58] + " 85%";
+			Main.trackProgress = true;
+			Main.progressPercent = 85;
 			for (int index1 = 0; index1 < WorldGen.numDPlats; ++index1)
 			{
 				int index2 = WorldGen.DPlatX[index1];
@@ -6729,7 +6796,8 @@ namespace Terraria
 					}
 				}
 			}
-			Main.statusText = Lang.gen[58] + " 90%";
+			Main.trackProgress = true;
+			Main.progressPercent = 90;
 			int num26 = 0;
 			int num27 = 1000;
 			int num28 = 0;
@@ -6817,7 +6885,8 @@ namespace Terraria
 					++num28;
 				}
 			}
-			Main.statusText = Lang.gen[58] + " 95%";
+			Main.trackProgress = true;
+			Main.progressPercent = 95;
 			int num29 = 0;
 			for (int index = 0; index < WorldGen.numDRooms; ++index)
 			{
@@ -6982,6 +7051,7 @@ namespace Terraria
 					num33 = 0;
 				}
 			}
+			Main.ResetProgressTracking();
 		}
 		public static void DungeonStairs(int i, int j, int tileType, int wallType)
 		{
@@ -19344,13 +19414,12 @@ namespace Terraria
 		{
 			WorldGen.noLiquidCheck = true;
 			WorldGen.noTileActions = true;
-			Main.progressText = "Finding tile frames";
+			Main.progressText = Lang.gen[55];
 			for (int i = 0; i < Main.maxTilesX; i++)
 			{
-				Main.trackProgress = true;
 				float num = (float)i / (float)Main.maxTilesX;
+				Main.trackProgress = true;
 				Main.progressPercent = (int)Math.Floor(num * 100f + 1f);
-				Main.statusText = ": " + (int)(num * 100f + 1f) + "%";
 				for (int j = 0; j < Main.maxTilesY; j++)
 				{
 					if (Main.tile[i, j].active)

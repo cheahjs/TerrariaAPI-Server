@@ -1082,7 +1082,7 @@ namespace Terraria
 							if (Main.trackProgress && Main.progressPercent <= 1)
 							{
 								Console.SetCursorPosition(0, Console.CursorTop);
-								Console.Write("{0}: [..................................................]", Main.progressText);
+								Console.Write("{0} [..................................................]", Main.progressText);
 								Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
 								Main.trackProgress = false;
 							}
@@ -1180,7 +1180,7 @@ namespace Terraria
 				if (Main.trackProgress && Main.progressPercent <= 1)
 				{
 					Console.SetCursorPosition(0, Console.CursorTop);
-					Console.Write("{0}: [..................................................]", Main.progressText);
+					Console.Write("{0} [..................................................]", Main.progressText);
 					Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
 					Main.trackProgress = false;
 				} 
@@ -1238,7 +1238,7 @@ namespace Terraria
 					if (Main.trackProgress && Main.progressPercent <= 1)
 					{
 						Console.SetCursorPosition(0, Console.CursorTop);
-						Console.Write("{0}: [..................................................]", Main.progressText);
+						Console.Write("{0} [..................................................]", Main.progressText);
 						Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
 						Main.trackProgress = false;
 					}
