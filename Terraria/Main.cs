@@ -1079,12 +1079,22 @@ namespace Terraria
 								Main.oldStatusText = Main.statusText;
 								Console.WriteLine(Main.statusText);
 							}
-							if (Main.trackProgress && Main.progressPercent <= 1)
+							if (Main.trackProgress && Main.progressPercent <= 1 && Main.priorPercent == 0)
 							{
 								Console.SetCursorPosition(0, Console.CursorTop);
-								Console.Write("{0} [..................................................]", Main.progressText);
+								String format = String.Format("{0} [..................................................]", Main.progressText);
+								if (format.Length + 8 >= Console.WindowWidth)
+								{
+									Console.WriteLine("{0}", Main.progressText);
+									Console.Write("[..................................................]");
+								}
+								else
+								{
+									Console.Write(format, Main.progressText);
+								}
 								Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
 								Main.trackProgress = false;
+								Main.priorPercent = 1;
 							}
 							else if (Main.trackProgress && (int)Math.Floor((Main.progressPercent - Main.priorPercent) / 2f) >= 1)
 							{
@@ -1177,13 +1187,23 @@ namespace Terraria
 					Main.oldStatusText = Main.statusText;
 					Console.WriteLine(Main.statusText);
 				}
-				if (Main.trackProgress && Main.progressPercent <= 1)
+				if (Main.trackProgress && Main.progressPercent <= 1 && Main.priorPercent == 0)
 				{
 					Console.SetCursorPosition(0, Console.CursorTop);
-					Console.Write("{0} [..................................................]", Main.progressText);
+					String format = String.Format("{0} [..................................................]", Main.progressText);
+					if (format.Length + 8 >= Console.WindowWidth)
+					{
+						Console.WriteLine("{0}", Main.progressText);
+						Console.Write("[..................................................]");
+					}
+					else
+					{
+						Console.Write(format, Main.progressText);
+					}
 					Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
 					Main.trackProgress = false;
-				} 
+					Main.priorPercent = 1;
+				}
 				else if (Main.trackProgress && (int)Math.Floor((Main.progressPercent - Main.priorPercent) / 2f) >= 1)
 				{
 					Console.Write(new String('O', (int)Math.Ceiling((Main.progressPercent - Main.priorPercent) / 2f)));
@@ -1235,12 +1255,22 @@ namespace Terraria
 						Main.oldStatusText = Main.statusText;
 						Console.WriteLine(Main.statusText);
 					}
-					if (Main.trackProgress && Main.progressPercent <= 1)
+					if (Main.trackProgress && Main.progressPercent <= 1 && Main.priorPercent == 0)
 					{
 						Console.SetCursorPosition(0, Console.CursorTop);
-						Console.Write("{0} [..................................................]", Main.progressText);
+						String format = String.Format("{0} [..................................................]", Main.progressText);
+						if (format.Length + 8 >= Console.WindowWidth)
+						{
+							Console.WriteLine("{0}", Main.progressText);
+							Console.Write("[..................................................]");
+						}
+						else
+						{
+							Console.Write(format, Main.progressText);
+						}
 						Console.SetCursorPosition(Console.CursorLeft - 51, Console.CursorTop);
 						Main.trackProgress = false;
+						Main.priorPercent = 1;
 					}
 					else if (Main.trackProgress && (int)Math.Floor((Main.progressPercent - Main.priorPercent) / 2f) >= 1)
 					{
