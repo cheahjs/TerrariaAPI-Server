@@ -60,6 +60,6 @@ public enum PacketTypes
 	UpdateGoodEvil,
 	PlayHarp,
 	HitSwitch,
-    UpdateNPCHome,
-    SpawnBossorInvasion
+	UpdateNPCHome,
+	SpawnBossorInvasion
 }

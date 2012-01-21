@@ -10,10 +10,10 @@ namespace Terraria
 	internal class ProgramServer
 	{
 		public const string PluginsPath = "ServerPlugins";
-        public static readonly Version ApiVersion = new Version(1, 11, 0, 0);
+		public static readonly Version ApiVersion = new Version(1, 11, 0, 0);
 		public static List<PluginContainer> Plugins = new List<PluginContainer>();
 		public static Dictionary<string, Assembly> LoadedAssemblies = new Dictionary<string, Assembly>();
-        public static bool IgnoreVersion;
+		public static bool IgnoreVersion;
 		private static Main Game;
 
 		private static void Main(string[] args)
@@ -79,13 +79,13 @@ namespace Terraria
 						case "-killinactivesocket":
 							Netplay.killInactive = true;
 							break;
-                        case "-lang":
-                            Lang.lang = Convert.ToInt32(args[++i]);
-                            break;
-                        case "-ignoreversion":
-                            IgnoreVersion = true;
-                            Console.WriteLine("Ignoring API version checks on plguins.");
-                            break;
+						case "-lang":
+							Lang.lang = Convert.ToInt32(args[++i]);
+							break;
+						case "-ignoreversion":
+							IgnoreVersion = true;
+							Console.WriteLine("Ignoring API version checks on plguins.");
+							break;
 					}
 				}
 				if (Environment.OSVersion.Platform == PlatformID.Unix)
@@ -260,7 +260,7 @@ namespace Terraria
 			}
 			var aPIVersionAttribute = (APIVersionAttribute) customAttributes[0];
 			Version apiVersion = aPIVersionAttribute.ApiVersion;
-            return IgnoreVersion || (apiVersion.Major == ApiVersion.Major && apiVersion.Minor == ApiVersion.Minor);
+			return IgnoreVersion || (apiVersion.Major == ApiVersion.Major && apiVersion.Minor == ApiVersion.Minor);
 		}
 
 		public static void DeInitialize()

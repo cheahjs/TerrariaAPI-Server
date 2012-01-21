@@ -143,70 +143,70 @@ namespace Terraria
 		private static bool roomTable;
 		private static bool roomOccupied;
 		private static bool roomEvil;
-        public static bool MoveNPC(int x, int y, int n)
-        {
-            if (!WorldGen.StartRoomCheck(x, y))
-            {
-                Main.NewText(Lang.inter[40], byte.MaxValue, (byte)240, (byte)20);
-                return false;
-            }
-            else if (!WorldGen.RoomNeeds(WorldGen.spawnNPC))
-            {
-                if (Lang.lang <= 1)
-                {
-                    int index1 = 0;
-                    string[] strArray = new string[4];
-                    if (!WorldGen.roomTorch)
-                    {
-                        strArray[index1] = "a light source";
-                        ++index1;
-                    }
-                    if (!WorldGen.roomDoor)
-                    {
-                        strArray[index1] = "a door";
-                        ++index1;
-                    }
-                    if (!WorldGen.roomTable)
-                    {
-                        strArray[index1] = "a table";
-                        ++index1;
-                    }
-                    if (!WorldGen.roomChair)
-                    {
-                        strArray[index1] = "a chair";
-                        ++index1;
-                    }
-                    string str = "";
-                    for (int index2 = 0; index2 < index1; ++index2)
-                    {
-                        if (index1 == 2 && index2 == 1)
-                            str = str + " and ";
-                        else if (index2 > 0 && index2 != index1 - 1)
-                            str = str + ", and ";
-                        else if (index2 > 0)
-                            str = str + ", ";
-                        str = str + strArray[index2];
-                    }
-                    Main.NewText("This housing is missing " + str + ".", byte.MaxValue, (byte)240, (byte)20);
-                }
-                else
-                    Main.NewText(Lang.inter[39], byte.MaxValue, (byte)240, (byte)20);
-                return false;
-            }
-            else
-            {
-                WorldGen.ScoreRoom(-1);
-                if (WorldGen.hiScore > 0)
-                    return true;
-                if (WorldGen.roomOccupied)
-                    Main.NewText(Lang.inter[41], byte.MaxValue, (byte)240, (byte)20);
-                else if (WorldGen.roomEvil)
-                    Main.NewText(Lang.inter[42], byte.MaxValue, (byte)240, (byte)20);
-                else
-                    Main.NewText(Lang.inter[39], byte.MaxValue, (byte)240, (byte)20);
-                return false;
-            }
-        }
+		public static bool MoveNPC(int x, int y, int n)
+		{
+			if (!WorldGen.StartRoomCheck(x, y))
+			{
+				Main.NewText(Lang.inter[40], byte.MaxValue, (byte)240, (byte)20);
+				return false;
+			}
+			else if (!WorldGen.RoomNeeds(WorldGen.spawnNPC))
+			{
+				if (Lang.lang <= 1)
+				{
+					int index1 = 0;
+					string[] strArray = new string[4];
+					if (!WorldGen.roomTorch)
+					{
+						strArray[index1] = "a light source";
+						++index1;
+					}
+					if (!WorldGen.roomDoor)
+					{
+						strArray[index1] = "a door";
+						++index1;
+					}
+					if (!WorldGen.roomTable)
+					{
+						strArray[index1] = "a table";
+						++index1;
+					}
+					if (!WorldGen.roomChair)
+					{
+						strArray[index1] = "a chair";
+						++index1;
+					}
+					string str = "";
+					for (int index2 = 0; index2 < index1; ++index2)
+					{
+						if (index1 == 2 && index2 == 1)
+							str = str + " and ";
+						else if (index2 > 0 && index2 != index1 - 1)
+							str = str + ", and ";
+						else if (index2 > 0)
+							str = str + ", ";
+						str = str + strArray[index2];
+					}
+					Main.NewText("This housing is missing " + str + ".", byte.MaxValue, (byte)240, (byte)20);
+				}
+				else
+					Main.NewText(Lang.inter[39], byte.MaxValue, (byte)240, (byte)20);
+				return false;
+			}
+			else
+			{
+				WorldGen.ScoreRoom(-1);
+				if (WorldGen.hiScore > 0)
+					return true;
+				if (WorldGen.roomOccupied)
+					Main.NewText(Lang.inter[41], byte.MaxValue, (byte)240, (byte)20);
+				else if (WorldGen.roomEvil)
+					Main.NewText(Lang.inter[42], byte.MaxValue, (byte)240, (byte)20);
+				else
+					Main.NewText(Lang.inter[39], byte.MaxValue, (byte)240, (byte)20);
+				return false;
+			}
+		}
 		public static void moveRoom(int x, int y, int n)
 		{
 			if (Main.netMode == 1)
@@ -227,113 +227,113 @@ namespace Terraria
 			}
 			Main.npc[n].homeless = true;
 		}
-        public static void SpawnNPC(int x, int y)
-        {
-            if (Main.wallHouse[(int)Main.tile[x, y].wall])
-                WorldGen.canSpawn = true;
-            if (!WorldGen.canSpawn || !WorldGen.StartRoomCheck(x, y) || !WorldGen.RoomNeeds(WorldGen.spawnNPC))
-                return;
-            WorldGen.ScoreRoom(-1);
-            if (WorldGen.hiScore <= 0)
-                return;
-            int index1 = -1;
-            for (int index2 = 0; index2 < 200; ++index2)
-            {
-                if (Main.npc[index2].active && Main.npc[index2].homeless && Main.npc[index2].type == WorldGen.spawnNPC)
-                {
-                    index1 = index2;
-                    break;
-                }
-            }
-            if (index1 == -1)
-            {
-                int index2 = WorldGen.bestX;
-                int index3 = WorldGen.bestY;
-                bool flag = false;
-                if (!flag)
-                {
-                    flag = true;
-                    Rectangle rectangle = new Rectangle(index2 * 16 + 8 - NPC.sWidth / 2 - NPC.safeRangeX, index3 * 16 + 8 - NPC.sHeight / 2 - NPC.safeRangeY, NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
-                    for (int index4 = 0; index4 < (int)byte.MaxValue; ++index4)
-                    {
-                        if (Main.player[index4].active && new Rectangle((int)Main.player[index4].position.X, (int)Main.player[index4].position.Y, Main.player[index4].width, Main.player[index4].height).Intersects(rectangle))
-                        {
-                            flag = false;
-                            break;
-                        }
-                    }
-                }
-                if (!flag && (double)index3 <= Main.worldSurface)
-                {
-                    for (int index4 = 1; index4 < 500; ++index4)
-                    {
-                        for (int index5 = 0; index5 < 2; ++index5)
-                        {
-                            index2 = index5 != 0 ? WorldGen.bestX - index4 : WorldGen.bestX + index4;
-                            if (index2 > 10 && index2 < Main.maxTilesX - 10)
-                            {
-                                int num1 = WorldGen.bestY - index4;
-                                double num2 = (double)(WorldGen.bestY + index4);
-                                if (num1 < 10)
-                                    num1 = 10;
-                                if (num2 > Main.worldSurface)
-                                    num2 = Main.worldSurface;
-                                for (int index6 = num1; (double)index6 < num2; ++index6)
-                                {
-                                    index3 = index6;
-                                    if (Main.tile[index2, index3].active && Main.tileSolid[(int)Main.tile[index2, index3].type])
-                                    {
-                                        if (!Collision.SolidTiles(index2 - 1, index2 + 1, index3 - 3, index3 - 1))
-                                        {
-                                            flag = true;
-                                            Rectangle rectangle = new Rectangle(index2 * 16 + 8 - NPC.sWidth / 2 - NPC.safeRangeX, index3 * 16 + 8 - NPC.sHeight / 2 - NPC.safeRangeY, NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
-                                            for (int index7 = 0; index7 < (int)byte.MaxValue; ++index7)
-                                            {
-                                                if (Main.player[index7].active && new Rectangle((int)Main.player[index7].position.X, (int)Main.player[index7].position.Y, Main.player[index7].width, Main.player[index7].height).Intersects(rectangle))
-                                                {
-                                                    flag = false;
-                                                    break;
-                                                }
-                                            }
-                                            break;
-                                        }
-                                        else
-                                            break;
-                                    }
-                                }
-                            }
-                            if (flag)
-                                break;
-                        }
-                        if (flag)
-                            break;
-                    }
-                }
-                int index8 = NPC.NewNPC(index2 * 16, index3 * 16, WorldGen.spawnNPC, 1);
-                Main.npc[index8].homeTileX = WorldGen.bestX;
-                Main.npc[index8].homeTileY = WorldGen.bestY;
-                if (index2 < WorldGen.bestX)
-                    Main.npc[index8].direction = 1;
-                else if (index2 > WorldGen.bestX)
-                    Main.npc[index8].direction = -1;
-                Main.npc[index8].netUpdate = true;
-                string str = Main.npc[index8].name;
-                if (Main.chrName[Main.npc[index8].type] != "")
-                    str = Lang.lang > 1 ? Main.chrName[Main.npc[index8].type] : Main.chrName[Main.npc[index8].type] + " " + Lang.the + Main.npc[index8].name;
-                if (Main.netMode == 0)
-                    Main.NewText(str + " " + Lang.misc[18], (byte)50, (byte)125, byte.MaxValue);
-                else if (Main.netMode == 2)
-                    NetMessage.SendData(25, -1, -1, str + " " + Lang.misc[18], (int)byte.MaxValue, 50f, 125f, (float)byte.MaxValue, 0);
-            }
-            else
-            {
-                WorldGen.spawnNPC = 0;
-                Main.npc[index1].homeTileX = WorldGen.bestX;
-                Main.npc[index1].homeTileY = WorldGen.bestY;
-                Main.npc[index1].homeless = false;
-            }
-            WorldGen.spawnNPC = 0;
-        }
+		public static void SpawnNPC(int x, int y)
+		{
+			if (Main.wallHouse[(int)Main.tile[x, y].wall])
+				WorldGen.canSpawn = true;
+			if (!WorldGen.canSpawn || !WorldGen.StartRoomCheck(x, y) || !WorldGen.RoomNeeds(WorldGen.spawnNPC))
+				return;
+			WorldGen.ScoreRoom(-1);
+			if (WorldGen.hiScore <= 0)
+				return;
+			int index1 = -1;
+			for (int index2 = 0; index2 < 200; ++index2)
+			{
+				if (Main.npc[index2].active && Main.npc[index2].homeless && Main.npc[index2].type == WorldGen.spawnNPC)
+				{
+					index1 = index2;
+					break;
+				}
+			}
+			if (index1 == -1)
+			{
+				int index2 = WorldGen.bestX;
+				int index3 = WorldGen.bestY;
+				bool flag = false;
+				if (!flag)
+				{
+					flag = true;
+					Rectangle rectangle = new Rectangle(index2 * 16 + 8 - NPC.sWidth / 2 - NPC.safeRangeX, index3 * 16 + 8 - NPC.sHeight / 2 - NPC.safeRangeY, NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+					for (int index4 = 0; index4 < (int)byte.MaxValue; ++index4)
+					{
+						if (Main.player[index4].active && new Rectangle((int)Main.player[index4].position.X, (int)Main.player[index4].position.Y, Main.player[index4].width, Main.player[index4].height).Intersects(rectangle))
+						{
+							flag = false;
+							break;
+						}
+					}
+				}
+				if (!flag && (double)index3 <= Main.worldSurface)
+				{
+					for (int index4 = 1; index4 < 500; ++index4)
+					{
+						for (int index5 = 0; index5 < 2; ++index5)
+						{
+							index2 = index5 != 0 ? WorldGen.bestX - index4 : WorldGen.bestX + index4;
+							if (index2 > 10 && index2 < Main.maxTilesX - 10)
+							{
+								int num1 = WorldGen.bestY - index4;
+								double num2 = (double)(WorldGen.bestY + index4);
+								if (num1 < 10)
+									num1 = 10;
+								if (num2 > Main.worldSurface)
+									num2 = Main.worldSurface;
+								for (int index6 = num1; (double)index6 < num2; ++index6)
+								{
+									index3 = index6;
+									if (Main.tile[index2, index3].active && Main.tileSolid[(int)Main.tile[index2, index3].type])
+									{
+										if (!Collision.SolidTiles(index2 - 1, index2 + 1, index3 - 3, index3 - 1))
+										{
+											flag = true;
+											Rectangle rectangle = new Rectangle(index2 * 16 + 8 - NPC.sWidth / 2 - NPC.safeRangeX, index3 * 16 + 8 - NPC.sHeight / 2 - NPC.safeRangeY, NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+											for (int index7 = 0; index7 < (int)byte.MaxValue; ++index7)
+											{
+												if (Main.player[index7].active && new Rectangle((int)Main.player[index7].position.X, (int)Main.player[index7].position.Y, Main.player[index7].width, Main.player[index7].height).Intersects(rectangle))
+												{
+													flag = false;
+													break;
+												}
+											}
+											break;
+										}
+										else
+											break;
+									}
+								}
+							}
+							if (flag)
+								break;
+						}
+						if (flag)
+							break;
+					}
+				}
+				int index8 = NPC.NewNPC(index2 * 16, index3 * 16, WorldGen.spawnNPC, 1);
+				Main.npc[index8].homeTileX = WorldGen.bestX;
+				Main.npc[index8].homeTileY = WorldGen.bestY;
+				if (index2 < WorldGen.bestX)
+					Main.npc[index8].direction = 1;
+				else if (index2 > WorldGen.bestX)
+					Main.npc[index8].direction = -1;
+				Main.npc[index8].netUpdate = true;
+				string str = Main.npc[index8].name;
+				if (Main.chrName[Main.npc[index8].type] != "")
+					str = Lang.lang > 1 ? Main.chrName[Main.npc[index8].type] : Main.chrName[Main.npc[index8].type] + " " + Lang.the + Main.npc[index8].name;
+				if (Main.netMode == 0)
+					Main.NewText(str + " " + Lang.misc[18], (byte)50, (byte)125, byte.MaxValue);
+				else if (Main.netMode == 2)
+					NetMessage.SendData(25, -1, -1, str + " " + Lang.misc[18], (int)byte.MaxValue, 50f, 125f, (float)byte.MaxValue, 0);
+			}
+			else
+			{
+				WorldGen.spawnNPC = 0;
+				Main.npc[index1].homeTileX = WorldGen.bestX;
+				Main.npc[index1].homeTileY = WorldGen.bestY;
+				Main.npc[index1].homeless = false;
+			}
+			WorldGen.spawnNPC = 0;
+		}
 		public static bool RoomNeeds(int npcType)
 		{
 			WorldGen.roomChair = false;
@@ -746,95 +746,95 @@ namespace Terraria
 				}
 			}
 		}
-        public static bool meteor(int i, int j)
-        {
-            if (i < 50 || i > Main.maxTilesX - 50 || (j < 50 || j > Main.maxTilesY - 50))
-                return false;
-            int num1 = 25;
-            Rectangle rectangle1 = new Rectangle((i - num1) * 16, (j - num1) * 16, num1 * 2 * 16, num1 * 2 * 16);
-            for (int index = 0; index < (int)byte.MaxValue; ++index)
-            {
-                if (Main.player[index].active)
-                {
-                    Rectangle rectangle2 = new Rectangle((int)((double)Main.player[index].position.X + (double)(Main.player[index].width / 2) - (double)(NPC.sWidth / 2) - (double)NPC.safeRangeX), (int)((double)Main.player[index].position.Y + (double)(Main.player[index].height / 2) - (double)(NPC.sHeight / 2) - (double)NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
-                    if (rectangle1.Intersects(rectangle2))
-                        return false;
-                }
-            }
-            for (int index = 0; index < 200; ++index)
-            {
-                if (Main.npc[index].active)
-                {
-                    Rectangle rectangle2 = new Rectangle((int)Main.npc[index].position.X, (int)Main.npc[index].position.Y, Main.npc[index].width, Main.npc[index].height);
-                    if (rectangle1.Intersects(rectangle2))
-                        return false;
-                }
-            }
-            for (int index1 = i - num1; index1 < i + num1; ++index1)
-            {
-                for (int index2 = j - num1; index2 < j + num1; ++index2)
-                {
-                    if (Main.tile[index1, index2].active && (int)Main.tile[index1, index2].type == 21)
-                        return false;
-                }
-            }
-            WorldGen.stopDrops = true;
-            int num2 = 15;
-            for (int index1 = i - num2; index1 < i + num2; ++index1)
-            {
-                for (int index2 = j - num2; index2 < j + num2; ++index2)
-                {
-                    if (index2 > j + Main.rand.Next(-2, 3) - 5 && (double)(Math.Abs(i - index1) + Math.Abs(j - index2)) < (double)num2 * 1.5 + (double)Main.rand.Next(-5, 5))
-                    {
-                        if (!Main.tileSolid[(int)Main.tile[index1, index2].type])
-                            Main.tile[index1, index2].active = false;
-                        Main.tile[index1, index2].type = (byte)37;
-                    }
-                }
-            }
-            int num3 = 10;
-            for (int index1 = i - num3; index1 < i + num3; ++index1)
-            {
-                for (int index2 = j - num3; index2 < j + num3; ++index2)
-                {
-                    if (index2 > j + Main.rand.Next(-2, 3) - 5 && Math.Abs(i - index1) + Math.Abs(j - index2) < num3 + Main.rand.Next(-3, 4))
-                        Main.tile[index1, index2].active = false;
-                }
-            }
-            int num4 = 16;
-            for (int i1 = i - num4; i1 < i + num4; ++i1)
-            {
-                for (int j1 = j - num4; j1 < j + num4; ++j1)
-                {
-                    if ((int)Main.tile[i1, j1].type == 5 || (int)Main.tile[i1, j1].type == 32)
-                        WorldGen.KillTile(i1, j1, false, false, false);
-                    WorldGen.SquareTileFrame(i1, j1, true);
-                    WorldGen.SquareWallFrame(i1, j1, true);
-                }
-            }
-            int num5 = 23;
-            for (int i1 = i - num5; i1 < i + num5; ++i1)
-            {
-                for (int j1 = j - num5; j1 < j + num5; ++j1)
-                {
-                    if (Main.tile[i1, j1].active && Main.rand.Next(10) == 0 && (double)(Math.Abs(i - i1) + Math.Abs(j - j1)) < (double)num5 * 1.3)
-                    {
-                        if ((int)Main.tile[i1, j1].type == 5 || (int)Main.tile[i1, j1].type == 32)
-                            WorldGen.KillTile(i1, j1, false, false, false);
-                        Main.tile[i1, j1].type = (byte)37;
-                        WorldGen.SquareTileFrame(i1, j1, true);
-                    }
-                }
-            }
-            WorldGen.stopDrops = false;
-            if (Main.netMode == 0)
-                Main.NewText(Lang.gen[59], (byte)50, byte.MaxValue, (byte)130);
-            else if (Main.netMode == 2)
-                NetMessage.SendData(25, -1, -1, Lang.gen[59], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
-            if (Main.netMode != 1)
-                NetMessage.SendTileSquare(-1, i, j, 30);
-            return true;
-        }
+		public static bool meteor(int i, int j)
+		{
+			if (i < 50 || i > Main.maxTilesX - 50 || (j < 50 || j > Main.maxTilesY - 50))
+				return false;
+			int num1 = 25;
+			Rectangle rectangle1 = new Rectangle((i - num1) * 16, (j - num1) * 16, num1 * 2 * 16, num1 * 2 * 16);
+			for (int index = 0; index < (int)byte.MaxValue; ++index)
+			{
+				if (Main.player[index].active)
+				{
+					Rectangle rectangle2 = new Rectangle((int)((double)Main.player[index].position.X + (double)(Main.player[index].width / 2) - (double)(NPC.sWidth / 2) - (double)NPC.safeRangeX), (int)((double)Main.player[index].position.Y + (double)(Main.player[index].height / 2) - (double)(NPC.sHeight / 2) - (double)NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+					if (rectangle1.Intersects(rectangle2))
+						return false;
+				}
+			}
+			for (int index = 0; index < 200; ++index)
+			{
+				if (Main.npc[index].active)
+				{
+					Rectangle rectangle2 = new Rectangle((int)Main.npc[index].position.X, (int)Main.npc[index].position.Y, Main.npc[index].width, Main.npc[index].height);
+					if (rectangle1.Intersects(rectangle2))
+						return false;
+				}
+			}
+			for (int index1 = i - num1; index1 < i + num1; ++index1)
+			{
+				for (int index2 = j - num1; index2 < j + num1; ++index2)
+				{
+					if (Main.tile[index1, index2].active && (int)Main.tile[index1, index2].type == 21)
+						return false;
+				}
+			}
+			WorldGen.stopDrops = true;
+			int num2 = 15;
+			for (int index1 = i - num2; index1 < i + num2; ++index1)
+			{
+				for (int index2 = j - num2; index2 < j + num2; ++index2)
+				{
+					if (index2 > j + Main.rand.Next(-2, 3) - 5 && (double)(Math.Abs(i - index1) + Math.Abs(j - index2)) < (double)num2 * 1.5 + (double)Main.rand.Next(-5, 5))
+					{
+						if (!Main.tileSolid[(int)Main.tile[index1, index2].type])
+							Main.tile[index1, index2].active = false;
+						Main.tile[index1, index2].type = (byte)37;
+					}
+				}
+			}
+			int num3 = 10;
+			for (int index1 = i - num3; index1 < i + num3; ++index1)
+			{
+				for (int index2 = j - num3; index2 < j + num3; ++index2)
+				{
+					if (index2 > j + Main.rand.Next(-2, 3) - 5 && Math.Abs(i - index1) + Math.Abs(j - index2) < num3 + Main.rand.Next(-3, 4))
+						Main.tile[index1, index2].active = false;
+				}
+			}
+			int num4 = 16;
+			for (int i1 = i - num4; i1 < i + num4; ++i1)
+			{
+				for (int j1 = j - num4; j1 < j + num4; ++j1)
+				{
+					if ((int)Main.tile[i1, j1].type == 5 || (int)Main.tile[i1, j1].type == 32)
+						WorldGen.KillTile(i1, j1, false, false, false);
+					WorldGen.SquareTileFrame(i1, j1, true);
+					WorldGen.SquareWallFrame(i1, j1, true);
+				}
+			}
+			int num5 = 23;
+			for (int i1 = i - num5; i1 < i + num5; ++i1)
+			{
+				for (int j1 = j - num5; j1 < j + num5; ++j1)
+				{
+					if (Main.tile[i1, j1].active && Main.rand.Next(10) == 0 && (double)(Math.Abs(i - i1) + Math.Abs(j - j1)) < (double)num5 * 1.3)
+					{
+						if ((int)Main.tile[i1, j1].type == 5 || (int)Main.tile[i1, j1].type == 32)
+							WorldGen.KillTile(i1, j1, false, false, false);
+						Main.tile[i1, j1].type = (byte)37;
+						WorldGen.SquareTileFrame(i1, j1, true);
+					}
+				}
+			}
+			WorldGen.stopDrops = false;
+			if (Main.netMode == 0)
+				Main.NewText(Lang.gen[59], (byte)50, byte.MaxValue, (byte)130);
+			else if (Main.netMode == 2)
+				NetMessage.SendData(25, -1, -1, Lang.gen[59], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
+			if (Main.netMode != 1)
+				NetMessage.SendTileSquare(-1, i, j, 30);
+			return true;
+		}
 		public static void setWorldSize()
 		{
 			Main.bottomWorld = (float)(Main.maxTilesY * 16);
@@ -852,7 +852,7 @@ namespace Terraria
 			{
 			}
 
-		    Main.LoadWorlds();
+			Main.LoadWorlds();
 			if (Main.menuMode == 10)
 			{
 				Main.menuMode = 6;
@@ -1151,556 +1151,549 @@ namespace Terraria
 			WorldGen.setWorldSize();
 			WorldGen.worldCleared = true;
 		}
-        public static void saveWorld(bool resetTime = false)
-        {
+		public static void saveWorld(bool resetTime = false)
+		{
 			if (WorldHooks.OnSaveWorld(resetTime))
 			{
 				return;
 			}
-            realsaveWorld(resetTime);
-        }
-        public static void realsaveWorld(bool resetTime = false)
-        {
-            if (Main.worldName == "")
-                Main.worldName = "World";
-            if (WorldGen.saveLock)
-                return;
-            WorldGen.saveLock = true;
-            while (WorldGen.hardLock)
-                Main.statusText = Lang.gen[48];
-            lock (WorldGen.padlock)
-            {
-                try
-                {
-                    Directory.CreateDirectory(Main.WorldPath);
-                }
-                catch
-                {
-                }
-                if (Main.skipMenu)
-                    return;
-                bool local_0 = Main.dayTime;
-                WorldGen.tempTime = Main.time;
-                WorldGen.tempMoonPhase = Main.moonPhase;
-                WorldGen.tempBloodMoon = Main.bloodMoon;
-                if (resetTime)
-                {
-                    local_0 = true;
-                    WorldGen.tempTime = 13500.0;
-                    WorldGen.tempMoonPhase = 0;
-                    WorldGen.tempBloodMoon = false;
-                }
-                if (Main.worldPathName == null)
-                    return;
-                new Stopwatch().Start();
-                string local_2 = Main.worldPathName + ".sav";
-                using (FileStream resource_1 = new FileStream(local_2, FileMode.Create))
-                {
-                    using (BinaryWriter resource_0 = new BinaryWriter((Stream) resource_1))
-                    {
-                        resource_0.Write(Main.curRelease);
-                        resource_0.Write(Main.worldName);
-                        resource_0.Write(Main.worldID);
-                        resource_0.Write((int) Main.leftWorld);
-                        resource_0.Write((int) Main.rightWorld);
-                        resource_0.Write((int) Main.topWorld);
-                        resource_0.Write((int) Main.bottomWorld);
-                        resource_0.Write(Main.maxTilesY);
-                        resource_0.Write(Main.maxTilesX);
-                        resource_0.Write(Main.spawnTileX);
-                        resource_0.Write(Main.spawnTileY);
-                        resource_0.Write(Main.worldSurface);
-                        resource_0.Write(Main.rockLayer);
-                        resource_0.Write(WorldGen.tempTime);
-                        resource_0.Write(local_0);
-                        resource_0.Write(WorldGen.tempMoonPhase);
-                        resource_0.Write(WorldGen.tempBloodMoon);
-                        resource_0.Write(Main.dungeonX);
-                        resource_0.Write(Main.dungeonY);
-                        resource_0.Write(NPC.downedBoss1);
-                        resource_0.Write(NPC.downedBoss2);
-                        resource_0.Write(NPC.downedBoss3);
-                        resource_0.Write(NPC.savedGoblin);
-                        resource_0.Write(NPC.savedWizard);
-                        resource_0.Write(NPC.savedMech);
-                        resource_0.Write(NPC.downedGoblins);
-                        resource_0.Write(NPC.downedClown);
-                        resource_0.Write(NPC.downedFrost);
-                        resource_0.Write(WorldGen.shadowOrbSmashed);
-                        resource_0.Write(WorldGen.spawnMeteor);
-                        resource_0.Write((byte) WorldGen.shadowOrbCount);
-                        resource_0.Write(WorldGen.altarCount);
-                        resource_0.Write(Main.hardMode);
-                        resource_0.Write(Main.invasionDelay);
-                        resource_0.Write(Main.invasionSize);
-                        resource_0.Write(Main.invasionType);
-                        resource_0.Write(Main.invasionX);
+			realsaveWorld(resetTime);
+		}
+		public static void realsaveWorld(bool resetTime = false)
+		{
+			if (Main.worldName == "")
+				Main.worldName = "World";
+			if (WorldGen.saveLock)
+				return;
+			WorldGen.saveLock = true;
+			while (WorldGen.hardLock)
+				Main.statusText = Lang.gen[48];
+			lock (WorldGen.padlock)
+			{
+				try
+				{
+					Directory.CreateDirectory(Main.WorldPath);
+				}
+				catch
+				{
+				}
+				if (Main.skipMenu)
+					return;
+				bool local_0 = Main.dayTime;
+				WorldGen.tempTime = Main.time;
+				WorldGen.tempMoonPhase = Main.moonPhase;
+				WorldGen.tempBloodMoon = Main.bloodMoon;
+				if (resetTime)
+				{
+					local_0 = true;
+					WorldGen.tempTime = 13500.0;
+					WorldGen.tempMoonPhase = 0;
+					WorldGen.tempBloodMoon = false;
+				}
+				if (Main.worldPathName == null)
+					return;
+				new Stopwatch().Start();
+				string local_2 = Main.worldPathName + ".sav";
+				using (FileStream resource_1 = new FileStream(local_2, FileMode.Create))
+				{
+					using (BinaryWriter resource_0 = new BinaryWriter((Stream) resource_1))
+					{
+						resource_0.Write(Main.curRelease);
+						resource_0.Write(Main.worldName);
+						resource_0.Write(Main.worldID);
+						resource_0.Write((int) Main.leftWorld);
+						resource_0.Write((int) Main.rightWorld);
+						resource_0.Write((int) Main.topWorld);
+						resource_0.Write((int) Main.bottomWorld);
+						resource_0.Write(Main.maxTilesY);
+						resource_0.Write(Main.maxTilesX);
+						resource_0.Write(Main.spawnTileX);
+						resource_0.Write(Main.spawnTileY);
+						resource_0.Write(Main.worldSurface);
+						resource_0.Write(Main.rockLayer);
+						resource_0.Write(WorldGen.tempTime);
+						resource_0.Write(local_0);
+						resource_0.Write(WorldGen.tempMoonPhase);
+						resource_0.Write(WorldGen.tempBloodMoon);
+						resource_0.Write(Main.dungeonX);
+						resource_0.Write(Main.dungeonY);
+						resource_0.Write(NPC.downedBoss1);
+						resource_0.Write(NPC.downedBoss2);
+						resource_0.Write(NPC.downedBoss3);
+						resource_0.Write(NPC.savedGoblin);
+						resource_0.Write(NPC.savedWizard);
+						resource_0.Write(NPC.savedMech);
+						resource_0.Write(NPC.downedGoblins);
+						resource_0.Write(NPC.downedClown);
+						resource_0.Write(NPC.downedFrost);
+						resource_0.Write(WorldGen.shadowOrbSmashed);
+						resource_0.Write(WorldGen.spawnMeteor);
+						resource_0.Write((byte) WorldGen.shadowOrbCount);
+						resource_0.Write(WorldGen.altarCount);
+						resource_0.Write(Main.hardMode);
+						resource_0.Write(Main.invasionDelay);
+						resource_0.Write(Main.invasionSize);
+						resource_0.Write(Main.invasionType);
+						resource_0.Write(Main.invasionX);
 								Main.progressText = "Saving world data";
-                        for (int i = 0; i < Main.maxTilesX; i++)
-                        {
-                            float num = (float) i/(float) Main.maxTilesX;
-                            Main.statusText = string.Concat(new object[4]
-                                                                {
-                                                                    (object) Lang.gen[49],
-                                                                    (object) " ",
-                                                                    (object) (int) ((double) num*100.0 + 1.0),
-                                                                    (object) "%"
-                                                                });
-                            for (int j = 0; j < Main.maxTilesY; j++)
-                            {
-                                if (Main.tile[i, j].type == 127 && Main.tile[i, j].active)
-                                {
-                                    WorldGen.KillTile(i, j, false, false, false);
-                                    WorldGen.KillTile(i, j, false, false, false);
-                                    if (!Main.tile[i, j].active && Main.netMode != 0)
-                                    {
-                                        NetMessage.SendData(17, -1, -1, "", 0, (float) i, (float) j, 0f, 0);
-                                    }
-                                }
-                                TileData tiledata = Main.tile[i, j].Data;
-                                resource_0.Write(tiledata.active);
-                                if (tiledata.active)
-                                {
-                                    resource_0.Write(tiledata.type);
-                                    if (Main.tileFrameImportant[(int) tiledata.type])
-                                    {
-                                        resource_0.Write(tiledata.frameX);
-                                        resource_0.Write(tiledata.frameY);
-                                    }
-                                }
-                                if (Main.tile[i, j].wall > 0)
-                                {
-                                    resource_0.Write(true);
-                                    resource_0.Write(tiledata.wall);
-                                }
-                                else
-                                {
-                                    resource_0.Write(false);
-                                }
-                                if (tiledata.liquid > 0)
-                                {
-                                    resource_0.Write(true);
-                                    resource_0.Write(tiledata.liquid);
-                                    resource_0.Write(tiledata.lava);
-                                }
-                                else
-                                {
-                                    resource_0.Write(false);
-                                }
-                                resource_0.Write(tiledata.wire);
-                                int num2 = 1;
+						for (int i = 0; i < Main.maxTilesX; i++)
+						{
+							float num = (float) i/(float) Main.maxTilesX;
+							Main.statusText = string.Concat(new object[4]
+																{
+																	(object) Lang.gen[49],
+																	(object) " ",
+																	(object) (int) ((double) num*100.0 + 1.0),
+																	(object) "%"
+																});
+							for (int j = 0; j < Main.maxTilesY; j++)
+							{
+								if (Main.tile[i, j].type == 127 && Main.tile[i, j].active)
+								{
+									WorldGen.KillTile(i, j, false, false, false);
+									WorldGen.KillTile(i, j, false, false, false);
+									if (!Main.tile[i, j].active && Main.netMode != 0)
+									{
+										NetMessage.SendData(17, -1, -1, "", 0, (float) i, (float) j, 0f, 0);
+									}
+								}
+								TileData tiledata = Main.tile[i, j].Data;
+								resource_0.Write(tiledata.active);
+								if (tiledata.active)
+								{
+									resource_0.Write(tiledata.type);
+									if (Main.tileFrameImportant[(int) tiledata.type])
+									{
+										resource_0.Write(tiledata.frameX);
+										resource_0.Write(tiledata.frameY);
+									}
+								}
+								if (Main.tile[i, j].wall > 0)
+								{
+									resource_0.Write(true);
+									resource_0.Write(tiledata.wall);
+								}
+								else
+								{
+									resource_0.Write(false);
+								}
+								if (tiledata.liquid > 0)
+								{
+									resource_0.Write(true);
+									resource_0.Write(tiledata.liquid);
+									resource_0.Write(tiledata.lava);
+								}
+								else
+								{
+									resource_0.Write(false);
+								}
+								resource_0.Write(tiledata.wire);
+								int num2 = 1;
 										while (j + num2 < Main.maxTilesY && Main.tile[i, j].isTheSameAs(Main.tile[i, j + num2]))
-                                {
-                                    num2++;
-                                }
-                                num2--;
-                                resource_0.Write((short) num2);
-                                j += num2;
-                            }
-                        }
-                        for (int local_10 = 0; local_10 < 1000; ++local_10)
-                        {
-                            if (Main.chest[local_10] == null)
-                            {
-                                resource_0.Write(false);
-                            }
-                            else
-                            {
-                                Chest local_11 = (Chest) Main.chest[local_10].Clone();
-                                resource_0.Write(true);
-                                resource_0.Write(local_11.x);
-                                resource_0.Write(local_11.y);
-                                for (int local_12 = 0; local_12 < Chest.maxItems; ++local_12)
-                                {
-                                    if (local_11.item[local_12].type == 0)
-                                        local_11.item[local_12].stack = 0;
-                                    resource_0.Write((byte) local_11.item[local_12].stack);
-                                    if (local_11.item[local_12].stack > 0)
-                                    {
-                                        resource_0.Write(local_11.item[local_12].netID);
-                                        resource_0.Write(local_11.item[local_12].prefix);
-                                    }
-                                }
-                            }
-                        }
-                        for (int local_13 = 0; local_13 < 1000; ++local_13)
-                        {
-                            if (Main.sign[local_13] == null || Main.sign[local_13].text == null)
-                            {
-                                resource_0.Write(false);
-                            }
-                            else
-                            {
-                                Sign local_14 = (Sign) Main.sign[local_13].Clone();
-                                resource_0.Write(true);
-                                resource_0.Write(local_14.text);
-                                resource_0.Write(local_14.x);
-                                resource_0.Write(local_14.y);
-                            }
-                        }
-                        for (int local_15 = 0; local_15 < 200; ++local_15)
-                        {
-                            NPC local_16 = (NPC) Main.npc[local_15].Clone();
-                            if (local_16.active && local_16.townNPC)
-                            {
-                                resource_0.Write(true);
-                                resource_0.Write(local_16.name);
-                                resource_0.Write(local_16.position.X);
-                                resource_0.Write(local_16.position.Y);
-                                resource_0.Write(local_16.homeless);
-                                resource_0.Write(local_16.homeTileX);
-                                resource_0.Write(local_16.homeTileY);
-                            }
-                        }
-                        resource_0.Write(false);
-                        resource_0.Write(Main.chrName[17]);
-                        resource_0.Write(Main.chrName[18]);
-                        resource_0.Write(Main.chrName[19]);
-                        resource_0.Write(Main.chrName[20]);
-                        resource_0.Write(Main.chrName[22]);
-                        resource_0.Write(Main.chrName[54]);
-                        resource_0.Write(Main.chrName[38]);
-                        resource_0.Write(Main.chrName[107]);
-                        resource_0.Write(Main.chrName[108]);
-                        resource_0.Write(Main.chrName[124]);
-                        resource_0.Write(true);
-                        resource_0.Write(Main.worldName);
-                        resource_0.Write(Main.worldID);
-                        resource_0.Close();
-                        resource_1.Close();
-                        if (File.Exists(Main.worldPathName))
-                        {
-                            Main.statusText = Lang.gen[50];
-                            string local_17 = Main.worldPathName + ".bak";
-                            File.Copy(Main.worldPathName, local_17, true);
-                        }
-                        File.Copy(local_2, Main.worldPathName, true);
-                        File.Delete(local_2);
-                    }
-                }
-                WorldGen.saveLock = false;
-            }
-        }
-	    public static void loadWorld()
-        {
-            Main.checkXMas();
-            if (!File.Exists(Main.worldPathName) && Main.autoGen)
-            {
-                for (int index = Main.worldPathName.Length - 1; index >= 0; --index)
-                {
-                    if (Main.worldPathName.Substring(index, 1) == string.Concat((object)Path.DirectorySeparatorChar))
-                    {
-                        Directory.CreateDirectory(Main.worldPathName.Substring(0, index));
-                        break;
-                    }
-                }
-                WorldGen.clearWorld();
-                WorldGen.generateWorld(-1);
-                WorldGen.saveWorld(false);
-            }
-            if (WorldGen.genRand == null)
-                WorldGen.genRand = new Random((int)DateTime.Now.Ticks);
-            using (FileStream fileStream = new FileStream(Main.worldPathName, FileMode.Open))
-            {
-                using (BinaryReader binaryReader = new BinaryReader((Stream)fileStream))
-                {
-                    try
-                    {
-                        WorldGen.loadFailed = false;
-                        WorldGen.loadSuccess = false;
-                        int release = binaryReader.ReadInt32();
-                        if (release > Main.curRelease)
-                        {
-                            WorldGen.loadFailed = true;
-                            WorldGen.loadSuccess = false;
-                            try
-                            {
-                                binaryReader.Close();
-                                fileStream.Close();
-                            }
-                            catch
-                            {
-                            }
-                        }
-                        else
-                        {
-                            Main.worldName = binaryReader.ReadString();
-                            Main.worldID = binaryReader.ReadInt32();
-                            Main.leftWorld = (float)binaryReader.ReadInt32();
-                            Main.rightWorld = (float)binaryReader.ReadInt32();
-                            Main.topWorld = (float)binaryReader.ReadInt32();
-                            Main.bottomWorld = (float)binaryReader.ReadInt32();
-                            Main.maxTilesY = binaryReader.ReadInt32();
-                            Main.maxTilesX = binaryReader.ReadInt32();
-                            WorldGen.clearWorld();
-                            Main.spawnTileX = binaryReader.ReadInt32();
-                            Main.spawnTileY = binaryReader.ReadInt32();
-                            Main.worldSurface = binaryReader.ReadDouble();
-                            Main.rockLayer = binaryReader.ReadDouble();
-                            WorldGen.tempTime = binaryReader.ReadDouble();
-                            WorldGen.tempDayTime = binaryReader.ReadBoolean();
-                            WorldGen.tempMoonPhase = binaryReader.ReadInt32();
-                            WorldGen.tempBloodMoon = binaryReader.ReadBoolean();
-                            Main.dungeonX = binaryReader.ReadInt32();
-                            Main.dungeonY = binaryReader.ReadInt32();
-                            NPC.downedBoss1 = binaryReader.ReadBoolean();
-                            NPC.downedBoss2 = binaryReader.ReadBoolean();
-                            NPC.downedBoss3 = binaryReader.ReadBoolean();
-                            if (release >= 29)
-                            {
-                                NPC.savedGoblin = binaryReader.ReadBoolean();
-                                NPC.savedWizard = binaryReader.ReadBoolean();
-                                if (release >= 34)
-                                    NPC.savedMech = binaryReader.ReadBoolean();
-                                NPC.downedGoblins = binaryReader.ReadBoolean();
-                            }
-                            if (release >= 32)
-                                NPC.downedClown = binaryReader.ReadBoolean();
-                            if (release >= 37)
-                                NPC.downedFrost = binaryReader.ReadBoolean();
-                            WorldGen.shadowOrbSmashed = binaryReader.ReadBoolean();
-                            WorldGen.spawnMeteor = binaryReader.ReadBoolean();
-                            WorldGen.shadowOrbCount = (int)binaryReader.ReadByte();
-                            if (release >= 23)
-                            {
-                                WorldGen.altarCount = binaryReader.ReadInt32();
-                                Main.hardMode = binaryReader.ReadBoolean();
-                            }
-                            Main.invasionDelay = binaryReader.ReadInt32();
-                            Main.invasionSize = binaryReader.ReadInt32();
-                            Main.invasionType = binaryReader.ReadInt32();
-                            Main.invasionX = binaryReader.ReadDouble();
-                            for (int index1 = 0; index1 < Main.maxTilesX; ++index1)
-                            {
-                                float num1 = (float)index1 / (float)Main.maxTilesX;
-                                Main.statusText = string.Concat(new object[4]
-								Main.progressPercent = (int)Math.Floor(num2 * 100f + 1f);
-                {
-                  (object) Lang.gen[51],
-                  (object) " ",
-                  (object) (int) ((double) num1 * 100.0 + 1.0),
-                  (object) "%"
-                });
-                                for (int index2 = 0; index2 < Main.maxTilesY; ++index2)
-                                {
-                                    Main.tile[index1, index2].active = binaryReader.ReadBoolean();
-                                    if (Main.tile[index1, index2].active)
-                                    {
-                                        Main.tile[index1, index2].type = binaryReader.ReadByte();
-                                        if ((int)Main.tile[index1, index2].type == (int)sbyte.MaxValue)
-                                            Main.tile[index1, index2].active = false;
-                                        if (Main.tileFrameImportant[(int)Main.tile[index1, index2].type])
-                                        {
-                                            if (release < 28 && (int)Main.tile[index1, index2].type == 4)
-                                            {
-                                                Main.tile[index1, index2].frameX = (short)0;
-                                                Main.tile[index1, index2].frameY = (short)0;
-                                            }
-                                            else
-                                            {
-                                                Main.tile[index1, index2].frameX = binaryReader.ReadInt16();
-                                                Main.tile[index1, index2].frameY = binaryReader.ReadInt16();
-                                                if ((int)Main.tile[index1, index2].type == 144)
-                                                    Main.tile[index1, index2].frameY = (short)0;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            Main.tile[index1, index2].frameX = (short)-1;
-                                            Main.tile[index1, index2].frameY = (short)-1;
-                                        }
-                                    }
-                                    if (release <= 25)
-                                        binaryReader.ReadBoolean();
-                                    if (binaryReader.ReadBoolean())
-                                        Main.tile[index1, index2].wall = binaryReader.ReadByte();
-                                    if (binaryReader.ReadBoolean())
-                                    {
-                                        Main.tile[index1, index2].liquid = binaryReader.ReadByte();
-                                        Main.tile[index1, index2].lava = binaryReader.ReadBoolean();
-                                    }
-                                    if (release >= 33)
-                                        Main.tile[index1, index2].wire = binaryReader.ReadBoolean();
-                                    if (release >= 25)
-                                    {
-                                        int num2 = (int)binaryReader.ReadInt16();
-                                        if (num2 > 0)
-                                        {
-                                            for (int index3 = index2 + 1; index3 < index2 + num2 + 1; ++index3)
-                                            {
-                                                Main.tile[index1, index3].active = Main.tile[index1, index2].active;
-                                                Main.tile[index1, index3].type = Main.tile[index1, index2].type;
-                                                Main.tile[index1, index3].wall = Main.tile[index1, index2].wall;
-                                                Main.tile[index1, index3].frameX = Main.tile[index1, index2].frameX;
-                                                Main.tile[index1, index3].frameY = Main.tile[index1, index2].frameY;
-                                                Main.tile[index1, index3].liquid = Main.tile[index1, index2].liquid;
-                                                Main.tile[index1, index3].lava = Main.tile[index1, index2].lava;
-                                                Main.tile[index1, index3].wire = Main.tile[index1, index2].wire;
-                                            }
-                                            index2 += num2;
-                                        }
-                                    }
-                                }
-                            }
-                            for (int index1 = 0; index1 < 1000; ++index1)
-                            {
-                                if (binaryReader.ReadBoolean())
-                                {
-                                    Main.chest[index1] = new Chest();
-                                    Main.chest[index1].x = binaryReader.ReadInt32();
-                                    Main.chest[index1].y = binaryReader.ReadInt32();
-                                    for (int index2 = 0; index2 < Chest.maxItems; ++index2)
-                                    {
-                                        Main.chest[index1].item[index2] = new Item();
-                                        byte num = binaryReader.ReadByte();
-                                        if ((int)num > 0)
-                                        {
-                                            if (release >= 38)
-                                            {
-                                                Main.chest[index1].item[index2].netDefaults(binaryReader.ReadInt32());
-                                            }
-                                            else
-                                            {
-                                                string ItemName = Item.VersionName(binaryReader.ReadString(), release);
-                                                Main.chest[index1].item[index2].SetDefaults(ItemName);
-                                            }
-                                            Main.chest[index1].item[index2].stack = (int)num;
-                                            if (release >= 36)
-                                                Main.chest[index1].item[index2].Prefix((int)binaryReader.ReadByte());
-                                        }
-                                    }
-                                }
-                            }
-                            for (int index1 = 0; index1 < 1000; ++index1)
-                            {
-                                if (binaryReader.ReadBoolean())
-                                {
-                                    string str = binaryReader.ReadString();
-                                    int index2 = binaryReader.ReadInt32();
-                                    int index3 = binaryReader.ReadInt32();
-                                    if (Main.tile[index2, index3].active && ((int)Main.tile[index2, index3].type == 55 || (int)Main.tile[index2, index3].type == 85))
-                                    {
-                                        Main.sign[index1] = new Sign();
-                                        Main.sign[index1].x = index2;
-                                        Main.sign[index1].y = index3;
-                                        Main.sign[index1].text = str;
-                                    }
-                                }
-                            }
-                            bool flag1 = binaryReader.ReadBoolean();
-                            int index = 0;
-                            while (flag1)
-                            {
-                                Main.npc[index].SetDefaults(binaryReader.ReadString());
-                                Main.npc[index].position.X = binaryReader.ReadSingle();
-                                Main.npc[index].position.Y = binaryReader.ReadSingle();
-                                Main.npc[index].homeless = binaryReader.ReadBoolean();
-                                Main.npc[index].homeTileX = binaryReader.ReadInt32();
-                                Main.npc[index].homeTileY = binaryReader.ReadInt32();
-                                flag1 = binaryReader.ReadBoolean();
-                                ++index;
-                            }
-                            if (release >= 31)
-                            {
-                                Main.chrName[17] = binaryReader.ReadString();
-                                Main.chrName[18] = binaryReader.ReadString();
-                                Main.chrName[19] = binaryReader.ReadString();
-                                Main.chrName[20] = binaryReader.ReadString();
-                                Main.chrName[22] = binaryReader.ReadString();
-                                Main.chrName[54] = binaryReader.ReadString();
-                                Main.chrName[38] = binaryReader.ReadString();
-                                Main.chrName[107] = binaryReader.ReadString();
-                                Main.chrName[108] = binaryReader.ReadString();
-                                if (release >= 35)
-                                    Main.chrName[124] = binaryReader.ReadString();
-                            }
-                            if (release >= 7)
-                            {
-                                bool flag2 = binaryReader.ReadBoolean();
-                                string str = binaryReader.ReadString();
-                                int num = binaryReader.ReadInt32();
-                                if (flag2 && str == Main.worldName && num == Main.worldID)
-                                {
-                                    WorldGen.loadSuccess = true;
-                                }
-                                else
-                                {
-                                    WorldGen.loadSuccess = false;
-                                    WorldGen.loadFailed = true;
-                                    binaryReader.Close();
-                                    fileStream.Close();
-                                    return;
-                                }
-                            }
-                            else
-                                WorldGen.loadSuccess = true;
-                            binaryReader.Close();
-                            fileStream.Close();
-                            if (WorldGen.loadFailed || !WorldGen.loadSuccess)
-                                return;
-                            WorldGen.gen = true;
-                            for (int X = 0; X < Main.maxTilesX; ++X)
-                            {
-                                float num = (float)X / (float)Main.maxTilesX;
-                                Main.statusText = string.Concat(new object[4]
-                {
-                  (object) Lang.gen[52],
-                  (object) " ",
-                  (object) (int) ((double) num * 100.0 + 1.0),
-                  (object) "%"
-                });
-                                WorldGen.CountTiles(X);
-                            }
+								{
+									num2++;
+								}
+								num2--;
+								resource_0.Write((short) num2);
+								j += num2;
+							}
+						}
+						for (int local_10 = 0; local_10 < 1000; ++local_10)
+						{
+							if (Main.chest[local_10] == null)
+							{
+								resource_0.Write(false);
+							}
+							else
+							{
+								Chest local_11 = (Chest) Main.chest[local_10].Clone();
+								resource_0.Write(true);
+								resource_0.Write(local_11.x);
+								resource_0.Write(local_11.y);
+								for (int local_12 = 0; local_12 < Chest.maxItems; ++local_12)
+								{
+									if (local_11.item[local_12].type == 0)
+										local_11.item[local_12].stack = 0;
+									resource_0.Write((byte) local_11.item[local_12].stack);
+									if (local_11.item[local_12].stack > 0)
+									{
+										resource_0.Write(local_11.item[local_12].netID);
+										resource_0.Write(local_11.item[local_12].prefix);
+									}
+								}
+							}
+						}
+						for (int local_13 = 0; local_13 < 1000; ++local_13)
+						{
+							if (Main.sign[local_13] == null || Main.sign[local_13].text == null)
+							{
+								resource_0.Write(false);
+							}
+							else
+							{
+								Sign local_14 = (Sign) Main.sign[local_13].Clone();
+								resource_0.Write(true);
+								resource_0.Write(local_14.text);
+								resource_0.Write(local_14.x);
+								resource_0.Write(local_14.y);
+							}
+						}
+						for (int local_15 = 0; local_15 < 200; ++local_15)
+						{
+							NPC local_16 = (NPC) Main.npc[local_15].Clone();
+							if (local_16.active && local_16.townNPC)
+							{
+								resource_0.Write(true);
+								resource_0.Write(local_16.name);
+								resource_0.Write(local_16.position.X);
+								resource_0.Write(local_16.position.Y);
+								resource_0.Write(local_16.homeless);
+								resource_0.Write(local_16.homeTileX);
+								resource_0.Write(local_16.homeTileY);
+							}
+						}
+						resource_0.Write(false);
+						resource_0.Write(Main.chrName[17]);
+						resource_0.Write(Main.chrName[18]);
+						resource_0.Write(Main.chrName[19]);
+						resource_0.Write(Main.chrName[20]);
+						resource_0.Write(Main.chrName[22]);
+						resource_0.Write(Main.chrName[54]);
+						resource_0.Write(Main.chrName[38]);
+						resource_0.Write(Main.chrName[107]);
+						resource_0.Write(Main.chrName[108]);
+						resource_0.Write(Main.chrName[124]);
+						resource_0.Write(true);
+						resource_0.Write(Main.worldName);
+						resource_0.Write(Main.worldID);
+						resource_0.Close();
+						resource_1.Close();
+						if (File.Exists(Main.worldPathName))
+						{
+							Main.statusText = Lang.gen[50];
+							string local_17 = Main.worldPathName + ".bak";
+							File.Copy(Main.worldPathName, local_17, true);
+						}
+						File.Copy(local_2, Main.worldPathName, true);
+						File.Delete(local_2);
+					}
+				}
+				WorldGen.saveLock = false;
+			}
+		}
+		public static void loadWorld()
+		{
+			Main.checkXMas();
+			if (!File.Exists(Main.worldPathName) && Main.autoGen)
+			{
+				for (int index = Main.worldPathName.Length - 1; index >= 0; --index)
+				{
+					if (Main.worldPathName.Substring(index, 1) == string.Concat((object)Path.DirectorySeparatorChar))
+					{
+						Directory.CreateDirectory(Main.worldPathName.Substring(0, index));
+						break;
+					}
+				}
+				WorldGen.clearWorld();
+				WorldGen.generateWorld(-1);
+				WorldGen.saveWorld(false);
+			}
+			if (WorldGen.genRand == null)
+				WorldGen.genRand = new Random((int)DateTime.Now.Ticks);
+			using (FileStream fileStream = new FileStream(Main.worldPathName, FileMode.Open))
+			{
+				using (BinaryReader binaryReader = new BinaryReader((Stream)fileStream))
+				{
+					try
+					{
+						WorldGen.loadFailed = false;
+						WorldGen.loadSuccess = false;
+						int release = binaryReader.ReadInt32();
+						if (release > Main.curRelease)
+						{
+							WorldGen.loadFailed = true;
+							WorldGen.loadSuccess = false;
+							try
+							{
+								binaryReader.Close();
+								fileStream.Close();
+							}
+							catch
+							{
+							}
+						}
+						else
+						{
+							Main.worldName = binaryReader.ReadString();
+							Main.worldID = binaryReader.ReadInt32();
+							Main.leftWorld = (float)binaryReader.ReadInt32();
+							Main.rightWorld = (float)binaryReader.ReadInt32();
+							Main.topWorld = (float)binaryReader.ReadInt32();
+							Main.bottomWorld = (float)binaryReader.ReadInt32();
+							Main.maxTilesY = binaryReader.ReadInt32();
+							Main.maxTilesX = binaryReader.ReadInt32();
+							WorldGen.clearWorld();
+							Main.spawnTileX = binaryReader.ReadInt32();
+							Main.spawnTileY = binaryReader.ReadInt32();
+							Main.worldSurface = binaryReader.ReadDouble();
+							Main.rockLayer = binaryReader.ReadDouble();
+							WorldGen.tempTime = binaryReader.ReadDouble();
+							WorldGen.tempDayTime = binaryReader.ReadBoolean();
+							WorldGen.tempMoonPhase = binaryReader.ReadInt32();
+							WorldGen.tempBloodMoon = binaryReader.ReadBoolean();
+							Main.dungeonX = binaryReader.ReadInt32();
+							Main.dungeonY = binaryReader.ReadInt32();
+							NPC.downedBoss1 = binaryReader.ReadBoolean();
+							NPC.downedBoss2 = binaryReader.ReadBoolean();
+							NPC.downedBoss3 = binaryReader.ReadBoolean();
+							if (release >= 29)
+							{
+								NPC.savedGoblin = binaryReader.ReadBoolean();
+								NPC.savedWizard = binaryReader.ReadBoolean();
+								if (release >= 34)
+									NPC.savedMech = binaryReader.ReadBoolean();
+								NPC.downedGoblins = binaryReader.ReadBoolean();
+							}
+							if (release >= 32)
+								NPC.downedClown = binaryReader.ReadBoolean();
+							if (release >= 37)
+								NPC.downedFrost = binaryReader.ReadBoolean();
+							WorldGen.shadowOrbSmashed = binaryReader.ReadBoolean();
+							WorldGen.spawnMeteor = binaryReader.ReadBoolean();
+							WorldGen.shadowOrbCount = (int)binaryReader.ReadByte();
+							if (release >= 23)
+							{
+								WorldGen.altarCount = binaryReader.ReadInt32();
+								Main.hardMode = binaryReader.ReadBoolean();
+							}
+							Main.invasionDelay = binaryReader.ReadInt32();
+							Main.invasionSize = binaryReader.ReadInt32();
+							Main.invasionType = binaryReader.ReadInt32();
+							Main.invasionX = binaryReader.ReadDouble();
+							for (int index1 = 0; index1 < Main.maxTilesX; ++index1)
+							{
+								float num1 = (float)index1 / (float)Main.maxTilesX;
+								Main.progressPercent = (int)Math.Floor(num1 * 100f + 1f);
+								for (int index2 = 0; index2 < Main.maxTilesY; ++index2)
+								{
+									Main.tile[index1, index2].active = binaryReader.ReadBoolean();
+									if (Main.tile[index1, index2].active)
+									{
+										Main.tile[index1, index2].type = binaryReader.ReadByte();
+										if ((int)Main.tile[index1, index2].type == (int)sbyte.MaxValue)
+											Main.tile[index1, index2].active = false;
+										if (Main.tileFrameImportant[(int)Main.tile[index1, index2].type])
+										{
+											if (release < 28 && (int)Main.tile[index1, index2].type == 4)
+											{
+												Main.tile[index1, index2].frameX = (short)0;
+												Main.tile[index1, index2].frameY = (short)0;
+											}
+											else
+											{
+												Main.tile[index1, index2].frameX = binaryReader.ReadInt16();
+												Main.tile[index1, index2].frameY = binaryReader.ReadInt16();
+												if ((int)Main.tile[index1, index2].type == 144)
+													Main.tile[index1, index2].frameY = (short)0;
+											}
+										}
+										else
+										{
+											Main.tile[index1, index2].frameX = (short)-1;
+											Main.tile[index1, index2].frameY = (short)-1;
+										}
+									}
+									if (release <= 25)
+										binaryReader.ReadBoolean();
+									if (binaryReader.ReadBoolean())
+										Main.tile[index1, index2].wall = binaryReader.ReadByte();
+									if (binaryReader.ReadBoolean())
+									{
+										Main.tile[index1, index2].liquid = binaryReader.ReadByte();
+										Main.tile[index1, index2].lava = binaryReader.ReadBoolean();
+									}
+									if (release >= 33)
+										Main.tile[index1, index2].wire = binaryReader.ReadBoolean();
+									if (release >= 25)
+									{
+										int num2 = (int)binaryReader.ReadInt16();
+										if (num2 > 0)
+										{
+											for (int index3 = index2 + 1; index3 < index2 + num2 + 1; ++index3)
+											{
+												Main.tile[index1, index3].active = Main.tile[index1, index2].active;
+												Main.tile[index1, index3].type = Main.tile[index1, index2].type;
+												Main.tile[index1, index3].wall = Main.tile[index1, index2].wall;
+												Main.tile[index1, index3].frameX = Main.tile[index1, index2].frameX;
+												Main.tile[index1, index3].frameY = Main.tile[index1, index2].frameY;
+												Main.tile[index1, index3].liquid = Main.tile[index1, index2].liquid;
+												Main.tile[index1, index3].lava = Main.tile[index1, index2].lava;
+												Main.tile[index1, index3].wire = Main.tile[index1, index2].wire;
+											}
+											index2 += num2;
+										}
+									}
+								}
+							}
+							for (int index1 = 0; index1 < 1000; ++index1)
+							{
+								if (binaryReader.ReadBoolean())
+								{
+									Main.chest[index1] = new Chest();
+									Main.chest[index1].x = binaryReader.ReadInt32();
+									Main.chest[index1].y = binaryReader.ReadInt32();
+									for (int index2 = 0; index2 < Chest.maxItems; ++index2)
+									{
+										Main.chest[index1].item[index2] = new Item();
+										byte num = binaryReader.ReadByte();
+										if ((int)num > 0)
+										{
+											if (release >= 38)
+											{
+												Main.chest[index1].item[index2].netDefaults(binaryReader.ReadInt32());
+											}
+											else
+											{
+												string ItemName = Item.VersionName(binaryReader.ReadString(), release);
+												Main.chest[index1].item[index2].SetDefaults(ItemName);
+											}
+											Main.chest[index1].item[index2].stack = (int)num;
+											if (release >= 36)
+												Main.chest[index1].item[index2].Prefix((int)binaryReader.ReadByte());
+										}
+									}
+								}
+							}
+							for (int index1 = 0; index1 < 1000; ++index1)
+							{
+								if (binaryReader.ReadBoolean())
+								{
+									string str = binaryReader.ReadString();
+									int index2 = binaryReader.ReadInt32();
+									int index3 = binaryReader.ReadInt32();
+									if (Main.tile[index2, index3].active && ((int)Main.tile[index2, index3].type == 55 || (int)Main.tile[index2, index3].type == 85))
+									{
+										Main.sign[index1] = new Sign();
+										Main.sign[index1].x = index2;
+										Main.sign[index1].y = index3;
+										Main.sign[index1].text = str;
+									}
+								}
+							}
+							bool flag1 = binaryReader.ReadBoolean();
+							int index = 0;
+							while (flag1)
+							{
+								Main.npc[index].SetDefaults(binaryReader.ReadString());
+								Main.npc[index].position.X = binaryReader.ReadSingle();
+								Main.npc[index].position.Y = binaryReader.ReadSingle();
+								Main.npc[index].homeless = binaryReader.ReadBoolean();
+								Main.npc[index].homeTileX = binaryReader.ReadInt32();
+								Main.npc[index].homeTileY = binaryReader.ReadInt32();
+								flag1 = binaryReader.ReadBoolean();
+								++index;
+							}
+							if (release >= 31)
+							{
+								Main.chrName[17] = binaryReader.ReadString();
+								Main.chrName[18] = binaryReader.ReadString();
+								Main.chrName[19] = binaryReader.ReadString();
+								Main.chrName[20] = binaryReader.ReadString();
+								Main.chrName[22] = binaryReader.ReadString();
+								Main.chrName[54] = binaryReader.ReadString();
+								Main.chrName[38] = binaryReader.ReadString();
+								Main.chrName[107] = binaryReader.ReadString();
+								Main.chrName[108] = binaryReader.ReadString();
+								if (release >= 35)
+									Main.chrName[124] = binaryReader.ReadString();
+							}
+							if (release >= 7)
+							{
+								bool flag2 = binaryReader.ReadBoolean();
+								string str = binaryReader.ReadString();
+								int num = binaryReader.ReadInt32();
+								if (flag2 && str == Main.worldName && num == Main.worldID)
+								{
+									WorldGen.loadSuccess = true;
+								}
+								else
+								{
+									WorldGen.loadSuccess = false;
+									WorldGen.loadFailed = true;
+									binaryReader.Close();
+									fileStream.Close();
+									return;
+								}
+							}
+							else
+								WorldGen.loadSuccess = true;
+							binaryReader.Close();
+							fileStream.Close();
+							if (WorldGen.loadFailed || !WorldGen.loadSuccess)
+								return;
+							WorldGen.gen = true;
+							for (int X = 0; X < Main.maxTilesX; ++X)
+							{
+								float num = (float)X / (float)Main.maxTilesX;
+								Main.statusText = string.Concat(new object[4]
+				{
+				  (object) Lang.gen[52],
+				  (object) " ",
+				  (object) (int) ((double) num * 100.0 + 1.0),
+				  (object) "%"
+				});
+								WorldGen.CountTiles(X);
+							}
 								Main.ResetProgressTracking();
-                            WorldGen.waterLine = Main.maxTilesY;
-                            NPC.setNames();
-                            Liquid.QuickWater(2, -1, -1);
-                            WorldGen.WaterCheck();
-                            int num3 = 0;
-                            Liquid.quickSettle = true;
-                            int num4 = Liquid.numLiquid + LiquidBuffer.numLiquidBuffer;
-                            float num5 = 0.0f;
-                            while (Liquid.numLiquid > 0 && num3 < 100000)
-                            {
-                                ++num3;
-                                float num1 = (float)(num4 - (Liquid.numLiquid + LiquidBuffer.numLiquidBuffer)) / (float)num4;
-                                if (Liquid.numLiquid + LiquidBuffer.numLiquidBuffer > num4)
-                                    num4 = Liquid.numLiquid + LiquidBuffer.numLiquidBuffer;
-                                if ((double)num1 > (double)num5)
-                                    num5 = num1;
-                                else
-                                    num1 = num5;
-                                Main.statusText = string.Concat(new object[4]
-                {
-                  (object) Lang.gen[27],
-                  (object) " ",
-                  (object) (int) ((double) num1 * 100.0 / 2.0 + 50.0),
-                  (object) "%"
-                });
-                                Liquid.UpdateLiquid();
-                            }
+							WorldGen.waterLine = Main.maxTilesY;
+							NPC.setNames();
+							Liquid.QuickWater(2, -1, -1);
+							WorldGen.WaterCheck();
+							int num3 = 0;
+							Liquid.quickSettle = true;
+							int num4 = Liquid.numLiquid + LiquidBuffer.numLiquidBuffer;
+							float num5 = 0.0f;
+							while (Liquid.numLiquid > 0 && num3 < 100000)
+							{
+								++num3;
+								float num1 = (float)(num4 - (Liquid.numLiquid + LiquidBuffer.numLiquidBuffer)) / (float)num4;
+								if (Liquid.numLiquid + LiquidBuffer.numLiquidBuffer > num4)
+									num4 = Liquid.numLiquid + LiquidBuffer.numLiquidBuffer;
+								if ((double)num1 > (double)num5)
+									num5 = num1;
+								else
+									num1 = num5;
+								Main.statusText = string.Concat(new object[4]
+				{
+				  (object) Lang.gen[27],
+				  (object) " ",
+				  (object) (int) ((double) num1 * 100.0 / 2.0 + 50.0),
+				  (object) "%"
+				});
+								Liquid.UpdateLiquid();
+							}
 								Main.ResetProgressTracking();
-                            Liquid.quickSettle = false;
-                            WorldGen.WaterCheck();
-                            WorldGen.gen = false;
-                        }
-                    }
-                    catch
-                    {
-                        WorldGen.loadFailed = true;
-                        WorldGen.loadSuccess = false;
-                        try
-                        {
-                            binaryReader.Close();
-                            fileStream.Close();
-                        }
-                        catch
-                        {
-                        }
-                    }
-                }
-            }
-        }
+							Liquid.quickSettle = false;
+							WorldGen.WaterCheck();
+							WorldGen.gen = false;
+						}
+					}
+					catch
+					{
+						WorldGen.loadFailed = true;
+						WorldGen.loadSuccess = false;
+						try
+						{
+							binaryReader.Close();
+							fileStream.Close();
+						}
+						catch
+						{
+						}
+					}
+				}
+			}
+		}
 		private static void resetGen()
 		{
 			WorldGen.mudWall = false;
@@ -5794,34 +5787,34 @@ namespace Terraria
 			}
 			return true;
 		}
-        public static void smCallBack(object threadContext)
-        {
-            if (Main.hardMode)
-                return;
-            WorldGen.hardLock = true;
-            Main.hardMode = true;
-            if (WorldGen.genRand == null)
-                WorldGen.genRand = new Random((int)DateTime.Now.Ticks);
-            float num1 = (float)WorldGen.genRand.Next(300, 400) * 0.001f;
-            int i1 = (int)((double)Main.maxTilesX * (double)num1);
-            int i2 = (int)((double)Main.maxTilesX * (1.0 - (double)num1));
-            int num2 = 1;
-            if (WorldGen.genRand.Next(2) == 0)
-            {
-                i2 = (int)((double)Main.maxTilesX * (double)num1);
-                i1 = (int)((double)Main.maxTilesX * (1.0 - (double)num1));
-                num2 = -1;
-            }
-            WorldGen.GERunner(i1, 0, (float)(3 * num2), 5f, true);
-            WorldGen.GERunner(i2, 0, (float)(3 * -num2), 5f, false);
-            if (Main.netMode == 0)
-                Main.NewText(Lang.misc[15], (byte)50, byte.MaxValue, (byte)130);
-            else if (Main.netMode == 2)
-                NetMessage.SendData(25, -1, -1, Lang.misc[15], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
-            if (Main.netMode == 2)
-                Netplay.ResetSections();
-            WorldGen.hardLock = false;
-        }
+		public static void smCallBack(object threadContext)
+		{
+			if (Main.hardMode)
+				return;
+			WorldGen.hardLock = true;
+			Main.hardMode = true;
+			if (WorldGen.genRand == null)
+				WorldGen.genRand = new Random((int)DateTime.Now.Ticks);
+			float num1 = (float)WorldGen.genRand.Next(300, 400) * 0.001f;
+			int i1 = (int)((double)Main.maxTilesX * (double)num1);
+			int i2 = (int)((double)Main.maxTilesX * (1.0 - (double)num1));
+			int num2 = 1;
+			if (WorldGen.genRand.Next(2) == 0)
+			{
+				i2 = (int)((double)Main.maxTilesX * (double)num1);
+				i1 = (int)((double)Main.maxTilesX * (1.0 - (double)num1));
+				num2 = -1;
+			}
+			WorldGen.GERunner(i1, 0, (float)(3 * num2), 5f, true);
+			WorldGen.GERunner(i2, 0, (float)(3 * -num2), 5f, false);
+			if (Main.netMode == 0)
+				Main.NewText(Lang.misc[15], (byte)50, byte.MaxValue, (byte)130);
+			else if (Main.netMode == 2)
+				NetMessage.SendData(25, -1, -1, Lang.misc[15], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
+			if (Main.netMode == 2)
+				Netplay.ResetSections();
+			WorldGen.hardLock = false;
+		}
 		public static void StartHardmode()
 		{
 			if (Main.netMode == 1)
@@ -6291,705 +6284,705 @@ namespace Terraria
 				}
 			}
 		}
-        public static void MakeDungeon(int x, int y, int tileType = 41, int wallType = 7)
-        {
-            int num1 = WorldGen.genRand.Next(3);
-            int num2 = WorldGen.genRand.Next(3);
-            if (num1 == 1)
+		public static void MakeDungeon(int x, int y, int tileType = 41, int wallType = 7)
+		{
+			int num1 = WorldGen.genRand.Next(3);
+			int num2 = WorldGen.genRand.Next(3);
+			if (num1 == 1)
 					tileType = 43;
-            else if (num1 == 2)
+			else if (num1 == 2)
 					tileType = 44;
-            if (num2 == 1)
+			if (num2 == 1)
 					wallType = 8;
-            else if (num2 == 2)
+			else if (num2 == 2)
 					wallType = 9;
-            WorldGen.numDDoors = 0;
-            WorldGen.numDPlats = 0;
-            WorldGen.numDRooms = 0;
-            WorldGen.dungeonX = x;
-            WorldGen.dungeonY = y;
-            WorldGen.dMinX = x;
-            WorldGen.dMaxX = x;
-            WorldGen.dMinY = y;
-            WorldGen.dMaxY = y;
-            WorldGen.dxStrength1 = (double)WorldGen.genRand.Next(25, 30);
-            WorldGen.dyStrength1 = (double)WorldGen.genRand.Next(20, 25);
-            WorldGen.dxStrength2 = (double)WorldGen.genRand.Next(35, 50);
-            WorldGen.dyStrength2 = (double)WorldGen.genRand.Next(10, 15);
-            float num3 = (float)(Main.maxTilesX / 60);
-            float num4 = num3 + (float)WorldGen.genRand.Next(0, (int)((double)num3 / 3.0));
-            float num5 = num4;
-            int num6 = 5;
-            WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-            while ((double)num4 > 0.0)
-            {
-                if (WorldGen.dungeonX < WorldGen.dMinX)
-                    WorldGen.dMinX = WorldGen.dungeonX;
-                if (WorldGen.dungeonX > WorldGen.dMaxX)
-                    WorldGen.dMaxX = WorldGen.dungeonX;
-                if (WorldGen.dungeonY > WorldGen.dMaxY)
-                    WorldGen.dMaxY = WorldGen.dungeonY;
-                --num4;
-                Main.statusText = string.Concat(new object[4]
-        {
-          (object) Lang.gen[58],
-          (object) " ",
-          (object) (int) (((double) num5 - (double) num4) / (double) num5 * 60.0),
-          (object) "%"
-        });
-                if (num6 > 0)
-                    --num6;
-                if (num6 == 0 & WorldGen.genRand.Next(3) == 0)
-                {
-                    num6 = 5;
-                    if (WorldGen.genRand.Next(2) == 0)
-                    {
-                        int num7 = WorldGen.dungeonX;
-                        int num8 = WorldGen.dungeonY;
-                        WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, false);
-                        if (WorldGen.genRand.Next(2) == 0)
-                            WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, false);
-                        WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-                        WorldGen.dungeonX = num7;
-                        WorldGen.dungeonY = num8;
-                    }
-                    else
-                        WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-                }
-                else
-                    WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, false);
-            }
-            WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-            int num9 = WorldGen.dRoomX[0];
-            int num10 = WorldGen.dRoomY[0];
-            for (int index = 0; index < WorldGen.numDRooms; ++index)
-            {
-                if (WorldGen.dRoomY[index] < num10)
-                {
-                    num9 = WorldGen.dRoomX[index];
-                    num10 = WorldGen.dRoomY[index];
-                }
-            }
-            WorldGen.dungeonX = num9;
-            WorldGen.dungeonY = num10;
-            WorldGen.dEnteranceX = num9;
-            WorldGen.dSurface = false;
-            int num11 = 5;
-            while (!WorldGen.dSurface)
-            {
-                if (num11 > 0)
-                    --num11;
-                if (num11 == 0 & WorldGen.genRand.Next(5) == 0 && (double)WorldGen.dungeonY > Main.worldSurface + 50.0)
-                {
-                    num11 = 10;
-                    int num7 = WorldGen.dungeonX;
-                    int num8 = WorldGen.dungeonY;
-                    WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, true);
-                    WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-                    WorldGen.dungeonX = num7;
-                    WorldGen.dungeonY = num8;
-                }
-                WorldGen.DungeonStairs(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-            }
-            WorldGen.DungeonEnt(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
-            Main.statusText = Lang.gen[58] + " 65%";
-            for (int index1 = 0; index1 < WorldGen.numDRooms; ++index1)
-            {
-                for (int index2 = WorldGen.dRoomL[index1]; index2 <= WorldGen.dRoomR[index1]; ++index2)
-                {
-                    if (!Main.tile[index2, WorldGen.dRoomT[index1] - 1].active)
-                    {
-                        WorldGen.DPlatX[WorldGen.numDPlats] = index2;
-                        WorldGen.DPlatY[WorldGen.numDPlats] = WorldGen.dRoomT[index1] - 1;
-                        ++WorldGen.numDPlats;
-                        break;
-                    }
-                }
-                for (int index2 = WorldGen.dRoomL[index1]; index2 <= WorldGen.dRoomR[index1]; ++index2)
-                {
-                    if (!Main.tile[index2, WorldGen.dRoomB[index1] + 1].active)
-                    {
-                        WorldGen.DPlatX[WorldGen.numDPlats] = index2;
-                        WorldGen.DPlatY[WorldGen.numDPlats] = WorldGen.dRoomB[index1] + 1;
-                        ++WorldGen.numDPlats;
-                        break;
-                    }
-                }
-                for (int index2 = WorldGen.dRoomT[index1]; index2 <= WorldGen.dRoomB[index1]; ++index2)
-                {
-                    if (!Main.tile[WorldGen.dRoomL[index1] - 1, index2].active)
-                    {
-                        WorldGen.DDoorX[WorldGen.numDDoors] = WorldGen.dRoomL[index1] - 1;
-                        WorldGen.DDoorY[WorldGen.numDDoors] = index2;
-                        WorldGen.DDoorPos[WorldGen.numDDoors] = -1;
-                        ++WorldGen.numDDoors;
-                        break;
-                    }
-                }
-                for (int index2 = WorldGen.dRoomT[index1]; index2 <= WorldGen.dRoomB[index1]; ++index2)
-                {
-                    if (!Main.tile[WorldGen.dRoomR[index1] + 1, index2].active)
-                    {
-                        WorldGen.DDoorX[WorldGen.numDDoors] = WorldGen.dRoomR[index1] + 1;
-                        WorldGen.DDoorY[WorldGen.numDDoors] = index2;
-                        WorldGen.DDoorPos[WorldGen.numDDoors] = 1;
-                        ++WorldGen.numDDoors;
-                        break;
-                    }
-                }
-            }
-            Main.statusText = Lang.gen[58] + " 70%";
-            int num12 = 0;
-            int num13 = 1000;
-            int num14 = 0;
-            while (num14 < Main.maxTilesX / 100)
-            {
-                ++num12;
-                int index1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
-                int index2 = WorldGen.genRand.Next((int)Main.worldSurface + 25, WorldGen.dMaxY);
-                int num7 = index1;
-                if ((int)Main.tile[index1, index2].wall == wallType && !Main.tile[index1, index2].active)
-                {
-                    int num8 = 1;
-                    if (WorldGen.genRand.Next(2) == 0)
-                        num8 = -1;
-                    while (!Main.tile[index1, index2].active)
-                        index2 += num8;
-                    if (Main.tile[index1 - 1, index2].active && Main.tile[index1 + 1, index2].active && (!Main.tile[index1 - 1, index2 - num8].active && !Main.tile[index1 + 1, index2 - num8].active))
-                    {
-                        ++num14;
-                        for (int index3 = WorldGen.genRand.Next(5, 13); Main.tile[index1 - 1, index2].active && Main.tile[index1, index2 + num8].active && (Main.tile[index1, index2].active && !Main.tile[index1, index2 - num8].active) && index3 > 0; --index3)
-                        {
-                            Main.tile[index1, index2].type = (byte)48;
-                            if (!Main.tile[index1 - 1, index2 - num8].active && !Main.tile[index1 + 1, index2 - num8].active)
-                            {
-                                Main.tile[index1, index2 - num8].type = (byte)48;
-                                Main.tile[index1, index2 - num8].active = true;
-                            }
-                            --index1;
-                        }
-                        int num15 = WorldGen.genRand.Next(5, 13);
-                        for (int index3 = num7 + 1; Main.tile[index3 + 1, index2].active && Main.tile[index3, index2 + num8].active && (Main.tile[index3, index2].active && !Main.tile[index3, index2 - num8].active) && num15 > 0; --num15)
-                        {
-                            Main.tile[index3, index2].type = (byte)48;
-                            if (!Main.tile[index3 - 1, index2 - num8].active && !Main.tile[index3 + 1, index2 - num8].active)
-                            {
-                                Main.tile[index3, index2 - num8].type = (byte)48;
-                                Main.tile[index3, index2 - num8].active = true;
-                            }
-                            ++index3;
-                        }
-                    }
-                }
-                if (num12 > num13)
-                {
-                    num12 = 0;
-                    ++num14;
-                }
-            }
-            int num16 = 0;
-            int num17 = 1000;
-            int num18 = 0;
-            Main.statusText = Lang.gen[58] + " 75%";
-            while (num18 < Main.maxTilesX / 100)
-            {
-                ++num16;
-                int index1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
-                int index2 = WorldGen.genRand.Next((int)Main.worldSurface + 25, WorldGen.dMaxY);
-                int num7 = index2;
-                if ((int)Main.tile[index1, index2].wall == wallType && !Main.tile[index1, index2].active)
-                {
-                    int num8 = 1;
-                    if (WorldGen.genRand.Next(2) == 0)
-                        num8 = -1;
-                    while (index1 > 5 && index1 < Main.maxTilesX - 5 && !Main.tile[index1, index2].active)
-                        index1 += num8;
-                    if (Main.tile[index1, index2 - 1].active && Main.tile[index1, index2 + 1].active && (!Main.tile[index1 - num8, index2 - 1].active && !Main.tile[index1 - num8, index2 + 1].active))
-                    {
-                        ++num18;
-                        for (int index3 = WorldGen.genRand.Next(5, 13); Main.tile[index1, index2 - 1].active && Main.tile[index1 + num8, index2].active && (Main.tile[index1, index2].active && !Main.tile[index1 - num8, index2].active) && index3 > 0; --index3)
-                        {
-                            Main.tile[index1, index2].type = (byte)48;
-                            if (!Main.tile[index1 - num8, index2 - 1].active && !Main.tile[index1 - num8, index2 + 1].active)
-                            {
-                                Main.tile[index1 - num8, index2].type = (byte)48;
-                                Main.tile[index1 - num8, index2].active = true;
-                            }
-                            --index2;
-                        }
-                        int num15 = WorldGen.genRand.Next(5, 13);
-                        for (int index3 = num7 + 1; Main.tile[index1, index3 + 1].active && Main.tile[index1 + num8, index3].active && (Main.tile[index1, index3].active && !Main.tile[index1 - num8, index3].active) && num15 > 0; --num15)
-                        {
-                            Main.tile[index1, index3].type = (byte)48;
-                            if (!Main.tile[index1 - num8, index3 - 1].active && !Main.tile[index1 - num8, index3 + 1].active)
-                            {
-                                Main.tile[index1 - num8, index3].type = (byte)48;
-                                Main.tile[index1 - num8, index3].active = true;
-                            }
-                            ++index3;
-                        }
-                    }
-                }
-                if (num16 > num17)
-                {
-                    num16 = 0;
-                    ++num18;
-                }
-            }
-            Main.statusText = Lang.gen[58] + " 80%";
-            for (int index1 = 0; index1 < WorldGen.numDDoors; ++index1)
-            {
-                int num7 = WorldGen.DDoorX[index1] - 10;
-                int num8 = WorldGen.DDoorX[index1] + 10;
-                int num15 = 100;
-                int num19 = 0;
-                for (int index2 = num7; index2 < num8; ++index2)
-                {
-                    bool flag1 = true;
-                    int index3 = WorldGen.DDoorY[index1];
-                    while (!Main.tile[index2, index3].active)
-                        --index3;
-                    if (!Main.tileDungeon[(int)Main.tile[index2, index3].type])
-                        flag1 = false;
-                    int num20 = index3;
-                    int index4 = WorldGen.DDoorY[index1];
-                    while (!Main.tile[index2, index4].active)
-                        ++index4;
-                    if (!Main.tileDungeon[(int)Main.tile[index2, index4].type])
-                        flag1 = false;
-                    int num21 = index4;
-                    if (num21 - num20 >= 3)
-                    {
-                        int num22 = index2 - 20;
-                        int num23 = index2 + 20;
-                        int num24 = num21 - 10;
-                        int num25 = num21 + 10;
-                        for (int index5 = num22; index5 < num23; ++index5)
-                        {
-                            for (int index6 = num24; index6 < num25; ++index6)
-                            {
-                                if (Main.tile[index5, index6].active && (int)Main.tile[index5, index6].type == 10)
-                                {
-                                    flag1 = false;
-                                    break;
-                                }
-                            }
-                        }
-                        if (flag1)
-                        {
-                            for (int index5 = num21 - 3; index5 < num21; ++index5)
-                            {
-                                for (int index6 = index2 - 3; index6 <= index2 + 3; ++index6)
-                                {
-                                    if (Main.tile[index6, index5].active)
-                                    {
-                                        flag1 = false;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        if (flag1 && num21 - num20 < 20)
-                        {
-                            bool flag2 = false;
-                            if (WorldGen.DDoorPos[index1] == 0 && num21 - num20 < num15)
-                                flag2 = true;
-                            if (WorldGen.DDoorPos[index1] == -1 && index2 > num19)
-                                flag2 = true;
-                            if (WorldGen.DDoorPos[index1] == 1 && (index2 < num19 || num19 == 0))
-                                flag2 = true;
-                            if (flag2)
-                            {
-                                num19 = index2;
-                                num15 = num21 - num20;
-                            }
-                        }
-                    }
-                }
-                if (num15 < 20)
-                {
-                    int i = num19;
-                    int index2 = WorldGen.DDoorY[index1];
-                    int index3 = index2;
-                    for (; !Main.tile[i, index2].active; ++index2)
-                        Main.tile[i, index2].active = false;
-                    while (!Main.tile[i, index3].active)
-                        --index3;
-                    int j = index2 - 1;
-                    int num20 = index3 + 1;
-                    for (int index4 = num20; index4 < j - 2; ++index4)
-                    {
-                        Main.tile[i, index4].active = true;
-                        Main.tile[i, index4].type = (byte)tileType;
-                    }
-                    WorldGen.PlaceTile(i, j, 10, true, false, -1, 0);
-                    int index5 = i - 1;
-                    int index6 = j - 3;
-                    while (!Main.tile[index5, index6].active)
-                        --index6;
-                    if (j - index6 < j - num20 + 5 && Main.tileDungeon[(int)Main.tile[index5, index6].type])
-                    {
-                        for (int index4 = j - 4 - WorldGen.genRand.Next(3); index4 > index6; --index4)
-                        {
-                            Main.tile[index5, index4].active = true;
-                            Main.tile[index5, index4].type = (byte)tileType;
-                        }
-                    }
-                    int index7 = index5 + 2;
-                    int index8 = j - 3;
-                    while (!Main.tile[index7, index8].active)
-                        --index8;
-                    if (j - index8 < j - num20 + 5 && Main.tileDungeon[(int)Main.tile[index7, index8].type])
-                    {
-                        for (int index4 = j - 4 - WorldGen.genRand.Next(3); index4 > index8; --index4)
-                        {
-                            Main.tile[index7, index4].active = true;
-                            Main.tile[index7, index4].type = (byte)tileType;
-                        }
-                    }
-                    int index9 = j + 1;
-                    int num21 = index7 - 1;
-                    Main.tile[num21 - 1, index9].active = true;
-                    Main.tile[num21 - 1, index9].type = (byte)tileType;
-                    Main.tile[num21 + 1, index9].active = true;
-                    Main.tile[num21 + 1, index9].type = (byte)tileType;
-                }
-            }
-            Main.statusText = Lang.gen[58] + " 85%";
-            for (int index1 = 0; index1 < WorldGen.numDPlats; ++index1)
-            {
-                int index2 = WorldGen.DPlatX[index1];
-                int num7 = WorldGen.DPlatY[index1];
-                int num8 = Main.maxTilesX;
-                int num15 = 10;
-                for (int index3 = num7 - 5; index3 <= num7 + 5; ++index3)
-                {
-                    int index4 = index2;
-                    int index5 = index2;
-                    bool flag1 = false;
-                    if (Main.tile[index4, index3].active)
-                    {
-                        flag1 = true;
-                    }
-                    else
-                    {
-                        while (!Main.tile[index4, index3].active)
-                        {
-                            --index4;
-                            if (!Main.tileDungeon[(int)Main.tile[index4, index3].type])
-                                flag1 = true;
-                        }
-                        while (!Main.tile[index5, index3].active)
-                        {
-                            ++index5;
-                            if (!Main.tileDungeon[(int)Main.tile[index5, index3].type])
-                                flag1 = true;
-                        }
-                    }
-                    if (!flag1 && index5 - index4 <= num15)
-                    {
-                        bool flag2 = true;
-                        int num19 = index2 - num15 / 2 - 2;
-                        int num20 = index2 + num15 / 2 + 2;
-                        int num21 = index3 - 5;
-                        int num22 = index3 + 5;
-                        for (int index6 = num19; index6 <= num20; ++index6)
-                        {
-                            for (int index7 = num21; index7 <= num22; ++index7)
-                            {
-                                if (Main.tile[index6, index7].active && (int)Main.tile[index6, index7].type == 19)
-                                {
-                                    flag2 = false;
-                                    break;
-                                }
-                            }
-                        }
-                        for (int index6 = index3 + 3; index6 >= index3 - 5; --index6)
-                        {
-                            if (Main.tile[index2, index6].active)
-                            {
-                                flag2 = false;
-                                break;
-                            }
-                        }
-                        if (flag2)
-                        {
-                            num8 = index3;
-                            break;
-                        }
-                    }
-                }
-                if (num8 > num7 - 10 && num8 < num7 + 10)
-                {
-                    int index3 = index2;
-                    int index4 = num8;
-                    int index5 = index2 + 1;
-                    for (; !Main.tile[index3, index4].active; --index3)
-                    {
-                        Main.tile[index3, index4].active = true;
-                        Main.tile[index3, index4].type = (byte)19;
-                    }
-                    for (; !Main.tile[index5, index4].active; ++index5)
-                    {
-                        Main.tile[index5, index4].active = true;
-                        Main.tile[index5, index4].type = (byte)19;
-                    }
-                }
-            }
-            Main.statusText = Lang.gen[58] + " 90%";
-            int num26 = 0;
-            int num27 = 1000;
-            int num28 = 0;
-            while (num28 < Main.maxTilesX / 20)
-            {
-                ++num26;
-                int index1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
-                int index2 = WorldGen.genRand.Next(WorldGen.dMinY, WorldGen.dMaxY);
-                bool flag1 = true;
-                if ((int)Main.tile[index1, index2].wall == wallType && !Main.tile[index1, index2].active)
-                {
-                    int num7 = 1;
-                    if (WorldGen.genRand.Next(2) == 0)
-                        num7 = -1;
-                    while (flag1 && !Main.tile[index1, index2].active)
-                    {
-                        index1 -= num7;
-                        if (index1 < 5 || index1 > Main.maxTilesX - 5)
-                            flag1 = false;
-                        else if (Main.tile[index1, index2].active && !Main.tileDungeon[(int)Main.tile[index1, index2].type])
-                            flag1 = false;
-                    }
-                    if (flag1 && Main.tile[index1, index2].active && (Main.tileDungeon[(int)Main.tile[index1, index2].type] && Main.tile[index1, index2 - 1].active) && (Main.tileDungeon[(int)Main.tile[index1, index2 - 1].type] && Main.tile[index1, index2 + 1].active && Main.tileDungeon[(int)Main.tile[index1, index2 + 1].type]))
-                    {
-                        int i1 = index1 + num7;
-                        for (int index3 = i1 - 3; index3 <= i1 + 3; ++index3)
-                        {
-                            for (int index4 = index2 - 3; index4 <= index2 + 3; ++index4)
-                            {
-                                if (Main.tile[index3, index4].active && (int)Main.tile[index3, index4].type == 19)
-                                {
-                                    flag1 = false;
-                                    break;
-                                }
-                            }
-                        }
-                        if (flag1 && !Main.tile[i1, index2 - 1].active & !Main.tile[i1, index2 - 2].active & !Main.tile[i1, index2 - 3].active)
-                        {
-                            int index3 = i1;
-                            int num8 = i1;
-                            while (index3 > WorldGen.dMinX && index3 < WorldGen.dMaxX && (!Main.tile[index3, index2].active && !Main.tile[index3, index2 - 1].active) && !Main.tile[index3, index2 + 1].active)
-                                index3 += num7;
-                            int num15 = Math.Abs(i1 - index3);
-                            bool flag2 = false;
-                            if (WorldGen.genRand.Next(2) == 0)
-                                flag2 = true;
-                            if (num15 > 5)
-                            {
-                                for (int index4 = WorldGen.genRand.Next(1, 4); index4 > 0; --index4)
-                                {
-                                    Main.tile[i1, index2].active = true;
-                                    Main.tile[i1, index2].type = (byte)19;
-                                    if (flag2)
-                                    {
-                                        WorldGen.PlaceTile(i1, index2 - 1, 50, true, false, -1, 0);
-                                        if (WorldGen.genRand.Next(50) == 0 && (int)Main.tile[i1, index2 - 1].type == 50)
-                                            Main.tile[i1, index2 - 1].frameX = (short)90;
-                                    }
-                                    i1 += num7;
-                                }
-                                num26 = 0;
-                                ++num28;
-                                if (!flag2 && WorldGen.genRand.Next(2) == 0)
-                                {
-                                    int i2 = num8;
-                                    int j = index2 - 1;
-                                    int type = 0;
-                                    if (WorldGen.genRand.Next(4) == 0)
-                                        type = 1;
-                                    if (type == 0)
-                                        type = 13;
-                                    else if (type == 1)
-                                        type = 49;
-                                    WorldGen.PlaceTile(i2, j, type, true, false, -1, 0);
-                                    if ((int)Main.tile[i2, j].type == 13)
-                                        Main.tile[i2, j].frameX = WorldGen.genRand.Next(2) != 0 ? (short)36 : (short)18;
-                                }
-                            }
-                        }
-                    }
-                }
-                if (num26 > num27)
-                {
-                    num26 = 0;
-                    ++num28;
-                }
-            }
-            Main.statusText = Lang.gen[58] + " 95%";
-            int num29 = 0;
-            for (int index = 0; index < WorldGen.numDRooms; ++index)
-            {
-                int num7 = 0;
-                while (num7 < 1000)
-                {
-                    int num8 = (int)((double)WorldGen.dRoomSize[index] * 0.4);
-                    int i = WorldGen.dRoomX[index] + WorldGen.genRand.Next(-num8, num8 + 1);
-                    int j = WorldGen.dRoomY[index] + WorldGen.genRand.Next(-num8, num8 + 1);
-                    ++num29;
-                    int Style = 2;
-                    int contain;
-                    if (num29 == 1)
-                        contain = 329;
-                    else if (num29 == 2)
-                        contain = 155;
-                    else if (num29 == 3)
-                        contain = 156;
-                    else if (num29 == 4)
-                        contain = 157;
-                    else if (num29 == 5)
-                        contain = 163;
-                    else if (num29 == 6)
-                        contain = 113;
-                    else if (num29 == 7)
-                    {
-                        contain = 327;
-                        Style = 0;
-                    }
-                    else
-                    {
-                        contain = 164;
-                        num29 = 0;
-                    }
-                    if ((double)j < Main.worldSurface + 50.0)
-                    {
-                        contain = 327;
-                        Style = 0;
-                    }
-                    if (contain == 0 && WorldGen.genRand.Next(2) == 0)
-                    {
-                        num7 = 1000;
-                    }
-                    else
-                    {
-                        if (WorldGen.AddBuriedChest(i, j, contain, false, Style))
-                            num7 += 1000;
-                        ++num7;
-                    }
-                }
-            }
-            WorldGen.dMinX -= 25;
-            WorldGen.dMaxX += 25;
-            WorldGen.dMinY -= 25;
-            WorldGen.dMaxY += 25;
-            if (WorldGen.dMinX < 0)
-                WorldGen.dMinX = 0;
-            if (WorldGen.dMaxX > Main.maxTilesX)
-                WorldGen.dMaxX = Main.maxTilesX;
-            if (WorldGen.dMinY < 0)
-                WorldGen.dMinY = 0;
-            if (WorldGen.dMaxY > Main.maxTilesY)
-                WorldGen.dMaxY = Main.maxTilesY;
-            int num30 = 0;
-            int num31 = 1000;
-            int num32 = 0;
-            while (num32 < Main.maxTilesX / 150)
-            {
-                ++num30;
-                int x1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
-                int index1 = WorldGen.genRand.Next(WorldGen.dMinY, WorldGen.dMaxY);
-                if ((int)Main.tile[x1, index1].wall == wallType)
-                {
-                    for (int y1 = index1; y1 > WorldGen.dMinY; --y1)
-                    {
-                        if (Main.tile[x1, y1 - 1].active && (int)Main.tile[x1, y1 - 1].type == tileType)
-                        {
-                            bool flag = false;
-                            for (int index2 = x1 - 15; index2 < x1 + 15; ++index2)
-                            {
-                                for (int index3 = y1 - 15; index3 < y1 + 15; ++index3)
-                                {
-                                    if (index2 > 0 && index2 < Main.maxTilesX && (index3 > 0 && index3 < Main.maxTilesY) && (int)Main.tile[index2, index3].type == 42)
-                                    {
-                                        flag = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (Main.tile[x1 - 1, y1].active || Main.tile[x1 + 1, y1].active || (Main.tile[x1 - 1, y1 + 1].active || Main.tile[x1 + 1, y1 + 1].active) || Main.tile[x1, y1 + 2].active)
-                                flag = true;
-                            if (!flag)
-                            {
-                                WorldGen.Place1x2Top(x1, y1, 42);
-                                if ((int)Main.tile[x1, y1].type == 42)
-                                {
-                                    num30 = 0;
-                                    ++num32;
-                                    for (int index2 = 0; index2 < 1000; ++index2)
-                                    {
-                                        int i = x1 + WorldGen.genRand.Next(-12, 13);
-                                        int j = y1 + WorldGen.genRand.Next(3, 21);
-                                        if (!Main.tile[i, j].active && !Main.tile[i, j + 1].active && ((int)Main.tile[i - 1, j].type != 48 && (int)Main.tile[i + 1, j].type != 48) && Collision.CanHit(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, new Vector2((float)(x1 * 16), (float)(y1 * 16 + 1)), 16, 16))
-                                        {
-                                            WorldGen.PlaceTile(i, j, 136, true, false, -1, 0);
-                                            if (Main.tile[i, j].active)
-                                            {
-                                                while (i != x1 || j != y1)
-                                                {
-                                                    Main.tile[i, j].wire = true;
-                                                    if (i > x1)
-                                                        --i;
-                                                    if (i < x1)
-                                                        ++i;
-                                                    Main.tile[i, j].wire = true;
-                                                    if (j > y1)
-                                                        --j;
-                                                    if (j < y1)
-                                                        ++j;
-                                                    Main.tile[i, j].wire = true;
-                                                }
-                                                if (Main.rand.Next(3) > 0)
-                                                {
-                                                    Main.tile[x1, y1].frameX = (short)18;
-                                                    Main.tile[x1, y1 + 1].frameX = (short)18;
-                                                    break;
-                                                }
-                                                else
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                                else
-                                    break;
-                            }
-                            else
-                                break;
-                        }
-                    }
-                }
-                if (num30 > num31)
-                {
-                    ++num32;
-                    num30 = 0;
-                }
-            }
-            int num33 = 0;
-            int num34 = 1000;
-            int num35 = 0;
-            while (num35 < Main.maxTilesX / 500)
-            {
-                ++num33;
-                int x2 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
-                int y2 = WorldGen.genRand.Next(WorldGen.dMinY, WorldGen.dMaxY);
-                if ((int)Main.tile[x2, y2].wall == wallType && WorldGen.placeTrap(x2, y2, 0))
-                    num33 = num34;
-                if (num33 > num34)
-                {
-                    ++num35;
-                    num33 = 0;
-                }
-            }
-        }
+			WorldGen.numDDoors = 0;
+			WorldGen.numDPlats = 0;
+			WorldGen.numDRooms = 0;
+			WorldGen.dungeonX = x;
+			WorldGen.dungeonY = y;
+			WorldGen.dMinX = x;
+			WorldGen.dMaxX = x;
+			WorldGen.dMinY = y;
+			WorldGen.dMaxY = y;
+			WorldGen.dxStrength1 = (double)WorldGen.genRand.Next(25, 30);
+			WorldGen.dyStrength1 = (double)WorldGen.genRand.Next(20, 25);
+			WorldGen.dxStrength2 = (double)WorldGen.genRand.Next(35, 50);
+			WorldGen.dyStrength2 = (double)WorldGen.genRand.Next(10, 15);
+			float num3 = (float)(Main.maxTilesX / 60);
+			float num4 = num3 + (float)WorldGen.genRand.Next(0, (int)((double)num3 / 3.0));
+			float num5 = num4;
+			int num6 = 5;
+			WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+			while ((double)num4 > 0.0)
+			{
+				if (WorldGen.dungeonX < WorldGen.dMinX)
+					WorldGen.dMinX = WorldGen.dungeonX;
+				if (WorldGen.dungeonX > WorldGen.dMaxX)
+					WorldGen.dMaxX = WorldGen.dungeonX;
+				if (WorldGen.dungeonY > WorldGen.dMaxY)
+					WorldGen.dMaxY = WorldGen.dungeonY;
+				--num4;
+				Main.statusText = string.Concat(new object[4]
+		{
+		  (object) Lang.gen[58],
+		  (object) " ",
+		  (object) (int) (((double) num5 - (double) num4) / (double) num5 * 60.0),
+		  (object) "%"
+		});
+				if (num6 > 0)
+					--num6;
+				if (num6 == 0 & WorldGen.genRand.Next(3) == 0)
+				{
+					num6 = 5;
+					if (WorldGen.genRand.Next(2) == 0)
+					{
+						int num7 = WorldGen.dungeonX;
+						int num8 = WorldGen.dungeonY;
+						WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, false);
+						if (WorldGen.genRand.Next(2) == 0)
+							WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, false);
+						WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+						WorldGen.dungeonX = num7;
+						WorldGen.dungeonY = num8;
+					}
+					else
+						WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+				}
+				else
+					WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, false);
+			}
+			WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+			int num9 = WorldGen.dRoomX[0];
+			int num10 = WorldGen.dRoomY[0];
+			for (int index = 0; index < WorldGen.numDRooms; ++index)
+			{
+				if (WorldGen.dRoomY[index] < num10)
+				{
+					num9 = WorldGen.dRoomX[index];
+					num10 = WorldGen.dRoomY[index];
+				}
+			}
+			WorldGen.dungeonX = num9;
+			WorldGen.dungeonY = num10;
+			WorldGen.dEnteranceX = num9;
+			WorldGen.dSurface = false;
+			int num11 = 5;
+			while (!WorldGen.dSurface)
+			{
+				if (num11 > 0)
+					--num11;
+				if (num11 == 0 & WorldGen.genRand.Next(5) == 0 && (double)WorldGen.dungeonY > Main.worldSurface + 50.0)
+				{
+					num11 = 10;
+					int num7 = WorldGen.dungeonX;
+					int num8 = WorldGen.dungeonY;
+					WorldGen.DungeonHalls(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType, true);
+					WorldGen.DungeonRoom(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+					WorldGen.dungeonX = num7;
+					WorldGen.dungeonY = num8;
+				}
+				WorldGen.DungeonStairs(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+			}
+			WorldGen.DungeonEnt(WorldGen.dungeonX, WorldGen.dungeonY, tileType, wallType);
+			Main.statusText = Lang.gen[58] + " 65%";
+			for (int index1 = 0; index1 < WorldGen.numDRooms; ++index1)
+			{
+				for (int index2 = WorldGen.dRoomL[index1]; index2 <= WorldGen.dRoomR[index1]; ++index2)
+				{
+					if (!Main.tile[index2, WorldGen.dRoomT[index1] - 1].active)
+					{
+						WorldGen.DPlatX[WorldGen.numDPlats] = index2;
+						WorldGen.DPlatY[WorldGen.numDPlats] = WorldGen.dRoomT[index1] - 1;
+						++WorldGen.numDPlats;
+						break;
+					}
+				}
+				for (int index2 = WorldGen.dRoomL[index1]; index2 <= WorldGen.dRoomR[index1]; ++index2)
+				{
+					if (!Main.tile[index2, WorldGen.dRoomB[index1] + 1].active)
+					{
+						WorldGen.DPlatX[WorldGen.numDPlats] = index2;
+						WorldGen.DPlatY[WorldGen.numDPlats] = WorldGen.dRoomB[index1] + 1;
+						++WorldGen.numDPlats;
+						break;
+					}
+				}
+				for (int index2 = WorldGen.dRoomT[index1]; index2 <= WorldGen.dRoomB[index1]; ++index2)
+				{
+					if (!Main.tile[WorldGen.dRoomL[index1] - 1, index2].active)
+					{
+						WorldGen.DDoorX[WorldGen.numDDoors] = WorldGen.dRoomL[index1] - 1;
+						WorldGen.DDoorY[WorldGen.numDDoors] = index2;
+						WorldGen.DDoorPos[WorldGen.numDDoors] = -1;
+						++WorldGen.numDDoors;
+						break;
+					}
+				}
+				for (int index2 = WorldGen.dRoomT[index1]; index2 <= WorldGen.dRoomB[index1]; ++index2)
+				{
+					if (!Main.tile[WorldGen.dRoomR[index1] + 1, index2].active)
+					{
+						WorldGen.DDoorX[WorldGen.numDDoors] = WorldGen.dRoomR[index1] + 1;
+						WorldGen.DDoorY[WorldGen.numDDoors] = index2;
+						WorldGen.DDoorPos[WorldGen.numDDoors] = 1;
+						++WorldGen.numDDoors;
+						break;
+					}
+				}
+			}
+			Main.statusText = Lang.gen[58] + " 70%";
+			int num12 = 0;
+			int num13 = 1000;
+			int num14 = 0;
+			while (num14 < Main.maxTilesX / 100)
+			{
+				++num12;
+				int index1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
+				int index2 = WorldGen.genRand.Next((int)Main.worldSurface + 25, WorldGen.dMaxY);
+				int num7 = index1;
+				if ((int)Main.tile[index1, index2].wall == wallType && !Main.tile[index1, index2].active)
+				{
+					int num8 = 1;
+					if (WorldGen.genRand.Next(2) == 0)
+						num8 = -1;
+					while (!Main.tile[index1, index2].active)
+						index2 += num8;
+					if (Main.tile[index1 - 1, index2].active && Main.tile[index1 + 1, index2].active && (!Main.tile[index1 - 1, index2 - num8].active && !Main.tile[index1 + 1, index2 - num8].active))
+					{
+						++num14;
+						for (int index3 = WorldGen.genRand.Next(5, 13); Main.tile[index1 - 1, index2].active && Main.tile[index1, index2 + num8].active && (Main.tile[index1, index2].active && !Main.tile[index1, index2 - num8].active) && index3 > 0; --index3)
+						{
+							Main.tile[index1, index2].type = (byte)48;
+							if (!Main.tile[index1 - 1, index2 - num8].active && !Main.tile[index1 + 1, index2 - num8].active)
+							{
+								Main.tile[index1, index2 - num8].type = (byte)48;
+								Main.tile[index1, index2 - num8].active = true;
+							}
+							--index1;
+						}
+						int num15 = WorldGen.genRand.Next(5, 13);
+						for (int index3 = num7 + 1; Main.tile[index3 + 1, index2].active && Main.tile[index3, index2 + num8].active && (Main.tile[index3, index2].active && !Main.tile[index3, index2 - num8].active) && num15 > 0; --num15)
+						{
+							Main.tile[index3, index2].type = (byte)48;
+							if (!Main.tile[index3 - 1, index2 - num8].active && !Main.tile[index3 + 1, index2 - num8].active)
+							{
+								Main.tile[index3, index2 - num8].type = (byte)48;
+								Main.tile[index3, index2 - num8].active = true;
+							}
+							++index3;
+						}
+					}
+				}
+				if (num12 > num13)
+				{
+					num12 = 0;
+					++num14;
+				}
+			}
+			int num16 = 0;
+			int num17 = 1000;
+			int num18 = 0;
+			Main.statusText = Lang.gen[58] + " 75%";
+			while (num18 < Main.maxTilesX / 100)
+			{
+				++num16;
+				int index1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
+				int index2 = WorldGen.genRand.Next((int)Main.worldSurface + 25, WorldGen.dMaxY);
+				int num7 = index2;
+				if ((int)Main.tile[index1, index2].wall == wallType && !Main.tile[index1, index2].active)
+				{
+					int num8 = 1;
+					if (WorldGen.genRand.Next(2) == 0)
+						num8 = -1;
+					while (index1 > 5 && index1 < Main.maxTilesX - 5 && !Main.tile[index1, index2].active)
+						index1 += num8;
+					if (Main.tile[index1, index2 - 1].active && Main.tile[index1, index2 + 1].active && (!Main.tile[index1 - num8, index2 - 1].active && !Main.tile[index1 - num8, index2 + 1].active))
+					{
+						++num18;
+						for (int index3 = WorldGen.genRand.Next(5, 13); Main.tile[index1, index2 - 1].active && Main.tile[index1 + num8, index2].active && (Main.tile[index1, index2].active && !Main.tile[index1 - num8, index2].active) && index3 > 0; --index3)
+						{
+							Main.tile[index1, index2].type = (byte)48;
+							if (!Main.tile[index1 - num8, index2 - 1].active && !Main.tile[index1 - num8, index2 + 1].active)
+							{
+								Main.tile[index1 - num8, index2].type = (byte)48;
+								Main.tile[index1 - num8, index2].active = true;
+							}
+							--index2;
+						}
+						int num15 = WorldGen.genRand.Next(5, 13);
+						for (int index3 = num7 + 1; Main.tile[index1, index3 + 1].active && Main.tile[index1 + num8, index3].active && (Main.tile[index1, index3].active && !Main.tile[index1 - num8, index3].active) && num15 > 0; --num15)
+						{
+							Main.tile[index1, index3].type = (byte)48;
+							if (!Main.tile[index1 - num8, index3 - 1].active && !Main.tile[index1 - num8, index3 + 1].active)
+							{
+								Main.tile[index1 - num8, index3].type = (byte)48;
+								Main.tile[index1 - num8, index3].active = true;
+							}
+							++index3;
+						}
+					}
+				}
+				if (num16 > num17)
+				{
+					num16 = 0;
+					++num18;
+				}
+			}
+			Main.statusText = Lang.gen[58] + " 80%";
+			for (int index1 = 0; index1 < WorldGen.numDDoors; ++index1)
+			{
+				int num7 = WorldGen.DDoorX[index1] - 10;
+				int num8 = WorldGen.DDoorX[index1] + 10;
+				int num15 = 100;
+				int num19 = 0;
+				for (int index2 = num7; index2 < num8; ++index2)
+				{
+					bool flag1 = true;
+					int index3 = WorldGen.DDoorY[index1];
+					while (!Main.tile[index2, index3].active)
+						--index3;
+					if (!Main.tileDungeon[(int)Main.tile[index2, index3].type])
+						flag1 = false;
+					int num20 = index3;
+					int index4 = WorldGen.DDoorY[index1];
+					while (!Main.tile[index2, index4].active)
+						++index4;
+					if (!Main.tileDungeon[(int)Main.tile[index2, index4].type])
+						flag1 = false;
+					int num21 = index4;
+					if (num21 - num20 >= 3)
+					{
+						int num22 = index2 - 20;
+						int num23 = index2 + 20;
+						int num24 = num21 - 10;
+						int num25 = num21 + 10;
+						for (int index5 = num22; index5 < num23; ++index5)
+						{
+							for (int index6 = num24; index6 < num25; ++index6)
+							{
+								if (Main.tile[index5, index6].active && (int)Main.tile[index5, index6].type == 10)
+								{
+									flag1 = false;
+									break;
+								}
+							}
+						}
+						if (flag1)
+						{
+							for (int index5 = num21 - 3; index5 < num21; ++index5)
+							{
+								for (int index6 = index2 - 3; index6 <= index2 + 3; ++index6)
+								{
+									if (Main.tile[index6, index5].active)
+									{
+										flag1 = false;
+										break;
+									}
+								}
+							}
+						}
+						if (flag1 && num21 - num20 < 20)
+						{
+							bool flag2 = false;
+							if (WorldGen.DDoorPos[index1] == 0 && num21 - num20 < num15)
+								flag2 = true;
+							if (WorldGen.DDoorPos[index1] == -1 && index2 > num19)
+								flag2 = true;
+							if (WorldGen.DDoorPos[index1] == 1 && (index2 < num19 || num19 == 0))
+								flag2 = true;
+							if (flag2)
+							{
+								num19 = index2;
+								num15 = num21 - num20;
+							}
+						}
+					}
+				}
+				if (num15 < 20)
+				{
+					int i = num19;
+					int index2 = WorldGen.DDoorY[index1];
+					int index3 = index2;
+					for (; !Main.tile[i, index2].active; ++index2)
+						Main.tile[i, index2].active = false;
+					while (!Main.tile[i, index3].active)
+						--index3;
+					int j = index2 - 1;
+					int num20 = index3 + 1;
+					for (int index4 = num20; index4 < j - 2; ++index4)
+					{
+						Main.tile[i, index4].active = true;
+						Main.tile[i, index4].type = (byte)tileType;
+					}
+					WorldGen.PlaceTile(i, j, 10, true, false, -1, 0);
+					int index5 = i - 1;
+					int index6 = j - 3;
+					while (!Main.tile[index5, index6].active)
+						--index6;
+					if (j - index6 < j - num20 + 5 && Main.tileDungeon[(int)Main.tile[index5, index6].type])
+					{
+						for (int index4 = j - 4 - WorldGen.genRand.Next(3); index4 > index6; --index4)
+						{
+							Main.tile[index5, index4].active = true;
+							Main.tile[index5, index4].type = (byte)tileType;
+						}
+					}
+					int index7 = index5 + 2;
+					int index8 = j - 3;
+					while (!Main.tile[index7, index8].active)
+						--index8;
+					if (j - index8 < j - num20 + 5 && Main.tileDungeon[(int)Main.tile[index7, index8].type])
+					{
+						for (int index4 = j - 4 - WorldGen.genRand.Next(3); index4 > index8; --index4)
+						{
+							Main.tile[index7, index4].active = true;
+							Main.tile[index7, index4].type = (byte)tileType;
+						}
+					}
+					int index9 = j + 1;
+					int num21 = index7 - 1;
+					Main.tile[num21 - 1, index9].active = true;
+					Main.tile[num21 - 1, index9].type = (byte)tileType;
+					Main.tile[num21 + 1, index9].active = true;
+					Main.tile[num21 + 1, index9].type = (byte)tileType;
+				}
+			}
+			Main.statusText = Lang.gen[58] + " 85%";
+			for (int index1 = 0; index1 < WorldGen.numDPlats; ++index1)
+			{
+				int index2 = WorldGen.DPlatX[index1];
+				int num7 = WorldGen.DPlatY[index1];
+				int num8 = Main.maxTilesX;
+				int num15 = 10;
+				for (int index3 = num7 - 5; index3 <= num7 + 5; ++index3)
+				{
+					int index4 = index2;
+					int index5 = index2;
+					bool flag1 = false;
+					if (Main.tile[index4, index3].active)
+					{
+						flag1 = true;
+					}
+					else
+					{
+						while (!Main.tile[index4, index3].active)
+						{
+							--index4;
+							if (!Main.tileDungeon[(int)Main.tile[index4, index3].type])
+								flag1 = true;
+						}
+						while (!Main.tile[index5, index3].active)
+						{
+							++index5;
+							if (!Main.tileDungeon[(int)Main.tile[index5, index3].type])
+								flag1 = true;
+						}
+					}
+					if (!flag1 && index5 - index4 <= num15)
+					{
+						bool flag2 = true;
+						int num19 = index2 - num15 / 2 - 2;
+						int num20 = index2 + num15 / 2 + 2;
+						int num21 = index3 - 5;
+						int num22 = index3 + 5;
+						for (int index6 = num19; index6 <= num20; ++index6)
+						{
+							for (int index7 = num21; index7 <= num22; ++index7)
+							{
+								if (Main.tile[index6, index7].active && (int)Main.tile[index6, index7].type == 19)
+								{
+									flag2 = false;
+									break;
+								}
+							}
+						}
+						for (int index6 = index3 + 3; index6 >= index3 - 5; --index6)
+						{
+							if (Main.tile[index2, index6].active)
+							{
+								flag2 = false;
+								break;
+							}
+						}
+						if (flag2)
+						{
+							num8 = index3;
+							break;
+						}
+					}
+				}
+				if (num8 > num7 - 10 && num8 < num7 + 10)
+				{
+					int index3 = index2;
+					int index4 = num8;
+					int index5 = index2 + 1;
+					for (; !Main.tile[index3, index4].active; --index3)
+					{
+						Main.tile[index3, index4].active = true;
+						Main.tile[index3, index4].type = (byte)19;
+					}
+					for (; !Main.tile[index5, index4].active; ++index5)
+					{
+						Main.tile[index5, index4].active = true;
+						Main.tile[index5, index4].type = (byte)19;
+					}
+				}
+			}
+			Main.statusText = Lang.gen[58] + " 90%";
+			int num26 = 0;
+			int num27 = 1000;
+			int num28 = 0;
+			while (num28 < Main.maxTilesX / 20)
+			{
+				++num26;
+				int index1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
+				int index2 = WorldGen.genRand.Next(WorldGen.dMinY, WorldGen.dMaxY);
+				bool flag1 = true;
+				if ((int)Main.tile[index1, index2].wall == wallType && !Main.tile[index1, index2].active)
+				{
+					int num7 = 1;
+					if (WorldGen.genRand.Next(2) == 0)
+						num7 = -1;
+					while (flag1 && !Main.tile[index1, index2].active)
+					{
+						index1 -= num7;
+						if (index1 < 5 || index1 > Main.maxTilesX - 5)
+							flag1 = false;
+						else if (Main.tile[index1, index2].active && !Main.tileDungeon[(int)Main.tile[index1, index2].type])
+							flag1 = false;
+					}
+					if (flag1 && Main.tile[index1, index2].active && (Main.tileDungeon[(int)Main.tile[index1, index2].type] && Main.tile[index1, index2 - 1].active) && (Main.tileDungeon[(int)Main.tile[index1, index2 - 1].type] && Main.tile[index1, index2 + 1].active && Main.tileDungeon[(int)Main.tile[index1, index2 + 1].type]))
+					{
+						int i1 = index1 + num7;
+						for (int index3 = i1 - 3; index3 <= i1 + 3; ++index3)
+						{
+							for (int index4 = index2 - 3; index4 <= index2 + 3; ++index4)
+							{
+								if (Main.tile[index3, index4].active && (int)Main.tile[index3, index4].type == 19)
+								{
+									flag1 = false;
+									break;
+								}
+							}
+						}
+						if (flag1 && !Main.tile[i1, index2 - 1].active & !Main.tile[i1, index2 - 2].active & !Main.tile[i1, index2 - 3].active)
+						{
+							int index3 = i1;
+							int num8 = i1;
+							while (index3 > WorldGen.dMinX && index3 < WorldGen.dMaxX && (!Main.tile[index3, index2].active && !Main.tile[index3, index2 - 1].active) && !Main.tile[index3, index2 + 1].active)
+								index3 += num7;
+							int num15 = Math.Abs(i1 - index3);
+							bool flag2 = false;
+							if (WorldGen.genRand.Next(2) == 0)
+								flag2 = true;
+							if (num15 > 5)
+							{
+								for (int index4 = WorldGen.genRand.Next(1, 4); index4 > 0; --index4)
+								{
+									Main.tile[i1, index2].active = true;
+									Main.tile[i1, index2].type = (byte)19;
+									if (flag2)
+									{
+										WorldGen.PlaceTile(i1, index2 - 1, 50, true, false, -1, 0);
+										if (WorldGen.genRand.Next(50) == 0 && (int)Main.tile[i1, index2 - 1].type == 50)
+											Main.tile[i1, index2 - 1].frameX = (short)90;
+									}
+									i1 += num7;
+								}
+								num26 = 0;
+								++num28;
+								if (!flag2 && WorldGen.genRand.Next(2) == 0)
+								{
+									int i2 = num8;
+									int j = index2 - 1;
+									int type = 0;
+									if (WorldGen.genRand.Next(4) == 0)
+										type = 1;
+									if (type == 0)
+										type = 13;
+									else if (type == 1)
+										type = 49;
+									WorldGen.PlaceTile(i2, j, type, true, false, -1, 0);
+									if ((int)Main.tile[i2, j].type == 13)
+										Main.tile[i2, j].frameX = WorldGen.genRand.Next(2) != 0 ? (short)36 : (short)18;
+								}
+							}
+						}
+					}
+				}
+				if (num26 > num27)
+				{
+					num26 = 0;
+					++num28;
+				}
+			}
+			Main.statusText = Lang.gen[58] + " 95%";
+			int num29 = 0;
+			for (int index = 0; index < WorldGen.numDRooms; ++index)
+			{
+				int num7 = 0;
+				while (num7 < 1000)
+				{
+					int num8 = (int)((double)WorldGen.dRoomSize[index] * 0.4);
+					int i = WorldGen.dRoomX[index] + WorldGen.genRand.Next(-num8, num8 + 1);
+					int j = WorldGen.dRoomY[index] + WorldGen.genRand.Next(-num8, num8 + 1);
+					++num29;
+					int Style = 2;
+					int contain;
+					if (num29 == 1)
+						contain = 329;
+					else if (num29 == 2)
+						contain = 155;
+					else if (num29 == 3)
+						contain = 156;
+					else if (num29 == 4)
+						contain = 157;
+					else if (num29 == 5)
+						contain = 163;
+					else if (num29 == 6)
+						contain = 113;
+					else if (num29 == 7)
+					{
+						contain = 327;
+						Style = 0;
+					}
+					else
+					{
+						contain = 164;
+						num29 = 0;
+					}
+					if ((double)j < Main.worldSurface + 50.0)
+					{
+						contain = 327;
+						Style = 0;
+					}
+					if (contain == 0 && WorldGen.genRand.Next(2) == 0)
+					{
+						num7 = 1000;
+					}
+					else
+					{
+						if (WorldGen.AddBuriedChest(i, j, contain, false, Style))
+							num7 += 1000;
+						++num7;
+					}
+				}
+			}
+			WorldGen.dMinX -= 25;
+			WorldGen.dMaxX += 25;
+			WorldGen.dMinY -= 25;
+			WorldGen.dMaxY += 25;
+			if (WorldGen.dMinX < 0)
+				WorldGen.dMinX = 0;
+			if (WorldGen.dMaxX > Main.maxTilesX)
+				WorldGen.dMaxX = Main.maxTilesX;
+			if (WorldGen.dMinY < 0)
+				WorldGen.dMinY = 0;
+			if (WorldGen.dMaxY > Main.maxTilesY)
+				WorldGen.dMaxY = Main.maxTilesY;
+			int num30 = 0;
+			int num31 = 1000;
+			int num32 = 0;
+			while (num32 < Main.maxTilesX / 150)
+			{
+				++num30;
+				int x1 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
+				int index1 = WorldGen.genRand.Next(WorldGen.dMinY, WorldGen.dMaxY);
+				if ((int)Main.tile[x1, index1].wall == wallType)
+				{
+					for (int y1 = index1; y1 > WorldGen.dMinY; --y1)
+					{
+						if (Main.tile[x1, y1 - 1].active && (int)Main.tile[x1, y1 - 1].type == tileType)
+						{
+							bool flag = false;
+							for (int index2 = x1 - 15; index2 < x1 + 15; ++index2)
+							{
+								for (int index3 = y1 - 15; index3 < y1 + 15; ++index3)
+								{
+									if (index2 > 0 && index2 < Main.maxTilesX && (index3 > 0 && index3 < Main.maxTilesY) && (int)Main.tile[index2, index3].type == 42)
+									{
+										flag = true;
+										break;
+									}
+								}
+							}
+							if (Main.tile[x1 - 1, y1].active || Main.tile[x1 + 1, y1].active || (Main.tile[x1 - 1, y1 + 1].active || Main.tile[x1 + 1, y1 + 1].active) || Main.tile[x1, y1 + 2].active)
+								flag = true;
+							if (!flag)
+							{
+								WorldGen.Place1x2Top(x1, y1, 42);
+								if ((int)Main.tile[x1, y1].type == 42)
+								{
+									num30 = 0;
+									++num32;
+									for (int index2 = 0; index2 < 1000; ++index2)
+									{
+										int i = x1 + WorldGen.genRand.Next(-12, 13);
+										int j = y1 + WorldGen.genRand.Next(3, 21);
+										if (!Main.tile[i, j].active && !Main.tile[i, j + 1].active && ((int)Main.tile[i - 1, j].type != 48 && (int)Main.tile[i + 1, j].type != 48) && Collision.CanHit(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, new Vector2((float)(x1 * 16), (float)(y1 * 16 + 1)), 16, 16))
+										{
+											WorldGen.PlaceTile(i, j, 136, true, false, -1, 0);
+											if (Main.tile[i, j].active)
+											{
+												while (i != x1 || j != y1)
+												{
+													Main.tile[i, j].wire = true;
+													if (i > x1)
+														--i;
+													if (i < x1)
+														++i;
+													Main.tile[i, j].wire = true;
+													if (j > y1)
+														--j;
+													if (j < y1)
+														++j;
+													Main.tile[i, j].wire = true;
+												}
+												if (Main.rand.Next(3) > 0)
+												{
+													Main.tile[x1, y1].frameX = (short)18;
+													Main.tile[x1, y1 + 1].frameX = (short)18;
+													break;
+												}
+												else
+													break;
+											}
+										}
+									}
+									break;
+								}
+								else
+									break;
+							}
+							else
+								break;
+						}
+					}
+				}
+				if (num30 > num31)
+				{
+					++num32;
+					num30 = 0;
+				}
+			}
+			int num33 = 0;
+			int num34 = 1000;
+			int num35 = 0;
+			while (num35 < Main.maxTilesX / 500)
+			{
+				++num33;
+				int x2 = WorldGen.genRand.Next(WorldGen.dMinX, WorldGen.dMaxX);
+				int y2 = WorldGen.genRand.Next(WorldGen.dMinY, WorldGen.dMaxY);
+				if ((int)Main.tile[x2, y2].wall == wallType && WorldGen.placeTrap(x2, y2, 0))
+					num33 = num34;
+				if (num33 > num34)
+				{
+					++num35;
+					num33 = 0;
+				}
+			}
+		}
 		public static void DungeonStairs(int i, int j, int tileType, int wallType)
 		{
 			Vector2 value = default(Vector2);
@@ -10504,77 +10497,77 @@ namespace Terraria
 				}
 			}
 		}
-        public static void SmashAltar(int i, int j)
-        {
-            if (Main.netMode == 1 || !Main.hardMode || (WorldGen.noTileActions || WorldGen.gen))
-                return;
-            int num1 = WorldGen.altarCount % 3;
-            int num2 = WorldGen.altarCount / 3 + 1;
-            float num3 = (float)(Main.maxTilesX / 4200);
-            int num4 = 1 - num1;
-            float num5 = (num3 * 310f - (float)(85 * num1)) * 0.85f / (float)num2;
-            int type;
-            if (num1 == 0)
-            {
-                if (Main.netMode == 0)
-                    Main.NewText(Lang.misc[12], (byte)50, byte.MaxValue, (byte)130);
-                else if (Main.netMode == 2)
-                    NetMessage.SendData(25, -1, -1, Lang.misc[12], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
-                type = 107;
-                num5 *= 1.05f;
-            }
-            else if (num1 == 1)
-            {
-                if (Main.netMode == 0)
-                    Main.NewText(Lang.misc[13], (byte)50, byte.MaxValue, (byte)130);
-                else if (Main.netMode == 2)
-                    NetMessage.SendData(25, -1, -1, Lang.misc[13], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
-                type = 108;
-            }
-            else
-            {
-                if (Main.netMode == 0)
-                    Main.NewText(Lang.misc[14], (byte)50, byte.MaxValue, (byte)130);
-                else if (Main.netMode == 2)
-                    NetMessage.SendData(25, -1, -1, Lang.misc[14], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
-                type = 111;
-            }
-            for (int index = 0; (double)index < (double)num5; ++index)
-            {
-                int i1 = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
-                double num6 = Main.worldSurface;
-                if (type == 108)
-                    num6 = Main.rockLayer;
-                if (type == 111)
-                    num6 = (Main.rockLayer + Main.rockLayer + (double)Main.maxTilesY) / 3.0;
-                int j1 = WorldGen.genRand.Next((int)num6, Main.maxTilesY - 150);
-                WorldGen.OreRunner(i1, j1, (double)WorldGen.genRand.Next(5, 9 + num4), WorldGen.genRand.Next(5, 9 + num4), type);
-            }
-            int num7 = WorldGen.genRand.Next(3);
-            while (num7 != 2)
-            {
-                int tileX = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
-                int tileY = WorldGen.genRand.Next((int)Main.rockLayer + 50, Main.maxTilesY - 300);
-                if (Main.tile[tileX, tileY].active && (int)Main.tile[tileX, tileY].type == 1)
-                {
-                    Main.tile[tileX, tileY].type = num7 != 0 ? (byte)117 : (byte)25;
-                    if (Main.netMode == 2)
-                    {
-                        NetMessage.SendTileSquare(-1, tileX, tileY, 1);
-                        break;
-                    }
-                    else
-                        break;
-                }
-            }
-            if (Main.netMode != 1)
-            {
-                int num6 = Main.rand.Next(2) + 1;
-                for (int index = 0; index < num6; ++index)
-                    NPC.SpawnOnPlayer((int)Player.FindClosest(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16), 82);
-            }
-            ++WorldGen.altarCount;
-        }
+		public static void SmashAltar(int i, int j)
+		{
+			if (Main.netMode == 1 || !Main.hardMode || (WorldGen.noTileActions || WorldGen.gen))
+				return;
+			int num1 = WorldGen.altarCount % 3;
+			int num2 = WorldGen.altarCount / 3 + 1;
+			float num3 = (float)(Main.maxTilesX / 4200);
+			int num4 = 1 - num1;
+			float num5 = (num3 * 310f - (float)(85 * num1)) * 0.85f / (float)num2;
+			int type;
+			if (num1 == 0)
+			{
+				if (Main.netMode == 0)
+					Main.NewText(Lang.misc[12], (byte)50, byte.MaxValue, (byte)130);
+				else if (Main.netMode == 2)
+					NetMessage.SendData(25, -1, -1, Lang.misc[12], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
+				type = 107;
+				num5 *= 1.05f;
+			}
+			else if (num1 == 1)
+			{
+				if (Main.netMode == 0)
+					Main.NewText(Lang.misc[13], (byte)50, byte.MaxValue, (byte)130);
+				else if (Main.netMode == 2)
+					NetMessage.SendData(25, -1, -1, Lang.misc[13], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
+				type = 108;
+			}
+			else
+			{
+				if (Main.netMode == 0)
+					Main.NewText(Lang.misc[14], (byte)50, byte.MaxValue, (byte)130);
+				else if (Main.netMode == 2)
+					NetMessage.SendData(25, -1, -1, Lang.misc[14], (int)byte.MaxValue, 50f, (float)byte.MaxValue, 130f, 0);
+				type = 111;
+			}
+			for (int index = 0; (double)index < (double)num5; ++index)
+			{
+				int i1 = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
+				double num6 = Main.worldSurface;
+				if (type == 108)
+					num6 = Main.rockLayer;
+				if (type == 111)
+					num6 = (Main.rockLayer + Main.rockLayer + (double)Main.maxTilesY) / 3.0;
+				int j1 = WorldGen.genRand.Next((int)num6, Main.maxTilesY - 150);
+				WorldGen.OreRunner(i1, j1, (double)WorldGen.genRand.Next(5, 9 + num4), WorldGen.genRand.Next(5, 9 + num4), type);
+			}
+			int num7 = WorldGen.genRand.Next(3);
+			while (num7 != 2)
+			{
+				int tileX = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
+				int tileY = WorldGen.genRand.Next((int)Main.rockLayer + 50, Main.maxTilesY - 300);
+				if (Main.tile[tileX, tileY].active && (int)Main.tile[tileX, tileY].type == 1)
+				{
+					Main.tile[tileX, tileY].type = num7 != 0 ? (byte)117 : (byte)25;
+					if (Main.netMode == 2)
+					{
+						NetMessage.SendTileSquare(-1, tileX, tileY, 1);
+						break;
+					}
+					else
+						break;
+				}
+			}
+			if (Main.netMode != 1)
+			{
+				int num6 = Main.rand.Next(2) + 1;
+				for (int index = 0; index < num6; ++index)
+					NPC.SpawnOnPlayer((int)Player.FindClosest(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16), 82);
+			}
+			++WorldGen.altarCount;
+		}
 		public static void Check3x2(int i, int j, int type)
 		{
 			if (WorldGen.destroyObject)
@@ -19301,52 +19294,52 @@ namespace Terraria
 				}
 			}
 		}
-        public static void WaterCheck()
-        {
-            Liquid.numLiquid = 0;
-            LiquidBuffer.numLiquidBuffer = 0;
-            for (int index1 = 1; index1 < Main.maxTilesX - 1; ++index1)
-            {
-                for (int index2 = Main.maxTilesY - 2; index2 > 0; --index2)
-                {
-                    Main.tile[index1, index2].checkingLiquid = false;
-                    if ((int)Main.tile[index1, index2].liquid > 0 && Main.tile[index1, index2].active && (Main.tileSolid[(int)Main.tile[index1, index2].type] && !Main.tileSolidTop[(int)Main.tile[index1, index2].type]))
-                        Main.tile[index1, index2].liquid = (byte)0;
-                    else if ((int)Main.tile[index1, index2].liquid > 0)
-                    {
-                        if (Main.tile[index1, index2].active)
-                        {
-                            if (Main.tileWaterDeath[(int)Main.tile[index1, index2].type] && ((int)Main.tile[index1, index2].type != 4 || (int)Main.tile[index1, index2].frameY != 176))
-                                WorldGen.KillTile(index1, index2, false, false, false);
-                            if (Main.tile[index1, index2].lava && Main.tileLavaDeath[(int)Main.tile[index1, index2].type])
-                                WorldGen.KillTile(index1, index2, false, false, false);
-                        }
-                        if ((!Main.tile[index1, index2 + 1].active || !Main.tileSolid[(int)Main.tile[index1, index2 + 1].type] || Main.tileSolidTop[(int)Main.tile[index1, index2 + 1].type]) && (int)Main.tile[index1, index2 + 1].liquid < (int)byte.MaxValue)
-                        {
-                            if ((int)Main.tile[index1, index2 + 1].liquid > 250)
-                                Main.tile[index1, index2 + 1].liquid = byte.MaxValue;
-                            else
-                                Liquid.AddWater(index1, index2);
-                        }
-                        if ((!Main.tile[index1 - 1, index2].active || !Main.tileSolid[(int)Main.tile[index1 - 1, index2].type] || Main.tileSolidTop[(int)Main.tile[index1 - 1, index2].type]) && (int)Main.tile[index1 - 1, index2].liquid != (int)Main.tile[index1, index2].liquid)
-                            Liquid.AddWater(index1, index2);
-                        else if ((!Main.tile[index1 + 1, index2].active || !Main.tileSolid[(int)Main.tile[index1 + 1, index2].type] || Main.tileSolidTop[(int)Main.tile[index1 + 1, index2].type]) && (int)Main.tile[index1 + 1, index2].liquid != (int)Main.tile[index1, index2].liquid)
-                            Liquid.AddWater(index1, index2);
-                        if (Main.tile[index1, index2].lava)
-                        {
-                            if ((int)Main.tile[index1 - 1, index2].liquid > 0 && !Main.tile[index1 - 1, index2].lava)
-                                Liquid.AddWater(index1, index2);
-                            else if ((int)Main.tile[index1 + 1, index2].liquid > 0 && !Main.tile[index1 + 1, index2].lava)
-                                Liquid.AddWater(index1, index2);
-                            else if ((int)Main.tile[index1, index2 - 1].liquid > 0 && !Main.tile[index1, index2 - 1].lava)
-                                Liquid.AddWater(index1, index2);
-                            else if ((int)Main.tile[index1, index2 + 1].liquid > 0 && !Main.tile[index1, index2 + 1].lava)
-                                Liquid.AddWater(index1, index2);
-                        }
-                    }
-                }
-            }
-        }
+		public static void WaterCheck()
+		{
+			Liquid.numLiquid = 0;
+			LiquidBuffer.numLiquidBuffer = 0;
+			for (int index1 = 1; index1 < Main.maxTilesX - 1; ++index1)
+			{
+				for (int index2 = Main.maxTilesY - 2; index2 > 0; --index2)
+				{
+					Main.tile[index1, index2].checkingLiquid = false;
+					if ((int)Main.tile[index1, index2].liquid > 0 && Main.tile[index1, index2].active && (Main.tileSolid[(int)Main.tile[index1, index2].type] && !Main.tileSolidTop[(int)Main.tile[index1, index2].type]))
+						Main.tile[index1, index2].liquid = (byte)0;
+					else if ((int)Main.tile[index1, index2].liquid > 0)
+					{
+						if (Main.tile[index1, index2].active)
+						{
+							if (Main.tileWaterDeath[(int)Main.tile[index1, index2].type] && ((int)Main.tile[index1, index2].type != 4 || (int)Main.tile[index1, index2].frameY != 176))
+								WorldGen.KillTile(index1, index2, false, false, false);
+							if (Main.tile[index1, index2].lava && Main.tileLavaDeath[(int)Main.tile[index1, index2].type])
+								WorldGen.KillTile(index1, index2, false, false, false);
+						}
+						if ((!Main.tile[index1, index2 + 1].active || !Main.tileSolid[(int)Main.tile[index1, index2 + 1].type] || Main.tileSolidTop[(int)Main.tile[index1, index2 + 1].type]) && (int)Main.tile[index1, index2 + 1].liquid < (int)byte.MaxValue)
+						{
+							if ((int)Main.tile[index1, index2 + 1].liquid > 250)
+								Main.tile[index1, index2 + 1].liquid = byte.MaxValue;
+							else
+								Liquid.AddWater(index1, index2);
+						}
+						if ((!Main.tile[index1 - 1, index2].active || !Main.tileSolid[(int)Main.tile[index1 - 1, index2].type] || Main.tileSolidTop[(int)Main.tile[index1 - 1, index2].type]) && (int)Main.tile[index1 - 1, index2].liquid != (int)Main.tile[index1, index2].liquid)
+							Liquid.AddWater(index1, index2);
+						else if ((!Main.tile[index1 + 1, index2].active || !Main.tileSolid[(int)Main.tile[index1 + 1, index2].type] || Main.tileSolidTop[(int)Main.tile[index1 + 1, index2].type]) && (int)Main.tile[index1 + 1, index2].liquid != (int)Main.tile[index1, index2].liquid)
+							Liquid.AddWater(index1, index2);
+						if (Main.tile[index1, index2].lava)
+						{
+							if ((int)Main.tile[index1 - 1, index2].liquid > 0 && !Main.tile[index1 - 1, index2].lava)
+								Liquid.AddWater(index1, index2);
+							else if ((int)Main.tile[index1 + 1, index2].liquid > 0 && !Main.tile[index1 + 1, index2].lava)
+								Liquid.AddWater(index1, index2);
+							else if ((int)Main.tile[index1, index2 - 1].liquid > 0 && !Main.tile[index1, index2 - 1].lava)
+								Liquid.AddWater(index1, index2);
+							else if ((int)Main.tile[index1, index2 + 1].liquid > 0 && !Main.tile[index1, index2 + 1].lava)
+								Liquid.AddWater(index1, index2);
+						}
+					}
+				}
+			}
+		}
 		public static void EveryTileFrame()
 		{
 			WorldGen.noLiquidCheck = true;
