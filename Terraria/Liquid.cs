@@ -48,13 +48,9 @@ namespace Terraria
 					{
 						float num3 = (float)(maxY - i) / (float)(maxY - minY + 1);
 						num3 /= (float)(-(float)verbose);
-						Main.statusText = string.Concat(new object[4]
-															{
-																(object) Lang.gen[18],
-																(object) " ",
-																(object) (int) ((double) num3*100.0 + 1.0),
-																(object) "%"
-															});
+						Main.progressText = Lang.gen[18];
+						Main.trackProgress = true;
+						Main.progressPercent = (int)Math.Floor(num3 * 100f + 1f);
 					}
 				}
 				for (int j = 0; j < 2; j++)
