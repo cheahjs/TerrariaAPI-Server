@@ -48,7 +48,6 @@ public struct Color : IPackedVector<uint>, IPackedVector, IEquatable<Color>
 			this.packedValue = ((this.packedValue & 16777215u) | (uint)((uint)value << 24));
 		}
 	}
-	[CLSCompliant(false)]
 	public uint PackedValue
 	{
 		get
