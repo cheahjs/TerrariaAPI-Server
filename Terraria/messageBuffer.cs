@@ -615,8 +615,6 @@ namespace Terraria
                 }
                 else if ((int) num2 == 15)
                 {
-                    if (Main.netMode == 2)
-                        ;
                 }
                 else if ((int) num2 == 16)
                 {

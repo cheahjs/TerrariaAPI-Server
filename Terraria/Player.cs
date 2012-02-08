@@ -7904,8 +7904,6 @@ namespace Terraria
                     if (flag)
                     {
                         this.itemTime = this.inventory[this.selectedItem].useTime;
-                        if (Main.myPlayer != this.whoAmi)
-                            ;
                     }
                     else if (this.inventory[this.selectedItem].type == 560)
                     {

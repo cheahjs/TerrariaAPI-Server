@@ -89,7 +89,6 @@ namespace Terraria
         public static float[] bgAlpha2 = new float[10];
         public static int wof = -1;
         public static int wofF = 0;
-        private static int offScreenRange = 200;
         public static int renderCount = 99;
         private static Stopwatch saveTime = new Stopwatch();
         public static bool mouseHC = false;
@@ -258,7 +257,6 @@ namespace Terraria
         public static Item mouseItem = new Item();
         public static Item guideItem = new Item();
         public static Item reforgeItem = new Item();
-        private static float inventoryScale = 0.75f;
         public static bool hasFocus = true;
         public static Recipe[] recipe = new Recipe[Recipe.maxRecipes];
         public static int[] availableRecipe = new int[Recipe.maxRecipes];
@@ -276,7 +274,6 @@ namespace Terraria
         public static bool craftGuide = false;
         public static bool reforge = false;
         private static Item toolTip = new Item();
-        private static int backSpaceCount = 0;
         public static string motd = "";
         public static bool gameMenu = true;
         public static Player[] loadPlayer = new Player[5];
@@ -447,10 +444,6 @@ namespace Terraria
                                                     3
                                                 };
 
-        private static bool mouseExit = false;
-        private static float exitScale = 0.8f;
-        private static bool mouseReforge = false;
-        private static float reforgeScale = 0.8f;
         public static Player clientPlayer = new Player();
         public static string getIP = Main.defaultIP;
         public static string getPort = Convert.ToString(Netplay.serverPort);
@@ -498,16 +491,7 @@ namespace Terraria
         public Chest[] shop = new Chest[10];
         private int[] displayWidth = new int[99];
         private int[] displayHeight = new int[99];
-        private float logoRotationDirection = 1f;
-        private float logoRotationSpeed = 1f;
-        private float logoScale = 1f;
-        private float logoScaleDirection = 1f;
-        private float logoScaleSpeed = 1f;
         private float[] menuItemScale = new float[Main.maxMenuItems];
-        private int focusMenu = -1;
-        private int selectedMenu = -1;
-        private int selectedMenu2 = -1;
-        private int setKey = -1;
         private const int MF_BYPOSITION = 1024;
         public const int sectionWidth = 200;
         public const int sectionHeight = 150;
@@ -555,16 +539,6 @@ namespace Terraria
         public bool showNPCs;
         public static int wofT;
         public static int wofB;
-        private int firstTileX;
-        private int lastTileX;
-        private int firstTileY;
-        private int lastTileY;
-        private double bgParrallax;
-        private int bgStart;
-        private int bgLoops;
-        private int bgStartY;
-        private int bgLoopsY;
-        private int bgTop;
         public bool chestLootHover;
         public bool chestStackHover;
         public bool chestDepositHover;
@@ -592,21 +566,11 @@ namespace Terraria
         public static int spawnTileX;
         public static int spawnTileY;
         public bool toggleFullscreen;
-        private int numDisplayModes;
         public static string playerPathName;
         public static string worldPathName;
         public static int netPlayCounter;
         public static int lastNPCUpdate;
         public static int lastItemUpdate;
-        private int splashCounter;
-        private float logoRotation;
-        private int selectedPlayer;
-        private int selectedWorld;
-        private int textBlinkerCount;
-        private int textBlinkerState;
-        private int focusColor;
-        private int colorDelay;
-        private int bgScroll;
         public static Color mcColor = new Color(125, 125, 255);
         public static Color hcColor = new Color(200, 125, 255);
         public static Color[] teamColor = new Color[5];
