@@ -1,4 +1,3 @@
-
 using System;
 namespace Terraria
 {
@@ -83,7 +82,17 @@ namespace Terraria
 				}
 			}
 		}
-		public static void UpdateCombatText()
+		//Call this method initially with iter at 0.
+		public static void UpdateCombatText(byte iter){
+			if(n<100){
+				if(Main.combatText[n].active){
+					Main.combatText[n].Update();
+				}
+				UpdateCombatText(iter+1);
+			}
+		}
+		//I really like recursion, you'll likely find.
+		/*public static void UpdateCombatText()
 		{
 			for (int i = 0; i < 100; i++)
 			{
@@ -92,6 +101,6 @@ namespace Terraria
 					Main.combatText[i].Update();
 				}
 			}
-		}
+		}*/
 	}
 }

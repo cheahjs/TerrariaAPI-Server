@@ -1,4 +1,3 @@
-
 using System;
 namespace Terraria
 {
@@ -132,7 +131,8 @@ namespace Terraria
 			{
 				this.item[i] = new Item();
 			}
-			if (type == 1)
+			switch(type)
+			case 1:
 			{
 				int num = 0;
 				this.item[num].SetDefaults("Mining Helmet");
@@ -179,10 +179,9 @@ namespace Terraria
 					num++;
 					return;
 				}
-			}
-			else
-			{
-				if (type == 2)
+			}break;
+			
+				case 2:
 				{
 					int num2 = 0;
 					this.item[num2].SetDefaults("Musket Ball");
@@ -212,8 +211,8 @@ namespace Terraria
 					}
 					num2++;
 					return;
-				}
-				if (type == 3)
+				}break;
+				case 3:
 				{
 					int num3 = 0;
 					if (Main.bloodMoon)
@@ -242,8 +241,8 @@ namespace Terraria
 					}
 					num3++;
 					return;
-				}
-				if (type == 4)
+				}break;
+				case 4:
 				{
 					int num4 = 0;
 					this.item[num4].SetDefaults("Grenade");
@@ -258,8 +257,8 @@ namespace Terraria
 					}
 					num4++;
 					return;
-				}
-				if (type == 5)
+				}break;
+				case 5:
 				{
 					int num5 = 0;
 					this.item[num5].SetDefaults(254, false);
@@ -307,10 +306,8 @@ namespace Terraria
 						num5++;
 						return;
 					}
-				}
-				else
-				{
-					if (type == 6)
+				}break;
+				case 6:
 					{
 						int num6 = 0;
 						this.item[num6].SetDefaults(128, false);
@@ -326,8 +323,8 @@ namespace Terraria
 						this.item[num6].SetDefaults(161, false);
 						num6++;
 						return;
-					}
-					if (type == 7)
+					}break;
+					case 7:
 					{
 						int num7 = 0;
 						this.item[num7].SetDefaults(487, false);
@@ -345,8 +342,8 @@ namespace Terraria
 						this.item[num7].SetDefaults(576, false);
 						num7++;
 						return;
-					}
-					if (type == 8)
+					}break;
+					case 8:
 					{
 						int num8 = 0;
 						this.item[num8].SetDefaults(509, false);
@@ -368,8 +365,8 @@ namespace Terraria
 						this.item[num8].SetDefaults(543, false);
 						num8++;
 						return;
-					}
-					if (type == 9)
+					}break;
+					case 9:
 					{
 						int num9 = 0;
 						this.item[num9].SetDefaults(588, false);
@@ -384,7 +381,8 @@ namespace Terraria
 						num9++;
 						this.item[num9].SetDefaults(596, false);
 						num9++;
-					}
+					}break;
+					default:{}break;
 				}
 			}
 		}
