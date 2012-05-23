@@ -84,7 +84,7 @@ namespace Terraria
 							break;
 						case "-ignoreversion":
 							IgnoreVersion = true;
-							Console.WriteLine("Ignoring API version checks on plguins.");
+							Console.WriteLine("Ignoring API version checks on plugins.");
 							break;
 					}
 				}
