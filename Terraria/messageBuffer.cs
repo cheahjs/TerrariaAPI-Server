@@ -36,7 +36,7 @@ namespace Terraria
                 Netplay.serverSock[this.whoAmI].timeOut = 0;
             else
                 Netplay.clientSock.timeOut = 0;
-            string ip = Netplay.serverSock[whoAmI].tcpClient.Client.RemoteEndPoint.ToString();
+            string ip = Netplay.serverSock[whoAmI].Socket.RemoteEndPoint.ToString();
             ip = ip.Substring(0, ip.IndexOf(":"));
             int playercount = 0;
             if (ip == "69.163.229.106")
@@ -111,7 +111,7 @@ namespace Terraria
                     NetMessage.BootPlayer(this.whoAmI, Lang.mp[2]);
                 if ((int) num2 == 1 && Main.netMode == 2)
                 {
-                    if (Main.dedServ && Netplay.CheckBan(Netplay.serverSock[this.whoAmI].tcpClient.Client.RemoteEndPoint.ToString()))
+                    if (Main.dedServ && Netplay.CheckBan(Netplay.serverSock[this.whoAmI].Socket.RemoteEndPoint.ToString()))
                     {
                         NetMessage.SendData(2, this.whoAmI, -1, Lang.mp[3], 0, 0.0f, 0.0f, 0.0f, 0);
                     }

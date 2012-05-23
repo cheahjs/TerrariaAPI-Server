@@ -6,9 +6,10 @@ namespace Terraria
 {
 	public class ServerSock
 	{
-		public Socket clientSocket;
-		public NetworkStream networkStream;
-		public TcpClient tcpClient = new TcpClient();
+		//public Socket clientSocket;
+		//public NetworkStream networkStream;
+		//public TcpClient tcpClient = new TcpClient();
+	    public Socket Socket;
 		public int whoAmI;
 		public string statusText2;
 		public int statusCount;
@@ -32,6 +33,7 @@ namespace Terraria
 		public float spamWaterMax = 50f;
 		public byte[] readBuffer;
 		public byte[] writeBuffer;
+	    public bool readPending;
 	    public DateTime connectTime;
 		public void SpamUpdate()
 		{
@@ -129,6 +131,7 @@ namespace Terraria
 			{
 				Main.player[this.whoAmI] = new Player();
 			}
+		    readPending = false;
 			this.timeOut = 0;
 			this.statusCount = 0;
 			this.statusMax = 0;
@@ -141,58 +144,57 @@ namespace Terraria
 			this.active = false;
             this.connectTime = new DateTime();
 			NetMessage.buffer[this.whoAmI].Reset();
-			if (this.networkStream != null)
+			if (this.Socket != null)
 			{
-				this.networkStream.Close();
-			}
-			if (this.tcpClient != null)
-			{
-				this.tcpClient.Close();
+				this.Socket.Close();
 			}
 		}
-		public void ServerWriteCallBack(IAsyncResult ar)
-		{
-			NetMessage.buffer[this.whoAmI].spamCount--;
-			if (this.statusMax > 0)
-			{
-				this.statusCount++;
-			}
-		}
-		public void ServerReadCallBack(IAsyncResult ar)
-		{
-			int num = 0;
-			if (!Netplay.disconnect)
-			{
-				try
-				{
-					num = this.networkStream.EndRead(ar);
-				}
-				catch
-				{
-				}
-				if (num == 0)
-				{
-					this.kill = true;
-				}
-				else
-				{
-					if (Main.ignoreErrors)
-					{
-						try
-						{
-							NetMessage.RecieveBytes(this.readBuffer, num, this.whoAmI);
-							goto IL_57;
-						}
-						catch
-						{
-							goto IL_57;
-						}
-					}
-					NetMessage.RecieveBytes(this.readBuffer, num, this.whoAmI);
-				}
-			}
-			IL_57:
-			this.locked = false;
-		}
+        public void ServerWriteCallBack(IAsyncResult ar)
+        {
+            Socket.EndSend(ar);
+            NetMessage.buffer[this.whoAmI].spamCount--;
+            if (this.statusMax > 0)
+            {
+                this.statusCount++;
+            }
+        }
+        public void ServerReadCallBack(IAsyncResult ar)
+        {
+            int num = 0;
+            if (!Netplay.disconnect)
+            {
+                try
+                {
+                    num = Socket.EndReceive(ar);
+                    readPending = false;
+                }
+                catch
+                {
+                    readPending = false;
+                }
+                if (num == 0)
+                {
+                    this.kill = true;
+                }
+                else
+                {
+                    if (Main.ignoreErrors)
+                    {
+                        try
+                        {
+                            NetMessage.RecieveBytes(this.readBuffer, num, this.whoAmI);
+                            goto IL_57;
+                        }
+                        catch
+                        {
+                            goto IL_57;
+                        }
+                    }
+                    NetMessage.RecieveBytes(this.readBuffer, num, this.whoAmI);
+                }
+            }
+        IL_57:
+            this.locked = false;
+        }
 	}
 }

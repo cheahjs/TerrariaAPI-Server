@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using Hooks;
 using System;
 using System.Text;
@@ -14,14 +15,11 @@ namespace Terraria
                 {
                     return;
                 }
-                if (Main.runningMono)
-                    sock.networkStream.Write(buffer, offset, count);
-                else
-                    sock.networkStream.BeginWrite(buffer, offset, count, callback, state);
+                sock.Socket.BeginSend(buffer, offset, count, SocketFlags.None, sock.ServerWriteCallBack, null);
             }
             catch (Exception e)
             {
-                Console.WriteLine("{0} had an exception thrown when trying to send data.", sock.clientSocket.RemoteEndPoint);
+                Console.WriteLine("{0} had an exception thrown when trying to send data.", sock.Socket.RemoteEndPoint);
                 Console.WriteLine(e);
                 sock.kill = true;
             }
@@ -63,7 +61,7 @@ namespace Terraria
                                 Buffer.BlockCopy(bytes5, 0, NetMessage.buffer[num].writeBuffer, 5, bytes5.Length);
                                 if (Main.dedServ)
                                 {
-                                    Console.WriteLine(Netplay.serverSock[num].tcpClient.Client.RemoteEndPoint.ToString() + " was booted: " + text);
+                                    Console.WriteLine(Netplay.serverSock[num].Socket.RemoteEndPoint.ToString() + " was booted: " + text);
                                 }
                             }
                             break;
@@ -1527,7 +1525,7 @@ namespace Terraria
                         {
                             for (int num14 = 0; num14 < 256; num14++)
                             {
-                                if (num14 != ignoreClient && (NetMessage.buffer[num14].broadcast || (Netplay.serverSock[num14].state >= 3 && msgType == 10)) && Netplay.serverSock[num14].tcpClient.Connected && Netplay.serverSock[num14].SectionRange(number, (int)number2, (int)number3))
+                                if (num14 != ignoreClient && (NetMessage.buffer[num14].broadcast || (Netplay.serverSock[num14].state >= 3 && msgType == 10)) && Netplay.serverSock[num14].Socket.Connected && Netplay.serverSock[num14].SectionRange(number, (int)number2, (int)number3))
                                 {
                                     try
                                     {
@@ -1536,7 +1534,7 @@ namespace Terraria
                                         Main.txData += num2;
                                         Main.txMsgType[msgType]++;
                                         Main.txDataType[msgType] += num2;
-                                        NetMessage.SendBytes(Netplay.serverSock[num14], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num14].ServerWriteCallBack), Netplay.serverSock[num14].networkStream);
+                                        NetMessage.SendBytes(Netplay.serverSock[num14], NetMessage.buffer[num].writeBuffer, 0, num2, Netplay.serverSock[num14].ServerWriteCallBack, Netplay.serverSock[num14].Socket);
                                         //Netplay.serverSock[num14].networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num14].ServerWriteCallBack), Netplay.serverSock[num14].networkStream);
                                     }
                                     catch
@@ -1550,7 +1548,7 @@ namespace Terraria
                         {
                             for (int num15 = 0; num15 < 256; num15++)
                             {
-                                if (num15 != ignoreClient && (NetMessage.buffer[num15].broadcast || (Netplay.serverSock[num15].state >= 3 && msgType == 10)) && Netplay.serverSock[num15].tcpClient.Connected)
+                                if (num15 != ignoreClient && (NetMessage.buffer[num15].broadcast || (Netplay.serverSock[num15].state >= 3 && msgType == 10)) && Netplay.serverSock[num15].Socket.Connected)
                                 {
                                     bool flag2 = false;
                                     if (Main.npc[number].life <= 0)
@@ -1579,7 +1577,7 @@ namespace Terraria
                                             Main.txData += num2;
                                             Main.txMsgType[msgType]++;
                                             Main.txDataType[msgType] += num2;
-                                            NetMessage.SendBytes(Netplay.serverSock[num15], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num15].ServerWriteCallBack), Netplay.serverSock[num15].networkStream);
+                                            NetMessage.SendBytes(Netplay.serverSock[num15], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num15].ServerWriteCallBack), Netplay.serverSock[num15].Socket);
                                             //Netplay.serverSock[num15].networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num15].ServerWriteCallBack), Netplay.serverSock[num15].networkStream);
                                         }
                                         catch
@@ -1594,7 +1592,7 @@ namespace Terraria
                         {
                             for (int num16 = 0; num16 < 256; num16++)
                             {
-                                if (num16 != ignoreClient && (NetMessage.buffer[num16].broadcast || (Netplay.serverSock[num16].state >= 3 && msgType == 10)) && Netplay.serverSock[num16].tcpClient.Connected)
+                                if (num16 != ignoreClient && (NetMessage.buffer[num16].broadcast || (Netplay.serverSock[num16].state >= 3 && msgType == 10)) && Netplay.serverSock[num16].Socket.Connected)
                                 {
                                     bool flag3 = false;
                                     if (Main.player[number].netSkip > 0)
@@ -1623,7 +1621,7 @@ namespace Terraria
                                             Main.txData += num2;
                                             Main.txMsgType[msgType]++;
                                             Main.txDataType[msgType] += num2;
-                                            NetMessage.SendBytes(Netplay.serverSock[num16], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num16].ServerWriteCallBack), Netplay.serverSock[num16].networkStream);
+                                            NetMessage.SendBytes(Netplay.serverSock[num16], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num16].ServerWriteCallBack), Netplay.serverSock[num16].Socket);
                                             //Netplay.serverSock[num16].networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num16].ServerWriteCallBack), Netplay.serverSock[num16].networkStream);
                                         }
                                         catch
@@ -1646,7 +1644,7 @@ namespace Terraria
                             {
                                 for (int num17 = 0; num17 < 256; num17++)
                                 {
-                                    if (num17 != ignoreClient && (NetMessage.buffer[num17].broadcast || (Netplay.serverSock[num17].state >= 3 && msgType == 10)) && Netplay.serverSock[num17].tcpClient.Connected)
+                                    if (num17 != ignoreClient && (NetMessage.buffer[num17].broadcast || (Netplay.serverSock[num17].state >= 3 && msgType == 10)) && Netplay.serverSock[num17].Socket.Connected)
                                     {
                                         bool flag4 = false;
                                         if (Main.projectile[number].type == 12)
@@ -1675,7 +1673,7 @@ namespace Terraria
                                                 Main.txData += num2;
                                                 Main.txMsgType[msgType]++;
                                                 Main.txDataType[msgType] += num2;
-                                                NetMessage.SendBytes(Netplay.serverSock[num17], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num17].ServerWriteCallBack), Netplay.serverSock[num17].networkStream);
+                                                NetMessage.SendBytes(Netplay.serverSock[num17], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num17].ServerWriteCallBack), Netplay.serverSock[num17].Socket);
                                                 //Netplay.serverSock[num17].networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num17].ServerWriteCallBack), Netplay.serverSock[num17].networkStream);
                                             }
                                             catch
@@ -1688,7 +1686,7 @@ namespace Terraria
                             }
                             for (int num18 = 0; num18 < 256; num18++)
                             {
-                                if (num18 != ignoreClient && (NetMessage.buffer[num18].broadcast || (Netplay.serverSock[num18].state >= 3 && msgType == 10)) && Netplay.serverSock[num18].tcpClient.Connected)
+                                if (num18 != ignoreClient && (NetMessage.buffer[num18].broadcast || (Netplay.serverSock[num18].state >= 3 && msgType == 10)) && Netplay.serverSock[num18].Socket.Connected)
                                 {
                                     try
                                     {
@@ -1697,7 +1695,7 @@ namespace Terraria
                                         Main.txData += num2;
                                         Main.txMsgType[msgType]++;
                                         Main.txDataType[msgType] += num2;
-                                        NetMessage.SendBytes(Netplay.serverSock[num18], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num18].ServerWriteCallBack), Netplay.serverSock[num18].networkStream);
+                                        NetMessage.SendBytes(Netplay.serverSock[num18], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num18].ServerWriteCallBack), Netplay.serverSock[num18].Socket);
                                         //Netplay.serverSock[num18].networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[num18].ServerWriteCallBack), Netplay.serverSock[num18].networkStream);
                                     }
                                     catch
@@ -1710,7 +1708,7 @@ namespace Terraria
                     }
                     else
                     {
-                        if (Netplay.serverSock[remoteClient].tcpClient.Connected)
+                        if (Netplay.serverSock[remoteClient].Socket.Connected)
                         {
                             try
                             {
@@ -1719,7 +1717,7 @@ namespace Terraria
                                 Main.txData += num2;
                                 Main.txMsgType[msgType]++;
                                 Main.txDataType[msgType] += num2;
-                                NetMessage.SendBytes(Netplay.serverSock[remoteClient], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[remoteClient].ServerWriteCallBack), Netplay.serverSock[remoteClient].networkStream);
+                                NetMessage.SendBytes(Netplay.serverSock[remoteClient], NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[remoteClient].ServerWriteCallBack), Netplay.serverSock[remoteClient].Socket);
                                 //Netplay.serverSock[remoteClient].networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2, new AsyncCallback(Netplay.serverSock[remoteClient].ServerWriteCallBack), Netplay.serverSock[remoteClient].networkStream);
                             }
                             catch
@@ -1887,7 +1885,7 @@ namespace Terraria
             }
             for (int i = 0; i < 256; i++)
             {
-                if ((NetMessage.buffer[i].broadcast || Netplay.serverSock[i].state >= 3) && Netplay.serverSock[i].tcpClient.Connected)
+                if ((NetMessage.buffer[i].broadcast || Netplay.serverSock[i].state >= 3) && Netplay.serverSock[i].Socket.Connected)
                 {
                     int num = x / 200;
                     int num2 = y / 150;
@@ -1912,7 +1910,7 @@ namespace Terraria
                 {
                     if (Main.autoShutdown && !flag)
                     {
-                        string text = Netplay.serverSock[i].tcpClient.Client.RemoteEndPoint.ToString();
+                        string text = Netplay.serverSock[i].Socket.RemoteEndPoint.ToString();
                         string a = text;
                         for (int j = 0; j < text.Length; j++)
                         {

@@ -1467,8 +1467,8 @@ namespace Terraria
                                                                                 {
                                                                                     player[i].name,
                                                                                     " (",
-                                                                                    Netplay.serverSock[i].tcpClient.
-                                                                                        Client.RemoteEndPoint,
+                                                                                    Netplay.serverSock[i].Socket
+                                                                                    .RemoteEndPoint,
                                                                                     ")"
                                                                                 }));
                                         }
