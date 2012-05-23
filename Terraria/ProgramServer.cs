@@ -134,6 +134,11 @@ namespace Terraria
                     Directory.CreateDirectory("ServerPlugins");
                 }
             }
+            var ignorelist = new List<string>();
+            if (File.Exists("/ServerPlugins/ignoredplugins.txt"))
+            {
+                ignorelist = File.ReadAllLines("/ServerPlugins/ignoredplugins.txt").ToList();
+            }
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             List<FileInfo> files = new DirectoryInfo("ServerPlugins").GetFiles("*.dll").ToList();
             files.AddRange(new DirectoryInfo("ServerPlugins").GetFiles("*.dll-plugin"));
@@ -143,6 +148,8 @@ namespace Terraria
                 try
                 {
                     string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileInfo.Name);
+                    if (ignorelist.Contains(fileNameWithoutExtension))
+                        continue;
                     Assembly assembly;
                     if (!LoadedAssemblies.TryGetValue(fileNameWithoutExtension, out assembly))
                     {
