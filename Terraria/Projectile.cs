@@ -2388,7 +2388,7 @@ namespace Terraria
                 }
                 this.Damage();
                 if (Main.netMode != 1 && this.type == 99)
-                    Collision.SwitchTiles(this.position, this.width, this.height, this.lastPosition);
+                    Collision.SwitchTiles(this, this.position, this.width, this.height, this.lastPosition);
                 if (this.type == 94)
                 {
                     for (int index = this.oldPos.Length - 1; index > 0; --index)

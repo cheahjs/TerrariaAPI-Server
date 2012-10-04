@@ -1,5 +1,7 @@
 
 using System;
+using Hooks;
+
 namespace Terraria
 {
 	public class Collision
@@ -701,7 +703,7 @@ namespace Terraria
 			}
 			return default(Vector2);
 		}
-		public static bool SwitchTiles(Vector2 Position, int Width, int Height, Vector2 oldPosition)
+		public static bool SwitchTiles(object Sender, Vector2 Position, int Width, int Height, Vector2 oldPosition)
 		{
 			int num = (int)(Position.X / 16f) - 1;
 			int num2 = (int)((Position.X + (float)Width) / 16f) + 2;
@@ -734,9 +736,21 @@ namespace Terraria
 						vector.Y = (float)(j * 16 + 12);
 						if (Position.X + (float)Width > vector.X && Position.X < vector.X + 16f && Position.Y + (float)Height > vector.Y && (double)Position.Y < (double)vector.Y + 4.01 && (oldPosition.X + (float)Width <= vector.X || oldPosition.X >= vector.X + 16f || oldPosition.Y + (float)Height <= vector.Y || (double)oldPosition.Y >= (double)vector.Y + 16.01))
 						{
-							WorldGen.hitSwitch(i, j);
-							NetMessage.SendData(59, -1, -1, "", i, (float)j, 0f, 0f, 0);
-							return true;
+							bool handled = false;
+							if (Sender is NPC) 
+							{
+								handled = NpcHooks.OnTriggerPressurePlate((NPC)Sender, i, j);
+							} else if (Sender is Projectile) 
+							{
+								handled = ProjectileHooks.OnTriggerPressurePlate((Projectile)Sender, i, j);
+							}
+							
+							if (!handled)
+							{
+								WorldGen.hitSwitch(i, j);
+								NetMessage.SendData(59, -1, -1, "", i, (float)j, 0f, 0f, 0);
+								return true;
+							}
 						}
 					}
 				}

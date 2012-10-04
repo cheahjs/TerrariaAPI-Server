@@ -8809,6 +8809,34 @@ namespace Terraria
 			}
 			return false;
 		}
+		public static bool IsDoorBlocked(int x, int y, int direction)
+		{
+			int originY;
+			if (Main.tile[x, y - 1].frameY == 0 && Main.tile[x, y - 1].type == Main.tile[x, y].type)
+				originY = y - 1;
+			else if (Main.tile[x, y - 2].frameY == 0 && Main.tile[x, y - 2].type == Main.tile[x, y].type)
+				originY = y - 2;
+			else if (Main.tile[x, y + 1].frameY == 0 && Main.tile[x, y + 1].type == Main.tile[x, y].type)
+				originY = y + 1;
+			else
+				originY = y;
+			
+			int blockCheckX;
+			if (direction == -1)
+				blockCheckX = x - 1;
+			else
+				blockCheckX = x + 1;
+			
+			for (int blockCheckY = originY; blockCheckY < originY + 3; blockCheckY++)
+			{
+				if (Main.tile[blockCheckX, blockCheckY].active)
+				{
+					if (!Main.tileCut[Main.tile[blockCheckX, blockCheckY].type] && Main.tile[blockCheckX, blockCheckY].type != 3 && Main.tile[blockCheckX, blockCheckY].type != 24 && Main.tile[blockCheckX, blockCheckY].type != 52 && Main.tile[blockCheckX, blockCheckY].type != 61 && Main.tile[blockCheckX, blockCheckY].type != 62 && Main.tile[blockCheckX, blockCheckY].type != 69 && Main.tile[blockCheckX, blockCheckY].type != 71 && Main.tile[blockCheckX, blockCheckY].type != 73 && Main.tile[blockCheckX, blockCheckY].type != 74 && Main.tile[blockCheckX, blockCheckY].type != 110 && Main.tile[blockCheckX, blockCheckY].type != 113 && Main.tile[blockCheckX, blockCheckY].type != 115)
+						return true;
+				}
+			}
+			return false;
+		}
 		public static bool OpenDoor(int i, int j, int direction)
 		{
 			int num = 0;
