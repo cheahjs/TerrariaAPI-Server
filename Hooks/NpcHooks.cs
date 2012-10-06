@@ -6,11 +6,15 @@ namespace Hooks
 	{
 		public delegate void StrikeNpcD(NpcStrikeEventArgs e);
         public delegate void SpawnNpcD(NpcSpawnEventArgs e);
+		public delegate void TriggerPressurePlateD(NpcTriggerPressurePlateEventArgs e);
+		public delegate void UseDoorD(NpcUseDoorEventArgs e);
 		public static event SetDefaultsD<NPC, int> SetDefaultsInt;
 		public static event SetDefaultsD<NPC, string> SetDefaultsString;
         public static event SetDefaultsD<NPC, int> NetDefaults;
 		public static event NpcHooks.StrikeNpcD StrikeNpc;
 	    public static event SpawnNpcD SpawnNpc;
+		public static event TriggerPressurePlateD TriggerPressurePlate;
+		public static event UseDoorD UseDoor;
 
 		public static void OnSetDefaultsInt(ref int npctype, NPC npc)
 		{
@@ -93,5 +97,37 @@ namespace Hooks
             NpcHooks.SpawnNpc(npcSpawnEventArgs);
             return npcSpawnEventArgs.Handled;
         }
+
+		public static bool OnTriggerPressurePlate(NPC npc, int x, int y)
+		{
+			if (NpcHooks.TriggerPressurePlate == null)
+			{
+				return false;
+			}
+			NpcTriggerPressurePlateEventArgs triggerPressurePlateArgs = new NpcTriggerPressurePlateEventArgs
+			{
+				Npc = npc,
+				X = x,
+				Y = y
+			};
+			NpcHooks.TriggerPressurePlate(triggerPressurePlateArgs);
+			return triggerPressurePlateArgs.Handled;
+		}
+		public static bool OnUseDoor(NPC npc, int x, int y, bool isOpening)
+		{
+			if (NpcHooks.UseDoor == null)
+			{
+				return false;
+			}
+			NpcUseDoorEventArgs npcUseDoorArgs = new NpcUseDoorEventArgs
+			{
+				Npc = npc,
+				X = x,
+				Y = y,
+				IsOpening = isOpening
+			};
+			NpcHooks.UseDoor(npcUseDoorArgs);
+			return npcUseDoorArgs.Handled;
+		}
 	}
 }

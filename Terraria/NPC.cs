@@ -5970,15 +5970,18 @@ namespace Terraria
 		                                }
 		                                else
 		                                {
-		                                    bool flag6 = WorldGen.OpenDoor(num32, num33, this.direction);
-		                                    if (!flag6)
+		                                    if (!WorldGen.IsDoorBlocked(num32, num33, this.direction) && !NpcHooks.OnUseDoor(this, num32, num33, true))
 		                                    {
-		                                        this.ai[3] = (float)num5;
-		                                        this.netUpdate = true;
-		                                    }
-		                                    if (Main.netMode == 2 && flag6)
-		                                    {
-		                                        NetMessage.SendData(19, -1, -1, "", 0, (float)num32, (float)num33, (float)this.direction, 0);
+		                                        bool flag6 = WorldGen.OpenDoor(num32, num33, this.direction);
+		                                        if (!flag6)
+		                                        {
+		                                            this.ai[3] = (float)num5;
+		                                            this.netUpdate = true;
+		                                        }
+		                                        if (Main.netMode == 2 && flag6)
+		                                        {
+		                                            NetMessage.SendData(19, -1, -1, "", 0, (float)num32, (float)num33, (float)this.direction, 0);
+		                                        }
 		                                    }
 		                                }
 		                            }
@@ -7967,11 +7970,19 @@ namespace Terraria
 		                        }
 		                        if (this.closeDoor && ((this.position.X + (float)(this.width / 2)) / 16f > (float)(this.doorX + 2) || (this.position.X + (float)(this.width / 2)) / 16f < (float)(this.doorX - 2)))
 		                        {
-		                            bool flag17 = WorldGen.CloseDoor(this.doorX, this.doorY, false);
-		                            if (flag17)
+		                            if (!NpcHooks.OnUseDoor(this, this.doorX, this.doorY, false))
+		                            {
+		                                bool flag17 = WorldGen.CloseDoor(this.doorX, this.doorY, false);
+		                                
+		                                if (flag17)
+		                                {
+		                                    this.closeDoor = false;
+		                                    NetMessage.SendData(19, -1, -1, "", 1, (float)this.doorX, (float)this.doorY, (float)this.direction, 0);
+		                                }
+		                            }
+		                            else
 		                            {
 		                                this.closeDoor = false;
-		                                NetMessage.SendData(19, -1, -1, "", 1, (float)this.doorX, (float)this.doorY, (float)this.direction, 0);
 		                            }
 		                            if ((this.position.X + (float)(this.width / 2)) / 16f > (float)(this.doorX + 4) || (this.position.X + (float)(this.width / 2)) / 16f < (float)(this.doorX - 4) || (this.position.Y + (float)(this.height / 2)) / 16f > (float)(this.doorY + 4) || (this.position.Y + (float)(this.height / 2)) / 16f < (float)(this.doorY - 4))
 		                            {
@@ -8020,29 +8031,32 @@ namespace Terraria
 		                            {
 		                                if (Main.netMode != 1)
 		                                {
-		                                    bool flag18 = WorldGen.OpenDoor(num135, num136 - 2, this.direction);
-		                                    if (flag18)
+		                                    if (!NpcHooks.OnUseDoor(this, num135, num136 - 2, true))
 		                                    {
-		                                        this.closeDoor = true;
-		                                        this.doorX = num135;
-		                                        this.doorY = num136 - 2;
-		                                        NetMessage.SendData(19, -1, -1, "", 0, (float)num135, (float)(num136 - 2), (float)this.direction, 0);
+		                                        bool flag18 = WorldGen.OpenDoor(num135, num136 - 2, this.direction);
+		                                        if (flag18)
+		                                        {
+		                                            this.closeDoor = true;
+		                                            this.doorX = num135;
+		                                            this.doorY = num136 - 2;
+		                                            NetMessage.SendData(19, -1, -1, "", 0, (float)num135, (float)(num136 - 2), (float)this.direction, 0);
+		                                            this.netUpdate = true;
+		                                            this.ai[1] += 80f;
+		                                            return;
+		                                        }
+		                                        if (WorldGen.OpenDoor(num135, num136 - 2, -this.direction))
+		                                        {
+		                                            this.closeDoor = true;
+		                                            this.doorX = num135;
+		                                            this.doorY = num136 - 2;
+		                                            NetMessage.SendData(19, -1, -1, "", 0, (float)num135, (float)(num136 - 2), (float)(-(float)this.direction), 0);
+		                                            this.netUpdate = true;
+		                                            this.ai[1] += 80f;
+		                                            return;
+		                                        }
+		                                        this.direction *= -1;
 		                                        this.netUpdate = true;
-		                                        this.ai[1] += 80f;
-		                                        return;
 		                                    }
-		                                    if (WorldGen.OpenDoor(num135, num136 - 2, -this.direction))
-		                                    {
-		                                        this.closeDoor = true;
-		                                        this.doorX = num135;
-		                                        this.doorY = num136 - 2;
-		                                        NetMessage.SendData(19, -1, -1, "", 0, (float)num135, (float)(num136 - 2), (float)(-(float)this.direction), 0);
-		                                        this.netUpdate = true;
-		                                        this.ai[1] += 80f;
-		                                        return;
-		                                    }
-		                                    this.direction *= -1;
-		                                    this.netUpdate = true;
 		                                    return;
 		                                }
 		                            }
@@ -22202,7 +22216,7 @@ namespace Terraria
                 this.oldPosition = this.position;
                 this.position += this.velocity;
             }
-            if (Main.netMode != 1 && !this.noTileCollide && (this.lifeMax > 1 && Collision.SwitchTiles(this.position, this.width, this.height, this.oldPosition)) && this.type == 46)
+            if (Main.netMode != 1 && !this.noTileCollide && (this.lifeMax > 1 && Collision.SwitchTiles(this, this.position, this.width, this.height, this.oldPosition)) && this.type == 46)
             {
                 this.ai[0] = 1f;
                 this.ai[1] = 400f;
