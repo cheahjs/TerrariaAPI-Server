@@ -130,18 +130,20 @@ namespace Terraria
 		{
 			if (!Directory.Exists("ServerPlugins"))
 			{
-				if (Directory.Exists("serverplugins")){
-				Console.WriteLine("Case sensitive filesystem detected - fixing your serverplugins directory");
-				Directory.Move("serverplugins","ServerPlugins");}
-				else{
-				Directory.CreateDirectory("ServerPlugins");
-				}}
+				if (Directory.Exists("serverplugins"))
+                {
+				    Console.WriteLine("Case sensitive filesystem detected - fixing your serverplugins directory");
+				    Directory.Move("serverplugins","ServerPlugins");
+                }
+				else Directory.CreateDirectory("ServerPlugins");
+		    }
 		    var ignoredfiles = new List<String>();
             if (File.Exists(Path.Combine("ServerPlugins", "ignoredplugins.txt")))
                 ignoredfiles.AddRange(File.ReadAllLines(Path.Combine("ServerPlugins", "ignoredplugins.txt")));
 			AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 			List<FileInfo> files = new DirectoryInfo("ServerPlugins").GetFiles("*.dll").ToList();
 			files.AddRange(new DirectoryInfo("ServerPlugins").GetFiles("*.dll-plugin"));
+
 			for (int i = 0; i < files.Count; i++)
 			{
 				FileInfo fileInfo = files[i];
@@ -167,10 +169,9 @@ namespace Terraria
 						{
 							if (Compatible(type))
 							{
-								Plugins.Add(new PluginContainer((TerrariaPlugin) Activator.CreateInstance(type, new object[]
-																													{
-																														main
-																													})));
+								Plugins.Add(new PluginContainer(
+                                    (TerrariaPlugin)Activator.CreateInstance(type, new object[] { main }),
+                                    true, fileInfo.FullName));
 							}
 							else
 							{
@@ -201,7 +202,10 @@ namespace Terraria
 			foreach (PluginContainer current in orderedEnumerable)
 			{
 				current.Initialize();
-				Console.WriteLine("{0} v{1} ({2}) initiated.", current.Plugin.Name, current.Plugin.Version, current.Plugin.Author);
+				Console.WriteLine("{0} v{1}{2} by {3} initiated.", 
+                    current.Plugin.Name, current.Plugin.Version, 
+                    current.Plugin.Description != "" ? " ("+current.Plugin.Description+")" : "", 
+                    current.Plugin.Author);
 			}
 		}
 
