@@ -21,11 +21,6 @@ public class PluginContainer : IDisposable
         get;
         set;
     }
-    public string MainTypeName
-    {
-        get;
-        set;
-    }
 	public PluginContainer(TerrariaPlugin plugin, bool dll, string filepath)
 	{
 		this.Plugin = plugin;
