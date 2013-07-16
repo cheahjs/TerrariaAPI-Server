@@ -16,14 +16,17 @@ public class PluginContainer : IDisposable
 		get;
 		set;
 	}
-	public PluginContainer(TerrariaPlugin plugin) : this(plugin, true)
-	{
-	}
-	public PluginContainer(TerrariaPlugin plugin, bool dll)
+    public string FilePath
+    {
+        get;
+        set;
+    }
+	public PluginContainer(TerrariaPlugin plugin, bool dll, string filepath)
 	{
 		this.Plugin = plugin;
 		this.Initialized = false;
 		this.Dll = dll;
+        this.FilePath = filepath;
 	}
 	public void Initialize()
 	{

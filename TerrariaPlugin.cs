@@ -47,6 +47,13 @@ public abstract class TerrariaPlugin : IDisposable
             return "";
         }
     }
+    public virtual bool ReflectiveCommands
+    {
+        get
+        {
+            return false;
+        }
+    }
 	protected Main Game
 	{
 		get;
