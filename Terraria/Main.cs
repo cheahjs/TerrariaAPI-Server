@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using Hooks;
+using TerrariaApi.Server;
 
 namespace Terraria
 {
@@ -869,14 +869,14 @@ namespace Terraria
             }
         }
 
-        public void SetWorld(string wrold)
+        public void SetWorld(string world)
         {
-            Main.worldPathName = wrold;
+            Main.worldPathName = world;
         }
 
-        public void SetWorldName(string wrold)
+        public void SetWorldName(string world)
         {
-            Main.worldName = wrold;
+            Main.worldName = world;
         }
 
         public void autoShut()
@@ -908,7 +908,7 @@ namespace Terraria
         {
             Type t = Type.GetType("Mono.Runtime");
             Main.runningMono = (t != null);
-            GameHooks.OnInitialize(true);
+            ServerApi.Hooks.InvokeGameInitialize();
             Main.rand = new Random();
             Console.Title = "Terraria Server " + Main.versionNumber2;
             Main.dedServ = true;
@@ -921,6 +921,7 @@ namespace Terraria
                 nPC.SetDefaults(i, -1f);
                 Main.npcName[i] = nPC.name;
             }
+            ServerApi.Profiler.EndMeasureServerInitTime();
             while (Main.worldPathName == null || Main.worldPathName == "")
             {
                 Main.LoadWorlds();
@@ -1172,7 +1173,7 @@ namespace Terraria
             {
                 Main.startDedInput();
             }
-            GameHooks.OnInitialize(false);
+            ServerApi.Hooks.InvokeGamePostInitialize();
             stopwatch.Start();
             double num6 = 16.666666666666668;
             double num7 = 0.0;
@@ -1199,9 +1200,15 @@ namespace Terraria
                     }
                     if (Netplay.anyClients || Main.forceUpdate)
                     {
-                        GameHooks.OnUpdate(true);
+                        Stopwatch updateWatch = new Stopwatch();
+                        updateWatch.Start();
+
+                        ServerApi.Hooks.InvokeGameUpdate();
                         this.Update();
-                        GameHooks.OnUpdate(false);
+                        ServerApi.Hooks.InvokeGamePostUpdate();
+
+                        updateWatch.Stop();
+                        ServerApi.Profiler.InputServerGameUpdateTime(updateWatch.Elapsed);
                     }
                     double num10 = (double) stopwatch.ElapsedMilliseconds + num7;
                     if (num10 < num6)
@@ -1233,7 +1240,7 @@ namespace Terraria
             {
                 Console.Write(": ");
                 string text = Console.ReadLine();
-                if (!ServerHooks.OnCommand(text))
+                if (!ServerApi.Hooks.InvokeServerCommand(text))
                 {
                     string text2 = text;
                     text = text.ToLower();
@@ -1445,7 +1452,7 @@ namespace Terraria
                                 Console.WriteLine("Reloading plugins");
                                 try
                                 {
-                                    ProgramServer.ReloadPlugins();
+                                    Console.WriteLine("This feature has been removed.");
                                 }
                                 catch (Exception ex)
                                 {
@@ -2402,7 +2409,11 @@ namespace Terraria
             int month = now.Month;
             bool xmas = ((day >= 15) && (month == 12));
 
-            Main.xMas = WorldHooks.OnChristmaCheck(xmas);
+            bool xmas2 = xmas;
+            if (ServerApi.Hooks.InvokeWorldChristmasCheck(ref xmas2))
+                xmas = xmas2;
+
+            Main.xMas = xmas;
         }
 
         protected void Update()
