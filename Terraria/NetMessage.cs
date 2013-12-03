@@ -494,11 +494,11 @@ namespace Terraria
 					            {
 					                b30 += 1;
 					            }
-					            if (Main.tile[i, num8].wall > 0)
+					            if (Main.tile[i, num8].wall() > 0)
 					            {
 					                b30 += 4;
 					            }
-					            if (Main.tile[i, num8].liquid > 0)
+					            if (Main.tile[i, num8].liquid() > 0)
 					            {
 					                b30 += 8;
 					            }
@@ -526,20 +526,13 @@ namespace Terraria
 					            {
 					                b31 += 2;
 					            }
-					            if ((Main.tile[i, num8].tileHeader3 & 16) == 16)
-					            {
-					                b31 += 16;
-					            }
-					            if ((Main.tile[i, num8].tileHeader3 & 32) == 32)
-					            {
-					                b31 += 32;
-					            }
+								b31 += (byte)(Main.tile[i, num8].slope() << 4);
 					            if (Main.tile[i, num8].active() && Main.tile[i, num8].color() > 0)
 					            {
 					                b31 += 4;
 					                b32 = Main.tile[i, num8].color();
 					            }
-					            if (Main.tile[i, num8].wall > 0 && Main.tile[i, num8].wallColor() > 0)
+					            if (Main.tile[i, num8].wall() > 0 && Main.tile[i, num8].wallColor() > 0)
 					            {
 					                b31 += 8;
 					                b33 = Main.tile[i, num8].wallColor();
@@ -558,14 +551,14 @@ namespace Terraria
 					                NetMessage.buffer[num].writeBuffer[num3] = b33;
 					                num3++;
 					            }
-					            byte[] bytes50 = BitConverter.GetBytes(Main.tile[i, num8].frameX);
-					            byte[] bytes51 = BitConverter.GetBytes(Main.tile[i, num8].frameY);
-					            byte wall = Main.tile[i, num8].wall;
+					            byte[] bytes50 = BitConverter.GetBytes(Main.tile[i, num8].frameX());
+					            byte[] bytes51 = BitConverter.GetBytes(Main.tile[i, num8].frameY());
+					            byte wall = Main.tile[i, num8].wall();
 					            if (Main.tile[i, num8].active())
 					            {
-					                NetMessage.buffer[num].writeBuffer[num3] = Main.tile[i, num8].type;
+					                NetMessage.buffer[num].writeBuffer[num3] = Main.tile[i, num8].type();
 					                num3++;
-					                if (Main.tileFrameImportant[(int) Main.tile[i, num8].type])
+					                if (Main.tileFrameImportant[(int) Main.tile[i, num8].type()])
 					                {
 					                    Buffer.BlockCopy(bytes50, 0, NetMessage.buffer[num].writeBuffer, num3, 2);
 					                    num3 += 2;
@@ -578,9 +571,9 @@ namespace Terraria
 					                NetMessage.buffer[num].writeBuffer[num3] = wall;
 					                num3++;
 					            }
-					            if (Main.tile[i, num8].liquid > 0)
+					            if (Main.tile[i, num8].liquid() > 0)
 					            {
-					                NetMessage.buffer[num].writeBuffer[num3] = Main.tile[i, num8].liquid;
+					                NetMessage.buffer[num].writeBuffer[num3] = Main.tile[i, num8].liquid();
 					                num3++;
 					                byte b34 = Main.tile[i, num8].liquidType();
 					                NetMessage.buffer[num].writeBuffer[num3] = b34;
@@ -851,11 +844,11 @@ namespace Terraria
 					                {
 					                    b48 += 1;
 					                }
-					                if (Main.tile[j, k].wall > 0)
+					                if (Main.tile[j, k].wall() > 0)
 					                {
 					                    b48 += 4;
 					                }
-					                if (Main.tile[j, k].liquid > 0 && Main.netMode == 2)
+					                if (Main.tile[j, k].liquid() > 0 && Main.netMode == 2)
 					                {
 					                    b48 += 8;
 					                }
@@ -883,20 +876,13 @@ namespace Terraria
 					                {
 					                    b49 += 2;
 					                }
-					                if ((Main.tile[j, k].tileHeader3 & 16) == 16)
-					                {
-					                    b49 += 16;
-					                }
-					                if ((Main.tile[j, k].tileHeader3 & 32) == 32)
-					                {
-					                    b49 += 32;
-					                }
+									b49 += (byte)(Main.tile[j, k].slope() << 4);
 					                if (Main.tile[j, k].active() && Main.tile[j, k].color() > 0)
 					                {
 					                    b49 += 4;
 					                    b50 = Main.tile[j, k].color();
 					                }
-					                if (Main.tile[j, k].wall > 0 && Main.tile[j, k].wallColor() > 0)
+					                if (Main.tile[j, k].wall() > 0 && Main.tile[j, k].wallColor() > 0)
 					                {
 					                    b49 += 8;
 					                    b51 = Main.tile[j, k].wallColor();
@@ -915,14 +901,14 @@ namespace Terraria
 					                    NetMessage.buffer[num].writeBuffer[num3] = b51;
 					                    num3++;
 					                }
-					                byte[] bytes95 = BitConverter.GetBytes(Main.tile[j, k].frameX);
-					                byte[] bytes96 = BitConverter.GetBytes(Main.tile[j, k].frameY);
-					                byte wall2 = Main.tile[j, k].wall;
+					                byte[] bytes95 = BitConverter.GetBytes(Main.tile[j, k].frameX());
+					                byte[] bytes96 = BitConverter.GetBytes(Main.tile[j, k].frameY());
+					                byte wall2 = Main.tile[j, k].wall();
 					                if (Main.tile[j, k].active())
 					                {
-					                    NetMessage.buffer[num].writeBuffer[num3] = Main.tile[j, k].type;
+					                    NetMessage.buffer[num].writeBuffer[num3] = Main.tile[j, k].type();
 					                    num3++;
-					                    if (Main.tileFrameImportant[(int) Main.tile[j, k].type])
+					                    if (Main.tileFrameImportant[(int) Main.tile[j, k].type()])
 					                    {
 					                        Buffer.BlockCopy(bytes95, 0, NetMessage.buffer[num].writeBuffer, num3, 2);
 					                        num3 += 2;
@@ -935,9 +921,9 @@ namespace Terraria
 					                    NetMessage.buffer[num].writeBuffer[num3] = wall2;
 					                    num3++;
 					                }
-					                if (Main.tile[j, k].liquid > 0 && Main.netMode == 2)
+					                if (Main.tile[j, k].liquid() > 0 && Main.netMode == 2)
 					                {
-					                    NetMessage.buffer[num].writeBuffer[num3] = Main.tile[j, k].liquid;
+					                    NetMessage.buffer[num].writeBuffer[num3] = Main.tile[j, k].liquid();
 					                    num3++;
 					                    byte b52 = Main.tile[j, k].liquidType();
 					                    NetMessage.buffer[num].writeBuffer[num3] = b52;
@@ -1610,7 +1596,7 @@ namespace Terraria
 					        byte[] bytes212 = BitConverter.GetBytes(msgType);
 					        byte[] bytes213 = BitConverter.GetBytes(number);
 					        byte[] bytes214 = BitConverter.GetBytes((int) number2);
-					        byte liquid = Main.tile[number, (int) number2].liquid;
+					        byte liquid = Main.tile[number, (int) number2].liquid();
 					        byte b84 = Main.tile[number, (int) number2].liquidType();
 					        num2 += bytes213.Length + bytes214.Length + 1 + 1;
 					        byte[] bytes215 = BitConverter.GetBytes(num2 - 4);
@@ -2021,41 +2007,8 @@ namespace Terraria
 					    }
                         break;
 					}
-					if (Main.netMode != 1)
-					{
-						goto IL_4EA4;
-					}
-					if (Netplay.clientSock.tcpClient.Connected)
-					{
-						try
-						{
-							NetMessage.buffer[num].spamCount++;
-							Main.txMsg++;
-							Main.txData += num2;
-							Main.txMsgType[msgType]++;
-							Main.txDataType[msgType] += num2;
-							Netplay.clientSock.networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2,
-								new AsyncCallback(Netplay.clientSock.ClientWriteCallBack), Netplay.clientSock.networkStream);
-							goto IL_5B45;
-						}
-						catch
-						{
-							goto IL_5B45;
-						}
-						goto IL_4EA4;
-					}
+					goto IL_4EA4;
 					IL_5B45:
-					if (Main.verboseNetplay)
-					{
-						for (int num14 = 0; num14 < num2; num14++)
-						{
-						}
-						for (int num15 = 0; num15 < num2; num15++)
-						{
-							byte arg_5B7C_0 = NetMessage.buffer[num].writeBuffer[num15];
-						}
-						goto IL_5B8E;
-					}
 					goto IL_5B8E;
 					IL_4EA4:
 					if (remoteClient == -1)

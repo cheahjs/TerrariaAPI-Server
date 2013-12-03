@@ -54,7 +54,7 @@ namespace Terraria
 				{
 					num4 = Main.maxTilesX - 1;
 				}
-				if (Main.gameMenu || (!WorldGen.SolidTile(num4, num5) && Main.tile[num4, num5].wall <= 0))
+				if (Main.gameMenu || (!WorldGen.SolidTile(num4, num5) && Main.tile[num4, num5].wall() <= 0))
 				{
 					Vector2 vector2 = new Vector2(Main.windSpeed * 12f, 14f);
 					Rain.NewRain(vector, vector2);

@@ -398,7 +398,6 @@ namespace Terraria
 		public static float windSpeed = 0f;
 		public static float windSpeedSet = 0f;
 		public static float windSpeedSpeed = 0f;
-		public static Cloud[] cloud = new Cloud[200];
 		public static bool resetClouds = true;
 		public static int sandTiles;
 		public static int evilTiles;
@@ -467,17 +466,13 @@ namespace Terraria
 		public static int[] backgroundWidth = new int[185];
 		public static int[] backgroundHeight = new int[185];
 		public static bool tilesLoaded = false;
-		//public static Map[,] map = new Map[Main.maxTilesX, Main.maxTilesY];
-		public static Tile[,] tile = new Tile[Main.maxTilesX, Main.maxTilesY];
+		public static TileCollection tile;
 		public static Dust[] dust = new Dust[6001];
-		public static Star[] star = new Star[130];
 		public static Item[] item = new Item[401];
 		public static NPC[] npc = new NPC[201];
 		public static Gore[] gore = new Gore[501];
 		public static Rain[] rain = new Rain[Main.maxRain + 1];
 		public static Projectile[] projectile = new Projectile[1001];
-		public static CombatText[] combatText = new CombatText[100];
-		public static ItemText[] itemText = new ItemText[20];
 		public static Chest[] chest = new Chest[1000];
 		public static Sign[] sign = new Sign[1000];
 		public static Vector2 screenPosition;
@@ -491,7 +486,6 @@ namespace Terraria
 		public static int numChatLines = 500;
 		public static int startChatLine = 0;
 		public static string chatText = "";
-		public static ChatLine[] chatLine = new ChatLine[Main.numChatLines];
 		public static bool inputTextEnter = false;
 		public static float[] hotbarScale = new float[]
 		{
@@ -3574,18 +3568,6 @@ namespace Terraria
 			{
 				Main.rain[num7] = new Rain();
 			}
-			for (int num8 = 0; num8 < 200; num8++)
-			{
-				Main.cloud[num8] = new Cloud();
-			}
-			for (int num9 = 0; num9 < 100; num9++)
-			{
-				Main.combatText[num9] = new CombatText();
-			}
-			for (int num10 = 0; num10 < 20; num10++)
-			{
-				Main.itemText[num10] = new ItemText();
-			}
 			for (int num11 = 0; num11 < 1867; num11++)
 			{
 				Item item = new Item();
@@ -3610,10 +3592,6 @@ namespace Terraria
 				Main.availableRecipeY[num12] = (float)(65 * num12);
 			}
 			Recipe.SetupRecipes();
-			for (int num13 = 0; num13 < Main.numChatLines; num13++)
-			{
-				Main.chatLine[num13] = new ChatLine();
-			}
 			for (int num14 = 0; num14 < Liquid.resLiquid; num14++)
 			{
 				Main.liquid[num14] = new Liquid();
@@ -4927,7 +4905,7 @@ namespace Terraria
 						num5 += (int)Main.screenPosition.X;
 						int num7 = num5 / 16;
 						int num8 = num6 / 16;
-						if (Main.tile[num7, num8].wall == 0)
+						if (Main.tile[num7, num8].wall() == 0)
 						{
 							int num9 = Dust.NewDust(new Vector2((float)num5, (float)num6), 10, 10, 76, 0f, 0f, 0, default(Color), 1f);
 							Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
@@ -5329,11 +5307,6 @@ namespace Terraria
 				return;*/
 			}
 			Main.gamePaused = false;
-			if (!Main.dedServ && (double)Main.screenPosition.Y < Main.worldSurface * 16.0 + 16.0 && Main.netMode != 2)
-			{
-				Star.UpdateStars();
-				Cloud.UpdateClouds();
-			}
 			Main.numPlayers = 0;
 			int n = 0;
 			while (n < 255)
@@ -5555,10 +5528,6 @@ namespace Terraria
 					{
 						Main.UpdateServer();
 					}
-					if (Main.netMode == 1)
-					{
-						Main.UpdateClient();
-					}
 					goto IL_2734;
 				}
 				catch
@@ -5574,30 +5543,6 @@ namespace Terraria
 			}
 			goto IL_2727;
 			IL_2734:
-			if (Main.ignoreErrors)
-			{
-				try
-				{
-					for (int num14 = 0; num14 < Main.numChatLines; num14++)
-					{
-						if (Main.chatLine[num14].showTime > 0)
-						{
-							Main.chatLine[num14].showTime--;
-						}
-					}
-					goto IL_27D3;
-				}
-				catch
-				{
-					for (int num15 = 0; num15 < Main.numChatLines; num15++)
-					{
-						Main.chatLine[num15] = new ChatLine();
-					}
-					goto IL_27D3;
-				}
-				goto IL_279A;
-			}
-			goto IL_279A;
 			IL_27D3:
 			Main.upTimer = (float)stopwatch.ElapsedMilliseconds;
 			if (Main.upTimerMaxDelay > 0f)
@@ -5608,20 +5553,8 @@ namespace Terraria
 			Main.upTimerMax = 0f;
 			goto IL_2807;
 			IL_279A:
-			for (int num16 = 0; num16 < Main.numChatLines; num16++)
-			{
-				if (Main.chatLine[num16].showTime > 0)
-				{
-					Main.chatLine[num16].showTime--;
-				}
-			}
 			goto IL_27D3;
 			IL_2727:
-			if (Main.netMode == 1)
-			{
-				Main.UpdateClient();
-				goto IL_2734;
-			}
 			goto IL_2734;
 			IL_2807:
 			if (Main.upTimer > Main.upTimerMax)
@@ -5793,11 +5726,11 @@ namespace Terraria
 		}
 		public static bool canDrawColorTile(int i, int j)
 		{
-			return Main.tile[i, j] != null && Main.tile[i, j].color() > 0 && (int)Main.tile[i, j].color() < Main.numTileColors && Main.tileAltTextureDrawn[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()] && Main.tileAltTextureInit[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()];
+			return true && Main.tile[i, j].color() > 0 && (int)Main.tile[i, j].color() < Main.numTileColors && Main.tileAltTextureDrawn[(int)Main.tile[i, j].type(), (int)Main.tile[i, j].color()] && Main.tileAltTextureInit[(int)Main.tile[i, j].type(), (int)Main.tile[i, j].color()];
 		}
 		public static bool canDrawColorWall(int i, int j)
 		{
-			return Main.tile[i, j] != null && Main.tile[i, j].wallColor() > 0 && Main.wallAltTextureDrawn[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()] && Main.wallAltTextureInit[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()];
+			return true && Main.tile[i, j].wallColor() > 0 && Main.wallAltTextureDrawn[(int)Main.tile[i, j].wall(), (int)Main.tile[i, j].wallColor()] && Main.wallAltTextureInit[(int)Main.tile[i, j].wall(), (int)Main.tile[i, j].wallColor()];
 		}
 		public static float NPCAddHeight(int i)
 		{
@@ -7573,10 +7506,10 @@ namespace Terraria
 			{
 				return false;
 			}
-			if (Main.tile[x, y].active() && Main.tileSolid[(int)Main.tile[x, y].type] && !Main.tileSolidTop[(int)Main.tile[x, y].type] && Main.tile[x, y].type != 10 && Main.tile[x, y].type != 54 && Main.tile[x, y].type != 138 && Main.tile[x, y].type != 191 && Main.tile[x, y].type != 137)
+			if (Main.tile[x, y].active() && Main.tileSolid[(int)Main.tile[x, y].type()] && !Main.tileSolidTop[(int)Main.tile[x, y].type()] && Main.tile[x, y].type() != 10 && Main.tile[x, y].type() != 54 && Main.tile[x, y].type() != 138 && Main.tile[x, y].type() != 191 && Main.tile[x, y].type() != 137)
 			{
-				int frameX = (int)Main.tile[x, y].frameX;
-				int frameY = (int)Main.tile[x, y].frameY;
+				int frameX = (int)Main.tile[x, y].frameX();
+				int frameY = (int)Main.tile[x, y].frameY();
 				if (frameY == 18)
 				{
 					if (frameX >= 18 && frameX <= 54)
@@ -7642,23 +7575,23 @@ namespace Terraria
 			{
 				for (int j = num4; j < num5; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						Main.tile[i, j] = new Tile();
 					}
 					if (Main.tile[i, j].active())
 					{
-						if (Main.tile[i, j].halfBrick() && (Main.tile[i, j - 1].liquid < 16 || WorldGen.SolidTile(i, j - 1)))
+						if (Main.tile[i, j].halfBrick() && (Main.tile[i, j - 1].liquid() < 16 || WorldGen.SolidTile(i, j - 1)))
 						{
-							if (Main.tile[i - 1, j] == null)
+							if (false)
 							{
 								return;
 							}
-							if (Main.tile[i + 1, j] == null)
+							if (false)
 							{
 								return;
 							}
-							if (((int)Main.tile[i - 1, j].liquid > num || (int)Main.tile[i + 1, j].liquid > num) && ((Main.tile[i - 1, j].liquid == 0 && !WorldGen.SolidTile(i - 1, j) && Main.tile[i - 1, j].slope() == 0) || (Main.tile[i + 1, j].liquid == 0 && !WorldGen.SolidTile(i + 1, j) && Main.tile[i + 1, j].slope() == 0)) && Main.wfTileNum < Main.wfTileMax)
+							if (((int)Main.tile[i - 1, j].liquid() > num || (int)Main.tile[i + 1, j].liquid() > num) && ((Main.tile[i - 1, j].liquid() == 0 && !WorldGen.SolidTile(i - 1, j) && Main.tile[i - 1, j].slope() == 0) || (Main.tile[i + 1, j].liquid() == 0 && !WorldGen.SolidTile(i + 1, j) && Main.tile[i + 1, j].slope() == 0)) && Main.wfTileNum < Main.wfTileMax)
 							{
 								Main.wfTileType[Main.wfTileNum] = 0;
 								if (Main.tile[i, j - 1].lava())
@@ -7690,7 +7623,7 @@ namespace Terraria
 								Main.wfTileNum++;
 							}
 						}
-						if (Main.tile[i, j].type == 196 && !WorldGen.SolidTile(i, j + 1) && Main.wfTileNum < Main.wfTileMax)
+						if (Main.tile[i, j].type() == 196 && !WorldGen.SolidTile(i, j + 1) && Main.wfTileNum < Main.wfTileMax)
 						{
 							Main.wfTileType[Main.wfTileNum] = 11;
 							Main.wfTileX[Main.wfTileNum] = i;
@@ -7757,15 +7690,15 @@ namespace Terraria
 				{
 					for (int j = num3; j < num4; j++)
 					{
-						if (Main.tile[i, j] != null)
+						if (true)
 						{
 							if (Main.tile[i, j].active() && Main.tile[i, j].color() > 0)
 							{
-								this.tileColorCheck((int)Main.tile[i, j].type, (int)Main.tile[i, j].color());
+								this.tileColorCheck((int)Main.tile[i, j].type(), (int)Main.tile[i, j].color());
 							}
-							if (Main.tile[i, j].wall > 0 && Main.tile[i, j].wallColor() > 0)
+							if (Main.tile[i, j].wall() > 0 && Main.tile[i, j].wallColor() > 0)
 							{
-								this.wallColorCheck((int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor());
+								this.wallColorCheck((int)Main.tile[i, j].wall(), (int)Main.tile[i, j].wallColor());
 							}
 						}
 					}
@@ -9694,44 +9627,6 @@ namespace Terraria
 				}
 			}
 		}
-		private static void UpdateClient()
-		{
-			if (Main.myPlayer == 255)
-			{
-				Netplay.disconnect = true;
-			}
-			Main.netPlayCounter++;
-			if (Main.netPlayCounter > 3600)
-			{
-				Main.netPlayCounter = 0;
-			}
-			if (Math.IEEERemainder((double)Main.netPlayCounter, 420.0) == 0.0)
-			{
-				NetMessage.SendData(13, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-			}
-			if (Math.IEEERemainder((double)Main.netPlayCounter, 900.0) == 0.0)
-			{
-				NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				NetMessage.SendData(16, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				NetMessage.SendData(40, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-			}
-			if (Netplay.clientSock.active)
-			{
-				Netplay.clientSock.timeOut++;
-				if (!Main.stopTimeOuts && Netplay.clientSock.timeOut > 60 * Main.timeOut)
-				{
-					Main.statusText = Lang.inter[43];
-					Netplay.disconnect = true;
-				}
-			}
-			for (int i = 0; i < 400; i++)
-			{
-				if (Main.item[i].active && Main.item[i].owner == Main.myPlayer)
-				{
-					Main.item[i].FindOwner(i);
-				}
-			}
-		}
 		private static void UpdateServer()
 		{
 			Main.netPlayCounter++;
@@ -9797,75 +9692,6 @@ namespace Terraria
 		}
 		public static void NewText(string newText, byte R = 255, byte G = 255, byte B = 255, bool force = false)
 		{
-			int num = 80;
-			if (!force && newText.Length > num)
-			{
-				string text = newText;
-				while (text.Length > num)
-				{
-					int num2 = num;
-					int num3 = num2;
-					while (text.Substring(num3, 1) != " ")
-					{
-						num3--;
-						if (num3 < 1)
-						{
-							break;
-						}
-					}
-					if (num3 == 0)
-					{
-						while (text.Substring(num2, 1) != " ")
-						{
-							num2++;
-							if (num2 >= text.Length - 1)
-							{
-								break;
-							}
-						}
-					}
-					else
-					{
-						num2 = num3;
-					}
-					if (num2 >= text.Length - 1)
-					{
-						num2 = text.Length;
-					}
-					string newText2 = text.Substring(0, num2);
-					Main.NewText(newText2, R, G, B, true);
-					text = text.Substring(num2);
-					if (text.Length > 0)
-					{
-						while (text.Substring(0, 1) == " ")
-						{
-							text = text.Substring(1);
-						}
-					}
-				}
-				if (text.Length > 0)
-				{
-					Main.NewText(text, R, G, B, true);
-				}
-				return;
-			}
-			for (int i = Main.numChatLines - 1; i > 0; i--)
-			{
-				Main.chatLine[i].text = Main.chatLine[i - 1].text;
-				Main.chatLine[i].showTime = Main.chatLine[i - 1].showTime;
-				Main.chatLine[i].color = Main.chatLine[i - 1].color;
-			}
-			if (R == 0 && G == 0 && B == 0)
-			{
-				Main.chatLine[0].color = Color.White;
-			}
-			else
-			{
-				Main.chatLine[0].color = new Color((int)R, (int)G, (int)B);
-			}
-			Main.chatLine[0].text = newText;
-			Main.chatLine[0].showTime = Main.chatLength;
-			Main.PlaySound(12, -1, -1, 1);
 		}
 		public static void StopRain()
 		{
