@@ -3,54 +3,68 @@ using System.Runtime.InteropServices;
 
 namespace Terraria
 {
+	[StructLayout(LayoutKind.Sequential, Pack = 1)]
+	public struct TileData
+	{
+		public byte header;
+		public byte header2;
+		public byte header3;
+		public byte header4;
+		public byte type;
+		public byte wall;
+		public byte liquid;
+		public short frameX;
+		public short frameY;
+	}
+
 	public unsafe struct Tile
 	{
-		internal byte* ptr;
+		internal TileData* ptr;
 
-		internal Tile(byte* ptr)
+		internal Tile(TileData* ptr)
 		{
 			this.ptr = ptr;
 		}
 
 		public bool active()
 		{
-			return (*ptr & 0x01) != 0;
+			return (ptr->header & 0x01) != 0;
 		}
 		public void active(bool active)
 		{
-			*ptr = (byte)((*ptr & 0xfe) | (*(byte*)&active));
+			ptr->header = (byte)((ptr->header & 0xfe) | (*(byte*)&active));
 		}
 		public bool actuator()
 		{
-			return (*ptr & 0x40) != 0;
+			return (ptr->header & 0x40) != 0;
 		}
 		public void actuator(bool actuator)
 		{
-			*ptr = (byte)((*ptr & 0xbf) | (*(byte*)&actuator << 6));
+			ptr->header = (byte)((ptr->header & 0xbf) | (*(byte*)&actuator << 6));
 		}
 		public bool checkingLiquid()
 		{
-			return (*ptr & 0x02) != 0;
+			return (ptr->header & 0x02) != 0;
 		}
 		public void checkingLiquid(bool checkingLiquid)
 		{
-			*ptr = (byte)((*ptr & 0xfd) | (*(byte*)&checkingLiquid << 1));
+			ptr->header = (byte)((ptr->header & 0xfd) | (*(byte*)&checkingLiquid << 1));
 		}
 		public byte color()
 		{
-			return (byte)((*(ptr + 1) >> 2) & 0x1f);
+			return (byte)((ptr->header2 >> 2) & 0x1f);
 		}
 		public void color(byte color)
 		{
-			*(ptr + 1) = (byte)((*(ptr + 1) & 0x83) | (*(byte*)&color << 2));
+			ptr->header2 = (byte)((ptr->header2 & 0x83) | (*(byte*)&color << 2));
 		}
 		public byte frameNumber()
 		{
-			return (byte)(*(ptr + 3) & 0x03);
+			return (byte)(ptr->header3 & 0x03);
 		}
 		public void frameNumber(byte frameNumber)
 		{
-			*(ptr + 3) = (byte)((*(ptr + 3) & 0xfc) | frameNumber);
+			ptr->header3 = (byte)((ptr->header3 & 0xfc) | frameNumber);
 		}
 		public short frameX()
 		{
@@ -70,43 +84,43 @@ namespace Terraria
 		}
 		public bool halfBrick()
 		{
-			return (*ptr & 0x20) != 0;
+			return (ptr->header & 0x20) != 0;
 		}
 		public void halfBrick(bool halfBrick)
 		{
-			*ptr = (byte)((*ptr & 0xdf) | (*(byte*)&halfBrick << 5));
+			ptr->header = (byte)((ptr->header & 0xdf) | (*(byte*)&halfBrick << 5));
 		}
 		public bool honey()
 		{
-			return (*(ptr + 1) & 0x80) != 0;
+			return (ptr->header2 & 0x80) != 0;
 		}
 		public void honey(bool honey)
 		{
-			*(ptr + 1) = (byte)((*(ptr + 1) & 0x7f) | (*(byte*)&honey << 7));
+			ptr->header2 = (byte)((ptr->header2 & 0x7f) | (*(byte*)&honey << 7));
 		}
 		public bool inActive()
 		{
-			return (*ptr & 0x80) != 0;
+			return (ptr->header & 0x80) != 0;
 		}
 		public void inActive(bool inActive)
 		{
-			*ptr = (byte)((*ptr & 0x7f) | (*(byte*)&inActive << 7));
+			ptr->header = (byte)((ptr->header & 0x7f) | (*(byte*)&inActive << 7));
 		}
 		public bool lava()
 		{
-			return (*ptr & 0x08) != 0;
+			return (ptr->header & 0x08) != 0;
 		}
 		public void lava(bool lava)
 		{
-			*ptr = (byte)((*ptr & 0xf7) | (*(byte*)&lava << 3));
+			ptr->header = (byte)((ptr->header & 0xf7) | (*(byte*)&lava << 3));
 		}
 		public byte liquid()
 		{
-			return *(ptr + 6);
+			return ptr->liquid;
 		}
 		public void liquid(byte liquid)
 		{
-			*(ptr + 6) = liquid;
+			ptr->liquid = liquid;
 		}
 		public byte liquidType()
 		{
@@ -123,71 +137,71 @@ namespace Terraria
 		}
 		public bool nactive()
 		{
-			return (*ptr & 0x81) == 0x01;
+			return (ptr->header & 0x81) == 0x01;
 		}
 		public bool skipLiquid()
 		{
-			return (*ptr & 0x04) != 0;
+			return (ptr->header & 0x04) != 0;
 		}
 		public void skipLiquid(bool skipLiquid)
 		{
-			*ptr = (byte)((*ptr & 0xfb) | (*(byte*)&skipLiquid << 2));
+			ptr->header = (byte)((ptr->header & 0xfb) | (*(byte*)&skipLiquid << 2));
 		}
 		public byte slope()
 		{
-			return (byte)((*(ptr + 2) >> 5) & 0x03);
+			return (byte)((ptr->header3 >> 5) & 0x03);
 		}
 		public void slope(byte slope)
 		{
-			*(ptr + 2) = (byte)((*(ptr + 2) & 0x3f) | slope << 5);
+			ptr->header3 = (byte)((ptr->header3 & 0x3f) | slope << 5);
 		}
 		public byte type()
 		{
-			return *(ptr + 4);
+			return ptr->type;
 		}
 		public void type(byte type)
 		{
-			*(ptr + 4) = type;
+			ptr->type = type;
 		}
 		public byte wall()
 		{
-			return *(ptr + 5);
+			return ptr->wall;
 		}
 		public void wall(byte wall)
 		{
-			*(ptr + 5) = wall;
+			ptr->wall = wall;
 		}
 		public byte wallColor()
 		{
-			return (byte)(*(ptr + 2) & 0x1f);
+			return (byte)(ptr->header3 & 0x1f);
 		}
 		public void wallColor(byte wallColor)
 		{
-			*(ptr + 2) = (byte)((*(ptr + 2) & 0x1f) | wallColor);
+			ptr->header3 = (byte)((ptr->header3 & 0x1f) | wallColor);
 		}
 		public bool wire()
 		{
-			return (*ptr & 0x10) != 0;
+			return (ptr->header & 0x10) != 0;
 		}
 		public void wire(bool wire)
 		{
-			*ptr = (byte)((*ptr & 0xef) | (*(byte*)&wire << 4));
+			ptr->header = (byte)((ptr->header & 0xef) | (*(byte*)&wire << 4));
 		}
 		public bool wire2()
 		{
-			return (*(ptr + 1) & 0x01) != 0;
+			return (ptr->header2 & 0x01) != 0;
 		}
 		public void wire2(bool wire2)
 		{
-			*(ptr + 1) = (byte)((*(ptr + 1) & 0xfe) | (*(byte*)&wire2));
+			ptr->header2 = (byte)((ptr->header2 & 0xfe) | (*(byte*)&wire2));
 		}
 		public bool wire3()
 		{
-			return (*(ptr + 1) & 0x02) != 0;
+			return (ptr->header2 & 0x02) != 0;
 		}
 		public void wire3(bool wire3)
 		{
-			*(ptr + 1) = (byte)((*(ptr + 1) & 0xfd) | (*(byte*)&wire3 << 1));
+			ptr->header2 = (byte)((ptr->header2 & 0xfd) | (*(byte*)&wire3 << 1));
 		}
 
 		public bool isTheSameAs(Tile other)

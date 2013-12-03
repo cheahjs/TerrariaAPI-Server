@@ -2408,16 +2408,10 @@ namespace Terraria
 										int num3 = (int)binaryReader.ReadInt16();
 										if (num3 > 0)
 										{
+											var tileData = Main.tile.GetData(j, k);
 											for (int l = k + 1; l < k + num3 + 1; l++)
 											{
-												byte* ptr = tile.ptr;
-												byte* ptr2 = Main.tile[j, l].ptr;
-												for (int i = 0; i < BYTES_PER_TILE; i++)
-												{
-													*ptr2 = *ptr;
-													ptr++;
-													ptr2++;
-												}
+												Main.tile.data[l * Main.maxTilesX + j] = tileData;
 											}
 											k += num3;
 										}
