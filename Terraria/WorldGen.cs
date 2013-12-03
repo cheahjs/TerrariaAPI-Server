@@ -345,10 +345,10 @@ namespace Terraria
 				return false;
 			}
 			int num = 0;
-			int num2 = WorldGen.roomX1 - Main.zoneX / 2 / 16 - 1 - Lighting.offScreenTiles;
-			int num3 = WorldGen.roomX2 + Main.zoneX / 2 / 16 + 1 + Lighting.offScreenTiles;
-			int num4 = WorldGen.roomY1 - Main.zoneY / 2 / 16 - 1 - Lighting.offScreenTiles;
-			int num5 = WorldGen.roomY2 + Main.zoneY / 2 / 16 + 1 + Lighting.offScreenTiles;
+			int num2 = WorldGen.roomX1 - Main.zoneX / 2 / 16 - 1 - 45;
+			int num3 = WorldGen.roomX2 + Main.zoneX / 2 / 16 + 1 + 45;
+			int num4 = WorldGen.roomY1 - Main.zoneY / 2 / 16 - 1 - 45;
+			int num5 = WorldGen.roomY2 + Main.zoneY / 2 / 16 + 1 + 45;
 			if (num2 < 0)
 			{
 				num2 = 0;
@@ -666,10 +666,10 @@ namespace Terraria
 			WorldGen.hiScore = 0;
 			int num = 50;
 			int num2 = 0;
-			int num3 = WorldGen.roomX1 - Main.zoneX / 2 / 16 - 1 - Lighting.offScreenTiles;
-			int num4 = WorldGen.roomX2 + Main.zoneX / 2 / 16 + 1 + Lighting.offScreenTiles;
-			int num5 = WorldGen.roomY1 - Main.zoneY / 2 / 16 - 1 - Lighting.offScreenTiles;
-			int num6 = WorldGen.roomY2 + Main.zoneY / 2 / 16 + 1 + Lighting.offScreenTiles;
+			int num3 = WorldGen.roomX1 - Main.zoneX / 2 / 16 - 1 - 45;
+			int num4 = WorldGen.roomX2 + Main.zoneX / 2 / 16 + 1 + 45;
+			int num5 = WorldGen.roomY1 - Main.zoneY / 2 / 16 - 1 - 45;
+			int num6 = WorldGen.roomY2 + Main.zoneY / 2 / 16 + 1 + 45;
 			if (num3 < 0)
 			{
 				num3 = 0;
@@ -2037,7 +2037,6 @@ namespace Terraria
 				Main.windSpeed = (float)WorldGen.genRand.Next(-100, 101) * 0.01f;
 				Main.windSpeedSet = Main.windSpeed;
 			}
-			Cloud.resetClouds();
 		}
 		public static void loadWorld()
 		{
@@ -2606,7 +2605,6 @@ namespace Terraria
 								}
 								Liquid.quickSettle = false;
 								Main.weatherCounter = WorldGen.genRand.Next(3600, 18000);
-								Cloud.resetClouds();
 								WorldGen.WaterCheck();
 								WorldGen.gen = false;
 							}

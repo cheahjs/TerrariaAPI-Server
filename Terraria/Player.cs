@@ -418,19 +418,9 @@ namespace Terraria
 		public int potionDelayTime = Item.potionDelay;
 		public void HealEffect(int healAmount, bool broadcast = true)
 		{
-			CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(100, 255, 100, 255), string.Concat(healAmount), false, false);
-			if (broadcast && Main.netMode == 1 && this.whoAmi == Main.myPlayer)
-			{
-				NetMessage.SendData(35, -1, -1, "", this.whoAmi, (float)healAmount, 0f, 0f, 0);
-			}
 		}
 		public void ManaEffect(int manaAmount)
 		{
-			CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(100, 100, 255, 255), string.Concat(manaAmount), false, false);
-			if (Main.netMode == 1 && this.whoAmi == Main.myPlayer)
-			{
-				NetMessage.SendData(43, -1, -1, "", this.whoAmi, (float)manaAmount, 0f, 0f, 0);
-			}
 		}
 		public static byte FindClosest(Vector2 Position, int Width, int Height)
 		{
@@ -1170,27 +1160,27 @@ namespace Terraria
 					this.ghostFrame = 0;
 				}
 			}
-			if (this.position.X < Main.leftWorld + (float)(Lighting.offScreenTiles * 16) + 16f)
+			if (this.position.X < Main.leftWorld + (float)(45 * 16) + 16f)
 			{
-				this.position.X = Main.leftWorld + (float)(Lighting.offScreenTiles * 16) + 16f;
+				this.position.X = Main.leftWorld + (float)(45 * 16) + 16f;
 				this.velocity.X = 0f;
 			}
-			if (this.position.X + (float)this.width > Main.rightWorld - (float)(Lighting.offScreenTiles * 16) - 32f)
+			if (this.position.X + (float)this.width > Main.rightWorld - (float)(45 * 16) - 32f)
 			{
-				this.position.X = Main.rightWorld - (float)(Lighting.offScreenTiles * 16) - 32f - (float)this.width;
+				this.position.X = Main.rightWorld - (float)(45 * 16) - 32f - (float)this.width;
 				this.velocity.X = 0f;
 			}
-			if (this.position.Y < Main.topWorld + (float)(Lighting.offScreenTiles * 16) + 16f)
+			if (this.position.Y < Main.topWorld + (float)(45 * 16) + 16f)
 			{
-				this.position.Y = Main.topWorld + (float)(Lighting.offScreenTiles * 16) + 16f;
+				this.position.Y = Main.topWorld + (float)(45 * 16) + 16f;
 				if ((double)this.velocity.Y < -0.1)
 				{
 					this.velocity.Y = -0.1f;
 				}
 			}
-			if (this.position.Y > Main.bottomWorld - (float)(Lighting.offScreenTiles * 16) - 32f - (float)this.height)
+			if (this.position.Y > Main.bottomWorld - (float)(45 * 16) - 32f - (float)this.height)
 			{
-				this.position.Y = Main.bottomWorld - (float)(Lighting.offScreenTiles * 16) - 32f - (float)this.height;
+				this.position.Y = Main.bottomWorld - (float)(45 * 16) - 32f - (float)this.height;
 				this.velocity.Y = 0f;
 			}
 		}
@@ -4694,25 +4684,21 @@ namespace Terraria
 								{
 									this.lifeRegenCount += 480;
 									this.statLife -= 4;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(4), false, true);
 								}
 								else if (this.lifeRegenCount <= -360)
 								{
 									this.lifeRegenCount += 360;
 									this.statLife -= 3;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(3), false, true);
 								}
 								else if (this.lifeRegenCount <= -240)
 								{
 									this.lifeRegenCount += 240;
 									this.statLife -= 2;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(2), false, true);
 								}
 								else
 								{
 									this.lifeRegenCount += 120;
 									this.statLife--;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(1), false, true);
 								}
 								if (this.statLife <= 0 && this.whoAmi == Main.myPlayer)
 								{
@@ -4733,7 +4719,6 @@ namespace Terraria
 					{
 						this.lifeRegenCount += 600;
 						this.statLife -= 5;
-						CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(5), false, true);
 						if (this.statLife <= 0 && this.whoAmi == Main.myPlayer)
 						{
 							if (this.suffocating)
@@ -10517,7 +10502,6 @@ namespace Terraria
 					NetMessage.SendData(16, -1, -1, "", this.whoAmi, 0f, 0f, 0f, 0);
 					NetMessage.SendData(26, -1, -1, "", this.whoAmi, (float)hitDirection, (float)Damage, (float)num7, number);
 				}
-				CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 80, 90, 255), string.Concat((int)num2), Crit, false);
 				this.statLife -= (int)num2;
 				this.immune = true;
 				if (num2 == 1.0)
@@ -10834,7 +10818,6 @@ namespace Terraria
 					if (newItem.stack + this.inventory[i].stack <= this.inventory[i].maxStack)
 					{
 						this.inventory[i].stack += newItem.stack;
-						ItemText.NewText(newItem, newItem.stack);
 						this.DoCoins(i);
 						if (plr == Main.myPlayer)
 						{
@@ -10843,7 +10826,6 @@ namespace Terraria
 						return new Item();
 					}
 					newItem.stack -= this.inventory[i].maxStack - this.inventory[i].stack;
-					ItemText.NewText(newItem, this.inventory[i].maxStack - this.inventory[i].stack);
 					this.inventory[i].stack = this.inventory[i].maxStack;
 					this.DoCoins(i);
 					if (plr == Main.myPlayer)
@@ -10859,7 +10841,6 @@ namespace Terraria
 					if (this.inventory[j].type == 0)
 					{
 						this.inventory[j] = newItem;
-						ItemText.NewText(newItem, newItem.stack);
 						this.DoCoins(j);
 						Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 						if (plr == Main.myPlayer)
@@ -10907,7 +10888,6 @@ namespace Terraria
 					if (item.stack + this.inventory[num3].stack <= this.inventory[num3].maxStack)
 					{
 						this.inventory[num3].stack += item.stack;
-						ItemText.NewText(newItem, item.stack);
 						this.DoCoins(num3);
 						if (plr == Main.myPlayer)
 						{
@@ -10916,7 +10896,6 @@ namespace Terraria
 						return new Item();
 					}
 					item.stack -= this.inventory[num3].maxStack - this.inventory[num3].stack;
-					ItemText.NewText(newItem, this.inventory[num3].maxStack - this.inventory[num3].stack);
 					this.inventory[num3].stack = this.inventory[num3].maxStack;
 					this.DoCoins(num3);
 					if (plr == Main.myPlayer)
@@ -10932,7 +10911,6 @@ namespace Terraria
 					if (this.inventory[j].type == 0)
 					{
 						this.inventory[j] = item;
-						ItemText.NewText(newItem, newItem.stack);
 						this.DoCoins(j);
 						Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 						if (plr == Main.myPlayer)
@@ -10948,7 +10926,6 @@ namespace Terraria
 				if (this.inventory[k].type == 0)
 				{
 					this.inventory[k] = item;
-					ItemText.NewText(newItem, newItem.stack);
 					this.DoCoins(k);
 					Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 					if (plr == Main.myPlayer)

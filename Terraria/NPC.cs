@@ -29237,17 +29237,6 @@ namespace Terraria
 			{
 				num *= 2.0;
 			}
-			if (Damage != 9999 && this.lifeMax > 1)
-			{
-				if (this.friendly)
-				{
-					CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 80, 90, 255), string.Concat((int)num), crit, false);
-				}
-				else
-				{
-					CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 160, 80, 255), string.Concat((int)num), crit, false);
-				}
-			}
 			if (num >= 1.0)
 			{
 				this.justHit = true;
@@ -35431,7 +35420,6 @@ namespace Terraria
 							num9 = this.realLife;
 						}
 						Main.npc[num9].life--;
-						CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 140, 40, 255), string.Concat(1), false, true);
 						if (Main.npc[num9].life <= 0)
 						{
 							Main.npc[num9].life = 1;
