@@ -42,7 +42,7 @@ namespace Terraria
 		}
 		public void color(byte color)
 		{
-			*(ptr + 1) = (byte)((*(ptr + 1) & 0xfc) | (*(byte*)&color << 2));
+			*(ptr + 1) = (byte)((*(ptr + 1) & 0x83) | (*(byte*)&color << 2));
 		}
 		public byte frameNumber()
 		{
