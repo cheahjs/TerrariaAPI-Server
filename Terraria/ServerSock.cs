@@ -33,7 +33,6 @@ namespace Terraria
 		public float spamDelBlockMax = 500f;
 		public float spamWaterMax = 50f;
 		public byte[] readBuffer;
-		public byte[] writeBuffer;
 		public DateTime connectTime;
 
 		public void SpamUpdate()

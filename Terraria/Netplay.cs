@@ -355,7 +355,6 @@ namespace Terraria
 				Netplay.serverSock[i].tcpClient = new TcpClient();
 				Netplay.serverSock[i].tcpClient.NoDelay = true;
 				Netplay.serverSock[i].readBuffer = new byte[1024];
-				Netplay.serverSock[i].writeBuffer = new byte[1024];
 			}
 			Netplay.tcpListener = new TcpListener(Netplay.serverListenIP, Netplay.serverPort);
 			try

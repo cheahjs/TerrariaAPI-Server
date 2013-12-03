@@ -5,10 +5,10 @@ namespace Terraria
 {
 	public class messageBuffer
 	{
-		public const int readBufferMax = 65535;
+		public const int readBufferMax = 1024;
 		public const int writeBufferMax = 65535;
 		public bool broadcast;
-		public byte[] readBuffer = new byte[65535];
+		public byte[] readBuffer = new byte[1024];
 		public byte[] writeBuffer = new byte[65535];
 		public bool writeLocked;
 		public int messageLength;
