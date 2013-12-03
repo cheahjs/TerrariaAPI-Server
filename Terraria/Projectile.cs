@@ -4264,7 +4264,7 @@ namespace Terraria
 					{
 						for (int j = num3; j < num4; ++j)
 						{
-							if (Main.tile[i, j] != null && Main.tileCut[(int)Main.tile[i, j].type] && (Main.tile[i, j + 1] != null && (int)Main.tile[i, j + 1].type != 78))
+							if (true && Main.tileCut[(int)Main.tile[i, j].type] && (true && (int)Main.tile[i, j + 1].type != 78))
 							{
 								WorldGen.KillTile(i, j, false, false, false);
 								if (Main.netMode != 0)
@@ -7299,7 +7299,7 @@ namespace Terraria
 						int num104 = num101;
 						while (num104 < num102)
 						{
-							if (Main.tile[num103, num104] == null)
+							if (false)
 							{
 								Main.tile[num103, num104] = new Tile();
 							}
@@ -7446,7 +7446,7 @@ namespace Terraria
 					{
 						for (int num117 = num114; num117 < num115; num117++)
 						{
-							if (Main.tile[num116, num117] == null)
+							if (false)
 							{
 								Main.tile[num116, num117] = new Tile();
 							}
@@ -8208,7 +8208,7 @@ namespace Terraria
 						{
 							for (int num197 = num194; num197 < num195; num197++)
 							{
-								if (Main.tile[num196, num197] != null && Main.tile[num196, num197].nactive() && (Main.tileSolid[(int)Main.tile[num196, num197].type] || (Main.tileSolidTop[(int)Main.tile[num196, num197].type] && Main.tile[num196, num197].frameY == 0)))
+								if (true && Main.tile[num196, num197].nactive() && (Main.tileSolid[(int)Main.tile[num196, num197].type] || (Main.tileSolidTop[(int)Main.tile[num196, num197].type] && Main.tile[num196, num197].frameY == 0)))
 								{
 									Vector2 vector13;
 									vector13.X = (float)(num196 * 16);
@@ -8564,7 +8564,7 @@ namespace Terraria
 						{
 							for (int num227 = num224; num227 < num225; num227++)
 							{
-								if (Main.tile[num226, num227] != null && Main.tile[num226, num227].nactive() && (Main.tileSolid[(int)Main.tile[num226, num227].type] || (Main.tileSolidTop[(int)Main.tile[num226, num227].type] && Main.tile[num226, num227].frameY == 0)))
+								if (true && Main.tile[num226, num227].nactive() && (Main.tileSolid[(int)Main.tile[num226, num227].type] || (Main.tileSolidTop[(int)Main.tile[num226, num227].type] && Main.tile[num226, num227].frameY == 0)))
 								{
 									Vector2 vector15;
 									vector15.X = (float)(num226 * 16);
@@ -8822,7 +8822,7 @@ namespace Terraria
 				{
 					int num235 = (int)((this.position.X + (float)(this.width / 2)) / 16f);
 					int num236 = (int)((this.position.Y + (float)this.height - 4f) / 16f);
-					if (Main.tile[num235, num236] != null && !Main.tile[num235, num236].active())
+					if (true && !Main.tile[num235, num236].active())
 					{
 						int num237 = 0;
 						if (this.type >= 201 && this.type <= 205)
@@ -9256,7 +9256,7 @@ namespace Terraria
 					{
 						for (int num258 = num253; num258 < num254; num258++)
 						{
-							if (Main.tile[num257, num258] != null && Main.tile[num257, num258].active() && Main.tile[num257, num258].type != 127 && Main.tileSolid[(int)Main.tile[num257, num258].type] && !Main.tileSolidTop[(int)Main.tile[num257, num258].type])
+							if (true && Main.tile[num257, num258].active() && Main.tile[num257, num258].type != 127 && Main.tileSolid[(int)Main.tile[num257, num258].type] && !Main.tileSolidTop[(int)Main.tile[num257, num258].type])
 							{
 								Vector2 vector17;
 								vector17.X = (float)(num257 * 16);
@@ -9291,7 +9291,7 @@ namespace Terraria
 					}
 					int num263 = (int)this.position.X / 16;
 					int num264 = (int)this.position.Y / 16;
-					if (Main.tile[num263, num264] == null || !Main.tile[num263, num264].active())
+					if (false || !Main.tile[num263, num264].active())
 					{
 						this.Kill();
 					}
@@ -9335,7 +9335,7 @@ namespace Terraria
 					{
 						for (int num272 = num267; num272 < num268; num272++)
 						{
-							if (Main.tile[num271, num272] != null && Main.tile[num271, num272].nactive() && Main.tile[num271, num272].type != 127 && Main.tileSolid[(int)Main.tile[num271, num272].type] && !Main.tileSolidTop[(int)Main.tile[num271, num272].type])
+							if (true && Main.tile[num271, num272].nactive() && Main.tile[num271, num272].type != 127 && Main.tileSolid[(int)Main.tile[num271, num272].type] && !Main.tileSolidTop[(int)Main.tile[num271, num272].type])
 							{
 								Vector2 vector18;
 								vector18.X = (float)(num271 * 16);
@@ -11459,27 +11459,27 @@ namespace Terraria
 									int num382 = (int)((vector27.X + (float)(this.width / 2) + (float)((this.width / 2 + 1) * num381)) / 16f);
 									int num383 = (int)((vector27.Y + (float)this.height - 1f) / 16f);
 									bool flag13 = false;
-									if (Main.tile[num382, num383] == null)
+									if (false)
 									{
 										Main.tile[num382, num383] = new Tile();
 									}
-									if (num383 - 1 > 0 && Main.tile[num382, num383 - 1] == null)
+									if (num383 - 1 > 0 && false)
 									{
 										Main.tile[num382, num383 - 1] = new Tile();
 									}
-									if (num383 - 2 > 0 && Main.tile[num382, num383 - 2] == null)
+									if (num383 - 2 > 0 && false)
 									{
 										Main.tile[num382, num383 - 2] = new Tile();
 									}
-									if (num383 - 3 > 0 && Main.tile[num382, num383 - 3] == null)
+									if (num383 - 3 > 0 && false)
 									{
 										Main.tile[num382, num383 - 3] = new Tile();
 									}
-									if (num383 - 4 > 0 && Main.tile[num382, num383 - 4] == null)
+									if (num383 - 4 > 0 && false)
 									{
 										Main.tile[num382, num383 - 4] = new Tile();
 									}
-									if (num383 - 3 > 0 && Main.tile[num382 - num381, num383 - 3] == null)
+									if (num383 - 3 > 0 && false)
 									{
 										Main.tile[num382 - num381, num383 - 3] = new Tile();
 									}
@@ -11837,7 +11837,7 @@ namespace Terraria
 								{
 									int num394 = (int)(this.center().X / 16f);
 									int num395 = (int)(this.center().Y / 16f);
-									if (Main.tile[num394, num395] != null && Main.tile[num394, num395].wall > 0)
+									if (true && Main.tile[num394, num395].wall > 0)
 									{
 										this.position.Y = this.position.Y + (float)this.height;
 										this.height = 34;
@@ -12946,9 +12946,9 @@ namespace Terraria
 										int num436 = (int)(this.position.X + (float)(this.width / 2)) / 16;
 										int num437 = (int)(this.position.Y + (float)(this.height / 2)) / 16;
 										int num438 = 10;
-										if (Main.tile[num436, num437] != null)
+										if (true)
 										{
-											while (Main.tile[num436, num437] != null && Main.tile[num436, num437].active())
+											while (true && Main.tile[num436, num437].active())
 											{
 												if (!Main.tileRope[(int)Main.tile[num436, num437].type])
 												{
@@ -12959,7 +12959,7 @@ namespace Terraria
 											while (num438 > 0)
 											{
 												num438--;
-												if (Main.tile[num436, num437] == null)
+												if (false)
 												{
 													break;
 												}
@@ -14267,7 +14267,6 @@ namespace Terraria
 											if (this.owner == Main.myPlayer)
 											{
 												int num566 = (int)this.ai[1];
-												Main.player[num561].HealEffect(num566, false);
 												Main.player[num561].statLife += num566;
 												if (Main.player[num561].statLife > Main.player[num561].statLifeMax)
 												{
@@ -15280,7 +15279,7 @@ namespace Terraria
 					}
 					int i = (int)this.position.X / 16;
 					int j = (int)this.position.Y / 16;
-					if (Main.tile[i, j] == null)
+					if (false)
 						Main.tile[i, j] = new Tile();
 					if ((int)Main.tile[i, j].type == (int)sbyte.MaxValue && Main.tile[i, j].active())
 						WorldGen.KillTile(i, j, false, false, false);
@@ -16479,7 +16478,7 @@ namespace Terraria
 						{
 							float num6 = Math.Abs((float)index1 - this.position.X / 16f);
 							float num7 = Math.Abs((float)index2 - this.position.Y / 16f);
-							if (Math.Sqrt((double)num6 * (double)num6 + (double)num7 * (double)num7) < (double)num1 && Main.tile[index1, index2] != null && (int)Main.tile[index1, index2].wall == 0)
+							if (Math.Sqrt((double)num6 * (double)num6 + (double)num7 * (double)num7) < (double)num1 && true && (int)Main.tile[index1, index2].wall == 0)
 							{
 								flag1 = true;
 								break;
@@ -16495,7 +16494,7 @@ namespace Terraria
 							if (Math.Sqrt((double)num6 * (double)num6 + (double)num7 * (double)num7) < (double)num1)
 							{
 								bool flag2 = true;
-								if (Main.tile[i1, j1] != null && Main.tile[i1, j1].active())
+								if (true && Main.tile[i1, j1].active())
 								{
 									flag2 = true;
 									if (Main.tileDungeon[(int)Main.tile[i1, j1].type] || (int)Main.tile[i1, j1].type == 21 || ((int)Main.tile[i1, j1].type == 26 || (int)Main.tile[i1, j1].type == 107) || ((int)Main.tile[i1, j1].type == 108 || (int)Main.tile[i1, j1].type == 111 || ((int)Main.tile[i1, j1].type == 226 || (int)Main.tile[i1, j1].type == 237)) || ((int)Main.tile[i1, j1].type == 221 || (int)Main.tile[i1, j1].type == 222 || ((int)Main.tile[i1, j1].type == 223 || (int)Main.tile[i1, j1].type == 211)))
@@ -16515,7 +16514,7 @@ namespace Terraria
 									{
 										for (int j2 = j1 - 1; j2 <= j1 + 1; ++j2)
 										{
-											if (Main.tile[i2, j2] != null && (int)Main.tile[i2, j2].wall > 0 && flag1)
+											if (true && (int)Main.tile[i2, j2].wall > 0 && flag1)
 											{
 												WorldGen.KillWall(i2, j2, false);
 												if ((int)Main.tile[i2, j2].wall == 0 && Main.netMode != 0)

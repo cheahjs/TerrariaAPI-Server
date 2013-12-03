@@ -13,7 +13,6 @@ namespace Terraria
 		public const int maxConnections = 256;
 		public static bool stopListen = false;
 		public static ServerSock[] serverSock = new ServerSock[256];
-		public static ClientSock clientSock = new ClientSock();
 		public static TcpListener tcpListener;
 		public static IPAddress serverListenIP = IPAddress.Any;
 		public static IPAddress serverIP = IPAddress.Any;
@@ -356,7 +355,6 @@ namespace Terraria
 				Netplay.serverSock[i].tcpClient = new TcpClient();
 				Netplay.serverSock[i].tcpClient.NoDelay = true;
 				Netplay.serverSock[i].readBuffer = new byte[1024];
-				Netplay.serverSock[i].writeBuffer = new byte[1024];
 			}
 			Netplay.tcpListener = new TcpListener(Netplay.serverListenIP, Netplay.serverPort);
 			try
@@ -756,7 +754,6 @@ namespace Terraria
 				NetMessage.buffer[i] = new messageBuffer();
 				NetMessage.buffer[i].whoAmI = i;
 			}
-			Netplay.clientSock.tcpClient.NoDelay = true;
 		}
 		public static int GetSectionX(int x)
 		{

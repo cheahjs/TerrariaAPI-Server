@@ -18,7 +18,7 @@ namespace Terraria
 			{
 				for (int j = Y; j <= Y + 1; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						Main.tile[i, j] = new Tile();
 					}

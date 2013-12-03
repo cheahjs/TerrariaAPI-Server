@@ -1,7 +1,9 @@
 using System;
+using System.Runtime.InteropServices;
 namespace Terraria
 {
-	public class Tile
+	[StructLayout(LayoutKind.Sequential, Pack = 1)]
+	public unsafe struct Tile
 	{
 		public byte type;
 		public byte wall;
@@ -10,7 +12,6 @@ namespace Terraria
 		public byte tileHeader2;
 		public byte tileHeader3;
 		public byte tileHeader4;
-		public byte tileHeader5;
 		public short frameX;
 		public short frameY;
 		public object Clone()
@@ -19,10 +20,6 @@ namespace Terraria
 		}
 		public bool isTheSameAs(Tile compTile)
 		{
-			if (compTile == null)
-			{
-				return false;
-			}
 			if (this.active() != compTile.active())
 			{
 				return false;
@@ -66,22 +63,6 @@ namespace Terraria
 			}
 			return this.wire() == compTile.wire() && this.wire2() == compTile.wire2() && this.wire3() == compTile.wire3() && this.halfBrick() == compTile.halfBrick() && this.actuator() == compTile.actuator() && this.inActive() == compTile.inActive() && this.wallColor() == compTile.wallColor() && this.color() == compTile.color() && this.slope() == compTile.slope();
 		}
-		public byte wallFrameX()
-		{
-			return (byte)(((this.tileHeader4 & 240) >> 4) * 18);
-		}
-		public void wallFrameX(int wallFrameX)
-		{
-			this.tileHeader4 = (byte)((int)(this.tileHeader4 & 15) | (wallFrameX / 18 & 15) << 4);
-		}
-		public byte wallFrameY()
-		{
-			return (byte)((this.tileHeader5 & 7) * 18);
-		}
-		public void wallFrameY(int wallFrameY)
-		{
-			this.tileHeader5 = (byte)((int)(this.tileHeader5 & 248) | (wallFrameY / 18 & 7));
-		}
 		public byte frameNumber()
 		{
 			return (byte)(this.tileHeader4 & 3);
@@ -89,14 +70,6 @@ namespace Terraria
 		public void frameNumber(byte frameNumber)
 		{
 			this.tileHeader4 = (byte)((this.tileHeader4 & 252) | (frameNumber & 3));
-		}
-		public byte wallFrameNumber()
-		{
-			return (byte)((this.tileHeader4 & 12) >> 2);
-		}
-		public void wallFrameNumber(byte wallFrameNumber)
-		{
-			this.tileHeader4 = (byte)((int)(this.tileHeader4 & 243) | (int)(wallFrameNumber & 3) << 2);
 		}
 		public byte slope()
 		{

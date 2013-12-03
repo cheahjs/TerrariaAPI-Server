@@ -2021,41 +2021,8 @@ namespace Terraria
 					    }
                         break;
 					}
-					if (Main.netMode != 1)
-					{
-						goto IL_4EA4;
-					}
-					if (Netplay.clientSock.tcpClient.Connected)
-					{
-						try
-						{
-							NetMessage.buffer[num].spamCount++;
-							Main.txMsg++;
-							Main.txData += num2;
-							Main.txMsgType[msgType]++;
-							Main.txDataType[msgType] += num2;
-							Netplay.clientSock.networkStream.BeginWrite(NetMessage.buffer[num].writeBuffer, 0, num2,
-								new AsyncCallback(Netplay.clientSock.ClientWriteCallBack), Netplay.clientSock.networkStream);
-							goto IL_5B45;
-						}
-						catch
-						{
-							goto IL_5B45;
-						}
-						goto IL_4EA4;
-					}
+					goto IL_4EA4;
 					IL_5B45:
-					if (Main.verboseNetplay)
-					{
-						for (int num14 = 0; num14 < num2; num14++)
-						{
-						}
-						for (int num15 = 0; num15 < num2; num15++)
-						{
-							byte arg_5B7C_0 = NetMessage.buffer[num].writeBuffer[num15];
-						}
-						goto IL_5B8E;
-					}
 					goto IL_5B8E;
 					IL_4EA4:
 					if (remoteClient == -1)

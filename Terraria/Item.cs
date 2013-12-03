@@ -26732,7 +26732,7 @@ namespace Terraria
             {
                 int index1 = (int)((double)this.position.X + (double)(this.width / 2)) / 16;
                 int index2 = (int)((double)this.position.Y + (double)(this.height / 2)) / 16;
-                if (index1 >= 0 && index2 >= 0 && (index1 < Main.maxTilesX && index2 < Main.maxTilesY) && Main.tile[index1, index2] == null)
+                if (index1 >= 0 && index2 >= 0 && (index1 < Main.maxTilesX && index2 < Main.maxTilesY) && false)
                 {
                     gravity = 0.0f;
                     this.velocity.X = 0.0f;

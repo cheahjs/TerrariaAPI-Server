@@ -960,7 +960,7 @@ namespace Terraria
 			{
 				return;
 			}
-			if (Main.tile[x, y] == null)
+			if (false)
 			{
 				return;
 			}
@@ -1201,7 +1201,7 @@ namespace Terraria
 			{
 				return;
 			}
-			if (Main.tile[x, y] == null)
+			if (false)
 			{
 				return;
 			}
