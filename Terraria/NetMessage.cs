@@ -2007,7 +2007,9 @@ namespace Terraria
 					    }
                         break;
 					}
+					goto IL_4EA4;
 					IL_5B45:
+					goto IL_5B8E;
 					IL_4EA4:
 					if (remoteClient == -1)
 					{

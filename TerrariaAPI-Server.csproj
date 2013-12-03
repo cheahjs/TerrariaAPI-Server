@@ -111,7 +111,6 @@
     <Compile Include="TerrariaApi.Server\ProfilerManager.cs" />
     <Compile Include="TerrariaApi.Server\ServerLogWriter.cs" />
     <Compile Include="Terraria\Lang.cs" />
-    <Compile Include="Terraria\Map.cs" />
     <Compile Include="Terraria\Rain.cs" />
     <Compile Include="Terraria\TileCollection.cs" />
     <Compile Include="XNA\Color.cs" />

@@ -5524,7 +5524,10 @@ namespace Terraria
 			{
 				try
 				{
-					Main.UpdateServer();
+					if (Main.netMode == 2)
+					{
+						Main.UpdateServer();
+					}
 					goto IL_2734;
 				}
 				catch
@@ -5533,10 +5536,13 @@ namespace Terraria
 					goto IL_2734;
 				}
 			}
-			Main.UpdateServer();
+			if (Main.netMode == 2)
+			{
+				Main.UpdateServer();
+				goto IL_2727;
+			}
 			goto IL_2727;
 			IL_2734:
-			goto IL_279A;
 			IL_27D3:
 			Main.upTimer = (float)stopwatch.ElapsedMilliseconds;
 			if (Main.upTimerMaxDelay > 0f)

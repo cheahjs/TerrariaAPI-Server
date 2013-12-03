@@ -29,7 +29,10 @@ namespace Terraria
 		}
 		public void GetData(int start, int length)
 		{
-			Netplay.serverSock[this.whoAmI].timeOut = 0;
+			if (this.whoAmI < 256)
+			{
+				Netplay.serverSock[this.whoAmI].timeOut = 0;
+			}
 			int num = start + 1;
 			byte b = this.readBuffer[start];
 			if (ServerApi.Hooks.InvokeNetGetData(ref b, this, ref num, ref length))
