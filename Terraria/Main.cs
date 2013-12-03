@@ -468,7 +468,7 @@ namespace Terraria
 		public static int[] backgroundHeight = new int[185];
 		public static bool tilesLoaded = false;
 		//public static Map[,] map = new Map[Main.maxTilesX, Main.maxTilesY];
-		public static Tile[,] tile = new Tile[Main.maxTilesX, Main.maxTilesY];
+		public static TileCollection tile;
 		public static Dust[] dust = new Dust[6001];
 		public static Star[] star = new Star[130];
 		public static Item[] item = new Item[401];
@@ -4927,7 +4927,7 @@ namespace Terraria
 						num5 += (int)Main.screenPosition.X;
 						int num7 = num5 / 16;
 						int num8 = num6 / 16;
-						if (Main.tile[num7, num8].wall == 0)
+						if (Main.tile[num7, num8].wall() == 0)
 						{
 							int num9 = Dust.NewDust(new Vector2((float)num5, (float)num6), 10, 10, 76, 0f, 0f, 0, default(Color), 1f);
 							Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
@@ -5793,11 +5793,11 @@ namespace Terraria
 		}
 		public static bool canDrawColorTile(int i, int j)
 		{
-			return Main.tile[i, j] != null && Main.tile[i, j].color() > 0 && (int)Main.tile[i, j].color() < Main.numTileColors && Main.tileAltTextureDrawn[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()] && Main.tileAltTextureInit[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()];
+			return true && Main.tile[i, j].color() > 0 && (int)Main.tile[i, j].color() < Main.numTileColors && Main.tileAltTextureDrawn[(int)Main.tile[i, j].type(), (int)Main.tile[i, j].color()] && Main.tileAltTextureInit[(int)Main.tile[i, j].type(), (int)Main.tile[i, j].color()];
 		}
 		public static bool canDrawColorWall(int i, int j)
 		{
-			return Main.tile[i, j] != null && Main.tile[i, j].wallColor() > 0 && Main.wallAltTextureDrawn[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()] && Main.wallAltTextureInit[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()];
+			return true && Main.tile[i, j].wallColor() > 0 && Main.wallAltTextureDrawn[(int)Main.tile[i, j].wall(), (int)Main.tile[i, j].wallColor()] && Main.wallAltTextureInit[(int)Main.tile[i, j].wall(), (int)Main.tile[i, j].wallColor()];
 		}
 		public static float NPCAddHeight(int i)
 		{
@@ -7573,10 +7573,10 @@ namespace Terraria
 			{
 				return false;
 			}
-			if (Main.tile[x, y].active() && Main.tileSolid[(int)Main.tile[x, y].type] && !Main.tileSolidTop[(int)Main.tile[x, y].type] && Main.tile[x, y].type != 10 && Main.tile[x, y].type != 54 && Main.tile[x, y].type != 138 && Main.tile[x, y].type != 191 && Main.tile[x, y].type != 137)
+			if (Main.tile[x, y].active() && Main.tileSolid[(int)Main.tile[x, y].type()] && !Main.tileSolidTop[(int)Main.tile[x, y].type()] && Main.tile[x, y].type() != 10 && Main.tile[x, y].type() != 54 && Main.tile[x, y].type() != 138 && Main.tile[x, y].type() != 191 && Main.tile[x, y].type() != 137)
 			{
-				int frameX = (int)Main.tile[x, y].frameX;
-				int frameY = (int)Main.tile[x, y].frameY;
+				int frameX = (int)Main.tile[x, y].frameX();
+				int frameY = (int)Main.tile[x, y].frameY();
 				if (frameY == 18)
 				{
 					if (frameX >= 18 && frameX <= 54)
@@ -7642,23 +7642,23 @@ namespace Terraria
 			{
 				for (int j = num4; j < num5; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						Main.tile[i, j] = new Tile();
 					}
 					if (Main.tile[i, j].active())
 					{
-						if (Main.tile[i, j].halfBrick() && (Main.tile[i, j - 1].liquid < 16 || WorldGen.SolidTile(i, j - 1)))
+						if (Main.tile[i, j].halfBrick() && (Main.tile[i, j - 1].liquid() < 16 || WorldGen.SolidTile(i, j - 1)))
 						{
-							if (Main.tile[i - 1, j] == null)
+							if (false)
 							{
 								return;
 							}
-							if (Main.tile[i + 1, j] == null)
+							if (false)
 							{
 								return;
 							}
-							if (((int)Main.tile[i - 1, j].liquid > num || (int)Main.tile[i + 1, j].liquid > num) && ((Main.tile[i - 1, j].liquid == 0 && !WorldGen.SolidTile(i - 1, j) && Main.tile[i - 1, j].slope() == 0) || (Main.tile[i + 1, j].liquid == 0 && !WorldGen.SolidTile(i + 1, j) && Main.tile[i + 1, j].slope() == 0)) && Main.wfTileNum < Main.wfTileMax)
+							if (((int)Main.tile[i - 1, j].liquid() > num || (int)Main.tile[i + 1, j].liquid() > num) && ((Main.tile[i - 1, j].liquid() == 0 && !WorldGen.SolidTile(i - 1, j) && Main.tile[i - 1, j].slope() == 0) || (Main.tile[i + 1, j].liquid() == 0 && !WorldGen.SolidTile(i + 1, j) && Main.tile[i + 1, j].slope() == 0)) && Main.wfTileNum < Main.wfTileMax)
 							{
 								Main.wfTileType[Main.wfTileNum] = 0;
 								if (Main.tile[i, j - 1].lava())
@@ -7690,7 +7690,7 @@ namespace Terraria
 								Main.wfTileNum++;
 							}
 						}
-						if (Main.tile[i, j].type == 196 && !WorldGen.SolidTile(i, j + 1) && Main.wfTileNum < Main.wfTileMax)
+						if (Main.tile[i, j].type() == 196 && !WorldGen.SolidTile(i, j + 1) && Main.wfTileNum < Main.wfTileMax)
 						{
 							Main.wfTileType[Main.wfTileNum] = 11;
 							Main.wfTileX[Main.wfTileNum] = i;
@@ -7757,15 +7757,15 @@ namespace Terraria
 				{
 					for (int j = num3; j < num4; j++)
 					{
-						if (Main.tile[i, j] != null)
+						if (true)
 						{
 							if (Main.tile[i, j].active() && Main.tile[i, j].color() > 0)
 							{
-								this.tileColorCheck((int)Main.tile[i, j].type, (int)Main.tile[i, j].color());
+								this.tileColorCheck((int)Main.tile[i, j].type(), (int)Main.tile[i, j].color());
 							}
-							if (Main.tile[i, j].wall > 0 && Main.tile[i, j].wallColor() > 0)
+							if (Main.tile[i, j].wall() > 0 && Main.tile[i, j].wallColor() > 0)
 							{
-								this.wallColorCheck((int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor());
+								this.wallColorCheck((int)Main.tile[i, j].wall(), (int)Main.tile[i, j].wallColor());
 							}
 						}
 					}

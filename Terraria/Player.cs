@@ -1711,23 +1711,23 @@ namespace Terraria
 				{
 					int num7 = (int)(this.position.X + (float)(this.width / 2)) / 16;
 					int num8 = (int)(this.position.Y + (float)(this.height / 2)) / 16;
-					if (Main.tile[num7, num8] == null)
+					if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7 - 3, num8] == null)
+					else if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7 + 3, num8] == null)
+					else if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7, num8 - 3] == null)
+					else if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7, num8 + 3] == null)
+					else if (false)
 					{
 						flag = true;
 					}
@@ -4897,18 +4897,18 @@ namespace Terraria
 					{
 						int num77 = (int)(this.position.X + (float)(this.width / 2)) / 16;
 						int num78 = (int)(this.position.Y - 8f) / 16;
-						if (Main.tile[num77, num78].active() && Main.tileRope[(int)Main.tile[num77, num78].type])
+						if (Main.tile[num77, num78].active() && Main.tileRope[(int)Main.tile[num77, num78].type()])
 						{
 							float num79 = this.position.Y;
-							if (Main.tile[num77, num78 - 1] == null)
+							if (false)
 							{
 								Main.tile[num77, num78 - 1] = new Tile();
 							}
-							if (Main.tile[num77, num78 + 1] == null)
+							if (false)
 							{
 								Main.tile[num77, num78 + 1] = new Tile();
 							}
-							if ((!Main.tile[num77, num78 - 1].active() || !Main.tileRope[(int)Main.tile[num77, num78 - 1].type]) && (!Main.tile[num77, num78 + 1].active() || !Main.tileRope[(int)Main.tile[num77, num78 + 1].type]))
+							if ((!Main.tile[num77, num78 - 1].active() || !Main.tileRope[(int)Main.tile[num77, num78 - 1].type()]) && (!Main.tile[num77, num78 + 1].active() || !Main.tileRope[(int)Main.tile[num77, num78 + 1].type()]))
 							{
 								num79 = (float)(num78 * 16 + 22);
 							}
@@ -5072,14 +5072,14 @@ namespace Terraria
 								num90 = -1;
 							}
 							int num91 = num86 + num90;
-							if (Main.tile[num91, num87].active() && Main.tileRope[(int)Main.tile[num91, num87].type])
+							if (Main.tile[num91, num87].active() && Main.tileRope[(int)Main.tile[num91, num87].type()])
 							{
 								this.pulleyDir = 1;
 								this.direction = num90;
 								int num92 = num91 * 16 + 8 - this.width / 2;
 								float num93 = this.position.Y;
 								num93 = (float)(num87 * 16 + 22);
-								if ((!Main.tile[num91, num87 - 1].active() || !Main.tileRope[(int)Main.tile[num91, num87 - 1].type]) && (!Main.tile[num91, num87 + 1].active() || !Main.tileRope[(int)Main.tile[num91, num87 + 1].type]))
+								if ((!Main.tile[num91, num87 - 1].active() || !Main.tileRope[(int)Main.tile[num91, num87 - 1].type()]) && (!Main.tile[num91, num87 + 1].active() || !Main.tileRope[(int)Main.tile[num91, num87 + 1].type()]))
 								{
 									num93 = (float)(num87 * 16 + 22);
 								}
@@ -5122,11 +5122,11 @@ namespace Terraria
 						{
 							this.pulley = false;
 						}
-						if (Main.tile[num86, num87] == null)
+						if (false)
 						{
 							Main.tile[num86, num87] = new Tile();
 						}
-						if (!Main.tile[num86, num87].active() || !Main.tileRope[(int)Main.tile[num86, num87].type])
+						if (!Main.tile[num86, num87].active() || !Main.tileRope[(int)Main.tile[num86, num87].type()])
 						{
 							this.pulley = false;
 						}
@@ -5162,15 +5162,15 @@ namespace Terraria
 						int num96 = (int)(this.position.Y - 8f) / 16;
 						bool flag34 = true;
 						bool flag35 = false;
-						if ((Main.tile[num94, num96 - 1].active() && Main.tileRope[(int)Main.tile[num94, num96 - 1].type]) || (Main.tile[num94, num96 + 1].active() && Main.tileRope[(int)Main.tile[num94, num96 + 1].type]))
+						if ((Main.tile[num94, num96 - 1].active() && Main.tileRope[(int)Main.tile[num94, num96 - 1].type()]) || (Main.tile[num94, num96 + 1].active() && Main.tileRope[(int)Main.tile[num94, num96 + 1].type()]))
 						{
 							flag35 = true;
 						}
-						if (Main.tile[num94, num95] == null)
+						if (false)
 						{
 							Main.tile[num94, num95] = new Tile();
 						}
-						if (!Main.tile[num94, num95].active() || !Main.tileRope[(int)Main.tile[num94, num95].type])
+						if (!Main.tile[num94, num95].active() || !Main.tileRope[(int)Main.tile[num94, num95].type()])
 						{
 							flag34 = false;
 							if (this.velocity.Y < 0f)
@@ -7134,71 +7134,71 @@ namespace Terraria
 					}
 					if (this.position.X / 16f - (float)Player.tileRangeX <= (float)Player.tileTargetX && (this.position.X + (float)this.width) / 16f + (float)Player.tileRangeX - 1f >= (float)Player.tileTargetX && this.position.Y / 16f - (float)Player.tileRangeY <= (float)Player.tileTargetY && (this.position.Y + (float)this.height) / 16f + (float)Player.tileRangeY - 2f >= (float)Player.tileTargetY)
 					{
-						if (Main.tile[Player.tileTargetX, Player.tileTargetY] == null)
+						if (false)
 						{
 							Main.tile[Player.tileTargetX, Player.tileTargetY] = new Tile();
 						}
 						if (Main.tile[Player.tileTargetX, Player.tileTargetY].active())
 						{
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 104)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 104)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 359;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 79)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 79)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 36)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 36)
 								{
 									this.showItemIcon2 = 224;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 72)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 72)
 								{
 									this.showItemIcon2 = 644;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 108)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 108)
 								{
 									this.showItemIcon2 = 645;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 144)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 144)
 								{
 									this.showItemIcon2 = 646;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 180)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 180)
 								{
 									this.showItemIcon2 = 920;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 216)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 216)
 								{
 									this.showItemIcon2 = 1470;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 252)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 252)
 								{
 									this.showItemIcon2 = 1471;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 288)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 288)
 								{
 									this.showItemIcon2 = 1472;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 324)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 324)
 								{
 									this.showItemIcon2 = 1473;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 358)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 358)
 								{
 									this.showItemIcon2 = 1719;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 396)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 396)
 								{
 									this.showItemIcon2 = 1720;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 432)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 432)
 								{
 									this.showItemIcon2 = 1721;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY < 468)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() < 468)
 								{
 									this.showItemIcon2 = 1722;
 								}
@@ -7207,20 +7207,20 @@ namespace Terraria
 									this.showItemIcon2 = 646;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 209)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 209)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX < 72)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() < 72)
 								{
 									this.showItemIcon2 = 928;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX < 144)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() < 144)
 								{
 									this.showItemIcon2 = 1337;
 								}
 								int num177;
-								for (num177 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18); num177 >= 4; num177 -= 4)
+								for (num177 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() / 18); num177 >= 4; num177 -= 4)
 								{
 								}
 								if (num177 < 2)
@@ -7232,11 +7232,11 @@ namespace Terraria
 									this.showItemIconR = false;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 216)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 216)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								int num178 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY].frameY;
+								int num178 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY].frameY();
 								int num179 = 0;
 								while (num178 >= 40)
 								{
@@ -7245,121 +7245,121 @@ namespace Terraria
 								}
 								this.showItemIcon2 = 970 + num179;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 212)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 212)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 949;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 21)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 21)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 972)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 972)
 								{
 									this.showItemIcon2 = 1537;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 936)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 936)
 								{
 									this.showItemIcon2 = 1536;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 900)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 900)
 								{
 									this.showItemIcon2 = 1535;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 864)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 864)
 								{
 									this.showItemIcon2 = 1534;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 828)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 828)
 								{
 									this.showItemIcon2 = 1533;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 792)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 792)
 								{
 									this.showItemIcon2 = 1532;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 756)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 756)
 								{
 									this.showItemIcon2 = 1531;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 720)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 720)
 								{
 									this.showItemIcon2 = 1530;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 684)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 684)
 								{
 									this.showItemIcon2 = 1529;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 648)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 648)
 								{
 									this.showItemIcon2 = 1528;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 612)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 612)
 								{
 									this.showItemIcon2 = 1298;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 576)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 576)
 								{
 									this.showItemIcon2 = 1142;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 540)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 540)
 								{
 									this.showItemIcon2 = 952;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 504)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 504)
 								{
 									this.showItemIcon2 = 914;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 468)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 468)
 								{
 									this.showItemIcon2 = 838;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 432)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 432)
 								{
 									this.showItemIcon2 = 831;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 396)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 396)
 								{
 									this.showItemIcon2 = 681;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 360)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 360)
 								{
 									this.showItemIcon2 = 680;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 324)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 324)
 								{
 									this.showItemIcon2 = 627;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 288)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 288)
 								{
 									this.showItemIcon2 = 626;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 252)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 252)
 								{
 									this.showItemIcon2 = 625;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 216)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 216)
 								{
 									this.showItemIcon2 = 348;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 180)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 180)
 								{
 									this.showItemIcon2 = 343;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 144)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 144)
 								{
 									this.showItemIcon2 = 329;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 108)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 108)
 								{
 									this.showItemIcon2 = 328;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 72)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 72)
 								{
 									this.showItemIcon2 = 327;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 36)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 36)
 								{
 									this.showItemIcon2 = 306;
 								}
@@ -7368,11 +7368,11 @@ namespace Terraria
 									this.showItemIcon2 = 48;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 4)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 4)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								int num180 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 22);
+								int num180 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() / 22);
 								if (num180 == 0)
 								{
 									this.showItemIcon2 = 8;
@@ -7398,23 +7398,23 @@ namespace Terraria
 									this.showItemIcon2 = 426 + num180;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 13)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 13)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 72)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 72)
 								{
 									this.showItemIcon2 = 351;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 54)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 54)
 								{
 									this.showItemIcon2 = 350;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 18)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 18)
 								{
 									this.showItemIcon2 = 28;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 36)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 36)
 								{
 									this.showItemIcon2 = 110;
 								}
@@ -7423,24 +7423,24 @@ namespace Terraria
 									this.showItemIcon2 = 31;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 29)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 29)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 87;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 97)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 97)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 346;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 33)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 33)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 105;
-								int num181 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 22);
+								int num181 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() / 22);
 								if (num181 == 1)
 								{
 									this.showItemIcon2 = 1405;
@@ -7454,28 +7454,28 @@ namespace Terraria
 									this.showItemIcon2 = 1407;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 49)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 49)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 148;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 50)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 50)
 							{
 								this.noThrow = 2;
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 90)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 90)
 								{
 									this.showItemIcon = true;
 									this.showItemIcon2 = 165;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 139)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 139)
 							{
 								this.noThrow = 2;
 								int num182 = Player.tileTargetX;
 								int num183 = Player.tileTargetY;
 								int num184 = 0;
-								for (int num185 = (int)(Main.tile[num182, num183].frameY / 18); num185 >= 2; num185 -= 2)
+								for (int num185 = (int)(Main.tile[num182, num183].frameY() / 18); num185 >= 2; num185 -= 2)
 								{
 									num184++;
 								}
@@ -7489,13 +7489,13 @@ namespace Terraria
 									this.showItemIcon2 = 562 + num184;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 207)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 207)
 							{
 								this.noThrow = 2;
 								int num186 = Player.tileTargetX;
 								int num187 = Player.tileTargetY;
 								int num188 = 0;
-								for (int num189 = (int)(Main.tile[num186, num187].frameX / 18); num189 >= 2; num189 -= 2)
+								for (int num189 = (int)(Main.tile[num186, num187].frameX() / 18); num189 >= 2; num189 -= 2)
 								{
 									num188++;
 								}
@@ -7533,11 +7533,11 @@ namespace Terraria
 									this.showItemIcon2 = 945;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 55 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 85)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 55 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 85)
 							{
 								this.noThrow = 2;
-								int num190 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18);
-								int num191 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 18);
+								int num190 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() / 18);
+								int num191 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() / 18);
 								while (num190 > 1)
 								{
 									num190 -= 2;
@@ -7548,17 +7548,17 @@ namespace Terraria
 								Main.signX = num192 * 16 + 16;
 								Main.signY = num193 * 16;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 237)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 237)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 1293;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 10 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 11)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 10 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 11)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								int num194 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY].frameY;
+								int num194 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY].frameY();
 								int num195 = 0;
 								while (num194 >= 54)
 								{
@@ -7634,33 +7634,33 @@ namespace Terraria
 									this.showItemIcon2 = 649 + num195;
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 125)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 125)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 487;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 132)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 132)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 513;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 136)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 136)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
 								this.showItemIcon2 = 538;
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 144)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 144)
 							{
 								this.noThrow = 2;
 								this.showItemIcon = true;
-								this.showItemIcon2 = (int)(583 + Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18);
+								this.showItemIcon2 = (int)(583 + Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() / 18);
 							}
 							if (this.controlUseTile)
 							{
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 212 && this.launcherWait <= 0)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 212 && this.launcherWait <= 0)
 								{
 									int num196 = Player.tileTargetX;
 									int num197 = Player.tileTargetY;
@@ -7682,7 +7682,7 @@ namespace Terraria
 									{
 										this.launcherWait = 10;
 										Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 11);
-										int num199 = (int)(Main.tile[num196, num197].frameX / 18);
+										int num199 = (int)(Main.tile[num196, num197].frameX() / 18);
 										int num200 = 0;
 										while (num199 >= 3)
 										{
@@ -7691,7 +7691,7 @@ namespace Terraria
 										}
 										num199 = num196 - num199;
 										int num201;
-										for (num201 = (int)(Main.tile[num196, num197].frameY / 18); num201 >= 3; num201 -= 3)
+										for (num201 = (int)(Main.tile[num196, num197].frameY() / 18); num201 >= 3; num201 -= 3)
 										{
 										}
 										num201 = num197 - num201;
@@ -7722,26 +7722,26 @@ namespace Terraria
 								}
 								if (this.releaseUseTile)
 								{
-									if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 132 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 136 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 144)
+									if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 132 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 136 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 144)
 									{
 										WorldGen.hitSwitch(Player.tileTargetX, Player.tileTargetY);
 										NetMessage.SendData(59, -1, -1, "", Player.tileTargetX, (float)Player.tileTargetY, 0f, 0f, 0);
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 139)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 139)
 									{
 										Main.PlaySound(28, Player.tileTargetX * 16, Player.tileTargetY * 16, 0);
 										WorldGen.SwitchMB(Player.tileTargetX, Player.tileTargetY);
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 207)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 207)
 									{
 										Main.PlaySound(28, Player.tileTargetX * 16, Player.tileTargetY * 16, 0);
 										WorldGen.SwitchFountain(Player.tileTargetX, Player.tileTargetY);
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 216)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 216)
 									{
 										WorldGen.LaunchRocket(Player.tileTargetX, Player.tileTargetY);
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 4 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 13 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 33 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 49 || (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 50 && Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 90))
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 4 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 13 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 33 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 49 || (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 50 && Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 90))
 									{
 										WorldGen.KillTile(Player.tileTargetX, Player.tileTargetY, false, false, false);
 										if (Main.netMode == 1)
@@ -7749,17 +7749,17 @@ namespace Terraria
 											NetMessage.SendData(17, -1, -1, "", 0, (float)Player.tileTargetX, (float)Player.tileTargetY, 0f, 0);
 										}
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 125)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 125)
 									{
 										this.AddBuff(29, 36000, true);
 										Main.PlaySound(2, (int)this.position.X, (int)this.position.Y, 4);
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 79)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 79)
 									{
 										int num208 = Player.tileTargetX;
 										int num209 = Player.tileTargetY;
-										num208 += (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18 * -1);
-										if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 72)
+										num208 += (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() / 18 * -1);
+										if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 72)
 										{
 											num208 += 4;
 											num208++;
@@ -7768,7 +7768,7 @@ namespace Terraria
 										{
 											num208 += 2;
 										}
-										int num210 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 18);
+										int num210 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() / 18);
 										int num211 = 0;
 										while (num210 > 1)
 										{
@@ -7783,7 +7783,7 @@ namespace Terraria
 											Main.NewText("Spawn point set!", 255, 240, 20, false);
 										}
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 55 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 85)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 55 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 85)
 									{
 										bool flag45 = true;
 										if (this.sign >= 0)
@@ -7812,22 +7812,22 @@ namespace Terraria
 											}
 											else
 											{
-												int num214 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18);
-												int num215 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 18);
+												int num214 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() / 18);
+												int num215 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() / 18);
 												while (num214 > 1)
 												{
 													num214 -= 2;
 												}
 												int num216 = Player.tileTargetX - num214;
 												int num217 = Player.tileTargetY - num215;
-												if (Main.tile[num216, num217].type == 55 || Main.tile[num216, num217].type == 85)
+												if (Main.tile[num216, num217].type() == 55 || Main.tile[num216, num217].type() == 85)
 												{
 													NetMessage.SendData(46, -1, -1, "", num216, (float)num217, 0f, 0f, 0);
 												}
 											}
 										}
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 104)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 104)
 									{
 										string text = "AM";
 										double num218 = Main.time;
@@ -7873,7 +7873,7 @@ namespace Terraria
 										});
 										Main.NewText(newText, 255, 240, 20, false);
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 237)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 237)
 									{
 										bool flag46 = false;
 										if (!NPC.AnyNPCs(245))
@@ -7904,11 +7904,11 @@ namespace Terraria
 											}
 										}
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 10)
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 10)
 									{
 										int num223 = Player.tileTargetX;
 										int num224 = Player.tileTargetY;
-										if (Main.tile[num223, num224].frameY >= 594 && Main.tile[num223, num224].frameY <= 646)
+										if (Main.tile[num223, num224].frameY() >= 594 && Main.tile[num223, num224].frameY() <= 646)
 										{
 											int num225 = 1141;
 											for (int num226 = 0; num226 < 58; num226++)
@@ -7934,41 +7934,41 @@ namespace Terraria
 											NetMessage.SendData(19, -1, -1, "", 0, (float)Player.tileTargetX, (float)Player.tileTargetY, (float)this.direction, 0);
 										}
 									}
-									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 11 && WorldGen.CloseDoor(Player.tileTargetX, Player.tileTargetY, false))
+									else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 11 && WorldGen.CloseDoor(Player.tileTargetX, Player.tileTargetY, false))
 									{
 										NetMessage.SendData(19, -1, -1, "", 1, (float)Player.tileTargetX, (float)Player.tileTargetY, (float)this.direction, 0);
 									}
-									if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 209)
+									if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 209)
 									{
 										WorldGen.SwitchCannon(Player.tileTargetX, Player.tileTargetY);
 									}
-									else if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type == 21 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 29 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 97) && this.talkNPC == -1)
+									else if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 21 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 29 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 97) && this.talkNPC == -1)
 									{
 										Main.mouseRightRelease = false;
 										int num227 = 0;
 										int num228;
-										for (num228 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18); num228 > 1; num228 -= 2)
+										for (num228 = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() / 18); num228 > 1; num228 -= 2)
 										{
 										}
 										num228 = Player.tileTargetX - num228;
-										int num229 = Player.tileTargetY - (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 18);
-										if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 29)
+										int num229 = Player.tileTargetY - (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY() / 18);
+										if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 29)
 										{
 											num227 = 1;
 										}
-										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 97)
+										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 97)
 										{
 											num227 = 2;
 										}
-										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 252)
+										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 252)
 										{
 											Main.chestText = "Chest";
 										}
-										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 216)
+										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 216)
 										{
 											Main.chestText = "Trash Can";
 										}
-										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 180)
+										else if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 180)
 										{
 											Main.chestText = "Barrel";
 										}
@@ -7976,7 +7976,7 @@ namespace Terraria
 										{
 											Main.chestText = "Chest";
 										}
-										if (Main.netMode == 1 && num227 == 0 && (Main.tile[num228, num229].frameX < 72 || Main.tile[num228, num229].frameX > 106) && (Main.tile[num228, num229].frameX < 144 || Main.tile[num228, num229].frameX > 178) && (Main.tile[num228, num229].frameX < 828 || Main.tile[num228, num229].frameX > 1006))
+										if (Main.netMode == 1 && num227 == 0 && (Main.tile[num228, num229].frameX() < 72 || Main.tile[num228, num229].frameX() > 106) && (Main.tile[num228, num229].frameX() < 144 || Main.tile[num228, num229].frameX() > 178) && (Main.tile[num228, num229].frameX() < 828 || Main.tile[num228, num229].frameX() > 1006))
 										{
 											if (num228 == this.chestX && num229 == this.chestY && this.chest != -1)
 											{
@@ -8002,16 +8002,16 @@ namespace Terraria
 											else
 											{
 												bool flag47 = false;
-												if ((Main.tile[num228, num229].frameX >= 72 && Main.tile[num228, num229].frameX <= 106) || (Main.tile[num228, num229].frameX >= 144 && Main.tile[num228, num229].frameX <= 178) || (Main.tile[num228, num229].frameX >= 828 && Main.tile[num228, num229].frameX <= 1006))
+												if ((Main.tile[num228, num229].frameX() >= 72 && Main.tile[num228, num229].frameX() <= 106) || (Main.tile[num228, num229].frameX() >= 144 && Main.tile[num228, num229].frameX() <= 178) || (Main.tile[num228, num229].frameX() >= 828 && Main.tile[num228, num229].frameX() <= 1006))
 												{
 													int num231 = 327;
-													if (Main.tile[num228, num229].frameX >= 144 && Main.tile[num228, num229].frameX <= 178)
+													if (Main.tile[num228, num229].frameX() >= 144 && Main.tile[num228, num229].frameX() <= 178)
 													{
 														num231 = 329;
 													}
-													if (Main.tile[num228, num229].frameX >= 828 && Main.tile[num228, num229].frameX <= 1006)
+													if (Main.tile[num228, num229].frameX() >= 828 && Main.tile[num228, num229].frameX() <= 1006)
 													{
-														int num232 = (int)(Main.tile[num228, num229].frameX / 18);
+														int num232 = (int)(Main.tile[num228, num229].frameX() / 18);
 														int num233 = 0;
 														while (num232 >= 2)
 														{
@@ -8277,7 +8277,7 @@ namespace Terraria
 					{
 						int num264 = (int)vector6.X;
 						int num265 = (int)vector6.Y;
-						int type7 = (int)Main.tile[num264, num265].type;
+						int type7 = (int)Main.tile[num264, num265].type();
 						if (this.whoAmi == Main.myPlayer && type7 == 51 && (this.velocity.X != 0f || this.velocity.Y != 0f))
 						{
 							this.stickyBreak++;
@@ -8344,7 +8344,7 @@ namespace Terraria
 								Main.dust[num267].velocity *= 0.1f;
 								Main.dust[num267].noGravity = true;
 							}
-							if (Main.tile[num264, num265 + 1] != null && Main.tile[num264, num265 + 1].type == 229 && this.position.Y + (float)this.height > (float)((num265 + 1) * 16))
+							if (true && Main.tile[num264, num265 + 1].type() == 229 && this.position.Y + (float)this.height > (float)((num265 + 1) * 16))
 							{
 								if ((float)(num264 * 16) < this.position.X + (float)(this.width / 2))
 								{
@@ -8361,7 +8361,7 @@ namespace Terraria
 									Main.dust[num269].noGravity = true;
 								}
 							}
-							if (Main.tile[num264, num265 + 2] != null && Main.tile[num264, num265 + 2].type == 229 && this.position.Y + (float)this.height > (float)((num265 + 2) * 16))
+							if (true && Main.tile[num264, num265 + 2].type() == 229 && this.position.Y + (float)this.height > (float)((num265 + 2) * 16))
 							{
 								if ((float)(num264 * 16) < this.position.X + (float)(this.width / 2))
 								{
@@ -8400,13 +8400,13 @@ namespace Terraria
 								num273 = this.height;
 							}
 							int num274 = (int)((this.position.Y + (float)num273 - 44f * this.gravDir) / 16f);
-							if (Main.tile[num272, num274].liquid < 128)
+							if (Main.tile[num272, num274].liquid() < 128)
 							{
-								if (Main.tile[num272, num274] == null)
+								if (false)
 								{
 									Main.tile[num272, num274] = new Tile();
 								}
-								if (!Main.tile[num272, num274].active() || !Main.tileSolid[(int)Main.tile[num272, num274].type] || Main.tileSolidTop[(int)Main.tile[num272, num274].type])
+								if (!Main.tile[num272, num274].active() || !Main.tileSolid[(int)Main.tile[num272, num274].type()] || Main.tileSolidTop[(int)Main.tile[num272, num274].type()])
 								{
 									flag49 = false;
 								}
@@ -8708,7 +8708,7 @@ namespace Terraria
 						{
 							for (int num296 = num294; num296 <= num294 + 1; num296++)
 							{
-								if (Main.tile[num295, num296].nactive() && Main.tile[num295, num296].type == 162)
+								if (Main.tile[num295, num296].nactive() && Main.tile[num295, num296].type() == 162)
 								{
 									WorldGen.KillTile(num295, num296, false, false, false);
 									if (Main.netMode == 1)
@@ -8743,7 +8743,7 @@ namespace Terraria
 						{
 							for (int num302 = num299; num302 <= num299 + 1; num302++)
 							{
-								if (Main.tile[num301, num302] == null)
+								if (false)
 								{
 									Main.tile[num301, num302] = new Tile();
 								}
@@ -8753,13 +8753,13 @@ namespace Terraria
 								}
 								if (this.waterWalk2 || this.waterWalk)
 								{
-									if (Main.tile[num301, num302 - 1] == null)
+									if (false)
 									{
 										Main.tile[num301, num302 - 1] = new Tile();
 									}
-									if (Main.tile[num301, num302].liquid > 0 && Main.tile[num301, num302 - 1].liquid == 0)
+									if (Main.tile[num301, num302].liquid() > 0 && Main.tile[num301, num302 - 1].liquid() == 0)
 									{
-										int num303 = (int)(Main.tile[num301, num302].liquid / 32 * 2 + 2);
+										int num303 = (int)(Main.tile[num301, num302].liquid() / 32 * 2 + 2);
 										int num304 = num302 * 16 + 16 - num303;
 										Rectangle rectangle4 = new Rectangle(num301 * 16, num302 * 16 - 17, 16, 16);
 										if (rectangle4.Intersects(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height)) && (float)num304 < num300)
@@ -8768,11 +8768,11 @@ namespace Terraria
 										}
 									}
 								}
-								if (Main.tile[num301, num302 - 1] == null)
+								if (false)
 								{
 									Main.tile[num301, num302 - 1] = new Tile();
 								}
-								if (Main.tile[num301, num302].nactive() && (Main.tileSolid[(int)Main.tile[num301, num302].type] || Main.tileSolidTop[(int)Main.tile[num301, num302].type]))
+								if (Main.tile[num301, num302].nactive() && (Main.tileSolid[(int)Main.tile[num301, num302].type()] || Main.tileSolidTop[(int)Main.tile[num301, num302].type()]))
 								{
 									int num305 = num302 * 16;
 									if (Main.tile[num301, num302].halfBrick())
@@ -8816,31 +8816,31 @@ namespace Terraria
 							vector10.X += this.velocity.X;
 							int num308 = (int)((vector10.X + (float)(this.width / 2) + (float)((this.width / 2 + 1) * num307)) / 16f);
 							int num309 = (int)(((double)vector10.Y + 0.1) / 16.0);
-							if (Main.tile[num308, num309] == null)
+							if (false)
 							{
 								Main.tile[num308, num309] = new Tile();
 							}
-							if (num309 - 1 > 0 && Main.tile[num308, num309 + 1] == null)
+							if (num309 - 1 > 0 && false)
 							{
 								Main.tile[num308, num309 + 1] = new Tile();
 							}
-							if (num309 - 2 > 0 && Main.tile[num308, num309 + 2] == null)
+							if (num309 - 2 > 0 && false)
 							{
 								Main.tile[num308, num309 + 2] = new Tile();
 							}
-							if (num309 - 3 > 0 && Main.tile[num308, num309 + 3] == null)
+							if (num309 - 3 > 0 && false)
 							{
 								Main.tile[num308, num309 + 3] = new Tile();
 							}
-							if (num309 - 4 > 0 && Main.tile[num308, num309 + 4] == null)
+							if (num309 - 4 > 0 && false)
 							{
 								Main.tile[num308, num309 + 4] = new Tile();
 							}
-							if (num309 - 3 > 0 && Main.tile[num308 - num307, num309 + 3] == null)
+							if (num309 - 3 > 0 && false)
 							{
 								Main.tile[num308 - num307, num309 + 3] = new Tile();
 							}
-							if ((float)(num308 * 16) < vector10.X + (float)this.width && (float)(num308 * 16 + 16) > vector10.X && ((Main.tile[num308, num309].nactive() && ((Main.tileSolid[(int)Main.tile[num308, num309].type] && !Main.tileSolidTop[(int)Main.tile[num308, num309].type]) || (this.controlUp && Main.tileSolidTop[(int)Main.tile[num308, num309].type] && Main.tile[num308, num309].frameY == 0 && (!Main.tileSolid[(int)Main.tile[num308, num309 + 1].type] || !Main.tile[num308, num309 + 1].nactive())))) || (Main.tile[num308, num309 + 1].halfBrick() && Main.tile[num308, num309 + 1].nactive())) && (!Main.tile[num308, num309 + 1].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 1].type] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 1].type] || Main.tile[num308, num309 + 1].slope() != 0 || (Main.tile[num308, num309 + 1].halfBrick() && (!Main.tile[num308, num309 + 4].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 4].type] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 4].type]))) && (!Main.tile[num308, num309 + 2].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 2].type] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 2].type]) && (!Main.tile[num308, num309 + 3].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 3].type] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 3].type]) && (!Main.tile[num308 - num307, num309 + 3].nactive() || !Main.tileSolid[(int)Main.tile[num308 - num307, num309 + 3].type] || Main.tileSolidTop[(int)Main.tile[num308 - num307, num309 + 3].type]))
+							if ((float)(num308 * 16) < vector10.X + (float)this.width && (float)(num308 * 16 + 16) > vector10.X && ((Main.tile[num308, num309].nactive() && ((Main.tileSolid[(int)Main.tile[num308, num309].type()] && !Main.tileSolidTop[(int)Main.tile[num308, num309].type()]) || (this.controlUp && Main.tileSolidTop[(int)Main.tile[num308, num309].type()] && Main.tile[num308, num309].frameY() == 0 && (!Main.tileSolid[(int)Main.tile[num308, num309 + 1].type()] || !Main.tile[num308, num309 + 1].nactive())))) || (Main.tile[num308, num309 + 1].halfBrick() && Main.tile[num308, num309 + 1].nactive())) && (!Main.tile[num308, num309 + 1].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 1].type()] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 1].type()] || Main.tile[num308, num309 + 1].slope() != 0 || (Main.tile[num308, num309 + 1].halfBrick() && (!Main.tile[num308, num309 + 4].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 4].type()] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 4].type()]))) && (!Main.tile[num308, num309 + 2].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 2].type()] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 2].type()]) && (!Main.tile[num308, num309 + 3].nactive() || !Main.tileSolid[(int)Main.tile[num308, num309 + 3].type()] || Main.tileSolidTop[(int)Main.tile[num308, num309 + 3].type()]) && (!Main.tile[num308 - num307, num309 + 3].nactive() || !Main.tileSolid[(int)Main.tile[num308 - num307, num309 + 3].type()] || Main.tileSolidTop[(int)Main.tile[num308 - num307, num309 + 3].type()]))
 							{
 								float num310 = (float)(num309 * 16 + 16);
 								if (num310 > vector10.Y)
@@ -8879,31 +8879,31 @@ namespace Terraria
 						vector11.X += this.velocity.X;
 						int num313 = (int)((vector11.X + (float)(this.width / 2) + (float)((this.width / 2 + 1) * num312)) / 16f);
 						int num314 = (int)((vector11.Y + (float)this.height - 1f) / 16f);
-						if (Main.tile[num313, num314] == null)
+						if (false)
 						{
 							Main.tile[num313, num314] = new Tile();
 						}
-						if (num314 - 1 > 0 && Main.tile[num313, num314 - 1] == null)
+						if (num314 - 1 > 0 && false)
 						{
 							Main.tile[num313, num314 - 1] = new Tile();
 						}
-						if (num314 - 2 > 0 && Main.tile[num313, num314 - 2] == null)
+						if (num314 - 2 > 0 && false)
 						{
 							Main.tile[num313, num314 - 2] = new Tile();
 						}
-						if (num314 - 3 > 0 && Main.tile[num313, num314 - 3] == null)
+						if (num314 - 3 > 0 && false)
 						{
 							Main.tile[num313, num314 - 3] = new Tile();
 						}
-						if (num314 - 4 > 0 && Main.tile[num313, num314 - 4] == null)
+						if (num314 - 4 > 0 && false)
 						{
 							Main.tile[num313, num314 - 4] = new Tile();
 						}
-						if (num314 - 3 > 0 && Main.tile[num313 - num312, num314 - 3] == null)
+						if (num314 - 3 > 0 && false)
 						{
 							Main.tile[num313 - num312, num314 - 3] = new Tile();
 						}
-						if ((float)(num313 * 16) < vector11.X + (float)this.width && (float)(num313 * 16 + 16) > vector11.X && ((Main.tile[num313, num314].nactive() && (Main.tile[num313, num314].slope() == 0 || (Main.tile[num313, num314].slope() == 1 && this.position.X + (float)(this.width / 2) < (float)(num313 * 16)) || (Main.tile[num313, num314].slope() == 2 && this.position.X + (float)(this.width / 2) > (float)(num313 * 16 + 16))) && (Main.tile[num313, num314 - 1].slope() == 0 || this.position.Y + (float)this.height > (float)(num314 * 16)) && ((Main.tileSolid[(int)Main.tile[num313, num314].type] && !Main.tileSolidTop[(int)Main.tile[num313, num314].type]) || (this.controlUp && ((Main.tileSolidTop[(int)Main.tile[num313, num314].type] && Main.tile[num313, num314].frameY == 0) || Main.tile[num313, num314].type == 19) && (!Main.tileSolid[(int)Main.tile[num313, num314 - 1].type] || !Main.tile[num313, num314 - 1].nactive())))) || (Main.tile[num313, num314 - 1].halfBrick() && Main.tile[num313, num314 - 1].nactive())) && (!Main.tile[num313, num314 - 1].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 1].type] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 1].type] || (Main.tile[num313, num314 - 1].slope() == 1 && this.position.X + (float)(this.width / 2) > (float)(num313 * 16)) || (Main.tile[num313, num314 - 1].slope() == 2 && this.position.X + (float)(this.width / 2) < (float)(num313 * 16 + 16)) || (Main.tile[num313, num314 - 1].halfBrick() && (!Main.tile[num313, num314 - 4].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 4].type] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 4].type]))) && (!Main.tile[num313, num314 - 2].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 2].type] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 2].type]) && (!Main.tile[num313, num314 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 3].type] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 3].type]) && (!Main.tile[num313 - num312, num314 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num313 - num312, num314 - 3].type] || Main.tileSolidTop[(int)Main.tile[num313 - num312, num314 - 3].type]))
+						if ((float)(num313 * 16) < vector11.X + (float)this.width && (float)(num313 * 16 + 16) > vector11.X && ((Main.tile[num313, num314].nactive() && (Main.tile[num313, num314].slope() == 0 || (Main.tile[num313, num314].slope() == 1 && this.position.X + (float)(this.width / 2) < (float)(num313 * 16)) || (Main.tile[num313, num314].slope() == 2 && this.position.X + (float)(this.width / 2) > (float)(num313 * 16 + 16))) && (Main.tile[num313, num314 - 1].slope() == 0 || this.position.Y + (float)this.height > (float)(num314 * 16)) && ((Main.tileSolid[(int)Main.tile[num313, num314].type()] && !Main.tileSolidTop[(int)Main.tile[num313, num314].type()]) || (this.controlUp && ((Main.tileSolidTop[(int)Main.tile[num313, num314].type()] && Main.tile[num313, num314].frameY() == 0) || Main.tile[num313, num314].type() == 19) && (!Main.tileSolid[(int)Main.tile[num313, num314 - 1].type()] || !Main.tile[num313, num314 - 1].nactive())))) || (Main.tile[num313, num314 - 1].halfBrick() && Main.tile[num313, num314 - 1].nactive())) && (!Main.tile[num313, num314 - 1].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 1].type()] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 1].type()] || (Main.tile[num313, num314 - 1].slope() == 1 && this.position.X + (float)(this.width / 2) > (float)(num313 * 16)) || (Main.tile[num313, num314 - 1].slope() == 2 && this.position.X + (float)(this.width / 2) < (float)(num313 * 16 + 16)) || (Main.tile[num313, num314 - 1].halfBrick() && (!Main.tile[num313, num314 - 4].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 4].type()] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 4].type()]))) && (!Main.tile[num313, num314 - 2].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 2].type()] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 2].type()]) && (!Main.tile[num313, num314 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num313, num314 - 3].type()] || Main.tileSolidTop[(int)Main.tile[num313, num314 - 3].type()]) && (!Main.tile[num313 - num312, num314 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num313 - num312, num314 - 3].type()] || Main.tileSolidTop[(int)Main.tile[num313 - num312, num314 - 3].type()]))
 						{
 							float num315 = (float)(num314 * 16);
 							if (Main.tile[num313, num314].halfBrick())
@@ -9052,29 +9052,29 @@ namespace Terraria
 						int num317 = (int)((this.position.X + (float)(this.width / 2)) / 16f);
 						int num318 = (int)((this.position.Y + (float)this.height) / 16f);
 						int num319 = -1;
-						if (Main.tile[num317 - 1, num318] == null)
+						if (false)
 						{
 							Main.tile[num317 - 1, num318] = new Tile();
 						}
-						if (Main.tile[num317 + 1, num318] == null)
+						if (false)
 						{
 							Main.tile[num317 + 1, num318] = new Tile();
 						}
-						if (Main.tile[num317, num318] == null)
+						if (false)
 						{
 							Main.tile[num317, num318] = new Tile();
 						}
-						if (Main.tile[num317, num318].nactive() && Main.tileSolid[(int)Main.tile[num317, num318].type])
+						if (Main.tile[num317, num318].nactive() && Main.tileSolid[(int)Main.tile[num317, num318].type()])
 						{
-							num319 = (int)Main.tile[num317, num318].type;
+							num319 = (int)Main.tile[num317, num318].type();
 						}
-						else if (Main.tile[num317 - 1, num318].nactive() && Main.tileSolid[(int)Main.tile[num317 - 1, num318].type])
+						else if (Main.tile[num317 - 1, num318].nactive() && Main.tileSolid[(int)Main.tile[num317 - 1, num318].type()])
 						{
-							num319 = (int)Main.tile[num317 - 1, num318].type;
+							num319 = (int)Main.tile[num317 - 1, num318].type();
 						}
-						else if (Main.tile[num317 + 1, num318].nactive() && Main.tileSolid[(int)Main.tile[num317 + 1, num318].type])
+						else if (Main.tile[num317 + 1, num318].nactive() && Main.tileSolid[(int)Main.tile[num317 + 1, num318].type()])
 						{
-							num319 = (int)Main.tile[num317 + 1, num318].type;
+							num319 = (int)Main.tile[num317 + 1, num318].type();
 						}
 						if (num319 > -1)
 						{
@@ -9753,26 +9753,26 @@ namespace Terraria
 				{
 					if (Main.tile[j, k].active())
 					{
-						this.adjTile[(int)Main.tile[j, k].type] = true;
-						if (Main.tile[j, k].type == 77)
+						this.adjTile[(int)Main.tile[j, k].type()] = true;
+						if (Main.tile[j, k].type() == 77)
 						{
 							this.adjTile[17] = true;
 						}
-						if (Main.tile[j, k].type == 133)
+						if (Main.tile[j, k].type() == 133)
 						{
 							this.adjTile[17] = true;
 							this.adjTile[77] = true;
 						}
-						if (Main.tile[j, k].type == 134)
+						if (Main.tile[j, k].type() == 134)
 						{
 							this.adjTile[16] = true;
 						}
 					}
-					if (Main.tile[j, k].liquid > 200 && Main.tile[j, k].liquidType() == 0)
+					if (Main.tile[j, k].liquid() > 200 && Main.tile[j, k].liquidType() == 0)
 					{
 						this.adjWater = true;
 					}
-					if (Main.tile[j, k].liquid > 200 && Main.tile[j, k].liquidType() == 2)
+					if (Main.tile[j, k].liquid() > 200 && Main.tile[j, k].liquidType() == 2)
 					{
 						this.adjHoney = true;
 					}
@@ -10351,14 +10351,14 @@ namespace Terraria
 				{
 					for (int j = Main.spawnTileY - 3; j < Main.spawnTileY; j++)
 					{
-						if (Main.tileSolid[(int)Main.tile[i, j].type] && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+						if (Main.tileSolid[(int)Main.tile[i, j].type()] && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 						{
 							WorldGen.KillTile(i, j, false, false, false);
 						}
-						if (Main.tile[i, j].liquid > 0)
+						if (Main.tile[i, j].liquid() > 0)
 						{
 							Main.tile[i, j].lava(false);
-							Main.tile[i, j].liquid = 0;
+							Main.tile[i, j].liquid(0);
 							WorldGen.SquareTileFrame(i, j, true);
 						}
 					}
@@ -10966,7 +10966,7 @@ namespace Terraria
 			{
 				int num = Player.tileTargetX;
 				int num2 = Player.tileTargetY;
-				if (Main.tile[num, num2] != null && Main.tile[num, num2].active())
+				if (true && Main.tile[num, num2].active())
 				{
 					this.showItemIcon = true;
 					if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
@@ -10999,7 +10999,7 @@ namespace Terraria
 			{
 				int num6 = Player.tileTargetX;
 				int num7 = Player.tileTargetY;
-				if (Main.tile[num6, num7] != null && Main.tile[num6, num7].wall > 0)
+				if (true && Main.tile[num6, num7].wall() > 0)
 				{
 					this.showItemIcon = true;
 					if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
@@ -11032,7 +11032,7 @@ namespace Terraria
 			{
 				int num11 = Player.tileTargetX;
 				int num12 = Player.tileTargetY;
-				if (Main.tile[num11, num12] != null && ((Main.tile[num11, num12].wallColor() > 0 && Main.tile[num11, num12].wall > 0) || (Main.tile[num11, num12].color() > 0 && Main.tile[num11, num12].active())))
+				if (true && ((Main.tile[num11, num12].wallColor() > 0 && Main.tile[num11, num12].wall() > 0) || (Main.tile[num11, num12].color() > 0 && Main.tile[num11, num12].active())))
 				{
 					this.showItemIcon = true;
 					if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
@@ -11041,7 +11041,7 @@ namespace Terraria
 						{
 							this.itemTime = this.inventory[this.selectedItem].useTime;
 						}
-						else if (Main.tile[num11, num12].wallColor() > 0 && Main.tile[num11, num12].wall > 0 && WorldGen.paintWall(num11, num12, 0, true))
+						else if (Main.tile[num11, num12].wallColor() > 0 && Main.tile[num11, num12].wall() > 0 && WorldGen.paintWall(num11, num12, 0, true))
 						{
 							this.itemTime = this.inventory[this.selectedItem].useTime;
 						}
@@ -11052,17 +11052,17 @@ namespace Terraria
 			{
 				int num13 = Player.tileTargetX;
 				int num14 = Player.tileTargetY;
-				if (Main.tile[num13, num14].active() && Main.tile[num13, num14].type == 209)
+				if (Main.tile[num13, num14].active() && Main.tile[num13, num14].type() == 209)
 				{
 					int num15 = 0;
-					if (Main.tile[num13, num14].frameX < 72)
+					if (Main.tile[num13, num14].frameX() < 72)
 					{
 						if (this.inventory[this.selectedItem].type == 929)
 						{
 							num15 = 1;
 						}
 					}
-					else if (Main.tile[num13, num14].frameX < 144 && this.inventory[this.selectedItem].type == 1338)
+					else if (Main.tile[num13, num14].frameX() < 144 && this.inventory[this.selectedItem].type == 1338)
 					{
 						num15 = 2;
 					}
@@ -11071,7 +11071,7 @@ namespace Terraria
 						this.showItemIcon = true;
 						if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
 						{
-							int k = (int)(Main.tile[num13, num14].frameX / 18);
+							int k = (int)(Main.tile[num13, num14].frameX() / 18);
 							int num16 = 0;
 							int num17 = 0;
 							while (k >= 4)
@@ -11081,7 +11081,7 @@ namespace Terraria
 							}
 							k = num13 - k;
 							int l;
-							for (l = (int)(Main.tile[num13, num14].frameY / 18); l >= 3; l -= 3)
+							for (l = (int)(Main.tile[num13, num14].frameY() / 18); l >= 3; l -= 3)
 							{
 								num17++;
 							}
@@ -11154,7 +11154,7 @@ namespace Terraria
 					}
 				}
 			}
-			if ((this.inventory[this.selectedItem].type == 424 || this.inventory[this.selectedItem].type == 1103) && Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tile[Player.tileTargetX, Player.tileTargetY].type == 219)
+			if ((this.inventory[this.selectedItem].type == 424 || this.inventory[this.selectedItem].type == 1103) && Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 219)
 			{
 				if (this.position.X / 16f - (float)Player.tileRangeX - (float)this.inventory[this.selectedItem].tileBoost - (float)this.blockRange <= (float)Player.tileTargetX && (this.position.X + (float)this.width) / 16f + (float)Player.tileRangeX + (float)this.inventory[this.selectedItem].tileBoost - 1f + (float)this.blockRange >= (float)Player.tileTargetX && this.position.Y / 16f - (float)Player.tileRangeY - (float)this.inventory[this.selectedItem].tileBoost - (float)this.blockRange <= (float)Player.tileTargetY && (this.position.Y + (float)this.height) / 16f + (float)Player.tileRangeY + (float)this.inventory[this.selectedItem].tileBoost - 2f + (float)this.blockRange >= (float)Player.tileTargetY && this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
 				{
@@ -11408,7 +11408,7 @@ namespace Terraria
 			{
 				this.showItemIcon = true;
 				bool flag = false;
-				if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid > 0 && Main.tile[Player.tileTargetX, Player.tileTargetY].lava())
+				if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid() > 0 && Main.tile[Player.tileTargetX, Player.tileTargetY].lava())
 				{
 					if (Main.tileSolid[this.inventory[this.selectedItem].createTile])
 					{
@@ -11433,15 +11433,15 @@ namespace Terraria
 						}
 					}
 				}
-				if (Main.tileRope[this.inventory[this.selectedItem].createTile] && flag2 && Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+				if (Main.tileRope[this.inventory[this.selectedItem].createTile] && flag2 && Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])
 				{
 					int num27 = Player.tileTargetY;
 					int num28 = Player.tileTargetX;
 					int createTile = this.inventory[this.selectedItem].createTile;
-					while (Main.tile[num28, num27].active() && (int)Main.tile[num28, num27].type == createTile && num27 < Main.maxTilesX - 5)
+					while (Main.tile[num28, num27].active() && (int)Main.tile[num28, num27].type() == createTile && num27 < Main.maxTilesX - 5)
 					{
 						num27++;
-						if (Main.tile[num28, num27] == null)
+						if (false)
 						{
 							flag2 = false;
 							num27 = Player.tileTargetY;
@@ -11452,12 +11452,12 @@ namespace Terraria
 						Player.tileTargetY = num27;
 					}
 				}
-				if (flag2 && ((!Main.tile[Player.tileTargetX, Player.tileTargetY].active() && !flag) || Main.tileCut[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] || this.inventory[this.selectedItem].createTile == 23 || this.inventory[this.selectedItem].createTile == 2 || this.inventory[this.selectedItem].createTile == 109 || this.inventory[this.selectedItem].createTile == 60 || this.inventory[this.selectedItem].createTile == 70) && this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
+				if (flag2 && ((!Main.tile[Player.tileTargetX, Player.tileTargetY].active() && !flag) || Main.tileCut[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] || this.inventory[this.selectedItem].createTile == 23 || this.inventory[this.selectedItem].createTile == 2 || this.inventory[this.selectedItem].createTile == 109 || this.inventory[this.selectedItem].createTile == 60 || this.inventory[this.selectedItem].createTile == 70) && this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
 				{
 					bool flag3 = false;
 					if (this.inventory[this.selectedItem].createTile == 23 || this.inventory[this.selectedItem].createTile == 2 || this.inventory[this.selectedItem].createTile == 109)
 					{
-						if (Main.tile[Player.tileTargetX, Player.tileTargetY].nactive() && Main.tile[Player.tileTargetX, Player.tileTargetY].type == 0)
+						if (Main.tile[Player.tileTargetX, Player.tileTargetY].nactive() && Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 0)
 						{
 							flag3 = true;
 						}
@@ -11468,14 +11468,14 @@ namespace Terraria
 					}
 					else if (this.inventory[this.selectedItem].createTile == 60 || this.inventory[this.selectedItem].createTile == 70)
 					{
-						if (Main.tile[Player.tileTargetX, Player.tileTargetY].nactive() && Main.tile[Player.tileTargetX, Player.tileTargetY].type == 59)
+						if (Main.tile[Player.tileTargetX, Player.tileTargetY].nactive() && Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 59)
 						{
 							flag3 = true;
 						}
 					}
 					else if (this.inventory[this.selectedItem].createTile == 4 || this.inventory[this.selectedItem].createTile == 136)
 					{
-						if (Main.tile[Player.tileTargetX, Player.tileTargetY].wall > 0)
+						if (Main.tile[Player.tileTargetX, Player.tileTargetY].wall() > 0)
 						{
 							flag3 = true;
 						}
@@ -11508,17 +11508,17 @@ namespace Terraria
 									}
 								}
 							}
-							int num29 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type;
+							int num29 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type();
 							if (Main.tile[Player.tileTargetX, Player.tileTargetY].halfBrick())
 							{
 								num29 = -1;
 							}
-							int num30 = (int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY].type;
-							int num31 = (int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY].type;
-							int num32 = (int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY - 1].type;
-							int num33 = (int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY - 1].type;
-							int num34 = (int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY - 1].type;
-							int num35 = (int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY + 1].type;
+							int num30 = (int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY].type();
+							int num31 = (int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY].type();
+							int num32 = (int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY - 1].type();
+							int num33 = (int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY - 1].type();
+							int num34 = (int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY - 1].type();
+							int num35 = (int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY + 1].type();
 							if (!Main.tile[Player.tileTargetX, Player.tileTargetY + 1].nactive())
 							{
 								num29 = -1;
@@ -11563,26 +11563,26 @@ namespace Terraria
 					}
 					else if (this.inventory[this.selectedItem].createTile == 78 || this.inventory[this.selectedItem].createTile == 98 || this.inventory[this.selectedItem].createTile == 100 || this.inventory[this.selectedItem].createTile == 173 || this.inventory[this.selectedItem].createTile == 174)
 					{
-						if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].nactive() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type] || Main.tileTable[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type]))
+						if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].nactive() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type()] || Main.tileTable[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type()]))
 						{
 							flag3 = true;
 						}
 					}
 					else if (this.inventory[this.selectedItem].createTile == 13 || this.inventory[this.selectedItem].createTile == 29 || this.inventory[this.selectedItem].createTile == 33 || this.inventory[this.selectedItem].createTile == 49 || this.inventory[this.selectedItem].createTile == 50 || this.inventory[this.selectedItem].createTile == 103)
 					{
-						if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].nactive() && Main.tileTable[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type])
+						if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].nactive() && Main.tileTable[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type()])
 						{
 							flag3 = true;
 						}
 					}
 					else if (this.inventory[this.selectedItem].createTile == 51)
 					{
-						if (Main.tile[Player.tileTargetX + 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX + 1, Player.tileTargetY].wall > 0 || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].wall > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].wall > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].wall > 0)
+						if (Main.tile[Player.tileTargetX + 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX + 1, Player.tileTargetY].wall() > 0 || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].wall() > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].wall() > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].wall() > 0)
 						{
 							flag3 = true;
 						}
 					}
-					else if ((Main.tile[Player.tileTargetX + 1, Player.tileTargetY].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY].type] || Main.tileRope[(int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY].type])) || (Main.tile[Player.tileTargetX + 1, Player.tileTargetY].wall > 0 || (Main.tile[Player.tileTargetX - 1, Player.tileTargetY].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY].type] || Main.tileRope[(int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY].type]))) || (Main.tile[Player.tileTargetX - 1, Player.tileTargetY].wall > 0 || (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type] || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type == 124 || Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type]))) || (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].wall > 0 || (Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type] || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type == 124 || Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type]))) || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].wall > 0)
+					else if ((Main.tile[Player.tileTargetX + 1, Player.tileTargetY].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY].type()] || Main.tileRope[(int)Main.tile[Player.tileTargetX + 1, Player.tileTargetY].type()])) || (Main.tile[Player.tileTargetX + 1, Player.tileTargetY].wall() > 0 || (Main.tile[Player.tileTargetX - 1, Player.tileTargetY].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY].type()] || Main.tileRope[(int)Main.tile[Player.tileTargetX - 1, Player.tileTargetY].type()]))) || (Main.tile[Player.tileTargetX - 1, Player.tileTargetY].wall() > 0 || (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type()] || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type() == 124 || Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type()]))) || (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].wall() > 0 || (Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() && (Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type()] || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type() == 124 || Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type()]))) || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].wall() > 0)
 					{
 						flag3 = true;
 					}
@@ -11590,11 +11590,11 @@ namespace Terraria
 					{
 						flag3 = true;
 					}
-					if (Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tileCut[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+					if (Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tileCut[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])
 					{
-						if ((int)Main.tile[Player.tileTargetX, Player.tileTargetY].type != this.inventory[this.selectedItem].createTile)
+						if ((int)Main.tile[Player.tileTargetX, Player.tileTargetY].type() != this.inventory[this.selectedItem].createTile)
 						{
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type != 78)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type() != 78)
 							{
 								WorldGen.KillTile(Player.tileTargetX, Player.tileTargetY, false, false, false);
 								if (!Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.netMode == 1)
@@ -11654,9 +11654,9 @@ namespace Terraria
 								if (this.direction == 1)
 								{
 									Tile expr_25BC = Main.tile[Player.tileTargetX, Player.tileTargetY];
-									expr_25BC.frameX += 18;
+									expr_25BC.frameX((short)(expr_25BC.frameX() + 18));
 									Tile expr_25E1 = Main.tile[Player.tileTargetX, Player.tileTargetY - 1];
-									expr_25E1.frameX += 18;
+									expr_25E1.frameX((short)(expr_25E1.frameX() + 18));
 								}
 								if (Main.netMode == 1)
 								{
@@ -11668,7 +11668,7 @@ namespace Terraria
 								if (this.direction == 1)
 								{
 									Tile expr_264B = Main.tile[Player.tileTargetX, Player.tileTargetY];
-									expr_264B.frameX += 18;
+									expr_264B.frameX((short)(expr_264B.frameX() + 18));
 								}
 								if (Main.netMode == 1)
 								{
@@ -11683,7 +11683,7 @@ namespace Terraria
 							{
 								int num37 = Player.tileTargetX;
 								int num38 = Player.tileTargetY + 1;
-								if (Main.tile[num37, num38] != null && (Main.tile[num37, num38].slope() != 0 || Main.tile[num37, num38].halfBrick()))
+								if (true && (Main.tile[num37, num38].slope() != 0 || Main.tile[num37, num38].halfBrick()))
 								{
 									WorldGen.SlopeTile(num37, num38, 0);
 									if (Main.netMode == 1)
@@ -11699,10 +11699,10 @@ namespace Terraria
 			if (this.inventory[this.selectedItem].createWall >= 0 && this.position.X / 16f - (float)Player.tileRangeX - (float)this.inventory[this.selectedItem].tileBoost <= (float)Player.tileTargetX && (this.position.X + (float)this.width) / 16f + (float)Player.tileRangeX + (float)this.inventory[this.selectedItem].tileBoost - 1f >= (float)Player.tileTargetX && this.position.Y / 16f - (float)Player.tileRangeY - (float)this.inventory[this.selectedItem].tileBoost <= (float)Player.tileTargetY && (this.position.Y + (float)this.height) / 16f + (float)Player.tileRangeY + (float)this.inventory[this.selectedItem].tileBoost - 2f >= (float)Player.tileTargetY)
 			{
 				this.showItemIcon = true;
-				if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem && (Main.tile[Player.tileTargetX + 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX + 1, Player.tileTargetY].wall > 0 || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].wall > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].wall > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].wall > 0) && (int)Main.tile[Player.tileTargetX, Player.tileTargetY].wall != this.inventory[this.selectedItem].createWall)
+				if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem && (Main.tile[Player.tileTargetX + 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX + 1, Player.tileTargetY].wall() > 0 || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].active() || Main.tile[Player.tileTargetX - 1, Player.tileTargetY].wall() > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY + 1].wall() > 0 || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() || Main.tile[Player.tileTargetX, Player.tileTargetY - 1].wall() > 0) && (int)Main.tile[Player.tileTargetX, Player.tileTargetY].wall() != this.inventory[this.selectedItem].createWall)
 				{
 					WorldGen.PlaceWall(Player.tileTargetX, Player.tileTargetY, this.inventory[this.selectedItem].createWall, false);
-					if ((int)Main.tile[Player.tileTargetX, Player.tileTargetY].wall == this.inventory[this.selectedItem].createWall)
+					if ((int)Main.tile[Player.tileTargetX, Player.tileTargetY].wall() == this.inventory[this.selectedItem].createWall)
 					{
 						this.itemTime = this.inventory[this.selectedItem].useTime;
 						if (Main.netMode == 1)
@@ -11732,7 +11732,7 @@ namespace Terraria
 								{
 									num40++;
 								}
-								if (Main.tile[num39, num40].wall == 0)
+								if (Main.tile[num39, num40].wall() == 0)
 								{
 									int num41 = 0;
 									for (int num42 = 0; num42 < 4; num42++)
@@ -11755,7 +11755,7 @@ namespace Terraria
 										{
 											num44++;
 										}
-										if ((int)Main.tile[num43, num44].wall == createWall)
+										if ((int)Main.tile[num43, num44].wall() == createWall)
 										{
 											num41++;
 										}
@@ -11763,7 +11763,7 @@ namespace Terraria
 									if (num41 == 4)
 									{
 										WorldGen.PlaceWall(num39, num40, createWall, false);
-										if ((int)Main.tile[num39, num40].wall == createWall)
+										if ((int)Main.tile[num39, num40].wall() == createWall)
 										{
 											this.inventory[this.selectedItem].stack--;
 											if (this.inventory[this.selectedItem].stack == 0)
@@ -11913,9 +11913,9 @@ namespace Terraria
 				{
 					int num2 = Player.tileTargetX;
 					int num3 = Player.tileTargetY;
-					if (Main.tile[num2, num3].active() && Main.tile[num2, num3].type == 128)
+					if (Main.tile[num2, num3].active() && Main.tile[num2, num3].type() == 128)
 					{
-						int num4 = (int)Main.tile[num2, num3].frameY;
+						int num4 = (int)Main.tile[num2, num3].frameY();
 						int j = 0;
 						if (this.inventory[this.selectedItem].bodySlot >= 0)
 						{
@@ -11929,17 +11929,17 @@ namespace Terraria
 						while (j > num4)
 						{
 							num3++;
-							num4 = (int)Main.tile[num2, num3].frameY;
+							num4 = (int)Main.tile[num2, num3].frameY();
 							num4 /= 18;
 						}
 						while (j < num4)
 						{
 							num3--;
-							num4 = (int)Main.tile[num2, num3].frameY;
+							num4 = (int)Main.tile[num2, num3].frameY();
 							num4 /= 18;
 						}
 						int k;
-						for (k = (int)Main.tile[num2, num3].frameX; k >= 100; k -= 100)
+						for (k = (int)Main.tile[num2, num3].frameX(); k >= 100; k -= 100)
 						{
 						}
 						if (k >= 36)
@@ -11947,7 +11947,7 @@ namespace Terraria
 							k -= 36;
 						}
 						num2 -= k / 18;
-						int l = (int)Main.tile[num2, num3].frameX;
+						int l = (int)Main.tile[num2, num3].frameX();
 						WorldGen.KillTile(num2, num3, true, false, false);
 						if (Main.netMode == 1)
 						{
@@ -11959,7 +11959,7 @@ namespace Terraria
 						}
 						if (num4 == 0 && this.inventory[this.selectedItem].headSlot >= 0)
 						{
-							Main.tile[num2, num3].frameX = (short)(l + this.inventory[this.selectedItem].headSlot * 100);
+							Main.tile[num2, num3].frameX((short)(l + this.inventory[this.selectedItem].headSlot * 100));
 							if (Main.netMode == 1)
 							{
 								NetMessage.SendTileSquare(-1, num2, num3, 1);
@@ -11971,7 +11971,7 @@ namespace Terraria
 						}
 						else if (num4 == 1 && this.inventory[this.selectedItem].bodySlot >= 0)
 						{
-							Main.tile[num2, num3].frameX = (short)(l + this.inventory[this.selectedItem].bodySlot * 100);
+							Main.tile[num2, num3].frameX((short)(l + this.inventory[this.selectedItem].bodySlot * 100));
 							if (Main.netMode == 1)
 							{
 								NetMessage.SendTileSquare(-1, num2, num3, 1);
@@ -11983,7 +11983,7 @@ namespace Terraria
 						}
 						else if (num4 == 2 && this.inventory[this.selectedItem].legSlot >= 0)
 						{
-							Main.tile[num2, num3].frameX = (short)(l + this.inventory[this.selectedItem].legSlot * 100);
+							Main.tile[num2, num3].frameX((short)(l + this.inventory[this.selectedItem].legSlot * 100));
 							if (Main.netMode == 1)
 							{
 								NetMessage.SendTileSquare(-1, num2, num3, 1);
@@ -12268,7 +12268,7 @@ namespace Terraria
 				{
 					int num11 = (int)((float)Main.mouseX + Main.screenPosition.X) / 16;
 					int num12 = (int)((float)Main.mouseY + Main.screenPosition.Y) / 16;
-					if (Main.tile[num11, num12].active() && (Main.tile[num11, num12].type == 0 || Main.tile[num11, num12].type == 2 || Main.tile[num11, num12].type == 23))
+					if (Main.tile[num11, num12].active() && (Main.tile[num11, num12].type() == 0 || Main.tile[num11, num12].type() == 2 || Main.tile[num11, num12].type() == 23))
 					{
 						WorldGen.KillTile(num11, num12, false, false, true);
 						if (!Main.tile[num11, num12].active())
@@ -12945,7 +12945,7 @@ namespace Terraria
 							}
 							int num84 = (int)((float)Main.mouseX + Main.screenPosition.X) / 16;
 							int num85 = (int)((float)Main.mouseY + Main.screenPosition.Y) / 16;
-							while (num85 < Main.maxTilesY - 10 && Main.tile[num84, num85] != null && !WorldGen.SolidTile(num84, num85) && Main.tile[num84 - 1, num85] != null && !WorldGen.SolidTile(num84 - 1, num85) && Main.tile[num84 + 1, num85] != null && !WorldGen.SolidTile(num84 + 1, num85))
+							while (num85 < Main.maxTilesY - 10 && true && !WorldGen.SolidTile(num84, num85) && true && !WorldGen.SolidTile(num84 - 1, num85) && true && !WorldGen.SolidTile(num84 + 1, num85))
 							{
 								num85++;
 							}
@@ -13307,11 +13307,11 @@ namespace Terraria
 								{
 									if ((int)Main.tile[num120, num121].liquidType() == num118)
 									{
-										num119 += (int)Main.tile[num120, num121].liquid;
+										num119 += (int)Main.tile[num120, num121].liquid();
 									}
 								}
 							}
-							if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid > 0 && num119 > 100)
+							if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid() > 0 && num119 > 100)
 							{
 								int liquidType = (int)Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType();
 								if (!Main.tile[Player.tileTargetX, Player.tileTargetY].lava())
@@ -13331,8 +13331,8 @@ namespace Terraria
 								}
 								Main.PlaySound(19, (int)this.position.X, (int)this.position.Y, 1);
 								this.itemTime = this.inventory[this.selectedItem].useTime;
-								int num122 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY].liquid;
-								Main.tile[Player.tileTargetX, Player.tileTargetY].liquid = 0;
+								int num122 = (int)Main.tile[Player.tileTargetX, Player.tileTargetY].liquid();
+								Main.tile[Player.tileTargetX, Player.tileTargetY].liquid(0);
 								Main.tile[Player.tileTargetX, Player.tileTargetY].lava(false);
 								Main.tile[Player.tileTargetX, Player.tileTargetY].honey(false);
 								WorldGen.SquareTileFrame(Player.tileTargetX, Player.tileTargetY, false);
@@ -13350,16 +13350,16 @@ namespace Terraria
 									{
 										if (num122 < 256 && (int)Main.tile[num123, num124].liquidType() == num118)
 										{
-											int num125 = (int)Main.tile[num123, num124].liquid;
+											int num125 = (int)Main.tile[num123, num124].liquid();
 											if (num125 + num122 > 255)
 											{
 												num125 = 255 - num122;
 											}
 											num122 += num125;
 											Tile expr_68AF = Main.tile[num123, num124];
-											expr_68AF.liquid -= (byte)num125;
+											expr_68AF.liquid((byte)(expr_68AF.liquid() - (byte)num125));
 											Main.tile[num123, num124].liquidType(liquidType);
-											if (Main.tile[num123, num124].liquid == 0)
+											if (Main.tile[num123, num124].liquid() == 0)
 											{
 												Main.tile[num123, num124].lava(false);
 												Main.tile[num123, num124].honey(false);
@@ -13378,15 +13378,15 @@ namespace Terraria
 								}
 							}
 						}
-						else if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid < 200 && (!Main.tile[Player.tileTargetX, Player.tileTargetY].nactive() || !Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] || Main.tileSolidTop[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type]))
+						else if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid() < 200 && (!Main.tile[Player.tileTargetX, Player.tileTargetY].nactive() || !Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] || Main.tileSolidTop[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()]))
 						{
 							if (this.inventory[this.selectedItem].type == 207)
 							{
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType() == 1)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid() == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType() == 1)
 								{
 									Main.PlaySound(19, (int)this.position.X, (int)this.position.Y, 1);
 									Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType(1);
-									Main.tile[Player.tileTargetX, Player.tileTargetY].liquid = 255;
+									Main.tile[Player.tileTargetX, Player.tileTargetY].liquid(255);
 									WorldGen.SquareTileFrame(Player.tileTargetX, Player.tileTargetY, true);
 									this.inventory[this.selectedItem].SetDefaults(205, false);
 									this.itemTime = this.inventory[this.selectedItem].useTime;
@@ -13398,11 +13398,11 @@ namespace Terraria
 							}
 							else if (this.inventory[this.selectedItem].type == 206)
 							{
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType() == 0)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid() == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType() == 0)
 								{
 									Main.PlaySound(19, (int)this.position.X, (int)this.position.Y, 1);
 									Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType(0);
-									Main.tile[Player.tileTargetX, Player.tileTargetY].liquid = 255;
+									Main.tile[Player.tileTargetX, Player.tileTargetY].liquid(255);
 									WorldGen.SquareTileFrame(Player.tileTargetX, Player.tileTargetY, true);
 									this.inventory[this.selectedItem].SetDefaults(205, false);
 									this.itemTime = this.inventory[this.selectedItem].useTime;
@@ -13412,11 +13412,11 @@ namespace Terraria
 									}
 								}
 							}
-							else if (this.inventory[this.selectedItem].type == 1128 && (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType() == 2))
+							else if (this.inventory[this.selectedItem].type == 1128 && (Main.tile[Player.tileTargetX, Player.tileTargetY].liquid() == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType() == 2))
 							{
 								Main.PlaySound(19, (int)this.position.X, (int)this.position.Y, 1);
 								Main.tile[Player.tileTargetX, Player.tileTargetY].liquidType(2);
-								Main.tile[Player.tileTargetX, Player.tileTargetY].liquid = 255;
+								Main.tile[Player.tileTargetX, Player.tileTargetY].liquid(255);
 								WorldGen.SquareTileFrame(Player.tileTargetX, Player.tileTargetY, true);
 								this.inventory[this.selectedItem].SetDefaults(205, false);
 								this.itemTime = this.inventory[this.selectedItem].useTime;
@@ -13451,13 +13451,13 @@ namespace Terraria
 				{
 					bool flag8 = true;
 					this.showItemIcon = true;
-					if (this.toolTime == 0 && this.itemAnimation > 0 && this.controlUseItem && (!Main.tile[Player.tileTargetX, Player.tileTargetY].active() || (!Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] && !Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])))
+					if (this.toolTime == 0 && this.itemAnimation > 0 && this.controlUseItem && (!Main.tile[Player.tileTargetX, Player.tileTargetY].active() || (!Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] && !Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])))
 					{
 						this.poundRelease = false;
 					}
 					if (Main.tile[Player.tileTargetX, Player.tileTargetY].active())
 					{
-						if ((this.inventory[this.selectedItem].pick > 0 && !Main.tileAxe[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] && !Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type]) || (this.inventory[this.selectedItem].axe > 0 && Main.tileAxe[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type]) || (this.inventory[this.selectedItem].hammer > 0 && Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type]))
+						if ((this.inventory[this.selectedItem].pick > 0 && !Main.tileAxe[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] && !Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()]) || (this.inventory[this.selectedItem].axe > 0 && Main.tileAxe[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()]) || (this.inventory[this.selectedItem].hammer > 0 && Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()]))
 						{
 							flag8 = false;
 						}
@@ -13469,17 +13469,17 @@ namespace Terraria
 								this.hitTileX = Player.tileTargetX;
 								this.hitTileY = Player.tileTargetY;
 							}
-							if (Main.tileNoFail[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+							if (Main.tileNoFail[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])
 							{
 								this.hitTile = 100;
 							}
-							if (Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+							if (Main.tileHammer[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])
 							{
 								flag8 = false;
 								if (this.inventory[this.selectedItem].hammer > 0)
 								{
 									this.hitTile += this.inventory[this.selectedItem].hammer;
-									if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 26 && (this.inventory[this.selectedItem].hammer < 80 || !Main.hardMode))
+									if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 26 && (this.inventory[this.selectedItem].hammer < 80 || !Main.hardMode))
 									{
 										this.hitTile = 0;
 										this.Hurt(this.statLife / 2, -this.direction, false, false, Lang.deathMsg(-1, -1, -1, 4), false);
@@ -13504,9 +13504,9 @@ namespace Terraria
 									this.itemTime = this.inventory[this.selectedItem].useTime;
 								}
 							}
-							else if (Main.tileAxe[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+							else if (Main.tileAxe[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])
 							{
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 80)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 80)
 								{
 									this.hitTile += this.inventory[this.selectedItem].axe * 3;
 								}
@@ -13538,31 +13538,31 @@ namespace Terraria
 							}
 							else if (this.inventory[this.selectedItem].pick > 0)
 							{
-								if (Main.tileDungeon[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 25 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 58 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 117 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 203)
+								if (Main.tileDungeon[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 25 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 58 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 117 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 203)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick / 2;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 48 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 232)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 48 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 232)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick / 4;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 226)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 226)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick / 4;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 107 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 221)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 107 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 221)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick / 2;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 108 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 222)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 108 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 222)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick / 3;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 111 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 223)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 111 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 223)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick / 4;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 211)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 211)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick / 5;
 								}
@@ -13570,88 +13570,88 @@ namespace Terraria
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick;
 								}
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 211 && this.inventory[this.selectedItem].pick < 200)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 211 && this.inventory[this.selectedItem].pick < 200)
 								{
 									this.hitTile = 0;
 								}
-								if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type == 25 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 203) && this.inventory[this.selectedItem].pick < 65)
+								if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 25 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 203) && this.inventory[this.selectedItem].pick < 65)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 117 && this.inventory[this.selectedItem].pick < 65)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 117 && this.inventory[this.selectedItem].pick < 65)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 37 && this.inventory[this.selectedItem].pick < 50)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 37 && this.inventory[this.selectedItem].pick < 50)
 								{
 									this.hitTile = 0;
 								}
-								else if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type == 22 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 204) && (double)Player.tileTargetY > Main.worldSurface && this.inventory[this.selectedItem].pick < 55)
+								else if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 22 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 204) && (double)Player.tileTargetY > Main.worldSurface && this.inventory[this.selectedItem].pick < 55)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 56 && this.inventory[this.selectedItem].pick < 65)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 56 && this.inventory[this.selectedItem].pick < 65)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 58 && this.inventory[this.selectedItem].pick < 65)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 58 && this.inventory[this.selectedItem].pick < 65)
 								{
 									this.hitTile = 0;
 								}
-								else if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type == 226 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 237) && this.inventory[this.selectedItem].pick < 210)
+								else if ((Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 226 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 237) && this.inventory[this.selectedItem].pick < 210)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tileDungeon[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] && this.inventory[this.selectedItem].pick < 65)
+								else if (Main.tileDungeon[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] && this.inventory[this.selectedItem].pick < 65)
 								{
 									if ((double)Player.tileTargetX < (double)Main.maxTilesX * 0.35 || (double)Player.tileTargetX > (double)Main.maxTilesX * 0.65)
 									{
 										this.hitTile = 0;
 									}
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 107 && this.inventory[this.selectedItem].pick < 100)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 107 && this.inventory[this.selectedItem].pick < 100)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 108 && this.inventory[this.selectedItem].pick < 110)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 108 && this.inventory[this.selectedItem].pick < 110)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 111 && this.inventory[this.selectedItem].pick < 120)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 111 && this.inventory[this.selectedItem].pick < 120)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 221 && this.inventory[this.selectedItem].pick < 100)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 221 && this.inventory[this.selectedItem].pick < 100)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 222 && this.inventory[this.selectedItem].pick < 110)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 222 && this.inventory[this.selectedItem].pick < 110)
 								{
 									this.hitTile = 0;
 								}
-								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 223 && this.inventory[this.selectedItem].pick < 120)
+								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 223 && this.inventory[this.selectedItem].pick < 120)
 								{
 									this.hitTile = 0;
 								}
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 147 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 40 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 53 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 57 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 59 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 123 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 224)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 147 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 0 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 40 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 53 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 57 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 59 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 123 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 224)
 								{
 									this.hitTile += this.inventory[this.selectedItem].pick;
 								}
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 165 || Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 199 || Main.tileMoss[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 165 || Main.tileRope[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 199 || Main.tileMoss[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])
 								{
 									this.hitTile = 100;
 								}
-								if (this.hitTile >= 100 && (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 2 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 23 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 60 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 70 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 109 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 71 || Main.tile[Player.tileTargetX, Player.tileTargetY].type == 199 || Main.tileMoss[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type]))
+								if (this.hitTile >= 100 && (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 2 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 23 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 60 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 70 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 109 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 71 || Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 199 || Main.tileMoss[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()]))
 								{
 									this.hitTile = 0;
 								}
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 128)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 128)
 								{
-									if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 18 || Main.tile[Player.tileTargetX, Player.tileTargetY].frameX == 54)
+									if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 18 || Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() == 54)
 									{
 										Player.tileTargetX--;
 									}
-									if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX >= 100)
+									if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameX() >= 100)
 									{
 										this.hitTile = 0;
 									}
@@ -13659,7 +13659,7 @@ namespace Terraria
 								if (this.hitTile >= 100)
 								{
 									this.hitTile = 0;
-									if (Main.netMode == 1 && Main.tile[Player.tileTargetX, Player.tileTargetY].type == 21)
+									if (Main.netMode == 1 && Main.tile[Player.tileTargetX, Player.tileTargetY].type() == 21)
 									{
 										WorldGen.KillTile(Player.tileTargetX, Player.tileTargetY, true, false, false);
 										NetMessage.SendData(17, -1, -1, "", 0, (float)Player.tileTargetX, (float)Player.tileTargetY, 1f, 0);
@@ -13684,17 +13684,17 @@ namespace Terraria
 								}
 								this.itemTime = (int)((float)this.inventory[this.selectedItem].useTime * this.pickSpeed);
 							}
-							if (this.inventory[this.selectedItem].hammer > 0 && Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type] && Main.tile[Player.tileTargetX, Player.tileTargetY].type != 10 && this.poundRelease)
+							if (this.inventory[this.selectedItem].hammer > 0 && Main.tile[Player.tileTargetX, Player.tileTargetY].active() && Main.tileSolid[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()] && Main.tile[Player.tileTargetX, Player.tileTargetY].type() != 10 && this.poundRelease)
 							{
 								flag8 = false;
 								this.itemTime = this.inventory[this.selectedItem].useTime;
 								this.hitTile += (int)((double)this.inventory[this.selectedItem].hammer * 1.25);
 								this.hitTile = 100;
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() && Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type == 10)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY - 1].active() && Main.tile[Player.tileTargetX, Player.tileTargetY - 1].type() == 10)
 								{
 									this.hitTile = 0;
 								}
-								if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() && Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type == 10)
+								if (Main.tile[Player.tileTargetX, Player.tileTargetY + 1].active() && Main.tile[Player.tileTargetX, Player.tileTargetY + 1].type() == 10)
 								{
 									this.hitTile = 0;
 								}
@@ -13705,7 +13705,7 @@ namespace Terraria
 									{
 										int num126 = Player.tileTargetX;
 										int num127 = Player.tileTargetY;
-										if ((Main.tile[num126, num127].halfBrick() || Main.tile[num126, num127].slope() != 0) && !Main.tileSolidTop[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+										if ((Main.tile[num126, num127].halfBrick() || Main.tile[num126, num127].slope() != 0) && !Main.tileSolidTop[(int)Main.tile[Player.tileTargetX, Player.tileTargetY].type()])
 										{
 											int num128 = 1;
 											int slope = 2;
@@ -13762,15 +13762,15 @@ namespace Terraria
 					int num130 = Player.tileTargetX;
 					int num131 = Player.tileTargetY;
 					bool flag9 = true;
-					if (Main.tile[num130, num131].wall > 0)
+					if (Main.tile[num130, num131].wall() > 0)
 					{
-						if (!Main.wallHouse[(int)Main.tile[num130, num131].wall])
+						if (!Main.wallHouse[(int)Main.tile[num130, num131].wall()])
 						{
 							for (int num132 = num130 - 1; num132 < num130 + 2; num132++)
 							{
 								for (int num133 = num131 - 1; num133 < num131 + 2; num133++)
 								{
-									if (Main.tile[num132, num133].wall != Main.tile[num130, num131].wall)
+									if (Main.tile[num132, num133].wall() != Main.tile[num130, num131].wall())
 									{
 										flag9 = false;
 										break;
@@ -13803,15 +13803,15 @@ namespace Terraria
 								{
 									num130 = num136;
 									num131 = num137;
-									if (Main.tile[num130, num131].wall > 0)
+									if (Main.tile[num130, num131].wall() > 0)
 									{
-										if (!Main.wallHouse[(int)Main.tile[num130, num131].wall])
+										if (!Main.wallHouse[(int)Main.tile[num130, num131].wall()])
 										{
 											for (int num138 = num130 - 1; num138 < num130 + 2; num138++)
 											{
 												for (int num139 = num131 - 1; num139 < num131 + 2; num139++)
 												{
-													if (Main.tile[num138, num139].wall != Main.tile[num130, num131].wall)
+													if (Main.tile[num138, num139].wall() != Main.tile[num130, num131].wall())
 													{
 														flag9 = false;
 														break;
@@ -13828,17 +13828,17 @@ namespace Terraria
 							}
 						}
 					}
-					if (flag8 && Main.tile[num130, num131].wall > 0 && (!Main.tile[num130, num131].active() || num130 != Player.tileTargetX || num131 != Player.tileTargetY || (!Main.tileHammer[(int)Main.tile[num130, num131].type] && !this.poundRelease)) && this.toolTime == 0 && this.itemAnimation > 0 && this.controlUseItem && this.inventory[this.selectedItem].hammer > 0)
+					if (flag8 && Main.tile[num130, num131].wall() > 0 && (!Main.tile[num130, num131].active() || num130 != Player.tileTargetX || num131 != Player.tileTargetY || (!Main.tileHammer[(int)Main.tile[num130, num131].type()] && !this.poundRelease)) && this.toolTime == 0 && this.itemAnimation > 0 && this.controlUseItem && this.inventory[this.selectedItem].hammer > 0)
 					{
 						bool flag10 = true;
-						if (!Main.wallHouse[(int)Main.tile[num130, num131].wall])
+						if (!Main.wallHouse[(int)Main.tile[num130, num131].wall()])
 						{
 							flag10 = false;
 							for (int num140 = num130 - 1; num140 < num130 + 2; num140++)
 							{
 								for (int num141 = num131 - 1; num141 < num131 + 2; num141++)
 								{
-									if (Main.tile[num140, num141].wall == 0 || Main.wallHouse[(int)Main.tile[num140, num141].wall])
+									if (Main.tile[num140, num141].wall() == 0 || Main.wallHouse[(int)Main.tile[num140, num141].wall()])
 									{
 										flag10 = true;
 										break;
@@ -13888,7 +13888,7 @@ namespace Terraria
 					{
 						int num142 = (int)(newPos.X / 16f);
 						int num143 = (int)(newPos.Y / 16f);
-						if ((Main.tile[num142, num143].wall != 87 || (double)num143 <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(newPos, this.width, this.height))
+						if ((Main.tile[num142, num143].wall() != 87 || (double)num143 <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(newPos, this.width, this.height))
 						{
 							this.Teleport(newPos, 1);
 							NetMessage.SendData(65, -1, -1, "", 0, (float)this.whoAmi, newPos.X, newPos.Y, 1);
@@ -14311,11 +14311,11 @@ namespace Terraria
 						{
 							for (int num180 = num177; num180 < num178; num180++)
 							{
-								if (Main.tile[num179, num180] != null && Main.tileCut[(int)Main.tile[num179, num180].type] && Main.tile[num179, num180 + 1] != null && Main.tile[num179, num180 + 1].type != 78)
+								if (true && Main.tileCut[(int)Main.tile[num179, num180].type()] && true && Main.tile[num179, num180 + 1].type() != 78)
 								{
 									if (this.inventory[this.selectedItem].type == 1786)
 									{
-										int type5 = (int)Main.tile[num179, num180].type;
+										int type5 = (int)Main.tile[num179, num180].type();
 										WorldGen.KillTile(num179, num180, false, false, false);
 										if (!Main.tile[num179, num180].active())
 										{
@@ -15059,11 +15059,11 @@ namespace Terraria
 			{
 				return false;
 			}
-			if (Main.tile[x, y - 1] == null)
+			if (false)
 			{
 				return false;
 			}
-			if (!Main.tile[x, y - 1].active() || Main.tile[x, y - 1].type != 79)
+			if (!Main.tile[x, y - 1].active() || Main.tile[x, y - 1].type() != 79)
 			{
 				return false;
 			}
@@ -15071,11 +15071,11 @@ namespace Terraria
 			{
 				for (int j = y - 3; j < y; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						return false;
 					}
-					if (Main.tile[i, j].nactive() && Main.tileSolid[(int)Main.tile[i, j].type] && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+					if (Main.tile[i, j].nactive() && Main.tileSolid[(int)Main.tile[i, j].type()] && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 					{
 						Main.NewText("There is not enough space", 255, 240, 20, false);
 						return false;

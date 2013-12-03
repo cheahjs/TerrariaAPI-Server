@@ -35,15 +35,15 @@ namespace Terraria
 						{
 							num--;
 						}
-						if (Main.tile[num, num2 - 1] == null)
+						if (false)
 						{
 							Main.tile[num, num2 - 1] = new Tile();
 						}
-						if (Main.tile[num, num2 + 1] == null)
+						if (false)
 						{
 							Main.tile[num, num2 + 1] = new Tile();
 						}
-						if (!Main.tile[num, num2 - 1].inActive() && Main.tile[num, num2 - 1].active() && Main.tileSolid[(int)Main.tile[num, num2 - 1].type] && !Main.tileSolidTop[(int)Main.tile[num, num2 - 1].type] && Main.tile[num, num2 - 1].slope() == 0 && !Main.tile[num, num2 - 1].halfBrick() && !Main.tile[num, num2 + 1].inActive() && Main.tile[num, num2 + 1].active() && Main.tileSolid[(int)Main.tile[num, num2 + 1].type] && !Main.tileSolidTop[(int)Main.tile[num, num2 + 1].type] && Main.tile[num, num2 + 1].slope() == 0 && !Main.tile[num, num2 + 1].halfBrick())
+						if (!Main.tile[num, num2 - 1].inActive() && Main.tile[num, num2 - 1].active() && Main.tileSolid[(int)Main.tile[num, num2 - 1].type()] && !Main.tileSolidTop[(int)Main.tile[num, num2 - 1].type()] && Main.tile[num, num2 - 1].slope() == 0 && !Main.tile[num, num2 - 1].halfBrick() && !Main.tile[num, num2 + 1].inActive() && Main.tile[num, num2 + 1].active() && Main.tileSolid[(int)Main.tile[num, num2 + 1].type()] && !Main.tileSolidTop[(int)Main.tile[num, num2 + 1].type()] && Main.tile[num, num2 + 1].slope() == 0 && !Main.tile[num, num2 + 1].halfBrick())
 						{
 							goto Block_19;
 						}
@@ -58,24 +58,24 @@ namespace Terraria
 						{
 							num2--;
 						}
-						if (Main.tile[num - 1, num2] == null)
+						if (false)
 						{
 							Main.tile[num - 1, num2] = new Tile();
 						}
-						if (Main.tile[num + 1, num2] == null)
+						if (false)
 						{
 							Main.tile[num + 1, num2] = new Tile();
 						}
-						if (!Main.tile[num - 1, num2].inActive() && Main.tile[num - 1, num2].active() && Main.tileSolid[(int)Main.tile[num - 1, num2].type] && !Main.tileSolidTop[(int)Main.tile[num - 1, num2].type] && Main.tile[num - 1, num2].slope() == 0 && !Main.tile[num - 1, num2].halfBrick() && !Main.tile[num + 1, num2].inActive() && Main.tile[num + 1, num2].active() && Main.tileSolid[(int)Main.tile[num + 1, num2].type] && !Main.tileSolidTop[(int)Main.tile[num + 1, num2].type] && Main.tile[num + 1, num2].slope() == 0 && !Main.tile[num + 1, num2].halfBrick())
+						if (!Main.tile[num - 1, num2].inActive() && Main.tile[num - 1, num2].active() && Main.tileSolid[(int)Main.tile[num - 1, num2].type()] && !Main.tileSolidTop[(int)Main.tile[num - 1, num2].type()] && Main.tile[num - 1, num2].slope() == 0 && !Main.tile[num - 1, num2].halfBrick() && !Main.tile[num + 1, num2].inActive() && Main.tile[num + 1, num2].active() && Main.tileSolid[(int)Main.tile[num + 1, num2].type()] && !Main.tileSolidTop[(int)Main.tile[num + 1, num2].type()] && Main.tile[num + 1, num2].slope() == 0 && !Main.tile[num + 1, num2].halfBrick())
 						{
 							goto Block_34;
 						}
 					}
-					if (Main.tile[num, num2] == null)
+					if (false)
 					{
 						Main.tile[num, num2] = new Tile();
 					}
-					if (!Main.tile[num, num2].inActive() && Main.tile[num, num2].active() && Main.tileSolid[(int)Main.tile[num, num2].type] && !Main.tileSolidTop[(int)Main.tile[num, num2].type])
+					if (!Main.tile[num, num2].inActive() && Main.tile[num, num2].active() && Main.tileSolid[(int)Main.tile[num, num2].type()] && !Main.tileSolidTop[(int)Main.tile[num, num2].type()])
 					{
 						goto Block_39;
 					}
@@ -162,13 +162,13 @@ namespace Terraria
 			{
 				for (int j = num5; j < num6; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].liquid > 0 && !Main.tile[i, j].lava())
+					if (true && Main.tile[i, j].liquid() > 0 && !Main.tile[i, j].lava())
 					{
 						Vector2 vector2;
 						vector2.X = (float)(i * 16);
 						vector2.Y = (float)(j * 16);
 						int num7 = 16;
-						float num8 = (float)(256 - (int)Main.tile[i, j].liquid);
+						float num8 = (float)(256 - (int)Main.tile[i, j].liquid());
 						num8 /= 32f;
 						vector2.Y += num8 * 2f;
 						num7 -= (int)(num8 * 2f);
@@ -220,15 +220,15 @@ namespace Terraria
 			{
 				for (int j = num5; j < num6; j++)
 				{
-					if (Main.tile[i, j] != null)
+					if (true)
 					{
-						if (Main.tile[i, j].liquid > 0)
+						if (Main.tile[i, j].liquid() > 0)
 						{
 							Vector2 vector2;
 							vector2.X = (float)(i * 16);
 							vector2.Y = (float)(j * 16);
 							int num7 = 16;
-							float num8 = (float)(256 - (int)Main.tile[i, j].liquid);
+							float num8 = (float)(256 - (int)Main.tile[i, j].liquid());
 							num8 /= 32f;
 							vector2.Y += num8 * 2f;
 							num7 -= (int)(num8 * 2f);
@@ -243,7 +243,7 @@ namespace Terraria
 						}
 						else
 						{
-							if (Main.tile[i, j].active() && Main.tile[i, j].slope() != 0 && Main.tile[i, j - 1].liquid > 0)
+							if (Main.tile[i, j].active() && Main.tile[i, j].slope() != 0 && Main.tile[i, j - 1].liquid() > 0)
 							{
 								Vector2 vector2;
 								vector2.X = (float)(i * 16);
@@ -290,13 +290,13 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].liquid > 0 && Main.tile[i, j].lava())
+					if (true && Main.tile[i, j].liquid() > 0 && Main.tile[i, j].lava())
 					{
 						Vector2 vector;
 						vector.X = (float)(i * 16);
 						vector.Y = (float)(j * 16);
 						int num5 = 16;
-						float num6 = (float)(256 - (int)Main.tile[i, j].liquid);
+						float num6 = (float)(256 - (int)Main.tile[i, j].liquid());
 						num6 /= 32f;
 						vector.Y += num6 * 2f;
 						num5 -= (int)(num6 * 2f);
@@ -331,11 +331,11 @@ namespace Terraria
 			{
 				for (int j = num3; j <= num3 + 1; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						Main.tile[i, j] = new Tile();
 					}
-					if (Main.tile[i, j].nactive() && (Main.tileSolid[(int)Main.tile[i, j].type] || Main.tileSolidTop[(int)Main.tile[i, j].type]))
+					if (Main.tile[i, j].nactive() && (Main.tileSolid[(int)Main.tile[i, j].type()] || Main.tileSolidTop[(int)Main.tile[i, j].type()]))
 					{
 						int num8 = j * 16;
 						if (Main.tile[i, j].halfBrick())
@@ -378,7 +378,7 @@ namespace Terraria
 			}
 			int num9 = num5;
 			int num10 = num6;
-			if (Main.tile[num9, num10] != null && Main.tile[num9, num10].slope() > 0)
+			if (true && Main.tile[num9, num10].slope() > 0)
 			{
 				int num11 = (int)Main.tile[num9, num10].slope();
 				Vector2 vector2;
@@ -438,7 +438,7 @@ namespace Terraria
 			{
 				for (int j = num4; j < num5; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type()] || (Main.tileSolidTop[(int)Main.tile[i, j].type()] && Main.tile[i, j].frameY() == 0)))
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -603,7 +603,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type()] || (Main.tileSolidTop[(int)Main.tile[i, j].type()] && Main.tile[i, j].frameY() == 0)))
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -619,7 +619,7 @@ namespace Terraria
 							if (vector3.Y + (float)Height <= vector4.Y)
 							{
 								Collision.down = true;
-								if ((!Main.tileSolidTop[(int)Main.tile[i, j].type] || !fallThrough || (Velocity.Y > 1f && !fall2)) && num9 > vector4.Y)
+								if ((!Main.tileSolidTop[(int)Main.tile[i, j].type()] || !fallThrough || (Velocity.Y > 1f && !fall2)) && num9 > vector4.Y)
 								{
 									num7 = i;
 									num8 = j;
@@ -636,7 +636,7 @@ namespace Terraria
 							}
 							else
 							{
-								if (vector3.X + (float)Width <= vector4.X && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+								if (vector3.X + (float)Width <= vector4.X && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 								{
 									num5 = i;
 									num6 = j;
@@ -651,7 +651,7 @@ namespace Terraria
 								}
 								else
 								{
-									if (vector3.X >= vector4.X + 16f && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+									if (vector3.X >= vector4.X + 16f && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 									{
 										num5 = i;
 										num6 = j;
@@ -666,7 +666,7 @@ namespace Terraria
 									}
 									else
 									{
-										if (vector3.Y >= vector4.Y + (float)num10 && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+										if (vector3.Y >= vector4.Y + (float)num10 && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 										{
 											Collision.up = true;
 											num7 = i;
@@ -723,7 +723,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type()] || (Main.tileSolidTop[(int)Main.tile[i, j].type()] && Main.tile[i, j].frameY() == 0)))
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -755,7 +755,7 @@ namespace Terraria
 								if (vector3.Y + (float)Height <= vector4.Y)
 								{
 									Collision.down = true;
-									if ((!Main.tileSolidTop[(int)Main.tile[i, j].type] || !fallThrough || (Velocity.Y > 1f && !fall2)) && num9 > vector4.Y)
+									if ((!Main.tileSolidTop[(int)Main.tile[i, j].type()] || !fallThrough || (Velocity.Y > 1f && !fall2)) && num9 > vector4.Y)
 									{
 										num7 = i;
 										num8 = j;
@@ -772,9 +772,9 @@ namespace Terraria
 								}
 								else
 								{
-									if (vector3.X + (float)Width <= vector4.X && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+									if (vector3.X + (float)Width <= vector4.X && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 									{
-										if (Main.tile[i - 1, j] == null)
+										if (false)
 										{
 											Main.tile[i - 1, j] = new Tile();
 										}
@@ -794,9 +794,9 @@ namespace Terraria
 									}
 									else
 									{
-										if (vector3.X >= vector4.X + 16f && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+										if (vector3.X >= vector4.X + 16f && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 										{
-											if (Main.tile[i + 1, j] == null)
+											if (false)
 											{
 												Main.tile[i + 1, j] = new Tile();
 											}
@@ -816,7 +816,7 @@ namespace Terraria
 										}
 										else
 										{
-											if (vector3.Y >= vector4.Y + (float)num10 && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+											if (vector3.Y >= vector4.Y + (float)num10 && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 											{
 												Collision.up = true;
 												num7 = i;
@@ -863,7 +863,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && Main.tileSolid[(int)Main.tile[i, j].type] && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+					if (true && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && Main.tileSolid[(int)Main.tile[i, j].type()] && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 					{
 						Vector2 vector;
 						vector.X = (float)(i * 16);
@@ -912,9 +912,9 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].liquid > 0 && Main.tile[i, j - 1].liquid == 0 && (!Main.tile[i, j].lava() || lavaWalk))
+					if (true && Main.tile[i, j].liquid() > 0 && Main.tile[i, j - 1].liquid() == 0 && (!Main.tile[i, j].lava() || lavaWalk))
 					{
-						int num5 = (int)(Main.tile[i, j].liquid / 32 * 2 + 2);
+						int num5 = (int)(Main.tile[i, j].liquid() / 32 * 2 + 2);
 						Vector2 vector3;
 						vector3.X = (float)(i * 16);
 						vector3.Y = (float)(j * 16 + 16 - num5);
@@ -961,7 +961,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && !Main.tile[i, j].inActive())
+					if (true && Main.tile[i, j].active() && !Main.tile[i, j].inActive())
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -985,7 +985,7 @@ namespace Terraria
 							}
 							else
 							{
-								if (vector3.X + (float)Width <= vector4.X && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+								if (vector3.X + (float)Width <= vector4.X && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 								{
 									num5 = i;
 									num6 = j;
@@ -1000,7 +1000,7 @@ namespace Terraria
 								}
 								else
 								{
-									if (vector3.X >= vector4.X + 16f && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+									if (vector3.X >= vector4.X + 16f && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 									{
 										num5 = i;
 										num6 = j;
@@ -1015,7 +1015,7 @@ namespace Terraria
 									}
 									else
 									{
-										if (vector3.Y >= vector4.Y + (float)num9 && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+										if (vector3.Y >= vector4.Y + (float)num9 && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 										{
 											num7 = i;
 											num8 = j;
@@ -1061,7 +1061,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type()] || (Main.tileSolidTop[(int)Main.tile[i, j].type()] && Main.tile[i, j].frameY() == 0)))
 					{
 						Vector2 vector2;
 						vector2.X = (float)(i * 16);
@@ -1107,13 +1107,13 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].slope() == 0 && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tile[i, j].type == 32 || Main.tile[i, j].type == 37 || Main.tile[i, j].type == 48 || Main.tile[i, j].type == 232 || Main.tile[i, j].type == 53 || Main.tile[i, j].type == 57 || Main.tile[i, j].type == 58 || Main.tile[i, j].type == 69 || Main.tile[i, j].type == 76 || Main.tile[i, j].type == 112 || Main.tile[i, j].type == 116 || Main.tile[i, j].type == 123 || Main.tile[i, j].type == 224 || Main.tile[i, j].type == 234))
+					if (true && Main.tile[i, j].slope() == 0 && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tile[i, j].type() == 32 || Main.tile[i, j].type() == 37 || Main.tile[i, j].type() == 48 || Main.tile[i, j].type() == 232 || Main.tile[i, j].type() == 53 || Main.tile[i, j].type() == 57 || Main.tile[i, j].type() == 58 || Main.tile[i, j].type() == 69 || Main.tile[i, j].type() == 76 || Main.tile[i, j].type() == 112 || Main.tile[i, j].type() == 116 || Main.tile[i, j].type() == 123 || Main.tile[i, j].type() == 224 || Main.tile[i, j].type() == 234))
 					{
 						Vector2 vector2;
 						vector2.X = (float)(i * 16);
 						vector2.Y = (float)(j * 16);
 						int num5 = 0;
-						int type = (int)Main.tile[i, j].type;
+						int type = (int)Main.tile[i, j].type();
 						int num6 = 16;
 						if (Main.tile[i, j].halfBrick())
 						{
@@ -1223,14 +1223,14 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && (Main.tile[i, j].type == 135 || Main.tile[i, j].type == 210))
+					if (true && Main.tile[i, j].active() && (Main.tile[i, j].type() == 135 || Main.tile[i, j].type() == 210))
 					{
 						Vector2 vector;
 						vector.X = (float)(i * 16);
 						vector.Y = (float)(j * 16 + 12);
 						if (Position.X + (float)Width > vector.X && Position.X < vector.X + 16f && Position.Y + (float)Height > vector.Y && (double)Position.Y < (double)vector.Y + 4.01)
 						{
-							if (Main.tile[i, j].type == 210)
+							if (Main.tile[i, j].type() == 210)
 							{
 								WorldGen.ExplodeMine(i, j);
 							}
@@ -1238,7 +1238,7 @@ namespace Terraria
 							{
 								if (oldPosition.X + (float)Width <= vector.X || oldPosition.X >= vector.X + 16f || oldPosition.Y + (float)Height <= vector.Y || (double)oldPosition.Y >= (double)vector.Y + 16.01)
 								{
-									int num5 = (int)(Main.tile[i, j].frameY / 18);
+									int num5 = (int)(Main.tile[i, j].frameY() / 18);
 									bool flag = true;
 									if ((num5 == 4 || num5 == 2 || num5 == 3 || num5 == 6) && objType != 1)
 									{
@@ -1289,9 +1289,9 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active())
+					if (true && Main.tile[i, j].active())
 					{
-						if (Main.tile[i, j].type == 51)
+						if (Main.tile[i, j].type() == 51)
 						{
 							int num5 = 0;
 							Vector2 vector2;
@@ -1299,7 +1299,7 @@ namespace Terraria
 							vector2.Y = (float)(j * 16);
 							if (vector.X + (float)Width > vector2.X - (float)num5 && vector.X < vector2.X + 16f + (float)num5 && vector.Y + (float)Height > vector2.Y && (double)vector.Y < (double)vector2.Y + 16.01)
 							{
-								if (Main.tile[i, j].type == 51 && (double)(Math.Abs(Velocity.X) + Math.Abs(Velocity.Y)) > 0.7 && Main.rand.Next(30) == 0)
+								if (Main.tile[i, j].type() == 51 && (double)(Math.Abs(Velocity.X) + Math.Abs(Velocity.Y)) > 0.7 && Main.rand.Next(30) == 0)
 								{
 									Dust.NewDust(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, 30, 0f, 0f, 0, default(Color), 1f);
 								}
@@ -1308,7 +1308,7 @@ namespace Terraria
 						}
 						else
 						{
-							if (Main.tile[i, j].type == 229 && Main.tile[i, j].slope() == 0)
+							if (Main.tile[i, j].type() == 229 && Main.tile[i, j].slope() == 0)
 							{
 								int num6 = 1;
 								Vector2 vector2;
@@ -1322,7 +1322,7 @@ namespace Terraria
 								}
 								if (vector.X + (float)Width > vector2.X - (float)num6 && vector.X < vector2.X + 16f + (float)num6 && vector.Y + (float)Height > vector2.Y && vector.Y < vector2.Y + num7)
 								{
-									if (Main.tile[i, j].type == 51 && (double)(Math.Abs(Velocity.X) + Math.Abs(Velocity.Y)) > 0.7 && Main.rand.Next(30) == 0)
+									if (Main.tile[i, j].type() == 51 && (double)(Math.Abs(Velocity.X) + Math.Abs(Velocity.Y)) > 0.7 && Main.rand.Next(30) == 0)
 									{
 										Dust.NewDust(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, 30, 0f, 0f, 0, default(Color), 1f);
 									}
@@ -1357,11 +1357,11 @@ namespace Terraria
 			{
 				for (int j = startY; j < endY + 1; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						return false;
 					}
-					if (Main.tile[i, j].active() && !Main.tile[i, j].inActive() && Main.tileSolid[(int)Main.tile[i, j].type] && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+					if (Main.tile[i, j].active() && !Main.tile[i, j].inActive() && Main.tileSolid[(int)Main.tile[i, j].type()] && !Main.tileSolidTop[(int)Main.tile[i, j].type()])
 					{
 						return true;
 					}

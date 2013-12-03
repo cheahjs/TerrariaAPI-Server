@@ -113,6 +113,7 @@
     <Compile Include="Terraria\Lang.cs" />
     <Compile Include="Terraria\Map.cs" />
     <Compile Include="Terraria\Rain.cs" />
+    <Compile Include="Terraria\TileCollection.cs" />
     <Compile Include="XNA\Color.cs" />
     <Compile Include="TerrariaApi.Server\EventArgs\GetDataEventArgs.cs" />
     <Compile Include="TerrariaApi.Server\EventArgs\NpcStrikeEventArgs.cs" />

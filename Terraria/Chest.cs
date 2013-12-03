@@ -18,23 +18,23 @@ namespace Terraria
 			{
 				for (int j = Y; j <= Y + 1; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						Main.tile[i, j] = new Tile();
 					}
-					if ((Main.tile[i, j].frameX >= 72 && Main.tile[i, j].frameX <= 106) || (Main.tile[i, j].frameX >= 144 && Main.tile[i, j].frameX <= 178))
+					if ((Main.tile[i, j].frameX() >= 72 && Main.tile[i, j].frameX() <= 106) || (Main.tile[i, j].frameX() >= 144 && Main.tile[i, j].frameX() <= 178))
 					{
 						Tile expr_A3 = Main.tile[i, j];
-						expr_A3.frameX -= 36;
+						expr_A3.frameX((short)(expr_A3.frameX() - 36));
 						for (int k = 0; k < 4; k++)
 						{
 							Dust.NewDust(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, 11, 0f, 0f, 0, default(Color), 1f);
 						}
 					}
-					else if (Main.tile[i, j].frameX >= 828 && Main.tile[i, j].frameX <= 990)
+					else if (Main.tile[i, j].frameX() >= 828 && Main.tile[i, j].frameX() <= 990)
 					{
 						Tile expr_134 = Main.tile[i, j];
-						expr_134.frameX -= 180;
+						expr_134.frameX((short)(expr_134.frameX() - 180));
 						for (int l = 0; l < 4; l++)
 						{
 							Dust.NewDust(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, 11, 0f, 0f, 0, default(Color), 1f);
