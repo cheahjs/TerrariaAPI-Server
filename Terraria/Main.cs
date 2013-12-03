@@ -1877,6 +1877,8 @@ namespace Terraria
 			{
 				Console.Write(": ");
 				string text = Console.ReadLine();
+				if (text == null)
+					continue;
 				string text2 = text;
 				text = text.ToLower();
 				if (!ServerApi.Hooks.InvokeServerCommand(text2))
