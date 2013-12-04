@@ -5,9 +5,13 @@ namespace Terraria
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	public unsafe struct Tile
 	{
+		// itwhlsca
 		internal byte header;
+		// hccccc32
 		internal byte header2;
+		// -sswwwww
 		internal byte header3;
+		// ------nn
 		internal byte header4;
 
 		public byte type;
@@ -46,15 +50,17 @@ namespace Terraria
 		}
 		public void color(byte color)
 		{
-			header2 = (byte)((header2 & 0x83) | (*(byte*)&color << 2));
+			header2 = (byte)((header2 & 0x83) | color << 2);
 		}
 		public byte frameNumber()
 		{
-			return (byte)(header3 & 0x03);
+			return header4;
+			//return (byte)(header4 & 0x03);
 		}
 		public void frameNumber(byte frameNumber)
 		{
-			header3 = (byte)((header3 & 0xfc) | frameNumber);
+			header4 = frameNumber;
+			//header4 = (byte)((header4 & 0xfc) | frameNumber);
 		}
 		public bool halfBrick()
 		{
