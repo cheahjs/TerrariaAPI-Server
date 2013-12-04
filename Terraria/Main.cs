@@ -398,7 +398,6 @@ namespace Terraria
 		public static float windSpeed = 0f;
 		public static float windSpeedSet = 0f;
 		public static float windSpeedSpeed = 0f;
-		public static Cloud[] cloud = new Cloud[200];
 		public static bool resetClouds = true;
 		public static int sandTiles;
 		public static int evilTiles;
@@ -467,17 +466,13 @@ namespace Terraria
 		public static int[] backgroundWidth = new int[185];
 		public static int[] backgroundHeight = new int[185];
 		public static bool tilesLoaded = false;
-		//public static Map[,] map = new Map[Main.maxTilesX, Main.maxTilesY];
-		public static Tile[,] tile = new Tile[Main.maxTilesX, Main.maxTilesY];
+		public static Tile[,] tile;
 		public static Dust[] dust = new Dust[6001];
-		public static Star[] star = new Star[130];
 		public static Item[] item = new Item[401];
 		public static NPC[] npc = new NPC[201];
 		public static Gore[] gore = new Gore[501];
 		public static Rain[] rain = new Rain[Main.maxRain + 1];
 		public static Projectile[] projectile = new Projectile[1001];
-		public static CombatText[] combatText = new CombatText[100];
-		public static ItemText[] itemText = new ItemText[20];
 		public static Chest[] chest = new Chest[1000];
 		public static Sign[] sign = new Sign[1000];
 		public static Vector2 screenPosition;
@@ -491,7 +486,6 @@ namespace Terraria
 		public static int numChatLines = 500;
 		public static int startChatLine = 0;
 		public static string chatText = "";
-		public static ChatLine[] chatLine = new ChatLine[Main.numChatLines];
 		public static bool inputTextEnter = false;
 		public static float[] hotbarScale = new float[]
 		{
@@ -1883,6 +1877,8 @@ namespace Terraria
 			{
 				Console.Write(": ");
 				string text = Console.ReadLine();
+				if (text == null)
+					continue;
 				string text2 = text;
 				text = text.ToLower();
 				if (!ServerApi.Hooks.InvokeServerCommand(text2))
@@ -3574,18 +3570,6 @@ namespace Terraria
 			{
 				Main.rain[num7] = new Rain();
 			}
-			for (int num8 = 0; num8 < 200; num8++)
-			{
-				Main.cloud[num8] = new Cloud();
-			}
-			for (int num9 = 0; num9 < 100; num9++)
-			{
-				Main.combatText[num9] = new CombatText();
-			}
-			for (int num10 = 0; num10 < 20; num10++)
-			{
-				Main.itemText[num10] = new ItemText();
-			}
 			for (int num11 = 0; num11 < 1867; num11++)
 			{
 				Item item = new Item();
@@ -3610,10 +3594,6 @@ namespace Terraria
 				Main.availableRecipeY[num12] = (float)(65 * num12);
 			}
 			Recipe.SetupRecipes();
-			for (int num13 = 0; num13 < Main.numChatLines; num13++)
-			{
-				Main.chatLine[num13] = new ChatLine();
-			}
 			for (int num14 = 0; num14 < Liquid.resLiquid; num14++)
 			{
 				Main.liquid[num14] = new Liquid();
@@ -5126,214 +5106,8 @@ namespace Terraria
 					Main.updateTime = 0;
 				}
 			}
-			
-			if (Main.netMode == 1)
-			{
-				for (int k = 0; k < 59; k++)
-				{
-					if (Main.player[Main.myPlayer].inventory[k].IsNotTheSameAs(Main.clientPlayer.inventory[k]))
-					{
-						NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].inventory[k].name, Main.myPlayer, (float)k, (float)Main.player[Main.myPlayer].inventory[k].prefix, 0f, 0);
-					}
-				}
-				if (Main.player[Main.myPlayer].armor[0].IsNotTheSameAs(Main.clientPlayer.armor[0]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[0].name, Main.myPlayer, 59f, (float)Main.player[Main.myPlayer].armor[0].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[1].IsNotTheSameAs(Main.clientPlayer.armor[1]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[1].name, Main.myPlayer, 60f, (float)Main.player[Main.myPlayer].armor[1].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[2].IsNotTheSameAs(Main.clientPlayer.armor[2]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[2].name, Main.myPlayer, 61f, (float)Main.player[Main.myPlayer].armor[2].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[3].IsNotTheSameAs(Main.clientPlayer.armor[3]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[3].name, Main.myPlayer, 62f, (float)Main.player[Main.myPlayer].armor[3].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[4].IsNotTheSameAs(Main.clientPlayer.armor[4]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[4].name, Main.myPlayer, 63f, (float)Main.player[Main.myPlayer].armor[4].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[5].IsNotTheSameAs(Main.clientPlayer.armor[5]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[5].name, Main.myPlayer, 64f, (float)Main.player[Main.myPlayer].armor[5].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[6].IsNotTheSameAs(Main.clientPlayer.armor[6]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[6].name, Main.myPlayer, 65f, (float)Main.player[Main.myPlayer].armor[6].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[7].IsNotTheSameAs(Main.clientPlayer.armor[7]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[7].name, Main.myPlayer, 66f, (float)Main.player[Main.myPlayer].armor[7].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[8].IsNotTheSameAs(Main.clientPlayer.armor[8]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[8].name, Main.myPlayer, 67f, (float)Main.player[Main.myPlayer].armor[8].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[9].IsNotTheSameAs(Main.clientPlayer.armor[9]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[9].name, Main.myPlayer, 68f, (float)Main.player[Main.myPlayer].armor[9].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].armor[10].IsNotTheSameAs(Main.clientPlayer.armor[10]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].armor[10].name, Main.myPlayer, 69f, (float)Main.player[Main.myPlayer].armor[10].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].dye[0].IsNotTheSameAs(Main.clientPlayer.dye[0]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].dye[0].name, Main.myPlayer, 70f, (float)Main.player[Main.myPlayer].dye[0].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].dye[1].IsNotTheSameAs(Main.clientPlayer.dye[1]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].dye[1].name, Main.myPlayer, 71f, (float)Main.player[Main.myPlayer].dye[1].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].dye[2].IsNotTheSameAs(Main.clientPlayer.dye[2]))
-				{
-					NetMessage.SendData(5, -1, -1, Main.player[Main.myPlayer].dye[2].name, Main.myPlayer, 72f, (float)Main.player[Main.myPlayer].dye[2].prefix, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].chest != Main.clientPlayer.chest)
-				{
-					NetMessage.SendData(33, -1, -1, "", Main.player[Main.myPlayer].chest, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].talkNPC != Main.clientPlayer.talkNPC)
-				{
-					NetMessage.SendData(40, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneEvil != Main.clientPlayer.zoneEvil)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneMeteor != Main.clientPlayer.zoneMeteor)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneDungeon != Main.clientPlayer.zoneDungeon)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneJungle != Main.clientPlayer.zoneJungle)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneHoly != Main.clientPlayer.zoneHoly)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneSnow != Main.clientPlayer.zoneSnow)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneBlood != Main.clientPlayer.zoneBlood)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				if (Main.player[Main.myPlayer].zoneCandle != Main.clientPlayer.zoneCandle)
-				{
-					NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-				bool flag = false;
-				for (int l = 0; l < 10; l++)
-				{
-					if (Main.player[Main.myPlayer].buffType[l] != Main.clientPlayer.buffType[l])
-					{
-						flag = true;
-					}
-				}
-				if (flag)
-				{
-					NetMessage.SendData(50, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-					NetMessage.SendData(13, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				}
-			}
-			if (Main.netMode == 1)
-			{
-				Main.clientPlayer = (Player)Main.player[Main.myPlayer].clientClone();
-			}
-			if (Main.netMode == 0 && (Main.playerInventory || Main.npcChatText != "" || Main.player[Main.myPlayer].sign >= 0) && Main.autoPause)
-			{/*
-				Keys[] pressedKeys = Main.keyState.GetPressedKeys();
-				Main.player[Main.myPlayer].controlInv = false;
-				for (int m = 0; m < pressedKeys.Length; m++)
-				{
-					string text2 = string.Concat(pressedKeys[m]);
-					if (text2 == Main.cInv)
-					{
-						Main.player[Main.myPlayer].controlInv = true;
-					}
-				}
-				if (Main.player[Main.myPlayer].controlInv)
-				{
-					if (Main.player[Main.myPlayer].releaseInventory)
-					{
-						Main.player[Main.myPlayer].toggleInv();
-					}
-					Main.player[Main.myPlayer].releaseInventory = false;
-				}
-				else
-				{
-					Main.player[Main.myPlayer].releaseInventory = true;
-				}
-				if (Main.playerInventory)
-				{
-					int num7 = (Main.mouseState.ScrollWheelValue - Main.oldMouseState.ScrollWheelValue) / 120;
-					Main.focusRecipe += num7;
-					if (Main.focusRecipe > Main.numAvailableRecipes - 1)
-					{
-						Main.focusRecipe = Main.numAvailableRecipes - 1;
-					}
-					if (Main.focusRecipe < 0)
-					{
-						Main.focusRecipe = 0;
-					}
-					Main.player[Main.myPlayer].dropItemCheck();
-				}
-				Main.player[Main.myPlayer].head = Main.player[Main.myPlayer].armor[0].headSlot;
-				Main.player[Main.myPlayer].body = Main.player[Main.myPlayer].armor[1].bodySlot;
-				Main.player[Main.myPlayer].legs = Main.player[Main.myPlayer].armor[2].legSlot;
-				if (!Main.player[Main.myPlayer].hostile)
-				{
-					if (Main.player[Main.myPlayer].armor[8].headSlot >= 0)
-					{
-						Main.player[Main.myPlayer].head = Main.player[Main.myPlayer].armor[8].headSlot;
-					}
-					if (Main.player[Main.myPlayer].armor[9].bodySlot >= 0)
-					{
-						Main.player[Main.myPlayer].body = Main.player[Main.myPlayer].armor[9].bodySlot;
-					}
-					if (Main.player[Main.myPlayer].armor[10].legSlot >= 0)
-					{
-						Main.player[Main.myPlayer].legs = Main.player[Main.myPlayer].armor[10].legSlot;
-					}
-				}
-				if (Main.editSign)
-				{
-					if (Main.player[Main.myPlayer].sign == -1)
-					{
-						Main.editSign = false;
-					}
-					else
-					{
-						Main.npcChatText = Main.GetInputText(Main.npcChatText);
-						if (Main.inputTextEnter)
-						{
-							byte[] bytes = new byte[]
-							{
-								10
-							};
-							Main.npcChatText += Encoding.ASCII.GetString(bytes);
-						}
-					}
-				}
-				Main.gamePaused = true;
-				return;*/
-			}
+
 			Main.gamePaused = false;
-			if (!Main.dedServ && (double)Main.screenPosition.Y < Main.worldSurface * 16.0 + 16.0 && Main.netMode != 2)
-			{
-				Star.UpdateStars();
-				Cloud.UpdateClouds();
-			}
 			Main.numPlayers = 0;
 			int n = 0;
 			while (n < 255)
@@ -5490,29 +5264,7 @@ namespace Terraria
 				Main.item[num12].UpdateItem(num12);
 				goto IL_2650;
 			}
-			if (Main.ignoreErrors)
-			{
-				try
-				{
-					Dust.UpdateDust();
-					goto IL_2696;
-				}
-				catch
-				{
-					for (int num13 = 0; num13 < 6000; num13++)
-					{
-						Main.dust[num13] = new Dust();
-					}
-					goto IL_2696;
-				}
-			}
-			Dust.UpdateDust();
 			IL_2696:
-			if (Main.netMode != 2)
-			{
-				/*CombatText.UpdateCombatText();
-				ItemText.UpdateItemText();*/
-			}
 			if (Main.ignoreErrors)
 			{
 				try
@@ -5551,14 +5303,7 @@ namespace Terraria
 			{
 				try
 				{
-					if (Main.netMode == 2)
-					{
-						Main.UpdateServer();
-					}
-					if (Main.netMode == 1)
-					{
-						Main.UpdateClient();
-					}
+					Main.UpdateServer();
 					goto IL_2734;
 				}
 				catch
@@ -5567,36 +5312,9 @@ namespace Terraria
 					goto IL_2734;
 				}
 			}
-			if (Main.netMode == 2)
-			{
-				Main.UpdateServer();
-				goto IL_2727;
-			}
+			Main.UpdateServer();
 			goto IL_2727;
 			IL_2734:
-			if (Main.ignoreErrors)
-			{
-				try
-				{
-					for (int num14 = 0; num14 < Main.numChatLines; num14++)
-					{
-						if (Main.chatLine[num14].showTime > 0)
-						{
-							Main.chatLine[num14].showTime--;
-						}
-					}
-					goto IL_27D3;
-				}
-				catch
-				{
-					for (int num15 = 0; num15 < Main.numChatLines; num15++)
-					{
-						Main.chatLine[num15] = new ChatLine();
-					}
-					goto IL_27D3;
-				}
-				goto IL_279A;
-			}
 			goto IL_279A;
 			IL_27D3:
 			Main.upTimer = (float)stopwatch.ElapsedMilliseconds;
@@ -5608,20 +5326,8 @@ namespace Terraria
 			Main.upTimerMax = 0f;
 			goto IL_2807;
 			IL_279A:
-			for (int num16 = 0; num16 < Main.numChatLines; num16++)
-			{
-				if (Main.chatLine[num16].showTime > 0)
-				{
-					Main.chatLine[num16].showTime--;
-				}
-			}
 			goto IL_27D3;
 			IL_2727:
-			if (Main.netMode == 1)
-			{
-				Main.UpdateClient();
-				goto IL_2734;
-			}
 			goto IL_2734;
 			IL_2807:
 			if (Main.upTimer > Main.upTimerMax)
@@ -5793,11 +5499,11 @@ namespace Terraria
 		}
 		public static bool canDrawColorTile(int i, int j)
 		{
-			return Main.tile[i, j] != null && Main.tile[i, j].color() > 0 && (int)Main.tile[i, j].color() < Main.numTileColors && Main.tileAltTextureDrawn[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()] && Main.tileAltTextureInit[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()];
+			return true && Main.tile[i, j].color() > 0 && (int)Main.tile[i, j].color() < Main.numTileColors && Main.tileAltTextureDrawn[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()] && Main.tileAltTextureInit[(int)Main.tile[i, j].type, (int)Main.tile[i, j].color()];
 		}
 		public static bool canDrawColorWall(int i, int j)
 		{
-			return Main.tile[i, j] != null && Main.tile[i, j].wallColor() > 0 && Main.wallAltTextureDrawn[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()] && Main.wallAltTextureInit[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()];
+			return true && Main.tile[i, j].wallColor() > 0 && Main.wallAltTextureDrawn[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()] && Main.wallAltTextureInit[(int)Main.tile[i, j].wall, (int)Main.tile[i, j].wallColor()];
 		}
 		public static float NPCAddHeight(int i)
 		{
@@ -7642,7 +7348,7 @@ namespace Terraria
 			{
 				for (int j = num4; j < num5; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						Main.tile[i, j] = new Tile();
 					}
@@ -7650,11 +7356,11 @@ namespace Terraria
 					{
 						if (Main.tile[i, j].halfBrick() && (Main.tile[i, j - 1].liquid < 16 || WorldGen.SolidTile(i, j - 1)))
 						{
-							if (Main.tile[i - 1, j] == null)
+							if (false)
 							{
 								return;
 							}
-							if (Main.tile[i + 1, j] == null)
+							if (false)
 							{
 								return;
 							}
@@ -7757,7 +7463,7 @@ namespace Terraria
 				{
 					for (int j = num3; j < num4; j++)
 					{
-						if (Main.tile[i, j] != null)
+						if (true)
 						{
 							if (Main.tile[i, j].active() && Main.tile[i, j].color() > 0)
 							{
@@ -9694,44 +9400,6 @@ namespace Terraria
 				}
 			}
 		}
-		private static void UpdateClient()
-		{
-			if (Main.myPlayer == 255)
-			{
-				Netplay.disconnect = true;
-			}
-			Main.netPlayCounter++;
-			if (Main.netPlayCounter > 3600)
-			{
-				Main.netPlayCounter = 0;
-			}
-			if (Math.IEEERemainder((double)Main.netPlayCounter, 420.0) == 0.0)
-			{
-				NetMessage.SendData(13, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-			}
-			if (Math.IEEERemainder((double)Main.netPlayCounter, 900.0) == 0.0)
-			{
-				NetMessage.SendData(36, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				NetMessage.SendData(16, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-				NetMessage.SendData(40, -1, -1, "", Main.myPlayer, 0f, 0f, 0f, 0);
-			}
-			if (Netplay.clientSock.active)
-			{
-				Netplay.clientSock.timeOut++;
-				if (!Main.stopTimeOuts && Netplay.clientSock.timeOut > 60 * Main.timeOut)
-				{
-					Main.statusText = Lang.inter[43];
-					Netplay.disconnect = true;
-				}
-			}
-			for (int i = 0; i < 400; i++)
-			{
-				if (Main.item[i].active && Main.item[i].owner == Main.myPlayer)
-				{
-					Main.item[i].FindOwner(i);
-				}
-			}
-		}
 		private static void UpdateServer()
 		{
 			Main.netPlayCounter++;
@@ -9797,75 +9465,6 @@ namespace Terraria
 		}
 		public static void NewText(string newText, byte R = 255, byte G = 255, byte B = 255, bool force = false)
 		{
-			int num = 80;
-			if (!force && newText.Length > num)
-			{
-				string text = newText;
-				while (text.Length > num)
-				{
-					int num2 = num;
-					int num3 = num2;
-					while (text.Substring(num3, 1) != " ")
-					{
-						num3--;
-						if (num3 < 1)
-						{
-							break;
-						}
-					}
-					if (num3 == 0)
-					{
-						while (text.Substring(num2, 1) != " ")
-						{
-							num2++;
-							if (num2 >= text.Length - 1)
-							{
-								break;
-							}
-						}
-					}
-					else
-					{
-						num2 = num3;
-					}
-					if (num2 >= text.Length - 1)
-					{
-						num2 = text.Length;
-					}
-					string newText2 = text.Substring(0, num2);
-					Main.NewText(newText2, R, G, B, true);
-					text = text.Substring(num2);
-					if (text.Length > 0)
-					{
-						while (text.Substring(0, 1) == " ")
-						{
-							text = text.Substring(1);
-						}
-					}
-				}
-				if (text.Length > 0)
-				{
-					Main.NewText(text, R, G, B, true);
-				}
-				return;
-			}
-			for (int i = Main.numChatLines - 1; i > 0; i--)
-			{
-				Main.chatLine[i].text = Main.chatLine[i - 1].text;
-				Main.chatLine[i].showTime = Main.chatLine[i - 1].showTime;
-				Main.chatLine[i].color = Main.chatLine[i - 1].color;
-			}
-			if (R == 0 && G == 0 && B == 0)
-			{
-				Main.chatLine[0].color = Color.White;
-			}
-			else
-			{
-				Main.chatLine[0].color = new Color((int)R, (int)G, (int)B);
-			}
-			Main.chatLine[0].text = newText;
-			Main.chatLine[0].showTime = Main.chatLength;
-			Main.PlaySound(12, -1, -1, 1);
 		}
 		public static void StopRain()
 		{

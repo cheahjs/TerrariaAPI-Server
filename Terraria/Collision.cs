@@ -35,11 +35,11 @@ namespace Terraria
 						{
 							num--;
 						}
-						if (Main.tile[num, num2 - 1] == null)
+						if (false)
 						{
 							Main.tile[num, num2 - 1] = new Tile();
 						}
-						if (Main.tile[num, num2 + 1] == null)
+						if (false)
 						{
 							Main.tile[num, num2 + 1] = new Tile();
 						}
@@ -58,11 +58,11 @@ namespace Terraria
 						{
 							num2--;
 						}
-						if (Main.tile[num - 1, num2] == null)
+						if (false)
 						{
 							Main.tile[num - 1, num2] = new Tile();
 						}
-						if (Main.tile[num + 1, num2] == null)
+						if (false)
 						{
 							Main.tile[num + 1, num2] = new Tile();
 						}
@@ -71,7 +71,7 @@ namespace Terraria
 							goto Block_34;
 						}
 					}
-					if (Main.tile[num, num2] == null)
+					if (false)
 					{
 						Main.tile[num, num2] = new Tile();
 					}
@@ -162,7 +162,7 @@ namespace Terraria
 			{
 				for (int j = num5; j < num6; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].liquid > 0 && !Main.tile[i, j].lava())
+					if (true && Main.tile[i, j].liquid > 0 && !Main.tile[i, j].lava())
 					{
 						Vector2 vector2;
 						vector2.X = (float)(i * 16);
@@ -220,7 +220,7 @@ namespace Terraria
 			{
 				for (int j = num5; j < num6; j++)
 				{
-					if (Main.tile[i, j] != null)
+					if (true)
 					{
 						if (Main.tile[i, j].liquid > 0)
 						{
@@ -290,7 +290,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].liquid > 0 && Main.tile[i, j].lava())
+					if (true && Main.tile[i, j].liquid > 0 && Main.tile[i, j].lava())
 					{
 						Vector2 vector;
 						vector.X = (float)(i * 16);
@@ -331,7 +331,7 @@ namespace Terraria
 			{
 				for (int j = num3; j <= num3 + 1; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						Main.tile[i, j] = new Tile();
 					}
@@ -378,7 +378,7 @@ namespace Terraria
 			}
 			int num9 = num5;
 			int num10 = num6;
-			if (Main.tile[num9, num10] != null && Main.tile[num9, num10].slope() > 0)
+			if (true && Main.tile[num9, num10].slope() > 0)
 			{
 				int num11 = (int)Main.tile[num9, num10].slope();
 				Vector2 vector2;
@@ -438,7 +438,7 @@ namespace Terraria
 			{
 				for (int j = num4; j < num5; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -603,7 +603,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -723,7 +723,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && Main.tile[i, j].active() && !Main.tile[i, j].inActive() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -774,7 +774,7 @@ namespace Terraria
 								{
 									if (vector3.X + (float)Width <= vector4.X && !Main.tileSolidTop[(int)Main.tile[i, j].type])
 									{
-										if (Main.tile[i - 1, j] == null)
+										if (false)
 										{
 											Main.tile[i - 1, j] = new Tile();
 										}
@@ -796,7 +796,7 @@ namespace Terraria
 									{
 										if (vector3.X >= vector4.X + 16f && !Main.tileSolidTop[(int)Main.tile[i, j].type])
 										{
-											if (Main.tile[i + 1, j] == null)
+											if (false)
 											{
 												Main.tile[i + 1, j] = new Tile();
 											}
@@ -863,7 +863,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && Main.tileSolid[(int)Main.tile[i, j].type] && !Main.tileSolidTop[(int)Main.tile[i, j].type])
+					if (true && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && Main.tileSolid[(int)Main.tile[i, j].type] && !Main.tileSolidTop[(int)Main.tile[i, j].type])
 					{
 						Vector2 vector;
 						vector.X = (float)(i * 16);
@@ -912,7 +912,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].liquid > 0 && Main.tile[i, j - 1].liquid == 0 && (!Main.tile[i, j].lava() || lavaWalk))
+					if (true && Main.tile[i, j].liquid > 0 && Main.tile[i, j - 1].liquid == 0 && (!Main.tile[i, j].lava() || lavaWalk))
 					{
 						int num5 = (int)(Main.tile[i, j].liquid / 32 * 2 + 2);
 						Vector2 vector3;
@@ -961,7 +961,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && !Main.tile[i, j].inActive())
+					if (true && Main.tile[i, j].active() && !Main.tile[i, j].inActive())
 					{
 						Vector2 vector4;
 						vector4.X = (float)(i * 16);
@@ -1061,7 +1061,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
+					if (true && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tileSolid[(int)Main.tile[i, j].type] || (Main.tileSolidTop[(int)Main.tile[i, j].type] && Main.tile[i, j].frameY == 0)))
 					{
 						Vector2 vector2;
 						vector2.X = (float)(i * 16);
@@ -1107,7 +1107,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].slope() == 0 && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tile[i, j].type == 32 || Main.tile[i, j].type == 37 || Main.tile[i, j].type == 48 || Main.tile[i, j].type == 232 || Main.tile[i, j].type == 53 || Main.tile[i, j].type == 57 || Main.tile[i, j].type == 58 || Main.tile[i, j].type == 69 || Main.tile[i, j].type == 76 || Main.tile[i, j].type == 112 || Main.tile[i, j].type == 116 || Main.tile[i, j].type == 123 || Main.tile[i, j].type == 224 || Main.tile[i, j].type == 234))
+					if (true && Main.tile[i, j].slope() == 0 && !Main.tile[i, j].inActive() && Main.tile[i, j].active() && (Main.tile[i, j].type == 32 || Main.tile[i, j].type == 37 || Main.tile[i, j].type == 48 || Main.tile[i, j].type == 232 || Main.tile[i, j].type == 53 || Main.tile[i, j].type == 57 || Main.tile[i, j].type == 58 || Main.tile[i, j].type == 69 || Main.tile[i, j].type == 76 || Main.tile[i, j].type == 112 || Main.tile[i, j].type == 116 || Main.tile[i, j].type == 123 || Main.tile[i, j].type == 224 || Main.tile[i, j].type == 234))
 					{
 						Vector2 vector2;
 						vector2.X = (float)(i * 16);
@@ -1223,7 +1223,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active() && (Main.tile[i, j].type == 135 || Main.tile[i, j].type == 210))
+					if (true && Main.tile[i, j].active() && (Main.tile[i, j].type == 135 || Main.tile[i, j].type == 210))
 					{
 						Vector2 vector;
 						vector.X = (float)(i * 16);
@@ -1289,7 +1289,7 @@ namespace Terraria
 			{
 				for (int j = num3; j < num4; j++)
 				{
-					if (Main.tile[i, j] != null && Main.tile[i, j].active())
+					if (true && Main.tile[i, j].active())
 					{
 						if (Main.tile[i, j].type == 51)
 						{
@@ -1357,7 +1357,7 @@ namespace Terraria
 			{
 				for (int j = startY; j < endY + 1; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						return false;
 					}

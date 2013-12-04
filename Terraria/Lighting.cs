@@ -329,7 +329,7 @@ namespace Terraria
 					{
 						for (int num21 = Lighting.firstToLightY; num21 < Lighting.lastToLightY; num21++)
 						{
-							if (Main.tile[num20, num21] == null)
+							if (false)
 							{
 								Main.tile[num20, num21] = new Tile();
 							}
@@ -484,7 +484,7 @@ namespace Terraria
 			{
 				for (int num41 = num24; num41 < num25; num41++)
 				{
-					if (Main.tile[num40, num41] == null)
+					if (false)
 					{
 						Main.tile[num40, num41] = new Tile();
 					}

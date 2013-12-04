@@ -416,22 +416,6 @@ namespace Terraria
 		public int fallStart;
 		public int slowCount;
 		public int potionDelayTime = Item.potionDelay;
-		public void HealEffect(int healAmount, bool broadcast = true)
-		{
-			CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(100, 255, 100, 255), string.Concat(healAmount), false, false);
-			if (broadcast && Main.netMode == 1 && this.whoAmi == Main.myPlayer)
-			{
-				NetMessage.SendData(35, -1, -1, "", this.whoAmi, (float)healAmount, 0f, 0f, 0);
-			}
-		}
-		public void ManaEffect(int manaAmount)
-		{
-			CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(100, 100, 255, 255), string.Concat(manaAmount), false, false);
-			if (Main.netMode == 1 && this.whoAmi == Main.myPlayer)
-			{
-				NetMessage.SendData(43, -1, -1, "", this.whoAmi, (float)manaAmount, 0f, 0f, 0);
-			}
-		}
 		public static byte FindClosest(Vector2 Position, int Width, int Height)
 		{
 			byte result = 0;
@@ -738,14 +722,6 @@ namespace Terraria
 					{
 						this.statMana = this.statManaMax2;
 					}
-					if (this.inventory[i].healLife > 0 && Main.myPlayer == this.whoAmi)
-					{
-						this.HealEffect(this.inventory[i].healLife, true);
-					}
-					if (this.inventory[i].healMana > 0 && Main.myPlayer == this.whoAmi)
-					{
-						this.ManaEffect(this.inventory[i].healMana);
-					}
 					this.inventory[i].stack--;
 					if (this.inventory[i].stack <= 0)
 					{
@@ -786,14 +762,6 @@ namespace Terraria
 					if (this.statMana > this.statManaMax2)
 					{
 						this.statMana = this.statManaMax2;
-					}
-					if (this.inventory[i].healLife > 0 && Main.myPlayer == this.whoAmi)
-					{
-						this.HealEffect(this.inventory[i].healLife, true);
-					}
-					if (this.inventory[i].healMana > 0 && Main.myPlayer == this.whoAmi)
-					{
-						this.ManaEffect(this.inventory[i].healMana);
 					}
 					this.inventory[i].stack--;
 					if (this.inventory[i].stack <= 0)
@@ -1711,23 +1679,23 @@ namespace Terraria
 				{
 					int num7 = (int)(this.position.X + (float)(this.width / 2)) / 16;
 					int num8 = (int)(this.position.Y + (float)(this.height / 2)) / 16;
-					if (Main.tile[num7, num8] == null)
+					if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7 - 3, num8] == null)
+					else if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7 + 3, num8] == null)
+					else if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7, num8 - 3] == null)
+					else if (false)
 					{
 						flag = true;
 					}
-					else if (Main.tile[num7, num8 + 3] == null)
+					else if (false)
 					{
 						flag = true;
 					}
@@ -4694,25 +4662,21 @@ namespace Terraria
 								{
 									this.lifeRegenCount += 480;
 									this.statLife -= 4;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(4), false, true);
 								}
 								else if (this.lifeRegenCount <= -360)
 								{
 									this.lifeRegenCount += 360;
 									this.statLife -= 3;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(3), false, true);
 								}
 								else if (this.lifeRegenCount <= -240)
 								{
 									this.lifeRegenCount += 240;
 									this.statLife -= 2;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(2), false, true);
 								}
 								else
 								{
 									this.lifeRegenCount += 120;
 									this.statLife--;
-									CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(1), false, true);
 								}
 								if (this.statLife <= 0 && this.whoAmi == Main.myPlayer)
 								{
@@ -4733,7 +4697,6 @@ namespace Terraria
 					{
 						this.lifeRegenCount += 600;
 						this.statLife -= 5;
-						CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 60, 70, 255), string.Concat(5), false, true);
 						if (this.statLife <= 0 && this.whoAmi == Main.myPlayer)
 						{
 							if (this.suffocating)
@@ -4900,11 +4863,11 @@ namespace Terraria
 						if (Main.tile[num77, num78].active() && Main.tileRope[(int)Main.tile[num77, num78].type])
 						{
 							float num79 = this.position.Y;
-							if (Main.tile[num77, num78 - 1] == null)
+							if (false)
 							{
 								Main.tile[num77, num78 - 1] = new Tile();
 							}
-							if (Main.tile[num77, num78 + 1] == null)
+							if (false)
 							{
 								Main.tile[num77, num78 + 1] = new Tile();
 							}
@@ -5122,7 +5085,7 @@ namespace Terraria
 						{
 							this.pulley = false;
 						}
-						if (Main.tile[num86, num87] == null)
+						if (false)
 						{
 							Main.tile[num86, num87] = new Tile();
 						}
@@ -5166,7 +5129,7 @@ namespace Terraria
 						{
 							flag35 = true;
 						}
-						if (Main.tile[num94, num95] == null)
+						if (false)
 						{
 							Main.tile[num94, num95] = new Tile();
 						}
@@ -7032,10 +6995,6 @@ namespace Terraria
 									{
 										Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 										this.statLife += 20;
-										if (Main.myPlayer == this.whoAmi)
-										{
-											this.HealEffect(20, true);
-										}
 										if (this.statLife > this.statLifeMax)
 										{
 											this.statLife = this.statLifeMax;
@@ -7050,27 +7009,15 @@ namespace Terraria
 									{
 										Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 										this.statMana += 100;
-										if (Main.myPlayer == this.whoAmi)
-										{
-											this.ManaEffect(100);
-										}
 										if (this.statMana > this.statManaMax2)
 										{
 											this.statMana = this.statManaMax2;
 										}
 										Main.item[num176] = new Item();
-										if (Main.netMode == 1)
-										{
-											NetMessage.SendData(21, -1, -1, "", num176, 0f, 0f, 0f, 0);
-										}
 									}
 									else
 									{
 										Main.item[num176] = this.GetItem(i, Main.item[num176]);
-										if (Main.netMode == 1)
-										{
-											NetMessage.SendData(21, -1, -1, "", num176, 0f, 0f, 0f, 0);
-										}
 									}
 								}
 							}
@@ -7134,7 +7081,7 @@ namespace Terraria
 					}
 					if (this.position.X / 16f - (float)Player.tileRangeX <= (float)Player.tileTargetX && (this.position.X + (float)this.width) / 16f + (float)Player.tileRangeX - 1f >= (float)Player.tileTargetX && this.position.Y / 16f - (float)Player.tileRangeY <= (float)Player.tileTargetY && (this.position.Y + (float)this.height) / 16f + (float)Player.tileRangeY - 2f >= (float)Player.tileTargetY)
 					{
-						if (Main.tile[Player.tileTargetX, Player.tileTargetY] == null)
+						if (false)
 						{
 							Main.tile[Player.tileTargetX, Player.tileTargetY] = new Tile();
 						}
@@ -8344,7 +8291,7 @@ namespace Terraria
 								Main.dust[num267].velocity *= 0.1f;
 								Main.dust[num267].noGravity = true;
 							}
-							if (Main.tile[num264, num265 + 1] != null && Main.tile[num264, num265 + 1].type == 229 && this.position.Y + (float)this.height > (float)((num265 + 1) * 16))
+							if (true && Main.tile[num264, num265 + 1].type == 229 && this.position.Y + (float)this.height > (float)((num265 + 1) * 16))
 							{
 								if ((float)(num264 * 16) < this.position.X + (float)(this.width / 2))
 								{
@@ -8361,7 +8308,7 @@ namespace Terraria
 									Main.dust[num269].noGravity = true;
 								}
 							}
-							if (Main.tile[num264, num265 + 2] != null && Main.tile[num264, num265 + 2].type == 229 && this.position.Y + (float)this.height > (float)((num265 + 2) * 16))
+							if (true && Main.tile[num264, num265 + 2].type == 229 && this.position.Y + (float)this.height > (float)((num265 + 2) * 16))
 							{
 								if ((float)(num264 * 16) < this.position.X + (float)(this.width / 2))
 								{
@@ -8402,7 +8349,7 @@ namespace Terraria
 							int num274 = (int)((this.position.Y + (float)num273 - 44f * this.gravDir) / 16f);
 							if (Main.tile[num272, num274].liquid < 128)
 							{
-								if (Main.tile[num272, num274] == null)
+								if (false)
 								{
 									Main.tile[num272, num274] = new Tile();
 								}
@@ -8743,7 +8690,7 @@ namespace Terraria
 						{
 							for (int num302 = num299; num302 <= num299 + 1; num302++)
 							{
-								if (Main.tile[num301, num302] == null)
+								if (false)
 								{
 									Main.tile[num301, num302] = new Tile();
 								}
@@ -8753,7 +8700,7 @@ namespace Terraria
 								}
 								if (this.waterWalk2 || this.waterWalk)
 								{
-									if (Main.tile[num301, num302 - 1] == null)
+									if (false)
 									{
 										Main.tile[num301, num302 - 1] = new Tile();
 									}
@@ -8768,7 +8715,7 @@ namespace Terraria
 										}
 									}
 								}
-								if (Main.tile[num301, num302 - 1] == null)
+								if (false)
 								{
 									Main.tile[num301, num302 - 1] = new Tile();
 								}
@@ -8816,27 +8763,27 @@ namespace Terraria
 							vector10.X += this.velocity.X;
 							int num308 = (int)((vector10.X + (float)(this.width / 2) + (float)((this.width / 2 + 1) * num307)) / 16f);
 							int num309 = (int)(((double)vector10.Y + 0.1) / 16.0);
-							if (Main.tile[num308, num309] == null)
+							if (false)
 							{
 								Main.tile[num308, num309] = new Tile();
 							}
-							if (num309 - 1 > 0 && Main.tile[num308, num309 + 1] == null)
+							if (num309 - 1 > 0 && false)
 							{
 								Main.tile[num308, num309 + 1] = new Tile();
 							}
-							if (num309 - 2 > 0 && Main.tile[num308, num309 + 2] == null)
+							if (num309 - 2 > 0 && false)
 							{
 								Main.tile[num308, num309 + 2] = new Tile();
 							}
-							if (num309 - 3 > 0 && Main.tile[num308, num309 + 3] == null)
+							if (num309 - 3 > 0 && false)
 							{
 								Main.tile[num308, num309 + 3] = new Tile();
 							}
-							if (num309 - 4 > 0 && Main.tile[num308, num309 + 4] == null)
+							if (num309 - 4 > 0 && false)
 							{
 								Main.tile[num308, num309 + 4] = new Tile();
 							}
-							if (num309 - 3 > 0 && Main.tile[num308 - num307, num309 + 3] == null)
+							if (num309 - 3 > 0 && false)
 							{
 								Main.tile[num308 - num307, num309 + 3] = new Tile();
 							}
@@ -8879,27 +8826,27 @@ namespace Terraria
 						vector11.X += this.velocity.X;
 						int num313 = (int)((vector11.X + (float)(this.width / 2) + (float)((this.width / 2 + 1) * num312)) / 16f);
 						int num314 = (int)((vector11.Y + (float)this.height - 1f) / 16f);
-						if (Main.tile[num313, num314] == null)
+						if (false)
 						{
 							Main.tile[num313, num314] = new Tile();
 						}
-						if (num314 - 1 > 0 && Main.tile[num313, num314 - 1] == null)
+						if (num314 - 1 > 0 && false)
 						{
 							Main.tile[num313, num314 - 1] = new Tile();
 						}
-						if (num314 - 2 > 0 && Main.tile[num313, num314 - 2] == null)
+						if (num314 - 2 > 0 && false)
 						{
 							Main.tile[num313, num314 - 2] = new Tile();
 						}
-						if (num314 - 3 > 0 && Main.tile[num313, num314 - 3] == null)
+						if (num314 - 3 > 0 && false)
 						{
 							Main.tile[num313, num314 - 3] = new Tile();
 						}
-						if (num314 - 4 > 0 && Main.tile[num313, num314 - 4] == null)
+						if (num314 - 4 > 0 && false)
 						{
 							Main.tile[num313, num314 - 4] = new Tile();
 						}
-						if (num314 - 3 > 0 && Main.tile[num313 - num312, num314 - 3] == null)
+						if (num314 - 3 > 0 && false)
 						{
 							Main.tile[num313 - num312, num314 - 3] = new Tile();
 						}
@@ -9052,15 +8999,15 @@ namespace Terraria
 						int num317 = (int)((this.position.X + (float)(this.width / 2)) / 16f);
 						int num318 = (int)((this.position.Y + (float)this.height) / 16f);
 						int num319 = -1;
-						if (Main.tile[num317 - 1, num318] == null)
+						if (false)
 						{
 							Main.tile[num317 - 1, num318] = new Tile();
 						}
-						if (Main.tile[num317 + 1, num318] == null)
+						if (false)
 						{
 							Main.tile[num317 + 1, num318] = new Tile();
 						}
-						if (Main.tile[num317, num318] == null)
+						if (false)
 						{
 							Main.tile[num317, num318] = new Tile();
 						}
@@ -10480,7 +10427,6 @@ namespace Terraria
 					{
 						this.statMana = this.statManaMax2;
 					}
-					this.ManaEffect(num3);
 				}
 				if (this.paladinBuff)
 				{
@@ -10517,7 +10463,6 @@ namespace Terraria
 					NetMessage.SendData(16, -1, -1, "", this.whoAmi, 0f, 0f, 0f, 0);
 					NetMessage.SendData(26, -1, -1, "", this.whoAmi, (float)hitDirection, (float)Damage, (float)num7, number);
 				}
-				CombatText.NewText(new Rectangle((int)this.position.X, (int)this.position.Y, this.width, this.height), new Color(255, 80, 90, 255), string.Concat((int)num2), Crit, false);
 				this.statLife -= (int)num2;
 				this.immune = true;
 				if (num2 == 1.0)
@@ -10834,7 +10779,6 @@ namespace Terraria
 					if (newItem.stack + this.inventory[i].stack <= this.inventory[i].maxStack)
 					{
 						this.inventory[i].stack += newItem.stack;
-						ItemText.NewText(newItem, newItem.stack);
 						this.DoCoins(i);
 						if (plr == Main.myPlayer)
 						{
@@ -10843,7 +10787,6 @@ namespace Terraria
 						return new Item();
 					}
 					newItem.stack -= this.inventory[i].maxStack - this.inventory[i].stack;
-					ItemText.NewText(newItem, this.inventory[i].maxStack - this.inventory[i].stack);
 					this.inventory[i].stack = this.inventory[i].maxStack;
 					this.DoCoins(i);
 					if (plr == Main.myPlayer)
@@ -10859,7 +10802,6 @@ namespace Terraria
 					if (this.inventory[j].type == 0)
 					{
 						this.inventory[j] = newItem;
-						ItemText.NewText(newItem, newItem.stack);
 						this.DoCoins(j);
 						Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 						if (plr == Main.myPlayer)
@@ -10907,7 +10849,6 @@ namespace Terraria
 					if (item.stack + this.inventory[num3].stack <= this.inventory[num3].maxStack)
 					{
 						this.inventory[num3].stack += item.stack;
-						ItemText.NewText(newItem, item.stack);
 						this.DoCoins(num3);
 						if (plr == Main.myPlayer)
 						{
@@ -10916,7 +10857,6 @@ namespace Terraria
 						return new Item();
 					}
 					item.stack -= this.inventory[num3].maxStack - this.inventory[num3].stack;
-					ItemText.NewText(newItem, this.inventory[num3].maxStack - this.inventory[num3].stack);
 					this.inventory[num3].stack = this.inventory[num3].maxStack;
 					this.DoCoins(num3);
 					if (plr == Main.myPlayer)
@@ -10932,7 +10872,6 @@ namespace Terraria
 					if (this.inventory[j].type == 0)
 					{
 						this.inventory[j] = item;
-						ItemText.NewText(newItem, newItem.stack);
 						this.DoCoins(j);
 						Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 						if (plr == Main.myPlayer)
@@ -10948,7 +10887,6 @@ namespace Terraria
 				if (this.inventory[k].type == 0)
 				{
 					this.inventory[k] = item;
-					ItemText.NewText(newItem, newItem.stack);
 					this.DoCoins(k);
 					Main.PlaySound(7, (int)this.position.X, (int)this.position.Y, 1);
 					if (plr == Main.myPlayer)
@@ -10966,7 +10904,7 @@ namespace Terraria
 			{
 				int num = Player.tileTargetX;
 				int num2 = Player.tileTargetY;
-				if (Main.tile[num, num2] != null && Main.tile[num, num2].active())
+				if (true && Main.tile[num, num2].active())
 				{
 					this.showItemIcon = true;
 					if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
@@ -10999,7 +10937,7 @@ namespace Terraria
 			{
 				int num6 = Player.tileTargetX;
 				int num7 = Player.tileTargetY;
-				if (Main.tile[num6, num7] != null && Main.tile[num6, num7].wall > 0)
+				if (true && Main.tile[num6, num7].wall > 0)
 				{
 					this.showItemIcon = true;
 					if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
@@ -11032,7 +10970,7 @@ namespace Terraria
 			{
 				int num11 = Player.tileTargetX;
 				int num12 = Player.tileTargetY;
-				if (Main.tile[num11, num12] != null && ((Main.tile[num11, num12].wallColor() > 0 && Main.tile[num11, num12].wall > 0) || (Main.tile[num11, num12].color() > 0 && Main.tile[num11, num12].active())))
+				if (true && ((Main.tile[num11, num12].wallColor() > 0 && Main.tile[num11, num12].wall > 0) || (Main.tile[num11, num12].color() > 0 && Main.tile[num11, num12].active())))
 				{
 					this.showItemIcon = true;
 					if (this.itemTime == 0 && this.itemAnimation > 0 && this.controlUseItem)
@@ -11441,7 +11379,7 @@ namespace Terraria
 					while (Main.tile[num28, num27].active() && (int)Main.tile[num28, num27].type == createTile && num27 < Main.maxTilesX - 5)
 					{
 						num27++;
-						if (Main.tile[num28, num27] == null)
+						if (false)
 						{
 							flag2 = false;
 							num27 = Player.tileTargetY;
@@ -11653,10 +11591,8 @@ namespace Terraria
 							{
 								if (this.direction == 1)
 								{
-									Tile expr_25BC = Main.tile[Player.tileTargetX, Player.tileTargetY];
-									expr_25BC.frameX += 18;
-									Tile expr_25E1 = Main.tile[Player.tileTargetX, Player.tileTargetY - 1];
-									expr_25E1.frameX += 18;
+									Main.tile[Player.tileTargetX, Player.tileTargetY].frameX += 18;
+									Main.tile[Player.tileTargetX, Player.tileTargetY - 1].frameX += 18;
 								}
 								if (Main.netMode == 1)
 								{
@@ -11667,8 +11603,7 @@ namespace Terraria
 							{
 								if (this.direction == 1)
 								{
-									Tile expr_264B = Main.tile[Player.tileTargetX, Player.tileTargetY];
-									expr_264B.frameX += 18;
+									Main.tile[Player.tileTargetX, Player.tileTargetY].frameX += 18;
 								}
 								if (Main.netMode == 1)
 								{
@@ -11683,7 +11618,7 @@ namespace Terraria
 							{
 								int num37 = Player.tileTargetX;
 								int num38 = Player.tileTargetY + 1;
-								if (Main.tile[num37, num38] != null && (Main.tile[num37, num38].slope() != 0 || Main.tile[num37, num38].halfBrick()))
+								if (true && (Main.tile[num37, num38].slope() != 0 || Main.tile[num37, num38].halfBrick()))
 								{
 									WorldGen.SlopeTile(num37, num38, 0);
 									if (Main.netMode == 1)
@@ -12945,7 +12880,7 @@ namespace Terraria
 							}
 							int num84 = (int)((float)Main.mouseX + Main.screenPosition.X) / 16;
 							int num85 = (int)((float)Main.mouseY + Main.screenPosition.Y) / 16;
-							while (num85 < Main.maxTilesY - 10 && Main.tile[num84, num85] != null && !WorldGen.SolidTile(num84, num85) && Main.tile[num84 - 1, num85] != null && !WorldGen.SolidTile(num84 - 1, num85) && Main.tile[num84 + 1, num85] != null && !WorldGen.SolidTile(num84 + 1, num85))
+							while (num85 < Main.maxTilesY - 10 && true && !WorldGen.SolidTile(num84, num85) && true && !WorldGen.SolidTile(num84 - 1, num85) && true && !WorldGen.SolidTile(num84 + 1, num85))
 							{
 								num85++;
 							}
@@ -13356,8 +13291,7 @@ namespace Terraria
 												num125 = 255 - num122;
 											}
 											num122 += num125;
-											Tile expr_68AF = Main.tile[num123, num124];
-											expr_68AF.liquid -= (byte)num125;
+											Main.tile[num123, num124].liquid -= (byte)num125;
 											Main.tile[num123, num124].liquidType(liquidType);
 											if (Main.tile[num123, num124].liquid == 0)
 											{
@@ -13930,30 +13864,18 @@ namespace Terraria
 					this.itemTime = this.inventory[this.selectedItem].useTime;
 					this.statLifeMax += 20;
 					this.statLife += 20;
-					if (Main.myPlayer == this.whoAmi)
-					{
-						this.HealEffect(20, true);
-					}
 				}
 				if (this.inventory[this.selectedItem].type == 1291 && this.itemAnimation > 0 && this.statLifeMax >= 400 && this.statLifeMax < 500 && this.itemTime == 0)
 				{
 					this.itemTime = this.inventory[this.selectedItem].useTime;
 					this.statLifeMax += 5;
 					this.statLife += 5;
-					if (Main.myPlayer == this.whoAmi)
-					{
-						this.HealEffect(5, true);
-					}
 				}
 				if (this.inventory[this.selectedItem].type == 109 && this.itemAnimation > 0 && this.statManaMax < 200 && this.itemTime == 0)
 				{
 					this.itemTime = this.inventory[this.selectedItem].useTime;
 					this.statManaMax += 20;
 					this.statMana += 20;
-					if (Main.myPlayer == this.whoAmi)
-					{
-						this.ManaEffect(20);
-					}
 				}
 				this.PlaceThing();
 			}
@@ -14311,7 +14233,7 @@ namespace Terraria
 						{
 							for (int num180 = num177; num180 < num178; num180++)
 							{
-								if (Main.tile[num179, num180] != null && Main.tileCut[(int)Main.tile[num179, num180].type] && Main.tile[num179, num180 + 1] != null && Main.tile[num179, num180 + 1].type != 78)
+								if (true && Main.tileCut[(int)Main.tile[num179, num180].type] && true && Main.tile[num179, num180 + 1].type != 78)
 								{
 									if (this.inventory[this.selectedItem].type == 1786)
 									{
@@ -14543,19 +14465,11 @@ namespace Terraria
 				{
 					this.statLife += this.inventory[this.selectedItem].healLife;
 					this.itemTime = this.inventory[this.selectedItem].useTime;
-					if (Main.myPlayer == this.whoAmi)
-					{
-						this.HealEffect(this.inventory[this.selectedItem].healLife, true);
-					}
 				}
 				if (this.inventory[this.selectedItem].healMana > 0)
 				{
 					this.statMana += this.inventory[this.selectedItem].healMana;
 					this.itemTime = this.inventory[this.selectedItem].useTime;
-					if (Main.myPlayer == this.whoAmi)
-					{
-						this.ManaEffect(this.inventory[this.selectedItem].healMana);
-					}
 				}
 				if (this.inventory[this.selectedItem].buffType > 0)
 				{
@@ -15059,7 +14973,7 @@ namespace Terraria
 			{
 				return false;
 			}
-			if (Main.tile[x, y - 1] == null)
+			if (false)
 			{
 				return false;
 			}
@@ -15071,7 +14985,7 @@ namespace Terraria
 			{
 				for (int j = y - 3; j < y; j++)
 				{
-					if (Main.tile[i, j] == null)
+					if (false)
 					{
 						return false;
 					}

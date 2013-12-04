@@ -1770,7 +1770,7 @@ namespace Terraria
 		}
 		public void setTile(int i, int j, byte Light)
 		{
-			if (Main.tile[i, j] == null)
+			if (false)
 			{
 				return;
 			}
@@ -1780,7 +1780,7 @@ namespace Terraria
 				this.light = Light;
 				this.changed(true);
 			}
-			if (Main.tile[i, j] != null && Main.tile[i, j].active() && Main.tile[i, j].type != 135 && Main.tile[i, j].type != 127 && Main.tile[i, j].type != 210 && (Main.tile[i, j].type != 51 || (i + j) % 2 != 0))
+			if (true && Main.tile[i, j].active() && Main.tile[i, j].type != 135 && Main.tile[i, j].type != 127 && Main.tile[i, j].type != 210 && (Main.tile[i, j].type != 51 || (i + j) % 2 != 0))
 			{
 				if (!this.active())
 				{
@@ -2415,7 +2415,7 @@ namespace Terraria
 					this.changed(true);
 				}
 				this.active(false);
-				if (Main.tile[i, j] != null && Main.tile[i, j].liquid > 32)
+				if (true && Main.tile[i, j].liquid > 32)
 				{
 					if (this.color() != 0)
 					{
@@ -2466,7 +2466,7 @@ namespace Terraria
 					this.lava(false);
 					this.water(false);
 					this.honey(false);
-					if (Main.tile[i, j] != null && Main.tile[i, j].wall > 0)
+					if (true && Main.tile[i, j].wall > 0)
 					{
 						if (!this.wall())
 						{

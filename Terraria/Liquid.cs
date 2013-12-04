@@ -109,8 +109,7 @@ namespace Terraria
 									{
 										num12 = (int)b2;
 									}
-									Tile expr_2D1 = Main.tile[num9, num10 + 1];
-									expr_2D1.liquid += (byte)num12;
+									Main.tile[num9, num10 + 1].liquid += (byte)num12;
 									b2 -= (byte)num12;
 									if (b2 <= 0)
 									{
@@ -282,8 +281,7 @@ namespace Terraria
 				{
 					b = Main.tile[this.x, this.y].liquid;
 				}
-				Tile expr_150 = Main.tile[this.x, this.y];
-				expr_150.liquid -= b;
+				Main.tile[this.x, this.y].liquid -= b;
 			}
 			if (Main.tile[this.x, this.y].liquid == 0)
 			{
@@ -361,10 +359,8 @@ namespace Terraria
 				{
 					num = (float)Main.tile[this.x, this.y].liquid;
 				}
-				Tile expr_534 = Main.tile[this.x, this.y];
-				expr_534.liquid -= (byte)num;
-				Tile expr_55B = Main.tile[this.x, this.y + 1];
-				expr_55B.liquid += (byte)num;
+				Main.tile[this.x, this.y].liquid -= (byte)num;
+				Main.tile[this.x, this.y + 1].liquid += (byte)num;
 				Main.tile[this.x, this.y + 1].liquidType((int)Main.tile[this.x, this.y].liquidType());
 				Liquid.AddWater(this.x, this.y + 1);
 				Main.tile[this.x, this.y + 1].skipLiquid(true);
@@ -960,7 +956,7 @@ namespace Terraria
 			{
 				return;
 			}
-			if (Main.tile[x, y] == null)
+			if (false)
 			{
 				return;
 			}
@@ -1201,7 +1197,7 @@ namespace Terraria
 			{
 				return;
 			}
-			if (Main.tile[x, y] == null)
+			if (false)
 			{
 				return;
 			}
