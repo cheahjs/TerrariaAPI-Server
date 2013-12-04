@@ -133,7 +133,7 @@ namespace Terraria
 		}
 		public void wallColor(byte wallColor)
 		{
-			header3 = (byte)((header3 & 0x1f) | wallColor);
+			header3 = (byte)((header3 & 0xe0) | wallColor);
 		}
 		public bool wire()
 		{
