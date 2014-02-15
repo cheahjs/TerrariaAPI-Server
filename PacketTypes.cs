@@ -72,6 +72,5 @@ public enum PacketTypes
 	/* 69 */ ChestName,
 	/* 70 */ BugCatching,
 	/* 71 */ BugReleasing,
-	/* 72 */ TravelMerchantItems,
-	/* 73 */ count
+	/* 72 */ TravelMerchantItems
 }
