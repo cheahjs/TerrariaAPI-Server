@@ -30236,6 +30236,7 @@ namespace Terraria
 				this.value = Item.sellPrice(0, 20, 0, 0);
 				this.knockBack = 4f;
 				this.rare = 8;
+				this.explosive = 3;
 				this.ranged = true;
 				this.explosive = 3;
 				return;
