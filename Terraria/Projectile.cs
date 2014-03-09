@@ -1391,6 +1391,7 @@ namespace Terraria
 				this.hostile = true;
 				this.scale = 0.9f;
 				this.penetrate = -1;
+				this.ranged = true;
 			}
 			else if (this.type == 110)
 			{
