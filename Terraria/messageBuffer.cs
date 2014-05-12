@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using TerrariaApi.Server;
 using System.Diagnostics;
 namespace Terraria
@@ -552,7 +553,7 @@ namespace Terraria
 					Netplay.serverSock[this.whoAmI].state = 10;
 					NetMessage.greetPlayer(this.whoAmI);
 					NetMessage.buffer[this.whoAmI].broadcast = true;
-					NetMessage.syncJoin(this.whoAmI);
+					Task.Factory.StartNew(() => NetMessage.syncJoin(this.whoAmI));
 					NetMessage.SendData(12, -1, this.whoAmI, "", this.whoAmI, 0f, 0f, 0f, 0);
 
 					timer.Stop();

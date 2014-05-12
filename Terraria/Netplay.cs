@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using TerrariaApi.Server;
 namespace Terraria
 {
@@ -243,7 +244,7 @@ namespace Terraria
 
 						ServerApi.Hooks.InvokeServerLeave(Netplay.serverSock[k].whoAmI);
 						Netplay.serverSock[k].Reset();
-						NetMessage.syncLeave(Netplay.serverSock[k].whoAmI);
+						Task.Factory.StartNew(() => NetMessage.syncLeave(Netplay.serverSock[k].whoAmI));
 
 						timer.Stop();
 
