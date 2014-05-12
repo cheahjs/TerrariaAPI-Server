@@ -1787,15 +1787,17 @@ namespace Terraria
 			}
 			Netplay.serverSock[plr].announced = true;
 
+			bool TravelSent = false;
 			for (int l = 0; l < 200; l++)
 			{
 				if (Main.npc[l].active && Main.npc[l].townNPC && NPC.TypeToNum(Main.npc[l].type) != -1)
 				{
 					NetMessage.SendData(60, plr, -1, "", l, (float)Main.npc[l].homeTileX, (float)Main.npc[l].homeTileY, Main.npc[l].homeless ? 1 : 0, 0);
 				}
-				if (Main.npc[l].active && Main.npc[l].type == 368)
+				if (!TravelSent && Main.npc[l].active && Main.npc[l].type == 368)
 				{
 					NetMessage.SendData(72, plr, -1, "", 0, 0f, 0f, 0f, 0);
+					TravelSent = true; // Vanilla makes sure to only send it once by doing break;, but break is inappropriate here....
 				}
 			}
 

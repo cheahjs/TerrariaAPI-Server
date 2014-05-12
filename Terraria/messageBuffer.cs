@@ -32,6 +32,11 @@ namespace Terraria
 		{
 			this.readBuffer = new byte[65535];
 			this.writeBuffer = new byte[65535];
+
+			binaryReader.Close();
+			binaryWriter.Close();
+			binaryReader.Dispose();
+			binaryWriter.Dispose();
 			binaryReader = new BinaryReader(new MemoryStream(readBuffer));
 			binaryWriter = new BinaryWriter(new MemoryStream(writeBuffer));
 
