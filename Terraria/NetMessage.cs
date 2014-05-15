@@ -44,7 +44,7 @@ namespace Terraria
 			{
 				lock (NetMessage.buffer[num].writeBuffer)
 				{
-					BinaryWriter binaryWriter = NetMessage.buffer[num].binaryWriter;
+					BinaryWriter binaryWriter = NetMessage.buffer[num].writer;
 					long position = 0;
 					binaryWriter.BaseStream.Position = 2L;
 					binaryWriter.Write((byte)msgType);

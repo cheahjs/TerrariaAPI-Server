@@ -1071,6 +1071,10 @@ namespace Terraria
 				if (this._type == 6)
 				{
 					mountedPlayer.ClearBuff(this._data.extraBuff);
+					mountedPlayer.cartFlip = false;
+					mountedPlayer.fullRotation = 0f;
+					mountedPlayer.fullRotationOrigin = Vector2.Zero;
+					mountedPlayer.lastBoost = Vector2.Zero;
 				}
 			}
 			else

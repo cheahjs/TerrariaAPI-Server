@@ -2606,7 +2606,7 @@ namespace Terraria
 						{
 							num5 += 8f;
 						}
-						if (Main.tile[num2, num3 - 1].halfBrick() && !Main.tileSolidTop[(int)Main.tile[num2, num3 - 1].type])
+						if (Main.tile[num2, num3 - 1].halfBrick())
 						{
 							num5 -= 8f;
 						}
