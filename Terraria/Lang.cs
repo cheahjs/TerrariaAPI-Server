@@ -461,7 +461,7 @@ namespace Terraria
 				case 202:
 					return "Are goblins really so different from us that we couldn't live together peacefully?";
 				case 203:
-					return "I heard there was a powerfully wizard who lives in these parts.  Make sure to keep an eye out for him next time you go underground.";
+					return "I heard there was a powerful wizard who lives in these parts.  Make sure to keep an eye out for him next time you go underground.";
 				case 204:
 					return "If you combine lenses at a demon altar, you might be able to find a way to summon a powerful monster. You will want to wait until night before using it, though.";
 				case 205:
@@ -5639,7 +5639,7 @@ namespace Terraria
 		}
 		public static void tTip()
 		{
-			for (int i = 1; i < 2743; i++)
+			for (int i = 1; i < 2749; i++)
 			{
 				Item item = new Item();
 				item.SetDefaults(i, false);
@@ -7776,6 +7776,34 @@ namespace Terraria
 						default:
 							switch (l)
 							{
+								case 2308:
+									return "Quite shiny.  This will probably sell well.";
+								case 2309:
+								case 2310:
+								case 2311:
+								case 2312:
+								case 2313:
+								case 2314:
+								case 2315:
+								case 2316:
+								case 2317:
+								case 2318:
+								case 2319:
+								case 2320:
+								case 2321:
+								case 2330:
+								case 2331:
+								case 2332:
+								case 2333:
+								case 2337:
+								case 2338:
+								case 2339:
+								case 2341:
+								case 2342:
+								case 2357:
+								case 2358:
+								case 2360:
+									break;
 							case 2322:
 								return "Increases mining speed by 25%";
 							case 2323:
@@ -7787,24 +7815,11 @@ namespace Terraria
 							case 2326:
 								return "Increases knockback";
 							case 2327:
-								return "Lets you to move swiftly in liquids";
+								return "Lets you move swiftly in liquids";
 							case 2328:
 								return "Increases your max number of minions";
 							case 2329:
 								return "Allows you to see nearby danger sources";
-							case 2330:
-							case 2331:
-							case 2332:
-							case 2333:
-							case 2337:
-							case 2338:
-							case 2339:
-							case 2341:
-							case 2342:
-							case 2357:
-							case 2358:
-							case 2360:
-								break;
 							case 2334:
 								return "Right click to open";
 							case 2335:
@@ -7876,6 +7891,8 @@ namespace Terraria
 							default:
 								switch (l)
 								{
+									case 2420:
+										return "Summons a pet Zephyr Fish";
 								case 2423:
 									return "Increases jump speed and allows auto-jump";
 								case 2425:
@@ -7899,23 +7916,28 @@ namespace Terraria
 				}
 				else if (l <= 2551)
 				{
-					if (l <= 2494)
+					if (l <= 2502)
 					{
-						if (l == 2491)
+						switch (l)
 						{
-							return "Summons a rideable Turtle mount";
-						}
-						if (l == 2494)
-						{
-							return "Allows flight and slow fall";
+							case 2491:
+								return "Summons a rideable Turtle mount";
+							case 2492:
+								return "Not for use on slopes";
+							case 2493:
+								break;
+							case 2494:
+								return "Allows flight and slow fall";
+							default:
+								if (l == 2502)
+								{
+									return "Summons a rideable Bee mount";
+								}
+								break;
 						}
 					}
 					else
 					{
-						if (l == 2502)
-						{
-							return "Summons a rideable Bee mount";
-						}
 						if (l == 2535)
 						{
 							return "Summons twins to fight for you";
@@ -21155,7 +21177,7 @@ namespace Terraria
 				case 2472:
 					return "Guide Voodoo Fish";
 				case 2473:
-					return "Whyverntail";
+					return "Wyverntail";
 				case 2474:
 					return "Zombie Fish";
 				case 2475:
@@ -21694,6 +21716,18 @@ namespace Terraria
 					return "Grasshopper Cage";
 				case 2742:
 					return "Music Box (Underground Crimson)";
+				case 2743:
+					return "Cactus Table";
+				case 2744:
+					return "Cactus Platform";
+				case 2745:
+					return "Boreal Wood Sword";
+				case 2746:
+					return "Boreal Wood Hammer";
+				case 2747:
+					return "Boreal Wood Bow";
+				case 2748:
+					return "Glass Chest";
 				}
 			}
 			else if (Lang.lang == 2)
@@ -27560,12 +27594,10 @@ namespace Terraria
 			array[0] = "";
 			int num2 = 0;
 			bool flag = false;
-			if (Lang.lang <= 1)
+			if (gotFish)
 			{
-				if (gotFish)
+				switch (Main.rand.Next(5))
 				{
-					switch (Main.rand.Next(5))
-					{
 					case 0:
 						array2[0] = "Oh! Thanks for the fish I asked for, now scram!";
 						break;
@@ -27581,12 +27613,12 @@ namespace Terraria
 					case 4:
 						array2[0] = "Woah!? You actually did what I asked, and survived! Nice, hand it over and beat it!";
 						break;
-					}
 				}
-				if (Main.anglerQuestFinished)
+			}
+			if (Main.anglerQuestFinished)
+			{
+				switch (Main.rand.Next(5))
 				{
-					switch (Main.rand.Next(5))
-					{
 					case 0:
 						array[0] = "I don't have anything for you to do right now.";
 						break;
@@ -27602,12 +27634,12 @@ namespace Terraria
 					case 4:
 						array[0] = "I haven't even used the last fish you gave me.  I don't need another.";
 						break;
-					}
 				}
-				else
+			}
+			else
+			{
+				switch (Main.anglerQuestItemNetIDs[Main.anglerQuest])
 				{
-					switch (Main.anglerQuestItemNetIDs[Main.anglerQuest])
-					{
 					case 2450:
 						if (gotFish)
 						{
@@ -28081,23 +28113,21 @@ namespace Terraria
 							flag = true;
 						}
 						break;
-					}
 				}
-				string text = array[0];
-				for (int i = 1; i < array.Length; i++)
-				{
-					if (array[i] != null)
-					{
-						text = text + " " + array[i];
-					}
-				}
-				if (flag)
-				{
-					Main.npcChatCornerItem = Main.anglerQuestItemNetIDs[Main.anglerQuest];
-				}
-				return text;
 			}
-			return "";
+			string text = array[0];
+			for (int i = 1; i < array.Length; i++)
+			{
+				if (array[i] != null)
+				{
+					text = text + " " + array[i];
+				}
+			}
+			if (flag)
+			{
+				Main.npcChatCornerItem = Main.anglerQuestItemNetIDs[Main.anglerQuest];
+			}
+			return text;
 		}
 		public static void setLang(bool english = false)
 		{
@@ -28813,6 +28843,7 @@ namespace Terraria
 				Lang.chestType[44] = "Obsidian Chest";
 				Lang.chestType[45] = "Pumpkin Chest";
 				Lang.chestType[46] = "Spooky Chest";
+				Lang.chestType[47] = "Glass Chest";
 				Lang.prefix[1] = "Large";
 				Lang.prefix[2] = "Massive";
 				Lang.prefix[3] = "Dangerous";
