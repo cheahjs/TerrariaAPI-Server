@@ -116,7 +116,6 @@ namespace Terraria
 		public bool ranged;
 		public bool summon;
 		public int reuseDelay;
-		public int explosive = 0;
 		public override string ToString()
 		{
 			return string.Format("{{Name: \"{0}\" NetID: {1} Stack: {2}", this.name, this.netID, this.stack);
@@ -160,7 +159,7 @@ namespace Terraria
 				}
 				if (num == -1 || num == -2 || num == -3)
 				{
-					if (this.type == 1 || this.type == 4 || this.type == 6 || this.type == 7 || this.type == 10 || this.type == 24 || this.type == 45 || this.type == 46 || this.type == 65 || this.type == 103 || this.type == 104 || this.type == 121 || this.type == 122 || this.type == 155 || this.type == 190 || this.type == 196 || this.type == 198 || this.type == 199 || this.type == 200 || this.type == 201 || this.type == 202 || this.type == 203 || this.type == 204 || this.type == 213 || this.type == 217 || this.type == 273 || this.type == 367 || this.type == 368 || this.type == 426 || this.type == 482 || this.type == 483 || this.type == 484 || this.type == 653 || this.type == 654 || this.type == 656 || this.type == 657 || this.type == 659 || this.type == 660 || this.type == 671 || this.type == 672 || this.type == 674 || this.type == 675 || this.type == 676 || this.type == 723 || this.type == 724 || this.type == 757 || this.type == 776 || this.type == 777 || this.type == 778 || this.type == 787 || this.type == 795 || this.type == 797 || this.type == 798 || this.type == 799 || this.type == 881 || this.type == 882 || this.type == 921 || this.type == 922 || this.type == 989 || this.type == 990 || this.type == 991 || this.type == 992 || this.type == 993 || this.type == 1123 || this.type == 1166 || this.type == 1185 || this.type == 1188 || this.type == 1192 || this.type == 1195 || this.type == 1199 || this.type == 1202 || this.type == 1222 || this.type == 1223 || this.type == 1224 || this.type == 1226 || this.type == 1227 || this.type == 1230 || this.type == 1233 || this.type == 1234 || this.type == 1294 || this.type == 1304 || this.type == 1305 || this.type == 1306 || this.type == 1320 || this.type == 1327 || this.type == 1506 || this.type == 1507 || this.type == 1786 || this.type == 1826 || this.type == 1827 || this.type == 1909 || this.type == 1917 || this.type == 1928 || this.type == 2176 || this.type == 2273 || this.type == 2608 || this.type == 2341 || this.type == 2330 || this.type == 2320)
+					if (this.type == 1 || this.type == 4 || this.type == 6 || this.type == 7 || this.type == 10 || this.type == 24 || this.type == 45 || this.type == 46 || this.type == 65 || this.type == 103 || this.type == 104 || this.type == 121 || this.type == 122 || this.type == 155 || this.type == 190 || this.type == 196 || this.type == 198 || this.type == 199 || this.type == 200 || this.type == 201 || this.type == 202 || this.type == 203 || this.type == 204 || this.type == 213 || this.type == 217 || this.type == 273 || this.type == 367 || this.type == 368 || this.type == 426 || this.type == 482 || this.type == 483 || this.type == 484 || this.type == 653 || this.type == 654 || this.type == 656 || this.type == 657 || this.type == 659 || this.type == 660 || this.type == 671 || this.type == 672 || this.type == 674 || this.type == 675 || this.type == 676 || this.type == 723 || this.type == 724 || this.type == 757 || this.type == 776 || this.type == 777 || this.type == 778 || this.type == 787 || this.type == 795 || this.type == 797 || this.type == 798 || this.type == 799 || this.type == 881 || this.type == 882 || this.type == 921 || this.type == 922 || this.type == 989 || this.type == 990 || this.type == 991 || this.type == 992 || this.type == 993 || this.type == 1123 || this.type == 1166 || this.type == 1185 || this.type == 1188 || this.type == 1192 || this.type == 1195 || this.type == 1199 || this.type == 1202 || this.type == 1222 || this.type == 1223 || this.type == 1224 || this.type == 1226 || this.type == 1227 || this.type == 1230 || this.type == 1233 || this.type == 1234 || this.type == 1294 || this.type == 1304 || this.type == 1305 || this.type == 1306 || this.type == 1320 || this.type == 1327 || this.type == 1506 || this.type == 1507 || this.type == 1786 || this.type == 1826 || this.type == 1827 || this.type == 1909 || this.type == 1917 || this.type == 1928 || this.type == 2176 || this.type == 2273 || this.type == 2608 || this.type == 2341 || this.type == 2330 || this.type == 2320 || this.type == 2516 || this.type == 2517 || this.type == 2746 || this.type == 2745)
 					{
 						int num9 = Main.rand.Next(40);
 						if (num9 == 0)
@@ -384,7 +383,7 @@ namespace Terraria
 							num = 61;
 						}
 					}
-					else if (this.type == 39 || this.type == 44 || this.type == 95 || this.type == 96 || this.type == 98 || this.type == 99 || this.type == 120 || this.type == 164 || this.type == 197 || this.type == 219 || this.type == 266 || this.type == 281 || this.type == 434 || this.type == 435 || this.type == 436 || this.type == 481 || this.type == 506 || this.type == 533 || this.type == 534 || this.type == 578 || this.type == 655 || this.type == 658 || this.type == 661 || this.type == 679 || this.type == 682 || this.type == 725 || this.type == 758 || this.type == 759 || this.type == 760 || this.type == 796 || this.type == 800 || this.type == 905 || this.type == 923 || this.type == 964 || this.type == 986 || this.type == 1156 || this.type == 1187 || this.type == 1194 || this.type == 1201 || this.type == 1229 || this.type == 1254 || this.type == 1255 || this.type == 1258 || this.type == 1265 || this.type == 1319 || this.type == 1553 || this.type == 1782 || this.type == 1784 || this.type == 1835 || this.type == 1870 || this.type == 1910 || this.type == 1929 || this.type == 1946 || this.type == 2223 || this.type == 2269 || this.type == 2270 || this.type == 2624)
+					else if (this.type == 39 || this.type == 44 || this.type == 95 || this.type == 96 || this.type == 98 || this.type == 99 || this.type == 120 || this.type == 164 || this.type == 197 || this.type == 219 || this.type == 266 || this.type == 281 || this.type == 434 || this.type == 435 || this.type == 436 || this.type == 481 || this.type == 506 || this.type == 533 || this.type == 534 || this.type == 578 || this.type == 655 || this.type == 658 || this.type == 661 || this.type == 679 || this.type == 682 || this.type == 725 || this.type == 758 || this.type == 759 || this.type == 760 || this.type == 796 || this.type == 800 || this.type == 905 || this.type == 923 || this.type == 964 || this.type == 986 || this.type == 1156 || this.type == 1187 || this.type == 1194 || this.type == 1201 || this.type == 1229 || this.type == 1254 || this.type == 1255 || this.type == 1258 || this.type == 1265 || this.type == 1319 || this.type == 1553 || this.type == 1782 || this.type == 1784 || this.type == 1835 || this.type == 1870 || this.type == 1910 || this.type == 1929 || this.type == 1946 || this.type == 2223 || this.type == 2269 || this.type == 2270 || this.type == 2624 || this.type == 2515 || this.type == 2747)
 					{
 						int num11 = Main.rand.Next(36);
 						if (num11 == 0)
@@ -3463,7 +3462,7 @@ namespace Terraria
 			}
 			else if (ItemName != "")
 			{
-				for (int i = 0; i < 2743; i++)
+				for (int i = 0; i < 2749; i++)
 				{
 					if (Main.itemName[i] == ItemName)
 					{
@@ -5288,6 +5287,7 @@ namespace Terraria
 				this.autoReuse = true;
 				this.consumable = true;
 				this.createTile = 330;
+				this.noMelee = true;
 			}
 			else if (type == 72)
 			{
@@ -5309,6 +5309,7 @@ namespace Terraria
 				this.autoReuse = true;
 				this.consumable = true;
 				this.createTile = 331;
+				this.noMelee = true;
 			}
 			else if (type == 73)
 			{
@@ -5330,6 +5331,7 @@ namespace Terraria
 				this.autoReuse = true;
 				this.consumable = true;
 				this.createTile = 332;
+				this.noMelee = true;
 			}
 			else if (type == 74)
 			{
@@ -5351,6 +5353,7 @@ namespace Terraria
 				this.autoReuse = true;
 				this.consumable = true;
 				this.createTile = 333;
+				this.noMelee = true;
 			}
 			else if (type == 75)
 			{
@@ -6743,7 +6746,6 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = Item.buyPrice(0, 0, 3, 0);
 				this.damage = 0;
-				this.explosive = 1;
 				this.toolTip = "A small explosion that will destroy some tiles";
 				return;
 			}
@@ -6764,7 +6766,6 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = Item.sellPrice(0, 0, 30, 0);
 				this.rare = 1;
-				this.explosive = 2;
 				this.toolTip = "A large explosion that will destroy most tiles";
 				return;
 			}
@@ -7833,7 +7834,6 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = 500;
 				this.damage = 0;
-				this.explosive = 1;
 				this.toolTip = "'Tossing may be difficult.'";
 				return;
 			}
@@ -13226,7 +13226,6 @@ namespace Terraria
 				this.createTile = 141;
 				this.width = 12;
 				this.height = 12;
-				this.explosive = 4;
 				this.toolTip = "Explodes when activated";
 				return;
 			}
@@ -15954,7 +15953,6 @@ namespace Terraria
 				this.knockBack = 4f;
 				this.rare = 8;
 				this.ranged = true;
-				this.explosive = 3;
 				return;
 			}
 			if (type == 760)
@@ -16156,7 +16154,6 @@ namespace Terraria
 				this.ranged = true;
 				this.toolTip = "Small blast radius. Will destroy tiles";
 				this.rare = 1;
-				this.explosive = 1;
 				return;
 			}
 			if (type == 773)
@@ -16191,7 +16188,6 @@ namespace Terraria
 				this.ranged = true;
 				this.toolTip = "Large blast radius. Will destroy tiles";
 				this.rare = 2;
-				this.explosive = 2;
 				return;
 			}
 			if (type == 775)
@@ -21533,6 +21529,7 @@ namespace Terraria
 			}
 			if (type == 1157)
 			{
+				this.mana = 10;
 				this.damage = 34;
 				this.useStyle = 1;
 				this.name = "Pygmy Staff";
@@ -33414,6 +33411,7 @@ namespace Terraria
 									this.useStyle = 1;
 									this.useAnimation = 15;
 									this.useTime = 7;
+									this.useTurn = true;
 									this.autoReuse = true;
 									this.width = 16;
 									this.height = 16;
@@ -33814,6 +33812,7 @@ namespace Terraria
 								}
 								if (type == 2364)
 								{
+									this.mana = 10;
 									this.damage = 9;
 									this.useStyle = 1;
 									this.name = "Hornet Staff";
@@ -33835,6 +33834,7 @@ namespace Terraria
 								}
 								if (type == 2365)
 								{
+									this.mana = 10;
 									this.damage = 21;
 									this.useStyle = 1;
 									this.name = "Imp Staff";
@@ -33856,6 +33856,7 @@ namespace Terraria
 								}
 								if (type == 2366)
 								{
+									this.mana = 10;
 									this.damage = 19;
 									this.name = "Spider Queen Staff";
 									this.useStyle = 1;
@@ -34174,1951 +34175,490 @@ namespace Terraria
 									this.createWall = 146 + type - 2432;
 									this.width = 12;
 									this.height = 12;
-									return;
-								}
-								if (type == 2435)
-								{
-									this.name = "Coralstone Block";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 315;
-									this.width = 12;
-									this.height = 12;
-									this.value = Item.buyPrice(0, 0, 0, 50);
-									return;
-								}
-								if (type >= 2436 && type <= 2438)
-								{
-									this.name = "Jellyfish(es)";
-									this.useStyle = 1;
-									this.autoReuse = true;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.width = 12;
-									this.height = 12;
-									this.noUseGraphic = true;
-									this.bait = 20;
-									return;
-								}
-								if (type >= 2439 && type <= 2441)
-								{
-									this.name = "Jellyfish Jar";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 316 + type - 2439;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type >= 2442 && type <= 2449)
-								{
-									this.name = "Fishing Wall Hangings";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 240;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.sellPrice(0, 0, 10, 0);
-									this.placeStyle = 46 + type - 2442;
-									return;
-								}
-								if (type >= 2450 && type <= 2488)
-								{
-									this.name = "Quest Fish";
-									this.questItem = true;
-									this.maxStack = 1;
-									this.width = 26;
-									this.height = 26;
-									this.uniqueStack = true;
-									this.rare = -11;
-									return;
-								}
-								if (type == 2489)
-								{
-									this.name = "King Slime Trophy";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 240;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.placeStyle = 54;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2490)
-								{
-									this.name = "Ship in a Bottle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 319;
-									this.width = 12;
-									this.height = 12;
-									this.value = Item.buyPrice(0, 10, 0, 0);
-									return;
-								}
-								if (type == 2491)
-								{
-									this.useStyle = 1;
-									this.name = "Hardy Saddle";
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 25;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 8;
-									this.noMelee = true;
-									this.mountType = 4;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									return;
-								}
-								if (type == 2492)
-								{
-									this.name = "Pressure Track";
-									this.useStyle = 1;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.width = 16;
-									this.height = 16;
-									this.maxStack = 99;
-									this.createTile = 314;
-									this.placeStyle = 1;
-									this.consumable = true;
-									this.cartTrack = true;
-									this.mech = true;
-									this.tileBoost = 1;
-									this.value = Item.sellPrice(0, 0, 10, 0);
-									return;
-								}
-								if (type == 2493)
-								{
-									this.name = "King Slime Mask";
-									this.width = 28;
-									this.height = 20;
-									this.headSlot = 164;
-									this.rare = 1;
-									this.vanity = true;
-									return;
-								}
-								if (type == 2494)
-								{
-									this.name = "Fin Wings";
-									this.width = 22;
-									this.height = 20;
-									this.accessory = true;
-									this.toolTip = "Allows flight and slow fall";
-									this.value = Item.buyPrice(0, 1, 0, 0);
-									this.rare = 4;
-									this.wingSlot = 25;
-									return;
-								}
-								if (type == 2495)
-								{
-									this.name = "Treasure Map";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 242;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.buyPrice(0, 1, 0, 0);
-									this.placeStyle = 25;
-									return;
-								}
-								if (type == 2496)
-								{
-									this.name = "Seaweed Planter";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 320;
-									this.placeStyle = 0;
-									this.width = 22;
-									this.height = 30;
-									this.value = Item.buyPrice(0, 0, 1, 0);
-									return;
-								}
-								if (type == 2497)
-								{
-									this.name = "Pillagin Me Pixels";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 242;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.buyPrice(0, 1, 0, 0);
-									this.placeStyle = 26;
-									return;
-								}
-								if (type == 2498)
-								{
-									this.name = "Fish Costume Mask";
-									this.width = 18;
-									this.height = 18;
-									this.headSlot = 165;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2499)
-								{
-									this.name = "Fish Costume Shirt";
-									this.width = 18;
-									this.height = 18;
-									this.bodySlot = 172;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2500)
-								{
-									this.name = "Fish Costume Finskirt";
-									this.width = 18;
-									this.height = 18;
-									this.legSlot = 107;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2501)
-								{
-									this.name = "Ginger Beard";
-									this.width = 18;
-									this.height = 12;
-									this.maxStack = 1;
-									this.value = Item.buyPrice(0, 40, 0, 0);
-									this.rare = 5;
-									this.accessory = true;
-									this.faceSlot = 8;
-									this.vanity = true;
-									return;
-								}
-								if (type == 2502)
-								{
-									this.useStyle = 1;
-									this.name = "Honeyed Goggles";
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 25;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 8;
-									this.noMelee = true;
-									this.mountType = 5;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									return;
-								}
-								if (type == 2503)
-								{
-									this.name = "Boreal Wood";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 321;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2504)
-								{
-									this.name = "Palm Wood";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 322;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2505)
-								{
-									this.name = "Boreal Wood Wall";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 149;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2506)
-								{
-									this.name = "Palm Wood Wall";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 151;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2507)
-								{
-									this.name = "Boreal Wood Fence";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 150;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2508)
-								{
-									this.name = "Palm Wood Fence";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 152;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2509)
-								{
-									this.name = "Boreal Wood Helmet";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.headSlot = 166;
-									return;
-								}
-								if (type == 2510)
-								{
-									this.name = "Boreal Wood Breastplate";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.bodySlot = 173;
-									return;
-								}
-								if (type == 2511)
-								{
-									this.name = "Boreal Wood Greaves";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.legSlot = 108;
-									return;
-								}
-								if (type == 2512)
-								{
-									this.name = "Palm Wood Helmet";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.headSlot = 167;
-									return;
-								}
-								if (type == 2513)
-								{
-									this.name = "Palm Wood Breastplate";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.bodySlot = 174;
-									return;
-								}
-								if (type == 2514)
-								{
-									this.name = "Palm Wood Greaves";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.legSlot = 109;
-									return;
-								}
-								if (type == 2517)
-								{
-									this.name = "Palm Wood Sword";
-									this.useStyle = 1;
-									this.useTurn = false;
-									this.useAnimation = 23;
-									this.useTime = 23;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 8;
-									this.knockBack = 5f;
-									this.useSound = 1;
-									this.scale = 1f;
-									this.value = 100;
-									this.melee = true;
-									return;
-								}
-								if (type == 2516)
-								{
-									this.name = "Palm Wood Hammer";
-									this.autoReuse = true;
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 33;
-									this.useTime = 23;
-									this.hammer = 35;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 4;
-									this.knockBack = 5.5f;
-									this.scale = 1.1f;
-									this.useSound = 1;
-									this.value = 50;
-									this.melee = true;
-									return;
-								}
-								if (type == 2515)
-								{
-									this.name = "Palm Wood Bow";
-									this.useStyle = 5;
-									this.useAnimation = 29;
-									this.useTime = 29;
-									this.width = 12;
-									this.height = 28;
-									this.shoot = 1;
-									this.useAmmo = 1;
-									this.useSound = 5;
-									this.damage = 6;
-									this.shootSpeed = 6.6f;
-									this.noMelee = true;
-									this.value = 100;
-									this.ranged = true;
-									return;
-								}
-								if (type == 2518)
-								{
-									this.name = "Palm Wood Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 17;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2519)
-								{
-									this.name = "Palm Wood Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 17;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2520)
-								{
-									this.name = "Palm Wood Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 22;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2521)
-								{
-									this.name = "Palm Wood Bench";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 21;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2527)
-								{
-									this.name = "Palm Wood Sofa";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 22;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2522)
-								{
-									this.name = "Palm Wood Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 18;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2523)
-								{
-									this.noWet = true;
-									this.name = "Palm Wood Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 18;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2524)
-								{
-									this.name = "Palm Wood Chair";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 15;
-									this.placeStyle = 29;
-									this.width = 12;
-									this.height = 30;
-									return;
-								}
-								if (type == 2525)
-								{
-									this.name = "Palm Wood Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 23;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2526)
-								{
-									this.name = "Palm Wood Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 31;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2528)
-								{
-									this.name = "Palm Wood Door";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 10;
-									this.placeStyle = 29;
-									this.width = 14;
-									this.height = 28;
-									this.value = 200;
-									return;
-								}
-								if (type == 2529)
-								{
-									this.name = "Palm Wood Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 16;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2530)
-								{
-									this.name = "Palm Wood Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.width = 12;
-									this.height = 28;
-									this.placeStyle = 27;
-									return;
-								}
-								if (type == 2531)
-								{
-									this.name = "Palm Wood Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 21;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2535)
-								{
-									this.damage = 30;
-									this.useStyle = 1;
-									this.name = "Optic Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 387;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 5;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons twins to fight for you";
-									this.buffType = 134;
-									this.value = Item.buyPrice(0, 10, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2532)
-								{
-									this.name = "Palm Wood Table";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 14;
-									this.placeStyle = 26;
-									this.width = 26;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2533)
-								{
-									this.name = "Palm Wood Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 18;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2534)
-								{
-									this.name = "Palm Wood Work Bench";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 18;
-									this.placeStyle = 22;
-									this.width = 28;
-									this.height = 14;
-									this.value = 150;
-									this.toolTip = "Used for basic crafting";
-									return;
-								}
-								if (type == 2536)
-								{
-									this.name = "Palm Wood Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									this.placeStyle = 23;
-									return;
-								}
-								if (type == 2549)
-								{
-									this.name = "Mushroom Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 18;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2537)
-								{
-									this.name = "Mushroom Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 18;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2538)
-								{
-									this.name = "Mushroom Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 23;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2539)
-								{
-									this.name = "Mushroom Bench";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 23;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2540)
-								{
-									this.name = "Mushroom Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									this.placeStyle = 24;
-									return;
-								}
-								if (type == 2541)
-								{
-									this.name = "Mushroom Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 19;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2542)
-								{
-									this.noWet = true;
-									this.name = "Mushroom Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 19;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2543)
-								{
-									this.name = "Mushroom Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 24;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2544)
-								{
-									this.name = "Mushroom Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 32;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2545)
-								{
-									this.name = "Mushroom Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 17;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2547)
-								{
-									this.name = "Mushroom Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 19;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2546)
-								{
-									this.name = "Mushroom Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.width = 12;
-									this.height = 28;
-									this.placeStyle = 28;
-									return;
-								}
-								if (type == 2548)
-								{
-									this.name = "Mushroom Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 22;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2413)
-								{
-									this.name = "Mushroom Sofa";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 23;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2550)
-								{
-									this.name = "Mushroom Table";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 14;
-									this.placeStyle = 27;
-									this.width = 26;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2551)
-								{
-									this.damage = 25;
-									this.useStyle = 1;
-									this.name = "Spider Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 390;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 4;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons spiders to fight for you";
-									this.buffType = 133;
-									this.value = Item.buyPrice(0, 5, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2552)
-								{
-									this.name = "Boreal Wood Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 19;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2553)
-								{
-									this.name = "Boreal Wood Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 24;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2554)
-								{
-									this.name = "Boreal Wood Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									this.placeStyle = 25;
-									return;
-								}
-								if (type == 2555)
-								{
-									this.name = "Boreal Wood Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 20;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2556)
-								{
-									this.noWet = true;
-									this.name = "Boreal Wood Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 20;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2557)
-								{
-									this.name = "Boreal Wood Chair";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 15;
-									this.placeStyle = 30;
-									this.width = 12;
-									this.height = 30;
-									return;
-								}
-								if (type == 2558)
-								{
-									this.name = "Boreal Wood Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 25;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2559)
-								{
-									this.name = "Boreal Wood Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 33;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2560)
-								{
-									this.name = "Boreal Wood Clock";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 104;
-									this.placeStyle = 6;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2561)
-								{
-									this.name = "Boreal Wood Door";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 10;
-									this.placeStyle = 30;
-									this.width = 14;
-									this.height = 28;
-									this.value = 200;
-									return;
-								}
-								if (type == 2562)
-								{
-									this.name = "Boreal Wood Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 18;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2563)
-								{
-									this.name = "Boreal Wood Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 20;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2564)
-								{
-									this.name = "Boreal Wood Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.placeStyle = 29;
-									this.width = 12;
-									this.height = 28;
-									return;
-								}
-								if (type == 2565)
-								{
-									this.name = "Boreal Wood Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 23;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2566)
-								{
-									this.name = "Boreal Wood Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 19;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2567)
-								{
-									this.name = "Slime Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 20;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2568)
-								{
-									this.name = "Slime Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 25;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2569)
-								{
-									this.name = "Slime Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.placeStyle = 26;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2570)
-								{
-									this.name = "Slime Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 21;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2571)
-								{
-									this.noWet = true;
-									this.name = "Slime Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 21;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2572)
-								{
-									this.name = "Slime Chair";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 15;
-									this.placeStyle = 31;
-									this.width = 12;
-									this.height = 30;
-									return;
-								}
-								if (type == 2573)
-								{
-									this.name = "Slime Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 26;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2574)
-								{
-									this.name = "Slime Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 34;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2575)
-								{
-									this.name = "Slime Clock";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 104;
-									this.placeStyle = 7;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2576)
-								{
-									this.name = "Slime Door";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 10;
-									this.placeStyle = 31;
-									this.width = 14;
-									this.height = 28;
-									this.value = 200;
-									return;
-								}
-								if (type == 2577)
-								{
-									this.name = "Slime Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 19;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2578)
-								{
-									this.name = "Slime Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 21;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2579)
-								{
-									this.name = "Slime Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.placeStyle = 30;
-									this.width = 12;
-									this.height = 28;
-									return;
-								}
-								if (type == 2580)
-								{
-									this.name = "Slime Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 24;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2581)
-								{
-									this.name = "Slime Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 20;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2582)
-								{
-									this.name = "Slime Sofa";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 25;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2583)
-								{
-									this.name = "Slime Table";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 14;
-									this.placeStyle = 29;
-									this.width = 26;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2584)
-								{
-									this.damage = 32;
-									this.useStyle = 1;
-									this.name = "Pirate Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 393;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 5;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons pirates to fight for you";
-									this.buffType = 135;
-									this.value = Item.buyPrice(0, 5, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2585)
-								{
-									this.noUseGraphic = true;
-									this.damage = 0;
-									this.useStyle = 5;
-									this.name = "Slime Hook";
-									this.shootSpeed = 13f;
-									this.shoot = 396;
-									this.width = 18;
-									this.height = 28;
-									this.useSound = 1;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 3;
-									this.noMelee = true;
-									this.value = 20000;
-									return;
-								}
-								if (type == 2586)
-								{
-									this.useStyle = 5;
-									this.name = "Sticky Grenade";
-									this.shootSpeed = 5.5f;
-									this.shoot = 397;
-									this.width = 20;
-									this.height = 20;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.useSound = 1;
-									this.useAnimation = 45;
-									this.useTime = 45;
-									this.noUseGraphic = true;
-									this.noMelee = true;
-									this.value = 75;
-									this.damage = 60;
-									this.knockBack = 8f;
-									this.toolTip = "A small explosion that will not destroy tiles";
-									this.toolTip2 = "Tossing may be difficult";
-									this.ranged = true;
-									return;
-								}
-								if (type == 2587)
-								{
-									this.damage = 0;
-									this.useStyle = 1;
-									this.name = "Tartar Sauce";
-									this.shoot = 398;
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 2;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 3;
-									this.noMelee = true;
-									this.toolTip = "Summons a mini minotaur";
-									this.buffType = 136;
-									this.value = Item.sellPrice(0, 2, 0, 0);
-									return;
-								}
-								if (type == 2588)
-								{
-									this.name = "Duke Fishron Mask";
-									this.width = 28;
-									this.height = 20;
-									this.headSlot = 168;
-									this.rare = 1;
-									this.vanity = true;
-									return;
-								}
-								if (type == 2589)
-								{
-									this.name = "Duke Fishron Trophy";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 240;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.placeStyle = 55;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2590)
-								{
-									this.useStyle = 5;
-									this.name = "Molotov Cocktail";
-									this.shootSpeed = 6.5f;
-									this.shoot = 399;
-									this.width = 20;
-									this.height = 20;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.useSound = 1;
-									this.useAnimation = 30;
-									this.useTime = 30;
-									this.noUseGraphic = true;
-									this.noMelee = true;
-									this.value = 75;
-									this.damage = 40;
-									this.knockBack = 8f;
-									this.toolTip = "A small explosion that puts enemies on fire";
-									this.toolTip2 = "Lights nearby area on fire for a while";
-									this.ranged = true;
-									return;
-								}
-								if (type >= 2591 && type <= 2606)
-								{
-									this.name = "Grandfather Clock";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 104;
-									this.placeStyle = 8 + type - 2591;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2607)
-								{
-									this.name = "Spider Fang";
-									this.maxStack = 99;
-									this.width = 12;
-									this.height = 12;
-									this.rare = 4;
-									this.value = Item.sellPrice(0, 0, 5, 0);
-									return;
-								}
-								if (type == 2608)
-								{
-									this.name = "Falcon Blade";
-									this.useStyle = 1;
-									this.useAnimation = 15;
-									this.knockBack = 6f;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 25;
-									this.scale = 1.05f;
-									this.useSound = 1;
-									this.rare = 4;
-									this.value = 10000;
-									this.melee = true;
-									return;
-								}
-								if (type == 2609)
-								{
-									this.name = "Fishron Wings";
-									this.width = 22;
-									this.height = 20;
-									this.accessory = true;
-									this.toolTip = "Allows flight and slow fall";
-									this.value = Item.buyPrice(0, 10, 0, 0);
-									this.rare = 8;
-									this.wingSlot = 26;
-									return;
-								}
-								if (type == 2610)
-								{
-									this.name = "Slime Gun";
-									this.useStyle = 5;
-									this.useAnimation = 12;
-									this.useTime = 12;
-									this.width = 38;
-									this.height = 10;
-									this.damage = 0;
-									this.scale = 0.9f;
-									this.shoot = 406;
-									this.shootSpeed = 8f;
-									this.autoReuse = true;
-									this.value = Item.buyPrice(0, 1, 50, 0);
-									return;
-								}
-								if (type == 2611)
-								{
-									this.autoReuse = false;
-									this.name = "Flairon";
-									this.useStyle = 5;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.autoReuse = true;
-									this.knockBack = 4.5f;
-									this.width = 30;
-									this.height = 10;
-									this.damage = 66;
-									this.shoot = 404;
-									this.shootSpeed = 14f;
-									this.useSound = 1;
-									this.rare = 8;
-									this.value = 1000;
-									this.melee = true;
-									this.noUseGraphic = true;
-									return;
-								}
-								if (type >= 2612 && type <= 2620)
-								{
-									this.name = "Many Chests";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									if (type <= 2614)
+									if (type == 2434)
 									{
-										this.placeStyle = 35 + (type - 2612) * 2;
-									}
-									else
-									{
-										this.placeStyle = 41 + type - 2615;
-									}
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2621)
-								{
-									this.damage = 50;
-									this.useStyle = 1;
-									this.name = "Tempest Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 407;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 8;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons sharknados to fight for you";
-									this.buffType = 139;
-									this.value = Item.buyPrice(0, 5, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2624)
-								{
-									this.useStyle = 5;
-									this.useAnimation = 24;
-									this.useTime = 24;
-									this.name = "Tsunami";
-									this.width = 50;
-									this.height = 18;
-									this.shoot = 1;
-									this.useAmmo = 1;
-									this.useSound = 5;
-									this.damage = 60;
-									this.shootSpeed = 10f;
-									this.noMelee = true;
-									this.value = 60000;
-									this.ranged = true;
-									this.rare = 8;
-									this.knockBack = 2f;
-									return;
-								}
-								if (type == 2622)
-								{
-									this.mana = 18;
-									this.damage = 60;
-									this.useStyle = 5;
-									this.name = "Razorblade Typhoon";
-									this.shootSpeed = 6f;
-									this.shoot = 409;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 8;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.autoReuse = true;
-									this.rare = 8;
-									this.noMelee = true;
-									this.knockBack = 5f;
-									this.scale = 0.9f;
-									this.toolTip = "Casts a typhoon";
-									this.value = 10000;
-									this.magic = true;
-									return;
-								}
-								if (type == 2625 || type == 2626)
-								{
-									this.name = "Beach Stuff";
-									this.useStyle = 1;
-									this.autoReuse = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 324;
-									if (type == 2626)
-									{
-										this.placeStyle = 1;
-										this.width = 26;
-										this.height = 24;
+										this.value = Item.buyPrice(0, 0, 0, 50);
 										return;
 									}
-									this.width = 22;
-									this.height = 22;
-									return;
 								}
 								else
 								{
-									if (type >= 2627 && type <= 2630)
+									if (type == 2435)
 									{
-										this.name = "More Platforms";
+										this.name = "Coralstone Block";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createTile = 315;
+										this.width = 12;
+										this.height = 12;
+										this.value = Item.buyPrice(0, 0, 0, 50);
+										return;
+									}
+									if (type >= 2436 && type <= 2438)
+									{
+										this.name = "Jellyfish(es)";
+										this.useStyle = 1;
+										this.autoReuse = true;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.width = 12;
+										this.height = 12;
+										this.noUseGraphic = true;
+										this.bait = 20;
+										return;
+									}
+									if (type >= 2439 && type <= 2441)
+									{
+										this.name = "Jellyfish Jar";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 316 + type - 2439;
+										this.width = 12;
+										this.height = 12;
+										return;
+									}
+									if (type >= 2442 && type <= 2449)
+									{
+										this.name = "Fishing Wall Hangings";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 240;
+										this.width = 30;
+										this.height = 30;
+										this.value = Item.sellPrice(0, 0, 10, 0);
+										this.placeStyle = 46 + type - 2442;
+										return;
+									}
+									if (type >= 2450 && type <= 2488)
+									{
+										this.name = "Quest Fish";
+										this.questItem = true;
+										this.maxStack = 1;
+										this.width = 26;
+										this.height = 26;
+										this.uniqueStack = true;
+										this.rare = -11;
+										return;
+									}
+									if (type == 2489)
+									{
+										this.name = "King Slime Trophy";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 240;
+										this.width = 30;
+										this.height = 30;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										this.placeStyle = 54;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2490)
+									{
+										this.name = "Ship in a Bottle";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 319;
+										this.width = 12;
+										this.height = 12;
+										this.value = Item.buyPrice(0, 10, 0, 0);
+										return;
+									}
+									if (type == 2491)
+									{
+										this.useStyle = 1;
+										this.name = "Hardy Saddle";
+										this.width = 16;
+										this.height = 30;
+										this.useSound = 25;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 8;
+										this.noMelee = true;
+										this.mountType = 4;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										return;
+									}
+									if (type == 2492)
+									{
+										this.name = "Pressure Track";
+										this.useStyle = 1;
+										this.useAnimation = 15;
+										this.useTime = 7;
+										this.useTurn = true;
+										this.autoReuse = true;
+										this.width = 16;
+										this.height = 16;
+										this.maxStack = 99;
+										this.createTile = 314;
+										this.placeStyle = 1;
+										this.consumable = true;
+										this.cartTrack = true;
+										this.mech = true;
+										this.tileBoost = 1;
+										this.value = Item.sellPrice(0, 0, 10, 0);
+										return;
+									}
+									if (type == 2493)
+									{
+										this.name = "King Slime Mask";
+										this.width = 28;
+										this.height = 20;
+										this.headSlot = 164;
+										this.rare = 1;
+										this.vanity = true;
+										return;
+									}
+									if (type == 2494)
+									{
+										this.name = "Fin Wings";
+										this.width = 22;
+										this.height = 20;
+										this.accessory = true;
+										this.toolTip = "Allows flight and slow fall";
+										this.value = Item.buyPrice(0, 1, 0, 0);
+										this.rare = 4;
+										this.wingSlot = 25;
+										return;
+									}
+									if (type == 2495)
+									{
+										this.name = "Treasure Map";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 242;
+										this.width = 30;
+										this.height = 30;
+										this.value = Item.buyPrice(0, 1, 0, 0);
+										this.placeStyle = 25;
+										return;
+									}
+									if (type == 2496)
+									{
+										this.name = "Seaweed Planter";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 320;
+										this.placeStyle = 0;
+										this.width = 22;
+										this.height = 30;
+										this.value = Item.buyPrice(0, 0, 1, 0);
+										return;
+									}
+									if (type == 2497)
+									{
+										this.name = "Pillagin Me Pixels";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 242;
+										this.width = 30;
+										this.height = 30;
+										this.value = Item.buyPrice(0, 1, 0, 0);
+										this.placeStyle = 26;
+										return;
+									}
+									if (type == 2498)
+									{
+										this.name = "Fish Costume Mask";
+										this.width = 18;
+										this.height = 18;
+										this.headSlot = 165;
+										this.vanity = true;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2499)
+									{
+										this.name = "Fish Costume Shirt";
+										this.width = 18;
+										this.height = 18;
+										this.bodySlot = 172;
+										this.vanity = true;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2500)
+									{
+										this.name = "Fish Costume Finskirt";
+										this.width = 18;
+										this.height = 18;
+										this.legSlot = 107;
+										this.vanity = true;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2501)
+									{
+										this.name = "Ginger Beard";
+										this.width = 18;
+										this.height = 12;
+										this.maxStack = 1;
+										this.value = Item.buyPrice(0, 40, 0, 0);
+										this.rare = 5;
+										this.accessory = true;
+										this.faceSlot = 8;
+										this.vanity = true;
+										return;
+									}
+									if (type == 2502)
+									{
+										this.useStyle = 1;
+										this.name = "Honeyed Goggles";
+										this.width = 16;
+										this.height = 30;
+										this.useSound = 25;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 8;
+										this.noMelee = true;
+										this.mountType = 5;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										return;
+									}
+									if (type == 2503)
+									{
+										this.name = "Boreal Wood";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createTile = 321;
+										this.width = 8;
+										this.height = 10;
+										return;
+									}
+									if (type == 2504)
+									{
+										this.name = "Palm Wood";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createTile = 322;
+										this.width = 8;
+										this.height = 10;
+										return;
+									}
+									if (type == 2505)
+									{
+										this.name = "Boreal Wood Wall";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 7;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createWall = 149;
+										this.width = 12;
+										this.height = 12;
+										return;
+									}
+									if (type == 2506)
+									{
+										this.name = "Palm Wood Wall";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 7;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createWall = 151;
+										this.width = 12;
+										this.height = 12;
+										return;
+									}
+									if (type == 2507)
+									{
+										this.name = "Boreal Wood Fence";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 7;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createWall = 150;
+										this.width = 12;
+										this.height = 12;
+										return;
+									}
+									if (type == 2508)
+									{
+										this.name = "Palm Wood Fence";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 7;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createWall = 152;
+										this.width = 12;
+										this.height = 12;
+										return;
+									}
+									if (type == 2509)
+									{
+										this.name = "Boreal Wood Helmet";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 1;
+										this.headSlot = 166;
+										return;
+									}
+									if (type == 2510)
+									{
+										this.name = "Boreal Wood Breastplate";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 1;
+										this.bodySlot = 173;
+										return;
+									}
+									if (type == 2511)
+									{
+										this.name = "Boreal Wood Greaves";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 1;
+										this.legSlot = 108;
+										return;
+									}
+									if (type == 2512)
+									{
+										this.name = "Palm Wood Helmet";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 1;
+										this.headSlot = 167;
+										return;
+									}
+									if (type == 2513)
+									{
+										this.name = "Palm Wood Breastplate";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 1;
+										this.bodySlot = 174;
+										return;
+									}
+									if (type == 2514)
+									{
+										this.name = "Palm Wood Greaves";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 1;
+										this.legSlot = 109;
+										return;
+									}
+									if (type == 2517)
+									{
+										this.name = "Palm Wood Sword";
+										this.useStyle = 1;
+										this.useTurn = false;
+										this.useAnimation = 23;
+										this.useTime = 23;
+										this.width = 24;
+										this.height = 28;
+										this.damage = 8;
+										this.knockBack = 5f;
+										this.useSound = 1;
+										this.scale = 1f;
+										this.value = 100;
+										this.melee = true;
+										return;
+									}
+									if (type == 2516)
+									{
+										this.name = "Palm Wood Hammer";
+										this.autoReuse = true;
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 33;
+										this.useTime = 23;
+										this.hammer = 35;
+										this.width = 24;
+										this.height = 28;
+										this.damage = 4;
+										this.knockBack = 5.5f;
+										this.scale = 1.1f;
+										this.useSound = 1;
+										this.value = 50;
+										this.melee = true;
+										return;
+									}
+									if (type == 2515)
+									{
+										this.name = "Palm Wood Bow";
+										this.useStyle = 5;
+										this.useAnimation = 29;
+										this.useTime = 29;
+										this.width = 12;
+										this.height = 28;
+										this.shoot = 1;
+										this.useAmmo = 1;
+										this.useSound = 5;
+										this.damage = 6;
+										this.shootSpeed = 6.6f;
+										this.noMelee = true;
+										this.value = 100;
+										this.ranged = true;
+										return;
+									}
+									if (type == 2518)
+									{
+										this.name = "Palm Wood Platform";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
@@ -36127,161 +34667,14 @@ namespace Terraria
 										this.maxStack = 99;
 										this.consumable = true;
 										this.createTile = 19;
-										this.placeStyle = 21 + type - 2627;
+										this.placeStyle = 17;
 										this.width = 8;
 										this.height = 10;
 										return;
 									}
-									if (type >= 2631 && type <= 2633)
+									if (type == 2519)
 									{
-										this.name = "More Work Benches";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 18;
-										this.placeStyle = 24 + type - 2631;
-										this.width = 28;
-										this.height = 14;
-										this.value = 150;
-										this.toolTip = "Used for basic crafting";
-										return;
-									}
-									if (type >= 2634 && type <= 2636)
-									{
-										this.name = "Sofas";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 89;
-										this.placeStyle = 26 + type - 2634;
-										this.width = 20;
-										this.height = 20;
-										this.value = 300;
-										return;
-									}
-									if (type == 2623)
-									{
-										this.autoReuse = true;
-										this.name = "Bubble Gun";
-										this.mana = 4;
-										this.useSound = 39;
-										this.useStyle = 5;
-										this.damage = 70;
-										this.useAnimation = 9;
-										this.useTime = 9;
-										this.width = 40;
-										this.height = 40;
-										this.shoot = 410;
-										this.shootSpeed = 11f;
-										this.knockBack = 3f;
-										this.value = Item.sellPrice(0, 5, 0, 0);
-										this.magic = true;
-										this.rare = 8;
-										this.noMelee = true;
-										return;
-									}
-									if (type >= 2637 && type <= 2640)
-									{
-										this.name = "Dressers";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 88;
-										this.placeStyle = 20 + type - 2637;
-										this.width = 20;
-										this.height = 20;
-										this.value = 300;
-										return;
-									}
-									if (type == 2641 || type == 2642)
-									{
-										this.name = "Lantern 1";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 999;
-										this.consumable = true;
-										this.createTile = 42;
-										if (type == 2641)
-										{
-											this.placeStyle = 31;
-										}
-										else
-										{
-											this.placeStyle = 32;
-										}
-										this.width = 12;
-										this.height = 28;
-										return;
-									}
-									if (type >= 2643 && type <= 2647)
-									{
-										this.name = "More Lamps";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 93;
-										this.placeStyle = 22 + type - 2643;
-										this.width = 10;
-										this.height = 24;
-										this.value = 500;
-										return;
-									}
-									if (type >= 2648 && type <= 2651)
-									{
-										this.noWet = true;
-										this.name = "even more candles";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 33;
-										this.width = 8;
-										this.height = 18;
-										this.placeStyle = 22 + type - 2648;
-										return;
-									}
-									if (type >= 2652 && type <= 2657)
-									{
-										this.name = "More Chandeliers";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 34;
-										this.placeStyle = 27 + type - 2652;
-										this.width = 26;
-										this.height = 26;
-										this.value = 3000;
-										return;
-									}
-									if (type >= 2658 && type <= 2663)
-									{
-										this.name = "more bathtubs";
+										this.name = "Palm Wood Bathtub";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
@@ -36290,32 +34683,15 @@ namespace Terraria
 										this.maxStack = 99;
 										this.consumable = true;
 										this.createTile = 90;
-										this.placeStyle = 21 + type - 2658;
+										this.placeStyle = 17;
 										this.width = 20;
 										this.height = 20;
 										this.value = 300;
 										return;
 									}
-									if (type >= 2664 && type <= 2668)
+									if (type == 2520)
 									{
-										this.name = "even more candelabras";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 100;
-										this.placeStyle = 22 + type - 2664;
-										this.width = 20;
-										this.height = 20;
-										this.value = 1500;
-										return;
-									}
-									if (type == 2669)
-									{
-										this.name = "Pumpkin Bed";
+										this.name = "Palm Wood Bed";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
@@ -36324,15 +34700,273 @@ namespace Terraria
 										this.consumable = true;
 										this.autoReuse = true;
 										this.createTile = 79;
-										this.placeStyle = 26;
+										this.placeStyle = 22;
 										this.width = 28;
 										this.height = 20;
 										this.value = 2000;
 										return;
 									}
-									if (type == 2670)
+									if (type == 2521)
 									{
-										this.name = "Pumpkin Bookcase";
+										this.name = "Palm Wood Bench";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 89;
+										this.placeStyle = 21;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2527)
+									{
+										this.name = "Palm Wood Sofa";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 89;
+										this.placeStyle = 22;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2522)
+									{
+										this.name = "Palm Wood Candelabra";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 100;
+										this.placeStyle = 18;
+										this.width = 20;
+										this.height = 20;
+										this.value = 1500;
+										return;
+									}
+									if (type == 2523)
+									{
+										this.noWet = true;
+										this.name = "Palm Wood Candle";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 33;
+										this.placeStyle = 18;
+										this.width = 8;
+										this.height = 18;
+										return;
+									}
+									if (type == 2524)
+									{
+										this.name = "Palm Wood Chair";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 15;
+										this.placeStyle = 29;
+										this.width = 12;
+										this.height = 30;
+										return;
+									}
+									if (type == 2525)
+									{
+										this.name = "Palm Wood Chandelier";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 34;
+										this.placeStyle = 23;
+										this.width = 26;
+										this.height = 26;
+										this.value = 3000;
+										return;
+									}
+									if (type == 2526)
+									{
+										this.name = "Palm Wood Chest";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 21;
+										this.placeStyle = 31;
+										this.width = 26;
+										this.height = 22;
+										this.value = 500;
+										return;
+									}
+									if (type == 2528)
+									{
+										this.name = "Palm Wood Door";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 10;
+										this.placeStyle = 29;
+										this.width = 14;
+										this.height = 28;
+										this.value = 200;
+										return;
+									}
+									if (type == 2529)
+									{
+										this.name = "Palm Wood Dresser";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 88;
+										this.placeStyle = 16;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2530)
+									{
+										this.name = "Palm Wood Lantern";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createTile = 42;
+										this.width = 12;
+										this.height = 28;
+										this.placeStyle = 27;
+										return;
+									}
+									if (type == 2531)
+									{
+										this.name = "Palm Wood Piano";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 87;
+										this.placeStyle = 21;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2535)
+									{
+										this.mana = 10;
+										this.damage = 30;
+										this.useStyle = 1;
+										this.name = "Optic Staff";
+										this.shootSpeed = 10f;
+										this.shoot = 387;
+										this.width = 26;
+										this.height = 28;
+										this.useSound = 44;
+										this.useAnimation = 36;
+										this.useTime = 36;
+										this.rare = 5;
+										this.noMelee = true;
+										this.knockBack = 2f;
+										this.toolTip = "Summons twins to fight for you";
+										this.buffType = 134;
+										this.value = Item.buyPrice(0, 10, 0, 0);
+										this.summon = true;
+										return;
+									}
+									if (type == 2532)
+									{
+										this.name = "Palm Wood Table";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 14;
+										this.placeStyle = 26;
+										this.width = 26;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2533)
+									{
+										this.name = "Palm Wood Lamp";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 93;
+										this.placeStyle = 18;
+										this.width = 10;
+										this.height = 24;
+										this.value = 500;
+										return;
+									}
+									if (type == 2534)
+									{
+										this.name = "Palm Wood Work Bench";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 18;
+										this.placeStyle = 22;
+										this.width = 28;
+										this.height = 14;
+										this.value = 150;
+										this.toolTip = "Used for basic crafting";
+										return;
+									}
+									if (type == 2536)
+									{
+										this.name = "Palm Wood Bookcase";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
@@ -36344,12 +34978,214 @@ namespace Terraria
 										this.width = 20;
 										this.height = 20;
 										this.value = 300;
-										this.placeStyle = 27;
+										this.placeStyle = 23;
 										return;
 									}
-									if (type == 2671)
+									if (type == 2549)
 									{
-										this.name = "Pumpkin Piano";
+										this.name = "Mushroom Platform";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 19;
+										this.placeStyle = 18;
+										this.width = 8;
+										this.height = 10;
+										return;
+									}
+									if (type == 2537)
+									{
+										this.name = "Mushroom Bathtub";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 90;
+										this.placeStyle = 18;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2538)
+									{
+										this.name = "Mushroom Bed";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.autoReuse = true;
+										this.createTile = 79;
+										this.placeStyle = 23;
+										this.width = 28;
+										this.height = 20;
+										this.value = 2000;
+										return;
+									}
+									if (type == 2539)
+									{
+										this.name = "Mushroom Bench";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 89;
+										this.placeStyle = 23;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2540)
+									{
+										this.name = "Mushroom Bookcase";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 101;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										this.placeStyle = 24;
+										return;
+									}
+									if (type == 2541)
+									{
+										this.name = "Mushroom Candelabra";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 100;
+										this.placeStyle = 19;
+										this.width = 20;
+										this.height = 20;
+										this.value = 1500;
+										return;
+									}
+									if (type == 2542)
+									{
+										this.noWet = true;
+										this.name = "Mushroom Candle";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 33;
+										this.placeStyle = 19;
+										this.width = 8;
+										this.height = 18;
+										return;
+									}
+									if (type == 2543)
+									{
+										this.name = "Mushroom Chandelier";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 34;
+										this.placeStyle = 24;
+										this.width = 26;
+										this.height = 26;
+										this.value = 3000;
+										return;
+									}
+									if (type == 2544)
+									{
+										this.name = "Mushroom Chest";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 21;
+										this.placeStyle = 32;
+										this.width = 26;
+										this.height = 22;
+										this.value = 500;
+										return;
+									}
+									if (type == 2545)
+									{
+										this.name = "Mushroom Dresser";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 88;
+										this.placeStyle = 17;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2547)
+									{
+										this.name = "Mushroom Lamp";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 93;
+										this.placeStyle = 19;
+										this.width = 10;
+										this.height = 24;
+										this.value = 500;
+										return;
+									}
+									if (type == 2546)
+									{
+										this.name = "Mushroom Lantern";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createTile = 42;
+										this.width = 12;
+										this.height = 28;
+										this.placeStyle = 28;
+										return;
+									}
+									if (type == 2548)
+									{
+										this.name = "Mushroom Piano";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
@@ -36358,15 +35194,15 @@ namespace Terraria
 										this.maxStack = 99;
 										this.consumable = true;
 										this.createTile = 87;
-										this.placeStyle = 25;
+										this.placeStyle = 22;
 										this.width = 20;
 										this.height = 20;
 										this.value = 300;
 										return;
 									}
-									if (type == 2672)
+									if (type == 2413)
 									{
-										this.name = "Shark Statue";
+										this.name = "Mushroom Sofa";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
@@ -36374,232 +35210,927 @@ namespace Terraria
 										this.autoReuse = true;
 										this.maxStack = 99;
 										this.consumable = true;
-										this.createTile = 105;
+										this.createTile = 89;
+										this.placeStyle = 23;
 										this.width = 20;
 										this.height = 20;
 										this.value = 300;
-										this.placeStyle = 50;
 										return;
 									}
-									if (type == 2673)
+									if (type == 2550)
 									{
-										this.name = "Truffle Worm";
+										this.name = "Mushroom Table";
 										this.useStyle = 1;
-										this.autoReuse = true;
 										this.useTurn = true;
 										this.useAnimation = 15;
 										this.useTime = 10;
-										this.maxStack = 999;
+										this.autoReuse = true;
+										this.maxStack = 99;
 										this.consumable = true;
-										this.width = 12;
-										this.height = 12;
-										this.makeNPC = 374;
-										this.noUseGraphic = true;
-										this.bait = 666;
+										this.createTile = 14;
+										this.placeStyle = 27;
+										this.width = 26;
+										this.height = 20;
+										this.value = 300;
 										return;
 									}
-									if (type >= 2674 && type <= 2676)
+									if (type == 2551)
 									{
-										this.name = "baits";
+										this.mana = 10;
+										this.damage = 25;
+										this.useStyle = 1;
+										this.name = "Spider Staff";
+										this.shootSpeed = 10f;
+										this.shoot = 390;
+										this.width = 26;
+										this.height = 28;
+										this.useSound = 44;
+										this.useAnimation = 36;
+										this.useTime = 36;
+										this.rare = 4;
+										this.noMelee = true;
+										this.knockBack = 2f;
+										this.toolTip = "Summons spiders to fight for you";
+										this.buffType = 133;
+										this.value = Item.buyPrice(0, 5, 0, 0);
+										this.summon = true;
+										return;
+									}
+									if (type == 2552)
+									{
+										this.name = "Boreal Wood Bathtub";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 90;
+										this.placeStyle = 19;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2553)
+									{
+										this.name = "Boreal Wood Bed";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.autoReuse = true;
+										this.createTile = 79;
+										this.placeStyle = 24;
+										this.width = 28;
+										this.height = 20;
+										this.value = 2000;
+										return;
+									}
+									if (type == 2554)
+									{
+										this.name = "Boreal Wood Bookcase";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 101;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										this.placeStyle = 25;
+										return;
+									}
+									if (type == 2555)
+									{
+										this.name = "Boreal Wood Candelabra";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 100;
+										this.placeStyle = 20;
+										this.width = 20;
+										this.height = 20;
+										this.value = 1500;
+										return;
+									}
+									if (type == 2556)
+									{
+										this.noWet = true;
+										this.name = "Boreal Wood Candle";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 33;
+										this.placeStyle = 20;
+										this.width = 8;
+										this.height = 18;
+										return;
+									}
+									if (type == 2557)
+									{
+										this.name = "Boreal Wood Chair";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 15;
+										this.placeStyle = 30;
+										this.width = 12;
+										this.height = 30;
+										return;
+									}
+									if (type == 2558)
+									{
+										this.name = "Boreal Wood Chandelier";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 34;
+										this.placeStyle = 25;
+										this.width = 26;
+										this.height = 26;
+										this.value = 3000;
+										return;
+									}
+									if (type == 2559)
+									{
+										this.name = "Boreal Wood Chest";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 21;
+										this.placeStyle = 33;
+										this.width = 26;
+										this.height = 22;
+										this.value = 500;
+										return;
+									}
+									if (type == 2560)
+									{
+										this.name = "Boreal Wood Clock";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 104;
+										this.placeStyle = 6;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2561)
+									{
+										this.name = "Boreal Wood Door";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 10;
+										this.placeStyle = 30;
+										this.width = 14;
+										this.height = 28;
+										this.value = 200;
+										return;
+									}
+									if (type == 2562)
+									{
+										this.name = "Boreal Wood Dresser";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 88;
+										this.placeStyle = 18;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2563)
+									{
+										this.name = "Boreal Wood Lamp";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 93;
+										this.placeStyle = 20;
+										this.width = 10;
+										this.height = 24;
+										this.value = 500;
+										return;
+									}
+									if (type == 2564)
+									{
+										this.name = "Boreal Wood Lantern";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
 										this.maxStack = 999;
 										this.consumable = true;
+										this.createTile = 42;
+										this.placeStyle = 29;
+										this.width = 12;
+										this.height = 28;
+										return;
+									}
+									if (type == 2565)
+									{
+										this.name = "Boreal Wood Piano";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 87;
+										this.placeStyle = 23;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2566)
+									{
+										this.name = "Boreal Wood Platform";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 19;
+										this.placeStyle = 19;
+										this.width = 8;
+										this.height = 10;
+										return;
+									}
+									if (type == 2567)
+									{
+										this.name = "Slime Bathtub";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 90;
+										this.placeStyle = 20;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2568)
+									{
+										this.name = "Slime Bed";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.autoReuse = true;
+										this.createTile = 79;
+										this.placeStyle = 25;
+										this.width = 28;
+										this.height = 20;
+										this.value = 2000;
+										return;
+									}
+									if (type == 2569)
+									{
+										this.name = "Slime Bookcase";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 101;
+										this.placeStyle = 26;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2570)
+									{
+										this.name = "Slime Candelabra";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 100;
+										this.placeStyle = 21;
+										this.width = 20;
+										this.height = 20;
+										this.value = 1500;
+										return;
+									}
+									if (type == 2571)
+									{
+										this.noWet = true;
+										this.name = "Slime Candle";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 33;
+										this.placeStyle = 21;
+										this.width = 8;
+										this.height = 18;
+										return;
+									}
+									if (type == 2572)
+									{
+										this.name = "Slime Chair";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 15;
+										this.placeStyle = 31;
+										this.width = 12;
+										this.height = 30;
+										return;
+									}
+									if (type == 2573)
+									{
+										this.name = "Slime Chandelier";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 34;
+										this.placeStyle = 26;
+										this.width = 26;
+										this.height = 26;
+										this.value = 3000;
+										return;
+									}
+									if (type == 2574)
+									{
+										this.name = "Slime Chest";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 21;
+										this.placeStyle = 34;
+										this.width = 26;
+										this.height = 22;
+										this.value = 500;
+										return;
+									}
+									if (type == 2575)
+									{
+										this.name = "Slime Clock";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 104;
+										this.placeStyle = 7;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2576)
+									{
+										this.name = "Slime Door";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 10;
+										this.placeStyle = 31;
+										this.width = 14;
+										this.height = 28;
+										this.value = 200;
+										return;
+									}
+									if (type == 2577)
+									{
+										this.name = "Slime Dresser";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 88;
+										this.placeStyle = 19;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2578)
+									{
+										this.name = "Slime Lamp";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 93;
+										this.placeStyle = 21;
+										this.width = 10;
+										this.height = 24;
+										this.value = 500;
+										return;
+									}
+									if (type == 2579)
+									{
+										this.name = "Slime Lantern";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createTile = 42;
+										this.placeStyle = 30;
+										this.width = 12;
+										this.height = 28;
+										return;
+									}
+									if (type == 2580)
+									{
+										this.name = "Slime Piano";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 87;
+										this.placeStyle = 24;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2581)
+									{
+										this.name = "Slime Platform";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 19;
+										this.placeStyle = 20;
+										this.width = 8;
+										this.height = 10;
+										return;
+									}
+									if (type == 2582)
+									{
+										this.name = "Slime Sofa";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 89;
+										this.placeStyle = 25;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2583)
+									{
+										this.name = "Slime Table";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 14;
+										this.placeStyle = 29;
+										this.width = 26;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2584)
+									{
+										this.mana = 10;
+										this.damage = 32;
+										this.useStyle = 1;
+										this.name = "Pirate Staff";
+										this.shootSpeed = 10f;
+										this.shoot = 393;
+										this.width = 26;
+										this.height = 28;
+										this.useSound = 44;
+										this.useAnimation = 36;
+										this.useTime = 36;
+										this.rare = 5;
+										this.noMelee = true;
+										this.knockBack = 2f;
+										this.toolTip = "Summons pirates to fight for you";
+										this.buffType = 135;
+										this.value = Item.buyPrice(0, 5, 0, 0);
+										this.summon = true;
+										return;
+									}
+									if (type == 2585)
+									{
+										this.noUseGraphic = true;
+										this.damage = 0;
+										this.useStyle = 5;
+										this.name = "Slime Hook";
+										this.shootSpeed = 13f;
+										this.shoot = 396;
+										this.width = 18;
+										this.height = 28;
+										this.useSound = 1;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 3;
+										this.noMelee = true;
+										this.value = 20000;
+										return;
+									}
+									if (type == 2586)
+									{
+										this.useStyle = 5;
+										this.name = "Sticky Grenade";
+										this.shootSpeed = 5.5f;
+										this.shoot = 397;
+										this.width = 20;
+										this.height = 20;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.useSound = 1;
+										this.useAnimation = 45;
+										this.useTime = 45;
+										this.noUseGraphic = true;
+										this.noMelee = true;
+										this.value = 75;
+										this.damage = 60;
+										this.knockBack = 8f;
+										this.toolTip = "A small explosion that will not destroy tiles";
+										this.toolTip2 = "Tossing may be difficult";
+										this.ranged = true;
+										return;
+									}
+									if (type == 2587)
+									{
+										this.damage = 0;
+										this.useStyle = 1;
+										this.name = "Tartar Sauce";
+										this.shoot = 398;
+										this.width = 16;
+										this.height = 30;
+										this.useSound = 2;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 3;
+										this.noMelee = true;
+										this.toolTip = "Summons a mini minotaur";
+										this.buffType = 136;
+										this.value = Item.sellPrice(0, 2, 0, 0);
+										return;
+									}
+									if (type == 2588)
+									{
+										this.name = "Duke Fishron Mask";
+										this.width = 28;
+										this.height = 20;
+										this.headSlot = 168;
+										this.rare = 1;
+										this.vanity = true;
+										return;
+									}
+									if (type == 2589)
+									{
+										this.name = "Duke Fishron Trophy";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 240;
+										this.width = 30;
+										this.height = 30;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										this.placeStyle = 55;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2590)
+									{
+										this.useStyle = 5;
+										this.name = "Molotov Cocktail";
+										this.shootSpeed = 6.5f;
+										this.shoot = 399;
+										this.width = 20;
+										this.height = 20;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.useSound = 1;
+										this.useAnimation = 30;
+										this.useTime = 30;
+										this.noUseGraphic = true;
+										this.noMelee = true;
+										this.value = 75;
+										this.damage = 40;
+										this.knockBack = 8f;
+										this.toolTip = "A small explosion that puts enemies on fire";
+										this.toolTip2 = "Lights nearby area on fire for a while";
+										this.ranged = true;
+										return;
+									}
+									if (type >= 2591 && type <= 2606)
+									{
+										this.name = "Grandfather Clock";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 104;
+										this.placeStyle = 8 + type - 2591;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type == 2607)
+									{
+										this.name = "Spider Fang";
+										this.maxStack = 99;
 										this.width = 12;
 										this.height = 12;
-										this.bait = 15;
-										if (type == 2675)
+										this.rare = 4;
+										this.value = Item.sellPrice(0, 0, 5, 0);
+										return;
+									}
+									if (type == 2608)
+									{
+										this.name = "Falcon Blade";
+										this.useStyle = 1;
+										this.useAnimation = 15;
+										this.knockBack = 6f;
+										this.width = 24;
+										this.height = 28;
+										this.damage = 25;
+										this.scale = 1.05f;
+										this.useSound = 1;
+										this.rare = 4;
+										this.value = 10000;
+										this.melee = true;
+										return;
+									}
+									if (type == 2609)
+									{
+										this.name = "Fishron Wings";
+										this.width = 22;
+										this.height = 20;
+										this.accessory = true;
+										this.toolTip = "Allows flight and slow fall";
+										this.value = Item.buyPrice(0, 10, 0, 0);
+										this.rare = 8;
+										this.wingSlot = 26;
+										return;
+									}
+									if (type == 2610)
+									{
+										this.name = "Slime Gun";
+										this.useStyle = 5;
+										this.useAnimation = 12;
+										this.useTime = 12;
+										this.width = 38;
+										this.height = 10;
+										this.damage = 0;
+										this.scale = 0.9f;
+										this.shoot = 406;
+										this.shootSpeed = 8f;
+										this.autoReuse = true;
+										this.value = Item.buyPrice(0, 1, 50, 0);
+										return;
+									}
+									if (type == 2611)
+									{
+										this.autoReuse = false;
+										this.name = "Flairon";
+										this.useStyle = 5;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.autoReuse = true;
+										this.knockBack = 4.5f;
+										this.width = 30;
+										this.height = 10;
+										this.damage = 66;
+										this.shoot = 404;
+										this.shootSpeed = 14f;
+										this.useSound = 1;
+										this.rare = 8;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										this.melee = true;
+										this.noUseGraphic = true;
+										return;
+									}
+									if (type >= 2612 && type <= 2620)
+									{
+										this.name = "Many Chests";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 21;
+										if (type <= 2614)
 										{
-											this.bait = 30;
+											this.placeStyle = 35 + (type - 2612) * 2;
 										}
-										if (type == 2676)
+										else
 										{
-											this.bait = 50;
+											this.placeStyle = 41 + type - 2615;
+										}
+										this.width = 26;
+										this.height = 22;
+										this.value = 500;
+										return;
+									}
+									if (type == 2621)
+									{
+										this.mana = 10;
+										this.damage = 50;
+										this.useStyle = 1;
+										this.name = "Tempest Staff";
+										this.shootSpeed = 10f;
+										this.shoot = 407;
+										this.width = 26;
+										this.height = 28;
+										this.useSound = 44;
+										this.useAnimation = 36;
+										this.useTime = 36;
+										this.rare = 8;
+										this.noMelee = true;
+										this.knockBack = 2f;
+										this.toolTip = "Summons sharknados to fight for you";
+										this.buffType = 139;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										this.summon = true;
+										return;
+									}
+									if (type == 2624)
+									{
+										this.useStyle = 5;
+										this.useAnimation = 24;
+										this.useTime = 24;
+										this.name = "Tsunami";
+										this.width = 50;
+										this.height = 18;
+										this.shoot = 1;
+										this.useAmmo = 1;
+										this.useSound = 5;
+										this.damage = 60;
+										this.shootSpeed = 10f;
+										this.noMelee = true;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										this.ranged = true;
+										this.rare = 8;
+										this.knockBack = 2f;
+										return;
+									}
+									if (type == 2622)
+									{
+										this.mana = 18;
+										this.damage = 60;
+										this.useStyle = 5;
+										this.name = "Razorblade Typhoon";
+										this.shootSpeed = 6f;
+										this.shoot = 409;
+										this.width = 26;
+										this.height = 28;
+										this.useSound = 8;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.autoReuse = true;
+										this.rare = 8;
+										this.noMelee = true;
+										this.knockBack = 5f;
+										this.scale = 0.9f;
+										this.toolTip = "Casts a typhoon";
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										this.magic = true;
+										return;
+									}
+									if (type == 2625 || type == 2626)
+									{
+										this.name = "Beach Stuff";
+										this.useStyle = 1;
+										this.autoReuse = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 324;
+										if (type == 2626)
+										{
+											this.placeStyle = 1;
+											this.width = 26;
+											this.height = 24;
 											return;
 										}
+										this.width = 22;
+										this.height = 22;
+										return;
 									}
 									else
 									{
-										if (type >= 2677 && type <= 2690)
+										if (type >= 2627 && type <= 2630)
 										{
-											this.name = "gemspark walls";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											switch (type)
-											{
-											case 2677:
-												this.createWall = 153;
-												break;
-											case 2678:
-												this.createWall = 157;
-												break;
-											case 2679:
-												this.createWall = 154;
-												break;
-											case 2680:
-												this.createWall = 158;
-												break;
-											case 2681:
-												this.createWall = 155;
-												break;
-											case 2682:
-												this.createWall = 159;
-												break;
-											case 2683:
-												this.createWall = 156;
-												break;
-											case 2684:
-												this.createWall = 160;
-												break;
-											case 2685:
-												this.createWall = 164;
-												break;
-											case 2686:
-												this.createWall = 161;
-												break;
-											case 2687:
-												this.createWall = 165;
-												break;
-											case 2688:
-												this.createWall = 162;
-												break;
-											case 2689:
-												this.createWall = 166;
-												break;
-											case 2690:
-												this.createWall = 163;
-												break;
-											}
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2691)
-										{
-											this.name = "Tin Plating Wall";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 7;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createWall = 167;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2692)
-										{
-											this.name = "Tin Plating";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 325;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2693)
-										{
-											this.name = "Waterfall Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 326;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2694)
-										{
-											this.name = "Lavafall Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 327;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2695)
-										{
-											this.name = "Confetti Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 328;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2696)
-										{
-											this.name = "Confetti Wall";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 7;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createWall = 168;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2697)
-										{
-											this.name = "Confetti Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 329;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2698)
-										{
-											this.name = "Confetti Wall";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 7;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createWall = 169;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2699)
-										{
-											this.name = "Weapon Rack";
+											this.name = "More Platforms";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36607,15 +36138,15 @@ namespace Terraria
 											this.autoReuse = true;
 											this.maxStack = 99;
 											this.consumable = true;
-											this.createTile = 334;
-											this.width = 30;
-											this.height = 30;
-											this.value = Item.sellPrice(0, 0, 10, 0);
+											this.createTile = 19;
+											this.placeStyle = 21 + type - 2627;
+											this.width = 8;
+											this.height = 10;
 											return;
 										}
-										if (type == 2700)
+										if (type >= 2631 && type <= 2633)
 										{
-											this.name = "Fireworks Box";
+											this.name = "More Work Benches";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36623,31 +36154,17 @@ namespace Terraria
 											this.autoReuse = true;
 											this.maxStack = 99;
 											this.consumable = true;
-											this.createTile = 335;
-											this.width = 26;
-											this.height = 22;
-											this.value = Item.buyPrice(0, 5, 0, 0);
-											this.mech = true;
+											this.createTile = 18;
+											this.placeStyle = 24 + type - 2631;
+											this.width = 28;
+											this.height = 14;
+											this.value = 150;
+											this.toolTip = "Used for basic crafting";
 											return;
 										}
-										if (type == 2701)
+										if (type >= 2634 && type <= 2636)
 										{
-											this.name = "Living Fire Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 336;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type >= 2702 && type <= 2737)
-										{
-											this.name = "statues";
+											this.name = "Sofas";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36655,18 +36172,37 @@ namespace Terraria
 											this.autoReuse = true;
 											this.maxStack = 99;
 											this.consumable = true;
-											this.createTile = 337;
+											this.createTile = 89;
+											this.placeStyle = 26 + type - 2634;
 											this.width = 20;
 											this.height = 20;
 											this.value = 300;
-											this.placeStyle = type - 2702;
 											return;
 										}
-										if (type == 2738)
+										if (type == 2623)
 										{
-											this.name = "Firework Fountain";
-											this.createTile = 338;
-											this.placeStyle = 0;
+											this.autoReuse = true;
+											this.name = "Bubble Gun";
+											this.mana = 4;
+											this.useSound = 39;
+											this.useStyle = 5;
+											this.damage = 70;
+											this.useAnimation = 9;
+											this.useTime = 9;
+											this.width = 40;
+											this.height = 40;
+											this.shoot = 410;
+											this.shootSpeed = 11f;
+											this.knockBack = 3f;
+											this.value = Item.sellPrice(0, 5, 0, 0);
+											this.magic = true;
+											this.rare = 8;
+											this.noMelee = true;
+											return;
+										}
+										if (type >= 2637 && type <= 2640)
+										{
+											this.name = "Dressers";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36674,34 +36210,192 @@ namespace Terraria
 											this.autoReuse = true;
 											this.maxStack = 99;
 											this.consumable = true;
-											this.width = 12;
-											this.height = 30;
-											this.value = Item.buyPrice(0, 3, 0, 0);
-											this.mech = true;
+											this.createTile = 88;
+											this.placeStyle = 20 + type - 2637;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
 											return;
 										}
-										if (type == 2739)
+										if (type == 2641 || type == 2642)
 										{
-											this.name = "Booster Track";
+											this.name = "Lantern 1";
 											this.useStyle = 1;
+											this.useTurn = true;
 											this.useAnimation = 15;
-											this.useTime = 7;
+											this.useTime = 10;
 											this.autoReuse = true;
-											this.width = 16;
-											this.height = 16;
-											this.maxStack = 99;
-											this.createTile = 314;
-											this.placeStyle = 2;
+											this.maxStack = 999;
 											this.consumable = true;
-											this.cartTrack = true;
-											this.mech = true;
-											this.tileBoost = 1;
-											this.value = Item.buyPrice(0, 0, 50, 0);
+											this.createTile = 42;
+											if (type == 2641)
+											{
+												this.placeStyle = 31;
+											}
+											else
+											{
+												this.placeStyle = 32;
+											}
+											this.width = 12;
+											this.height = 28;
 											return;
 										}
-										if (type == 2740)
+										if (type >= 2643 && type <= 2647)
 										{
-											this.name = "Grasshopper";
+											this.name = "More Lamps";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 93;
+											this.placeStyle = 22 + type - 2643;
+											this.width = 10;
+											this.height = 24;
+											this.value = 500;
+											return;
+										}
+										if (type >= 2648 && type <= 2651)
+										{
+											this.noWet = true;
+											this.name = "even more candles";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 33;
+											this.width = 8;
+											this.height = 18;
+											this.placeStyle = 22 + type - 2648;
+											return;
+										}
+										if (type >= 2652 && type <= 2657)
+										{
+											this.name = "More Chandeliers";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 34;
+											this.placeStyle = 27 + type - 2652;
+											this.width = 26;
+											this.height = 26;
+											this.value = 3000;
+											return;
+										}
+										if (type >= 2658 && type <= 2663)
+										{
+											this.name = "more bathtubs";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 90;
+											this.placeStyle = 21 + type - 2658;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type >= 2664 && type <= 2668)
+										{
+											this.name = "even more candelabras";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 100;
+											this.placeStyle = 22 + type - 2664;
+											this.width = 20;
+											this.height = 20;
+											this.value = 1500;
+											return;
+										}
+										if (type == 2669)
+										{
+											this.name = "Pumpkin Bed";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.autoReuse = true;
+											this.createTile = 79;
+											this.placeStyle = 26;
+											this.width = 28;
+											this.height = 20;
+											this.value = 2000;
+											return;
+										}
+										if (type == 2670)
+										{
+											this.name = "Pumpkin Bookcase";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 101;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											this.placeStyle = 27;
+											return;
+										}
+										if (type == 2671)
+										{
+											this.name = "Pumpkin Piano";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 87;
+											this.placeStyle = 25;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2672)
+										{
+											this.name = "Shark Statue";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 105;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											this.placeStyle = 50;
+											return;
+										}
+										if (type == 2673)
+										{
+											this.name = "Truffle Worm";
 											this.useStyle = 1;
 											this.autoReuse = true;
 											this.useTurn = true;
@@ -36711,42 +36405,466 @@ namespace Terraria
 											this.consumable = true;
 											this.width = 12;
 											this.height = 12;
-											this.makeNPC = 377;
+											this.makeNPC = 374;
 											this.noUseGraphic = true;
-											this.bait = 10;
+											this.bait = 666;
 											return;
 										}
-										if (type == 2741)
+										if (type >= 2674 && type <= 2676)
 										{
-											this.name = "Critter Cage";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 99;
+											this.name = "baits";
+											this.maxStack = 999;
 											this.consumable = true;
-											this.createTile = 339;
 											this.width = 12;
 											this.height = 12;
-											return;
+											this.bait = 15;
+											if (type == 2675)
+											{
+												this.bait = 30;
+											}
+											if (type == 2676)
+											{
+												this.bait = 50;
+												return;
+											}
 										}
-										if (type == 2742)
+										else
 										{
-											this.name = "Music Box (Underground Crimson)";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.consumable = true;
-											this.createTile = 139;
-											this.placeStyle = 31;
-											this.width = 24;
-											this.height = 24;
-											this.rare = 4;
-											this.value = 100000;
-											this.accessory = true;
+											if (type >= 2677 && type <= 2690)
+											{
+												this.name = "gemspark walls";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												switch (type)
+												{
+												case 2677:
+													this.createWall = 153;
+													break;
+												case 2678:
+													this.createWall = 157;
+													break;
+												case 2679:
+													this.createWall = 154;
+													break;
+												case 2680:
+													this.createWall = 158;
+													break;
+												case 2681:
+													this.createWall = 155;
+													break;
+												case 2682:
+													this.createWall = 159;
+													break;
+												case 2683:
+													this.createWall = 156;
+													break;
+												case 2684:
+													this.createWall = 160;
+													break;
+												case 2685:
+													this.createWall = 164;
+													break;
+												case 2686:
+													this.createWall = 161;
+													break;
+												case 2687:
+													this.createWall = 165;
+													break;
+												case 2688:
+													this.createWall = 162;
+													break;
+												case 2689:
+													this.createWall = 166;
+													break;
+												case 2690:
+													this.createWall = 163;
+													break;
+												}
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2691)
+											{
+												this.name = "Tin Plating Wall";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 7;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createWall = 167;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2692)
+											{
+												this.name = "Tin Plating";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 325;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2693)
+											{
+												this.name = "Waterfall Block";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 326;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2694)
+											{
+												this.name = "Lavafall Block";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 327;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2695)
+											{
+												this.name = "Confetti Block";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 328;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2696)
+											{
+												this.name = "Confetti Wall";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 7;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createWall = 168;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2697)
+											{
+												this.name = "Confetti Block";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 329;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2698)
+											{
+												this.name = "Confetti Wall";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 7;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createWall = 169;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2699)
+											{
+												this.name = "Weapon Rack";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 334;
+												this.width = 30;
+												this.height = 30;
+												this.value = Item.sellPrice(0, 0, 10, 0);
+												return;
+											}
+											if (type == 2700)
+											{
+												this.name = "Fireworks Box";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 335;
+												this.width = 26;
+												this.height = 22;
+												this.value = Item.buyPrice(0, 5, 0, 0);
+												this.mech = true;
+												return;
+											}
+											if (type == 2701)
+											{
+												this.name = "Living Fire Block";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 336;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type >= 2702 && type <= 2737)
+											{
+												this.name = "statues";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 337;
+												this.width = 20;
+												this.height = 20;
+												this.value = 300;
+												this.placeStyle = type - 2702;
+												return;
+											}
+											if (type == 2738)
+											{
+												this.name = "Firework Fountain";
+												this.createTile = 338;
+												this.placeStyle = 0;
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.width = 12;
+												this.height = 30;
+												this.value = Item.buyPrice(0, 3, 0, 0);
+												this.mech = true;
+												return;
+											}
+											if (type == 2739)
+											{
+												this.name = "Booster Track";
+												this.useStyle = 1;
+												this.useAnimation = 15;
+												this.useTime = 7;
+												this.useTurn = true;
+												this.autoReuse = true;
+												this.width = 16;
+												this.height = 16;
+												this.maxStack = 99;
+												this.createTile = 314;
+												this.placeStyle = 2;
+												this.consumable = true;
+												this.cartTrack = true;
+												this.mech = true;
+												this.tileBoost = 1;
+												this.value = Item.buyPrice(0, 0, 50, 0);
+												return;
+											}
+											if (type == 2740)
+											{
+												this.name = "Grasshopper";
+												this.useStyle = 1;
+												this.autoReuse = true;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.width = 12;
+												this.height = 12;
+												this.makeNPC = 377;
+												this.noUseGraphic = true;
+												this.bait = 10;
+												return;
+											}
+											if (type == 2741)
+											{
+												this.name = "Critter Cage";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 339;
+												this.width = 12;
+												this.height = 12;
+												return;
+											}
+											if (type == 2742)
+											{
+												this.name = "Music Box (Underground Crimson)";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.consumable = true;
+												this.createTile = 139;
+												this.placeStyle = 31;
+												this.width = 24;
+												this.height = 24;
+												this.rare = 4;
+												this.value = 100000;
+												this.accessory = true;
+												return;
+											}
+											if (type == 2743)
+											{
+												this.name = "Cactus Table";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 14;
+												this.placeStyle = 30;
+												this.width = 26;
+												this.height = 20;
+												this.value = 300;
+												return;
+											}
+											if (type == 2744)
+											{
+												this.name = "Cactus Platform";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 19;
+												this.placeStyle = 25;
+												this.width = 8;
+												this.height = 10;
+												return;
+											}
+											if (type == 2745)
+											{
+												this.name = "Boreal Wood Sword";
+												this.useStyle = 1;
+												this.useTurn = false;
+												this.useAnimation = 23;
+												this.useTime = 23;
+												this.width = 24;
+												this.height = 28;
+												this.damage = 8;
+												this.knockBack = 5f;
+												this.useSound = 1;
+												this.scale = 1f;
+												this.value = 100;
+												this.melee = true;
+												return;
+											}
+											if (type == 2746)
+											{
+												this.name = "Boreal Wood Hammer";
+												this.autoReuse = true;
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 33;
+												this.useTime = 23;
+												this.hammer = 35;
+												this.width = 24;
+												this.height = 28;
+												this.damage = 4;
+												this.knockBack = 5.5f;
+												this.scale = 1.1f;
+												this.useSound = 1;
+												this.value = 50;
+												this.melee = true;
+												return;
+											}
+											if (type == 2747)
+											{
+												this.name = "Boreal Wood Bow";
+												this.useStyle = 5;
+												this.useAnimation = 29;
+												this.useTime = 29;
+												this.width = 12;
+												this.height = 28;
+												this.shoot = 1;
+												this.useAmmo = 1;
+												this.useSound = 5;
+												this.damage = 6;
+												this.shootSpeed = 6.6f;
+												this.noMelee = true;
+												this.value = 100;
+												this.ranged = true;
+												return;
+											}
+											if (type == 2748)
+											{
+												this.name = "Glass Chest";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 21;
+												this.placeStyle = 47;
+												this.width = 26;
+												this.height = 22;
+												this.value = 500;
+											}
 										}
 									}
 								}
@@ -36843,7 +36961,6 @@ namespace Terraria
 			this.value = 0;
 			this.useTurn = false;
 			this.buy = false;
-			this.explosive = 0;
 			this.handOnSlot = -1;
 			this.handOffSlot = -1;
 			this.backSlot = -1;
@@ -36856,7 +36973,7 @@ namespace Terraria
 			this.faceSlot = -1;
 			this.balloonSlot = -1;
 			this.uniqueStack = false;
-			if (this.type >= 2743)
+			if (this.type >= 2749)
 			{
 				this.type = 0;
 			}
@@ -37101,7 +37218,6 @@ namespace Terraria
 					}
 				}
 			}
-
 			return ServerApi.Hooks.InvokeGameStatueSpawn(num2, num3, num, (int)(x / 16), (int)(y / 16), type, false);
 		}
 		public static int buyPrice(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
@@ -37353,7 +37469,7 @@ namespace Terraria
 								NetMessage.SendData(21, -1, -1, "", i, 0f, 0f, 0f, 0);
 							}
 						}
-						else if (this.owner == Main.myPlayer && this.type != 312 && this.type != 318 && this.type != 173 && this.type != 174 && this.type != 175 && this.rare == 0)
+						else if (this.owner == Main.myPlayer && this.type != 312 && this.type != 318 && this.type != 173 && this.type != 174 && this.type != 175 && this.type != 2701 && this.rare == 0)
 						{
 							this.active = false;
 							this.type = 0;

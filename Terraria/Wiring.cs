@@ -236,6 +236,7 @@ namespace Terraria
 			{
 				return;
 			}
+			Wiring.running = true;
 			if (Wiring.wireList.Count != 0)
 			{
 				Wiring.wireList.Clear(true);
@@ -429,6 +430,7 @@ namespace Terraria
 			}
 			Wiring.wireSkip.Clear();
 			Wiring.toProcess.Clear();
+			Wiring.running = false;
 		}
 		private static bool hitWireSingle(int i, int j)
 		{
@@ -738,7 +740,10 @@ namespace Terraria
 				}
 				else if (type == 314)
 				{
-					Minecart.FlipSwitchTrack(i, j);
+					if (Wiring.checkMech(i, j, 5))
+					{
+						Minecart.FlipSwitchTrack(i, j);
+					}
 				}
 				else if (type == 33 || type == 174)
 				{

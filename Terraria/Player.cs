@@ -686,7 +686,7 @@ namespace Terraria
 			{
 				this.selectedItem = this.oldSelectItem;
 			}
-			if (Main.tile[Player.tileTargetX, Player.tileTargetY] != null && Main.tile[Player.tileTargetX, Player.tileTargetY].type == 334 && this.inventory[this.selectedItem].damage > 0 && this.inventory[this.selectedItem].useStyle > 0)
+			if (Main.tile[Player.tileTargetX, Player.tileTargetY] != null && Main.tile[Player.tileTargetX, Player.tileTargetY].type == 334 && this.ItemFitsWeaponRack(this.inventory[this.selectedItem]))
 			{
 				this.noThrow = 2;
 			}
@@ -2991,6 +2991,7 @@ namespace Terraria
 							if (this.beetleOrbs > num4)
 							{
 								this.DelBuff(k);
+								k--;
 							}
 							else
 							{
@@ -2999,6 +3000,7 @@ namespace Terraria
 									if (this.buffType[n] >= 95 && this.buffType[n] <= 95 + num4 - 1)
 									{
 										this.DelBuff(n);
+										n--;
 									}
 								}
 							}
@@ -3008,6 +3010,7 @@ namespace Terraria
 						{
 							this.beetleOrbs = 0;
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3022,6 +3025,7 @@ namespace Terraria
 							if (this.beetleOrbs > num5)
 							{
 								this.DelBuff(k);
+								k--;
 							}
 							else
 							{
@@ -3030,6 +3034,7 @@ namespace Terraria
 									if (this.buffType[num6] >= 98 && this.buffType[num6] <= 98 + num5 - 1)
 									{
 										this.DelBuff(num6);
+										num6--;
 									}
 								}
 							}
@@ -3041,6 +3046,7 @@ namespace Terraria
 						{
 							this.beetleOrbs = 0;
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3068,6 +3074,7 @@ namespace Terraria
 						else
 						{
 							this.DelBuff(k);
+							k--;
 						}
 					}
 					else if (this.buffType[k] == 49)
@@ -3082,6 +3089,7 @@ namespace Terraria
 						if (!this.pygmy)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3097,6 +3105,7 @@ namespace Terraria
 						if (!this.raven)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3112,6 +3121,7 @@ namespace Terraria
 						if (!this.slime)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3127,6 +3137,7 @@ namespace Terraria
 						if (!this.hornetMinion)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3142,6 +3153,7 @@ namespace Terraria
 						if (!this.impMinion)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3157,6 +3169,7 @@ namespace Terraria
 						if (!this.spiderMinion)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3172,6 +3185,7 @@ namespace Terraria
 						if (!this.twinsMinion)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3187,6 +3201,7 @@ namespace Terraria
 						if (!this.pirateMinion)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3202,6 +3217,7 @@ namespace Terraria
 						if (!this.sharknadoMinion)
 						{
 							this.DelBuff(k);
+							k--;
 						}
 						else
 						{
@@ -3260,6 +3276,7 @@ namespace Terraria
 						else
 						{
 							this.DelBuff(k);
+							k--;
 						}
 					}
 					else if (this.buffType[k] == 38)
@@ -3734,6 +3751,7 @@ namespace Terraria
 						else
 						{
 							this.DelBuff(k);
+							k--;
 						}
 					}
 					else if (this.buffType[k] == 33)
@@ -5504,6 +5522,7 @@ namespace Terraria
 			}
 			if (this.head == 46 && this.body == 27 && this.legs == 26)
 			{
+				this.frostArmor = true;
 				this.setBonus = Lang.setBonus(22, false);
 				this.frostBurn = true;
 			}
@@ -7211,6 +7230,8 @@ namespace Terraria
 			this.fishingSkill = 0;
 			this.cratePotion = false;
 			this.sonarPotion = false;
+			this.accTackleBox = false;
+			this.accFishingLine = false;
 			this.wallSpeed = 1f;
 			this.tileSpeed = 1f;
 			this.autoPaint = false;
@@ -7780,6 +7801,18 @@ namespace Terraria
 			{
 				this.velocity.X = this.velocity.X + this.trackBoost;
 				this.trackBoost = 0f;
+
+				if (this.velocity.X < 0f)
+				{
+					if (this.velocity.X < -this.maxRunSpeed)
+					{
+						this.velocity.X = -this.maxRunSpeed;
+					}
+				}
+				else if (this.velocity.X > this.maxRunSpeed)
+				{
+					this.velocity.X = this.maxRunSpeed;
+				}
 			}
 			if (this.controlLeft && this.velocity.X > -this.maxRunSpeed)
 			{
@@ -10082,6 +10115,14 @@ namespace Terraria
 						num12 = 0;
 					}
 					this.mount.FatigueRecovery();
+					bool flag9 = false;
+					for (int n = 3; n < 8; n++)
+					{
+						if (this.armor[n].stack > 0 && this.armor[n].wingSlot > -1)
+						{
+							flag9 = true;
+						}
+					}
 					if (((this.gravDir == 1f && num12 > num11) || (this.gravDir == -1f && num12 < -num11)) && !this.noFallDmg && this.wingsLogic == 0)
 					{
 						int num13 = (int)((float)num12 * this.gravDir - (float)num11) * 10;
@@ -12980,7 +13021,7 @@ namespace Terraria
 								}
 								else if (Main.tile[Player.tileTargetX, Player.tileTargetY].type == 334)
 								{
-									if (this.inventory[this.selectedItem].damage > 0 && this.inventory[this.selectedItem].useStyle > 0)
+									if (this.ItemFitsWeaponRack(this.inventory[this.selectedItem]))
 									{
 										this.PlaceWeapon(Player.tileTargetX, Player.tileTargetY);
 									}
@@ -16345,7 +16386,7 @@ namespace Terraria
 							{
 								this.inventory[num5].SetDefaults(0, false);
 							}
-							this.itemTime = this.inventory[this.selectedItem].useTime;
+							this.itemTime = (int)((float)this.inventory[this.selectedItem].useTime * this.wallSpeed);
 						}
 					}
 				}
@@ -18429,25 +18470,52 @@ namespace Terraria
 				{
 					if ((this.inventory[this.selectedItem].shoot >= 191 && this.inventory[this.selectedItem].shoot <= 194) || this.inventory[this.selectedItem].shoot == 266 || this.inventory[this.selectedItem].shoot == 317 || this.inventory[this.selectedItem].shoot == 373 || this.inventory[this.selectedItem].shoot == 375 || this.inventory[this.selectedItem].shoot == 387 || this.inventory[this.selectedItem].shoot == 390 || this.inventory[this.selectedItem].shoot == 393 || this.inventory[this.selectedItem].shoot == 407)
 					{
+						List<int> list = new List<int>();
 						float num25 = 0f;
-						int num26 = -1;
-						int num27 = -1;
-						for (int num28 = 0; num28 < 1000; num28++)
+						for (int num26 = 0; num26 < 1000; num26++)
 						{
-							if (Main.projectile[num28].active && Main.projectile[num28].owner == i && Main.projectile[num28].minion)
+							if (Main.projectile[num26].active && Main.projectile[num26].owner == i && Main.projectile[num26].minion)
 							{
-								num25 += Main.projectile[num28].minionSlots;
-								if (num26 == -1 || Main.projectile[num28].timeLeft < num26)
+								int num27;
+								for (num27 = 0; num27 < list.Count; num27++)
 								{
-									num27 = num28;
-									num26 = Main.projectile[num28].timeLeft;
+									if (Main.projectile[list[num27]].minionSlots > Main.projectile[num26].minionSlots)
+									{
+										list.Insert(num27, num26);
+										break;
+									}
 								}
+								if (num27 == list.Count)
+								{
+									list.Add(num26);
+								}
+								num25 += Main.projectile[num26].minionSlots;
 							}
 						}
-						if (num25 >= (float)this.maxMinions)
+						int arg_24AB_0 = this.inventory[this.selectedItem].shoot;
+						float num28 = 1f;
+						float num29 = 0f;
+						int num30 = 388;
+						int num31 = 0;
+						while (num31 < list.Count && num25 - num29 > (float)this.maxMinions - num28)
 						{
-							Main.projectile[num27].Kill();
+							int type = Main.projectile[list[num31]].type;
+							if (type != num30)
+							{
+								num29 += Main.projectile[list[num31]].minionSlots;
+								if (type == 388 && num30 == 387)
+								{
+									num30 = 388;
+								}
+								if (type == 387 && num30 == 388)
+								{
+									num30 = 387;
+								}
+								Main.projectile[list[num31]].Kill();
+							}
+							num31++;
 						}
+						list.Clear();
 					}
 					else
 					{
@@ -20064,6 +20132,20 @@ namespace Terraria
 					Main.mouseItem = this.inventory[this.selectedItem].Clone();
 				}
 			}
+		}
+		public bool ItemFitsWeaponRack(Item i)
+		{
+			bool flag = false;
+			if (i.fishingPole > 0)
+			{
+				flag = true;
+			}
+			int netID = i.netID;
+			if (netID == 905 || netID == 1326)
+			{
+				flag = true;
+			}
+			return (i.damage > 0 || flag) && i.useStyle > 0 && i.stack > 0;
 		}
 		public void PlaceWeapon(int x, int y)
 		{
