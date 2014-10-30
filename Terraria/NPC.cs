@@ -34050,7 +34050,8 @@ namespace Terraria
 			{
 				Main.npc[num] = new NPC();
 				Main.npc[num].SetDefaults(Type, -1f);
-				if (ServerApi.Hooks.InvokeNpcSpawn(Main.npc[num]))
+				if (ServerApi.Hooks.InvokeNpcSpawn(Main.npc[num],
+					(float)(X - Main.npc[num].width / 2), (float)(Y - Main.npc[num].height)))
 				{
 					Main.npc[num].active = false;
 					return 200;

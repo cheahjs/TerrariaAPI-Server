@@ -625,11 +625,13 @@ namespace TerrariaApi.Server
 			get { return this.npcSpawn; }
 		}
 
-		internal bool InvokeNpcSpawn(NPC npc)
+		internal bool InvokeNpcSpawn(NPC npc, float x, float y)
 		{
 			NpcSpawnEventArgs args = new NpcSpawnEventArgs
 			{
-				Npc = npc
+				Npc = npc,
+				X = x,
+				Y = y
 			};
 
 			this.NpcSpawn.Invoke(args);
