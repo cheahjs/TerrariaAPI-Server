@@ -34049,7 +34049,9 @@ namespace Terraria
 			if (num >= 0)
 			{
 				Main.npc[num] = new NPC();
-				Main.npc[num].SetDefaults(Type, -1f);
+                Main.npc[num].SetDefaults(Type, -1f);
+                Main.npc[num].position.X = (float)(X - Main.npc[num].width / 2);
+                Main.npc[num].position.Y = (float)(Y - Main.npc[num].height);
 				if (ServerApi.Hooks.InvokeNpcSpawn(Main.npc[num]))
 				{
 					Main.npc[num].active = false;
@@ -34059,8 +34061,6 @@ namespace Terraria
 				{
 					Main.npc[num].displayName = NPC.getNewNPCName(Type);
 				}
-				Main.npc[num].position.X = (float)(X - Main.npc[num].width / 2);
-				Main.npc[num].position.Y = (float)(Y - Main.npc[num].height);
 				Main.npc[num].active = true;
 				Main.npc[num].timeLeft = (int)((double)NPC.activeTime * 1.25);
 				Main.npc[num].wet = Collision.WetCollision(Main.npc[num].position, Main.npc[num].width, Main.npc[num].height);
