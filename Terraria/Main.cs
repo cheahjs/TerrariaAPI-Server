@@ -12,8 +12,8 @@ namespace Terraria
 {
 	public class Main
 	{
-		public static int maxItemTypes = 2749;
-		public static int maxProjectileTypes = 423;
+		public static int maxItemTypes = 2750;      // GitFlip - Max Items
+		public static int maxProjectileTypes = 424; // GitFlip - Max Projectiles
 		public static int maxNPCTypes = 378;
 		public static int maxTileSets = 340;
 		public static int maxWallTypes = 172;
@@ -77,8 +77,8 @@ namespace Terraria
 		public static bool[] hairLoaded = new bool[123];
 		public static bool[] wingsLoaded = new bool[27];
 		public static bool[] goreLoaded = new bool[587];
-		public static bool[] projectileLoaded = new bool[423];
-		public static bool[] itemFlameLoaded = new bool[2749];
+        public static bool[] projectileLoaded = new bool[maxProjectileTypes];
+        public static bool[] itemFlameLoaded = new bool[maxItemTypes];
 		public static bool[] backgroundLoaded = new bool[185];
 		public static bool[] tileSetsLoaded = new bool[340];
 		public static bool[] wallLoaded = new bool[172];
@@ -229,7 +229,7 @@ namespace Terraria
 		public static int zoneX = 99;
 		public static int zoneY = 87;
 		public static float harpNote = 0f;
-		public static bool[] projHostile = new bool[423];
+        public static bool[] projHostile = new bool[maxProjectileTypes];
 		public static bool[] pvpBuff = new bool[140];
 		public static bool[] vanityPet = new bool[140];
 		public static bool[] lightPet = new bool[140];
@@ -430,8 +430,8 @@ namespace Terraria
 		public static int helpText = 0;
 		public static bool autoGen = false;
 		public static bool autoPause = false;
-		public static int[] projFrames = new int[423];
-		public static bool[] projPet = new bool[423];
+        public static int[] projFrames = new int[maxProjectileTypes];
+        public static bool[] projPet = new bool[maxProjectileTypes];
 		public static float demonTorch = 1f;
 		public static int demonTorchDir = 1;
 		public static int numStars;
@@ -712,7 +712,7 @@ namespace Terraria
 		});
 		public static string WorldPath = Main.SavePath + Path.DirectorySeparatorChar + "Worlds";
 		public static string PlayerPath = Main.SavePath + Path.DirectorySeparatorChar + "Players";
-		public static string[] itemName = new string[2749];
+        public static string[] itemName = new string[maxItemTypes];
 		public static string[] npcName = new string[378];
 		public static int invasionType = 0;
 		public static double invasionX = 0.0;
@@ -2696,7 +2696,7 @@ namespace Terraria
 			Main.bgAlpha[0] = 1f;
 			Main.bgAlpha2[0] = 1f;
 			this.invBottom = 258;
-			for (int i = 0; i < 423; i++)
+            for (int i = 0; i < maxProjectileTypes; i++)
 			{
 				Main.projFrames[i] = 1;
 			}
@@ -4376,7 +4376,7 @@ namespace Terraria
 			{
 				Main.rain[num12] = new Rain();
 			}
-			for (int num16 = 0; num16 < 2749; num16++)
+            for (int num16 = 0; num16 < maxItemTypes; num16++)
 			{
 				Item item = new Item();
 				item.SetDefaults(num16, false);
@@ -4445,7 +4445,7 @@ namespace Terraria
 			{
 				Main.LoadPlayers();
 			}*/
-			for (int num23 = 1; num23 < 423; num23++)
+            for (int num23 = 1; num23 < maxProjectileTypes; num23++)
 			{
 				Projectile projectile = new Projectile();
 				projectile.SetDefaults(num23);

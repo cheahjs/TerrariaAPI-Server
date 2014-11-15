@@ -2603,7 +2603,7 @@ namespace Terraria
 		}
 		public void UpdateBuffs(int i)
 		{
-			int[] array = new int[423];
+            int[] array = new int[Main.maxProjectileTypes];
 			for (int j = 0; j < 1000; j++)
 			{
 				if (Main.projectile[j].active && Main.projectile[j].owner == i)

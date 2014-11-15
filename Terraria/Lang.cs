@@ -5639,7 +5639,7 @@ namespace Terraria
 		}
 		public static void tTip()
 		{
-			for (int i = 1; i < 2749; i++)
+            for (int i = 1; i < Main.maxItemTypes; i++)
 			{
 				Item item = new Item();
 				item.SetDefaults(i, false);
@@ -21728,6 +21728,8 @@ namespace Terraria
 					return "Boreal Wood Bow";
 				case 2748:
 					return "Glass Chest";
+                case 2749:
+                    return "Copper Arrow";
 				}
 			}
 			else if (Lang.lang == 2)

@@ -3463,7 +3463,7 @@ namespace Terraria
 			}
 			else if (ItemName != "")
 			{
-				for (int i = 0; i < 2749; i++)
+                for (int i = 0; i < Main.maxItemTypes; i++)
 				{
 					if (Main.itemName[i] == ItemName)
 					{
@@ -4816,7 +4816,7 @@ namespace Terraria
 				this.name = "Wooden Arrow";
 				this.shootSpeed = 3f;
 				this.shoot = 1;
-				this.damage = 4;
+				this.damage = 3;
 				this.width = 10;
 				this.height = 28;
 				this.maxStack = 999;
@@ -36871,6 +36871,26 @@ namespace Terraria
 											this.height = 22;
 											this.value = 500;
 										}
+                                        // GitFlip 
+                                        // Add new items
+                                        if (type == 2749)
+                                        {
+                                            this.name = "Copper Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 423;   // This is Projectile.Type
+                                            this.damage = 4;    
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 5;
+                                        }
+                                        // End new items
 									}
 								}
 							}
@@ -36985,7 +37005,7 @@ namespace Terraria
 			this.faceSlot = -1;
 			this.balloonSlot = -1;
 			this.uniqueStack = false;
-			if (this.type >= 2749)
+            if (this.type >= Main.maxItemTypes)
 			{
 				this.type = 0;
 			}

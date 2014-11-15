@@ -4647,6 +4647,15 @@ namespace Terraria
 				this.aiStyle = 73;
 				this.friendly = true;
 			}
+            else if(this.type == 423)
+            {
+                this.name = "Copper Arrow";
+                this.width = 10;
+                this.height = 10;
+                this.aiStyle = 1;
+                this.friendly = true;
+                this.ranged = true;
+            }
 			else
 			{
 				this.active = false;
@@ -20735,8 +20744,10 @@ namespace Terraria
 					dust3.noGravity = true;
 				}
 			}
-			if (this.type == 1 || this.type == 81 || this.type == 98)
+			if (this.type == 1 || this.type == 81 || this.type == 98 || this.type == 423)
 			{
+                // GitFlip
+                // This kills the arrow
 				Main.PlaySound(0, (int)this.position.X, (int)this.position.Y, 1);
 				for (int num24 = 0; num24 < 10; num24++)
 				{
@@ -23413,6 +23424,16 @@ namespace Terraria
 							num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, num436, 1, false, 0, false);
 						}
 					}
+                    // GitFlip
+                    // This is where we produce the chance to drop arrows
+
+                    // If we are copper arrow projectile
+                    if (this.type == 423 && Main.rand.Next(3) == 0)
+                    {
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 40, 1, false, 0, false);
+                    }
+
+                    // If we are wooden arrow projectile
 					if (this.type == 1 && Main.rand.Next(3) == 0)
 					{
 						num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, 40, 1, false, 0, false);
