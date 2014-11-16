@@ -12,6 +12,7 @@ namespace Terraria
 {
 	public class Main
 	{
+        // Submodule Sync Test
 		public static int maxItemTypes = 2750;      // GitFlip - Max Items
 		public static int maxProjectileTypes = 424; // GitFlip - Max Projectiles
 		public static int maxNPCTypes = 378;
