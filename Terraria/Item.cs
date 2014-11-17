@@ -4816,7 +4816,7 @@ namespace Terraria
 				this.name = "Wooden Arrow";
 				this.shootSpeed = 3f;
 				this.shoot = 1;
-				this.damage = 3;
+				this.damage = 2;    // GitFlip - lower damage since wooden arrows only require wood
 				this.width = 10;
 				this.height = 28;
 				this.maxStack = 999;
@@ -36873,12 +36873,12 @@ namespace Terraria
 										}
                                         // GitFlip 
                                         // Add new items
-                                        if (type == 2749)
+                                        if (type == Terraria.ID.ItemID.CopperArrow)
                                         {
                                             this.name = "Copper Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 423;   // This is Projectile.Type
-                                            this.damage = 4;    
+                                            this.shoot = 423;   // This is Project.type
+                                            this.damage = 4;
                                             this.width = 10;
                                             this.height = 28;
                                             this.maxStack = 999;
@@ -36890,6 +36890,314 @@ namespace Terraria
 
                                             //this.craftingLvl = 5;
                                         }
+                                        if (type == Terraria.ID.ItemID.TinArrow)
+                                        {
+                                            this.name = "Tin Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 424;   // This is Project.type
+                                            this.damage = 4;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 5;
+                                        }
+                                        if (type == Terraria.ID.ItemID.IronArrow)
+                                        {
+                                            this.name = "Iron Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 425;   // This is Project.type
+                                            this.damage = 6;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 10;
+                                        }
+                                        if (type == Terraria.ID.ItemID.LeadArrow)
+                                        {
+                                            this.name = "Lead Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 426;   // This is Project.type
+                                            this.damage = 6;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 10;
+                                        }
+                                        if (type == Terraria.ID.ItemID.SilverArrow)
+                                        {
+                                            this.name = "Silver Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 427;   // This is Project.type
+                                            this.damage = 7;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 15;
+                                        }
+                                        if (type == Terraria.ID.ItemID.TungstenArrow)
+                                        {
+                                            this.name = "Tungsten Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 428;   // This is Project.type
+                                            this.damage = 7;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 15;
+                                        }
+                                        if (type == Terraria.ID.ItemID.GoldArrow)
+                                        {
+                                            this.name = "Gold Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 429;   // This is Project.type
+                                            this.damage = 8;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 20;
+                                        }
+                                        if (type == Terraria.ID.ItemID.PlatinumArrow)
+                                        {
+                                            this.name = "Platinum Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 430;   // This is Project.type
+                                            this.damage = 8;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 20;
+                                        }
+                                        if (type == Terraria.ID.ItemID.DemoniteArrow)
+                                        {
+                                            this.name = "Demonite Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 431;   // This is Project.type
+                                            this.damage = 9;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 30;
+                                        }
+                                        if (type == Terraria.ID.ItemID.CrimtaneArrow)
+                                        {
+                                            this.name = "Crimtane Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 432;   // This is Project.type
+                                            this.damage = 9;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 30;
+                                        }
+                                        if (type == Terraria.ID.ItemID.HellstoneArrow)
+                                        {
+                                            this.name = "Hellstone Arrow";
+                                            this.shootSpeed = 6f;
+                                            this.shoot = 433;   // This is Project.type
+                                            this.damage = 12;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 35;
+                                        }
+                                        if (type == Terraria.ID.ItemID.CobaltArrow)
+                                        {
+                                            this.name = "Cobalt Arrow";
+                                            this.shootSpeed = 3.5f;
+                                            this.shoot = 434;   // This is Project.type
+                                            this.damage = 13;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 40;
+                                        }
+                                        if (type == Terraria.ID.ItemID.PalladiumArrow)
+                                        {
+                                            this.name = "Palladium Arrow";
+                                            this.shootSpeed = 3f;
+                                            this.shoot = 435;   // This is Project.type
+                                            this.damage = 13;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 40;
+                                        }
+                                        if (type == Terraria.ID.ItemID.MythrilArrow)
+                                        {
+                                            this.name = "Mythril Arrow";
+                                            this.shootSpeed = 4f;
+                                            this.shoot = 436;   // This is Project.type
+                                            this.damage = 14;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 3f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 50;
+                                        }
+                                        if (type == Terraria.ID.ItemID.OrichalcumArrow)
+                                        {
+                                            this.name = "Orichalcum Arrow";
+                                            this.shootSpeed = 4f;
+                                            this.shoot = 437;   // This is Project.type
+                                            this.damage = 14;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 3f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 50;
+                                        }
+                                        if (type == Terraria.ID.ItemID.AdamantiteArrow)
+                                        {
+                                            this.name = "Adamantite Arrow";
+                                            this.shootSpeed = 4.25f;
+                                            this.shoot = 438;   // This is Project.type
+                                            this.damage = 15;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 3f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 60;
+                                        }
+                                        if (type == Terraria.ID.ItemID.TitaniumArrow)
+                                        {
+                                            this.name = "Titanium Arrow";
+                                            this.shootSpeed = 4.25f;
+                                            this.shoot = 439;   // This is Project.type
+                                            this.damage = 15;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 3f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 60;
+                                        }
+                                        if (type == Terraria.ID.ItemID.HallowedArrow)
+                                        {
+                                            this.name = "Hallowed Arrow";
+                                            this.shootSpeed = 5f;
+                                            this.shoot = 440;   // This is Project.type
+                                            this.damage = 16;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 4f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 70;
+                                        }
+                                        if (type == Terraria.ID.ItemID.ShroomiteArrow)
+                                        {
+                                            this.name = "Shroomite Arrow";
+                                            this.shootSpeed = 4.3f;
+                                            this.shoot = 441;   // This is Project.type
+                                            this.damage = 18;
+                                            this.width = 10;
+                                            this.height = 28;
+                                            this.maxStack = 999;
+                                            this.consumable = true;
+                                            this.ammo = 1;
+                                            this.knockBack = 4.2f;
+                                            this.value = 10;
+                                            this.ranged = true;
+
+                                            //this.craftingLvl = 85;
+                                        }
+
+
                                         // End new items
 									}
 								}

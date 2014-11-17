@@ -21728,8 +21728,46 @@ namespace Terraria
 					return "Boreal Wood Bow";
 				case 2748:
 					return "Glass Chest";
+                // GitFlip
+                // New items
                 case 2749:
                     return "Copper Arrow";
+                case 2750:
+                    return "Tin Arrow";
+                case 2751:
+                    return "Iron Arrow";
+                case 2752:
+                    return "Lead Arrow";
+                case 2753:
+                    return "Silver Arrow";
+                case 2754:
+                    return "Tungsten Arrow";
+                case 2755:
+                    return "Gold Arrow";
+                case 2756:
+                    return "Platinum Arrow";
+                case 2757:
+                    return "Demonite Arrow";
+                case 2758:
+                    return "Crimtane Arrow";
+                case 2759:
+                    return "Hellstone Arrow";
+                case 2760:
+                    return "Cobalt Arrow";
+                case 2761:
+                    return "Palladium Arrow";
+                case 2762:
+                    return "Mythril Arrow";
+                case 2763:
+                    return "Orichalcum Arrow";
+                case 2764:
+                    return "Adamantite Arrow";
+                case 2765:
+                    return "Titanium Arrow";
+                case 2766:
+                    return "Hallowed Arrow";
+                case 2767:
+                    return "Shroomite Arrow";
 				}
 			}
 			else if (Lang.lang == 2)
