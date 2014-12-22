@@ -21730,44 +21730,165 @@ namespace Terraria
 					return "Glass Chest";
                 // GitFlip
                 // New items
-                case 2749:
+                case Terraria.ID.STWItemID.CopperArrow:
                     return "Copper Arrow";
-                case 2750:
+                case Terraria.ID.STWItemID.TinArrow:
                     return "Tin Arrow";
-                case 2751:
+                case Terraria.ID.STWItemID.IronArrow:
                     return "Iron Arrow";
-                case 2752:
+                case Terraria.ID.STWItemID.LeadArrow:
                     return "Lead Arrow";
-                case 2753:
+                case Terraria.ID.STWItemID.SilverArrow:
                     return "Silver Arrow";
-                case 2754:
+                case Terraria.ID.STWItemID.TungstenArrow:
                     return "Tungsten Arrow";
-                case 2755:
+                case Terraria.ID.STWItemID.GoldArrow:
                     return "Gold Arrow";
-                case 2756:
+                case Terraria.ID.STWItemID.PlatinumArrow:
                     return "Platinum Arrow";
-                case 2757:
+                case Terraria.ID.STWItemID.DemoniteArrow:
                     return "Demonite Arrow";
-                case 2758:
+                case Terraria.ID.STWItemID.CrimtaneArrow:
                     return "Crimtane Arrow";
-                case 2759:
+                case Terraria.ID.STWItemID.HellstoneArrow:
                     return "Hellstone Arrow";
-                case 2760:
+                case Terraria.ID.STWItemID.CobaltArrow:
                     return "Cobalt Arrow";
-                case 2761:
+                case Terraria.ID.STWItemID.PalladiumArrow:
                     return "Palladium Arrow";
-                case 2762:
+                case Terraria.ID.STWItemID.MythrilArrow:
                     return "Mythril Arrow";
-                case 2763:
+                case Terraria.ID.STWItemID.OrichalcumArrow:
                     return "Orichalcum Arrow";
-                case 2764:
+                case Terraria.ID.STWItemID.AdamantiteArrow:
                     return "Adamantite Arrow";
-                case 2765:
+                case Terraria.ID.STWItemID.TitaniumArrow:
                     return "Titanium Arrow";
-                case 2766:
+                case Terraria.ID.STWItemID.HallowedArrow:
                     return "Hallowed Arrow";
-                case 2767:
+                case Terraria.ID.STWItemID.ShroomiteArrow:
                     return "Shroomite Arrow";
+                case Terraria.ID.STWItemID.LesserAmmoReservationPotion:
+                    return "Lesser Ammo Reservation Potion";
+                case Terraria.ID.STWItemID.GreaterAmmoReservationPotion:
+                    return "Greater Ammo Reservation Potion";
+                case Terraria.ID.STWItemID.SuperAmmoReservationPotion:
+                    return "Super Ammo Reservation Potion";
+                case Terraria.ID.STWItemID.LesserArcheryPotion:
+                    return "Lesser Archery Potion";
+                case Terraria.ID.STWItemID.GreaterArcheryPotion:
+                    return "Greater Archery Potion";
+                case Terraria.ID.STWItemID.SuperArcheryPotion:
+                    return "Super Archery Potion";
+                case Terraria.ID.STWItemID.LesserEndurancePotion:
+                    return "Lesser Endurance Potion";
+                case Terraria.ID.STWItemID.GreaterEndurancePotion:
+                    return "Greater Endurance Potion";
+                case Terraria.ID.STWItemID.SuperEndurancePotion:
+                    return "Super Endurance Potion";
+                case Terraria.ID.STWItemID.LesserIronskinPotion:
+                    return "Lesser Ironskin Potion";
+                case Terraria.ID.STWItemID.GreaterIronskinPotion:
+                    return "Greater Ironskin Potion";
+                case Terraria.ID.STWItemID.SuperIronskinPotion:
+                    return "Super Ironskin Potion";
+                case Terraria.ID.STWItemID.LesserLifeforcePotion:
+                    return "Lesser Lifeforce Potion";
+                case Terraria.ID.STWItemID.GreaterLifeforcePotion:
+                    return "Greater Lifeforce Potion";
+                case Terraria.ID.STWItemID.SuperLifeforcePotion:
+                    return "Super Lifeforce Potion";
+                case Terraria.ID.STWItemID.LesserMagicPowerPotion:
+                    return "Lesser Magic Power Potion";
+                case Terraria.ID.STWItemID.GreaterMagicPowerPotion:
+                    return "Greater Magic Power Potion";
+                case Terraria.ID.STWItemID.SuperMagicPowerPotion:
+                    return "Super Magic Power Potion";
+                case Terraria.ID.STWItemID.LesserManaRegenPotion:
+                    return "Lesser Mana Regen Potion";
+                case Terraria.ID.STWItemID.GreaterManaRegenPotion:
+                    return "Greater Mana Regen Potion";
+                case Terraria.ID.STWItemID.SuperManaRegenPotion:
+                    return "Super Mana Regen Potion";
+                case Terraria.ID.STWItemID.LesserRagePotion:
+                    return "Lesser Rage Potion";
+                case Terraria.ID.STWItemID.GreaterRagePotion:
+                    return "Greater Rage Potion";
+                case Terraria.ID.STWItemID.SuperRagePotion:
+                    return "Super Rage Potion";
+                case Terraria.ID.STWItemID.LesserRegenerationPotion:
+                    return "Lesser Regeneration Potion";
+                case Terraria.ID.STWItemID.GreaterRegenerationPotion:
+                    return "Greater Regeneration Potion";
+                case Terraria.ID.STWItemID.SuperRegenerationPotion:
+                    return "Super Regeneration Potion";
+                case Terraria.ID.STWItemID.LesserSwiftnessPotion:
+                    return "Lesser Swiftness Potion";
+                case Terraria.ID.STWItemID.GreaterSwiftnessPotion:
+                    return "Greater Swiftness Potion";
+                case Terraria.ID.STWItemID.SuperSwiftnessPotion:
+                    return "Super Swiftness Potion";
+                case Terraria.ID.STWItemID.LesserWarmthPotion:
+                    return "Lesser Warmth Potion";
+                case Terraria.ID.STWItemID.GreaterWarmthPotion:
+                    return "Greater Warmth Potion";
+                case Terraria.ID.STWItemID.SuperWarmthPotion:
+                    return "Super Warmth Potion";
+                case Terraria.ID.STWItemID.LesserWrathPotion:
+                    return "Lesser Wrath Potion";
+                case Terraria.ID.STWItemID.GreaterWrathPotion:
+                    return "Greater Wrath Potion";
+                case Terraria.ID.STWItemID.SuperWrathPotion:
+                    return "Super Wrath Potion";
+                case Terraria.ID.STWItemID.SmallArmoredCavefish:
+                    return "Small Armored Cavefish";
+                case Terraria.ID.STWItemID.BigArmoredCavefish:
+                    return "Big Armored Cavefish";
+                case Terraria.ID.STWItemID.HugeArmoredCavefish:
+                    return "Huge Armored Cavefish";
+                case Terraria.ID.STWItemID.SmallDoubleCod:
+                    return "Small Double Cod";
+                case Terraria.ID.STWItemID.BigDoubleCod:
+                    return "Big Double Cod";
+                case Terraria.ID.STWItemID.HugeDoubleCod:
+                    return "Huge Double Cod";
+                case Terraria.ID.STWItemID.SmallHemopiranha:
+                    return "Small Hemopiranha";
+                case Terraria.ID.STWItemID.BigHemopiranha:
+                    return "Big Hemopiranha";
+                case Terraria.ID.STWItemID.HugeHemopiranha:
+                    return "Huge Hemopiranha";
+                case Terraria.ID.STWItemID.SmallFrostMinnow:
+                    return "Small Frost Minnow";
+                case Terraria.ID.STWItemID.BigFrostMinnow:
+                    return "Big Frost Minnow";
+                case Terraria.ID.STWItemID.HugeFrostMinnow:
+                    return "Huge Frost Minnow";
+                case Terraria.ID.STWItemID.SmallEbonkoi:
+                    return "Small Ebonkoi";
+                case Terraria.ID.STWItemID.BigEbonkoi:
+                    return "Big Ebonkoi";
+                case Terraria.ID.STWItemID.HugeEbonkoi:
+                    return "Huge Ebonkoi";
+                case Terraria.ID.STWItemID.SmallPrismite:
+                    return "Small Prismite";
+                case Terraria.ID.STWItemID.BigPrismite:
+                    return "Big Prismite";
+                case Terraria.ID.STWItemID.HugePrismite:
+                    return "Huge Prismite";
+                case Terraria.ID.STWItemID.ContactLens:
+                    return "Contact Lens";
+                case Terraria.ID.STWItemID.GradientIndexLens:
+                    return "Gradient Index Lens";
+                case Terraria.ID.STWItemID.SuperLens:
+                    return "Super Lens";
+                case Terraria.ID.STWItemID.Deathseed:
+                    return "Deathseed";
+                case Terraria.ID.STWItemID.Deathfern:
+                    return "Deathfern";
+                case Terraria.ID.STWItemID.Deathplant:
+                    return "Deathplant";
+
 				}
 			}
 			else if (Lang.lang == 2)

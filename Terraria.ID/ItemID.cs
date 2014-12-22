@@ -2794,26 +2794,7 @@ namespace Terraria.ID
 		public const short Grasshopper = 2740;
 		public const short GrasshopperCage = 2741;
 		public const short MusicBoxUndergroundCrimson = 2742;
-        // GitFlip New items:
-        public const short CopperArrow = 2749;
-        public const short TinArrow = 2750;
-        public const short IronArrow = 2751;
-        public const short LeadArrow = 2752;
-        public const short SilverArrow = 2753;
-        public const short TungstenArrow = 2754;
-        public const short GoldArrow = 2755;
-        public const short PlatinumArrow = 2756;
-        public const short DemoniteArrow = 2757;
-        public const short CrimtaneArrow = 2758;
-        public const short HellstoneArrow = 2759;
-        public const short CobaltArrow = 2760;
-        public const short PalladiumArrow = 2761;
-        public const short MythrilArrow = 2762;
-        public const short OrichalcumArrow = 2763;
-        public const short AdamantiteArrow = 2764;
-        public const short TitaniumArrow = 2765;
-        public const short HallowedArrow = 2766;
-        public const short ShroomiteArrow = 2767;
-		public const short Count = 2763;
+
+		public const short Count = 2749;
 	}
 }

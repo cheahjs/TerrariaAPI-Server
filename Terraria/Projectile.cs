@@ -18729,7 +18729,7 @@ namespace Terraria
 						Rectangle value13 = new Rectangle((int)Main.player[this.owner].position.X, (int)Main.player[this.owner].position.Y, Main.player[this.owner].width, Main.player[this.owner].height);
 						if (rectangle5.Intersects(value13))
 						{
-							if (this.ai[1] > 0f && this.ai[1] < 2749f)
+							if (this.ai[1] > 0f && this.ai[1] < (float)Main.maxItemTypes)
 							{
 								int num711 = (int)this.ai[1];
 								Item item = new Item();
@@ -23592,115 +23592,115 @@ namespace Terraria
                     // If we are copper arrow projectile
                     if (this.type == 423 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.CopperArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.CopperArrow, 1, false, 0, false);
                     }
 
                     // If we are tin arrow projectile
                     if (this.type == 424 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.TinArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.TinArrow, 1, false, 0, false);
                     }
 
                     // If we are iron arrow projectile
                     if (this.type == 425 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.IronArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.IronArrow, 1, false, 0, false);
                     }
 
                     // If we are lead arrow projectile
                     if (this.type == 426 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.LeadArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.LeadArrow, 1, false, 0, false);
                     }
 
                     // If we are silver arrow projectile
                     if (this.type == 427 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.SilverArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.SilverArrow, 1, false, 0, false);
                     }
 
                     // If we are tungsten arrow projectile
                     if (this.type == 428 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.TungstenArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.TungstenArrow, 1, false, 0, false);
                     }
 
                     // If we are gold arrow projectile
                     if (this.type == 429 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.GoldArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.GoldArrow, 1, false, 0, false);
                     }
 
                     // If we are platinum arrow projectile
                     if (this.type == 430 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.PlatinumArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.PlatinumArrow, 1, false, 0, false);
                     }
 
                     // If we are demonite arrow projectile
                     if (this.type == 431 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.DemoniteArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.DemoniteArrow, 1, false, 0, false);
                     }
 
                     // If we are crimtane arrow projectile
                     if (this.type == 432 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.CrimtaneArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.CrimtaneArrow, 1, false, 0, false);
                     }
 
                     // If we are hellstone arrow projectile
                     if (this.type == 433 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.HellstoneArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.HellstoneArrow, 1, false, 0, false);
                     }
 
                     // If we are cobalt arrow projectile
                     if (this.type == 434 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.CobaltArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.CobaltArrow, 1, false, 0, false);
                     }
 
                     // If we are palladium arrow projectile
                     if (this.type == 435 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.PalladiumArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.PalladiumArrow, 1, false, 0, false);
                     }
 
                     // If we are mythril arrow projectile
                     if (this.type == 436 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.MythrilArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.MythrilArrow, 1, false, 0, false);
                     }
 
                     // If we are orichalcum arrow projectile
                     if (this.type == 437 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.OrichalcumArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.OrichalcumArrow, 1, false, 0, false);
                     }
 
                     // If we are adamantite arrow projectile
                     if (this.type == 438 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.AdamantiteArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.AdamantiteArrow, 1, false, 0, false);
                     }
 
                     // If we are titanium arrow projectile
                     if (this.type == 439 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.TitaniumArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.TitaniumArrow, 1, false, 0, false);
                     }
 
                     // If we are hallow arrow projectile
                     if (this.type == 440 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.HallowedArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.HallowedArrow, 1, false, 0, false);
                     }
 
                     // If we are shroomite arrow projectile
                     if (this.type == 441 && Main.rand.Next(3) == 0)
                     {
-                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.ItemID.ShroomiteArrow, 1, false, 0, false);
+                        num432 = Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.ShroomiteArrow, 1, false, 0, false);
                     }
 
                     // If we are wooden arrow projectile

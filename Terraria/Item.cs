@@ -105,6 +105,7 @@ namespace Terraria
 		public bool noWet;
 		public int buffType;
 		public int buffTime;
+        public int buffMagnitude; //CM Add BuffMagnitude to potions
 		public int mountType = -1;
 		public bool cartTrack;
 		public bool uniqueStack;
@@ -36870,14 +36871,16 @@ namespace Terraria
 											this.width = 26;
 											this.height = 22;
 											this.value = 500;
+                                            return;
 										}
+
                                         // GitFlip 
                                         // Add new items
-                                        if (type == Terraria.ID.ItemID.CopperArrow)
+                                        if (type == Terraria.ID.STWItemID.CopperArrow)
                                         {
                                             this.name = "Copper Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 423;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.CopperArrow;   // This is Project.type copper should be 423
                                             this.damage = 4;
                                             this.width = 10;
                                             this.height = 28;
@@ -36887,14 +36890,13 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 5;
+                                            return;
                                         }
-                                        if (type == Terraria.ID.ItemID.TinArrow)
+                                        if (type == Terraria.ID.STWItemID.TinArrow)
                                         {
                                             this.name = "Tin Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 424;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.TinArrow;   // This is Project.type
                                             this.damage = 4;
                                             this.width = 10;
                                             this.height = 28;
@@ -36904,14 +36906,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 5;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.IronArrow)
+                                        if (type == Terraria.ID.STWItemID.IronArrow)
                                         {
                                             this.name = "Iron Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 425;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.IronArrow;   // This is Project.type
                                             this.damage = 6;
                                             this.width = 10;
                                             this.height = 28;
@@ -36921,14 +36923,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 10;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.LeadArrow)
+                                        if (type == Terraria.ID.STWItemID.LeadArrow)
                                         {
                                             this.name = "Lead Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 426;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.LeadArrow;   // This is Project.type
                                             this.damage = 6;
                                             this.width = 10;
                                             this.height = 28;
@@ -36938,14 +36940,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 10;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.SilverArrow)
+                                        if (type == Terraria.ID.STWItemID.SilverArrow)
                                         {
                                             this.name = "Silver Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 427;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.SilverArrow;   // This is Project.type
                                             this.damage = 7;
                                             this.width = 10;
                                             this.height = 28;
@@ -36955,14 +36957,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 15;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.TungstenArrow)
+                                        if (type == Terraria.ID.STWItemID.TungstenArrow)
                                         {
                                             this.name = "Tungsten Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 428;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.TungstenArrow;   // This is Project.type
                                             this.damage = 7;
                                             this.width = 10;
                                             this.height = 28;
@@ -36972,14 +36974,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 15;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.GoldArrow)
+                                        if (type == Terraria.ID.STWItemID.GoldArrow)
                                         {
                                             this.name = "Gold Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 429;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.GoldArrow;   // This is Project.type
                                             this.damage = 8;
                                             this.width = 10;
                                             this.height = 28;
@@ -36989,14 +36991,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 20;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.PlatinumArrow)
+                                        if (type == Terraria.ID.STWItemID.PlatinumArrow)
                                         {
                                             this.name = "Platinum Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 430;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.PlatinumArrow;   // This is Project.type
                                             this.damage = 8;
                                             this.width = 10;
                                             this.height = 28;
@@ -37006,14 +37008,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 20;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.DemoniteArrow)
+                                        if (type == Terraria.ID.STWItemID.DemoniteArrow)
                                         {
                                             this.name = "Demonite Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 431;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.DemoniteArrow;   // This is Project.type
                                             this.damage = 9;
                                             this.width = 10;
                                             this.height = 28;
@@ -37023,14 +37025,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 30;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.CrimtaneArrow)
+                                        if (type == Terraria.ID.STWItemID.CrimtaneArrow)
                                         {
                                             this.name = "Crimtane Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 432;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.CrimtaneArrow;   // This is Project.type
                                             this.damage = 9;
                                             this.width = 10;
                                             this.height = 28;
@@ -37040,14 +37042,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 30;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.HellstoneArrow)
+                                        if (type == Terraria.ID.STWItemID.HellstoneArrow)
                                         {
                                             this.name = "Hellstone Arrow";
                                             this.shootSpeed = 6f;
-                                            this.shoot = 433;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.HellstoneArrow;   // This is Project.type
                                             this.damage = 12;
                                             this.width = 10;
                                             this.height = 28;
@@ -37057,14 +37059,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 35;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.CobaltArrow)
+                                        if (type == Terraria.ID.STWItemID.CobaltArrow)
                                         {
                                             this.name = "Cobalt Arrow";
                                             this.shootSpeed = 3.5f;
-                                            this.shoot = 434;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.CobaltArrow;   // This is Project.type
                                             this.damage = 13;
                                             this.width = 10;
                                             this.height = 28;
@@ -37074,14 +37076,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 40;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.PalladiumArrow)
+                                        if (type == Terraria.ID.STWItemID.PalladiumArrow)
                                         {
                                             this.name = "Palladium Arrow";
                                             this.shootSpeed = 3f;
-                                            this.shoot = 435;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.PalladiumArrow;   // This is Project.type
                                             this.damage = 13;
                                             this.width = 10;
                                             this.height = 28;
@@ -37091,14 +37093,14 @@ namespace Terraria
                                             this.knockBack = 2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 40;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.MythrilArrow)
+                                        if (type == Terraria.ID.STWItemID.MythrilArrow)
                                         {
                                             this.name = "Mythril Arrow";
                                             this.shootSpeed = 4f;
-                                            this.shoot = 436;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.MythrilArrow;   // This is Project.type
                                             this.damage = 14;
                                             this.width = 10;
                                             this.height = 28;
@@ -37108,14 +37110,14 @@ namespace Terraria
                                             this.knockBack = 3f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 50;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.OrichalcumArrow)
+                                        if (type == Terraria.ID.STWItemID.OrichalcumArrow)
                                         {
                                             this.name = "Orichalcum Arrow";
                                             this.shootSpeed = 4f;
-                                            this.shoot = 437;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.OrichalcumArrow;   // This is Project.type
                                             this.damage = 14;
                                             this.width = 10;
                                             this.height = 28;
@@ -37125,14 +37127,14 @@ namespace Terraria
                                             this.knockBack = 3f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 50;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.AdamantiteArrow)
+                                        if (type == Terraria.ID.STWItemID.AdamantiteArrow)
                                         {
                                             this.name = "Adamantite Arrow";
                                             this.shootSpeed = 4.25f;
-                                            this.shoot = 438;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.AdamantiteArrow;   // This is Project.type
                                             this.damage = 15;
                                             this.width = 10;
                                             this.height = 28;
@@ -37142,14 +37144,14 @@ namespace Terraria
                                             this.knockBack = 3f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 60;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.TitaniumArrow)
+                                        if (type == Terraria.ID.STWItemID.TitaniumArrow)
                                         {
                                             this.name = "Titanium Arrow";
                                             this.shootSpeed = 4.25f;
-                                            this.shoot = 439;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.TitaniumArrow;   // This is Project.type
                                             this.damage = 15;
                                             this.width = 10;
                                             this.height = 28;
@@ -37159,14 +37161,14 @@ namespace Terraria
                                             this.knockBack = 3f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 60;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.HallowedArrow)
+                                        if (type == Terraria.ID.STWItemID.HallowedArrow)
                                         {
                                             this.name = "Hallowed Arrow";
                                             this.shootSpeed = 5f;
-                                            this.shoot = 440;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.HallowedArrow;   // This is Project.type
                                             this.damage = 16;
                                             this.width = 10;
                                             this.height = 28;
@@ -37176,14 +37178,14 @@ namespace Terraria
                                             this.knockBack = 4f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 70;
+                                            return;
+                                            
                                         }
-                                        if (type == Terraria.ID.ItemID.ShroomiteArrow)
+                                        if (type == Terraria.ID.STWItemID.ShroomiteArrow)
                                         {
                                             this.name = "Shroomite Arrow";
                                             this.shootSpeed = 4.3f;
-                                            this.shoot = 441;   // This is Project.type
+                                            this.shoot = Terraria.ID.STWProjectileID.ShroomiteArrow;   // This is Project.type
                                             this.damage = 18;
                                             this.width = 10;
                                             this.height = 28;
@@ -37193,12 +37195,740 @@ namespace Terraria
                                             this.knockBack = 4.2f;
                                             this.value = 10;
                                             this.ranged = true;
-
-                                            //this.craftingLvl = 85;
+                                            return;
+                                            
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserAmmoReservationPotion)
+                                        {
+                                            this.name = "Lesser Ammo Reservation Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 112;
+                                            this.buffTime = 25200;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Gives 10% chance to not consume ammo";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterAmmoReservationPotion)
+                                        {
+                                            this.name = "Greater Ammo Reservation Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 112;
+                                            this.buffTime = 25200;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Gives 20% chance to not consume ammo";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperAmmoReservationPotion)
+                                        {
+                                            this.name = "Super Ammo Reservation Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 112;
+                                            this.buffTime = 25200;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Gives 25% chance to not consume ammo";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserArcheryPotion)
+                                        {
+                                            this.name = "Lesser Archery Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 16;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "10% increased arrow speed and damage";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterArcheryPotion)
+                                        {
+                                            this.name = "Greater Archery Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 16;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "20% increased arrow speed and damage";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperArcheryPotion)
+                                        {
+                                            this.name = "Super Archery Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 16;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "25% increased arrow speed and damage";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserEndurancePotion)
+                                        {
+                                            this.name = "Lesser Endurance Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 114;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Reduces damage taken by 10%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterEndurancePotion)
+                                        {
+                                            this.name = "Greater Endurance Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 114;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Reduces damage taken by 15%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperEndurancePotion)
+                                        {
+                                            this.name = "Super Endurance Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 114;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Reduces damage taken by 20%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserIronskinPotion)
+                                        {
+                                            this.name = "Lesser Ironskin Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 5;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Increase defense by 2";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterIronskinPotion)
+                                        {
+                                            this.name = "Greater Ironskin Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 5;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Increase defense by 8";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperIronskinPotion)
+                                        {
+                                            this.name = "Super Ironskin Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 5;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Increase defense by 16";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserLifeforcePotion)
+                                        {
+                                            this.name = "Lesser Lifeforce Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 113;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Increases max life by 10%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterLifeforcePotion)
+                                        {
+                                            this.name = "Greater Lifeforce Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 113;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Increases max life by 20%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperLifeforcePotion)
+                                        {
+                                            this.name = "Super Lifeforce Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 113;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Increases max life by 25%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserMagicPowerPotion)
+                                        {
+                                            this.name = "Lesser Magic Power Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 7;
+                                            this.buffTime = 7200;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "10% increased magic damage";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterMagicPowerPotion)
+                                        {
+                                            this.name = "Greater Magic Power Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 7;
+                                            this.buffTime = 7200;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "20% increased magic damage";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperMagicPowerPotion)
+                                        {
+                                            this.name = "Super Magic Power Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 7;
+                                            this.buffTime = 7200;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "25% increased magic damage";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserManaRegenPotion)
+                                        {
+                                            this.name = "Lesser Mana Regeneration Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 6;
+                                            this.buffTime = 7200;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Slightly increased mana regeneration";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterManaRegenPotion)
+                                        {
+                                            this.name = "Greater Mana Regeneration Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 6;
+                                            this.buffTime = 7200;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Greatly increased mana regeneration";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperManaRegenPotion)
+                                        {
+                                            this.name = "Super Mana Regeneration Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 6;
+                                            this.buffTime = 7200;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Hugely, ginormously, insanely increased mana regeneration";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserRagePotion)
+                                        {
+                                            this.name = "Lesser Rage Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 115;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Increases critical strike chance by 5%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterRagePotion)
+                                        {
+                                            this.name = "Greater Rage Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 115;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Increases critical strike chance by 15%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperRagePotion)
+                                        {
+                                            this.name = "Super Rage Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 115;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Increases critical strike chance by 20%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserRegenerationPotion)
+                                        {
+                                            this.name = "Lesser Regeneration Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 2;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Provides minor life regeneration";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterRegenerationPotion)
+                                        {
+                                            this.name = "Greater Regeneration Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 2;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Provides greater life regeneration";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperRegenerationPotion)
+                                        {
+                                            this.name = "Super Regeneration Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 2;
+                                            this.buffTime = 18000;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Provides super life regeneration";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserSwiftnessPotion)
+                                        {
+                                            this.name = "Lesser Swiftness Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 3;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "5% increased movement speed";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterSwiftnessPotion)
+                                        {
+                                            this.name = "Greater Swiftness Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 3;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "25% increased movement speed";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperSwiftnessPotion)
+                                        {
+                                            this.name = "Super Swiftness Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 3;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "35% increased movement speed";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserWarmthPotion)
+                                        {
+                                            this.name = "Lesser Warmth Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 124;
+                                            this.buffTime = 54000;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Slightly reduces damage from cold sources";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterWarmthPotion)
+                                        {
+                                            this.name = "Greater Warmth Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 124;
+                                            this.buffTime = 54000;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Greatly reduces damage from cold sources";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperWarmthPotion)
+                                        {
+                                            this.name = "Super Warmth Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 124;
+                                            this.buffTime = 54000;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Significantly reduces damage from cold sources";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.LesserWrathPotion)
+                                        {
+                                            this.name = "Lesser Wrath Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 117;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 0;
+                                            this.toolTip = "Increases damage by 5%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.GreaterWrathPotion)
+                                        {
+                                            this.name = "Greater Wrath Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 117;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 2;
+                                            this.toolTip = "Increases damage by 15%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SuperWrathPotion)
+                                        {
+                                            this.name = "Super Wrath Potion";
+                                            this.useSound = 3;
+                                            this.useStyle = 2;
+                                            this.useTurn = true;
+                                            this.useAnimation = 17;
+                                            this.useTime = 17;
+                                            this.maxStack = 30;
+                                            this.consumable = true;
+                                            this.width = 14;
+                                            this.height = 24;
+                                            this.buffType = 117;
+                                            this.buffTime = 14400;
+                                            this.buffMagnitude = 3;
+                                            this.toolTip = "Increases damage by 20%";
+                                            this.value = 1000;
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SmallArmoredCavefish)
+                                        {
+                                            this.name = "Small Armored Fish";
+                                            this.maxStack = 999;
+                                            this.width = 20;
+                                            this.height = 20;
+                                            this.value = Item.sellPrice(0, 0, 5, 0);
+                                            this.rare = 1;
+                                            return;
                                         }
 
-
-                                        // End new items
 									}
 								}
 							}
