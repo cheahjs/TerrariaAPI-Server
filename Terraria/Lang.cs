@@ -21888,6 +21888,8 @@ namespace Terraria
                     return "Deathfern";
                 case Terraria.ID.STWItemID.Deathplant:
                     return "Deathplant";
+                case Terraria.ID.STWItemID.WoodenStaff:
+                    return "Wooden Staff";
 
 				}
 			}

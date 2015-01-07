@@ -17776,7 +17776,7 @@ namespace Terraria
 				this.useTime = 25;
 				this.width = 24;
 				this.height = 28;
-				this.damage = 9;
+				this.damage = 6; //Original: 9
 				this.knockBack = 5f;
 				this.useSound = 1;
 				this.scale = 1f;
@@ -17946,7 +17946,7 @@ namespace Terraria
 				this.name = "Cactus Breastplate";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 2;
+				this.defense = 1; //Original 2
 				this.bodySlot = 46;
 				return;
 			}
@@ -37920,16 +37920,208 @@ namespace Terraria
                                         }
                                         if (type == Terraria.ID.STWItemID.SmallArmoredCavefish)
                                         {
-                                            this.name = "Small Armored Fish";
+                                            this.name = "Small Armored Cavefish";
                                             this.maxStack = 999;
                                             this.width = 20;
                                             this.height = 20;
-                                            this.value = Item.sellPrice(0, 0, 5, 0);
+                                            this.value = Item.sellPrice(0, 0, 25, 0);
                                             this.rare = 1;
                                             return;
                                         }
+                                        if (type == Terraria.ID.STWItemID.BigArmoredCavefish)
+                                        {
+                                            this.name = "Big Armored Cavefish";
+                                            this.maxStack = 999;
+                                            this.width = 32;
+                                            this.height = 32;
+                                            this.value = Item.sellPrice(0, 0, 50, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.HugeArmoredCavefish)
+                                        {
+                                            this.name = "Huge Armored Cavefish";
+                                            this.maxStack = 999;
+                                            this.width = 38;
+                                            this.height = 38;
+                                            this.value = Item.sellPrice(0, 0, 75, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SmallDoubleCod)
+                                        {
+                                            this.name = "Small Double Cod";
+                                            this.maxStack = 999;
+                                            this.width = 20;
+                                            this.height = 20;
+                                            this.value = Item.sellPrice(0, 0, 25, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.BigDoubleCod)
+                                        {
+                                            this.name = "Big Double Cod";
+                                            this.maxStack = 999;
+                                            this.width = 32;
+                                            this.height = 32;
+                                            this.value = Item.sellPrice(0, 0, 50, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.HugeDoubleCod)
+                                        {
+                                            this.name = "Huge Double Cod";
+                                            this.maxStack = 999;
+                                            this.width = 38;
+                                            this.height = 38;
+                                            this.value = Item.sellPrice(0, 0, 75, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SmallHemopiranha)
+                                        {
+                                            this.name = "Small Hemopiranha";
+                                            this.maxStack = 999;
+                                            this.width = 20;
+                                            this.height = 20;
+                                            this.value = Item.sellPrice(0, 0, 25, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.BigHemopiranha)
+                                        {
+                                            this.name = "Big Hemopiranha";
+                                            this.maxStack = 999;
+                                            this.width = 32;
+                                            this.height = 32;
+                                            this.value = Item.sellPrice(0, 0, 50, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.HugeHemopiranha)
+                                        {
+                                            this.name = "Huge Hemopiranha";
+                                            this.maxStack = 999;
+                                            this.width = 38;
+                                            this.height = 38;
+                                            this.value = Item.sellPrice(0, 0, 75, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SmallFrostMinnow)
+                                        {
+                                            this.name = "Small Frost Minnow";
+                                            this.maxStack = 999;
+                                            this.width = 20;
+                                            this.height = 20;
+                                            this.value = Item.sellPrice(0, 0, 25, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.BigFrostMinnow)
+                                        {
+                                            this.name = "Big Frost Minnow";
+                                            this.maxStack = 999;
+                                            this.width = 32;
+                                            this.height = 32;
+                                            this.value = Item.sellPrice(0, 0, 50, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.HugeFrostMinnow)
+                                        {
+                                            this.name = "Huge Frost Minnow";
+                                            this.maxStack = 999;
+                                            this.width = 38;
+                                            this.height = 38;
+                                            this.value = Item.sellPrice(0, 0, 75, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SmallEbonkoi)
+                                        {
+                                            this.name = "Small Ebonkoi";
+                                            this.maxStack = 999;
+                                            this.width = 20;
+                                            this.height = 20;
+                                            this.value = Item.sellPrice(0, 0, 25, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.BigEbonkoi)
+                                        {
+                                            this.name = "Big Ebonkoi";
+                                            this.maxStack = 999;
+                                            this.width = 32;
+                                            this.height = 32;
+                                            this.value = Item.sellPrice(0, 0, 50, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.HugeEbonkoi)
+                                        {
+                                            this.name = "Huge Ebonkoi";
+                                            this.maxStack = 999;
+                                            this.width = 38;
+                                            this.height = 38;
+                                            this.value = Item.sellPrice(0, 0, 75, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.SmallPrismite)
+                                        {
+                                            this.name = "Small Prismite";
+                                            this.maxStack = 999;
+                                            this.width = 20;
+                                            this.height = 20;
+                                            this.value = Item.sellPrice(0, 0, 25, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.BigPrismite)
+                                        {
+                                            this.name = "Big Prismite";
+                                            this.maxStack = 999;
+                                            this.width = 32;
+                                            this.height = 32;
+                                            this.value = Item.sellPrice(0, 0, 50, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.HugePrismite)
+                                        {
+                                            this.name = "Huge Prismite";
+                                            this.maxStack = 999;
+                                            this.width = 38;
+                                            this.height = 38;
+                                            this.value = Item.sellPrice(0, 0, 75, 0);
+                                            this.rare = 1;
+                                            return;
+                                        }
+                                        if (type == Terraria.ID.STWItemID.WoodenStaff)
+                                        {
+                                            this.name = "Wooden Staff";
+                                            this.mana = 3;
+                                            this.useSound = 43;
+                                            this.useStyle = 5;
+                                            this.damage = 10;
+                                            this.useAnimation = 40;
+                                            this.useTime = 40;
+                                            this.width = 40;
+                                            this.height = 40;
+                                            this.shoot = 121;
+                                            this.shootSpeed = 6f;
+                                            this.knockBack = 3.25f;
+                                            this.value = 20;
+                                            this.magic = true;
+                                            this.noMelee = true;
 
-									}
+                                            return;
+                                        }
+
+
+
+									} //End new Items
 								}
 							}
 						}

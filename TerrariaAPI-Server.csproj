@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{549A7941-D9C9-4544-BAC8-D9EEEAB4D777}</ProjectGuid>
+    <ProjectGuid>{38EEF38E-1581-4AA9-9816-68F9E15B7DA9}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Exe</OutputType>
@@ -88,6 +88,8 @@
     <Compile Include="Terraria.ID\ItemID.cs" />
     <Compile Include="Terraria.ID\MessageID.cs" />
     <Compile Include="Terraria.ID\StatusID.cs" />
+    <Compile Include="Terraria.ID\STWItemID.cs" />
+    <Compile Include="Terraria.ID\STWProjectileID.cs" />
     <Compile Include="Terraria.ID\TileID.cs" />
     <Compile Include="Terraria.ID\WallID.cs" />
     <Compile Include="Terraria.MetaData\TileZoneData.cs" />

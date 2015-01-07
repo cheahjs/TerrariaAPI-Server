@@ -109,9 +109,9 @@ namespace Terraria.ID
         public const short Deathfern = ItemID.Count + 77;
         public const short Deathplant = ItemID.Count + 78;
 
-
+        public const short WoodenStaff = ItemID.Count + 79;
 		//public const short Count = 79;    // True Item Count
-        public const short Count = 79;      // Item Count of max new sprites we actually have
+        public const short Count = 80;      // Item Count of max new sprites we actually have
         
 	}
 }
