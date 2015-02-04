@@ -16,7 +16,8 @@ namespace Terraria
         public const int maxItemTypes = Terraria.ID.ItemID.Count + Terraria.ID.STWItemID.Count;
         public const int maxProjectileTypes = 423;  // GitFlip - Max projectiles. Must be +1 of last projectile type
         public const int maxSTWProjectileTypes = Terraria.ID.STWProjectileID.Count;
-		public static int maxNPCTypes = 378;
+		public const int maxNPCTypes = 378;
+        public const int maxSTWNPCTypes = Terraria.ID.STWNPCID.Count;
 		public static int maxTileSets = 340;
 		public static int maxWallTypes = 172;
 		public static int maxGoreTypes = 587;
@@ -79,8 +80,8 @@ namespace Terraria
 		public static bool[] hairLoaded = new bool[123];
 		public static bool[] wingsLoaded = new bool[27];
 		public static bool[] goreLoaded = new bool[587];
-        public static bool[] projectileLoaded = new bool[maxProjectileTypes];
-        public static bool[] itemFlameLoaded = new bool[maxItemTypes];
+        public static bool[] projectileLoaded = new bool[maxProjectileTypes + maxSTWProjectileTypes];
+        public static bool[] itemFlameLoaded = new bool[maxItemTypes + maxSTWItemTypes];
 		public static bool[] backgroundLoaded = new bool[185];
 		public static bool[] tileSetsLoaded = new bool[340];
 		public static bool[] wallLoaded = new bool[172];
@@ -231,7 +232,7 @@ namespace Terraria
 		public static int zoneX = 99;
 		public static int zoneY = 87;
 		public static float harpNote = 0f;
-        public static bool[] projHostile = new bool[maxProjectileTypes];
+        public static bool[] projHostile = new bool[maxProjectileTypes + maxSTWProjectileTypes];
 		public static bool[] pvpBuff = new bool[140];
 		public static bool[] vanityPet = new bool[140];
 		public static bool[] lightPet = new bool[140];
@@ -432,8 +433,8 @@ namespace Terraria
 		public static int helpText = 0;
 		public static bool autoGen = false;
 		public static bool autoPause = false;
-        public static int[] projFrames = new int[maxProjectileTypes];
-        public static bool[] projPet = new bool[maxProjectileTypes];
+        public static int[] projFrames = new int[maxProjectileTypes + maxSTWProjectileTypes];
+        public static bool[] projPet = new bool[maxProjectileTypes + maxSTWProjectileTypes];
 		public static float demonTorch = 1f;
 		public static int demonTorchDir = 1;
 		public static int numStars;
@@ -714,7 +715,7 @@ namespace Terraria
 		});
 		public static string WorldPath = Main.SavePath + Path.DirectorySeparatorChar + "Worlds";
 		public static string PlayerPath = Main.SavePath + Path.DirectorySeparatorChar + "Players";
-        public static string[] itemName = new string[maxItemTypes];
+        public static string[] itemName = new string[maxItemTypes + maxSTWItemTypes];
 		public static string[] npcName = new string[378];
 		public static int invasionType = 0;
 		public static double invasionX = 0.0;
@@ -2698,7 +2699,7 @@ namespace Terraria
 			Main.bgAlpha[0] = 1f;
 			Main.bgAlpha2[0] = 1f;
 			this.invBottom = 258;
-            for (int i = 0; i < maxProjectileTypes; i++)
+            for (int i = 0; i < maxProjectileTypes + maxSTWProjectileTypes; i++)
 			{
 				Main.projFrames[i] = 1;
 			}
@@ -4378,7 +4379,7 @@ namespace Terraria
 			{
 				Main.rain[num12] = new Rain();
 			}
-            for (int num16 = 0; num16 < maxItemTypes; num16++)
+            for (int num16 = 0; num16 < maxItemTypes + maxSTWItemTypes; num16++)
 			{
 				Item item = new Item();
 				item.SetDefaults(num16, false);
@@ -4447,7 +4448,7 @@ namespace Terraria
 			{
 				Main.LoadPlayers();
 			}*/
-            for (int num23 = 1; num23 < maxProjectileTypes; num23++)
+            for (int num23 = 1; num23 < maxProjectileTypes + maxSTWProjectileTypes; num23++)
 			{
 				Projectile projectile = new Projectile();
 				projectile.SetDefaults(num23);

@@ -1,9 +1,15 @@
 using System;
-using TerrariaApi.Server;
 namespace Terraria
 {
 	public class Item
 	{
+        // GitFlip
+        // New Item variables
+
+        public int skillType = 1; 
+        public int requiredLvl = 1;
+        public int craftingLvl = 0;
+
 		public const int maxPrefixes = 84;
 		public static int potionDelay = 3600;
 		public bool questItem;
@@ -105,7 +111,7 @@ namespace Terraria
 		public bool noWet;
 		public int buffType;
 		public int buffTime;
-        public int buffMagnitude; //CM Add BuffMagnitude to potions
+        public int buffMagnitude; //0, 1, 2, 3 depending on buff magnitude
 		public int mountType = -1;
 		public bool cartTrack;
 		public bool uniqueStack;
@@ -117,7 +123,6 @@ namespace Terraria
 		public bool ranged;
 		public bool summon;
 		public int reuseDelay;
-		public int explosive = 0;
 		public override string ToString()
 		{
 			return string.Format("{{Name: \"{0}\" NetID: {1} Stack: {2}", this.name, this.netID, this.stack);
@@ -325,429 +330,441 @@ namespace Terraria
 							num = 81;
 						}
 					}
-					else if (this.type == 162 || this.type == 160 || this.type == 163 || this.type == 220 || this.type == 274 || this.type == 277 || this.type == 280 || this.type == 383 || this.type == 384 || this.type == 385 || this.type == 386 || this.type == 387 || this.type == 388 || this.type == 389 || this.type == 390 || this.type == 406 || this.type == 537 || this.type == 550 || this.type == 579 || this.type == 756 || this.type == 759 || this.type == 801 || this.type == 802 || this.type == 1186 || this.type == 1189 || this.type == 1190 || this.type == 1193 || this.type == 1196 || this.type == 1197 || this.type == 1200 || this.type == 1203 || this.type == 1204 || this.type == 1228 || this.type == 1231 || this.type == 1232 || this.type == 1259 || this.type == 1262 || this.type == 1297 || this.type == 1314 || this.type == 1325 || this.type == 1947 || this.type == 2332 || this.type == 2331 || this.type == 2342 || this.type == 2424 || this.type == 2611)
-					{
-						int num10 = Main.rand.Next(14);
-						if (num10 == 0)
-						{
-							num = 36;
-						}
-						if (num10 == 1)
-						{
-							num = 37;
-						}
-						if (num10 == 2)
-						{
-							num = 38;
-						}
-						if (num10 == 3)
-						{
-							num = 53;
-						}
-						if (num10 == 4)
-						{
-							num = 54;
-						}
-						if (num10 == 5)
-						{
-							num = 55;
-						}
-						if (num10 == 6)
-						{
-							num = 39;
-						}
-						if (num10 == 7)
-						{
-							num = 40;
-						}
-						if (num10 == 8)
-						{
-							num = 56;
-						}
-						if (num10 == 9)
-						{
-							num = 41;
-						}
-						if (num10 == 10)
-						{
-							num = 57;
-						}
-						if (num10 == 11)
-						{
-							num = 59;
-						}
-						if (num10 == 12)
-						{
-							num = 60;
-						}
-						if (num10 == 13)
-						{
-							num = 61;
-						}
-					}
-					else if (this.type == 39 || this.type == 44 || this.type == 95 || this.type == 96 || this.type == 98 || this.type == 99 || this.type == 120 || this.type == 164 || this.type == 197 || this.type == 219 || this.type == 266 || this.type == 281 || this.type == 434 || this.type == 435 || this.type == 436 || this.type == 481 || this.type == 506 || this.type == 533 || this.type == 534 || this.type == 578 || this.type == 655 || this.type == 658 || this.type == 661 || this.type == 679 || this.type == 682 || this.type == 725 || this.type == 758 || this.type == 759 || this.type == 760 || this.type == 796 || this.type == 800 || this.type == 905 || this.type == 923 || this.type == 964 || this.type == 986 || this.type == 1156 || this.type == 1187 || this.type == 1194 || this.type == 1201 || this.type == 1229 || this.type == 1254 || this.type == 1255 || this.type == 1258 || this.type == 1265 || this.type == 1319 || this.type == 1553 || this.type == 1782 || this.type == 1784 || this.type == 1835 || this.type == 1870 || this.type == 1910 || this.type == 1929 || this.type == 1946 || this.type == 2223 || this.type == 2269 || this.type == 2270 || this.type == 2624 || this.type == 2515 || this.type == 2747)
-					{
-						int num11 = Main.rand.Next(36);
-						if (num11 == 0)
-						{
-							num = 16;
-						}
-						if (num11 == 1)
-						{
-							num = 17;
-						}
-						if (num11 == 2)
-						{
-							num = 18;
-						}
-						if (num11 == 3)
-						{
-							num = 19;
-						}
-						if (num11 == 4)
-						{
-							num = 20;
-						}
-						if (num11 == 5)
-						{
-							num = 21;
-						}
-						if (num11 == 6)
-						{
-							num = 22;
-						}
-						if (num11 == 7)
-						{
-							num = 23;
-						}
-						if (num11 == 8)
-						{
-							num = 24;
-						}
-						if (num11 == 9)
-						{
-							num = 25;
-						}
-						if (num11 == 10)
-						{
-							num = 58;
-						}
-						if (num11 == 11)
-						{
-							num = 36;
-						}
-						if (num11 == 12)
-						{
-							num = 37;
-						}
-						if (num11 == 13)
-						{
-							num = 38;
-						}
-						if (num11 == 14)
-						{
-							num = 53;
-						}
-						if (num11 == 15)
-						{
-							num = 54;
-						}
-						if (num11 == 16)
-						{
-							num = 55;
-						}
-						if (num11 == 17)
-						{
-							num = 39;
-						}
-						if (num11 == 18)
-						{
-							num = 40;
-						}
-						if (num11 == 19)
-						{
-							num = 56;
-						}
-						if (num11 == 20)
-						{
-							num = 41;
-						}
-						if (num11 == 21)
-						{
-							num = 57;
-						}
-						if (num11 == 22)
-						{
-							num = 42;
-						}
-						if (num11 == 23)
-						{
-							num = 43;
-						}
-						if (num11 == 24)
-						{
-							num = 44;
-						}
-						if (num11 == 25)
-						{
-							num = 45;
-						}
-						if (num11 == 26)
-						{
-							num = 46;
-						}
-						if (num11 == 27)
-						{
-							num = 47;
-						}
-						if (num11 == 28)
-						{
-							num = 48;
-						}
-						if (num11 == 29)
-						{
-							num = 49;
-						}
-						if (num11 == 30)
-						{
-							num = 50;
-						}
-						if (num11 == 31)
-						{
-							num = 51;
-						}
-						if (num11 == 32)
-						{
-							num = 59;
-						}
-						if (num11 == 33)
-						{
-							num = 60;
-						}
-						if (num11 == 34)
-						{
-							num = 61;
-						}
-						if (num11 == 35)
-						{
-							num = 82;
-						}
-					}
-					else if (this.type == 64 || this.type == 112 || this.type == 113 || this.type == 127 || this.type == 157 || this.type == 165 || this.type == 218 || this.type == 272 || this.type == 494 || this.type == 495 || this.type == 496 || this.type == 514 || this.type == 517 || this.type == 518 || this.type == 519 || this.type == 683 || this.type == 726 || this.type == 739 || this.type == 740 || this.type == 741 || this.type == 742 || this.type == 743 || this.type == 744 || this.type == 788 || this.type == 1121 || this.type == 1155 || this.type == 1157 || this.type == 1178 || this.type == 1244 || this.type == 1256 || this.type == 1260 || this.type == 1264 || this.type == 1266 || this.type == 1295 || this.type == 1296 || this.type == 1308 || this.type == 1309 || this.type == 1313 || this.type == 1336 || this.type == 1444 || this.type == 1445 || this.type == 1446 || this.type == 1572 || this.type == 1801 || this.type == 1802 || this.type == 1930 || this.type == 1931 || this.type == 2188 || this.type == 2622 || this.type == 2621 || this.type == 2584 || this.type == 2551 || this.type == 2366 || this.type == 2535 || this.type == 2365 || this.type == 2364 || this.type == 2623)
-					{
-						int num12 = Main.rand.Next(36);
-						if (num12 == 0)
-						{
-							num = 26;
-						}
-						if (num12 == 1)
-						{
-							num = 27;
-						}
-						if (num12 == 2)
-						{
-							num = 28;
-						}
-						if (num12 == 3)
-						{
-							num = 29;
-						}
-						if (num12 == 4)
-						{
-							num = 30;
-						}
-						if (num12 == 5)
-						{
-							num = 31;
-						}
-						if (num12 == 6)
-						{
-							num = 32;
-						}
-						if (num12 == 7)
-						{
-							num = 33;
-						}
-						if (num12 == 8)
-						{
-							num = 34;
-						}
-						if (num12 == 9)
-						{
-							num = 35;
-						}
-						if (num12 == 10)
-						{
-							num = 52;
-						}
-						if (num12 == 11)
-						{
-							num = 36;
-						}
-						if (num12 == 12)
-						{
-							num = 37;
-						}
-						if (num12 == 13)
-						{
-							num = 38;
-						}
-						if (num12 == 14)
-						{
-							num = 53;
-						}
-						if (num12 == 15)
-						{
-							num = 54;
-						}
-						if (num12 == 16)
-						{
-							num = 55;
-						}
-						if (num12 == 17)
-						{
-							num = 39;
-						}
-						if (num12 == 18)
-						{
-							num = 40;
-						}
-						if (num12 == 19)
-						{
-							num = 56;
-						}
-						if (num12 == 20)
-						{
-							num = 41;
-						}
-						if (num12 == 21)
-						{
-							num = 57;
-						}
-						if (num12 == 22)
-						{
-							num = 42;
-						}
-						if (num12 == 23)
-						{
-							num = 43;
-						}
-						if (num12 == 24)
-						{
-							num = 44;
-						}
-						if (num12 == 25)
-						{
-							num = 45;
-						}
-						if (num12 == 26)
-						{
-							num = 46;
-						}
-						if (num12 == 27)
-						{
-							num = 47;
-						}
-						if (num12 == 28)
-						{
-							num = 48;
-						}
-						if (num12 == 29)
-						{
-							num = 49;
-						}
-						if (num12 == 30)
-						{
-							num = 50;
-						}
-						if (num12 == 31)
-						{
-							num = 51;
-						}
-						if (num12 == 32)
-						{
-							num = 59;
-						}
-						if (num12 == 33)
-						{
-							num = 60;
-						}
-						if (num12 == 34)
-						{
-							num = 61;
-						}
-						if (num12 == 35)
-						{
-							num = 83;
-						}
-					}
-					else if (this.type == 55 || this.type == 119 || this.type == 191 || this.type == 284 || this.type == 670 || this.type == 1122 || this.type == 1513 || this.type == 1569 || this.type == 1571 || this.type == 1825 || this.type == 1918)
-					{
-						int num13 = Main.rand.Next(14);
-						if (num13 == 0)
-						{
-							num = 36;
-						}
-						if (num13 == 1)
-						{
-							num = 37;
-						}
-						if (num13 == 2)
-						{
-							num = 38;
-						}
-						if (num13 == 3)
-						{
-							num = 53;
-						}
-						if (num13 == 4)
-						{
-							num = 54;
-						}
-						if (num13 == 5)
-						{
-							num = 55;
-						}
-						if (num13 == 6)
-						{
-							num = 39;
-						}
-						if (num13 == 7)
-						{
-							num = 40;
-						}
-						if (num13 == 8)
-						{
-							num = 56;
-						}
-						if (num13 == 9)
-						{
-							num = 41;
-						}
-						if (num13 == 10)
-						{
-							num = 57;
-						}
-						if (num13 == 11)
-						{
-							num = 59;
-						}
-						if (num13 == 12)
-						{
-							num = 60;
-						}
-						if (num13 == 13)
-						{
-							num = 61;
-						}
-					}
 					else
 					{
-						if (!this.accessory || this.type == 267 || this.type == 562 || this.type == 563 || this.type == 564 || this.type == 565 || this.type == 566 || this.type == 567 || this.type == 568 || this.type == 569 || this.type == 570 || this.type == 571 || this.type == 572 || this.type == 573 || this.type == 574 || this.type == 576 || this.type == 1307 || (this.type >= 1596 && this.type < 1610) || this.vanity)
+						if (this.type == 162 || this.type == 160 || this.type == 163 || this.type == 220 || this.type == 274 || this.type == 277 || this.type == 280 || this.type == 383 || this.type == 384 || this.type == 385 || this.type == 386 || this.type == 387 || this.type == 388 || this.type == 389 || this.type == 390 || this.type == 406 || this.type == 537 || this.type == 550 || this.type == 579 || this.type == 756 || this.type == 759 || this.type == 801 || this.type == 802 || this.type == 1186 || this.type == 1189 || this.type == 1190 || this.type == 1193 || this.type == 1196 || this.type == 1197 || this.type == 1200 || this.type == 1203 || this.type == 1204 || this.type == 1228 || this.type == 1231 || this.type == 1232 || this.type == 1259 || this.type == 1262 || this.type == 1297 || this.type == 1314 || this.type == 1325 || this.type == 1947 || this.type == 2332 || this.type == 2331 || this.type == 2342 || this.type == 2424 || this.type == 2611)
 						{
-							return false;
+							int num10 = Main.rand.Next(14);
+							if (num10 == 0)
+							{
+								num = 36;
+							}
+							if (num10 == 1)
+							{
+								num = 37;
+							}
+							if (num10 == 2)
+							{
+								num = 38;
+							}
+							if (num10 == 3)
+							{
+								num = 53;
+							}
+							if (num10 == 4)
+							{
+								num = 54;
+							}
+							if (num10 == 5)
+							{
+								num = 55;
+							}
+							if (num10 == 6)
+							{
+								num = 39;
+							}
+							if (num10 == 7)
+							{
+								num = 40;
+							}
+							if (num10 == 8)
+							{
+								num = 56;
+							}
+							if (num10 == 9)
+							{
+								num = 41;
+							}
+							if (num10 == 10)
+							{
+								num = 57;
+							}
+							if (num10 == 11)
+							{
+								num = 59;
+							}
+							if (num10 == 12)
+							{
+								num = 60;
+							}
+							if (num10 == 13)
+							{
+								num = 61;
+							}
 						}
-						num = Main.rand.Next(62, 81);
+						else
+						{
+							if (this.type == 39 || this.type == 44 || this.type == 95 || this.type == 96 || this.type == 98 || this.type == 99 || this.type == 120 || this.type == 164 || this.type == 197 || this.type == 219 || this.type == 266 || this.type == 281 || this.type == 434 || this.type == 435 || this.type == 436 || this.type == 481 || this.type == 506 || this.type == 533 || this.type == 534 || this.type == 578 || this.type == 655 || this.type == 658 || this.type == 661 || this.type == 679 || this.type == 682 || this.type == 725 || this.type == 758 || this.type == 759 || this.type == 760 || this.type == 796 || this.type == 800 || this.type == 905 || this.type == 923 || this.type == 964 || this.type == 986 || this.type == 1156 || this.type == 1187 || this.type == 1194 || this.type == 1201 || this.type == 1229 || this.type == 1254 || this.type == 1255 || this.type == 1258 || this.type == 1265 || this.type == 1319 || this.type == 1553 || this.type == 1782 || this.type == 1784 || this.type == 1835 || this.type == 1870 || this.type == 1910 || this.type == 1929 || this.type == 1946 || this.type == 2223 || this.type == 2269 || this.type == 2270 || this.type == 2624 || this.type == 2515 || this.type == 2747)
+							{
+								int num11 = Main.rand.Next(36);
+								if (num11 == 0)
+								{
+									num = 16;
+								}
+								if (num11 == 1)
+								{
+									num = 17;
+								}
+								if (num11 == 2)
+								{
+									num = 18;
+								}
+								if (num11 == 3)
+								{
+									num = 19;
+								}
+								if (num11 == 4)
+								{
+									num = 20;
+								}
+								if (num11 == 5)
+								{
+									num = 21;
+								}
+								if (num11 == 6)
+								{
+									num = 22;
+								}
+								if (num11 == 7)
+								{
+									num = 23;
+								}
+								if (num11 == 8)
+								{
+									num = 24;
+								}
+								if (num11 == 9)
+								{
+									num = 25;
+								}
+								if (num11 == 10)
+								{
+									num = 58;
+								}
+								if (num11 == 11)
+								{
+									num = 36;
+								}
+								if (num11 == 12)
+								{
+									num = 37;
+								}
+								if (num11 == 13)
+								{
+									num = 38;
+								}
+								if (num11 == 14)
+								{
+									num = 53;
+								}
+								if (num11 == 15)
+								{
+									num = 54;
+								}
+								if (num11 == 16)
+								{
+									num = 55;
+								}
+								if (num11 == 17)
+								{
+									num = 39;
+								}
+								if (num11 == 18)
+								{
+									num = 40;
+								}
+								if (num11 == 19)
+								{
+									num = 56;
+								}
+								if (num11 == 20)
+								{
+									num = 41;
+								}
+								if (num11 == 21)
+								{
+									num = 57;
+								}
+								if (num11 == 22)
+								{
+									num = 42;
+								}
+								if (num11 == 23)
+								{
+									num = 43;
+								}
+								if (num11 == 24)
+								{
+									num = 44;
+								}
+								if (num11 == 25)
+								{
+									num = 45;
+								}
+								if (num11 == 26)
+								{
+									num = 46;
+								}
+								if (num11 == 27)
+								{
+									num = 47;
+								}
+								if (num11 == 28)
+								{
+									num = 48;
+								}
+								if (num11 == 29)
+								{
+									num = 49;
+								}
+								if (num11 == 30)
+								{
+									num = 50;
+								}
+								if (num11 == 31)
+								{
+									num = 51;
+								}
+								if (num11 == 32)
+								{
+									num = 59;
+								}
+								if (num11 == 33)
+								{
+									num = 60;
+								}
+								if (num11 == 34)
+								{
+									num = 61;
+								}
+								if (num11 == 35)
+								{
+									num = 82;
+								}
+							}
+							else
+							{
+								if (this.type == 64 || this.type == 112 || this.type == 113 || this.type == 127 || this.type == 157 || this.type == 165 || this.type == 218 || this.type == 272 || this.type == 494 || this.type == 495 || this.type == 496 || this.type == 514 || this.type == 517 || this.type == 518 || this.type == 519 || this.type == 683 || this.type == 726 || this.type == 739 || this.type == 740 || this.type == 741 || this.type == 742 || this.type == 743 || this.type == 744 || this.type == 788 || this.type == 1121 || this.type == 1155 || this.type == 1157 || this.type == 1178 || this.type == 1244 || this.type == 1256 || this.type == 1260 || this.type == 1264 || this.type == 1266 || this.type == 1295 || this.type == 1296 || this.type == 1308 || this.type == 1309 || this.type == 1313 || this.type == 1336 || this.type == 1444 || this.type == 1445 || this.type == 1446 || this.type == 1572 || this.type == 1801 || this.type == 1802 || this.type == 1930 || this.type == 1931 || this.type == 2188 || this.type == 2622 || this.type == 2621 || this.type == 2584 || this.type == 2551 || this.type == 2366 || this.type == 2535 || this.type == 2365 || this.type == 2364 || this.type == 2623)
+								{
+									int num12 = Main.rand.Next(36);
+									if (num12 == 0)
+									{
+										num = 26;
+									}
+									if (num12 == 1)
+									{
+										num = 27;
+									}
+									if (num12 == 2)
+									{
+										num = 28;
+									}
+									if (num12 == 3)
+									{
+										num = 29;
+									}
+									if (num12 == 4)
+									{
+										num = 30;
+									}
+									if (num12 == 5)
+									{
+										num = 31;
+									}
+									if (num12 == 6)
+									{
+										num = 32;
+									}
+									if (num12 == 7)
+									{
+										num = 33;
+									}
+									if (num12 == 8)
+									{
+										num = 34;
+									}
+									if (num12 == 9)
+									{
+										num = 35;
+									}
+									if (num12 == 10)
+									{
+										num = 52;
+									}
+									if (num12 == 11)
+									{
+										num = 36;
+									}
+									if (num12 == 12)
+									{
+										num = 37;
+									}
+									if (num12 == 13)
+									{
+										num = 38;
+									}
+									if (num12 == 14)
+									{
+										num = 53;
+									}
+									if (num12 == 15)
+									{
+										num = 54;
+									}
+									if (num12 == 16)
+									{
+										num = 55;
+									}
+									if (num12 == 17)
+									{
+										num = 39;
+									}
+									if (num12 == 18)
+									{
+										num = 40;
+									}
+									if (num12 == 19)
+									{
+										num = 56;
+									}
+									if (num12 == 20)
+									{
+										num = 41;
+									}
+									if (num12 == 21)
+									{
+										num = 57;
+									}
+									if (num12 == 22)
+									{
+										num = 42;
+									}
+									if (num12 == 23)
+									{
+										num = 43;
+									}
+									if (num12 == 24)
+									{
+										num = 44;
+									}
+									if (num12 == 25)
+									{
+										num = 45;
+									}
+									if (num12 == 26)
+									{
+										num = 46;
+									}
+									if (num12 == 27)
+									{
+										num = 47;
+									}
+									if (num12 == 28)
+									{
+										num = 48;
+									}
+									if (num12 == 29)
+									{
+										num = 49;
+									}
+									if (num12 == 30)
+									{
+										num = 50;
+									}
+									if (num12 == 31)
+									{
+										num = 51;
+									}
+									if (num12 == 32)
+									{
+										num = 59;
+									}
+									if (num12 == 33)
+									{
+										num = 60;
+									}
+									if (num12 == 34)
+									{
+										num = 61;
+									}
+									if (num12 == 35)
+									{
+										num = 83;
+									}
+								}
+								else
+								{
+									if (this.type == 55 || this.type == 119 || this.type == 191 || this.type == 284 || this.type == 670 || this.type == 1122 || this.type == 1513 || this.type == 1569 || this.type == 1571 || this.type == 1825 || this.type == 1918)
+									{
+										int num13 = Main.rand.Next(14);
+										if (num13 == 0)
+										{
+											num = 36;
+										}
+										if (num13 == 1)
+										{
+											num = 37;
+										}
+										if (num13 == 2)
+										{
+											num = 38;
+										}
+										if (num13 == 3)
+										{
+											num = 53;
+										}
+										if (num13 == 4)
+										{
+											num = 54;
+										}
+										if (num13 == 5)
+										{
+											num = 55;
+										}
+										if (num13 == 6)
+										{
+											num = 39;
+										}
+										if (num13 == 7)
+										{
+											num = 40;
+										}
+										if (num13 == 8)
+										{
+											num = 56;
+										}
+										if (num13 == 9)
+										{
+											num = 41;
+										}
+										if (num13 == 10)
+										{
+											num = 57;
+										}
+										if (num13 == 11)
+										{
+											num = 59;
+										}
+										if (num13 == 12)
+										{
+											num = 60;
+										}
+										if (num13 == 13)
+										{
+											num = 61;
+										}
+									}
+									else
+									{
+										if (!this.accessory || this.type == 267 || this.type == 562 || this.type == 563 || this.type == 564 || this.type == 565 || this.type == 566 || this.type == 567 || this.type == 568 || this.type == 569 || this.type == 570 || this.type == 571 || this.type == 572 || this.type == 573 || this.type == 574 || this.type == 576 || this.type == 1307 || (this.type >= 1596 && this.type < 1610) || this.vanity)
+										{
+											return false;
+										}
+										num = Main.rand.Next(62, 81);
+									}
+								}
+							}
+						}
 					}
 				}
 				if (pre == -3)
@@ -762,332 +779,521 @@ namespace Terraria
 				{
 					num5 = 1.12f;
 				}
-				else if (num == 2)
+				else
 				{
-					num5 = 1.18f;
-				}
-				else if (num == 3)
-				{
-					num2 = 1.05f;
-					num8 = 2;
-					num5 = 1.05f;
-				}
-				else if (num == 4)
-				{
-					num2 = 1.1f;
-					num5 = 1.1f;
-					num3 = 1.1f;
-				}
-				else if (num == 5)
-				{
-					num2 = 1.15f;
-				}
-				else if (num == 6)
-				{
-					num2 = 1.1f;
-				}
-				else if (num == 81)
-				{
-					num3 = 1.15f;
-					num2 = 1.15f;
-					num8 = 5;
-					num4 = 0.9f;
-					num5 = 1.1f;
-				}
-				else if (num == 7)
-				{
-					num5 = 0.82f;
-				}
-				else if (num == 8)
-				{
-					num3 = 0.85f;
-					num2 = 0.85f;
-					num5 = 0.87f;
-				}
-				else if (num == 9)
-				{
-					num5 = 0.9f;
-				}
-				else if (num == 10)
-				{
-					num2 = 0.85f;
-				}
-				else if (num == 11)
-				{
-					num4 = 1.1f;
-					num3 = 0.9f;
-					num5 = 0.9f;
-				}
-				else if (num == 12)
-				{
-					num3 = 1.1f;
-					num2 = 1.05f;
-					num5 = 1.1f;
-					num4 = 1.15f;
-				}
-				else if (num == 13)
-				{
-					num3 = 0.8f;
-					num2 = 0.9f;
-					num5 = 1.1f;
-				}
-				else if (num == 14)
-				{
-					num3 = 1.15f;
-					num4 = 1.1f;
-				}
-				else if (num == 15)
-				{
-					num3 = 0.9f;
-					num4 = 0.85f;
-				}
-				else if (num == 16)
-				{
-					num2 = 1.1f;
-					num8 = 3;
-				}
-				else if (num == 17)
-				{
-					num4 = 0.85f;
-					num6 = 1.1f;
-				}
-				else if (num == 18)
-				{
-					num4 = 0.9f;
-					num6 = 1.15f;
-				}
-				else if (num == 19)
-				{
-					num3 = 1.15f;
-					num6 = 1.05f;
-				}
-				else if (num == 20)
-				{
-					num3 = 1.05f;
-					num6 = 1.05f;
-					num2 = 1.1f;
-					num4 = 0.95f;
-					num8 = 2;
-				}
-				else if (num == 21)
-				{
-					num3 = 1.15f;
-					num2 = 1.1f;
-				}
-				else if (num == 82)
-				{
-					num3 = 1.15f;
-					num2 = 1.15f;
-					num8 = 5;
-					num4 = 0.9f;
-					num6 = 1.1f;
-				}
-				else if (num == 22)
-				{
-					num3 = 0.9f;
-					num6 = 0.9f;
-					num2 = 0.85f;
-				}
-				else if (num == 23)
-				{
-					num4 = 1.15f;
-					num6 = 0.9f;
-				}
-				else if (num == 24)
-				{
-					num4 = 1.1f;
-					num3 = 0.8f;
-				}
-				else if (num == 25)
-				{
-					num4 = 1.1f;
-					num2 = 1.15f;
-					num8 = 1;
-				}
-				else if (num == 58)
-				{
-					num4 = 0.85f;
-					num2 = 0.85f;
-				}
-				else if (num == 26)
-				{
-					num7 = 0.85f;
-					num2 = 1.1f;
-				}
-				else if (num == 27)
-				{
-					num7 = 0.85f;
-				}
-				else if (num == 28)
-				{
-					num7 = 0.85f;
-					num2 = 1.15f;
-					num3 = 1.05f;
-				}
-				else if (num == 83)
-				{
-					num3 = 1.15f;
-					num2 = 1.15f;
-					num8 = 5;
-					num4 = 0.9f;
-					num7 = 0.9f;
-				}
-				else if (num == 29)
-				{
-					num7 = 1.1f;
-				}
-				else if (num == 30)
-				{
-					num7 = 1.2f;
-					num2 = 0.9f;
-				}
-				else if (num == 31)
-				{
-					num3 = 0.9f;
-					num2 = 0.9f;
-				}
-				else if (num == 32)
-				{
-					num7 = 1.15f;
-					num2 = 1.1f;
-				}
-				else if (num == 33)
-				{
-					num7 = 1.1f;
-					num3 = 1.1f;
-					num4 = 0.9f;
-				}
-				else if (num == 34)
-				{
-					num7 = 0.9f;
-					num3 = 1.1f;
-					num4 = 1.1f;
-					num2 = 1.1f;
-				}
-				else if (num == 35)
-				{
-					num7 = 1.2f;
-					num2 = 1.15f;
-					num3 = 1.15f;
-				}
-				else if (num == 52)
-				{
-					num7 = 0.9f;
-					num2 = 0.9f;
-					num4 = 0.9f;
-				}
-				else if (num == 36)
-				{
-					num8 = 3;
-				}
-				else if (num == 37)
-				{
-					num2 = 1.1f;
-					num8 = 3;
-					num3 = 1.1f;
-				}
-				else if (num == 38)
-				{
-					num3 = 1.15f;
-				}
-				else if (num == 53)
-				{
-					num2 = 1.1f;
-				}
-				else if (num == 54)
-				{
-					num3 = 1.15f;
-				}
-				else if (num == 55)
-				{
-					num3 = 1.15f;
-					num2 = 1.05f;
-				}
-				else if (num == 59)
-				{
-					num3 = 1.15f;
-					num2 = 1.15f;
-					num8 = 5;
-				}
-				else if (num == 60)
-				{
-					num2 = 1.15f;
-					num8 = 5;
-				}
-				else if (num == 61)
-				{
-					num8 = 5;
-				}
-				else if (num == 39)
-				{
-					num2 = 0.7f;
-					num3 = 0.8f;
-				}
-				else if (num == 40)
-				{
-					num2 = 0.85f;
-				}
-				else if (num == 56)
-				{
-					num3 = 0.8f;
-				}
-				else if (num == 41)
-				{
-					num3 = 0.85f;
-					num2 = 0.9f;
-				}
-				else if (num == 57)
-				{
-					num3 = 0.9f;
-					num2 = 1.18f;
-				}
-				else if (num == 42)
-				{
-					num4 = 0.9f;
-				}
-				else if (num == 43)
-				{
-					num2 = 1.1f;
-					num4 = 0.9f;
-				}
-				else if (num == 44)
-				{
-					num4 = 0.9f;
-					num8 = 3;
-				}
-				else if (num == 45)
-				{
-					num4 = 0.95f;
-				}
-				else if (num == 46)
-				{
-					num8 = 3;
-					num4 = 0.94f;
-					num2 = 1.07f;
-				}
-				else if (num == 47)
-				{
-					num4 = 1.15f;
-				}
-				else if (num == 48)
-				{
-					num4 = 1.2f;
-				}
-				else if (num == 49)
-				{
-					num4 = 1.08f;
-				}
-				else if (num == 50)
-				{
-					num2 = 0.8f;
-					num4 = 1.15f;
-				}
-				else if (num == 51)
-				{
-					num3 = 0.9f;
-					num4 = 0.9f;
-					num2 = 1.05f;
-					num8 = 2;
+					if (num == 2)
+					{
+						num5 = 1.18f;
+					}
+					else
+					{
+						if (num == 3)
+						{
+							num2 = 1.05f;
+							num8 = 2;
+							num5 = 1.05f;
+						}
+						else
+						{
+							if (num == 4)
+							{
+								num2 = 1.1f;
+								num5 = 1.1f;
+								num3 = 1.1f;
+							}
+							else
+							{
+								if (num == 5)
+								{
+									num2 = 1.15f;
+								}
+								else
+								{
+									if (num == 6)
+									{
+										num2 = 1.1f;
+									}
+									else
+									{
+										if (num == 81)
+										{
+											num3 = 1.15f;
+											num2 = 1.15f;
+											num8 = 5;
+											num4 = 0.9f;
+											num5 = 1.1f;
+										}
+										else
+										{
+											if (num == 7)
+											{
+												num5 = 0.82f;
+											}
+											else
+											{
+												if (num == 8)
+												{
+													num3 = 0.85f;
+													num2 = 0.85f;
+													num5 = 0.87f;
+												}
+												else
+												{
+													if (num == 9)
+													{
+														num5 = 0.9f;
+													}
+													else
+													{
+														if (num == 10)
+														{
+															num2 = 0.85f;
+														}
+														else
+														{
+															if (num == 11)
+															{
+																num4 = 1.1f;
+																num3 = 0.9f;
+																num5 = 0.9f;
+															}
+															else
+															{
+																if (num == 12)
+																{
+																	num3 = 1.1f;
+																	num2 = 1.05f;
+																	num5 = 1.1f;
+																	num4 = 1.15f;
+																}
+																else
+																{
+																	if (num == 13)
+																	{
+																		num3 = 0.8f;
+																		num2 = 0.9f;
+																		num5 = 1.1f;
+																	}
+																	else
+																	{
+																		if (num == 14)
+																		{
+																			num3 = 1.15f;
+																			num4 = 1.1f;
+																		}
+																		else
+																		{
+																			if (num == 15)
+																			{
+																				num3 = 0.9f;
+																				num4 = 0.85f;
+																			}
+																			else
+																			{
+																				if (num == 16)
+																				{
+																					num2 = 1.1f;
+																					num8 = 3;
+																				}
+																				else
+																				{
+																					if (num == 17)
+																					{
+																						num4 = 0.85f;
+																						num6 = 1.1f;
+																					}
+																					else
+																					{
+																						if (num == 18)
+																						{
+																							num4 = 0.9f;
+																							num6 = 1.15f;
+																						}
+																						else
+																						{
+																							if (num == 19)
+																							{
+																								num3 = 1.15f;
+																								num6 = 1.05f;
+																							}
+																							else
+																							{
+																								if (num == 20)
+																								{
+																									num3 = 1.05f;
+																									num6 = 1.05f;
+																									num2 = 1.1f;
+																									num4 = 0.95f;
+																									num8 = 2;
+																								}
+																								else
+																								{
+																									if (num == 21)
+																									{
+																										num3 = 1.15f;
+																										num2 = 1.1f;
+																									}
+																									else
+																									{
+																										if (num == 82)
+																										{
+																											num3 = 1.15f;
+																											num2 = 1.15f;
+																											num8 = 5;
+																											num4 = 0.9f;
+																											num6 = 1.1f;
+																										}
+																										else
+																										{
+																											if (num == 22)
+																											{
+																												num3 = 0.9f;
+																												num6 = 0.9f;
+																												num2 = 0.85f;
+																											}
+																											else
+																											{
+																												if (num == 23)
+																												{
+																													num4 = 1.15f;
+																													num6 = 0.9f;
+																												}
+																												else
+																												{
+																													if (num == 24)
+																													{
+																														num4 = 1.1f;
+																														num3 = 0.8f;
+																													}
+																													else
+																													{
+																														if (num == 25)
+																														{
+																															num4 = 1.1f;
+																															num2 = 1.15f;
+																															num8 = 1;
+																														}
+																														else
+																														{
+																															if (num == 58)
+																															{
+																																num4 = 0.85f;
+																																num2 = 0.85f;
+																															}
+																															else
+																															{
+																																if (num == 26)
+																																{
+																																	num7 = 0.85f;
+																																	num2 = 1.1f;
+																																}
+																																else
+																																{
+																																	if (num == 27)
+																																	{
+																																		num7 = 0.85f;
+																																	}
+																																	else
+																																	{
+																																		if (num == 28)
+																																		{
+																																			num7 = 0.85f;
+																																			num2 = 1.15f;
+																																			num3 = 1.05f;
+																																		}
+																																		else
+																																		{
+																																			if (num == 83)
+																																			{
+																																				num3 = 1.15f;
+																																				num2 = 1.15f;
+																																				num8 = 5;
+																																				num4 = 0.9f;
+																																				num7 = 0.9f;
+																																			}
+																																			else
+																																			{
+																																				if (num == 29)
+																																				{
+																																					num7 = 1.1f;
+																																				}
+																																				else
+																																				{
+																																					if (num == 30)
+																																					{
+																																						num7 = 1.2f;
+																																						num2 = 0.9f;
+																																					}
+																																					else
+																																					{
+																																						if (num == 31)
+																																						{
+																																							num3 = 0.9f;
+																																							num2 = 0.9f;
+																																						}
+																																						else
+																																						{
+																																							if (num == 32)
+																																							{
+																																								num7 = 1.15f;
+																																								num2 = 1.1f;
+																																							}
+																																							else
+																																							{
+																																								if (num == 33)
+																																								{
+																																									num7 = 1.1f;
+																																									num3 = 1.1f;
+																																									num4 = 0.9f;
+																																								}
+																																								else
+																																								{
+																																									if (num == 34)
+																																									{
+																																										num7 = 0.9f;
+																																										num3 = 1.1f;
+																																										num4 = 1.1f;
+																																										num2 = 1.1f;
+																																									}
+																																									else
+																																									{
+																																										if (num == 35)
+																																										{
+																																											num7 = 1.2f;
+																																											num2 = 1.15f;
+																																											num3 = 1.15f;
+																																										}
+																																										else
+																																										{
+																																											if (num == 52)
+																																											{
+																																												num7 = 0.9f;
+																																												num2 = 0.9f;
+																																												num4 = 0.9f;
+																																											}
+																																											else
+																																											{
+																																												if (num == 36)
+																																												{
+																																													num8 = 3;
+																																												}
+																																												else
+																																												{
+																																													if (num == 37)
+																																													{
+																																														num2 = 1.1f;
+																																														num8 = 3;
+																																														num3 = 1.1f;
+																																													}
+																																													else
+																																													{
+																																														if (num == 38)
+																																														{
+																																															num3 = 1.15f;
+																																														}
+																																														else
+																																														{
+																																															if (num == 53)
+																																															{
+																																																num2 = 1.1f;
+																																															}
+																																															else
+																																															{
+																																																if (num == 54)
+																																																{
+																																																	num3 = 1.15f;
+																																																}
+																																																else
+																																																{
+																																																	if (num == 55)
+																																																	{
+																																																		num3 = 1.15f;
+																																																		num2 = 1.05f;
+																																																	}
+																																																	else
+																																																	{
+																																																		if (num == 59)
+																																																		{
+																																																			num3 = 1.15f;
+																																																			num2 = 1.15f;
+																																																			num8 = 5;
+																																																		}
+																																																		else
+																																																		{
+																																																			if (num == 60)
+																																																			{
+																																																				num2 = 1.15f;
+																																																				num8 = 5;
+																																																			}
+																																																			else
+																																																			{
+																																																				if (num == 61)
+																																																				{
+																																																					num8 = 5;
+																																																				}
+																																																				else
+																																																				{
+																																																					if (num == 39)
+																																																					{
+																																																						num2 = 0.7f;
+																																																						num3 = 0.8f;
+																																																					}
+																																																					else
+																																																					{
+																																																						if (num == 40)
+																																																						{
+																																																							num2 = 0.85f;
+																																																						}
+																																																						else
+																																																						{
+																																																							if (num == 56)
+																																																							{
+																																																								num3 = 0.8f;
+																																																							}
+																																																							else
+																																																							{
+																																																								if (num == 41)
+																																																								{
+																																																									num3 = 0.85f;
+																																																									num2 = 0.9f;
+																																																								}
+																																																								else
+																																																								{
+																																																									if (num == 57)
+																																																									{
+																																																										num3 = 0.9f;
+																																																										num2 = 1.18f;
+																																																									}
+																																																									else
+																																																									{
+																																																										if (num == 42)
+																																																										{
+																																																											num4 = 0.9f;
+																																																										}
+																																																										else
+																																																										{
+																																																											if (num == 43)
+																																																											{
+																																																												num2 = 1.1f;
+																																																												num4 = 0.9f;
+																																																											}
+																																																											else
+																																																											{
+																																																												if (num == 44)
+																																																												{
+																																																													num4 = 0.9f;
+																																																													num8 = 3;
+																																																												}
+																																																												else
+																																																												{
+																																																													if (num == 45)
+																																																													{
+																																																														num4 = 0.95f;
+																																																													}
+																																																													else
+																																																													{
+																																																														if (num == 46)
+																																																														{
+																																																															num8 = 3;
+																																																															num4 = 0.94f;
+																																																															num2 = 1.07f;
+																																																														}
+																																																														else
+																																																														{
+																																																															if (num == 47)
+																																																															{
+																																																																num4 = 1.15f;
+																																																															}
+																																																															else
+																																																															{
+																																																																if (num == 48)
+																																																																{
+																																																																	num4 = 1.2f;
+																																																																}
+																																																																else
+																																																																{
+																																																																	if (num == 49)
+																																																																	{
+																																																																		num4 = 1.08f;
+																																																																	}
+																																																																	else
+																																																																	{
+																																																																		if (num == 50)
+																																																																		{
+																																																																			num2 = 0.8f;
+																																																																			num4 = 1.15f;
+																																																																		}
+																																																																		else
+																																																																		{
+																																																																			if (num == 51)
+																																																																			{
+																																																																				num3 = 0.9f;
+																																																																				num4 = 0.9f;
+																																																																				num2 = 1.05f;
+																																																																				num8 = 2;
+																																																																			}
+																																																																		}
+																																																																	}
+																																																																}
+																																																															}
+																																																														}
+																																																													}
+																																																												}
+																																																											}
+																																																										}
+																																																									}
+																																																								}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 				if (num2 != 1f && Math.Round((double)((float)this.damage * num2)) == (double)this.damage)
 				{
@@ -1145,17 +1351,26 @@ namespace Terraria
 			{
 				this.rare += 2;
 			}
-			else if ((double)num14 >= 1.05)
+			else
 			{
-				this.rare++;
-			}
-			else if ((double)num14 <= 0.8)
-			{
-				this.rare -= 2;
-			}
-			else if ((double)num14 <= 0.95)
-			{
-				this.rare--;
+				if ((double)num14 >= 1.05)
+				{
+					this.rare++;
+				}
+				else
+				{
+					if ((double)num14 <= 0.8)
+					{
+						this.rare -= 2;
+					}
+					else
+					{
+						if ((double)num14 <= 0.95)
+						{
+							this.rare--;
+						}
+					}
+				}
 			}
 			if (this.rare < -1)
 			{
@@ -1527,1344 +1742,1356 @@ namespace Terraria
 					text = "Mythical";
 				}
 			}
-			else if (Lang.lang == 2)
+			else
 			{
-				if (this.prefix == 1)
-				{
-					text = "Gross";
-				}
-				if (this.prefix == 2)
-				{
-					text = "Massiv";
-				}
-				if (this.prefix == 3)
-				{
-					text = "Gefährlich";
-				}
-				if (this.prefix == 4)
-				{
-					text = "Barbarisch";
-				}
-				if (this.prefix == 5)
-				{
-					text = "Scharf";
-				}
-				if (this.prefix == 6)
-				{
-					text = "Spitze";
-				}
-				if (this.prefix == 7)
-				{
-					text = "Winzig";
-				}
-				if (this.prefix == 8)
-				{
-					text = "Schrecklicher";
-				}
-				if (this.prefix == 9)
-				{
-					text = "Klein";
-				}
-				if (this.prefix == 10)
-				{
-					text = "Stumpf";
-				}
-				if (this.prefix == 11)
-				{
-					text = "Unglücklich";
-				}
-				if (this.prefix == 12)
-				{
-					text = "Sperrig";
-				}
-				if (this.prefix == 13)
-				{
-					text = "Beschämend";
-				}
-				if (this.prefix == 14)
-				{
-					text = "Schwer";
-				}
-				if (this.prefix == 15)
-				{
-					text = "Locker";
-				}
-				if (this.prefix == 16)
-				{
-					text = "Gesichtet";
-				}
-				if (this.prefix == 17)
-				{
-					text = "Schnell";
-				}
-				if (this.prefix == 18)
-				{
-					text = "Hastig";
-				}
-				if (this.prefix == 19)
-				{
-					text = "Einschüchternd";
-				}
-				if (this.prefix == 20)
-				{
-					text = "Tödlich";
-				}
-				if (this.prefix == 21)
-				{
-					text = "Stillen";
-				}
-				if (this.prefix == 22)
-				{
-					text = "Schrecklich";
-				}
-				if (this.prefix == 23)
-				{
-					text = "Lethargisch";
-				}
-				if (this.prefix == 24)
-				{
-					text = "Unbeholfen";
-				}
-				if (this.prefix == 25)
-				{
-					text = "Mächtig";
-				}
-				if (this.prefix == 26)
-				{
-					text = "Mystisch";
-				}
-				if (this.prefix == 27)
-				{
-					text = "Geschickt";
-				}
-				if (this.prefix == 28)
-				{
-					text = "Meisterhaft";
-				}
-				if (this.prefix == 29)
-				{
-					text = "Ungeschickt";
-				}
-				if (this.prefix == 30)
-				{
-					text = "Unwissend";
-				}
-				if (this.prefix == 31)
-				{
-					text = "Gestört";
-				}
-				if (this.prefix == 32)
-				{
-					text = "Intensiv";
-				}
-				if (this.prefix == 33)
-				{
-					text = "Tabu";
-				}
-				if (this.prefix == 34)
-				{
-					text = "Himmlisch";
-				}
-				if (this.prefix == 35)
-				{
-					text = "Wütend";
-				}
-				if (this.prefix == 36)
-				{
-					text = "Scharf";
-				}
-				if (this.prefix == 37)
-				{
-					text = "Überlegen";
-				}
-				if (this.prefix == 38)
-				{
-					text = "Kraftvoll";
-				}
-				if (this.prefix == 39)
-				{
-					text = "Gebrochen";
-				}
-				if (this.prefix == 40)
-				{
-					text = "Beschädigt";
-				}
-				if (this.prefix == 41)
-				{
-					text = "Schäbig";
-				}
-				if (this.prefix == 42)
-				{
-					text = "Rasch";
-				}
-				if (this.prefix == 43)
-				{
-					text = "Tödlich";
-				}
-				if (this.prefix == 44)
-				{
-					text = "Agil";
-				}
-				if (this.prefix == 45)
-				{
-					text = "Wendig";
-				}
-				if (this.prefix == 46)
-				{
-					text = "Mörderisch";
-				}
-				if (this.prefix == 47)
-				{
-					text = "Langsam";
-				}
-				if (this.prefix == 48)
-				{
-					text = "Träge";
-				}
-				if (this.prefix == 49)
-				{
-					text = "Faul";
-				}
-				if (this.prefix == 50)
-				{
-					text = "Lästig";
-				}
-				if (this.prefix == 51)
-				{
-					text = "Böse";
-				}
-				if (this.prefix == 52)
-				{
-					text = "Manisch";
-				}
-				if (this.prefix == 53)
-				{
-					text = "Verletzend";
-				}
-				if (this.prefix == 54)
-				{
-					text = "Stark";
-				}
-				if (this.prefix == 55)
-				{
-					text = "Unangenehm";
-				}
-				if (this.prefix == 56)
-				{
-					text = "Schwach";
-				}
-				if (this.prefix == 57)
-				{
-					text = "Rücksichtslos";
-				}
-				if (this.prefix == 58)
-				{
-					text = "Rasend";
-				}
-				if (this.prefix == 59)
-				{
-					text = "Fromm";
-				}
-				if (this.prefix == 60)
-				{
-					text = "Dämonisch";
-				}
-				if (this.prefix == 61)
-				{
-					text = "Eifrig";
-				}
-				if (this.prefix == 62)
-				{
-					text = "Schwer";
-				}
-				if (this.prefix == 63)
-				{
-					text = "Schutz-";
-				}
-				if (this.prefix == 64)
-				{
-					text = "Gepanzert";
-				}
-				if (this.prefix == 65)
-				{
-					text = "Defensiv";
-				}
-				if (this.prefix == 66)
-				{
-					text = "Geheimnisvoll";
-				}
-				if (this.prefix == 67)
-				{
-					text = "Präzise";
-				}
-				if (this.prefix == 68)
-				{
-					text = "Glücklich";
-				}
-				if (this.prefix == 69)
-				{
-					text = "Gezackt";
-				}
-				if (this.prefix == 70)
-				{
-					text = "Spike";
-				}
-				if (this.prefix == 71)
-				{
-					text = "Wütend";
-				}
-				if (this.prefix == 72)
-				{
-					text = "Bedrohlich";
-				}
-				if (this.prefix == 73)
-				{
-					text = "Rege";
-				}
-				if (this.prefix == 74)
-				{
-					text = "Flüchtig";
-				}
-				if (this.prefix == 75)
-				{
-					text = "Hastig";
-				}
-				if (this.prefix == 76)
-				{
-					text = "Rasch";
-				}
-				if (this.prefix == 77)
-				{
-					text = "Wild";
-				}
-				if (this.prefix == 78)
-				{
-					text = "Voreilig";
-				}
-				if (this.prefix == 79)
-				{
-					text = "Unerschrocken";
-				}
-				if (this.prefix == 80)
-				{
-					text = "Gewalttätig";
-				}
-				if (this.prefix == 81)
-				{
-					text = "Legendär";
-				}
-				if (this.prefix == 82)
-				{
-					text = "Unwirklich";
-				}
-				if (this.prefix == 83)
-				{
-					text = "Mythisch";
-				}
-			}
-			else if (Lang.lang == 3)
-			{
-				if (this.prefix == 1)
-				{
-					text = "Grande";
-				}
-				if (this.prefix == 2)
-				{
-					text = "Massiccio";
-				}
-				if (this.prefix == 3)
-				{
-					text = "Pericoloso";
-				}
-				if (this.prefix == 4)
-				{
-					text = "Selvaggio";
-				}
-				if (this.prefix == 5)
-				{
-					text = "Appuntito";
-				}
-				if (this.prefix == 6)
-				{
-					text = "Tagliente";
-				}
-				if (this.prefix == 7)
-				{
-					text = "Minuto";
-				}
-				if (this.prefix == 8)
-				{
-					text = "Terribile";
-				}
-				if (this.prefix == 9)
-				{
-					text = "Piccolo";
-				}
-				if (this.prefix == 10)
-				{
-					text = "Opaco";
-				}
-				if (this.prefix == 11)
-				{
-					text = "Infelice";
-				}
-				if (this.prefix == 12)
-				{
-					text = "Ingombrante";
-				}
-				if (this.prefix == 13)
-				{
-					text = "Vergognoso";
-				}
-				if (this.prefix == 14)
-				{
-					text = "Pesante";
-				}
-				if (this.prefix == 15)
-				{
-					text = "Luce";
-				}
-				if (this.prefix == 16)
-				{
-					text = "Avvistato";
-				}
-				if (this.prefix == 17)
-				{
-					text = "Rapido";
-				}
-				if (this.prefix == 18)
-				{
-					text = "Frettoloso";
-				}
-				if (this.prefix == 19)
-				{
-					text = "Intimidatorio";
-				}
-				if (this.prefix == 20)
-				{
-					text = "Mortale";
-				}
-				if (this.prefix == 21)
-				{
-					text = "Convinto";
-				}
-				if (this.prefix == 22)
-				{
-					text = "Orribile";
-				}
-				if (this.prefix == 23)
-				{
-					text = "Letargico";
-				}
-				if (this.prefix == 24)
-				{
-					text = "Scomodo";
-				}
-				if (this.prefix == 25)
-				{
-					text = "Potente";
-				}
-				if (this.prefix == 26)
-				{
-					text = "Mistico";
-				}
-				if (this.prefix == 27)
-				{
-					text = "Esperto";
-				}
-				if (this.prefix == 28)
-				{
-					text = "Magistrale";
-				}
-				if (this.prefix == 29)
-				{
-					text = "Inetto";
-				}
-				if (this.prefix == 30)
-				{
-					text = "Ignorante";
-				}
-				if (this.prefix == 31)
-				{
-					text = "Squilibrato";
-				}
-				if (this.prefix == 32)
-				{
-					text = "Intenso";
-				}
-				if (this.prefix == 33)
-				{
-					text = "Tabù";
-				}
-				if (this.prefix == 34)
-				{
-					text = "Celeste";
-				}
-				if (this.prefix == 35)
-				{
-					text = "Furioso";
-				}
-				if (this.prefix == 36)
-				{
-					text = "Appassionato";
-				}
-				if (this.prefix == 37)
-				{
-					text = "Superiore";
-				}
-				if (this.prefix == 38)
-				{
-					text = "Forte";
-				}
-				if (this.prefix == 39)
-				{
-					text = "Rotto";
-				}
-				if (this.prefix == 40)
-				{
-					text = "Danneggiato";
-				}
-				if (this.prefix == 41)
-				{
-					text = "Scadente";
-				}
-				if (this.prefix == 42)
-				{
-					text = "Veloce";
-				}
-				if (this.prefix == 43)
-				{
-					text = "Mortale";
-				}
-				if (this.prefix == 44)
-				{
-					text = "Agile";
-				}
-				if (this.prefix == 45)
-				{
-					text = "Lesto";
-				}
-				if (this.prefix == 46)
-				{
-					text = "Omicida";
-				}
-				if (this.prefix == 47)
-				{
-					text = "Lento";
-				}
-				if (this.prefix == 48)
-				{
-					text = "Pigro";
-				}
-				if (this.prefix == 49)
-				{
-					text = "Indolente";
-				}
-				if (this.prefix == 50)
-				{
-					text = "Fastidioso";
-				}
-				if (this.prefix == 51)
-				{
-					text = "Brutto";
-				}
-				if (this.prefix == 52)
-				{
-					text = "Maniaco";
-				}
-				if (this.prefix == 53)
-				{
-					text = "Offensivo";
-				}
-				if (this.prefix == 54)
-				{
-					text = "Robusto";
-				}
-				if (this.prefix == 55)
-				{
-					text = "Sgradevole";
-				}
-				if (this.prefix == 56)
-				{
-					text = "Debole";
-				}
-				if (this.prefix == 57)
-				{
-					text = "Spietato";
-				}
-				if (this.prefix == 58)
-				{
-					text = "Frenetico";
-				}
-				if (this.prefix == 59)
-				{
-					text = "Devoto";
-				}
-				if (this.prefix == 60)
-				{
-					text = "Demonico";
-				}
-				if (this.prefix == 61)
-				{
-					text = "Zelante";
-				}
-				if (this.prefix == 62)
-				{
-					text = "Duro";
-				}
-				if (this.prefix == 63)
-				{
-					text = "Protettivo";
-				}
-				if (this.prefix == 64)
-				{
-					text = "Corazzato";
-				}
-				if (this.prefix == 65)
-				{
-					text = "Difensivo";
-				}
-				if (this.prefix == 66)
-				{
-					text = "Arcano";
-				}
-				if (this.prefix == 67)
-				{
-					text = "Preciso";
-				}
-				if (this.prefix == 68)
-				{
-					text = "Fortunato";
-				}
-				if (this.prefix == 69)
-				{
-					text = "Frastagliato";
-				}
-				if (this.prefix == 70)
-				{
-					text = "Spillo";
-				}
-				if (this.prefix == 71)
-				{
-					text = "Arrabbiato";
-				}
-				if (this.prefix == 72)
-				{
-					text = "Minaccioso";
-				}
-				if (this.prefix == 73)
-				{
-					text = "Vivace";
-				}
-				if (this.prefix == 74)
-				{
-					text = "Fugace";
-				}
-				if (this.prefix == 75)
-				{
-					text = "Frettoloso";
-				}
-				if (this.prefix == 76)
-				{
-					text = "Veloce";
-				}
-				if (this.prefix == 77)
-				{
-					text = "Selvaggio";
-				}
-				if (this.prefix == 78)
-				{
-					text = "Temerario";
-				}
-				if (this.prefix == 79)
-				{
-					text = "Intrepido";
-				}
-				if (this.prefix == 80)
-				{
-					text = "Violento";
-				}
-				if (this.prefix == 81)
-				{
-					text = "Leggendario";
-				}
-				if (this.prefix == 82)
-				{
-					text = "Irreale";
-				}
-				if (this.prefix == 83)
-				{
-					text = "Mitico";
-				}
-			}
-			else if (Lang.lang == 4)
-			{
-				if (this.prefix == 1)
-				{
-					text = "Grand";
-				}
-				if (this.prefix == 2)
-				{
-					text = "Massif";
-				}
-				if (this.prefix == 3)
-				{
-					text = "Dangereuses";
-				}
-				if (this.prefix == 4)
-				{
-					text = "Sauvages";
-				}
-				if (this.prefix == 5)
-				{
-					text = "Coupante";
-				}
-				if (this.prefix == 6)
-				{
-					text = "Pointues";
-				}
-				if (this.prefix == 7)
-				{
-					text = "Minuscules";
-				}
-				if (this.prefix == 8)
-				{
-					text = "Terrible";
-				}
-				if (this.prefix == 9)
-				{
-					text = "Petit";
-				}
-				if (this.prefix == 10)
-				{
-					text = "Terne";
-				}
-				if (this.prefix == 11)
-				{
-					text = "Malheureux";
-				}
-				if (this.prefix == 12)
-				{
-					text = "Volumineux";
-				}
-				if (this.prefix == 13)
-				{
-					text = "Honteux";
-				}
-				if (this.prefix == 14)
-				{
-					text = "Lourds";
-				}
-				if (this.prefix == 15)
-				{
-					text = "Léger";
-				}
-				if (this.prefix == 16)
-				{
-					text = "Voyants";
-				}
-				if (this.prefix == 17)
-				{
-					text = "Rapide";
-				}
-				if (this.prefix == 18)
-				{
-					text = "Hâtif";
-				}
-				if (this.prefix == 19)
-				{
-					text = "Intimidant";
-				}
-				if (this.prefix == 20)
-				{
-					text = "Mortelle";
-				}
-				if (this.prefix == 21)
-				{
-					text = "Dévoué";
-				}
-				if (this.prefix == 22)
-				{
-					text = "Affreux";
-				}
-				if (this.prefix == 23)
-				{
-					text = "Léthargique";
-				}
-				if (this.prefix == 24)
-				{
-					text = "Scomodo";
-				}
-				if (this.prefix == 25)
-				{
-					text = "Puissante";
-				}
-				if (this.prefix == 26)
-				{
-					text = "Mystique";
-				}
-				if (this.prefix == 27)
-				{
-					text = "Expert";
-				}
-				if (this.prefix == 28)
-				{
-					text = "Magistrale";
-				}
-				if (this.prefix == 29)
-				{
-					text = "Inepte";
-				}
-				if (this.prefix == 30)
-				{
-					text = "Ignorants";
-				}
-				if (this.prefix == 31)
-				{
-					text = "Dérangé";
-				}
-				if (this.prefix == 32)
-				{
-					text = "Intenses";
-				}
-				if (this.prefix == 33)
-				{
-					text = "Tabou";
-				}
-				if (this.prefix == 34)
-				{
-					text = "Célestes";
-				}
-				if (this.prefix == 35)
-				{
-					text = "Furieux";
-				}
-				if (this.prefix == 36)
-				{
-					text = "Vif";
-				}
-				if (this.prefix == 37)
-				{
-					text = "Supérieure";
-				}
-				if (this.prefix == 38)
-				{
-					text = "Énergique";
-				}
-				if (this.prefix == 39)
-				{
-					text = "Rompu";
-				}
-				if (this.prefix == 40)
-				{
-					text = "Endommagés";
-				}
-				if (this.prefix == 41)
-				{
-					text = "Mesquin";
-				}
-				if (this.prefix == 42)
-				{
-					text = "Prompt";
-				}
-				if (this.prefix == 43)
-				{
-					text = "Mortelle";
-				}
-				if (this.prefix == 44)
-				{
-					text = "Agile";
-				}
-				if (this.prefix == 45)
-				{
-					text = "Leste";
-				}
-				if (this.prefix == 46)
-				{
-					text = "Meurtrier";
-				}
-				if (this.prefix == 47)
-				{
-					text = "Lente";
-				}
-				if (this.prefix == 48)
-				{
-					text = "Paresseux";
-				}
-				if (this.prefix == 49)
-				{
-					text = "Fainéant";
-				}
-				if (this.prefix == 50)
-				{
-					text = "Ennuyeux";
-				}
-				if (this.prefix == 51)
-				{
-					text = "Méchant";
-				}
-				if (this.prefix == 52)
-				{
-					text = "Maniaco";
-				}
-				if (this.prefix == 53)
-				{
-					text = "Blessant";
-				}
-				if (this.prefix == 54)
-				{
-					text = "Robuste";
-				}
-				if (this.prefix == 55)
-				{
-					text = "Désagréables";
-				}
-				if (this.prefix == 56)
-				{
-					text = "Faibles";
-				}
-				if (this.prefix == 57)
-				{
-					text = "Impitoyable";
-				}
-				if (this.prefix == 58)
-				{
-					text = "Frénétique";
-				}
-				if (this.prefix == 59)
-				{
-					text = "Pieux";
-				}
-				if (this.prefix == 60)
-				{
-					text = "Démoniaque";
-				}
-				if (this.prefix == 61)
-				{
-					text = "Zélé";
-				}
-				if (this.prefix == 62)
-				{
-					text = "Durs";
-				}
-				if (this.prefix == 63)
-				{
-					text = "Protecteur";
-				}
-				if (this.prefix == 64)
-				{
-					text = "Blindés";
-				}
-				if (this.prefix == 65)
-				{
-					text = "Défensif";
-				}
-				if (this.prefix == 66)
-				{
-					text = "Ésotérique";
-				}
-				if (this.prefix == 67)
-				{
-					text = "Précise";
-				}
-				if (this.prefix == 68)
-				{
-					text = "Chanceux";
-				}
-				if (this.prefix == 69)
-				{
-					text = "Déchiqueté";
-				}
-				if (this.prefix == 70)
-				{
-					text = "Pointes";
-				}
-				if (this.prefix == 71)
-				{
-					text = "Fâché";
-				}
-				if (this.prefix == 72)
-				{
-					text = "Menaçant";
-				}
-				if (this.prefix == 73)
-				{
-					text = "Brusque";
-				}
-				if (this.prefix == 74)
-				{
-					text = "Fugace";
-				}
-				if (this.prefix == 75)
-				{
-					text = "Hâtif";
-				}
-				if (this.prefix == 76)
-				{
-					text = "Prompt";
-				}
-				if (this.prefix == 77)
-				{
-					text = "Sauvages";
-				}
-				if (this.prefix == 78)
-				{
-					text = "Téméraire";
-				}
-				if (this.prefix == 79)
-				{
-					text = "Intrépide";
-				}
-				if (this.prefix == 80)
-				{
-					text = "Violent";
-				}
-				if (this.prefix == 81)
-				{
-					text = "Légendaire";
-				}
-				if (this.prefix == 82)
-				{
-					text = "Irréel";
-				}
-				if (this.prefix == 83)
-				{
-					text = "Mythique";
-				}
-			}
-			else if (Lang.lang == 5)
-			{
-				if (this.prefix == 1)
-				{
-					text = "Grande";
-				}
-				if (this.prefix == 2)
-				{
-					text = "Masivo";
-				}
-				if (this.prefix == 3)
-				{
-					text = "Peligroso";
-				}
-				if (this.prefix == 4)
-				{
-					text = "Salvaje";
-				}
-				if (this.prefix == 5)
-				{
-					text = "Puntiagudo";
-				}
-				if (this.prefix == 6)
-				{
-					text = "Agudo";
-				}
-				if (this.prefix == 7)
-				{
-					text = "Diminuto";
-				}
-				if (this.prefix == 8)
-				{
-					text = "Mala ";
-				}
-				if (this.prefix == 9)
-				{
-					text = "Pequeño";
-				}
-				if (this.prefix == 10)
-				{
-					text = "Aburrido";
-				}
-				if (this.prefix == 11)
-				{
-					text = "Infeliz";
-				}
-				if (this.prefix == 12)
-				{
-					text = "Voluminoso";
-				}
-				if (this.prefix == 13)
-				{
-					text = "Vergonzoso";
-				}
-				if (this.prefix == 14)
-				{
-					text = "Pesado";
-				}
-				if (this.prefix == 15)
-				{
-					text = "Ligero";
-				}
-				if (this.prefix == 16)
-				{
-					text = "Ámbito";
-				}
-				if (this.prefix == 17)
-				{
-					text = "Rápido";
-				}
-				if (this.prefix == 18)
-				{
-					text = "Precipitado";
-				}
-				if (this.prefix == 19)
-				{
-					text = "Intimidante";
-				}
-				if (this.prefix == 20)
-				{
-					text = "Mortal";
-				}
-				if (this.prefix == 21)
-				{
-					text = "Firme";
-				}
-				if (this.prefix == 22)
-				{
-					text = "Atroz";
-				}
-				if (this.prefix == 23)
-				{
-					text = "Letárgico";
-				}
-				if (this.prefix == 24)
-				{
-					text = "Torpe";
-				}
-				if (this.prefix == 25)
-				{
-					text = "Poderoso";
-				}
-				if (this.prefix == 26)
-				{
-					text = "Místico";
-				}
-				if (this.prefix == 27)
-				{
-					text = "Experto";
-				}
-				if (this.prefix == 28)
-				{
-					text = "Maestro";
-				}
-				if (this.prefix == 29)
-				{
-					text = "Inepto";
-				}
-				if (this.prefix == 30)
-				{
-					text = "Ignorante";
-				}
-				if (this.prefix == 31)
-				{
-					text = "Trastornado";
-				}
-				if (this.prefix == 32)
-				{
-					text = "Intenso";
-				}
-				if (this.prefix == 33)
-				{
-					text = "Tabú";
-				}
-				if (this.prefix == 34)
-				{
-					text = "Celeste";
-				}
-				if (this.prefix == 35)
-				{
-					text = "Furioso";
-				}
-				if (this.prefix == 36)
-				{
-					text = "Afilado";
-				}
-				if (this.prefix == 37)
-				{
-					text = "Superior";
-				}
-				if (this.prefix == 38)
-				{
-					text = "Fuerte";
-				}
-				if (this.prefix == 39)
-				{
-					text = "Roto";
-				}
-				if (this.prefix == 40)
-				{
-					text = "Estropeado";
-				}
-				if (this.prefix == 41)
-				{
-					text = "Regenerado";
-				}
-				if (this.prefix == 42)
-				{
-					text = "Pronto";
-				}
-				if (this.prefix == 43)
-				{
-					text = "Mortal";
-				}
-				if (this.prefix == 44)
-				{
-					text = "Ágil";
-				}
-				if (this.prefix == 45)
-				{
-					text = "Listo";
-				}
-				if (this.prefix == 46)
-				{
-					text = "Asesino";
-				}
-				if (this.prefix == 47)
-				{
-					text = "Lento";
-				}
-				if (this.prefix == 48)
-				{
-					text = "Perezoso";
-				}
-				if (this.prefix == 49)
-				{
-					text = "Gandul";
-				}
-				if (this.prefix == 50)
-				{
-					text = "Molesto";
-				}
-				if (this.prefix == 51)
-				{
-					text = "Feo";
-				}
-				if (this.prefix == 52)
-				{
-					text = "Maníacos";
-				}
-				if (this.prefix == 53)
-				{
-					text = "Hiriente";
-				}
-				if (this.prefix == 54)
-				{
-					text = "Vigoroso";
-				}
-				if (this.prefix == 55)
-				{
-					text = "Desagradable";
-				}
-				if (this.prefix == 56)
-				{
-					text = "Débil";
-				}
-				if (this.prefix == 57)
-				{
-					text = "Despiadado";
-				}
-				if (this.prefix == 58)
-				{
-					text = "Frenético";
-				}
-				if (this.prefix == 59)
-				{
-					text = "Piadoso";
-				}
-				if (this.prefix == 60)
-				{
-					text = "Demoníaco";
-				}
-				if (this.prefix == 61)
-				{
-					text = "Celoso";
-				}
-				if (this.prefix == 62)
-				{
-					text = "Duro";
-				}
-				if (this.prefix == 63)
-				{
-					text = "Protector";
-				}
-				if (this.prefix == 64)
-				{
-					text = "Blindado";
-				}
-				if (this.prefix == 65)
-				{
-					text = "Defensivo";
-				}
-				if (this.prefix == 66)
-				{
-					text = "Arcano";
-				}
-				if (this.prefix == 67)
-				{
-					text = "Preciso";
-				}
-				if (this.prefix == 68)
-				{
-					text = "Afortunado";
-				}
-				if (this.prefix == 69)
-				{
-					text = "Dentado";
-				}
-				if (this.prefix == 70)
-				{
-					text = "Claveteado";
-				}
-				if (this.prefix == 71)
-				{
-					text = "Enojado";
-				}
-				if (this.prefix == 72)
-				{
-					text = "Amenazador";
-				}
-				if (this.prefix == 73)
-				{
-					text = "Enérgico";
-				}
-				if (this.prefix == 74)
-				{
-					text = "Fugaz";
-				}
-				if (this.prefix == 75)
-				{
-					text = "Precipitado";
-				}
-				if (this.prefix == 76)
-				{
-					text = "Pronto";
-				}
-				if (this.prefix == 77)
-				{
-					text = "Salvaje";
-				}
-				if (this.prefix == 78)
-				{
-					text = "Temerario";
-				}
-				if (this.prefix == 79)
-				{
-					text = "Intrépido";
-				}
-				if (this.prefix == 80)
-				{
-					text = "Violento";
-				}
-				if (this.prefix == 81)
-				{
-					text = "Legendario";
-				}
-				if (this.prefix == 82)
-				{
-					text = "Irreal";
-				}
-				if (this.prefix == 83)
-				{
-					text = "Mítico";
+				if (Lang.lang == 2)
+				{
+					if (this.prefix == 1)
+					{
+						text = "Gross";
+					}
+					if (this.prefix == 2)
+					{
+						text = "Massiv";
+					}
+					if (this.prefix == 3)
+					{
+						text = "Gefährlich";
+					}
+					if (this.prefix == 4)
+					{
+						text = "Barbarisch";
+					}
+					if (this.prefix == 5)
+					{
+						text = "Scharf";
+					}
+					if (this.prefix == 6)
+					{
+						text = "Spitze";
+					}
+					if (this.prefix == 7)
+					{
+						text = "Winzig";
+					}
+					if (this.prefix == 8)
+					{
+						text = "Schrecklicher";
+					}
+					if (this.prefix == 9)
+					{
+						text = "Klein";
+					}
+					if (this.prefix == 10)
+					{
+						text = "Stumpf";
+					}
+					if (this.prefix == 11)
+					{
+						text = "Unglücklich";
+					}
+					if (this.prefix == 12)
+					{
+						text = "Sperrig";
+					}
+					if (this.prefix == 13)
+					{
+						text = "Beschämend";
+					}
+					if (this.prefix == 14)
+					{
+						text = "Schwer";
+					}
+					if (this.prefix == 15)
+					{
+						text = "Locker";
+					}
+					if (this.prefix == 16)
+					{
+						text = "Gesichtet";
+					}
+					if (this.prefix == 17)
+					{
+						text = "Schnell";
+					}
+					if (this.prefix == 18)
+					{
+						text = "Hastig";
+					}
+					if (this.prefix == 19)
+					{
+						text = "Einschüchternd";
+					}
+					if (this.prefix == 20)
+					{
+						text = "Tödlich";
+					}
+					if (this.prefix == 21)
+					{
+						text = "Stillen";
+					}
+					if (this.prefix == 22)
+					{
+						text = "Schrecklich";
+					}
+					if (this.prefix == 23)
+					{
+						text = "Lethargisch";
+					}
+					if (this.prefix == 24)
+					{
+						text = "Unbeholfen";
+					}
+					if (this.prefix == 25)
+					{
+						text = "Mächtig";
+					}
+					if (this.prefix == 26)
+					{
+						text = "Mystisch";
+					}
+					if (this.prefix == 27)
+					{
+						text = "Geschickt";
+					}
+					if (this.prefix == 28)
+					{
+						text = "Meisterhaft";
+					}
+					if (this.prefix == 29)
+					{
+						text = "Ungeschickt";
+					}
+					if (this.prefix == 30)
+					{
+						text = "Unwissend";
+					}
+					if (this.prefix == 31)
+					{
+						text = "Gestört";
+					}
+					if (this.prefix == 32)
+					{
+						text = "Intensiv";
+					}
+					if (this.prefix == 33)
+					{
+						text = "Tabu";
+					}
+					if (this.prefix == 34)
+					{
+						text = "Himmlisch";
+					}
+					if (this.prefix == 35)
+					{
+						text = "Wütend";
+					}
+					if (this.prefix == 36)
+					{
+						text = "Scharf";
+					}
+					if (this.prefix == 37)
+					{
+						text = "Überlegen";
+					}
+					if (this.prefix == 38)
+					{
+						text = "Kraftvoll";
+					}
+					if (this.prefix == 39)
+					{
+						text = "Gebrochen";
+					}
+					if (this.prefix == 40)
+					{
+						text = "Beschädigt";
+					}
+					if (this.prefix == 41)
+					{
+						text = "Schäbig";
+					}
+					if (this.prefix == 42)
+					{
+						text = "Rasch";
+					}
+					if (this.prefix == 43)
+					{
+						text = "Tödlich";
+					}
+					if (this.prefix == 44)
+					{
+						text = "Agil";
+					}
+					if (this.prefix == 45)
+					{
+						text = "Wendig";
+					}
+					if (this.prefix == 46)
+					{
+						text = "Mörderisch";
+					}
+					if (this.prefix == 47)
+					{
+						text = "Langsam";
+					}
+					if (this.prefix == 48)
+					{
+						text = "Träge";
+					}
+					if (this.prefix == 49)
+					{
+						text = "Faul";
+					}
+					if (this.prefix == 50)
+					{
+						text = "Lästig";
+					}
+					if (this.prefix == 51)
+					{
+						text = "Böse";
+					}
+					if (this.prefix == 52)
+					{
+						text = "Manisch";
+					}
+					if (this.prefix == 53)
+					{
+						text = "Verletzend";
+					}
+					if (this.prefix == 54)
+					{
+						text = "Stark";
+					}
+					if (this.prefix == 55)
+					{
+						text = "Unangenehm";
+					}
+					if (this.prefix == 56)
+					{
+						text = "Schwach";
+					}
+					if (this.prefix == 57)
+					{
+						text = "Rücksichtslos";
+					}
+					if (this.prefix == 58)
+					{
+						text = "Rasend";
+					}
+					if (this.prefix == 59)
+					{
+						text = "Fromm";
+					}
+					if (this.prefix == 60)
+					{
+						text = "Dämonisch";
+					}
+					if (this.prefix == 61)
+					{
+						text = "Eifrig";
+					}
+					if (this.prefix == 62)
+					{
+						text = "Schwer";
+					}
+					if (this.prefix == 63)
+					{
+						text = "Schutz-";
+					}
+					if (this.prefix == 64)
+					{
+						text = "Gepanzert";
+					}
+					if (this.prefix == 65)
+					{
+						text = "Defensiv";
+					}
+					if (this.prefix == 66)
+					{
+						text = "Geheimnisvoll";
+					}
+					if (this.prefix == 67)
+					{
+						text = "Präzise";
+					}
+					if (this.prefix == 68)
+					{
+						text = "Glücklich";
+					}
+					if (this.prefix == 69)
+					{
+						text = "Gezackt";
+					}
+					if (this.prefix == 70)
+					{
+						text = "Spike";
+					}
+					if (this.prefix == 71)
+					{
+						text = "Wütend";
+					}
+					if (this.prefix == 72)
+					{
+						text = "Bedrohlich";
+					}
+					if (this.prefix == 73)
+					{
+						text = "Rege";
+					}
+					if (this.prefix == 74)
+					{
+						text = "Flüchtig";
+					}
+					if (this.prefix == 75)
+					{
+						text = "Hastig";
+					}
+					if (this.prefix == 76)
+					{
+						text = "Rasch";
+					}
+					if (this.prefix == 77)
+					{
+						text = "Wild";
+					}
+					if (this.prefix == 78)
+					{
+						text = "Voreilig";
+					}
+					if (this.prefix == 79)
+					{
+						text = "Unerschrocken";
+					}
+					if (this.prefix == 80)
+					{
+						text = "Gewalttätig";
+					}
+					if (this.prefix == 81)
+					{
+						text = "Legendär";
+					}
+					if (this.prefix == 82)
+					{
+						text = "Unwirklich";
+					}
+					if (this.prefix == 83)
+					{
+						text = "Mythisch";
+					}
+				}
+				else
+				{
+					if (Lang.lang == 3)
+					{
+						if (this.prefix == 1)
+						{
+							text = "Grande";
+						}
+						if (this.prefix == 2)
+						{
+							text = "Massiccio";
+						}
+						if (this.prefix == 3)
+						{
+							text = "Pericoloso";
+						}
+						if (this.prefix == 4)
+						{
+							text = "Selvaggio";
+						}
+						if (this.prefix == 5)
+						{
+							text = "Appuntito";
+						}
+						if (this.prefix == 6)
+						{
+							text = "Tagliente";
+						}
+						if (this.prefix == 7)
+						{
+							text = "Minuto";
+						}
+						if (this.prefix == 8)
+						{
+							text = "Terribile";
+						}
+						if (this.prefix == 9)
+						{
+							text = "Piccolo";
+						}
+						if (this.prefix == 10)
+						{
+							text = "Opaco";
+						}
+						if (this.prefix == 11)
+						{
+							text = "Infelice";
+						}
+						if (this.prefix == 12)
+						{
+							text = "Ingombrante";
+						}
+						if (this.prefix == 13)
+						{
+							text = "Vergognoso";
+						}
+						if (this.prefix == 14)
+						{
+							text = "Pesante";
+						}
+						if (this.prefix == 15)
+						{
+							text = "Luce";
+						}
+						if (this.prefix == 16)
+						{
+							text = "Avvistato";
+						}
+						if (this.prefix == 17)
+						{
+							text = "Rapido";
+						}
+						if (this.prefix == 18)
+						{
+							text = "Frettoloso";
+						}
+						if (this.prefix == 19)
+						{
+							text = "Intimidatorio";
+						}
+						if (this.prefix == 20)
+						{
+							text = "Mortale";
+						}
+						if (this.prefix == 21)
+						{
+							text = "Convinto";
+						}
+						if (this.prefix == 22)
+						{
+							text = "Orribile";
+						}
+						if (this.prefix == 23)
+						{
+							text = "Letargico";
+						}
+						if (this.prefix == 24)
+						{
+							text = "Scomodo";
+						}
+						if (this.prefix == 25)
+						{
+							text = "Potente";
+						}
+						if (this.prefix == 26)
+						{
+							text = "Mistico";
+						}
+						if (this.prefix == 27)
+						{
+							text = "Esperto";
+						}
+						if (this.prefix == 28)
+						{
+							text = "Magistrale";
+						}
+						if (this.prefix == 29)
+						{
+							text = "Inetto";
+						}
+						if (this.prefix == 30)
+						{
+							text = "Ignorante";
+						}
+						if (this.prefix == 31)
+						{
+							text = "Squilibrato";
+						}
+						if (this.prefix == 32)
+						{
+							text = "Intenso";
+						}
+						if (this.prefix == 33)
+						{
+							text = "Tabù";
+						}
+						if (this.prefix == 34)
+						{
+							text = "Celeste";
+						}
+						if (this.prefix == 35)
+						{
+							text = "Furioso";
+						}
+						if (this.prefix == 36)
+						{
+							text = "Appassionato";
+						}
+						if (this.prefix == 37)
+						{
+							text = "Superiore";
+						}
+						if (this.prefix == 38)
+						{
+							text = "Forte";
+						}
+						if (this.prefix == 39)
+						{
+							text = "Rotto";
+						}
+						if (this.prefix == 40)
+						{
+							text = "Danneggiato";
+						}
+						if (this.prefix == 41)
+						{
+							text = "Scadente";
+						}
+						if (this.prefix == 42)
+						{
+							text = "Veloce";
+						}
+						if (this.prefix == 43)
+						{
+							text = "Mortale";
+						}
+						if (this.prefix == 44)
+						{
+							text = "Agile";
+						}
+						if (this.prefix == 45)
+						{
+							text = "Lesto";
+						}
+						if (this.prefix == 46)
+						{
+							text = "Omicida";
+						}
+						if (this.prefix == 47)
+						{
+							text = "Lento";
+						}
+						if (this.prefix == 48)
+						{
+							text = "Pigro";
+						}
+						if (this.prefix == 49)
+						{
+							text = "Indolente";
+						}
+						if (this.prefix == 50)
+						{
+							text = "Fastidioso";
+						}
+						if (this.prefix == 51)
+						{
+							text = "Brutto";
+						}
+						if (this.prefix == 52)
+						{
+							text = "Maniaco";
+						}
+						if (this.prefix == 53)
+						{
+							text = "Offensivo";
+						}
+						if (this.prefix == 54)
+						{
+							text = "Robusto";
+						}
+						if (this.prefix == 55)
+						{
+							text = "Sgradevole";
+						}
+						if (this.prefix == 56)
+						{
+							text = "Debole";
+						}
+						if (this.prefix == 57)
+						{
+							text = "Spietato";
+						}
+						if (this.prefix == 58)
+						{
+							text = "Frenetico";
+						}
+						if (this.prefix == 59)
+						{
+							text = "Devoto";
+						}
+						if (this.prefix == 60)
+						{
+							text = "Demonico";
+						}
+						if (this.prefix == 61)
+						{
+							text = "Zelante";
+						}
+						if (this.prefix == 62)
+						{
+							text = "Duro";
+						}
+						if (this.prefix == 63)
+						{
+							text = "Protettivo";
+						}
+						if (this.prefix == 64)
+						{
+							text = "Corazzato";
+						}
+						if (this.prefix == 65)
+						{
+							text = "Difensivo";
+						}
+						if (this.prefix == 66)
+						{
+							text = "Arcano";
+						}
+						if (this.prefix == 67)
+						{
+							text = "Preciso";
+						}
+						if (this.prefix == 68)
+						{
+							text = "Fortunato";
+						}
+						if (this.prefix == 69)
+						{
+							text = "Frastagliato";
+						}
+						if (this.prefix == 70)
+						{
+							text = "Spillo";
+						}
+						if (this.prefix == 71)
+						{
+							text = "Arrabbiato";
+						}
+						if (this.prefix == 72)
+						{
+							text = "Minaccioso";
+						}
+						if (this.prefix == 73)
+						{
+							text = "Vivace";
+						}
+						if (this.prefix == 74)
+						{
+							text = "Fugace";
+						}
+						if (this.prefix == 75)
+						{
+							text = "Frettoloso";
+						}
+						if (this.prefix == 76)
+						{
+							text = "Veloce";
+						}
+						if (this.prefix == 77)
+						{
+							text = "Selvaggio";
+						}
+						if (this.prefix == 78)
+						{
+							text = "Temerario";
+						}
+						if (this.prefix == 79)
+						{
+							text = "Intrepido";
+						}
+						if (this.prefix == 80)
+						{
+							text = "Violento";
+						}
+						if (this.prefix == 81)
+						{
+							text = "Leggendario";
+						}
+						if (this.prefix == 82)
+						{
+							text = "Irreale";
+						}
+						if (this.prefix == 83)
+						{
+							text = "Mitico";
+						}
+					}
+					else
+					{
+						if (Lang.lang == 4)
+						{
+							if (this.prefix == 1)
+							{
+								text = "Grand";
+							}
+							if (this.prefix == 2)
+							{
+								text = "Massif";
+							}
+							if (this.prefix == 3)
+							{
+								text = "Dangereuses";
+							}
+							if (this.prefix == 4)
+							{
+								text = "Sauvages";
+							}
+							if (this.prefix == 5)
+							{
+								text = "Coupante";
+							}
+							if (this.prefix == 6)
+							{
+								text = "Pointues";
+							}
+							if (this.prefix == 7)
+							{
+								text = "Minuscules";
+							}
+							if (this.prefix == 8)
+							{
+								text = "Terrible";
+							}
+							if (this.prefix == 9)
+							{
+								text = "Petit";
+							}
+							if (this.prefix == 10)
+							{
+								text = "Terne";
+							}
+							if (this.prefix == 11)
+							{
+								text = "Malheureux";
+							}
+							if (this.prefix == 12)
+							{
+								text = "Volumineux";
+							}
+							if (this.prefix == 13)
+							{
+								text = "Honteux";
+							}
+							if (this.prefix == 14)
+							{
+								text = "Lourds";
+							}
+							if (this.prefix == 15)
+							{
+								text = "Léger";
+							}
+							if (this.prefix == 16)
+							{
+								text = "Voyants";
+							}
+							if (this.prefix == 17)
+							{
+								text = "Rapide";
+							}
+							if (this.prefix == 18)
+							{
+								text = "Hâtif";
+							}
+							if (this.prefix == 19)
+							{
+								text = "Intimidant";
+							}
+							if (this.prefix == 20)
+							{
+								text = "Mortelle";
+							}
+							if (this.prefix == 21)
+							{
+								text = "Dévoué";
+							}
+							if (this.prefix == 22)
+							{
+								text = "Affreux";
+							}
+							if (this.prefix == 23)
+							{
+								text = "Léthargique";
+							}
+							if (this.prefix == 24)
+							{
+								text = "Scomodo";
+							}
+							if (this.prefix == 25)
+							{
+								text = "Puissante";
+							}
+							if (this.prefix == 26)
+							{
+								text = "Mystique";
+							}
+							if (this.prefix == 27)
+							{
+								text = "Expert";
+							}
+							if (this.prefix == 28)
+							{
+								text = "Magistrale";
+							}
+							if (this.prefix == 29)
+							{
+								text = "Inepte";
+							}
+							if (this.prefix == 30)
+							{
+								text = "Ignorants";
+							}
+							if (this.prefix == 31)
+							{
+								text = "Dérangé";
+							}
+							if (this.prefix == 32)
+							{
+								text = "Intenses";
+							}
+							if (this.prefix == 33)
+							{
+								text = "Tabou";
+							}
+							if (this.prefix == 34)
+							{
+								text = "Célestes";
+							}
+							if (this.prefix == 35)
+							{
+								text = "Furieux";
+							}
+							if (this.prefix == 36)
+							{
+								text = "Vif";
+							}
+							if (this.prefix == 37)
+							{
+								text = "Supérieure";
+							}
+							if (this.prefix == 38)
+							{
+								text = "Énergique";
+							}
+							if (this.prefix == 39)
+							{
+								text = "Rompu";
+							}
+							if (this.prefix == 40)
+							{
+								text = "Endommagés";
+							}
+							if (this.prefix == 41)
+							{
+								text = "Mesquin";
+							}
+							if (this.prefix == 42)
+							{
+								text = "Prompt";
+							}
+							if (this.prefix == 43)
+							{
+								text = "Mortelle";
+							}
+							if (this.prefix == 44)
+							{
+								text = "Agile";
+							}
+							if (this.prefix == 45)
+							{
+								text = "Leste";
+							}
+							if (this.prefix == 46)
+							{
+								text = "Meurtrier";
+							}
+							if (this.prefix == 47)
+							{
+								text = "Lente";
+							}
+							if (this.prefix == 48)
+							{
+								text = "Paresseux";
+							}
+							if (this.prefix == 49)
+							{
+								text = "Fainéant";
+							}
+							if (this.prefix == 50)
+							{
+								text = "Ennuyeux";
+							}
+							if (this.prefix == 51)
+							{
+								text = "Méchant";
+							}
+							if (this.prefix == 52)
+							{
+								text = "Maniaco";
+							}
+							if (this.prefix == 53)
+							{
+								text = "Blessant";
+							}
+							if (this.prefix == 54)
+							{
+								text = "Robuste";
+							}
+							if (this.prefix == 55)
+							{
+								text = "Désagréables";
+							}
+							if (this.prefix == 56)
+							{
+								text = "Faibles";
+							}
+							if (this.prefix == 57)
+							{
+								text = "Impitoyable";
+							}
+							if (this.prefix == 58)
+							{
+								text = "Frénétique";
+							}
+							if (this.prefix == 59)
+							{
+								text = "Pieux";
+							}
+							if (this.prefix == 60)
+							{
+								text = "Démoniaque";
+							}
+							if (this.prefix == 61)
+							{
+								text = "Zélé";
+							}
+							if (this.prefix == 62)
+							{
+								text = "Durs";
+							}
+							if (this.prefix == 63)
+							{
+								text = "Protecteur";
+							}
+							if (this.prefix == 64)
+							{
+								text = "Blindés";
+							}
+							if (this.prefix == 65)
+							{
+								text = "Défensif";
+							}
+							if (this.prefix == 66)
+							{
+								text = "Ésotérique";
+							}
+							if (this.prefix == 67)
+							{
+								text = "Précise";
+							}
+							if (this.prefix == 68)
+							{
+								text = "Chanceux";
+							}
+							if (this.prefix == 69)
+							{
+								text = "Déchiqueté";
+							}
+							if (this.prefix == 70)
+							{
+								text = "Pointes";
+							}
+							if (this.prefix == 71)
+							{
+								text = "Fâché";
+							}
+							if (this.prefix == 72)
+							{
+								text = "Menaçant";
+							}
+							if (this.prefix == 73)
+							{
+								text = "Brusque";
+							}
+							if (this.prefix == 74)
+							{
+								text = "Fugace";
+							}
+							if (this.prefix == 75)
+							{
+								text = "Hâtif";
+							}
+							if (this.prefix == 76)
+							{
+								text = "Prompt";
+							}
+							if (this.prefix == 77)
+							{
+								text = "Sauvages";
+							}
+							if (this.prefix == 78)
+							{
+								text = "Téméraire";
+							}
+							if (this.prefix == 79)
+							{
+								text = "Intrépide";
+							}
+							if (this.prefix == 80)
+							{
+								text = "Violent";
+							}
+							if (this.prefix == 81)
+							{
+								text = "Légendaire";
+							}
+							if (this.prefix == 82)
+							{
+								text = "Irréel";
+							}
+							if (this.prefix == 83)
+							{
+								text = "Mythique";
+							}
+						}
+						else
+						{
+							if (Lang.lang == 5)
+							{
+								if (this.prefix == 1)
+								{
+									text = "Grande";
+								}
+								if (this.prefix == 2)
+								{
+									text = "Masivo";
+								}
+								if (this.prefix == 3)
+								{
+									text = "Peligroso";
+								}
+								if (this.prefix == 4)
+								{
+									text = "Salvaje";
+								}
+								if (this.prefix == 5)
+								{
+									text = "Puntiagudo";
+								}
+								if (this.prefix == 6)
+								{
+									text = "Agudo";
+								}
+								if (this.prefix == 7)
+								{
+									text = "Diminuto";
+								}
+								if (this.prefix == 8)
+								{
+									text = "Mala ";
+								}
+								if (this.prefix == 9)
+								{
+									text = "Pequeño";
+								}
+								if (this.prefix == 10)
+								{
+									text = "Aburrido";
+								}
+								if (this.prefix == 11)
+								{
+									text = "Infeliz";
+								}
+								if (this.prefix == 12)
+								{
+									text = "Voluminoso";
+								}
+								if (this.prefix == 13)
+								{
+									text = "Vergonzoso";
+								}
+								if (this.prefix == 14)
+								{
+									text = "Pesado";
+								}
+								if (this.prefix == 15)
+								{
+									text = "Ligero";
+								}
+								if (this.prefix == 16)
+								{
+									text = "Ámbito";
+								}
+								if (this.prefix == 17)
+								{
+									text = "Rápido";
+								}
+								if (this.prefix == 18)
+								{
+									text = "Precipitado";
+								}
+								if (this.prefix == 19)
+								{
+									text = "Intimidante";
+								}
+								if (this.prefix == 20)
+								{
+									text = "Mortal";
+								}
+								if (this.prefix == 21)
+								{
+									text = "Firme";
+								}
+								if (this.prefix == 22)
+								{
+									text = "Atroz";
+								}
+								if (this.prefix == 23)
+								{
+									text = "Letárgico";
+								}
+								if (this.prefix == 24)
+								{
+									text = "Torpe";
+								}
+								if (this.prefix == 25)
+								{
+									text = "Poderoso";
+								}
+								if (this.prefix == 26)
+								{
+									text = "Místico";
+								}
+								if (this.prefix == 27)
+								{
+									text = "Experto";
+								}
+								if (this.prefix == 28)
+								{
+									text = "Maestro";
+								}
+								if (this.prefix == 29)
+								{
+									text = "Inepto";
+								}
+								if (this.prefix == 30)
+								{
+									text = "Ignorante";
+								}
+								if (this.prefix == 31)
+								{
+									text = "Trastornado";
+								}
+								if (this.prefix == 32)
+								{
+									text = "Intenso";
+								}
+								if (this.prefix == 33)
+								{
+									text = "Tabú";
+								}
+								if (this.prefix == 34)
+								{
+									text = "Celeste";
+								}
+								if (this.prefix == 35)
+								{
+									text = "Furioso";
+								}
+								if (this.prefix == 36)
+								{
+									text = "Afilado";
+								}
+								if (this.prefix == 37)
+								{
+									text = "Superior";
+								}
+								if (this.prefix == 38)
+								{
+									text = "Fuerte";
+								}
+								if (this.prefix == 39)
+								{
+									text = "Roto";
+								}
+								if (this.prefix == 40)
+								{
+									text = "Estropeado";
+								}
+								if (this.prefix == 41)
+								{
+									text = "Regenerado";
+								}
+								if (this.prefix == 42)
+								{
+									text = "Pronto";
+								}
+								if (this.prefix == 43)
+								{
+									text = "Mortal";
+								}
+								if (this.prefix == 44)
+								{
+									text = "Ágil";
+								}
+								if (this.prefix == 45)
+								{
+									text = "Listo";
+								}
+								if (this.prefix == 46)
+								{
+									text = "Asesino";
+								}
+								if (this.prefix == 47)
+								{
+									text = "Lento";
+								}
+								if (this.prefix == 48)
+								{
+									text = "Perezoso";
+								}
+								if (this.prefix == 49)
+								{
+									text = "Gandul";
+								}
+								if (this.prefix == 50)
+								{
+									text = "Molesto";
+								}
+								if (this.prefix == 51)
+								{
+									text = "Feo";
+								}
+								if (this.prefix == 52)
+								{
+									text = "Maníacos";
+								}
+								if (this.prefix == 53)
+								{
+									text = "Hiriente";
+								}
+								if (this.prefix == 54)
+								{
+									text = "Vigoroso";
+								}
+								if (this.prefix == 55)
+								{
+									text = "Desagradable";
+								}
+								if (this.prefix == 56)
+								{
+									text = "Débil";
+								}
+								if (this.prefix == 57)
+								{
+									text = "Despiadado";
+								}
+								if (this.prefix == 58)
+								{
+									text = "Frenético";
+								}
+								if (this.prefix == 59)
+								{
+									text = "Piadoso";
+								}
+								if (this.prefix == 60)
+								{
+									text = "Demoníaco";
+								}
+								if (this.prefix == 61)
+								{
+									text = "Celoso";
+								}
+								if (this.prefix == 62)
+								{
+									text = "Duro";
+								}
+								if (this.prefix == 63)
+								{
+									text = "Protector";
+								}
+								if (this.prefix == 64)
+								{
+									text = "Blindado";
+								}
+								if (this.prefix == 65)
+								{
+									text = "Defensivo";
+								}
+								if (this.prefix == 66)
+								{
+									text = "Arcano";
+								}
+								if (this.prefix == 67)
+								{
+									text = "Preciso";
+								}
+								if (this.prefix == 68)
+								{
+									text = "Afortunado";
+								}
+								if (this.prefix == 69)
+								{
+									text = "Dentado";
+								}
+								if (this.prefix == 70)
+								{
+									text = "Claveteado";
+								}
+								if (this.prefix == 71)
+								{
+									text = "Enojado";
+								}
+								if (this.prefix == 72)
+								{
+									text = "Amenazador";
+								}
+								if (this.prefix == 73)
+								{
+									text = "Enérgico";
+								}
+								if (this.prefix == 74)
+								{
+									text = "Fugaz";
+								}
+								if (this.prefix == 75)
+								{
+									text = "Precipitado";
+								}
+								if (this.prefix == 76)
+								{
+									text = "Pronto";
+								}
+								if (this.prefix == 77)
+								{
+									text = "Salvaje";
+								}
+								if (this.prefix == 78)
+								{
+									text = "Temerario";
+								}
+								if (this.prefix == 79)
+								{
+									text = "Intrépido";
+								}
+								if (this.prefix == 80)
+								{
+									text = "Violento";
+								}
+								if (this.prefix == 81)
+								{
+									text = "Legendario";
+								}
+								if (this.prefix == 82)
+								{
+									text = "Irreal";
+								}
+								if (this.prefix == 83)
+								{
+									text = "Mítico";
+								}
+							}
+						}
+					}
 				}
 			}
 			if (Lang.lang <= 1)
@@ -2921,15 +3148,9 @@ namespace Terraria
 				this.toolTip2 = Lang.toolTip2(this.netID, false);
 			}
 		}
-
-		public void SetDefaults(string itemname)
+		public void SetDefaults(string ItemName)
 		{
-			if (!ServerApi.Hooks.InvokeItemSetDefaultsString(ref itemname, this))
-				RealSetDefaults(itemname);
-		}
 
-		public void RealSetDefaults(string ItemName)
-		{
 			this.name = "";
 			bool flag = false;
 			if (ItemName == "Gold Pickaxe")
@@ -2944,538 +3165,755 @@ namespace Terraria
 				this.value = 10000;
 				this.toolTip = "Can mine Meteorite";
 				this.netID = -1;
+
+                this.craftingLvl = 20;
 			}
-			else if (ItemName == "Gold Broadsword")
+			else
 			{
-				this.SetDefaults(4, false);
-				this.color = new Color(210, 190, 0, 100);
-				this.useAnimation = 20;
-				this.damage = 13;
-				this.scale = 1.05f;
-				this.value = 9000;
-				this.netID = -2;
-			}
-			else if (ItemName == "Gold Shortsword")
-			{
-				this.SetDefaults(6, false);
-				this.color = new Color(210, 190, 0, 100);
-				this.damage = 11;
-				this.useAnimation = 11;
-				this.scale = 0.95f;
-				this.value = 7000;
-				this.netID = -3;
-			}
-			else if (ItemName == "Gold Axe")
-			{
-				this.SetDefaults(10, false);
-				this.color = new Color(210, 190, 0, 100);
-				this.useTime = 18;
-				this.axe = 11;
-				this.useAnimation = 26;
-				this.scale = 1.15f;
-				this.damage = 7;
-				this.value = 8000;
-				this.netID = -4;
-			}
-			else if (ItemName == "Gold Hammer")
-			{
-				this.SetDefaults(7, false);
-				this.color = new Color(210, 190, 0, 100);
-				this.useAnimation = 28;
-				this.useTime = 23;
-				this.scale = 1.25f;
-				this.damage = 9;
-				this.hammer = 55;
-				this.value = 8000;
-				this.netID = -5;
-			}
-			else if (ItemName == "Gold Bow")
-			{
-				this.SetDefaults(99, false);
-				this.useAnimation = 26;
-				this.useTime = 26;
-				this.color = new Color(210, 190, 0, 100);
-				this.damage = 11;
-				this.value = 7000;
-				this.netID = -6;
-			}
-			else if (ItemName == "Silver Pickaxe")
-			{
-				this.SetDefaults(1, false);
-				this.color = new Color(180, 180, 180, 100);
-				this.useTime = 11;
-				this.pick = 45;
-				this.useAnimation = 19;
-				this.scale = 1.05f;
-				this.damage = 6;
-				this.value = 5000;
-				this.netID = -7;
-			}
-			else if (ItemName == "Silver Broadsword")
-			{
-				this.SetDefaults(4, false);
-				this.color = new Color(180, 180, 180, 100);
-				this.useAnimation = 21;
-				this.damage = 11;
-				this.value = 4500;
-				this.netID = -8;
-			}
-			else if (ItemName == "Silver Shortsword")
-			{
-				this.SetDefaults(6, false);
-				this.color = new Color(180, 180, 180, 100);
-				this.damage = 9;
-				this.useAnimation = 12;
-				this.scale = 0.95f;
-				this.value = 3500;
-				this.netID = -9;
-			}
-			else if (ItemName == "Silver Axe")
-			{
-				this.SetDefaults(10, false);
-				this.color = new Color(180, 180, 180, 100);
-				this.useTime = 18;
-				this.axe = 10;
-				this.useAnimation = 26;
-				this.scale = 1.15f;
-				this.damage = 6;
-				this.value = 4000;
-				this.netID = -10;
-			}
-			else if (ItemName == "Silver Hammer")
-			{
-				this.SetDefaults(7, false);
-				this.color = new Color(180, 180, 180, 100);
-				this.useAnimation = 29;
-				this.useTime = 19;
-				this.scale = 1.25f;
-				this.damage = 9;
-				this.hammer = 45;
-				this.value = 4000;
-				this.netID = -11;
-			}
-			else if (ItemName == "Silver Bow")
-			{
-				this.SetDefaults(99, false);
-				this.useAnimation = 27;
-				this.useTime = 27;
-				this.color = new Color(180, 180, 180, 100);
-				this.damage = 9;
-				this.value = 3500;
-				this.netID = -12;
-			}
-			else if (ItemName == "Copper Pickaxe")
-			{
-				this.SetDefaults(1, false);
-				this.color = new Color(180, 100, 45, 80);
-				this.useTime = 15;
-				this.pick = 35;
-				this.useAnimation = 23;
-				this.damage = 4;
-				this.scale = 0.9f;
-				this.tileBoost = -1;
-				this.value = 500;
-				this.netID = -13;
-			}
-			else if (ItemName == "Copper Broadsword")
-			{
-				this.SetDefaults(4, false);
-				this.color = new Color(180, 100, 45, 80);
-				this.useAnimation = 23;
-				this.damage = 8;
-				this.value = 450;
-				this.netID = -14;
-			}
-			else if (ItemName == "Copper Shortsword")
-			{
-				this.SetDefaults(6, false);
-				this.color = new Color(180, 100, 45, 80);
-				this.damage = 5;
-				this.useAnimation = 13;
-				this.scale = 0.8f;
-				this.value = 350;
-				this.netID = -15;
-			}
-			else if (ItemName == "Copper Axe")
-			{
-				this.SetDefaults(10, false);
-				this.color = new Color(180, 100, 45, 80);
-				this.useTime = 21;
-				this.axe = 7;
-				this.useAnimation = 30;
-				this.scale = 1f;
-				this.damage = 3;
-				this.tileBoost = -1;
-				this.value = 400;
-				this.netID = -16;
-			}
-			else if (ItemName == "Copper Hammer")
-			{
-				this.SetDefaults(7, false);
-				this.color = new Color(180, 100, 45, 80);
-				this.useAnimation = 33;
-				this.useTime = 23;
-				this.scale = 1.1f;
-				this.damage = 4;
-				this.hammer = 35;
-				this.tileBoost = -1;
-				this.value = 400;
-				this.netID = -17;
-			}
-			else if (ItemName == "Copper Bow")
-			{
-				this.SetDefaults(99, false);
-				this.useAnimation = 29;
-				this.useTime = 29;
-				this.color = new Color(180, 100, 45, 80);
-				this.damage = 6;
-				this.value = 350;
-				this.netID = -18;
-			}
-			else if (ItemName == "Blue Phasesaber")
-			{
-				this.SetDefaults(198, false);
-				this.damage = 41;
-				this.scale = 1.15f;
-				flag = true;
-				this.autoReuse = true;
-				this.useTurn = true;
-				this.rare = 4;
-				this.netID = -19;
-			}
-			else if (ItemName == "Red Phasesaber")
-			{
-				this.SetDefaults(199, false);
-				this.damage = 41;
-				this.scale = 1.15f;
-				flag = true;
-				this.autoReuse = true;
-				this.useTurn = true;
-				this.rare = 4;
-				this.netID = -20;
-			}
-			else if (ItemName == "Green Phasesaber")
-			{
-				this.SetDefaults(200, false);
-				this.damage = 41;
-				this.scale = 1.15f;
-				flag = true;
-				this.autoReuse = true;
-				this.useTurn = true;
-				this.rare = 4;
-				this.netID = -21;
-			}
-			else if (ItemName == "Purple Phasesaber")
-			{
-				this.SetDefaults(201, false);
-				this.damage = 41;
-				this.scale = 1.15f;
-				flag = true;
-				this.autoReuse = true;
-				this.useTurn = true;
-				this.rare = 4;
-				this.netID = -22;
-			}
-			else if (ItemName == "White Phasesaber")
-			{
-				this.SetDefaults(202, false);
-				this.damage = 41;
-				this.scale = 1.15f;
-				flag = true;
-				this.autoReuse = true;
-				this.useTurn = true;
-				this.rare = 4;
-				this.netID = -23;
-			}
-			else if (ItemName == "Yellow Phasesaber")
-			{
-				this.SetDefaults(203, false);
-				this.damage = 41;
-				this.scale = 1.15f;
-				flag = true;
-				this.autoReuse = true;
-				this.useTurn = true;
-				this.rare = 4;
-				this.netID = -24;
-			}
-			else if (ItemName == "Tin Pickaxe")
-			{
-				this.SetDefaults(1, false);
-				this.color = new Color(170, 150, 80, 110);
-				this.useTime = 14;
-				this.pick = 35;
-				this.useAnimation = 21;
-				this.damage = 5;
-				this.scale = 0.95f;
-				this.value = 750;
-				this.netID = -25;
-			}
-			else if (ItemName == "Tin Broadsword")
-			{
-				this.SetDefaults(4, false);
-				this.color = new Color(170, 150, 80, 110);
-				this.useAnimation = 22;
-				this.damage = 9;
-				this.value = 675;
-				this.netID = -26;
-			}
-			else if (ItemName == "Tin Shortsword")
-			{
-				this.SetDefaults(6, false);
-				this.color = new Color(170, 150, 80, 110);
-				this.damage = 7;
-				this.useAnimation = 12;
-				this.scale = 0.85f;
-				this.value = 525;
-				this.netID = -27;
-			}
-			else if (ItemName == "Tin Axe")
-			{
-				this.SetDefaults(10, false);
-				this.color = new Color(170, 150, 80, 110);
-				this.useTime = 20;
-				this.axe = 8;
-				this.useAnimation = 28;
-				this.scale = 1.05f;
-				this.damage = 4;
-				this.value = 600;
-				this.netID = -28;
-			}
-			else if (ItemName == "Tin Hammer")
-			{
-				this.SetDefaults(7, false);
-				this.color = new Color(170, 150, 80, 110);
-				this.useAnimation = 31;
-				this.useTime = 21;
-				this.scale = 1.15f;
-				this.damage = 6;
-				this.hammer = 38;
-				this.value = 600;
-				this.netID = -29;
-			}
-			else if (ItemName == "Tin Bow")
-			{
-				this.SetDefaults(99, false);
-				this.useAnimation = 28;
-				this.useTime = 28;
-				this.color = new Color(170, 150, 80, 110);
-				this.damage = 7;
-				this.value = 525;
-				this.netID = -30;
-			}
-			else if (ItemName == "Lead Pickaxe")
-			{
-				this.SetDefaults(1, false);
-				this.color = new Color(90, 100, 110, 170);
-				this.useTime = 12;
-				this.pick = 43;
-				this.useAnimation = 19;
-				this.damage = 6;
-				this.scale = 1.025f;
-				this.value = 3000;
-				this.netID = -31;
-			}
-			else if (ItemName == "Lead Broadsword")
-			{
-				this.SetDefaults(4, false);
-				this.color = new Color(80, 90, 170, 160);
-				this.useAnimation = 21;
-				this.damage = 11;
-				this.value = 2700;
-				this.netID = -32;
-			}
-			else if (ItemName == "Lead Shortsword")
-			{
-				this.SetDefaults(6, false);
-				this.color = new Color(90, 100, 110, 170);
-				this.damage = 9;
-				this.useAnimation = 12;
-				this.scale = 0.925f;
-				this.value = 2100;
-				this.netID = -33;
-			}
-			else if (ItemName == "Lead Axe")
-			{
-				this.SetDefaults(10, false);
-				this.color = new Color(90, 100, 110, 170);
-				this.useTime = 19;
-				this.axe = 10;
-				this.useAnimation = 28;
-				this.scale = 1.125f;
-				this.damage = 6;
-				this.value = 2400;
-				this.netID = -34;
-			}
-			else if (ItemName == "Lead Hammer")
-			{
-				this.SetDefaults(7, false);
-				this.color = new Color(90, 100, 110, 170);
-				this.useAnimation = 29;
-				this.useTime = 19;
-				this.scale = 1.225f;
-				this.damage = 8;
-				this.hammer = 43;
-				this.value = 2400;
-				this.netID = -35;
-			}
-			else if (ItemName == "Lead Bow")
-			{
-				this.SetDefaults(99, false);
-				this.useAnimation = 27;
-				this.useTime = 27;
-				this.color = new Color(90, 100, 110, 170);
-				this.damage = 9;
-				this.value = 2100;
-				this.netID = -36;
-			}
-			else if (ItemName == "Tungsten Pickaxe")
-			{
-				this.SetDefaults(1, false);
-				this.color = new Color(130, 180, 130, 100);
-				this.useTime = 19;
-				this.pick = 50;
-				this.useAnimation = 21;
-				this.scale = 1.05f;
-				this.damage = 6;
-				this.value = 7500;
-				this.netID = -37;
-				this.toolTip = "Can mine Meteorite";
-			}
-			else if (ItemName == "Tungsten Broadsword")
-			{
-				this.SetDefaults(4, false);
-				this.color = new Color(130, 180, 130, 100);
-				this.useAnimation = 20;
-				this.damage = 12;
-				this.scale *= 1.025f;
-				this.value = 6750;
-				this.netID = -38;
-			}
-			else if (ItemName == "Tungsten Shortsword")
-			{
-				this.SetDefaults(6, false);
-				this.color = new Color(130, 180, 130, 100);
-				this.damage = 10;
-				this.useAnimation = 11;
-				this.scale = 0.95f;
-				this.value = 5250;
-				this.netID = -39;
-			}
-			else if (ItemName == "Tungsten Axe")
-			{
-				this.SetDefaults(10, false);
-				this.color = new Color(130, 180, 130, 100);
-				this.useTime = 18;
-				this.axe = 11;
-				this.useAnimation = 26;
-				this.scale = 1.15f;
-				this.damage = 7;
-				this.value = 4000;
-				this.netID = -40;
-			}
-			else if (ItemName == "Tungsten Hammer")
-			{
-				this.SetDefaults(7, false);
-				this.color = new Color(130, 180, 130, 100);
-				this.useAnimation = 28;
-				this.useTime = 25;
-				this.scale = 1.25f;
-				this.damage = 9;
-				this.hammer = 50;
-				this.value = 6000;
-				this.netID = -41;
-			}
-			else if (ItemName == "Tungsten Bow")
-			{
-				this.SetDefaults(99, false);
-				this.useAnimation = 26;
-				this.useTime = 26;
-				this.color = new Color(130, 180, 130, 100);
-				this.damage = 10;
-				this.value = 5250;
-				this.netID = -42;
-			}
-			else if (ItemName == "Platinum Pickaxe")
-			{
-				this.SetDefaults(1, false);
-				this.color = new Color(110, 140, 200, 80);
-				this.useTime = 15;
-				this.pick = 59;
-				this.useAnimation = 19;
-				this.scale = 1.05f;
-				this.damage = 7;
-				this.value = 15000;
-				this.toolTip = "Can mine Meteorite";
-				this.netID = -43;
-			}
-			else if (ItemName == "Platinum Broadsword")
-			{
-				this.SetDefaults(4, false);
-				this.color = new Color(110, 140, 200, 80);
-				this.useAnimation = 19;
-				this.damage = 15;
-				this.scale = 1.075f;
-				this.value = 13500;
-				this.netID = -44;
-			}
-			else if (ItemName == "Platinum Shortsword")
-			{
-				this.SetDefaults(6, false);
-				this.color = new Color(110, 140, 200, 80);
-				this.damage = 13;
-				this.useAnimation = 10;
-				this.scale = 0.975f;
-				this.value = 10500;
-				this.netID = -45;
-			}
-			else if (ItemName == "Platinum Axe")
-			{
-				this.SetDefaults(10, false);
-				this.color = new Color(110, 140, 200, 80);
-				this.useTime = 17;
-				this.axe = 12;
-				this.useAnimation = 25;
-				this.scale = 1.175f;
-				this.damage = 8;
-				this.value = 12000;
-				this.netID = -46;
-			}
-			else if (ItemName == "Platinum Hammer")
-			{
-				this.SetDefaults(7, false);
-				this.color = new Color(110, 140, 200, 80);
-				this.useAnimation = 27;
-				this.useTime = 21;
-				this.scale = 1.275f;
-				this.damage = 10;
-				this.hammer = 59;
-				this.value = 12000;
-				this.netID = -47;
-			}
-			else if (ItemName == "Platinum Bow")
-			{
-				this.SetDefaults(99, false);
-				this.useAnimation = 25;
-				this.useTime = 25;
-				this.color = new Color(110, 140, 200, 80);
-				this.damage = 13;
-				this.value = 10500;
-				this.netID = -48;
-			}
-			else if (ItemName != "")
-			{
-                for (int i = 0; i < Main.maxItemTypes; i++)
+				if (ItemName == "Gold Broadsword")
 				{
-					if (Main.itemName[i] == ItemName)
+					this.SetDefaults(4, false);
+					this.color = new Color(210, 190, 0, 100);
+					this.useAnimation = 20;
+					this.damage = 13;
+					this.scale = 1.05f;
+					this.value = 9000;
+					this.netID = -2;
+
+                    this.craftingLvl = 20;
+				}
+				else
+				{
+					if (ItemName == "Gold Shortsword")
 					{
-						this.SetDefaults(i, false);
-						this.checkMat();
-						return;
+						this.SetDefaults(6, false);
+						this.color = new Color(210, 190, 0, 100);
+						this.damage = 11;
+						this.useAnimation = 11;
+						this.scale = 0.95f;
+						this.value = 7000;
+						this.netID = -3;
+
+                        this.craftingLvl = 20;
+					}
+					else
+					{
+						if (ItemName == "Gold Axe")
+						{
+							this.SetDefaults(10, false);
+							this.color = new Color(210, 190, 0, 100);
+							this.useTime = 18;
+							this.axe = 11;
+							this.useAnimation = 26;
+							this.scale = 1.15f;
+							this.damage = 7;
+							this.value = 8000;
+							this.netID = -4;
+
+                            this.craftingLvl = 20;
+						}
+						else
+						{
+							if (ItemName == "Gold Hammer")
+							{
+								this.SetDefaults(7, false);
+								this.color = new Color(210, 190, 0, 100);
+								this.useAnimation = 28;
+								this.useTime = 23;
+								this.scale = 1.25f;
+								this.damage = 9;
+								this.hammer = 55;
+								this.value = 8000;
+								this.netID = -5;
+							}
+							else
+							{
+								if (ItemName == "Gold Bow")
+								{
+									this.SetDefaults(99, false);
+									this.useAnimation = 26;
+									this.useTime = 26;
+									this.color = new Color(210, 190, 0, 100);
+									this.damage = 11;
+									this.value = 7000;
+									this.netID = -6;
+
+                                    this.craftingLvl = 20;
+								}
+								else
+								{
+									if (ItemName == "Silver Pickaxe")
+									{
+										this.SetDefaults(1, false);
+										this.color = new Color(180, 180, 180, 100);
+										this.useTime = 11;
+										this.pick = 45;
+										this.useAnimation = 19;
+										this.scale = 1.05f;
+										this.damage = 6;
+										this.value = 5000;
+										this.netID = -7;
+
+                                        this.craftingLvl = 15;
+									}
+									else
+									{
+										if (ItemName == "Silver Broadsword")
+										{
+											this.SetDefaults(4, false);
+											this.color = new Color(180, 180, 180, 100);
+											this.useAnimation = 21;
+											this.damage = 11;
+											this.value = 4500;
+											this.netID = -8;
+
+                                            this.craftingLvl = 15;
+										}
+										else
+										{
+											if (ItemName == "Silver Shortsword")
+											{
+												this.SetDefaults(6, false);
+												this.color = new Color(180, 180, 180, 100);
+												this.damage = 9;
+												this.useAnimation = 12;
+												this.scale = 0.95f;
+												this.value = 3500;
+												this.netID = -9;
+
+                                                this.craftingLvl = 15;
+											}
+											else
+											{
+												if (ItemName == "Silver Axe")
+												{
+													this.SetDefaults(10, false);
+													this.color = new Color(180, 180, 180, 100);
+													this.useTime = 18;
+													this.axe = 10;
+													this.useAnimation = 26;
+													this.scale = 1.15f;
+													this.damage = 6;
+													this.value = 4000;
+													this.netID = -10;
+
+                                                    this.craftingLvl = 15;
+												}
+												else
+												{
+													if (ItemName == "Silver Hammer")
+													{
+														this.SetDefaults(7, false);
+														this.color = new Color(180, 180, 180, 100);
+														this.useAnimation = 29;
+														this.useTime = 19;
+														this.scale = 1.25f;
+														this.damage = 9;
+														this.hammer = 45;
+														this.value = 4000;
+														this.netID = -11;
+													}
+													else
+													{
+														if (ItemName == "Silver Bow")
+														{
+															this.SetDefaults(99, false);
+															this.useAnimation = 27;
+															this.useTime = 27;
+															this.color = new Color(180, 180, 180, 100);
+															this.damage = 9;
+															this.value = 3500;
+															this.netID = -12;
+
+                                                            this.craftingLvl = 15;
+														}
+														else
+														{
+															if (ItemName == "Copper Pickaxe")
+															{
+																this.SetDefaults(1, false);
+																this.color = new Color(180, 100, 45, 80);
+																this.useTime = 15;
+																this.pick = 35;
+																this.useAnimation = 23;
+																this.damage = 4;
+																this.scale = 0.9f;
+																this.tileBoost = -1;
+																this.value = 500;
+																this.netID = -13;
+
+                                                                this.craftingLvl = 1;
+															}
+															else
+															{
+																if (ItemName == "Copper Broadsword")
+																{
+																	this.SetDefaults(4, false);
+																	this.color = new Color(180, 100, 45, 80);
+																	this.useAnimation = 23;
+																	this.damage = 8;
+																	this.value = 450;
+																	this.netID = -14;
+
+                                                                    this.craftingLvl = 1;
+																}
+																else
+																{
+																	if (ItemName == "Copper Shortsword")
+																	{
+																		this.SetDefaults(6, false);
+																		this.color = new Color(180, 100, 45, 80);
+																		this.damage = 5;
+																		this.useAnimation = 13;
+																		this.scale = 0.8f;
+																		this.value = 350;
+																		this.netID = -15;
+
+                                                                        this.craftingLvl = 1;
+																	}
+																	else
+																	{
+																		if (ItemName == "Copper Axe")
+																		{
+																			this.SetDefaults(10, false);
+																			this.color = new Color(180, 100, 45, 80);
+																			this.useTime = 21;
+																			this.axe = 7;
+																			this.useAnimation = 30;
+																			this.scale = 1f;
+																			this.damage = 3;
+																			this.tileBoost = -1;
+																			this.value = 400;
+																			this.netID = -16;
+
+                                                                            this.craftingLvl = 1;
+																		}
+																		else
+																		{
+																			if (ItemName == "Copper Hammer")
+																			{
+																				this.SetDefaults(7, false);
+																				this.color = new Color(180, 100, 45, 80);
+																				this.useAnimation = 33;
+																				this.useTime = 23;
+																				this.scale = 1.1f;
+																				this.damage = 4;
+																				this.hammer = 35;
+																				this.tileBoost = -1;
+																				this.value = 400;
+																				this.netID = -17;
+																			}
+																			else
+																			{
+																				if (ItemName == "Copper Bow")
+																				{
+																					this.SetDefaults(99, false);
+																					this.useAnimation = 29;
+																					this.useTime = 29;
+																					this.color = new Color(180, 100, 45, 80);
+																					this.damage = 6;
+																					this.value = 350;
+																					this.netID = -18;
+
+                                                                                    this.craftingLvl = 1;
+																				}
+																				else
+																				{
+																					if (ItemName == "Blue Phasesaber")
+																					{
+																						this.SetDefaults(198, false);
+																						this.damage = 41;
+																						this.scale = 1.15f;
+																						flag = true;
+																						this.autoReuse = true;
+																						this.useTurn = true;
+																						this.rare = 4;
+																						this.netID = -19;
+																					}
+																					else
+																					{
+																						if (ItemName == "Red Phasesaber")
+																						{
+																							this.SetDefaults(199, false);
+																							this.damage = 41;
+																							this.scale = 1.15f;
+																							flag = true;
+																							this.autoReuse = true;
+																							this.useTurn = true;
+																							this.rare = 4;
+																							this.netID = -20;
+																						}
+																						else
+																						{
+																							if (ItemName == "Green Phasesaber")
+																							{
+																								this.SetDefaults(200, false);
+																								this.damage = 41;
+																								this.scale = 1.15f;
+																								flag = true;
+																								this.autoReuse = true;
+																								this.useTurn = true;
+																								this.rare = 4;
+																								this.netID = -21;
+																							}
+																							else
+																							{
+																								if (ItemName == "Purple Phasesaber")
+																								{
+																									this.SetDefaults(201, false);
+																									this.damage = 41;
+																									this.scale = 1.15f;
+																									flag = true;
+																									this.autoReuse = true;
+																									this.useTurn = true;
+																									this.rare = 4;
+																									this.netID = -22;
+																								}
+																								else
+																								{
+																									if (ItemName == "White Phasesaber")
+																									{
+																										this.SetDefaults(202, false);
+																										this.damage = 41;
+																										this.scale = 1.15f;
+																										flag = true;
+																										this.autoReuse = true;
+																										this.useTurn = true;
+																										this.rare = 4;
+																										this.netID = -23;
+																									}
+																									else
+																									{
+																										if (ItemName == "Yellow Phasesaber")
+																										{
+																											this.SetDefaults(203, false);
+																											this.damage = 41;
+																											this.scale = 1.15f;
+																											flag = true;
+																											this.autoReuse = true;
+																											this.useTurn = true;
+																											this.rare = 4;
+																											this.netID = -24;
+																										}
+																										else
+																										{
+																											if (ItemName == "Tin Pickaxe")
+																											{
+																												this.SetDefaults(1, false);
+																												this.color = new Color(170, 150, 80, 110);
+																												this.useTime = 14;
+																												this.pick = 35;
+																												this.useAnimation = 21;
+																												this.damage = 5;
+																												this.scale = 0.95f;
+																												this.value = 750;
+																												this.netID = -25;
+
+                                                                                                                this.craftingLvl = 1;
+																											}
+																											else
+																											{
+																												if (ItemName == "Tin Broadsword")
+																												{
+																													this.SetDefaults(4, false);
+																													this.color = new Color(170, 150, 80, 110);
+																													this.useAnimation = 22;
+																													this.damage = 9;
+																													this.value = 675;
+																													this.netID = -26;
+
+                                                                                                                    this.craftingLvl = 1;
+																												}
+																												else
+																												{
+																													if (ItemName == "Tin Shortsword")
+																													{
+																														this.SetDefaults(6, false);
+																														this.color = new Color(170, 150, 80, 110);
+																														this.damage = 7;
+																														this.useAnimation = 12;
+																														this.scale = 0.85f;
+																														this.value = 525;
+																														this.netID = -27;
+
+                                                                                                                        this.craftingLvl = 5;
+																													}
+																													else
+																													{
+																														if (ItemName == "Tin Axe")
+																														{
+																															this.SetDefaults(10, false);
+																															this.color = new Color(170, 150, 80, 110);
+																															this.useTime = 20;
+																															this.axe = 8;
+																															this.useAnimation = 28;
+																															this.scale = 1.05f;
+																															this.damage = 4;
+																															this.value = 600;
+																															this.netID = -28;
+
+                                                                                                                            this.craftingLvl = 5;
+																														}
+																														else
+																														{
+																															if (ItemName == "Tin Hammer")
+																															{
+																																this.SetDefaults(7, false);
+																																this.color = new Color(170, 150, 80, 110);
+																																this.useAnimation = 31;
+																																this.useTime = 21;
+																																this.scale = 1.15f;
+																																this.damage = 6;
+																																this.hammer = 38;
+																																this.value = 600;
+																																this.netID = -29;
+																															}
+																															else
+																															{
+																																if (ItemName == "Tin Bow")
+																																{
+																																	this.SetDefaults(99, false);
+																																	this.useAnimation = 28;
+																																	this.useTime = 28;
+																																	this.color = new Color(170, 150, 80, 110);
+																																	this.damage = 7;
+																																	this.value = 525;
+																																	this.netID = -30;
+
+                                                                                                                                    this.craftingLvl = 1;
+																																}
+																																else
+																																{
+																																	if (ItemName == "Lead Pickaxe")
+																																	{
+																																		this.SetDefaults(1, false);
+																																		this.color = new Color(90, 100, 110, 170);
+																																		this.useTime = 12;
+																																		this.pick = 43;
+																																		this.useAnimation = 19;
+																																		this.damage = 6;
+																																		this.scale = 1.025f;
+																																		this.value = 3000;
+																																		this.netID = -31;
+
+                                                                                                                                        this.craftingLvl = 8;
+																																	}
+																																	else
+																																	{
+																																		if (ItemName == "Lead Broadsword")
+																																		{
+																																			this.SetDefaults(4, false);
+																																			this.color = new Color(80, 90, 170, 160);
+																																			this.useAnimation = 21;
+																																			this.damage = 11;
+																																			this.value = 2700;
+																																			this.netID = -32;
+
+                                                                                                                                            this.craftingLvl = 8;
+																																		}
+																																		else
+																																		{
+																																			if (ItemName == "Lead Shortsword")
+																																			{
+																																				this.SetDefaults(6, false);
+																																				this.color = new Color(90, 100, 110, 170);
+																																				this.damage = 9;
+																																				this.useAnimation = 12;
+																																				this.scale = 0.925f;
+																																				this.value = 2100;
+																																				this.netID = -33;
+
+                                                                                                                                                this.craftingLvl = 8;
+																																			}
+																																			else
+																																			{
+																																				if (ItemName == "Lead Axe")
+																																				{
+																																					this.SetDefaults(10, false);
+																																					this.color = new Color(90, 100, 110, 170);
+																																					this.useTime = 19;
+																																					this.axe = 10;
+																																					this.useAnimation = 28;
+																																					this.scale = 1.125f;
+																																					this.damage = 6;
+																																					this.value = 2400;
+																																					this.netID = -34;
+
+                                                                                                                                                    this.craftingLvl = 8;
+																																				}
+																																				else
+																																				{
+																																					if (ItemName == "Lead Hammer")
+																																					{
+																																						this.SetDefaults(7, false);
+																																						this.color = new Color(90, 100, 110, 170);
+																																						this.useAnimation = 29;
+																																						this.useTime = 19;
+																																						this.scale = 1.225f;
+																																						this.damage = 8;
+																																						this.hammer = 43;
+																																						this.value = 2400;
+																																						this.netID = -35;
+																																					}
+																																					else
+																																					{
+																																						if (ItemName == "Lead Bow")
+																																						{
+																																							this.SetDefaults(99, false);
+																																							this.useAnimation = 27;
+																																							this.useTime = 27;
+																																							this.color = new Color(90, 100, 110, 170);
+																																							this.damage = 9;
+																																							this.value = 2100;
+																																							this.netID = -36;
+
+                                                                                                                                                            this.craftingLvl = 8;
+																																						}
+																																						else
+																																						{
+																																							if (ItemName == "Tungsten Pickaxe")
+																																							{
+																																								this.SetDefaults(1, false);
+																																								this.color = new Color(130, 180, 130, 100);
+																																								this.useTime = 19;
+																																								this.pick = 50;
+																																								this.useAnimation = 21;
+																																								this.scale = 1.05f;
+																																								this.damage = 6;
+																																								this.value = 7500;
+																																								this.netID = -37;
+																																								this.toolTip = "Can mine Meteorite";
+
+                                                                                                                                                                this.craftingLvl = 15;
+																																							}
+																																							else
+																																							{
+																																								if (ItemName == "Tungsten Broadsword")
+																																								{
+																																									this.SetDefaults(4, false);
+																																									this.color = new Color(130, 180, 130, 100);
+																																									this.useAnimation = 20;
+																																									this.damage = 12;
+																																									this.scale *= 1.025f;
+																																									this.value = 6750;
+																																									this.netID = -38;
+
+                                                                                                                                                                    this.craftingLvl = 15;
+																																								}
+																																								else
+																																								{
+																																									if (ItemName == "Tungsten Shortsword")
+																																									{
+																																										this.SetDefaults(6, false);
+																																										this.color = new Color(130, 180, 130, 100);
+																																										this.damage = 10;
+																																										this.useAnimation = 11;
+																																										this.scale = 0.95f;
+																																										this.value = 5250;
+																																										this.netID = -39;
+
+                                                                                                                                                                        this.craftingLvl = 15;
+																																									}
+																																									else
+																																									{
+																																										if (ItemName == "Tungsten Axe")
+																																										{
+																																											this.SetDefaults(10, false);
+																																											this.color = new Color(130, 180, 130, 100);
+																																											this.useTime = 18;
+																																											this.axe = 11;
+																																											this.useAnimation = 26;
+																																											this.scale = 1.15f;
+																																											this.damage = 7;
+																																											this.value = 4000;
+																																											this.netID = -40;
+
+                                                                                                                                                                            this.craftingLvl = 15;
+																																										}
+																																										else
+																																										{
+																																											if (ItemName == "Tungsten Hammer")
+																																											{
+																																												this.SetDefaults(7, false);
+																																												this.color = new Color(130, 180, 130, 100);
+																																												this.useAnimation = 28;
+																																												this.useTime = 25;
+																																												this.scale = 1.25f;
+																																												this.damage = 9;
+																																												this.hammer = 50;
+																																												this.value = 6000;
+																																												this.netID = -41;
+																																											}
+																																											else
+																																											{
+																																												if (ItemName == "Tungsten Bow")
+																																												{
+																																													this.SetDefaults(99, false);
+																																													this.useAnimation = 26;
+																																													this.useTime = 26;
+																																													this.color = new Color(130, 180, 130, 100);
+																																													this.damage = 10;
+																																													this.value = 5250;
+																																													this.netID = -42;
+
+                                                                                                                                                                                    this.craftingLvl = 15;
+																																												}
+																																												else
+																																												{
+																																													if (ItemName == "Platinum Pickaxe")
+																																													{
+																																														this.SetDefaults(1, false);
+																																														this.color = new Color(110, 140, 200, 80);
+																																														this.useTime = 15;
+																																														this.pick = 59;
+																																														this.useAnimation = 19;
+																																														this.scale = 1.05f;
+																																														this.damage = 7;
+																																														this.value = 15000;
+																																														this.toolTip = "Can mine Meteorite";
+																																														this.netID = -43;
+
+                                                                                                                                                                                        this.craftingLvl = 20;
+																																													}
+																																													else
+																																													{
+																																														if (ItemName == "Platinum Broadsword")
+																																														{
+																																															this.SetDefaults(4, false);
+																																															this.color = new Color(110, 140, 200, 80);
+																																															this.useAnimation = 19;
+																																															this.damage = 15;
+																																															this.scale = 1.075f;
+																																															this.value = 13500;
+																																															this.netID = -44;
+
+                                                                                                                                                                                            this.craftingLvl = 20;
+
+																																														}
+																																														else
+																																														{
+																																															if (ItemName == "Platinum Shortsword")
+																																															{
+																																																this.SetDefaults(6, false);
+																																																this.color = new Color(110, 140, 200, 80);
+																																																this.damage = 13;
+																																																this.useAnimation = 10;
+																																																this.scale = 0.975f;
+																																																this.value = 10500;
+																																																this.netID = -45;
+
+                                                                                                                                                                                                this.craftingLvl = 20;
+																																															}
+																																															else
+																																															{
+																																																if (ItemName == "Platinum Axe")
+																																																{
+																																																	this.SetDefaults(10, false);
+																																																	this.color = new Color(110, 140, 200, 80);
+																																																	this.useTime = 17;
+																																																	this.axe = 12;
+																																																	this.useAnimation = 25;
+																																																	this.scale = 1.175f;
+																																																	this.damage = 8;
+																																																	this.value = 12000;
+																																																	this.netID = -46;
+
+                                                                                                                                                                                                    this.craftingLvl = 20;
+																																																}
+																																																else
+																																																{
+																																																	if (ItemName == "Platinum Hammer")
+																																																	{
+																																																		this.SetDefaults(7, false);
+																																																		this.color = new Color(110, 140, 200, 80);
+																																																		this.useAnimation = 27;
+																																																		this.useTime = 21;
+																																																		this.scale = 1.275f;
+																																																		this.damage = 10;
+																																																		this.hammer = 59;
+																																																		this.value = 12000;
+																																																		this.netID = -47;
+																																																	}
+																																																	else
+																																																	{
+																																																		if (ItemName == "Platinum Bow")
+																																																		{
+																																																			this.SetDefaults(99, false);
+																																																			this.useAnimation = 25;
+																																																			this.useTime = 25;
+																																																			this.color = new Color(110, 140, 200, 80);
+																																																			this.damage = 13;
+																																																			this.value = 10500;
+																																																			this.netID = -48;
+
+                                                                                                                                                                                                            this.craftingLvl = 20;
+																																																		}
+																																																		else
+																																																		{
+																																																			if (ItemName != "")
+																																																			{
+                                                                                                                                                                                                                // GitFlip
+                                                                                                                                                                                                                for (int i = 0; i < (Main.maxItemTypes + Main.maxSTWItemTypes); i++)
+																																																				{
+																																																					if (Main.itemName[i] == ItemName)
+																																																					{
+                                                                                                                                                                                                                        
+																																																						this.SetDefaults(i, false);
+																																																						this.checkMat();
+																																																						return;
+																																																					}
+																																																				}
+																																																				this.name = "";
+																																																				this.stack = 0;
+																																																				this.type = 0;
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
-				this.name = "";
-				this.stack = 0;
-				this.type = 0;
 			}
 			if (this.type != 0)
 			{
@@ -3553,14 +3991,7 @@ namespace Terraria
 			this.material = false;
 			return false;
 		}
-
 		public void netDefaults(int type)
-		{
-			if (!ServerApi.Hooks.InvokeItemNetDefaults(ref type, this))
-				RealNetDefaults(type);
-		}
-
-		public void RealNetDefaults(int type)
 		{
 			if (type < 0)
 			{
@@ -4253,1778 +4684,2245 @@ namespace Terraria
 				this.knockBack = 2f;
 				this.value = 2000;
 				this.melee = true;
-			}
-			else if (type == 2)
-			{
-				this.name = "Dirt Block";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 0;
-				this.width = 12;
-				this.height = 12;
-			}
-			else if (type == 3)
-			{
-				this.name = "Stone Block";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 1;
-				this.width = 12;
-				this.height = 12;
-			}
-			else if (type == 4)
-			{
-				this.name = "Iron Broadsword";
-				this.color = new Color(160, 145, 130, 110);
-				this.useStyle = 1;
-				this.useTurn = false;
-				this.useAnimation = 21;
-				this.useTime = 21;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 10;
-				this.knockBack = 5f;
-				this.useSound = 1;
-				this.scale = 1f;
-				this.value = 1800;
-				this.melee = true;
-			}
-			else if (type == 5)
-			{
-				this.name = "Mushroom";
-				this.useStyle = 2;
-				this.useSound = 2;
-				this.useTurn = false;
-				this.useAnimation = 17;
-				this.useTime = 17;
-				this.width = 16;
-				this.height = 18;
-				this.healLife = 15;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.potion = true;
-				this.value = 25;
-			}
-			else if (type == 6)
-			{
-				this.name = "Iron Shortsword";
-				this.color = new Color(160, 145, 130, 110);
-				this.useStyle = 3;
-				this.useTurn = false;
-				this.useAnimation = 12;
-				this.useTime = 12;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 8;
-				this.knockBack = 4f;
-				this.scale = 0.9f;
-				this.useSound = 1;
-				this.useTurn = true;
-				this.value = 1400;
-				this.melee = true;
-			}
-			else if (type == 7)
-			{
-				this.name = "Iron Hammer";
-				this.color = new Color(160, 145, 130, 110);
-				this.autoReuse = true;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 30;
-				this.useTime = 20;
-				this.hammer = 40;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 7;
-				this.knockBack = 5.5f;
-				this.scale = 1.2f;
-				this.useSound = 1;
-				this.value = 1600;
-				this.melee = true;
-			}
-			else if (type == 8)
-			{
-				this.flame = true;
-				this.noWet = true;
-				this.name = "Torch";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.holdStyle = 1;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 4;
-				this.width = 10;
-				this.height = 12;
-				this.toolTip = "Provides light";
-				this.value = 50;
-			}
-			else if (type == 9)
-			{
-				this.name = "Wood";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 30;
-				this.width = 8;
-				this.height = 10;
-			}
-			else if (type == 10)
-			{
-				this.name = "Iron Axe";
-				this.color = new Color(160, 145, 130, 110);
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 27;
-				this.knockBack = 4.5f;
-				this.useTime = 19;
-				this.autoReuse = true;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 5;
-				this.axe = 9;
-				this.scale = 1.1f;
-				this.useSound = 1;
-				this.value = 1600;
-				this.melee = true;
-			}
-			else if (type == 11)
-			{
-				this.name = "Iron Ore";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 6;
-				this.width = 12;
-				this.height = 12;
-				this.value = 500;
-			}
-			else if (type == 12)
-			{
-				this.name = "Copper Ore";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 7;
-				this.width = 12;
-				this.height = 12;
-				this.value = 250;
-			}
-			else if (type == 13)
-			{
-				this.name = "Gold Ore";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 8;
-				this.width = 12;
-				this.height = 12;
-				this.value = 2000;
-			}
-			else if (type == 14)
-			{
-				this.name = "Silver Ore";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 9;
-				this.width = 12;
-				this.height = 12;
-				this.value = 1000;
-			}
-			else if (type == 15)
-			{
-				this.name = "Copper Watch";
-				this.width = 24;
-				this.height = 28;
-				this.accessory = true;
-				this.toolTip = "Tells the time";
-				this.value = 1000;
-				this.waistSlot = 2;
-			}
-			else if (type == 16)
-			{
-				this.name = "Silver Watch";
-				this.width = 24;
-				this.height = 28;
-				this.accessory = true;
-				this.toolTip = "Tells the time";
-				this.value = 5000;
-				this.waistSlot = 7;
-			}
-			else if (type == 17)
-			{
-				this.name = "Gold Watch";
-				this.width = 24;
-				this.height = 28;
-				this.accessory = true;
-				this.rare = 1;
-				this.toolTip = "Tells the time";
-				this.value = 10000;
-				this.waistSlot = 3;
-			}
-			else if (type == 18)
-			{
-				this.name = "Depth Meter";
-				this.width = 24;
-				this.height = 18;
-				this.accessory = true;
-				this.rare = 1;
-				this.toolTip = "Shows depth";
-				this.value = 10000;
-			}
-			else if (type == 19)
-			{
-				this.name = "Gold Bar";
-				this.width = 20;
-				this.height = 20;
-				this.maxStack = 99;
-				this.value = 6000;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 239;
-				this.placeStyle = 6;
-			}
-			else if (type == 20)
-			{
-				this.name = "Copper Bar";
-				this.width = 20;
-				this.height = 20;
-				this.maxStack = 99;
-				this.value = 750;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 239;
-				this.placeStyle = 0;
-			}
-			else if (type == 21)
-			{
-				this.name = "Silver Bar";
-				this.width = 20;
-				this.height = 20;
-				this.maxStack = 99;
-				this.value = 3000;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 239;
-				this.placeStyle = 4;
-			}
-			else if (type == 22)
-			{
-				this.name = "Iron Bar";
-				this.color = new Color(160, 145, 130, 110);
-				this.width = 20;
-				this.height = 20;
-				this.maxStack = 99;
-				this.value = 1500;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 239;
-				this.placeStyle = 2;
-			}
-			else if (type == 23)
-			{
-				this.name = "Gel";
-				this.width = 10;
-				this.height = 12;
-				this.maxStack = 999;
-				this.alpha = 175;
-				this.ammo = 23;
-				this.color = new Color(0, 80, 255, 100);
-				this.toolTip = "'Both tasty and flammable'";
-				this.value = 5;
-			}
-			else if (type == 24)
-			{
-				this.name = "Wooden Sword";
-				this.useStyle = 1;
-				this.useTurn = false;
-				this.useAnimation = 25;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 7;
-				this.knockBack = 4f;
-				this.scale = 0.95f;
-				this.useSound = 1;
-				this.value = 100;
-				this.melee = true;
-			}
-			else if (type == 25)
-			{
-				this.name = "Wooden Door";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 10;
-				this.width = 14;
-				this.height = 28;
-				this.value = 200;
-			}
-			else if (type == 26)
-			{
-				this.name = "Stone Wall";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 7;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createWall = 1;
-				this.width = 12;
-				this.height = 12;
-			}
-			else if (type == 27)
-			{
-				this.name = "Acorn";
-				this.useTurn = true;
-				this.useStyle = 1;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 20;
-				this.width = 18;
-				this.height = 18;
-				this.value = 10;
-			}
-			else if (type == 28)
-			{
-				this.name = "Lesser Healing Potion";
-				this.useSound = 3;
-				this.healLife = 50;
-				this.useStyle = 2;
-				this.useTurn = true;
-				this.useAnimation = 17;
-				this.useTime = 17;
-				this.maxStack = 30;
-				this.consumable = true;
-				this.width = 14;
-				this.height = 24;
-				this.potion = true;
-				this.value = 300;
-			}
-			else if (type == 29)
-			{
-				this.name = "Life Crystal";
-				this.maxStack = 99;
-				this.consumable = true;
-				this.width = 18;
-				this.height = 18;
-				this.useStyle = 4;
-				this.useTime = 30;
-				this.useSound = 4;
-				this.useAnimation = 30;
-				this.toolTip = "Permanently increases maximum life by 20";
-				this.rare = 2;
-				this.value = 75000;
-			}
-			else if (type == 30)
-			{
-				this.name = "Dirt Wall";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 7;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createWall = 16;
-				this.width = 12;
-				this.height = 12;
-			}
-			else if (type == 31)
-			{
-				this.name = "Bottle";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 13;
-				this.width = 16;
-				this.height = 24;
-				this.value = 20;
-			}
-			else if (type == 32)
-			{
-				this.name = "Wooden Table";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 14;
-				this.width = 26;
-				this.height = 20;
-				this.value = 300;
-			}
-			else if (type == 33)
-			{
-				this.name = "Furnace";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 17;
-				this.width = 26;
-				this.height = 24;
-				this.value = 300;
-				this.toolTip = "Used for smelting ore";
-			}
-			else if (type == 34)
-			{
-				this.name = "Wooden Chair";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 15;
-				this.width = 12;
-				this.height = 30;
-				this.value = 150;
-			}
-			else if (type == 35)
-			{
-				this.name = "Iron Anvil";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 16;
-				this.width = 28;
-				this.height = 14;
-				this.value = 5000;
-				this.toolTip = "Used to craft items from metal bars";
-			}
-			else if (type == 36)
-			{
-				this.name = "Work Bench";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 18;
-				this.width = 28;
-				this.height = 14;
-				this.value = 150;
-				this.toolTip = "Used for basic crafting";
-			}
-			else if (type == 37)
-			{
-				this.name = "Goggles";
-				this.width = 28;
-				this.height = 12;
-				this.defense = 1;
-				this.headSlot = 10;
-				this.rare = 1;
-				this.value = 1000;
-			}
-			else if (type == 38)
-			{
-				this.name = "Lens";
-				this.width = 12;
-				this.height = 20;
-				this.maxStack = 99;
-				this.value = 500;
-			}
-			else if (type == 39)
-			{
-				this.useStyle = 5;
-				this.useAnimation = 30;
-				this.useTime = 30;
-				this.name = "Wooden Bow";
-				this.width = 12;
-				this.height = 28;
-				this.shoot = 1;
-				this.useAmmo = 1;
-				this.useSound = 5;
-				this.damage = 4;
-				this.shootSpeed = 6.1f;
-				this.noMelee = true;
-				this.value = 100;
-				this.ranged = true;
-			}
-			else if (type == 40)
-			{
-				this.name = "Wooden Arrow";
-				this.shootSpeed = 3f;
-				this.shoot = 1;
-				this.damage = 2;    // GitFlip - lower damage since wooden arrows only require wood
-				this.width = 10;
-				this.height = 28;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.ammo = 1;
-				this.knockBack = 2f;
-				this.value = 10;
-				this.ranged = true;
-			}
-			else if (type == 41)
-			{
-				this.name = "Flaming Arrow";
-				this.shootSpeed = 3.5f;
-				this.shoot = 2;
-				this.damage = 6;
-				this.width = 10;
-				this.height = 28;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.ammo = 1;
-				this.knockBack = 2f;
-				this.value = 15;
-				this.ranged = true;
-			}
-			else if (type == 42)
-			{
-				this.useStyle = 1;
-				this.name = "Shuriken";
-				this.shootSpeed = 9f;
-				this.shoot = 3;
-				this.damage = 10;
-				this.width = 18;
-				this.height = 20;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.useSound = 1;
-				this.useAnimation = 15;
-				this.useTime = 15;
-				this.noUseGraphic = true;
-				this.noMelee = true;
-				this.value = 20;
-				this.ranged = true;
-			}
-			else if (type == 43)
-			{
-				this.useStyle = 4;
-				this.name = "Suspicious Looking Eye";
-				this.width = 22;
-				this.height = 14;
-				this.consumable = true;
-				this.useAnimation = 45;
-				this.useTime = 45;
-				this.maxStack = 20;
-				this.toolTip = "Summons the Eye of Cthulhu";
-			}
-			else if (type == 44)
-			{
-				this.useStyle = 5;
-				this.useAnimation = 25;
-				this.useTime = 25;
-				this.name = "Demon Bow";
-				this.width = 12;
-				this.height = 28;
-				this.shoot = 1;
-				this.useAmmo = 1;
-				this.useSound = 5;
-				this.damage = 14;
-				this.shootSpeed = 6.7f;
-				this.knockBack = 1f;
-				this.alpha = 30;
-				this.rare = 1;
-				this.noMelee = true;
-				this.value = 18000;
-				this.ranged = true;
-			}
-			else if (type == 45)
-			{
-				this.name = "War Axe of the Night";
-				this.autoReuse = true;
-				this.useStyle = 1;
-				this.useAnimation = 30;
-				this.knockBack = 6f;
-				this.useTime = 15;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 20;
-				this.axe = 15;
-				this.scale = 1.2f;
-				this.useSound = 1;
-				this.rare = 1;
-				this.value = 13500;
-				this.melee = true;
-			}
-			else if (type == 46)
-			{
-				this.name = "Light's Bane";
-				this.useStyle = 1;
-				this.useAnimation = 20;
-				this.knockBack = 5f;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 17;
-				this.scale = 1.1f;
-				this.useSound = 1;
-				this.rare = 1;
-				this.value = 13500;
-				this.melee = true;
-			}
-			else if (type == 47)
-			{
-				this.name = "Unholy Arrow";
-				this.shootSpeed = 3.4f;
-				this.shoot = 4;
-				this.damage = 8;
-				this.width = 10;
-				this.height = 28;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.ammo = 1;
-				this.knockBack = 3f;
-				this.alpha = 30;
-				this.rare = 1;
-				this.value = 40;
-				this.ranged = true;
-			}
-			else if (type == 48)
-			{
-				this.name = "Chest";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 21;
-				this.width = 26;
-				this.height = 22;
-				this.value = 500;
-			}
-			else if (type == 49)
-			{
-				this.name = "Band of Regeneration";
-				this.width = 22;
-				this.height = 22;
-				this.accessory = true;
-				this.lifeRegen = 1;
-				this.rare = 1;
-				this.toolTip = "Slowly regenerates life";
-				this.value = 50000;
-				this.handOnSlot = 2;
-			}
-			else if (type == 50)
-			{
-				this.name = "Magic Mirror";
-				this.useTurn = true;
-				this.width = 20;
-				this.height = 20;
-				this.useStyle = 4;
-				this.useTime = 90;
-				this.useSound = 6;
-				this.useAnimation = 90;
-				this.toolTip = "Gaze in the mirror to return home";
-				this.rare = 1;
-				this.value = 50000;
-			}
-			else if (type == 51)
-			{
-				this.name = "Jester's Arrow";
-				this.shootSpeed = 0.5f;
-				this.shoot = 5;
-				this.damage = 9;
-				this.width = 10;
-				this.height = 28;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.ammo = 1;
-				this.knockBack = 4f;
-				this.rare = 1;
-				this.value = 100;
-				this.ranged = true;
-			}
-			else if (type == 52)
-			{
-				type = 52;
-				this.name = "Angel Statue";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 105;
-				this.width = 20;
-				this.height = 20;
-				this.value = 300;
-				this.placeStyle = 1;
-			}
-			else if (type == 53)
-			{
-				this.name = "Cloud in a Bottle";
-				this.width = 16;
-				this.height = 24;
-				this.accessory = true;
-				this.rare = 1;
-				this.toolTip = "Allows the holder to double jump";
-				this.value = 50000;
-				this.waistSlot = 1;
-			}
-			else if (type == 54)
-			{
-				this.name = "Hermes Boots";
-				this.width = 28;
-				this.height = 24;
-				this.accessory = true;
-				this.rare = 1;
-				this.toolTip = "The wearer can run super fast";
-				this.value = 50000;
-				this.shoeSlot = 6;
-			}
-			else if (type == 55)
-			{
-				this.noMelee = true;
-				this.useStyle = 1;
-				this.name = "Enchanted Boomerang";
-				this.shootSpeed = 10f;
-				this.shoot = 6;
-				this.damage = 13;
-				this.knockBack = 8f;
-				this.width = 14;
-				this.height = 28;
-				this.useSound = 1;
-				this.useAnimation = 15;
-				this.useTime = 15;
-				this.noUseGraphic = true;
-				this.rare = 1;
-				this.value = 50000;
-				this.melee = true;
-			}
-			else if (type == 56)
-			{
-				this.name = "Demonite Ore";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 22;
-				this.width = 12;
-				this.height = 12;
-				this.rare = 1;
-				this.toolTip = "'Pulsing with dark energy'";
-				this.value = 4000;
-			}
-			else if (type == 57)
-			{
-				this.name = "Demonite Bar";
-				this.width = 20;
-				this.height = 20;
-				this.maxStack = 99;
-				this.rare = 1;
-				this.toolTip = "'Pulsing with dark energy'";
-				this.value = 16000;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 239;
-				this.placeStyle = 8;
-			}
-			else if (type == 58)
-			{
-				this.name = "Heart";
-				this.width = 12;
-				this.height = 12;
-			}
-			else if (type == 59)
-			{
-				this.name = "Corrupt Seeds";
-				this.useTurn = true;
-				this.useStyle = 1;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 23;
-				this.width = 14;
-				this.height = 14;
-				this.value = 500;
-			}
-			else if (type == 60)
-			{
-				this.name = "Vile Mushroom";
-				this.width = 16;
-				this.height = 18;
-				this.maxStack = 99;
-				this.value = 50;
-			}
-			else if (type == 61)
-			{
-				this.name = "Ebonstone Block";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 25;
-				this.width = 12;
-				this.height = 12;
-			}
-			else if (type == 62)
-			{
-				this.name = "Grass Seeds";
-				this.useTurn = true;
-				this.useStyle = 1;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 2;
-				this.width = 14;
-				this.height = 14;
-				this.value = 20;
-			}
-			else if (type == 63)
-			{
-				this.name = "Sunflower";
-				this.useTurn = true;
-				this.useStyle = 1;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 27;
-				this.width = 26;
-				this.height = 26;
-				this.value = 200;
-			}
-			else if (type == 64)
-			{
-				this.mana = 10;
-				this.damage = 10;
-				this.useStyle = 1;
-				this.name = "Vilethorn";
-				this.shootSpeed = 32f;
-				this.shoot = 7;
-				this.width = 26;
-				this.height = 28;
-				this.useSound = 8;
-				this.useAnimation = 28;
-				this.useTime = 28;
-				this.rare = 1;
-				this.noMelee = true;
-				this.knockBack = 1f;
-				this.toolTip = "Summons a vile thorn";
-				this.value = 10000;
-				this.magic = true;
-			}
-			else if (type == 65)
-			{
-				this.knockBack = 5f;
-				this.alpha = 100;
-				this.color = new Color(150, 150, 150, 0);
-				this.damage = 22;
-				this.useStyle = 1;
-				this.scale = 1.25f;
-				this.name = "Starfury";
-				this.shootSpeed = 20f;
-				this.shoot = 9;
-				this.width = 14;
-				this.height = 28;
-				this.useSound = 1;
-				this.useAnimation = 20;
-				this.useTime = 40;
-				this.rare = 2;
-				this.toolTip = "Causes stars to rain from the sky";
-				this.toolTip2 = "'Forged with the fury of heaven'";
-				this.value = 50000;
-				this.melee = true;
-			}
-			else if (type == 66)
-			{
-				this.useStyle = 1;
-				this.name = "Purification Powder";
-				this.shootSpeed = 4f;
-				this.shoot = 10;
-				this.width = 16;
-				this.height = 24;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.useSound = 1;
-				this.useAnimation = 15;
-				this.useTime = 15;
-				this.noMelee = true;
-				this.toolTip = "Cleanses the corruption";
-				this.value = 75;
-			}
-			else if (type == 67)
-			{
-				this.damage = 0;
-				this.useStyle = 1;
-				this.name = "Vile Powder";
-				this.shootSpeed = 4f;
-				this.shoot = 11;
-				this.width = 16;
-				this.height = 24;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.useSound = 1;
-				this.useAnimation = 15;
-				this.useTime = 15;
-				this.noMelee = true;
-				this.value = 100;
-				this.toolTip = "Removes the Hallow";
-			}
-			else if (type == 68)
-			{
-				this.name = "Rotten Chunk";
-				this.width = 18;
-				this.height = 20;
-				this.maxStack = 99;
-				this.toolTip = "'Looks tasty!'";
-				this.value = 10;
-			}
-			else if (type == 69)
-			{
-				this.name = "Worm Tooth";
-				this.width = 8;
-				this.height = 20;
-				this.maxStack = 99;
-				this.value = 100;
-			}
-			else if (type == 70)
-			{
-				this.useStyle = 4;
-				this.consumable = true;
-				this.useAnimation = 45;
-				this.useTime = 45;
-				this.name = "Worm Food";
-				this.width = 28;
-				this.height = 28;
-				this.maxStack = 20;
-				this.toolTip = "Summons the Eater of Worlds";
-			}
-			else if (type == 71)
-			{
-				this.name = "Copper Coin";
-				this.width = 10;
-				this.height = 12;
-				this.maxStack = 100;
-				this.value = 5;
-				this.ammo = 71;
-				this.shoot = 158;
-				this.notAmmo = true;
-				this.damage = 25;
-				this.shootSpeed = 1f;
-				this.ranged = true;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 330;
-				this.noMelee = true;
-			}
-			else if (type == 72)
-			{
-				this.name = "Silver Coin";
-				this.width = 10;
-				this.height = 12;
-				this.maxStack = 100;
-				this.value = 500;
-				this.ammo = 71;
-				this.notAmmo = true;
-				this.damage = 50;
-				this.shoot = 159;
-				this.shootSpeed = 2f;
-				this.ranged = true;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 331;
-				this.noMelee = true;
-			}
-			else if (type == 73)
-			{
-				this.name = "Gold Coin";
-				this.width = 10;
-				this.height = 12;
-				this.maxStack = 100;
-				this.value = 50000;
-				this.ammo = 71;
-				this.notAmmo = true;
-				this.damage = 100;
-				this.shoot = 160;
-				this.shootSpeed = 3f;
-				this.ranged = true;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 332;
-				this.noMelee = true;
-			}
-			else if (type == 74)
-			{
-				this.name = "Platinum Coin";
-				this.width = 10;
-				this.height = 12;
-				this.maxStack = 999;
-				this.value = 5000000;
-				this.ammo = 71;
-				this.notAmmo = true;
-				this.damage = 200;
-				this.shoot = 161;
-				this.shootSpeed = 4f;
-				this.ranged = true;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 333;
-				this.noMelee = true;
-			}
-			else if (type == 75)
-			{
-				this.name = "Fallen Star";
-				this.width = 18;
-				this.height = 20;
-				this.maxStack = 100;
-				this.alpha = 75;
-				this.ammo = 15;
-				this.toolTip = "Disappears after the sunrise";
-				this.value = 500;
-				this.useStyle = 4;
-				this.useSound = 4;
-				this.useTurn = false;
-				this.useAnimation = 17;
-				this.useTime = 17;
-				this.consumable = true;
-				this.rare = 1;
-			}
-			else if (type == 76)
-			{
-				this.name = "Copper Greaves";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 1;
-				this.legSlot = 1;
-				this.value = 750;
-			}
-			else if (type == 77)
-			{
-				this.name = "Iron Greaves";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 2;
-				this.legSlot = 2;
-				this.value = 3000;
-			}
-			else if (type == 78)
-			{
-				this.name = "Silver Greaves";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 3;
-				this.legSlot = 3;
-				this.value = 7500;
-			}
-			else if (type == 79)
-			{
-				this.name = "Gold Greaves";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 4;
-				this.legSlot = 4;
-				this.value = 15000;
-			}
-			else if (type == 80)
-			{
-				this.name = "Copper Chainmail";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 2;
-				this.bodySlot = 1;
-				this.value = 1000;
-			}
-			else if (type == 81)
-			{
-				this.name = "Iron Chainmail";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 3;
-				this.bodySlot = 2;
-				this.value = 4000;
-			}
-			else if (type == 82)
-			{
-				this.name = "Silver Chainmail";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 4;
-				this.bodySlot = 3;
-				this.value = 10000;
-			}
-			else if (type == 83)
-			{
-				this.name = "Gold Chainmail";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 5;
-				this.bodySlot = 4;
-				this.value = 20000;
-			}
-			else if (type == 84)
-			{
-				this.noUseGraphic = true;
-				this.damage = 0;
-				this.knockBack = 7f;
-				this.useStyle = 5;
-				this.name = "Grappling Hook";
-				this.shootSpeed = 11.5f;
-				this.shoot = 13;
-				this.width = 18;
-				this.height = 28;
-				this.useSound = 1;
-				this.useAnimation = 20;
-				this.useTime = 20;
-				this.rare = 1;
-				this.noMelee = true;
-				this.value = 20000;
-				this.toolTip = "'Get over here!'";
-			}
-			else if (type == 85)
-			{
-				this.name = "Chain";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 8;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 214;
-				this.width = 12;
-				this.height = 12;
-				this.value = 1000;
-				this.tileBoost += 2;
-				this.toolTip = "Can be climbed on";
-			}
-			else if (type == 86)
-			{
-				this.name = "Shadow Scale";
-				this.width = 14;
-				this.height = 18;
-				this.maxStack = 99;
-				this.rare = 1;
-				this.value = 500;
-			}
-			else if (type == 87)
-			{
-				this.name = "Piggy Bank";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 29;
-				this.width = 20;
-				this.height = 12;
-				this.value = 10000;
-			}
-			else if (type == 88)
-			{
-				this.name = "Mining Helmet";
-				this.width = 22;
-				this.height = 16;
-				this.defense = 1;
-				this.headSlot = 11;
-				this.rare = 1;
-				this.value = 80000;
-				this.toolTip = "Provides light when worn";
-			}
-			else if (type == 89)
-			{
-				this.name = "Copper Helmet";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 1;
-				this.headSlot = 1;
-				this.value = 1250;
-			}
-			else if (type == 90)
-			{
-				this.name = "Iron Helmet";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 2;
-				this.headSlot = 2;
-				this.value = 5000;
-			}
-			else if (type == 91)
-			{
-				this.name = "Silver Helmet";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 3;
-				this.headSlot = 3;
-				this.value = 12500;
-			}
-			else if (type == 92)
-			{
-				this.name = "Gold Helmet";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 4;
-				this.headSlot = 4;
-				this.value = 25000;
-			}
-			else if (type == 93)
-			{
-				this.name = "Wood Wall";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 7;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createWall = 4;
-				this.width = 12;
-				this.height = 12;
-			}
-			else if (type == 94)
-			{
-				this.name = "Wood Platform";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 19;
-				this.width = 8;
-				this.height = 10;
-			}
-			else if (type == 95)
-			{
-				this.useStyle = 5;
-				this.useAnimation = 16;
-				this.useTime = 16;
-				this.name = "Flintlock Pistol";
-				this.width = 24;
-				this.height = 28;
-				this.shoot = 14;
-				this.useAmmo = 14;
-				this.useSound = 11;
-				this.damage = 10;
-				this.shootSpeed = 5f;
-				this.noMelee = true;
-				this.value = 50000;
-				this.scale = 0.9f;
-				this.rare = 1;
-				this.ranged = true;
-			}
-			else if (type == 96)
-			{
-				this.useStyle = 5;
-				this.autoReuse = true;
-				this.useAnimation = 41;
-				this.useTime = 41;
-				this.name = "Musket";
-				this.width = 44;
-				this.height = 14;
-				this.shoot = 10;
-				this.useAmmo = 14;
-				this.useSound = 11;
-				this.damage = 25;
-				this.shootSpeed = 8.5f;
-				this.noMelee = true;
-				this.value = 100000;
-				this.knockBack = 4.5f;
-				this.rare = 1;
-				this.ranged = true;
-			}
-			else if (type == 97)
-			{
-				this.name = "Musket Ball";
-				this.shootSpeed = 4f;
-				this.shoot = 14;
-				this.damage = 7;
-				this.width = 8;
-				this.height = 8;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.ammo = 14;
-				this.knockBack = 2f;
-				this.value = 7;
-				this.ranged = true;
-			}
-			else if (type == 98)
-			{
-				this.useStyle = 5;
-				this.autoReuse = true;
-				this.useAnimation = 8;
-				this.useTime = 8;
-				this.name = "Minishark";
-				this.width = 50;
-				this.height = 18;
-				this.shoot = 10;
-				this.useAmmo = 14;
-				this.useSound = 11;
-				this.damage = 6;
-				this.shootSpeed = 7f;
-				this.noMelee = true;
-				this.value = 350000;
-				this.rare = 2;
-				this.toolTip = "33% chance to not consume ammo";
-				this.toolTip2 = "'Half shark, half gun, completely awesome.'";
-				this.ranged = true;
-			}
-			else if (type == 99)
-			{
-				this.useStyle = 5;
-				this.useAnimation = 28;
-				this.useTime = 28;
-				this.name = "Iron Bow";
-				this.color = new Color(160, 145, 130, 110);
-				this.width = 12;
-				this.height = 28;
-				this.shoot = 1;
-				this.useAmmo = 1;
-				this.useSound = 5;
-				this.damage = 8;
-				this.shootSpeed = 6.6f;
-				this.noMelee = true;
-				this.value = 1400;
-				this.ranged = true;
-			}
-			else if (type == 100)
-			{
-				this.name = "Shadow Greaves";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 6;
-				this.legSlot = 5;
-				this.rare = 1;
-				this.value = 22500;
-				this.toolTip = "7% increased melee speed";
-			}
-			else if (type == 101)
-			{
-				this.name = "Shadow Scalemail";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 7;
-				this.bodySlot = 5;
-				this.rare = 1;
-				this.value = 30000;
-				this.toolTip = "7% increased melee speed";
-			}
-			else if (type == 102)
-			{
-				this.name = "Shadow Helmet";
-				this.width = 18;
-				this.height = 18;
-				this.defense = 6;
-				this.headSlot = 5;
-				this.rare = 1;
-				this.value = 37500;
-				this.toolTip = "7% increased melee speed";
-			}
-			else if (type == 103)
-			{
-				this.name = "Nightmare Pickaxe";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 20;
-				this.useTime = 15;
-				this.autoReuse = true;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 9;
-				this.pick = 65;
-				this.useSound = 1;
-				this.knockBack = 3f;
-				this.rare = 1;
-				this.value = 18000;
-				this.scale = 1.15f;
-				this.toolTip = "Able to mine Hellstone";
-				this.melee = true;
-			}
-			else if (type == 104)
-			{
-				this.name = "The Breaker";
-				this.autoReuse = true;
-				this.useStyle = 1;
-				this.useAnimation = 45;
-				this.useTime = 19;
-				this.hammer = 55;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 24;
-				this.knockBack = 6f;
-				this.scale = 1.3f;
-				this.useSound = 1;
-				this.rare = 1;
-				this.value = 15000;
-				this.melee = true;
-			}
-			else if (type == 105)
-			{
-				this.flame = true;
-				this.noWet = true;
-				this.name = "Candle";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 33;
-				this.width = 8;
-				this.height = 18;
-				this.holdStyle = 1;
-			}
-			else if (type == 106)
-			{
-				this.name = "Copper Chandelier";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 34;
-				this.width = 26;
-				this.height = 26;
-				this.value = 3000;
-			}
-			else if (type == 107)
-			{
-				this.name = "Silver Chandelier";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 34;
-				this.placeStyle = 1;
-				this.width = 26;
-				this.height = 26;
-				this.value = 12000;
-			}
-			else if (type == 108)
-			{
-				this.name = "Gold Chandelier";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 99;
-				this.consumable = true;
-				this.createTile = 34;
-				this.placeStyle = 2;
-				this.width = 26;
-				this.height = 26;
-				this.value = 24000;
-			}
-			else if (type == 109)
-			{
-				this.name = "Mana Crystal";
-				this.maxStack = 99;
-				this.consumable = true;
-				this.width = 18;
-				this.height = 18;
-				this.useStyle = 4;
-				this.useTime = 30;
-				this.useSound = 29;
-				this.useAnimation = 30;
-				this.toolTip = "Permanently increases maximum mana by 20";
-				this.rare = 2;
-			}
-			else if (type == 110)
-			{
-				this.name = "Lesser Mana Potion";
-				this.useSound = 3;
-				this.healMana = 50;
-				this.useStyle = 2;
-				this.useTurn = true;
-				this.useAnimation = 17;
-				this.useTime = 17;
-				this.maxStack = 25;
-				this.consumable = true;
-				this.width = 14;
-				this.height = 24;
-				this.value = 200;
-			}
-			else if (type == 111)
-			{
-				this.name = "Band of Starpower";
-				this.width = 22;
-				this.height = 22;
-				this.accessory = true;
-				this.rare = 1;
-				this.toolTip = "Increases maximum mana by 20";
-				this.value = 50000;
-				this.handOnSlot = 3;
-			}
-			else if (type == 112)
-			{
-				this.mana = 17;
-				this.damage = 44;
-				this.useStyle = 1;
-				this.name = "Flower of Fire";
-				this.shootSpeed = 6f;
-				this.shoot = 15;
-				this.width = 26;
-				this.height = 28;
-				this.useSound = 20;
-				this.useAnimation = 20;
-				this.useTime = 20;
-				this.rare = 3;
-				this.noMelee = true;
-				this.knockBack = 5.5f;
-				this.toolTip = "Throws balls of fire";
-				this.value = 10000;
-				this.magic = true;
-			}
-			else if (type == 113)
-			{
-				this.mana = 10;
-				this.channel = true;
-				this.damage = 23;
-				this.useStyle = 1;
-				this.name = "Magic Missile";
-				this.shootSpeed = 6f;
-				this.shoot = 16;
-				this.width = 26;
-				this.height = 28;
-				this.useSound = 9;
-				this.useAnimation = 17;
-				this.useTime = 17;
-				this.rare = 2;
-				this.noMelee = true;
-				this.knockBack = 5.5f;
-				this.toolTip = "Casts a controllable missile";
-				this.value = 10000;
-				this.magic = true;
-			}
-			else if (type == 114)
-			{
-				this.channel = true;
-				this.damage = 0;
-				this.useStyle = 1;
-				this.name = "Dirt Rod";
-				this.shoot = 17;
-				this.width = 26;
-				this.height = 28;
-				this.useSound = 8;
-				this.useAnimation = 20;
-				this.useTime = 20;
-				this.rare = 1;
-				this.noMelee = true;
-				this.knockBack = 5f;
-				this.toolTip = "Magically moves dirt";
-				this.value = 200000;
-			}
-			else if (type == 115)
-			{
-				this.channel = true;
-				this.damage = 0;
-				this.useStyle = 4;
-				this.name = "Shadow Orb";
-				this.shoot = 18;
-				this.width = 24;
-				this.height = 24;
-				this.useSound = 8;
-				this.useAnimation = 20;
-				this.useTime = 20;
-				this.rare = 1;
-				this.noMelee = true;
-				this.toolTip = "Creates a magical shadow orb";
-				this.value = 10000;
-				this.buffType = 19;
-			}
-			else if (type == 116)
-			{
-				this.name = "Meteorite";
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.maxStack = 999;
-				this.consumable = true;
-				this.createTile = 37;
-				this.width = 12;
-				this.height = 12;
-				this.value = 1000;
-			}
-			else if (type == 117)
-			{
-				this.name = "Meteorite Bar";
-				this.width = 20;
-				this.height = 20;
-				this.maxStack = 99;
-				this.rare = 1;
-				this.toolTip = "'Warm to the touch'";
-				this.value = 7000;
-				this.useStyle = 1;
-				this.useTurn = true;
-				this.useAnimation = 15;
-				this.useTime = 10;
-				this.autoReuse = true;
-				this.consumable = true;
-				this.createTile = 239;
-				this.placeStyle = 9;
-			}
-			else if (type == 118)
-			{
-				this.name = "Hook";
-				this.maxStack = 99;
-				this.width = 18;
-				this.height = 18;
-				this.value = 1000;
-				this.toolTip = "Sometimes dropped by Skeletons and Piranha";
-			}
-			else if (type == 119)
-			{
-				this.noMelee = true;
-				this.useStyle = 1;
-				this.name = "Flamarang";
-				this.shootSpeed = 11f;
-				this.shoot = 19;
-				this.damage = 32;
-				this.knockBack = 8f;
-				this.width = 14;
-				this.height = 28;
-				this.useSound = 1;
-				this.useAnimation = 15;
-				this.useTime = 15;
-				this.noUseGraphic = true;
-				this.rare = 3;
-				this.value = 100000;
-				this.melee = true;
-			}
-			else if (type == 120)
-			{
-				this.useStyle = 5;
-				this.useAnimation = 25;
-				this.useTime = 25;
-				this.name = "Molten Fury";
-				this.width = 14;
-				this.height = 32;
-				this.shoot = 1;
-				this.useAmmo = 1;
-				this.useSound = 5;
-				this.damage = 29;
-				this.shootSpeed = 8f;
-				this.knockBack = 2f;
-				this.alpha = 30;
-				this.rare = 3;
-				this.noMelee = true;
-				this.scale = 1.1f;
-				this.value = 27000;
-				this.toolTip = "Lights wooden arrows ablaze";
-				this.ranged = true;
-			}
-			else if (type == 121)
-			{
-				this.name = "Fiery Greatsword";
-				this.useStyle = 1;
-				this.useAnimation = 34;
-				this.knockBack = 6.5f;
-				this.width = 24;
-				this.height = 28;
-				this.damage = 36;
-				this.scale = 1.3f;
-				this.useSound = 1;
-				this.rare = 3;
-				this.value = 27000;
-				this.toolTip = "'It's made out of fire!'";
-				this.melee = true;
+
+                this.craftingLvl = 8;
+			}
+			else
+			{
+				if (type == 2)
+				{
+					this.name = "Dirt Block";
+					this.useStyle = 1;
+					this.useTurn = true;
+					this.useAnimation = 15;
+					this.useTime = 10;
+					this.autoReuse = true;
+					this.maxStack = 999;
+					this.consumable = true;
+					this.createTile = 0;
+					this.width = 12;
+					this.height = 12;
+				}
+				else
+				{
+					if (type == 3)
+					{
+						this.name = "Stone Block";
+						this.useStyle = 1;
+						this.useTurn = true;
+						this.useAnimation = 15;
+						this.useTime = 10;
+						this.autoReuse = true;
+						this.maxStack = 999;
+						this.consumable = true;
+						this.createTile = 1;
+						this.width = 12;
+						this.height = 12;
+					}
+					else
+					{
+						if (type == 4)
+						{
+							this.name = "Iron Broadsword";
+							this.color = new Color(160, 145, 130, 110);
+							this.useStyle = 1;
+							this.useTurn = false;
+							this.useAnimation = 21;
+							this.useTime = 21;
+							this.width = 24;
+							this.height = 28;
+							this.damage = 10;
+							this.knockBack = 5f;
+							this.useSound = 1;
+							this.scale = 1f;
+							this.value = 1800;
+							this.melee = true;
+
+                            this.craftingLvl = 8;
+						}
+						else
+						{
+							if (type == 5)
+							{
+								this.name = "Mushroom";
+								this.useStyle = 2;
+								this.useSound = 2;
+								this.useTurn = false;
+								this.useAnimation = 17;
+								this.useTime = 17;
+								this.width = 16;
+								this.height = 18;
+								this.healLife = 15;
+								this.maxStack = 99;
+								this.consumable = true;
+								this.potion = true;
+								this.value = 25;
+							}
+							else
+							{
+								if (type == 6)
+								{
+									this.name = "Iron Shortsword";
+									this.color = new Color(160, 145, 130, 110);
+									this.useStyle = 3;
+									this.useTurn = false;
+									this.useAnimation = 12;
+									this.useTime = 12;
+									this.width = 24;
+									this.height = 28;
+									this.damage = 8;
+									this.knockBack = 4f;
+									this.scale = 0.9f;
+									this.useSound = 1;
+									this.useTurn = true;
+									this.value = 1400;
+									this.melee = true;
+
+                                    this.craftingLvl = 8;
+								}
+								else
+								{
+									if (type == 7)
+									{
+										this.name = "Iron Hammer";
+										this.color = new Color(160, 145, 130, 110);
+										this.autoReuse = true;
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 30;
+										this.useTime = 20;
+										this.hammer = 40;
+										this.width = 24;
+										this.height = 28;
+										this.damage = 7;
+										this.knockBack = 5.5f;
+										this.scale = 1.2f;
+										this.useSound = 1;
+										this.value = 1600;
+										this.melee = true;
+									}
+									else
+									{
+										if (type == 8)
+										{
+											this.flame = true;
+											this.noWet = true;
+											this.name = "Torch";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.holdStyle = 1;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 4;
+											this.width = 10;
+											this.height = 12;
+											this.toolTip = "Provides light";
+											this.value = 50;
+
+                                            this.craftingLvl = 1;
+										}
+										else
+										{
+											if (type == 9)
+											{
+												this.name = "Wood";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 30;
+												this.width = 8;
+												this.height = 10;
+											}
+											else
+											{
+												if (type == 10)
+												{
+													this.name = "Iron Axe";
+													this.color = new Color(160, 145, 130, 110);
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 27;
+													this.knockBack = 4.5f;
+													this.useTime = 19;
+													this.autoReuse = true;
+													this.width = 24;
+													this.height = 28;
+													this.damage = 5;
+													this.axe = 9;
+													this.scale = 1.1f;
+													this.useSound = 1;
+													this.value = 1600;
+													this.melee = true;
+
+                                                    this.craftingLvl = 8;
+												}
+												else
+												{
+													if (type == 11)
+													{
+														this.name = "Iron Ore";
+														this.useStyle = 1;
+														this.useTurn = true;
+														this.useAnimation = 15;
+														this.useTime = 10;
+														this.autoReuse = true;
+														this.maxStack = 999;
+														this.consumable = true;
+														this.createTile = 6;
+														this.width = 12;
+														this.height = 12;
+														this.value = 500;
+													}
+													else
+													{
+														if (type == 12)
+														{
+															this.name = "Copper Ore";
+															this.useStyle = 1;
+															this.useTurn = true;
+															this.useAnimation = 15;
+															this.useTime = 10;
+															this.autoReuse = true;
+															this.maxStack = 999;
+															this.consumable = true;
+															this.createTile = 7;
+															this.width = 12;
+															this.height = 12;
+															this.value = 250;
+														}
+														else
+														{
+															if (type == 13)
+															{
+																this.name = "Gold Ore";
+																this.useStyle = 1;
+																this.useTurn = true;
+																this.useAnimation = 15;
+																this.useTime = 10;
+																this.autoReuse = true;
+																this.maxStack = 999;
+																this.consumable = true;
+																this.createTile = 8;
+																this.width = 12;
+																this.height = 12;
+																this.value = 2000;
+															}
+															else
+															{
+																if (type == 14)
+																{
+																	this.name = "Silver Ore";
+																	this.useStyle = 1;
+																	this.useTurn = true;
+																	this.useAnimation = 15;
+																	this.useTime = 10;
+																	this.autoReuse = true;
+																	this.maxStack = 999;
+																	this.consumable = true;
+																	this.createTile = 9;
+																	this.width = 12;
+																	this.height = 12;
+																	this.value = 1000;
+																}
+																else
+																{
+																	if (type == 15)
+																	{
+																		this.name = "Copper Watch";
+																		this.width = 24;
+																		this.height = 28;
+																		this.accessory = true;
+																		this.toolTip = "Tells the time";
+																		this.value = 1000;
+																		this.waistSlot = 2;
+																	}
+																	else
+																	{
+																		if (type == 16)
+																		{
+																			this.name = "Silver Watch";
+																			this.width = 24;
+																			this.height = 28;
+																			this.accessory = true;
+																			this.toolTip = "Tells the time";
+																			this.value = 5000;
+																			this.waistSlot = 7;
+																		}
+																		else
+																		{
+																			if (type == 17)
+																			{
+																				this.name = "Gold Watch";
+																				this.width = 24;
+																				this.height = 28;
+																				this.accessory = true;
+																				this.rare = 1;
+																				this.toolTip = "Tells the time";
+																				this.value = 10000;
+																				this.waistSlot = 3;
+																			}
+																			else
+																			{
+																				if (type == 18)
+																				{
+																					this.name = "Depth Meter";
+																					this.width = 24;
+																					this.height = 18;
+																					this.accessory = true;
+																					this.rare = 1;
+																					this.toolTip = "Shows depth";
+																					this.value = 10000;
+																				}
+																				else
+																				{
+																					if (type == 19)
+																					{
+																						this.name = "Gold Bar";
+																						this.width = 20;
+																						this.height = 20;
+																						this.maxStack = 99;
+																						this.value = 6000;
+																						this.useStyle = 1;
+																						this.useTurn = true;
+																						this.useAnimation = 15;
+																						this.useTime = 10;
+																						this.autoReuse = true;
+																						this.consumable = true;
+																						this.createTile = 239;
+																						this.placeStyle = 6;
+
+                                                                                        this.craftingLvl = 20;
+																					}
+																					else
+																					{
+																						if (type == 20)
+																						{
+																							this.name = "Copper Bar";
+																							this.width = 20;
+																							this.height = 20;
+																							this.maxStack = 99;
+																							this.value = 750;
+																							this.useStyle = 1;
+																							this.useTurn = true;
+																							this.useAnimation = 15;
+																							this.useTime = 10;
+																							this.autoReuse = true;
+																							this.consumable = true;
+																							this.createTile = 239;
+																							this.placeStyle = 0;
+
+                                                                                            this.craftingLvl = 1;
+																						}
+																						else
+																						{
+																							if (type == 21)
+																							{
+																								this.name = "Silver Bar";
+																								this.width = 20;
+																								this.height = 20;
+																								this.maxStack = 99;
+																								this.value = 3000;
+																								this.useStyle = 1;
+																								this.useTurn = true;
+																								this.useAnimation = 15;
+																								this.useTime = 10;
+																								this.autoReuse = true;
+																								this.consumable = true;
+																								this.createTile = 239;
+																								this.placeStyle = 4;
+
+                                                                                                this.craftingLvl = 15;
+																							}
+																							else
+																							{
+																								if (type == 22)
+																								{
+																									this.name = "Iron Bar";
+																									this.color = new Color(160, 145, 130, 110);
+																									this.width = 20;
+																									this.height = 20;
+																									this.maxStack = 99;
+																									this.value = 1500;
+																									this.useStyle = 1;
+																									this.useTurn = true;
+																									this.useAnimation = 15;
+																									this.useTime = 10;
+																									this.autoReuse = true;
+																									this.consumable = true;
+																									this.createTile = 239;
+																									this.placeStyle = 2;
+
+                                                                                                    this.craftingLvl = 8;
+																								}
+																								else
+																								{
+																									if (type == 23)
+																									{
+																										this.name = "Gel";
+																										this.width = 10;
+																										this.height = 12;
+																										this.maxStack = 999;
+																										this.alpha = 175;
+																										this.ammo = 23;
+																										this.color = new Color(0, 80, 255, 100);
+																										this.toolTip = "'Both tasty and flammable'";
+																										this.value = 5;
+																									}
+																									else
+																									{
+																										if (type == 24)
+																										{
+																											this.name = "Wooden Sword";
+																											this.useStyle = 1;
+																											this.useTurn = false;
+																											this.useAnimation = 25;
+																											this.width = 24;
+																											this.height = 28;
+																											this.damage = 7;
+																											this.knockBack = 4f;
+																											this.scale = 0.95f;
+																											this.useSound = 1;
+																											this.value = 100;
+																											this.melee = true;
+
+                                                                                                            this.craftingLvl = 1;
+																										}
+																										else
+																										{
+																											if (type == 25)
+																											{
+																												this.name = "Wooden Door";
+																												this.useStyle = 1;
+																												this.useTurn = true;
+																												this.useAnimation = 15;
+																												this.useTime = 10;
+																												this.maxStack = 99;
+																												this.consumable = true;
+																												this.createTile = 10;
+																												this.width = 14;
+																												this.height = 28;
+																												this.value = 200;
+																											}
+																											else
+																											{
+																												if (type == 26)
+																												{
+																													this.name = "Stone Wall";
+																													this.useStyle = 1;
+																													this.useTurn = true;
+																													this.useAnimation = 15;
+																													this.useTime = 7;
+																													this.autoReuse = true;
+																													this.maxStack = 999;
+																													this.consumable = true;
+																													this.createWall = 1;
+																													this.width = 12;
+																													this.height = 12;
+																												}
+																												else
+																												{
+																													if (type == 27)
+																													{
+																														this.name = "Acorn";
+																														this.useTurn = true;
+																														this.useStyle = 1;
+																														this.useAnimation = 15;
+																														this.useTime = 10;
+																														this.maxStack = 99;
+																														this.consumable = true;
+																														this.createTile = 20;
+																														this.width = 18;
+																														this.height = 18;
+																														this.value = 10;
+																													}
+																													else
+																													{
+																														if (type == 28)
+																														{
+																															this.name = "Lesser Healing Potion";
+																															this.useSound = 3;
+																															this.healLife = 50;
+																															this.useStyle = 2;
+																															this.useTurn = true;
+																															this.useAnimation = 17;
+																															this.useTime = 17;
+																															this.maxStack = 30;
+																															this.consumable = true;
+																															this.width = 14;
+																															this.height = 24;
+																															this.potion = true;
+																															this.value = 300;
+																														}
+																														else
+																														{
+																															if (type == 29)
+																															{
+																																this.name = "Life Crystal";
+																																this.maxStack = 99;
+																																this.consumable = true;
+																																this.width = 18;
+																																this.height = 18;
+																																this.useStyle = 4;
+																																this.useTime = 30;
+																																this.useSound = 4;
+																																this.useAnimation = 30;
+																																this.toolTip = "Permanently increases maximum life by 20";
+																																this.rare = 2;
+																																this.value = 75000;
+																															}
+																															else
+																															{
+																																if (type == 30)
+																																{
+																																	this.name = "Dirt Wall";
+																																	this.useStyle = 1;
+																																	this.useTurn = true;
+																																	this.useAnimation = 15;
+																																	this.useTime = 7;
+																																	this.autoReuse = true;
+																																	this.maxStack = 999;
+																																	this.consumable = true;
+																																	this.createWall = 16;
+																																	this.width = 12;
+																																	this.height = 12;
+																																}
+																																else
+																																{
+																																	if (type == 31)
+																																	{
+																																		this.name = "Bottle";
+																																		this.useStyle = 1;
+																																		this.useTurn = true;
+																																		this.useAnimation = 15;
+																																		this.useTime = 10;
+																																		this.autoReuse = true;
+																																		this.maxStack = 99;
+																																		this.consumable = true;
+																																		this.createTile = 13;
+																																		this.width = 16;
+																																		this.height = 24;
+																																		this.value = 100;
+																																	}
+																																	else
+																																	{
+																																		if (type == 32)
+																																		{
+																																			this.name = "Wooden Table";
+																																			this.useStyle = 1;
+																																			this.useTurn = true;
+																																			this.useAnimation = 15;
+																																			this.useTime = 10;
+																																			this.autoReuse = true;
+																																			this.maxStack = 99;
+																																			this.consumable = true;
+																																			this.createTile = 14;
+																																			this.width = 26;
+																																			this.height = 20;
+																																			this.value = 300;
+																																		}
+																																		else
+																																		{
+																																			if (type == 33)
+																																			{
+																																				this.name = "Furnace";
+																																				this.useStyle = 1;
+																																				this.useTurn = true;
+																																				this.useAnimation = 15;
+																																				this.useTime = 10;
+																																				this.autoReuse = true;
+																																				this.maxStack = 99;
+																																				this.consumable = true;
+																																				this.createTile = 17;
+																																				this.width = 26;
+																																				this.height = 24;
+																																				this.value = 300;
+																																				this.toolTip = "Used for smelting ore";
+																																			}
+																																			else
+																																			{
+																																				if (type == 34)
+																																				{
+																																					this.name = "Wooden Chair";
+																																					this.useStyle = 1;
+																																					this.useTurn = true;
+																																					this.useAnimation = 15;
+																																					this.useTime = 10;
+																																					this.autoReuse = true;
+																																					this.maxStack = 99;
+																																					this.consumable = true;
+																																					this.createTile = 15;
+																																					this.width = 12;
+																																					this.height = 30;
+																																					this.value = 150;
+																																				}
+																																				else
+																																				{
+																																					if (type == 35)
+																																					{
+																																						this.name = "Iron Anvil";
+																																						this.useStyle = 1;
+																																						this.useTurn = true;
+																																						this.useAnimation = 15;
+																																						this.useTime = 10;
+																																						this.autoReuse = true;
+																																						this.maxStack = 99;
+																																						this.consumable = true;
+																																						this.createTile = 16;
+																																						this.width = 28;
+																																						this.height = 14;
+																																						this.value = 5000;
+																																						this.toolTip = "Used to craft items from metal bars";
+																																					}
+																																					else
+																																					{
+																																						if (type == 36)
+																																						{
+																																							this.name = "Work Bench";
+																																							this.useStyle = 1;
+																																							this.useTurn = true;
+																																							this.useAnimation = 15;
+																																							this.useTime = 10;
+																																							this.autoReuse = true;
+																																							this.maxStack = 99;
+																																							this.consumable = true;
+																																							this.createTile = 18;
+																																							this.width = 28;
+																																							this.height = 14;
+																																							this.value = 150;
+																																							this.toolTip = "Used for basic crafting";
+																																						}
+																																						else
+																																						{
+																																							if (type == 37)
+																																							{
+																																								this.name = "Goggles";
+																																								this.width = 28;
+																																								this.height = 12;
+																																								this.defense = 1;
+																																								this.headSlot = 10;
+																																								this.rare = 1;
+																																								this.value = 1000;
+																																							}
+																																							else
+																																							{
+																																								if (type == 38)
+																																								{
+																																									this.name = "Lens";
+																																									this.width = 12;
+																																									this.height = 20;
+																																									this.maxStack = 99;
+																																									this.value = 500;
+																																								}
+																																								else
+																																								{
+																																									if (type == 39)
+																																									{
+																																										this.useStyle = 5;
+																																										this.useAnimation = 30;
+																																										this.useTime = 30;
+																																										this.name = "Wooden Bow";
+																																										this.width = 12;
+																																										this.height = 28;
+																																										this.shoot = 1;
+																																										this.useAmmo = 1;
+																																										this.useSound = 5;
+																																										this.damage = 4;
+																																										this.shootSpeed = 6.1f;
+																																										this.noMelee = true;
+																																										this.value = 100;
+																																										this.ranged = true;
+
+                                                                                                                                                                        this.craftingLvl = 1;
+																																									}
+																																									else
+																																									{
+																																										if (type == 40)
+																																										{
+																																											this.name = "Wooden Arrow";
+																																											this.shootSpeed = 3f;
+																																											this.shoot = 1;
+																																											this.damage = 2;    // GitFlip - lower damage since wooden arrows only require wood
+																																											this.width = 10;
+																																											this.height = 28;
+																																											this.maxStack = 999;
+																																											this.consumable = true;
+																																											this.ammo = 1;
+																																											this.knockBack = 2f;
+																																											this.value = 10;
+																																											this.ranged = true;
+
+                                                                                                                                                                            this.craftingLvl = 1;
+																																										}
+																																										else
+																																										{
+																																											if (type == 41)
+																																											{
+																																												this.name = "Flaming Arrow";
+																																												this.shootSpeed = 3.5f;
+																																												this.shoot = 2;
+																																												this.damage = 6;
+																																												this.width = 10;
+																																												this.height = 28;
+																																												this.maxStack = 999;
+																																												this.consumable = true;
+																																												this.ammo = 1;
+																																												this.knockBack = 2f;
+																																												this.value = 15;
+																																												this.ranged = true;
+
+                                                                                                                                                                                this.craftingLvl = 8;
+																																											}
+																																											else
+																																											{
+																																												if (type == 42)
+																																												{
+																																													this.useStyle = 1;
+																																													this.name = "Shuriken";
+																																													this.shootSpeed = 9f;
+																																													this.shoot = 3;
+																																													this.damage = 10;
+																																													this.width = 18;
+																																													this.height = 20;
+																																													this.maxStack = 999;
+																																													this.consumable = true;
+																																													this.useSound = 1;
+																																													this.useAnimation = 15;
+																																													this.useTime = 15;
+																																													this.noUseGraphic = true;
+																																													this.noMelee = true;
+																																													this.value = 20;
+																																													this.ranged = true;
+																																												}
+																																												else
+																																												{
+																																													if (type == 43)
+																																													{
+																																														this.useStyle = 4;
+																																														this.name = "Suspicious Looking Eye";
+																																														this.width = 22;
+																																														this.height = 14;
+																																														this.consumable = true;
+																																														this.useAnimation = 45;
+																																														this.useTime = 45;
+																																														this.maxStack = 20;
+																																														this.toolTip = "Summons the Eye of Cthulhu";
+																																													}
+																																													else
+																																													{
+																																														if (type == 44)
+																																														{
+																																															this.useStyle = 5;
+																																															this.useAnimation = 25;
+																																															this.useTime = 25;
+																																															this.name = "Demon Bow";
+																																															this.width = 12;
+																																															this.height = 28;
+																																															this.shoot = 1;
+																																															this.useAmmo = 1;
+																																															this.useSound = 5;
+																																															this.damage = 14;
+																																															this.shootSpeed = 6.7f;
+																																															this.knockBack = 1f;
+																																															this.alpha = 30;
+																																															this.rare = 1;
+																																															this.noMelee = true;
+																																															this.value = 18000;
+																																															this.ranged = true;
+
+                                                                                                                                                                                            this.craftingLvl = 30;
+																																														}
+																																														else
+																																														{
+																																															if (type == 45)
+																																															{
+																																																this.name = "War Axe of the Night";
+																																																this.autoReuse = true;
+																																																this.useStyle = 1;
+																																																this.useAnimation = 30;
+																																																this.knockBack = 6f;
+																																																this.useTime = 15;
+																																																this.width = 24;
+																																																this.height = 28;
+																																																this.damage = 20;
+																																																this.axe = 15;
+																																																this.scale = 1.2f;
+																																																this.useSound = 1;
+																																																this.rare = 1;
+																																																this.value = 13500;
+																																																this.melee = true;
+
+                                                                                                                                                                                                this.craftingLvl = 30;
+																																															}
+																																															else
+																																															{
+																																																if (type == 46)
+																																																{
+																																																	this.name = "Light's Bane";
+																																																	this.useStyle = 1;
+																																																	this.useAnimation = 20;
+																																																	this.knockBack = 5f;
+																																																	this.width = 24;
+																																																	this.height = 28;
+																																																	this.damage = 17;
+																																																	this.scale = 1.1f;
+																																																	this.useSound = 1;
+																																																	this.rare = 1;
+																																																	this.value = 13500;
+																																																	this.melee = true;
+																																																}
+																																																else
+																																																{
+																																																	if (type == 47)
+																																																	{
+																																																		this.name = "Unholy Arrow";
+																																																		this.shootSpeed = 3.4f;
+																																																		this.shoot = 4;
+																																																		this.damage = 8;
+																																																		this.width = 10;
+																																																		this.height = 28;
+																																																		this.maxStack = 999;
+																																																		this.consumable = true;
+																																																		this.ammo = 1;
+																																																		this.knockBack = 3f;
+																																																		this.alpha = 30;
+																																																		this.rare = 1;
+																																																		this.value = 40;
+																																																		this.ranged = true;
+																																																	}
+																																																	else
+																																																	{
+																																																		if (type == 48)
+																																																		{
+																																																			this.name = "Chest";
+																																																			this.useStyle = 1;
+																																																			this.useTurn = true;
+																																																			this.useAnimation = 15;
+																																																			this.useTime = 10;
+																																																			this.autoReuse = true;
+																																																			this.maxStack = 99;
+																																																			this.consumable = true;
+																																																			this.createTile = 21;
+																																																			this.width = 26;
+																																																			this.height = 22;
+																																																			this.value = 500;
+																																																		}
+																																																		else
+																																																		{
+																																																			if (type == 49)
+																																																			{
+																																																				this.name = "Band of Regeneration";
+																																																				this.width = 22;
+																																																				this.height = 22;
+																																																				this.accessory = true;
+																																																				this.lifeRegen = 1;
+																																																				this.rare = 1;
+																																																				this.toolTip = "Slowly regenerates life";
+																																																				this.value = 50000;
+																																																				this.handOnSlot = 2;
+																																																			}
+																																																			else
+																																																			{
+																																																				if (type == 50)
+																																																				{
+																																																					this.name = "Magic Mirror";
+																																																					this.useTurn = true;
+																																																					this.width = 20;
+																																																					this.height = 20;
+																																																					this.useStyle = 4;
+																																																					this.useTime = 90;
+																																																					this.useSound = 6;
+																																																					this.useAnimation = 90;
+																																																					this.toolTip = "Gaze in the mirror to return home";
+																																																					this.rare = 1;
+																																																					this.value = 50000;
+																																																				}
+																																																				else
+																																																				{
+																																																					if (type == 51)
+																																																					{
+																																																						this.name = "Jester's Arrow";
+																																																						this.shootSpeed = 0.5f;
+																																																						this.shoot = 5;
+																																																						this.damage = 9;
+																																																						this.width = 10;
+																																																						this.height = 28;
+																																																						this.maxStack = 999;
+																																																						this.consumable = true;
+																																																						this.ammo = 1;
+																																																						this.knockBack = 4f;
+																																																						this.rare = 1;
+																																																						this.value = 100;
+																																																						this.ranged = true;
+																																																					}
+																																																					else
+																																																					{
+																																																						if (type == 52)
+																																																						{
+																																																							type = 52;
+																																																							this.name = "Angel Statue";
+																																																							this.useStyle = 1;
+																																																							this.useTurn = true;
+																																																							this.useAnimation = 15;
+																																																							this.useTime = 10;
+																																																							this.autoReuse = true;
+																																																							this.maxStack = 99;
+																																																							this.consumable = true;
+																																																							this.createTile = 105;
+																																																							this.width = 20;
+																																																							this.height = 20;
+																																																							this.value = 300;
+																																																							this.placeStyle = 1;
+																																																						}
+																																																						else
+																																																						{
+																																																							if (type == 53)
+																																																							{
+																																																								this.name = "Cloud in a Bottle";
+																																																								this.width = 16;
+																																																								this.height = 24;
+																																																								this.accessory = true;
+																																																								this.rare = 1;
+																																																								this.toolTip = "Allows the holder to double jump";
+																																																								this.value = 50000;
+																																																								this.waistSlot = 1;
+																																																							}
+																																																							else
+																																																							{
+																																																								if (type == 54)
+																																																								{
+																																																									this.name = "Hermes Boots";
+																																																									this.width = 28;
+																																																									this.height = 24;
+																																																									this.accessory = true;
+																																																									this.rare = 1;
+																																																									this.toolTip = "The wearer can run super fast";
+																																																									this.value = 50000;
+																																																									this.shoeSlot = 6;
+																																																								}
+																																																								else
+																																																								{
+																																																									if (type == 55)
+																																																									{
+																																																										this.noMelee = true;
+																																																										this.useStyle = 1;
+																																																										this.name = "Enchanted Boomerang";
+																																																										this.shootSpeed = 10f;
+																																																										this.shoot = 6;
+																																																										this.damage = 13;
+																																																										this.knockBack = 8f;
+																																																										this.width = 14;
+																																																										this.height = 28;
+																																																										this.useSound = 1;
+																																																										this.useAnimation = 15;
+																																																										this.useTime = 15;
+																																																										this.noUseGraphic = true;
+																																																										this.rare = 1;
+																																																										this.value = 50000;
+																																																										this.ranged = true;
+																																																									}
+																																																									else
+																																																									{
+																																																										if (type == 56)
+																																																										{
+																																																											this.name = "Demonite Ore";
+																																																											this.useStyle = 1;
+																																																											this.useTurn = true;
+																																																											this.useAnimation = 15;
+																																																											this.useTime = 10;
+																																																											this.autoReuse = true;
+																																																											this.maxStack = 999;
+																																																											this.consumable = true;
+																																																											this.createTile = 22;
+																																																											this.width = 12;
+																																																											this.height = 12;
+																																																											this.rare = 1;
+																																																											this.toolTip = "'Pulsing with dark energy'";
+																																																											this.value = 4000;
+																																																										}
+																																																										else
+																																																										{
+																																																											if (type == 57)
+																																																											{
+																																																												this.name = "Demonite Bar";
+																																																												this.width = 20;
+																																																												this.height = 20;
+																																																												this.maxStack = 99;
+																																																												this.rare = 1;
+																																																												this.toolTip = "'Pulsing with dark energy'";
+																																																												this.value = 16000;
+																																																												this.useStyle = 1;
+																																																												this.useTurn = true;
+																																																												this.useAnimation = 15;
+																																																												this.useTime = 10;
+																																																												this.autoReuse = true;
+																																																												this.consumable = true;
+																																																												this.createTile = 239;
+																																																												this.placeStyle = 8;
+
+                                                                                                                                                                                                                                                this.craftingLvl = 30;
+																																																											}
+																																																											else
+																																																											{
+																																																												if (type == 58)
+																																																												{
+																																																													this.name = "Heart";
+																																																													this.width = 12;
+																																																													this.height = 12;
+																																																												}
+																																																												else
+																																																												{
+																																																													if (type == 59)
+																																																													{
+																																																														this.name = "Corrupt Seeds";
+																																																														this.useTurn = true;
+																																																														this.useStyle = 1;
+																																																														this.useAnimation = 15;
+																																																														this.useTime = 10;
+																																																														this.maxStack = 99;
+																																																														this.consumable = true;
+																																																														this.createTile = 23;
+																																																														this.width = 14;
+																																																														this.height = 14;
+																																																														this.value = 500;
+																																																													}
+																																																													else
+																																																													{
+																																																														if (type == 60)
+																																																														{
+																																																															this.name = "Vile Mushroom";
+																																																															this.width = 16;
+																																																															this.height = 18;
+																																																															this.maxStack = 99;
+																																																															this.value = 50;
+																																																														}
+																																																														else
+																																																														{
+																																																															if (type == 61)
+																																																															{
+																																																																this.name = "Ebonstone Block";
+																																																																this.useStyle = 1;
+																																																																this.useTurn = true;
+																																																																this.useAnimation = 15;
+																																																																this.useTime = 10;
+																																																																this.autoReuse = true;
+																																																																this.maxStack = 999;
+																																																																this.consumable = true;
+																																																																this.createTile = 25;
+																																																																this.width = 12;
+																																																																this.height = 12;
+																																																															}
+																																																															else
+																																																															{
+																																																																if (type == 62)
+																																																																{
+																																																																	this.name = "Grass Seeds";
+																																																																	this.useTurn = true;
+																																																																	this.useStyle = 1;
+																																																																	this.useAnimation = 15;
+																																																																	this.useTime = 10;
+																																																																	this.maxStack = 99;
+																																																																	this.consumable = true;
+																																																																	this.createTile = 2;
+																																																																	this.width = 14;
+																																																																	this.height = 14;
+																																																																	this.value = 20;
+																																																																}
+																																																																else
+																																																																{
+																																																																	if (type == 63)
+																																																																	{
+																																																																		this.name = "Sunflower";
+																																																																		this.useTurn = true;
+																																																																		this.useStyle = 1;
+																																																																		this.useAnimation = 15;
+																																																																		this.useTime = 10;
+																																																																		this.maxStack = 99;
+																																																																		this.consumable = true;
+																																																																		this.createTile = 27;
+																																																																		this.width = 26;
+																																																																		this.height = 26;
+																																																																		this.value = 200;
+																																																																	}
+																																																																	else
+																																																																	{
+																																																																		if (type == 64)
+																																																																		{
+																																																																			this.mana = 10;
+																																																																			this.damage = 10;
+																																																																			this.useStyle = 1;
+																																																																			this.name = "Vilethorn";
+																																																																			this.shootSpeed = 32f;
+																																																																			this.shoot = 7;
+																																																																			this.width = 26;
+																																																																			this.height = 28;
+																																																																			this.useSound = 8;
+																																																																			this.useAnimation = 28;
+																																																																			this.useTime = 28;
+																																																																			this.rare = 1;
+																																																																			this.noMelee = true;
+																																																																			this.knockBack = 1f;
+																																																																			this.toolTip = "Summons a vile thorn";
+																																																																			this.value = 10000;
+																																																																			this.magic = true;
+																																																																		}
+																																																																		else
+																																																																		{
+																																																																			if (type == 65)
+																																																																			{
+																																																																				this.knockBack = 5f;
+																																																																				this.alpha = 100;
+																																																																				this.color = new Color(150, 150, 150, 0);
+																																																																				this.damage = 22;
+																																																																				this.useStyle = 1;
+																																																																				this.scale = 1.25f;
+																																																																				this.name = "Starfury";
+																																																																				this.shootSpeed = 20f;
+																																																																				this.shoot = 9;
+																																																																				this.width = 14;
+																																																																				this.height = 28;
+																																																																				this.useSound = 1;
+																																																																				this.useAnimation = 20;
+																																																																				this.useTime = 40;
+																																																																				this.rare = 2;
+																																																																				this.toolTip = "Causes stars to rain from the sky";
+																																																																				this.toolTip2 = "'Forged with the fury of heaven'";
+																																																																				this.value = 50000;
+																																																																				this.melee = true;
+																																																																			}
+																																																																			else
+																																																																			{
+																																																																				if (type == 66)
+																																																																				{
+																																																																					this.useStyle = 1;
+																																																																					this.name = "Purification Powder";
+																																																																					this.shootSpeed = 4f;
+																																																																					this.shoot = 10;
+																																																																					this.width = 16;
+																																																																					this.height = 24;
+																																																																					this.maxStack = 99;
+																																																																					this.consumable = true;
+																																																																					this.useSound = 1;
+																																																																					this.useAnimation = 15;
+																																																																					this.useTime = 15;
+																																																																					this.noMelee = true;
+																																																																					this.toolTip = "Cleanses the corruption";
+																																																																					this.value = 75;
+																																																																				}
+																																																																				else
+																																																																				{
+																																																																					if (type == 67)
+																																																																					{
+																																																																						this.damage = 0;
+																																																																						this.useStyle = 1;
+																																																																						this.name = "Vile Powder";
+																																																																						this.shootSpeed = 4f;
+																																																																						this.shoot = 11;
+																																																																						this.width = 16;
+																																																																						this.height = 24;
+																																																																						this.maxStack = 99;
+																																																																						this.consumable = true;
+																																																																						this.useSound = 1;
+																																																																						this.useAnimation = 15;
+																																																																						this.useTime = 15;
+																																																																						this.noMelee = true;
+																																																																						this.value = 100;
+																																																																						this.toolTip = "Removes the Hallow";
+																																																																					}
+																																																																					else
+																																																																					{
+																																																																						if (type == 68)
+																																																																						{
+																																																																							this.name = "Rotten Chunk";
+																																																																							this.width = 18;
+																																																																							this.height = 20;
+																																																																							this.maxStack = 99;
+																																																																							this.toolTip = "'Looks tasty!'";
+																																																																							this.value = 10;
+																																																																						}
+																																																																						else
+																																																																						{
+																																																																							if (type == 69)
+																																																																							{
+																																																																								this.name = "Worm Tooth";
+																																																																								this.width = 8;
+																																																																								this.height = 20;
+																																																																								this.maxStack = 99;
+																																																																								this.value = 100;
+																																																																							}
+																																																																							else
+																																																																							{
+																																																																								if (type == 70)
+																																																																								{
+																																																																									this.useStyle = 4;
+																																																																									this.consumable = true;
+																																																																									this.useAnimation = 45;
+																																																																									this.useTime = 45;
+																																																																									this.name = "Worm Food";
+																																																																									this.width = 28;
+																																																																									this.height = 28;
+																																																																									this.maxStack = 20;
+																																																																									this.toolTip = "Summons the Eater of Worlds";
+																																																																								}
+																																																																								else
+																																																																								{
+																																																																									if (type == 71)
+																																																																									{
+																																																																										this.name = "Copper Coin";
+																																																																										this.width = 10;
+																																																																										this.height = 12;
+																																																																										this.maxStack = 100;
+																																																																										this.value = 5;
+																																																																										this.ammo = 71;
+																																																																										this.shoot = 158;
+																																																																										this.notAmmo = true;
+																																																																										this.damage = 25;
+																																																																										this.shootSpeed = 1f;
+																																																																										this.ranged = true;
+																																																																										this.useStyle = 1;
+																																																																										this.useTurn = true;
+																																																																										this.useAnimation = 15;
+																																																																										this.useTime = 10;
+																																																																										this.autoReuse = true;
+																																																																										this.consumable = true;
+																																																																										this.createTile = 330;
+																																																																										this.noMelee = true;
+																																																																									}
+																																																																									else
+																																																																									{
+																																																																										if (type == 72)
+																																																																										{
+																																																																											this.name = "Silver Coin";
+																																																																											this.width = 10;
+																																																																											this.height = 12;
+																																																																											this.maxStack = 100;
+																																																																											this.value = 500;
+																																																																											this.ammo = 71;
+																																																																											this.notAmmo = true;
+																																																																											this.damage = 50;
+																																																																											this.shoot = 159;
+																																																																											this.shootSpeed = 2f;
+																																																																											this.ranged = true;
+																																																																											this.useStyle = 1;
+																																																																											this.useTurn = true;
+																																																																											this.useAnimation = 15;
+																																																																											this.useTime = 10;
+																																																																											this.autoReuse = true;
+																																																																											this.consumable = true;
+																																																																											this.createTile = 331;
+																																																																											this.noMelee = true;
+																																																																										}
+																																																																										else
+																																																																										{
+																																																																											if (type == 73)
+																																																																											{
+																																																																												this.name = "Gold Coin";
+																																																																												this.width = 10;
+																																																																												this.height = 12;
+																																																																												this.maxStack = 100;
+																																																																												this.value = 50000;
+																																																																												this.ammo = 71;
+																																																																												this.notAmmo = true;
+																																																																												this.damage = 100;
+																																																																												this.shoot = 160;
+																																																																												this.shootSpeed = 3f;
+																																																																												this.ranged = true;
+																																																																												this.useStyle = 1;
+																																																																												this.useTurn = true;
+																																																																												this.useAnimation = 15;
+																																																																												this.useTime = 10;
+																																																																												this.autoReuse = true;
+																																																																												this.consumable = true;
+																																																																												this.createTile = 332;
+																																																																												this.noMelee = true;
+																																																																											}
+																																																																											else
+																																																																											{
+																																																																												if (type == 74)
+																																																																												{
+																																																																													this.name = "Platinum Coin";
+																																																																													this.width = 10;
+																																																																													this.height = 12;
+																																																																													this.maxStack = 999;
+																																																																													this.value = 5000000;
+																																																																													this.ammo = 71;
+																																																																													this.notAmmo = true;
+																																																																													this.damage = 200;
+																																																																													this.shoot = 161;
+																																																																													this.shootSpeed = 4f;
+																																																																													this.ranged = true;
+																																																																													this.useStyle = 1;
+																																																																													this.useTurn = true;
+																																																																													this.useAnimation = 15;
+																																																																													this.useTime = 10;
+																																																																													this.autoReuse = true;
+																																																																													this.consumable = true;
+																																																																													this.createTile = 333;
+																																																																													this.noMelee = true;
+																																																																												}
+																																																																												else
+																																																																												{
+																																																																													if (type == 75)
+																																																																													{
+																																																																														this.name = "Fallen Star";
+																																																																														this.width = 18;
+																																																																														this.height = 20;
+																																																																														this.maxStack = 100;
+																																																																														this.alpha = 75;
+																																																																														this.ammo = 15;
+																																																																														this.toolTip = "Disappears after the sunrise";
+																																																																														this.value = 500;
+																																																																														this.useStyle = 4;
+																																																																														this.useSound = 4;
+																																																																														this.useTurn = false;
+																																																																														this.useAnimation = 17;
+																																																																														this.useTime = 17;
+																																																																														this.consumable = true;
+																																																																														this.rare = 1;
+																																																																													}
+																																																																													else
+																																																																													{
+																																																																														if (type == 76)
+																																																																														{
+																																																																															this.name = "Copper Greaves";
+																																																																															this.width = 18;
+																																																																															this.height = 18;
+																																																																															this.defense = 1;
+																																																																															this.legSlot = 1;
+																																																																															this.value = 750;
+
+                                                                                                                                                                                                                                                                                                                            this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                            this.requiredLvl = 1;
+                                                                                                                                                                                                                                                                                                                            this.craftingLvl = 1;
+																																																																														}
+																																																																														else
+																																																																														{
+																																																																															if (type == 77)
+																																																																															{
+																																																																																this.name = "Iron Greaves";
+																																																																																this.width = 18;
+																																																																																this.height = 18;
+																																																																																this.defense = 2;
+																																																																																this.legSlot = 2;
+																																																																																this.value = 3000;
+
+                                                                                                                                                                                                                                                                                                                                this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                this.requiredLvl = 8;
+                                                                                                                                                                                                                                                                                                                                this.craftingLvl = 8;
+																																																																															}
+																																																																															else
+																																																																															{
+																																																																																if (type == 78)
+																																																																																{
+																																																																																	this.name = "Silver Greaves";
+																																																																																	this.width = 18;
+																																																																																	this.height = 18;
+																																																																																	this.defense = 3;
+																																																																																	this.legSlot = 3;
+																																																																																	this.value = 7500;
+
+                                                                                                                                                                                                                                                                                                                                    this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                    this.requiredLvl = 15;
+                                                                                                                                                                                                                                                                                                                                    this.craftingLvl = 15;
+																																																																																}
+																																																																																else
+																																																																																{
+																																																																																	if (type == 79)
+																																																																																	{
+																																																																																		this.name = "Gold Greaves";
+																																																																																		this.width = 18;
+																																																																																		this.height = 18;
+																																																																																		this.defense = 4;
+																																																																																		this.legSlot = 4;
+																																																																																		this.value = 15000;
+
+                                                                                                                                                                                                                                                                                                                                        this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                        this.requiredLvl = 20;
+                                                                                                                                                                                                                                                                                                                                        this.craftingLvl = 20;
+																																																																																	}
+																																																																																	else
+																																																																																	{
+																																																																																		if (type == 80)
+																																																																																		{
+																																																																																			this.name = "Copper Chainmail";
+																																																																																			this.width = 18;
+																																																																																			this.height = 18;
+																																																																																			this.defense = 2;
+																																																																																			this.bodySlot = 1;
+																																																																																			this.value = 1000;
+
+                                                                                                                                                                                                                                                                                                                                            this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                            this.requiredLvl = 1;
+                                                                                                                                                                                                                                                                                                                                            this.craftingLvl = 1;
+																																																																																		}
+																																																																																		else
+																																																																																		{
+																																																																																			if (type == 81)
+																																																																																			{
+																																																																																				this.name = "Iron Chainmail";
+																																																																																				this.width = 18;
+																																																																																				this.height = 18;
+																																																																																				this.defense = 3;
+																																																																																				this.bodySlot = 2;
+																																																																																				this.value = 4000;
+
+                                                                                                                                                                                                                                                                                                                                                this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                this.requiredLvl = 8;
+                                                                                                                                                                                                                                                                                                                                                this.craftingLvl = 8;
+																																																																																			}
+																																																																																			else
+																																																																																			{
+																																																																																				if (type == 82)
+																																																																																				{
+																																																																																					this.name = "Silver Chainmail";
+																																																																																					this.width = 18;
+																																																																																					this.height = 18;
+																																																																																					this.defense = 4;
+																																																																																					this.bodySlot = 3;
+																																																																																					this.value = 10000;
+
+                                                                                                                                                                                                                                                                                                                                                    this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                    this.requiredLvl = 15;
+                                                                                                                                                                                                                                                                                                                                                    this.craftingLvl = 15;
+																																																																																				}
+																																																																																				else
+																																																																																				{
+																																																																																					if (type == 83)
+																																																																																					{
+																																																																																						this.name = "Gold Chainmail";
+																																																																																						this.width = 18;
+																																																																																						this.height = 18;
+																																																																																						this.defense = 5;
+																																																																																						this.bodySlot = 4;
+																																																																																						this.value = 20000;
+
+                                                                                                                                                                                                                                                                                                                                                        this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                        this.requiredLvl = 20;
+                                                                                                                                                                                                                                                                                                                                                        this.craftingLvl = 20;
+																																																																																					}
+																																																																																					else
+																																																																																					{
+																																																																																						if (type == 84)
+																																																																																						{
+																																																																																							this.noUseGraphic = true;
+																																																																																							this.damage = 0;
+																																																																																							this.knockBack = 7f;
+																																																																																							this.useStyle = 5;
+																																																																																							this.name = "Grappling Hook";
+																																																																																							this.shootSpeed = 11.5f;
+																																																																																							this.shoot = 13;
+																																																																																							this.width = 18;
+																																																																																							this.height = 28;
+																																																																																							this.useSound = 1;
+																																																																																							this.useAnimation = 20;
+																																																																																							this.useTime = 20;
+																																																																																							this.rare = 1;
+																																																																																							this.noMelee = true;
+																																																																																							this.value = 20000;
+																																																																																							this.toolTip = "'Get over here!'";
+																																																																																						}
+																																																																																						else
+																																																																																						{
+																																																																																							if (type == 85)
+																																																																																							{
+																																																																																								this.name = "Chain";
+																																																																																								this.useStyle = 1;
+																																																																																								this.useTurn = true;
+																																																																																								this.useAnimation = 15;
+																																																																																								this.useTime = 8;
+																																																																																								this.autoReuse = true;
+																																																																																								this.maxStack = 999;
+																																																																																								this.consumable = true;
+																																																																																								this.createTile = 214;
+																																																																																								this.width = 12;
+																																																																																								this.height = 12;
+																																																																																								this.value = 1000;
+																																																																																								this.tileBoost += 2;
+																																																																																								this.toolTip = "Can be climbed on";
+																																																																																							}
+																																																																																							else
+																																																																																							{
+																																																																																								if (type == 86)
+																																																																																								{
+																																																																																									this.name = "Shadow Scale";
+																																																																																									this.width = 14;
+																																																																																									this.height = 18;
+																																																																																									this.maxStack = 99;
+																																																																																									this.rare = 1;
+																																																																																									this.value = 500;
+																																																																																								}
+																																																																																								else
+																																																																																								{
+																																																																																									if (type == 87)
+																																																																																									{
+																																																																																										this.name = "Piggy Bank";
+																																																																																										this.useStyle = 1;
+																																																																																										this.useTurn = true;
+																																																																																										this.useAnimation = 15;
+																																																																																										this.useTime = 10;
+																																																																																										this.autoReuse = true;
+																																																																																										this.maxStack = 99;
+																																																																																										this.consumable = true;
+																																																																																										this.createTile = 29;
+																																																																																										this.width = 20;
+																																																																																										this.height = 12;
+																																																																																										this.value = 10000;
+																																																																																									}
+																																																																																									else
+																																																																																									{
+																																																																																										if (type == 88)
+																																																																																										{
+																																																																																											this.name = "Mining Helmet";
+																																																																																											this.width = 22;
+																																																																																											this.height = 16;
+																																																																																											this.defense = 1;
+																																																																																											this.headSlot = 11;
+																																																																																											this.rare = 1;
+																																																																																											this.value = 80000;
+																																																																																											this.toolTip = "Provides light when worn";
+
+                                                                                                                                                                                                                                                                                                                                                                            this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                                            this.requiredLvl = 5;
+																																																																																										}
+																																																																																										else
+																																																																																										{
+																																																																																											if (type == 89)
+																																																																																											{
+																																																																																												this.name = "Copper Helmet";
+																																																																																												this.width = 18;
+																																																																																												this.height = 18;
+																																																																																												this.defense = 1;
+																																																																																												this.headSlot = 1;
+																																																																																												this.value = 1250;
+
+                                                                                                                                                                                                                                                                                                                                                                                this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                                                this.requiredLvl = 1;
+                                                                                                                                                                                                                                                                                                                                                                                this.craftingLvl = 1;
+																																																																																											}
+																																																																																											else
+																																																																																											{
+																																																																																												if (type == 90)
+																																																																																												{
+																																																																																													this.name = "Iron Helmet";
+																																																																																													this.width = 18;
+																																																																																													this.height = 18;
+																																																																																													this.defense = 2;
+																																																																																													this.headSlot = 2;
+																																																																																													this.value = 5000;
+
+                                                                                                                                                                                                                                                                                                                                                                                    this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                                                    this.requiredLvl = 8;
+                                                                                                                                                                                                                                                                                                                                                                                    this.craftingLvl = 8;
+																																																																																												}
+																																																																																												else
+																																																																																												{
+																																																																																													if (type == 91)
+																																																																																													{
+																																																																																														this.name = "Silver Helmet";
+																																																																																														this.width = 18;
+																																																																																														this.height = 18;
+																																																																																														this.defense = 3;
+																																																																																														this.headSlot = 3;
+																																																																																														this.value = 12500;
+
+                                                                                                                                                                                                                                                                                                                                                                                        this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                                                        this.requiredLvl = 15;
+                                                                                                                                                                                                                                                                                                                                                                                        this.craftingLvl = 15;
+																																																																																													}
+																																																																																													else
+																																																																																													{
+																																																																																														if (type == 92)
+																																																																																														{
+																																																																																															this.name = "Gold Helmet";
+																																																																																															this.width = 18;
+																																																																																															this.height = 18;
+																																																																																															this.defense = 4;
+																																																																																															this.headSlot = 4;
+																																																																																															this.value = 25000;
+
+                                                                                                                                                                                                                                                                                                                                                                                            this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                                                            this.requiredLvl = 20;
+                                                                                                                                                                                                                                                                                                                                                                                            this.craftingLvl = 20;
+																																																																																														}
+																																																																																														else
+																																																																																														{
+																																																																																															if (type == 93)
+																																																																																															{
+																																																																																																this.name = "Wood Wall";
+																																																																																																this.useStyle = 1;
+																																																																																																this.useTurn = true;
+																																																																																																this.useAnimation = 15;
+																																																																																																this.useTime = 7;
+																																																																																																this.autoReuse = true;
+																																																																																																this.maxStack = 999;
+																																																																																																this.consumable = true;
+																																																																																																this.createWall = 4;
+																																																																																																this.width = 12;
+																																																																																																this.height = 12;
+																																																																																															}
+																																																																																															else
+																																																																																															{
+																																																																																																if (type == 94)
+																																																																																																{
+																																																																																																	this.name = "Wood Platform";
+																																																																																																	this.useStyle = 1;
+																																																																																																	this.useTurn = true;
+																																																																																																	this.useAnimation = 15;
+																																																																																																	this.useTime = 10;
+																																																																																																	this.autoReuse = true;
+																																																																																																	this.maxStack = 99;
+																																																																																																	this.consumable = true;
+																																																																																																	this.createTile = 19;
+																																																																																																	this.width = 8;
+																																																																																																	this.height = 10;
+																																																																																																}
+																																																																																																else
+																																																																																																{
+																																																																																																	if (type == 95)
+																																																																																																	{
+																																																																																																		this.useStyle = 5;
+																																																																																																		this.useAnimation = 16;
+																																																																																																		this.useTime = 16;
+																																																																																																		this.name = "Flintlock Pistol";
+																																																																																																		this.width = 24;
+																																																																																																		this.height = 28;
+																																																																																																		this.shoot = 14;
+																																																																																																		this.useAmmo = 14;
+																																																																																																		this.useSound = 11;
+																																																																																																		this.damage = 10;
+																																																																																																		this.shootSpeed = 5f;
+																																																																																																		this.noMelee = true;
+																																																																																																		this.value = 50000;
+																																																																																																		this.scale = 0.9f;
+																																																																																																		this.rare = 1;
+																																																																																																		this.ranged = true;
+																																																																																																	}
+																																																																																																	else
+																																																																																																	{
+																																																																																																		if (type == 96)
+																																																																																																		{
+																																																																																																			this.useStyle = 5;
+																																																																																																			this.autoReuse = true;
+																																																																																																			this.useAnimation = 41;
+																																																																																																			this.useTime = 41;
+																																																																																																			this.name = "Musket";
+																																																																																																			this.width = 44;
+																																																																																																			this.height = 14;
+																																																																																																			this.shoot = 10;
+																																																																																																			this.useAmmo = 14;
+																																																																																																			this.useSound = 11;
+																																																																																																			this.damage = 25;
+																																																																																																			this.shootSpeed = 8.5f;
+																																																																																																			this.noMelee = true;
+																																																																																																			this.value = 100000;
+																																																																																																			this.knockBack = 4.5f;
+																																																																																																			this.rare = 1;
+																																																																																																			this.ranged = true;
+																																																																																																		}
+																																																																																																		else
+																																																																																																		{
+																																																																																																			if (type == 97)
+																																																																																																			{
+																																																																																																				this.name = "Musket Ball";
+																																																																																																				this.shootSpeed = 4f;
+																																																																																																				this.shoot = 14;
+																																																																																																				this.damage = 7;
+																																																																																																				this.width = 8;
+																																																																																																				this.height = 8;
+																																																																																																				this.maxStack = 999;
+																																																																																																				this.consumable = true;
+																																																																																																				this.ammo = 14;
+																																																																																																				this.knockBack = 2f;
+																																																																																																				this.value = 7;
+																																																																																																				this.ranged = true;
+																																																																																																			}
+																																																																																																			else
+																																																																																																			{
+																																																																																																				if (type == 98)
+																																																																																																				{
+																																																																																																					this.useStyle = 5;
+																																																																																																					this.autoReuse = true;
+																																																																																																					this.useAnimation = 8;
+																																																																																																					this.useTime = 8;
+																																																																																																					this.name = "Minishark";
+																																																																																																					this.width = 50;
+																																																																																																					this.height = 18;
+																																																																																																					this.shoot = 10;
+																																																																																																					this.useAmmo = 14;
+																																																																																																					this.useSound = 11;
+																																																																																																					this.damage = 6;
+																																																																																																					this.shootSpeed = 7f;
+																																																																																																					this.noMelee = true;
+																																																																																																					this.value = 350000;
+																																																																																																					this.rare = 2;
+																																																																																																					this.toolTip = "33% chance to not consume ammo";
+																																																																																																					this.toolTip2 = "'Half shark, half gun, completely awesome.'";
+																																																																																																					this.ranged = true;
+																																																																																																				}
+																																																																																																				else
+																																																																																																				{
+																																																																																																					if (type == 99)
+																																																																																																					{
+																																																																																																						this.useStyle = 5;
+																																																																																																						this.useAnimation = 28;
+																																																																																																						this.useTime = 28;
+																																																																																																						this.name = "Iron Bow";
+																																																																																																						this.color = new Color(160, 145, 130, 110);
+																																																																																																						this.width = 12;
+																																																																																																						this.height = 28;
+																																																																																																						this.shoot = 1;
+																																																																																																						this.useAmmo = 1;
+																																																																																																						this.useSound = 5;
+																																																																																																						this.damage = 8;
+																																																																																																						this.shootSpeed = 6.6f;
+																																																																																																						this.noMelee = true;
+																																																																																																						this.value = 1400;
+																																																																																																						this.ranged = true;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                        this.craftingLvl = 8;
+																																																																																																					}
+																																																																																																					else
+																																																																																																					{
+																																																																																																						if (type == 100)
+																																																																																																						{
+																																																																																																							this.name = "Shadow Greaves";
+																																																																																																							this.width = 18;
+																																																																																																							this.height = 18;
+																																																																																																							this.defense = 5; //Original 6
+																																																																																																							this.legSlot = 5;
+																																																																																																							this.rare = 1;
+																																																																																																							this.value = 22500;
+																																																																																																							this.toolTip = "7% increased melee speed";
+
+                                                                                                                                                                                                                                                                                                                                                                                                                            this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                                                                                            this.requiredLvl = 25;
+                                                                                                                                                                                                                                                                                                                                                                                                                            this.craftingLvl = 25;
+																																																																																																						}
+																																																																																																						else
+																																																																																																						{
+																																																																																																							if (type == 101)
+																																																																																																							{
+																																																																																																								this.name = "Shadow Scalemail";
+																																																																																																								this.width = 18;
+																																																																																																								this.height = 18;
+																																																																																																								this.defense = 6; //Original 7
+																																																																																																								this.bodySlot = 5;
+																																																																																																								this.rare = 1;
+																																																																																																								this.value = 30000;
+																																																																																																								this.toolTip = "7% increased melee speed";
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                this.skillType = (int)Skill.Combat;
+                                                                                                                                                                                                                                                                                                                                                                                                                                this.requiredLvl = 25;
+                                                                                                                                                                                                                                                                                                                                                                                                                                this.craftingLvl = 25;
+																																																																																																							}
+																																																																																																							else
+																																																																																																							{
+																																																																																																								if (type == 102)
+																																																																																																								{
+																																																																																																									this.name = "Shadow Helmet";
+																																																																																																									this.width = 18;
+																																																																																																									this.height = 18;
+																																																																																																									this.defense = 5; //Original 6
+																																																																																																									this.headSlot = 5;
+																																																																																																									this.rare = 1;
+																																																																																																									this.value = 37500;
+																																																																																																									this.toolTip = "7% increased melee speed";
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                    this.skillType = (int)Skill.Melee;
+                                                                                                                                                                                                                                                                                                                                                                                                                                    this.requiredLvl = 25;
+                                                                                                                                                                                                                                                                                                                                                                                                                                    this.craftingLvl = 25;
+																																																																																																								}
+																																																																																																								else
+																																																																																																								{
+																																																																																																									if (type == 103)
+																																																																																																									{
+																																																																																																										this.name = "Nightmare Pickaxe";
+																																																																																																										this.useStyle = 1;
+																																																																																																										this.useTurn = true;
+																																																																																																										this.useAnimation = 20;
+																																																																																																										this.useTime = 15;
+																																																																																																										this.autoReuse = true;
+																																																																																																										this.width = 24;
+																																																																																																										this.height = 28;
+																																																																																																										this.damage = 9;
+																																																																																																										this.pick = 65;
+																																																																																																										this.useSound = 1;
+																																																																																																										this.knockBack = 3f;
+																																																																																																										this.rare = 1;
+																																																																																																										this.value = 18000;
+																																																																																																										this.scale = 1.15f;
+																																																																																																										this.toolTip = "Able to mine Hellstone";
+																																																																																																										this.melee = true;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                        this.craftingLvl = 30;
+																																																																																																									}
+																																																																																																									else
+																																																																																																									{
+																																																																																																										if (type == 104)
+																																																																																																										{
+																																																																																																											this.name = "The Breaker";
+																																																																																																											this.autoReuse = true;
+																																																																																																											this.useStyle = 1;
+																																																																																																											this.useAnimation = 45;
+																																																																																																											this.useTime = 19;
+																																																																																																											this.hammer = 55;
+																																																																																																											this.width = 24;
+																																																																																																											this.height = 28;
+																																																																																																											this.damage = 24;
+																																																																																																											this.knockBack = 6f;
+																																																																																																											this.scale = 1.3f;
+																																																																																																											this.useSound = 1;
+																																																																																																											this.rare = 1;
+																																																																																																											this.value = 15000;
+																																																																																																											this.melee = true;
+																																																																																																										}
+																																																																																																										else
+																																																																																																										{
+																																																																																																											if (type == 105)
+																																																																																																											{
+																																																																																																												this.flame = true;
+																																																																																																												this.noWet = true;
+																																																																																																												this.name = "Candle";
+																																																																																																												this.useStyle = 1;
+																																																																																																												this.useTurn = true;
+																																																																																																												this.useAnimation = 15;
+																																																																																																												this.useTime = 10;
+																																																																																																												this.autoReuse = true;
+																																																																																																												this.maxStack = 99;
+																																																																																																												this.consumable = true;
+																																																																																																												this.createTile = 33;
+																																																																																																												this.width = 8;
+																																																																																																												this.height = 18;
+																																																																																																												this.holdStyle = 1;
+																																																																																																											}
+																																																																																																											else
+																																																																																																											{
+																																																																																																												if (type == 106)
+																																																																																																												{
+																																																																																																													this.name = "Copper Chandelier";
+																																																																																																													this.useStyle = 1;
+																																																																																																													this.useTurn = true;
+																																																																																																													this.useAnimation = 15;
+																																																																																																													this.useTime = 10;
+																																																																																																													this.autoReuse = true;
+																																																																																																													this.maxStack = 99;
+																																																																																																													this.consumable = true;
+																																																																																																													this.createTile = 34;
+																																																																																																													this.width = 26;
+																																																																																																													this.height = 26;
+																																																																																																													this.value = 3000;
+																																																																																																												}
+																																																																																																												else
+																																																																																																												{
+																																																																																																													if (type == 107)
+																																																																																																													{
+																																																																																																														this.name = "Silver Chandelier";
+																																																																																																														this.useStyle = 1;
+																																																																																																														this.useTurn = true;
+																																																																																																														this.useAnimation = 15;
+																																																																																																														this.useTime = 10;
+																																																																																																														this.autoReuse = true;
+																																																																																																														this.maxStack = 99;
+																																																																																																														this.consumable = true;
+																																																																																																														this.createTile = 34;
+																																																																																																														this.placeStyle = 1;
+																																																																																																														this.width = 26;
+																																																																																																														this.height = 26;
+																																																																																																														this.value = 12000;
+																																																																																																													}
+																																																																																																													else
+																																																																																																													{
+																																																																																																														if (type == 108)
+																																																																																																														{
+																																																																																																															this.name = "Gold Chandelier";
+																																																																																																															this.useStyle = 1;
+																																																																																																															this.useTurn = true;
+																																																																																																															this.useAnimation = 15;
+																																																																																																															this.useTime = 10;
+																																																																																																															this.autoReuse = true;
+																																																																																																															this.maxStack = 99;
+																																																																																																															this.consumable = true;
+																																																																																																															this.createTile = 34;
+																																																																																																															this.placeStyle = 2;
+																																																																																																															this.width = 26;
+																																																																																																															this.height = 26;
+																																																																																																															this.value = 24000;
+																																																																																																														}
+																																																																																																														else
+																																																																																																														{
+																																																																																																															if (type == 109)
+																																																																																																															{
+																																																																																																																this.name = "Mana Crystal";
+																																																																																																																this.maxStack = 99;
+																																																																																																																this.consumable = true;
+																																																																																																																this.width = 18;
+																																																																																																																this.height = 18;
+																																																																																																																this.useStyle = 4;
+																																																																																																																this.useTime = 30;
+																																																																																																																this.useSound = 29;
+																																																																																																																this.useAnimation = 30;
+																																																																																																																this.toolTip = "Permanently increases maximum mana by 20";
+																																																																																																																this.rare = 2;
+																																																																																																															}
+																																																																																																															else
+																																																																																																															{
+																																																																																																																if (type == 110)
+																																																																																																																{
+																																																																																																																	this.name = "Lesser Mana Potion";
+																																																																																																																	this.useSound = 3;
+																																																																																																																	this.healMana = 50;
+																																																																																																																	this.useStyle = 2;
+																																																																																																																	this.useTurn = true;
+																																																																																																																	this.useAnimation = 17;
+																																																																																																																	this.useTime = 17;
+																																																																																																																	this.maxStack = 25;
+																																																																																																																	this.consumable = true;
+																																																																																																																	this.width = 14;
+																																																																																																																	this.height = 24;
+																																																																																																																	this.value = 200;
+																																																																																																																}
+																																																																																																																else
+																																																																																																																{
+																																																																																																																	if (type == 111)
+																																																																																																																	{
+																																																																																																																		this.name = "Band of Starpower";
+																																																																																																																		this.width = 22;
+																																																																																																																		this.height = 22;
+																																																																																																																		this.accessory = true;
+																																																																																																																		this.rare = 1;
+																																																																																																																		this.toolTip = "Increases maximum mana by 20";
+																																																																																																																		this.value = 50000;
+																																																																																																																		this.handOnSlot = 3;
+																																																																																																																	}
+																																																																																																																	else
+																																																																																																																	{
+																																																																																																																		if (type == 112)
+																																																																																																																		{
+																																																																																																																			this.mana = 17;
+																																																																																																																			this.damage = 44;
+																																																																																																																			this.useStyle = 1;
+																																																																																																																			this.name = "Flower of Fire";
+																																																																																																																			this.shootSpeed = 6f;
+																																																																																																																			this.shoot = 15;
+																																																																																																																			this.width = 26;
+																																																																																																																			this.height = 28;
+																																																																																																																			this.useSound = 20;
+																																																																																																																			this.useAnimation = 20;
+																																																																																																																			this.useTime = 20;
+																																																																																																																			this.rare = 3;
+																																																																																																																			this.noMelee = true;
+																																																																																																																			this.knockBack = 5.5f;
+																																																																																																																			this.toolTip = "Throws balls of fire";
+																																																																																																																			this.value = 10000;
+																																																																																																																			this.magic = true;
+																																																																																																																		}
+																																																																																																																		else
+																																																																																																																		{
+																																																																																																																			if (type == 113)
+																																																																																																																			{
+																																																																																																																				this.mana = 10;
+																																																																																																																				this.channel = true;
+																																																																																																																				this.damage = 23;
+																																																																																																																				this.useStyle = 1;
+																																																																																																																				this.name = "Magic Missile";
+																																																																																																																				this.shootSpeed = 6f;
+																																																																																																																				this.shoot = 16;
+																																																																																																																				this.width = 26;
+																																																																																																																				this.height = 28;
+																																																																																																																				this.useSound = 9;
+																																																																																																																				this.useAnimation = 17;
+																																																																																																																				this.useTime = 17;
+																																																																																																																				this.rare = 2;
+																																																																																																																				this.noMelee = true;
+																																																																																																																				this.knockBack = 5.5f;
+																																																																																																																				this.toolTip = "Casts a controllable missile";
+																																																																																																																				this.value = 10000;
+																																																																																																																				this.magic = true;
+																																																																																																																			}
+																																																																																																																			else
+																																																																																																																			{
+																																																																																																																				if (type == 114)
+																																																																																																																				{
+																																																																																																																					this.channel = true;
+																																																																																																																					this.damage = 0;
+																																																																																																																					this.useStyle = 1;
+																																																																																																																					this.name = "Dirt Rod";
+																																																																																																																					this.shoot = 17;
+																																																																																																																					this.width = 26;
+																																																																																																																					this.height = 28;
+																																																																																																																					this.useSound = 8;
+																																																																																																																					this.useAnimation = 20;
+																																																																																																																					this.useTime = 20;
+																																																																																																																					this.rare = 1;
+																																																																																																																					this.noMelee = true;
+																																																																																																																					this.knockBack = 5f;
+																																																																																																																					this.toolTip = "Magically moves dirt";
+																																																																																																																					this.value = 200000;
+																																																																																																																				}
+																																																																																																																				else
+																																																																																																																				{
+																																																																																																																					if (type == 115)
+																																																																																																																					{
+																																																																																																																						this.channel = true;
+																																																																																																																						this.damage = 0;
+																																																																																																																						this.useStyle = 4;
+																																																																																																																						this.name = "Shadow Orb";
+																																																																																																																						this.shoot = 18;
+																																																																																																																						this.width = 24;
+																																																																																																																						this.height = 24;
+																																																																																																																						this.useSound = 8;
+																																																																																																																						this.useAnimation = 20;
+																																																																																																																						this.useTime = 20;
+																																																																																																																						this.rare = 1;
+																																																																																																																						this.noMelee = true;
+																																																																																																																						this.toolTip = "Creates a magical shadow orb";
+																																																																																																																						this.value = 10000;
+																																																																																																																						this.buffType = 19;
+																																																																																																																					}
+																																																																																																																					else
+																																																																																																																					{
+																																																																																																																						if (type == 116)
+																																																																																																																						{
+																																																																																																																							this.name = "Meteorite";
+																																																																																																																							this.useStyle = 1;
+																																																																																																																							this.useTurn = true;
+																																																																																																																							this.useAnimation = 15;
+																																																																																																																							this.useTime = 10;
+																																																																																																																							this.autoReuse = true;
+																																																																																																																							this.maxStack = 999;
+																																																																																																																							this.consumable = true;
+																																																																																																																							this.createTile = 37;
+																																																																																																																							this.width = 12;
+																																																																																																																							this.height = 12;
+																																																																																																																							this.value = 1000;
+																																																																																																																						}
+																																																																																																																						else
+																																																																																																																						{
+																																																																																																																							if (type == 117)
+																																																																																																																							{
+																																																																																																																								this.name = "Meteorite Bar";
+																																																																																																																								this.width = 20;
+																																																																																																																								this.height = 20;
+																																																																																																																								this.maxStack = 99;
+																																																																																																																								this.rare = 1;
+																																																																																																																								this.toolTip = "'Warm to the touch'";
+																																																																																																																								this.value = 7000;
+																																																																																																																								this.useStyle = 1;
+																																																																																																																								this.useTurn = true;
+																																																																																																																								this.useAnimation = 15;
+																																																																																																																								this.useTime = 10;
+																																																																																																																								this.autoReuse = true;
+																																																																																																																								this.consumable = true;
+																																																																																																																								this.createTile = 239;
+																																																																																																																								this.placeStyle = 9;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                this.craftingLvl = 30;
+																																																																																																																							}
+																																																																																																																							else
+																																																																																																																							{
+																																																																																																																								if (type == 118)
+																																																																																																																								{
+																																																																																																																									this.name = "Hook";
+																																																																																																																									this.maxStack = 99;
+																																																																																																																									this.width = 18;
+																																																																																																																									this.height = 18;
+																																																																																																																									this.value = 1000;
+																																																																																																																									this.toolTip = "Sometimes dropped by Skeletons and Piranha";
+																																																																																																																								}
+																																																																																																																								else
+																																																																																																																								{
+																																																																																																																									if (type == 119)
+																																																																																																																									{
+																																																																																																																										this.noMelee = true;
+																																																																																																																										this.useStyle = 1;
+																																																																																																																										this.name = "Flamarang";
+																																																																																																																										this.shootSpeed = 11f;
+																																																																																																																										this.shoot = 19;
+																																																																																																																										this.damage = 32;
+																																																																																																																										this.knockBack = 8f;
+																																																																																																																										this.width = 14;
+																																																																																																																										this.height = 28;
+																																																																																																																										this.useSound = 1;
+																																																																																																																										this.useAnimation = 15;
+																																																																																																																										this.useTime = 15;
+																																																																																																																										this.noUseGraphic = true;
+																																																																																																																										this.rare = 3;
+																																																																																																																										this.value = 100000;
+																																																																																																																										this.melee = true;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        this.craftingLvl = 36;
+																																																																																																																									}
+																																																																																																																									else
+																																																																																																																									{
+																																																																																																																										if (type == 120)
+																																																																																																																										{
+																																																																																																																											this.useStyle = 5;
+																																																																																																																											this.useAnimation = 25;
+																																																																																																																											this.useTime = 25;
+																																																																																																																											this.name = "Molten Fury";
+																																																																																																																											this.width = 14;
+																																																																																																																											this.height = 32;
+																																																																																																																											this.shoot = 1;
+																																																																																																																											this.useAmmo = 1;
+																																																																																																																											this.useSound = 5;
+																																																																																																																											this.damage = 29;
+																																																																																																																											this.shootSpeed = 8f;
+																																																																																																																											this.knockBack = 2f;
+																																																																																																																											this.alpha = 30;
+																																																																																																																											this.rare = 3;
+																																																																																																																											this.noMelee = true;
+																																																																																																																											this.scale = 1.1f;
+																																																																																																																											this.value = 27000;
+																																																																																																																											this.toolTip = "Lights wooden arrows ablaze";
+																																																																																																																											this.ranged = true;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            this.craftingLvl = 36;
+																																																																																																																										}
+																																																																																																																										else
+																																																																																																																										{
+																																																																																																																											if (type == 121)
+																																																																																																																											{
+																																																																																																																												this.name = "Fiery Greatsword";
+																																																																																																																												this.useStyle = 1;
+																																																																																																																												this.useAnimation = 34;
+																																																																																																																												this.knockBack = 6.5f;
+																																																																																																																												this.width = 24;
+																																																																																																																												this.height = 28;
+																																																																																																																												this.damage = 36;
+																																																																																																																												this.scale = 1.3f;
+																																																																																																																												this.useSound = 1;
+																																																																																																																												this.rare = 3;
+																																																																																																																												this.value = 27000;
+																																																																																																																												this.toolTip = "'It's made out of fire!'";
+																																																																																																																												this.melee = true;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                this.craftingLvl = 36;
+																																																																																																																											}
+																																																																																																																										}
+																																																																																																																									}
+																																																																																																																								}
+																																																																																																																							}
+																																																																																																																						}
+																																																																																																																					}
+																																																																																																																				}
+																																																																																																																			}
+																																																																																																																		}
+																																																																																																																	}
+																																																																																																																}
+																																																																																																															}
+																																																																																																														}
+																																																																																																													}
+																																																																																																												}
+																																																																																																											}
+																																																																																																										}
+																																																																																																									}
+																																																																																																								}
+																																																																																																							}
+																																																																																																						}
+																																																																																																					}
+																																																																																																				}
+																																																																																																			}
+																																																																																																		}
+																																																																																																	}
+																																																																																																}
+																																																																																															}
+																																																																																														}
+																																																																																													}
+																																																																																												}
+																																																																																											}
+																																																																																										}
+																																																																																									}
+																																																																																								}
+																																																																																							}
+																																																																																						}
+																																																																																					}
+																																																																																				}
+																																																																																			}
+																																																																																		}
+																																																																																	}
+																																																																																}
+																																																																															}
+																																																																														}
+																																																																													}
+																																																																												}
+																																																																											}
+																																																																										}
+																																																																									}
+																																																																								}
+																																																																							}
+																																																																						}
+																																																																					}
+																																																																				}
+																																																																			}
+																																																																		}
+																																																																	}
+																																																																}
+																																																															}
+																																																														}
+																																																													}
+																																																												}
+																																																											}
+																																																										}
+																																																									}
+																																																								}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 			if (type == 122)
 			{
@@ -6044,6 +6942,8 @@ namespace Terraria
 				this.rare = 3;
 				this.value = 27000;
 				this.melee = true;
+
+                this.craftingLvl = 36;
 				return;
 			}
 			if (type == 123)
@@ -6056,6 +6956,10 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 45000;
 				this.toolTip = "7% increased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 124)
@@ -6068,6 +6972,10 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 30000;
 				this.toolTip = "7% increased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 125)
@@ -6080,6 +6988,10 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 30000;
 				this.toolTip = "7% increased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 126)
@@ -6119,6 +7031,8 @@ namespace Terraria
 				this.rare = 1;
 				this.magic = true;
 				this.value = 20000;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 128)
@@ -6479,6 +7393,10 @@ namespace Terraria
 				this.rare = 2;
 				this.value = 45000;
 				this.toolTip = "4% increased ranged damage.";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 152)
@@ -6491,6 +7409,10 @@ namespace Terraria
 				this.rare = 2;
 				this.value = 30000;
 				this.toolTip = "4% increased ranged damage.";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 153)
@@ -6503,6 +7425,10 @@ namespace Terraria
 				this.rare = 2;
 				this.value = 30000;
 				this.toolTip = "4% increased ranged damage.";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 154)
@@ -6748,7 +7674,6 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = Item.buyPrice(0, 0, 3, 0);
 				this.damage = 0;
-				this.explosive = 1;
 				this.toolTip = "A small explosion that will destroy some tiles";
 				return;
 			}
@@ -6769,7 +7694,6 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = Item.sellPrice(0, 0, 30, 0);
 				this.rare = 1;
-				this.explosive = 2;
 				this.toolTip = "A large explosion that will destroy most tiles";
 				return;
 			}
@@ -6904,6 +7828,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 10;
+
+                this.craftingLvl = 40;
 				return;
 			}
 			if (type == 176)
@@ -7163,6 +8089,8 @@ namespace Terraria
 				this.rare = 3;
 				this.value = 50000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 192)
@@ -7261,6 +8189,8 @@ namespace Terraria
 				this.rare = 2;
 				this.toolTip = "Shoots fallen stars";
 				this.ranged = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 198)
@@ -7277,6 +8207,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 27000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 199)
@@ -7293,6 +8225,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 27000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 200)
@@ -7309,6 +8243,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 27000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 201)
@@ -7325,6 +8261,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 27000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 202)
@@ -7341,6 +8279,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 27000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 203)
@@ -7357,6 +8297,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 27000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 204)
@@ -7378,6 +8320,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 15000;
 				this.melee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 205)
@@ -7558,6 +8502,8 @@ namespace Terraria
 				this.rare = 3;
 				this.value = 15000;
 				this.melee = true;
+
+                this.craftingLvl = 36;
 				return;
 			}
 			if (type == 218)
@@ -7602,6 +8548,8 @@ namespace Terraria
 				this.scale = 0.85f;
 				this.rare = 3;
 				this.ranged = true;
+
+                this.craftingLvl = 36;
 				return;
 			}
 			if (type == 220)
@@ -7743,6 +8691,10 @@ namespace Terraria
 				this.value = 45000;
 				this.toolTip = "Increases maximum mana by 20";
 				this.toolTip2 = "3% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 229)
@@ -7756,6 +8708,10 @@ namespace Terraria
 				this.value = 30000;
 				this.toolTip = "Increases maximum mana by 20";
 				this.toolTip2 = "3% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 230)
@@ -7769,6 +8725,10 @@ namespace Terraria
 				this.value = 30000;
 				this.toolTip = "Increases maximum mana by 20";
 				this.toolTip2 = "3% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 231)
@@ -7780,6 +8740,10 @@ namespace Terraria
 				this.headSlot = 9;
 				this.rare = 3;
 				this.value = 45000;
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 36;
+                this.craftingLvl = 36;
 				return;
 			}
 			if (type == 232)
@@ -7791,6 +8755,10 @@ namespace Terraria
 				this.bodySlot = 9;
 				this.rare = 3;
 				this.value = 30000;
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 36;
+                this.craftingLvl = 36;
 				return;
 			}
 			if (type == 233)
@@ -7802,6 +8770,10 @@ namespace Terraria
 				this.legSlot = 9;
 				this.rare = 3;
 				this.value = 30000;
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 36;
+                this.craftingLvl = 36;
 				return;
 			}
 			if (type == 234)
@@ -7838,7 +8810,6 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = 500;
 				this.damage = 0;
-				this.explosive = 1;
 				this.toolTip = "'Tossing may be difficult.'";
 				return;
 			}
@@ -7873,6 +8844,9 @@ namespace Terraria
 				this.value = 10000;
 				this.defense = 2;
 				this.toolTip = "15% increased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 25;
 				return;
 			}
 			if (type == 239)
@@ -8163,6 +9137,8 @@ namespace Terraria
 				this.value = 100;
 				this.rare = 2;
 				this.ranged = true;
+
+                this.craftingLvl = 36;
 				return;
 			}
 			if (type == 266)
@@ -8276,6 +9252,8 @@ namespace Terraria
 				this.rare = 3;
 				this.value = 54000;
 				this.melee = true;
+
+                this.craftingLvl = 38;
 				return;
 			}
 			if (type == 274)
@@ -8445,7 +9423,7 @@ namespace Terraria
 				this.useAnimation = 15;
 				this.useTime = 15;
 				this.noMelee = true;
-				this.value = 10;
+				this.value = 100;
 				this.holdStyle = 1;
 				this.toolTip = "Works when wet";
 				return;
@@ -8479,7 +9457,7 @@ namespace Terraria
 				this.useTime = 16;
 				this.noUseGraphic = true;
 				this.value = 5000;
-				this.melee = true;
+				this.ranged = true;
 				return;
 			}
 			if (type == 285)
@@ -8564,6 +9542,7 @@ namespace Terraria
 				this.height = 24;
 				this.buffType = 2;
 				this.buffTime = 18000;
+                this.buffMagnitude = 1;
 				this.toolTip = "Provides life regeneration";
 				this.value = 1000;
 				this.rare = 1;
@@ -8583,7 +9562,8 @@ namespace Terraria
 				this.height = 24;
 				this.buffType = 3;
 				this.buffTime = 14400;
-				this.toolTip = "25% increased movement speed";
+                this.buffMagnitude = 1;
+				this.toolTip = "15% increased movement speed";
 				this.value = 1000;
 				this.rare = 1;
 				return;
@@ -8621,7 +9601,8 @@ namespace Terraria
 				this.height = 24;
 				this.buffType = 5;
 				this.buffTime = 18000;
-				this.toolTip = "Increase defense by 8";
+                this.buffMagnitude = 1;
+				this.toolTip = "Increase defense by 4";
 				this.value = 1000;
 				this.rare = 1;
 				return;
@@ -8640,6 +9621,7 @@ namespace Terraria
 				this.height = 24;
 				this.buffType = 6;
 				this.buffTime = 7200;
+                this.buffMagnitude = 1;
 				this.toolTip = "Increased mana regeneration";
 				this.value = 1000;
 				this.rare = 1;
@@ -8659,7 +9641,8 @@ namespace Terraria
 				this.height = 24;
 				this.buffType = 7;
 				this.buffTime = 7200;
-				this.toolTip = "20% increased magic damage";
+                this.buffMagnitude = 1;
+				this.toolTip = "15% increased magic damage";
 				this.value = 1000;
 				this.rare = 1;
 				return;
@@ -8830,9 +9813,12 @@ namespace Terraria
 				this.height = 24;
 				this.buffType = 16;
 				this.buffTime = 14400;
-				this.toolTip = "20% increased arrow speed and damage";
+                this.buffMagnitude = 1;
+				this.toolTip = "15% increased arrow speed and damage";
 				this.value = 1000;
 				this.rare = 1;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 304)
@@ -9606,7 +10592,7 @@ namespace Terraria
 				this.buffType = 26;
 				this.buffTime = 36000;
 				this.rare = 1;
-				this.toolTip = "Minor improvements to all stats";
+                this.toolTip = "Minor health regeneration";
 				this.value = 1000;
 				return;
 			}
@@ -9785,6 +10771,8 @@ namespace Terraria
 				this.rare = 5;
 				this.value = 230000;
 				this.melee = true;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 369)
@@ -9830,6 +10818,10 @@ namespace Terraria
 				this.value = 75000;
 				this.toolTip = "Increases maximum mana by 40";
 				this.toolTip2 = "9% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 372)
@@ -9843,6 +10835,10 @@ namespace Terraria
 				this.value = 75000;
 				this.toolTip = "7% increased movement speed";
 				this.toolTip2 = "12% increased melee speed";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 373)
@@ -9856,6 +10852,10 @@ namespace Terraria
 				this.value = 75000;
 				this.toolTip = "10% increased ranged damage";
 				this.toolTip2 = "6% increased ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 374)
@@ -9868,6 +10868,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 60000;
 				this.toolTip2 = "3% increased critical strike chance";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 375)
@@ -9880,6 +10884,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 45000;
 				this.toolTip2 = "10% increased movement speed";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 376)
@@ -9893,6 +10901,10 @@ namespace Terraria
 				this.value = 112500;
 				this.toolTip = "Increases maximum mana by 60";
 				this.toolTip2 = "15% increased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 377)
@@ -9906,6 +10918,10 @@ namespace Terraria
 				this.value = 112500;
 				this.toolTip = "5% increased melee critical strike chance";
 				this.toolTip2 = "10% increased melee damage";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 378)
@@ -9919,6 +10935,10 @@ namespace Terraria
 				this.value = 112500;
 				this.toolTip = "12% increased ranged damage";
 				this.toolTip2 = "7% increased ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 379)
@@ -9931,6 +10951,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 90000;
 				this.toolTip2 = "5% increased damage";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 380)
@@ -9943,6 +10967,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 67500;
 				this.toolTip2 = "3% increased critical strike chance";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 381)
@@ -9961,6 +10989,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 11;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 382)
@@ -9979,6 +11009,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 13;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 383)
@@ -10158,6 +11190,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.noUseGraphic = true;
 				this.melee = true;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 391)
@@ -10176,6 +11210,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 15;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 392)
@@ -10296,6 +11332,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "Increases maximum mana by 80";
 				this.toolTip2 = "11% increased magic damage and critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 401)
@@ -10309,6 +11349,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "7% increased melee critical strike chance";
 				this.toolTip2 = "14% increased melee damage";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 402)
@@ -10322,6 +11366,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "14% increased ranged damage";
 				this.toolTip2 = "8% increased ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 403)
@@ -10334,6 +11382,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 120000;
 				this.toolTip = "6% increased damage";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 404)
@@ -10347,6 +11399,10 @@ namespace Terraria
 				this.value = 90000;
 				this.toolTip = "4% increased critical strike chance";
 				this.toolTip2 = "5% increased movement speed";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 405)
@@ -10381,6 +11437,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.noUseGraphic = true;
 				this.melee = true;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 407)
@@ -10435,6 +11493,9 @@ namespace Terraria
 				this.bodySlot = 20;
 				this.value = 5000;
 				this.rare = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 5;
 				return;
 			}
 			if (type == 411)
@@ -10446,6 +11507,9 @@ namespace Terraria
 				this.legSlot = 19;
 				this.value = 5000;
 				this.rare = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 5;
 				return;
 			}
 			if (type == 412)
@@ -10872,6 +11936,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 4;
 				this.knockBack = 1.5f;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 436)
@@ -10893,6 +11959,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 4;
 				this.knockBack = 2f;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 437)
@@ -11660,6 +12728,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 4;
 				this.knockBack = 2.5f;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 482)
@@ -11677,6 +12747,8 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 138000;
 				this.melee = true;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 483)
@@ -11696,6 +12768,8 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 69000;
 				this.melee = true;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 484)
@@ -11713,6 +12787,8 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 103500;
 				this.melee = true;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 485)
@@ -11934,7 +13010,8 @@ namespace Terraria
 				this.height = 24;
 				this.rare = 3;
 				this.potion = true;
-				this.value = 5000;
+                this.value = 5000;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 500)
@@ -11951,7 +13028,8 @@ namespace Terraria
 				this.width = 14;
 				this.height = 24;
 				this.rare = 3;
-				this.value = 1000;
+                this.value = 1000;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 501)
@@ -12535,6 +13613,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.noUseGraphic = true;
 				this.melee = true;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 538)
@@ -12745,6 +13825,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.noUseGraphic = true;
 				this.melee = true;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 551)
@@ -12757,6 +13839,10 @@ namespace Terraria
 				this.rare = 5;
 				this.value = 200000;
 				this.toolTip = "7% increased critical strike chance";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 552)
@@ -12770,6 +13856,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "7% increased damage";
 				this.toolTip2 = "8% increased movement speed";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 553)
@@ -12783,6 +13873,10 @@ namespace Terraria
 				this.value = 250000;
 				this.toolTip = "15% increased ranged damage";
 				this.toolTip2 = "8% increased ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 558)
@@ -12796,6 +13890,10 @@ namespace Terraria
 				this.value = 250000;
 				this.toolTip = "Increases maximum mana by 100";
 				this.toolTip2 = "12% increased magic damage and critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 559)
@@ -12809,6 +13907,10 @@ namespace Terraria
 				this.value = 250000;
 				this.toolTip = "10% increased melee damage and critical strike chance";
 				this.toolTip2 = "10% increased melee haste";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 554)
@@ -12899,6 +14001,8 @@ namespace Terraria
 				this.maxStack = 5;
 				this.value = 500000;
 				this.toolTip = "Stacks up to 5";
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 562)
@@ -13191,6 +14295,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 4;
 				this.knockBack = 2.5f;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 579)
@@ -13231,7 +14337,6 @@ namespace Terraria
 				this.createTile = 141;
 				this.width = 12;
 				this.height = 12;
-				this.explosive = 4;
 				this.toolTip = "Explodes when activated";
 				return;
 			}
@@ -14369,6 +15474,8 @@ namespace Terraria
 				this.scale = 1f;
 				this.value = 100;
 				this.melee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 654)
@@ -14406,6 +15513,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = 100;
 				this.ranged = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 656)
@@ -14423,6 +15532,8 @@ namespace Terraria
 				this.scale = 1f;
 				this.value = 100;
 				this.melee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 657)
@@ -14460,6 +15571,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = 100;
 				this.ranged = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 659)
@@ -14477,6 +15590,8 @@ namespace Terraria
 				this.scale = 1f;
 				this.value = 100;
 				this.melee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 660)
@@ -14514,6 +15629,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = 100;
 				this.ranged = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 662)
@@ -14894,6 +16011,10 @@ namespace Terraria
 				this.rare = 5;
 				this.value = 250000;
 				this.toolTip = "16% increased melee and ranged damage";
+
+                this.skillType = (int)Skill.MeleeAndRange;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 685)
@@ -14906,6 +16027,10 @@ namespace Terraria
 				this.rare = 5;
 				this.value = 200000;
 				this.toolTip = "11% increased melee and ranged critical strike chance";
+
+                this.skillType = (int)Skill.MeleeAndRange;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 686)
@@ -14919,6 +16044,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "8% increased movement speed";
 				this.toolTip = "7% increased melee attack speed";
+
+                this.skillType = (int)Skill.MeleeAndRange;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 687)
@@ -14926,9 +16055,13 @@ namespace Terraria
 				this.name = "Tin Helmet";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 2;
+				this.defense = 1; //Original 2; normalized with copper
 				this.headSlot = 47;
 				this.value = 1875;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 688)
@@ -14939,6 +16072,10 @@ namespace Terraria
 				this.defense = 2;
 				this.bodySlot = 28;
 				this.value = Item.sellPrice(0, 0, 0, 50);
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 689)
@@ -14949,6 +16086,10 @@ namespace Terraria
 				this.defense = 1;
 				this.legSlot = 27;
 				this.value = 1125;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 690)
@@ -14956,9 +16097,13 @@ namespace Terraria
 				this.name = "Lead Helmet";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 3;
+				this.defense = 2; //Original 3 - normalized with iron armor
 				this.headSlot = 48;
 				this.value = 7500;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 8;
+                this.craftingLvl = 8;
 				return;
 			}
 			if (type == 691)
@@ -14969,6 +16114,10 @@ namespace Terraria
 				this.defense = 3;
 				this.bodySlot = 29;
 				this.value = 6000;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 8;
+                this.craftingLvl = 8;
 				return;
 			}
 			if (type == 692)
@@ -14979,6 +16128,10 @@ namespace Terraria
 				this.defense = 2;
 				this.legSlot = 28;
 				this.value = 4500;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 8;
+                this.craftingLvl = 8;
 				return;
 			}
 			if (type == 693)
@@ -14986,9 +16139,13 @@ namespace Terraria
 				this.name = "Tungsten Helmet";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 4;
+				this.defense = 3; //Original 4 - normalised with silver
 				this.headSlot = 49;
 				this.value = 7500;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 15;
+                this.craftingLvl = 15;
 				return;
 			}
 			if (type == 694)
@@ -14996,9 +16153,13 @@ namespace Terraria
 				this.name = "Tungsten Chainmail";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 5;
+				this.defense = 4; //Original 5 - normalised with silver
 				this.bodySlot = 30;
 				this.value = 6000;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 15;
+                this.craftingLvl = 15;
 				return;
 			}
 			if (type == 695)
@@ -15009,6 +16170,10 @@ namespace Terraria
 				this.defense = 3;
 				this.legSlot = 29;
 				this.value = 4500;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 15;
+                this.craftingLvl = 15;
 				return;
 			}
 			if (type == 696)
@@ -15016,9 +16181,13 @@ namespace Terraria
 				this.name = "Platinum Helmet";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 5;
+				this.defense = 4; //Original 5 - normalised with gold
 				this.headSlot = 50;
 				this.value = 7500;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 20;
+                this.craftingLvl = 20;
 				return;
 			}
 			if (type == 697)
@@ -15026,9 +16195,13 @@ namespace Terraria
 				this.name = "Platinum Chainmail";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 6;
+				this.defense = 5; //Original 6 - normalised with gold
 				this.bodySlot = 31;
 				this.value = 6000;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 20;
+                this.craftingLvl = 20;
 				return;
 			}
 			if (type == 698)
@@ -15036,9 +16209,13 @@ namespace Terraria
 				this.name = "Platinum Greaves";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 5;
+				this.defense = 4; //original 5 - normalised with gold
 				this.legSlot = 30;
 				this.value = 4500;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 20;
+                this.craftingLvl = 20;
 				return;
 			}
 			if (type == 699)
@@ -15055,7 +16232,7 @@ namespace Terraria
 				this.width = 12;
 				this.height = 12;
 				this.value = 375;
-				return;
+                return;
 			}
 			if (type == 700)
 			{
@@ -15120,6 +16297,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 1;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 704)
@@ -15137,6 +16316,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 3;
+
+                this.craftingLvl = 8;
 				return;
 			}
 			if (type == 705)
@@ -15154,6 +16335,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 5;
+
+                this.craftingLvl = 15;
 				return;
 			}
 			if (type == 706)
@@ -15171,6 +16354,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 7;
+
+                this.craftingLvl = 20;
 				return;
 			}
 			if (type == 707)
@@ -15498,6 +16683,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.headSlot = 52;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 728)
@@ -15507,6 +16696,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.bodySlot = 32;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 729)
@@ -15516,6 +16709,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 0;
 				this.legSlot = 31;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 730)
@@ -15525,6 +16722,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.headSlot = 53;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 731)
@@ -15534,6 +16735,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 2;
 				this.bodySlot = 33;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 732)
@@ -15543,6 +16748,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.legSlot = 32;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 733)
@@ -15552,6 +16761,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.headSlot = 54;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 734)
@@ -15561,6 +16774,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.bodySlot = 34;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 735)
@@ -15570,6 +16787,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.legSlot = 33;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 736)
@@ -15579,6 +16800,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 2;
 				this.headSlot = 55;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 737)
@@ -15588,6 +16813,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 3;
 				this.bodySlot = 35;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 738)
@@ -15597,6 +16826,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 2;
 				this.legSlot = 34;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 739)
@@ -15616,6 +16849,8 @@ namespace Terraria
 				this.value = 2000;
 				this.magic = true;
 				this.noMelee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 740)
@@ -15635,6 +16870,8 @@ namespace Terraria
 				this.value = 3000;
 				this.magic = true;
 				this.noMelee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 741)
@@ -15655,6 +16892,8 @@ namespace Terraria
 				this.magic = true;
 				this.rare = 1;
 				this.noMelee = true;
+
+                this.craftingLvl = 15;
 				return;
 			}
 			if (type == 742)
@@ -15676,6 +16915,8 @@ namespace Terraria
 				this.value = 15000;
 				this.rare = 1;
 				this.noMelee = true;
+
+                this.craftingLvl = 15;
 				return;
 			}
 			if (type == 743)
@@ -15697,6 +16938,8 @@ namespace Terraria
 				this.value = 20000;
 				this.rare = 1;
 				this.noMelee = true;
+
+                this.craftingLvl = 20;
 				return;
 			}
 			if (type == 744)
@@ -15718,6 +16961,8 @@ namespace Terraria
 				this.value = 30000;
 				this.rare = 2;
 				this.noMelee = true;
+
+                this.craftingLvl = 20;
 				return;
 			}
 			if (type == 745)
@@ -15938,7 +17183,6 @@ namespace Terraria
 				this.knockBack = 4f;
 				this.rare = 8;
 				this.ranged = true;
-				this.explosive = 3;
 				return;
 			}
 			if (type == 759)
@@ -15960,7 +17204,6 @@ namespace Terraria
 				this.knockBack = 4f;
 				this.rare = 8;
 				this.ranged = true;
-				this.explosive = 3;
 				return;
 			}
 			if (type == 760)
@@ -16162,7 +17405,6 @@ namespace Terraria
 				this.ranged = true;
 				this.toolTip = "Small blast radius. Will destroy tiles";
 				this.rare = 1;
-				this.explosive = 1;
 				return;
 			}
 			if (type == 773)
@@ -16197,7 +17439,6 @@ namespace Terraria
 				this.ranged = true;
 				this.toolTip = "Large blast radius. Will destroy tiles";
 				this.rare = 2;
-				this.explosive = 2;
 				return;
 			}
 			if (type == 775)
@@ -16235,6 +17476,8 @@ namespace Terraria
 				this.melee = true;
 				this.toolTip = "Can mine Mythril and Orichalcum";
 				this.scale = 1.15f;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 777)
@@ -16256,6 +17499,8 @@ namespace Terraria
 				this.melee = true;
 				this.toolTip = "Can mine Adamantite and Titanium";
 				this.scale = 1.15f;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 778)
@@ -16276,6 +17521,8 @@ namespace Terraria
 				this.value = 108000;
 				this.melee = true;
 				this.scale = 1.15f;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 779)
@@ -16492,11 +17739,15 @@ namespace Terraria
 				this.name = "Crimson Helmet";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 6;
+				this.defense = 5; //Original 6
 				this.headSlot = 57;
 				this.value = 50000;
 				this.toolTip = "2% increased damage";
 				this.rare = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 25;
+                this.craftingLvl = 25;
 				return;
 			}
 			if (type == 793)
@@ -16504,11 +17755,15 @@ namespace Terraria
 				this.name = "Crimson Scalemail";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 7;
+                this.defense = 6; //Original 7
 				this.bodySlot = 37;
 				this.value = 40000;
 				this.toolTip = "2% increased damage";
 				this.rare = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 25;
+                this.craftingLvl = 25;
 				return;
 			}
 			if (type == 794)
@@ -16516,11 +17771,15 @@ namespace Terraria
 				this.name = "Crimson Greaves";
 				this.width = 18;
 				this.height = 18;
-				this.defense = 6;
+                this.defense = 5; //Original 6
 				this.legSlot = 35;
 				this.value = 30000;
 				this.toolTip = "2% increased damage";
 				this.rare = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 25;
+                this.craftingLvl = 25;
 				return;
 			}
 			if (type == 795)
@@ -16537,6 +17796,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 13500;
 				this.melee = true;
+
+                this.craftingLvl = 25;
 				return;
 			}
 			if (type == 796)
@@ -16558,6 +17819,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = 18000;
 				this.ranged = true;
+
+                this.craftingLvl = 25;
 				return;
 			}
 			if (type == 797)
@@ -16598,6 +17861,8 @@ namespace Terraria
 				this.scale = 1.15f;
 				this.toolTip = "Able to mine Hellstone";
 				this.melee = true;
+
+                this.craftingLvl = 25;
 				return;
 			}
 			if (type == 799)
@@ -16617,6 +17882,8 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 13500;
 				this.melee = true;
+
+                this.craftingLvl = 25;
 				return;
 			}
 			if (type == 800)
@@ -16659,6 +17926,8 @@ namespace Terraria
 				this.melee = true;
 				this.channel = true;
 				this.noMelee = true;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 802)
@@ -16690,6 +17959,9 @@ namespace Terraria
 				this.headSlot = 58;
 				this.value = 50000;
 				this.defense = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
 				return;
 			}
 			if (type == 804)
@@ -16700,6 +17972,9 @@ namespace Terraria
 				this.bodySlot = 38;
 				this.value = 40000;
 				this.defense = 2;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
 				return;
 			}
 			if (type == 805)
@@ -16710,6 +17985,9 @@ namespace Terraria
 				this.legSlot = 36;
 				this.value = 30000;
 				this.defense = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
 				return;
 			}
 			if (type == 806)
@@ -17748,6 +19026,9 @@ namespace Terraria
 				this.rare = 1;
 				this.defense = 4;
 				this.value = Item.sellPrice(0, 0, 50, 0);
+
+                this.skillType = (int)Skill.MeleeAndRange;
+                this.requiredLvl = 10;
 				return;
 			}
 			if (type == 880)
@@ -17776,12 +19057,14 @@ namespace Terraria
 				this.useTime = 25;
 				this.width = 24;
 				this.height = 28;
-				this.damage = 6; //Original: 9
+				this.damage = 6; //Original 9
 				this.knockBack = 5f;
 				this.useSound = 1;
 				this.scale = 1f;
 				this.value = 1800;
 				this.melee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 882)
@@ -17800,6 +19083,8 @@ namespace Terraria
 				this.knockBack = 2f;
 				this.value = 2000;
 				this.melee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 883)
@@ -17939,6 +19224,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.headSlot = 70;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 895)
@@ -17948,6 +19237,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1; //Original 2
 				this.bodySlot = 46;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 896)
@@ -17957,6 +19250,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.legSlot = 42;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 897)
@@ -18326,6 +19623,8 @@ namespace Terraria
 				this.scale = 1f;
 				this.value = 100;
 				this.melee = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 922)
@@ -18363,6 +19662,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.value = 100;
 				this.ranged = true;
+
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 924)
@@ -18372,6 +19673,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.headSlot = 71;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 925)
@@ -18381,6 +19686,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 2;
 				this.bodySlot = 47;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 926)
@@ -18390,6 +19699,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 1;
 				this.legSlot = 43;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 927)
@@ -18825,6 +20138,9 @@ namespace Terraria
 				this.defense = 2;
 				this.headSlot = 72;
 				this.value = 5000;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 10;
 				return;
 			}
 			if (type == 955)
@@ -18835,6 +20151,9 @@ namespace Terraria
 				this.defense = 4;
 				this.headSlot = 73;
 				this.value = 25000;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 20;
 				return;
 			}
 			if (type == 956)
@@ -18847,6 +20166,9 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 37500;
 				this.toolTip = "7% increased melee speed";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 30;
 				return;
 			}
 			if (type == 957)
@@ -18859,6 +20181,9 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 30000;
 				this.toolTip = "7% increased melee speed";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 30;
 				return;
 			}
 			if (type == 958)
@@ -18871,6 +20196,9 @@ namespace Terraria
 				this.rare = 1;
 				this.value = 22500;
 				this.toolTip = "7% increased melee speed";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 30;
 				return;
 			}
 			if (type == 959)
@@ -18883,6 +20211,9 @@ namespace Terraria
 				this.rare = 2;
 				this.value = 45000;
 				this.toolTip = "4% increased ranged damage.";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 30;
 				return;
 			}
 			if (type == 960)
@@ -18896,6 +20227,9 @@ namespace Terraria
 				this.value = 45000;
 				this.toolTip = "Increases maximum mana by 20";
 				this.toolTip2 = "3% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
 				return;
 			}
 			if (type == 961)
@@ -18909,6 +20243,9 @@ namespace Terraria
 				this.value = 30000;
 				this.toolTip = "Increases maximum mana by 20";
 				this.toolTip2 = "3% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
 				return;
 			}
 			if (type == 962)
@@ -18922,6 +20259,9 @@ namespace Terraria
 				this.value = 30000;
 				this.toolTip = "Increases maximum mana by 20";
 				this.toolTip2 = "3% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 30;
 				return;
 			}
 			if (type == 963)
@@ -19024,7 +20364,7 @@ namespace Terraria
 				this.buffType = 26;
 				this.buffTime = 36000;
 				this.rare = 1;
-				this.toolTip = "Minor improvements to all stats";
+                this.toolTip = "Minor health regeneration";
 				this.value = 1000;
 				this.value = 1000;
 				return;
@@ -19169,6 +20509,9 @@ namespace Terraria
 				this.headSlot = 77;
 				this.value = 50000;
 				this.defense = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
 				return;
 			}
 			if (type == 979)
@@ -19179,6 +20522,9 @@ namespace Terraria
 				this.bodySlot = 50;
 				this.value = 40000;
 				this.defense = 2;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
 				return;
 			}
 			if (type == 980)
@@ -19189,6 +20535,9 @@ namespace Terraria
 				this.legSlot = 46;
 				this.value = 30000;
 				this.defense = 1;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
 				return;
 			}
 			if (type == 981)
@@ -19352,6 +20701,8 @@ namespace Terraria
 				this.melee = true;
 				this.scale = 1.1f;
 				this.toolTip = "'Not to be confused with a hamdrill'";
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 991)
@@ -19372,6 +20723,8 @@ namespace Terraria
 				this.value = 54000;
 				this.melee = true;
 				this.scale = 1.1f;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 992)
@@ -19392,6 +20745,8 @@ namespace Terraria
 				this.value = 81000;
 				this.melee = true;
 				this.scale = 1.1f;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 993)
@@ -19412,6 +20767,8 @@ namespace Terraria
 				this.value = 108000;
 				this.melee = true;
 				this.scale = 1.1f;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 994)
@@ -19551,6 +20908,10 @@ namespace Terraria
 				this.value = 300000;
 				this.toolTip = "16% increased melee damage";
 				this.toolTip2 = "6% increased melee critical strike chance";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1002)
@@ -19564,6 +20925,10 @@ namespace Terraria
 				this.value = 300000;
 				this.toolTip = "16% increased ranged damage";
 				this.toolTip2 = "20% chance to not consume ammo";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1003)
@@ -19577,6 +20942,10 @@ namespace Terraria
 				this.value = 300000;
 				this.toolTip = "Increases maximum mana by 80 and reduces mana usage by 17%";
 				this.toolTip2 = "16% increased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1004)
@@ -19590,6 +20959,10 @@ namespace Terraria
 				this.value = 240000;
 				this.toolTip = "5% increased damage";
 				this.toolTip = "7% increased critical strike chance";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1005)
@@ -19603,6 +20976,10 @@ namespace Terraria
 				this.value = 180000;
 				this.toolTip = "8% increased critical strike chance";
 				this.toolTip = "5% increased movement speed";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1006)
@@ -19621,6 +20998,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 17;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1007)
@@ -21582,6 +22961,9 @@ namespace Terraria
 				this.value = Item.buyPrice(0, 50, 0, 0);
 				this.toolTip = "Increases your max number of minions";
 				this.toolTip2 = "Increases minion damage by 10%";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 60;
 				return;
 			}
 			if (type == 1160)
@@ -21595,6 +22977,9 @@ namespace Terraria
 				this.value = Item.buyPrice(0, 50, 0, 0);
 				this.toolTip = "Increases your max number of minions";
 				this.toolTip2 = "Increases minion damage by 10%";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 60;
 				return;
 			}
 			if (type == 1161)
@@ -21608,6 +22993,9 @@ namespace Terraria
 				this.value = Item.buyPrice(0, 50, 0, 0);
 				this.toolTip = "Increases your max number of minions";
 				this.toolTip2 = "Increases minion damage by 10%";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 60;
 				return;
 			}
 			if (type == 1162)
@@ -21889,6 +23277,8 @@ namespace Terraria
 				this.value = 50;
 				this.ranged = true;
 				this.rare = 7;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1180)
@@ -21979,6 +23369,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 12;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1185)
@@ -21998,6 +23390,8 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 92000;
 				this.melee = true;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1186)
@@ -22019,6 +23413,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.noUseGraphic = true;
 				this.melee = true;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1187)
@@ -22040,6 +23436,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 4;
 				this.knockBack = 1.75f;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1188)
@@ -22061,6 +23459,8 @@ namespace Terraria
 				this.melee = true;
 				this.toolTip = "Can mine Mythril and Orichalcum";
 				this.scale = 1.15f;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1189)
@@ -22124,6 +23524,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 14;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1192)
@@ -22141,6 +23543,8 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 126500;
 				this.melee = true;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1193)
@@ -22162,6 +23566,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.noUseGraphic = true;
 				this.melee = true;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1194)
@@ -22183,6 +23589,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 4;
 				this.knockBack = 2f;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1195)
@@ -22204,6 +23612,8 @@ namespace Terraria
 				this.melee = true;
 				this.toolTip = "Can mine Adamantite and Titanium";
 				this.scale = 1.15f;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1196)
@@ -22267,6 +23677,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 16;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1199)
@@ -22284,6 +23696,8 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 161000;
 				this.melee = true;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1200)
@@ -22305,6 +23719,8 @@ namespace Terraria
 				this.noMelee = true;
 				this.noUseGraphic = true;
 				this.melee = true;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1201)
@@ -22326,6 +23742,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 4;
 				this.knockBack = 2.5f;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1202)
@@ -22346,6 +23764,8 @@ namespace Terraria
 				this.value = 126000;
 				this.melee = true;
 				this.scale = 1.15f;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1203)
@@ -22403,6 +23823,10 @@ namespace Terraria
 				this.value = 75000;
 				this.toolTip = "7% increased movement speed";
 				this.toolTip2 = "12% increased melee speed";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1206)
@@ -22416,6 +23840,10 @@ namespace Terraria
 				this.value = 75000;
 				this.toolTip = "10% increased ranged damage";
 				this.toolTip2 = "6% increased ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1207)
@@ -22429,6 +23857,10 @@ namespace Terraria
 				this.value = 75000;
 				this.toolTip = "Increases maximum mana by 40";
 				this.toolTip2 = "9% increased magic critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1208)
@@ -22441,6 +23873,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 60000;
 				this.toolTip2 = "3% increased critical strike chance";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1209)
@@ -22453,6 +23889,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 45000;
 				this.toolTip2 = "10% increased movement speed";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 50;
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1210)
@@ -22466,6 +23906,10 @@ namespace Terraria
 				this.value = 112500;
 				this.toolTip = "5% increased melee critical strike chance";
 				this.toolTip2 = "10% increased melee damage";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1211)
@@ -22479,6 +23923,10 @@ namespace Terraria
 				this.value = 112500;
 				this.toolTip = "12% increased ranged damage";
 				this.toolTip2 = "7% increased ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1212)
@@ -22492,6 +23940,10 @@ namespace Terraria
 				this.value = 112500;
 				this.toolTip = "Increases maximum mana by 60";
 				this.toolTip2 = "15% increased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1213)
@@ -22504,6 +23956,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 90000;
 				this.toolTip2 = "5% increased damage";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1214)
@@ -22516,6 +23972,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 67500;
 				this.toolTip2 = "3% increased critical strike chance";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 60;
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1215)
@@ -22529,6 +23989,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "7% increased melee critical strike chance";
 				this.toolTip2 = "14% increased melee damage";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1216)
@@ -22542,6 +24006,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "14% increased ranged damage";
 				this.toolTip2 = "8% increased ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1217)
@@ -22555,6 +24023,10 @@ namespace Terraria
 				this.value = 150000;
 				this.toolTip = "Increases maximum mana by 80";
 				this.toolTip2 = "11% increased magic damage and critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1218)
@@ -22567,6 +24039,10 @@ namespace Terraria
 				this.rare = 4;
 				this.value = 120000;
 				this.toolTip = "6% increased damage";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1219)
@@ -22580,6 +24056,10 @@ namespace Terraria
 				this.value = 90000;
 				this.toolTip = "4% increased critical strike chance";
 				this.toolTip2 = "5% increased movement speed";
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1220)
@@ -22638,6 +24118,8 @@ namespace Terraria
 				this.value = 72000;
 				this.melee = true;
 				this.scale = 1.1f;
+
+                this.craftingLvl = 50;
 				return;
 			}
 			if (type == 1223)
@@ -22658,6 +24140,8 @@ namespace Terraria
 				this.value = 99000;
 				this.melee = true;
 				this.scale = 1.1f;
+
+                this.craftingLvl = 60;
 				return;
 			}
 			if (type == 1224)
@@ -22678,6 +24162,8 @@ namespace Terraria
 				this.value = 108000;
 				this.melee = true;
 				this.scale = 1.1f;
+
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1225)
@@ -22696,6 +24182,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 18;
+
+                this.craftingLvl = 75;
 				return;
 			}
 			if (type == 1226)
@@ -22715,6 +24203,8 @@ namespace Terraria
 				this.value = 276000;
 				this.scale = 1.25f;
 				this.melee = true;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1227)
@@ -22735,6 +24225,8 @@ namespace Terraria
 				this.rare = 7;
 				this.value = 276000;
 				this.melee = true;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1228)
@@ -22777,6 +24269,8 @@ namespace Terraria
 				this.ranged = true;
 				this.rare = 7;
 				this.knockBack = 2.75f;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1230)
@@ -22798,6 +24292,8 @@ namespace Terraria
 				this.melee = true;
 				this.scale = 1.15f;
 				this.tileBoost++;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1231)
@@ -22865,6 +24361,8 @@ namespace Terraria
 				this.melee = true;
 				this.scale = 1.15f;
 				this.tileBoost++;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1234)
@@ -22886,6 +24384,8 @@ namespace Terraria
 				this.value = 216000;
 				this.melee = true;
 				this.tileBoost++;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1235)
@@ -22903,6 +24403,8 @@ namespace Terraria
 				this.value = 100;
 				this.ranged = true;
 				this.rare = 7;
+
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1236)
@@ -23269,6 +24771,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 19;
+
+                this.craftingLvl = 30;
 				return;
 			}
 			if (type == 1258)
@@ -24196,6 +25700,10 @@ namespace Terraria
 				this.value = 300000;
 				this.toolTip = "5% increased melee damage";
 				this.toolTip2 = "Enemies are more likely to target you";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1317)
@@ -24209,6 +25717,10 @@ namespace Terraria
 				this.value = 240000;
 				this.toolTip = "7% increased melee damage and critical strike chance";
 				this.toolTip2 = "Enemies are more likely to target you";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1318)
@@ -24222,6 +25734,10 @@ namespace Terraria
 				this.value = 180000;
 				this.toolTip = "3% increased melee critical strike chance";
 				this.toolTip2 = "Enemies are more likely to target you";
+
+                this.skillType = (int)Skill.Melee;
+                this.requiredLvl = 80;
+                this.craftingLvl = 80;
 				return;
 			}
 			if (type == 1319)
@@ -26875,6 +28391,10 @@ namespace Terraria
 				this.rare = 8;
 				this.value = 375000;
 				this.toolTip = "40% decreased magic damage";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1504)
@@ -26887,6 +28407,10 @@ namespace Terraria
 				this.rare = 8;
 				this.value = 300000;
 				this.toolTip = "7% increased magic damage and critical strike chance";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1505)
@@ -26900,6 +28424,10 @@ namespace Terraria
 				this.value = 225000;
 				this.toolTip = "8% increased magic damage";
 				this.toolTip2 = "8% increased movement speed";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1506)
@@ -26921,6 +28449,8 @@ namespace Terraria
 				this.melee = true;
 				this.scale = 1.15f;
 				this.tileBoost += 3;
+
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1507)
@@ -26943,6 +28473,8 @@ namespace Terraria
 				this.melee = true;
 				this.scale = 1.05f;
 				this.tileBoost += 3;
+
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1508)
@@ -27168,6 +28700,10 @@ namespace Terraria
 				this.value = 375000;
 				this.toolTip = "15% increased arrow damage";
 				this.toolTip2 = "5% ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1547)
@@ -27181,6 +28717,10 @@ namespace Terraria
 				this.value = 375000;
 				this.toolTip = "15% increased bullet damage";
 				this.toolTip2 = "5% ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1548)
@@ -27194,6 +28734,10 @@ namespace Terraria
 				this.value = 375000;
 				this.toolTip = "15% increased rocket damage";
 				this.toolTip2 = "5% ranged critical strike chance";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1549)
@@ -27207,6 +28751,10 @@ namespace Terraria
 				this.value = 300000;
 				this.toolTip = "13% increased ranged critical strike chance";
 				this.toolTip2 = "20% chance to not consume ammo";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1550)
@@ -27220,6 +28768,10 @@ namespace Terraria
 				this.value = 225000;
 				this.toolTip = "7% increased ranged critical strike chance";
 				this.toolTip2 = "12% increased movement speed";
+
+                this.skillType = (int)Skill.Range;
+                this.requiredLvl = 85;
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1551)
@@ -27255,6 +28807,8 @@ namespace Terraria
 				this.consumable = true;
 				this.createTile = 239;
 				this.placeStyle = 20;
+
+                this.craftingLvl = 85;
 				return;
 			}
 			if (type == 1553)
@@ -28064,6 +29618,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 2;
 				this.headSlot = 112;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 1732)
@@ -28073,6 +29631,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 3;
 				this.bodySlot = 75;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 1733)
@@ -28082,6 +29644,10 @@ namespace Terraria
 				this.height = 18;
 				this.defense = 2;
 				this.legSlot = 64;
+
+                this.skillType = (int)Skill.Combat;
+                this.requiredLvl = 1;
+                this.craftingLvl = 1;
 				return;
 			}
 			if (type == 1734)
@@ -28666,7 +30232,7 @@ namespace Terraria
 				this.buffType = 26;
 				this.buffTime = 54000;
 				this.rare = 1;
-				this.toolTip = "Minor improvements to all stats";
+                this.toolTip = "Minor health regeneration";
 				this.value = 1000;
 				return;
 			}
@@ -29277,6 +30843,10 @@ namespace Terraria
 				this.rare = 8;
 				this.toolTip = "Increases your max number of minions";
 				this.toolTip2 = "Increases minion damage by 11%";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1833)
@@ -29290,6 +30860,10 @@ namespace Terraria
 				this.rare = 8;
 				this.toolTip = "Increases your max number of minions";
 				this.toolTip2 = "Increases minion damage by 11%";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1834)
@@ -29303,6 +30877,10 @@ namespace Terraria
 				this.rare = 8;
 				this.toolTip = "Increases your max number of minions";
 				this.toolTip2 = "Increases minion damage by 11%";
+
+                this.skillType = (int)Skill.Magic;
+                this.requiredLvl = 70;
+                this.craftingLvl = 70;
 				return;
 			}
 			if (type == 1835)
@@ -29848,7 +31426,7 @@ namespace Terraria
 				this.buffType = 26;
 				this.buffTime = 54000;
 				this.rare = 1;
-				this.toolTip = "Minor improvements to all stats";
+                this.toolTip = "Minor health regeneration";
 				this.value = 1000;
 				return;
 			}
@@ -29997,7 +31575,7 @@ namespace Terraria
 				this.buffType = 26;
 				this.buffTime = 54000;
 				this.rare = 1;
-				this.toolTip = "Minor improvements to all stats";
+                this.toolTip = "Minor health regeneration";
 				this.value = 1000;
 				return;
 			}
@@ -30016,7 +31594,7 @@ namespace Terraria
 				this.buffType = 26;
 				this.buffTime = 54000;
 				this.rare = 1;
-				this.toolTip = "Minor improvements to all stats";
+                this.toolTip = "Minor health regeneration";
 				this.value = 1000;
 				return;
 			}
@@ -30357,7 +31935,6 @@ namespace Terraria
 				this.knockBack = 4f;
 				this.rare = 8;
 				this.ranged = true;
-				this.explosive = 3;
 				return;
 			}
 			if (type == 1947)
@@ -31848,6 +33425,8 @@ namespace Terraria
 					this.value = Item.sellPrice(0, 1, 0, 0);
 					this.melee = true;
 					this.tileBoost--;
+
+                    this.craftingLvl = 85;
 					return;
 				}
 				if (type == 2177)
@@ -31893,6 +33472,9 @@ namespace Terraria
 					this.value = 375000;
 					this.toolTip = "Increases maximum mana by 60 and reduces mana usage by 13%";
 					this.toolTip2 = "5% increased magic damage and critical strike chance";
+
+                    this.requiredLvl = 85;
+                    this.craftingLvl = 85;
 					return;
 				}
 				if (type == 2188)
@@ -31914,6 +33496,8 @@ namespace Terraria
 					this.rare = 7;
 					this.noMelee = true;
 					this.value = Item.sellPrice(0, 7, 0, 0);
+
+                    this.craftingLvl = 80;
 					return;
 				}
 				if (type >= 2190 && type <= 2191)
@@ -31945,13 +33529,16 @@ namespace Terraria
 					{
 						this.createTile = 307;
 					}
-					else if (type == 2204)
-					{
-						this.createTile = 308;
-					}
 					else
 					{
-						this.createTile = 300 + type - 2192;
+						if (type == 2204)
+						{
+							this.createTile = 308;
+						}
+						else
+						{
+							this.createTile = 300 + type - 2192;
+						}
 					}
 					this.width = 12;
 					this.height = 12;
@@ -31969,6 +33556,10 @@ namespace Terraria
 					this.value = 300000;
 					this.toolTip = "6% increased melee damage";
 					this.toolTip2 = "Enemies are more likely to target you";
+
+                    this.skillType = (int)Skill.Melee;
+                    this.requiredLvl = 85;
+                    this.craftingLvl = 85;
 					return;
 				}
 				if (type == 2200)
@@ -31982,6 +33573,10 @@ namespace Terraria
 					this.value = 240000;
 					this.toolTip = "8% increased melee damage and critical strike chance";
 					this.toolTip = "6% increased movement and melee speed";
+
+                    this.skillType = (int)Skill.Melee;
+                    this.requiredLvl = 85;
+                    this.craftingLvl = 85;
 					return;
 				}
 				if (type == 2201)
@@ -31995,6 +33590,10 @@ namespace Terraria
 					this.value = 240000;
 					this.toolTip = "5% increased melee damage and critical strike chance";
 					this.toolTip2 = "Enemies are more likely to target you";
+
+                    this.skillType = (int)Skill.Melee;
+                    this.requiredLvl = 85;
+                    this.craftingLvl = 85;
 					return;
 				}
 				if (type == 2202)
@@ -32008,6 +33607,10 @@ namespace Terraria
 					this.value = 180000;
 					this.toolTip = "6% increased movement and melee speed";
 					this.toolTip2 = "Enemies are more likely to target you";
+
+                    this.skillType = (int)Skill.Melee;
+                    this.requiredLvl = 85;
+                    this.craftingLvl = 85;
 					return;
 				}
 				if (type == 2205)
@@ -32063,7 +33666,8 @@ namespace Terraria
 					this.width = 14;
 					this.height = 24;
 					this.rare = 4;
-					this.value = 1500;
+                    this.value = 1500;
+                    this.craftingLvl = 1;
 					return;
 				}
 				if (type >= 2210 && type <= 2213)
@@ -32652,7 +34256,7 @@ namespace Terraria
 							this.buffType = 26;
 							this.buffTime = 14400;
 							this.rare = 1;
-							this.toolTip = "Minor improvements to all stats";
+                            this.toolTip = "Minor health regeneration";
 							this.value = Item.buyPrice(0, 0, 20, 0);
 							return;
 						}
@@ -32671,7 +34275,7 @@ namespace Terraria
 							this.buffType = 26;
 							this.buffTime = 25200;
 							this.rare = 1;
-							this.toolTip = "Minor improvements to all stats";
+                            this.toolTip = "Minor health regeneration";
 							this.value = Item.buyPrice(0, 0, 30, 0);
 							return;
 						}
@@ -32972,3205 +34576,1081 @@ namespace Terraria
 								return;
 							}
 						}
-						else if (type >= 2421 && type <= 2422)
-						{
-							this.name = "Fishing Poles";
-							this.useStyle = 1;
-							this.useAnimation = 8;
-							this.useTime = 8;
-							this.width = 24;
-							this.height = 28;
-							this.useSound = 1;
-							this.shoot = 381 + type - 2421;
-							if (type == 2421)
-							{
-								this.fishingPole = 22;
-								this.shootSpeed = 13.5f;
-								this.rare = 1;
-								return;
-							}
-							this.fishingPole = 45;
-							this.shootSpeed = 16.5f;
-							this.rare = 3;
-							this.value = Item.sellPrice(0, 10, 0, 0);
-							return;
-						}
 						else
 						{
-							if (type == 2320)
+							if (type >= 2421 && type <= 2422)
 							{
-								this.name = "Rockfish";
-								this.autoReuse = true;
-								this.width = 26;
-								this.height = 26;
-								this.value = Item.sellPrice(0, 1, 50, 0);
+								this.name = "Fishing Poles";
 								this.useStyle = 1;
-								this.useAnimation = 24;
-								this.useTime = 14;
-								this.hammer = 70;
-								this.knockBack = 6f;
-								this.damage = 24;
-								this.scale = 1.05f;
+								this.useAnimation = 8;
+								this.useTime = 8;
+								this.width = 24;
+								this.height = 28;
 								this.useSound = 1;
-								this.rare = 3;
-								this.melee = true;
-								return;
-							}
-							if (type == 2314)
-							{
-								this.name = "Honeyfin";
-								this.maxStack = 30;
-								this.width = 26;
-								this.height = 26;
-								this.value = Item.sellPrice(0, 0, 15, 0);
-								this.rare = 1;
-								this.useSound = 3;
-								this.healLife = 120;
-								this.useStyle = 2;
-								this.useTurn = true;
-								this.useAnimation = 17;
-								this.useTime = 17;
-								this.consumable = true;
-								this.potion = true;
-								return;
-							}
-							if (type >= 2290 && type <= 2321)
-							{
-								this.name = "Fish";
-								this.maxStack = 999;
-								this.width = 26;
-								this.height = 26;
-								this.value = Item.sellPrice(0, 0, 5, 0);
-								if (type == 2308)
+								this.shoot = 381 + type - 2421;
+								if (type == 2421)
 								{
-									this.value = Item.sellPrice(0, 10, 0, 0);
-									this.rare = 4;
-								}
-								if (type == 2312)
-								{
-									this.value = Item.sellPrice(0, 0, 50, 0);
-									this.rare = 2;
-								}
-								if (type == 2317)
-								{
-									this.value = Item.sellPrice(0, 3, 0, 0);
-									this.rare = 4;
-								}
-								if (type == 2310)
-								{
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.rare = 3;
-								}
-								if (type == 2321)
-								{
-									this.value = Item.sellPrice(0, 0, 25, 0);
-									this.rare = 1;
-								}
-								if (type == 2315)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-									this.rare = 2;
-								}
-								if (type == 2303)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-									this.rare = 1;
-								}
-								if (type == 2304)
-								{
-									this.value = Item.sellPrice(0, 0, 30, 0);
-									this.rare = 1;
-								}
-								if (type == 2316)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-								}
-								if (type == 2311)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-									this.rare = 1;
-								}
-								if (type == 2313)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-									this.rare = 1;
-								}
-								if (type == 2306)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-									this.rare = 1;
-								}
-								if (type == 2307)
-								{
-									this.value = Item.sellPrice(0, 0, 25, 0);
-									this.rare = 2;
-								}
-								if (type == 2319)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-									this.rare = 1;
-								}
-								if (type == 2318)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-									this.rare = 1;
-								}
-								if (type == 2298)
-								{
-									this.value = Item.sellPrice(0, 0, 7, 50);
-								}
-								if (type == 2309)
-								{
-									this.value = Item.sellPrice(0, 0, 7, 50);
-									this.rare = 1;
-								}
-								if (type == 2300)
-								{
-									this.value = Item.sellPrice(0, 0, 7, 50);
-								}
-								if (type == 2301)
-								{
-									this.value = Item.sellPrice(0, 0, 7, 50);
-								}
-								if (type == 2302)
-								{
-									this.value = Item.sellPrice(0, 0, 15, 0);
-								}
-								if (type == 2299)
-								{
-									this.value = Item.sellPrice(0, 0, 7, 50);
-								}
-								if (type == 2305)
-								{
-									this.value = Item.sellPrice(0, 0, 7, 50);
+									this.fishingPole = 22;
+									this.shootSpeed = 13.5f;
 									this.rare = 1;
 									return;
 								}
+								this.fishingPole = 45;
+								this.shootSpeed = 16.5f;
+								this.rare = 3;
+								this.value = Item.sellPrice(0, 10, 0, 0);
+								return;
 							}
 							else
 							{
-								if (type == 2322)
+								if (type == 2320)
 								{
-									this.name = "Mining Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 104;
-									this.buffTime = 18000;
-									this.toolTip = "Increases mining speed";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2323)
-								{
-									this.name = "Heartreach Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 105;
-									this.buffTime = 28800;
-									this.toolTip = "Increases pickup range for life hearts";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2324)
-								{
-									this.name = "Calming Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 106;
-									this.buffTime = 18000;
-									this.toolTip = "Reduces enemy aggression and spawn rate";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2325)
-								{
-									this.name = "Builder Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 107;
-									this.buffTime = 54000;
-									this.toolTip = "Increases placement speed and range";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2326)
-								{
-									this.name = "Titan Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 108;
-									this.buffTime = 14400;
-									this.toolTip = "Increases knockback";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2327)
-								{
-									this.name = "Flipper Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 109;
-									this.buffTime = 28800;
-									this.toolTip = "Lets you to move swiftly in liquids";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2328)
-								{
-									this.name = "Summoning Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 110;
-									this.buffTime = 21600;
-									this.toolTip = "Increases your max number of minions";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2329)
-								{
-									this.name = "Trapsight Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 111;
-									this.buffTime = 36000;
-									this.toolTip = "Allows you to see nearby traps";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2330)
-								{
-									this.name = "Purple Clubberfish";
+									this.name = "Rockfish";
 									this.autoReuse = true;
-									this.useStyle = 1;
-									this.useAnimation = 35;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 24;
-									this.knockBack = 7f;
-									this.scale = 1.15f;
-									this.useSound = 1;
-									this.rare = 1;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.melee = true;
-									return;
-								}
-								if (type == 2331)
-								{
-									this.name = "Obsidian Swordfish";
-									this.useStyle = 5;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.shootSpeed = 4f;
-									this.knockBack = 6.5f;
-									this.width = 40;
-									this.height = 40;
-									this.damage = 70;
-									this.crit = 20;
-									this.useSound = 1;
-									this.shoot = 367;
-									this.rare = 7;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.noMelee = true;
-									this.noUseGraphic = true;
-									this.melee = true;
-									return;
-								}
-								if (type == 2332)
-								{
-									this.name = "Swordfish";
-									this.useStyle = 5;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.shootSpeed = 4f;
-									this.knockBack = 5f;
-									this.width = 40;
-									this.height = 40;
-									this.damage = 16;
-									this.useSound = 1;
-									this.shoot = 368;
-									this.rare = 2;
-									this.value = Item.sellPrice(0, 0, 50, 0);
-									this.noMelee = true;
-									this.noUseGraphic = true;
-									this.melee = true;
-									return;
-								}
-								if (type == 2333)
-								{
-									this.name = "Iron Fence";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 145;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2334)
-								{
-									this.name = "Wooden Crate";
-									this.width = 12;
-									this.height = 12;
-									this.rare = 1;
-									this.toolTip = "Right click to open";
-									this.maxStack = 99;
-									this.value = Item.sellPrice(0, 0, 10, 0);
-									return;
-								}
-								if (type == 2335)
-								{
-									this.name = "Iron Crate";
-									this.width = 12;
-									this.height = 12;
-									this.rare = 2;
-									this.toolTip = "Right click to open";
-									this.maxStack = 99;
-									this.value = Item.sellPrice(0, 0, 50, 0);
-									return;
-								}
-								if (type == 2336)
-								{
-									this.name = "Golden Crate";
-									this.width = 12;
-									this.height = 12;
-									this.rare = 3;
-									this.toolTip = "Right click to open";
-									this.maxStack = 99;
-									this.value = Item.sellPrice(0, 2, 0, 0);
-									return;
-								}
-								if (type >= 2337 && type <= 2339)
-								{
-									this.name = "Junk";
-									this.width = 12;
-									this.height = 12;
-									this.rare = -1;
-									this.maxStack = 99;
-									return;
-								}
-								if (type == 2340)
-								{
-									this.name = "Tracks";
-									this.useStyle = 1;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.useTurn = true;
-									this.autoReuse = true;
-									this.width = 16;
-									this.height = 16;
-									this.maxStack = 999;
-									this.createTile = 314;
-									this.placeStyle = 0;
-									this.consumable = true;
-									this.cartTrack = true;
-									this.tileBoost = 1;
-									return;
-								}
-								if (type == 2341)
-								{
-									this.name = "Reaver Shark";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 22;
-									this.useTime = 18;
-									this.autoReuse = true;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 16;
-									this.pick = 100;
-									this.scale = 1.15f;
-									this.useSound = 1;
-									this.knockBack = 3f;
-									this.rare = 3;
+									this.width = 26;
+									this.height = 26;
 									this.value = Item.sellPrice(0, 1, 50, 0);
-									this.melee = true;
-									return;
-								}
-								if (type == 2342)
-								{
-									this.name = "Sawtooth Shark";
-									this.useStyle = 5;
-									this.useAnimation = 25;
-									this.useTime = 8;
-									this.shootSpeed = 48f;
-									this.knockBack = 2.25f;
-									this.width = 20;
-									this.height = 12;
-									this.damage = 13;
-									this.axe = 14;
-									this.useSound = 23;
-									this.shoot = 369;
-									this.rare = 3;
-									this.value = Item.sellPrice(0, 1, 50, 0);
-									this.noMelee = true;
-									this.noUseGraphic = true;
-									this.melee = true;
-									this.channel = true;
-									return;
-								}
-								if (type == 2343)
-								{
-									this.name = "Minecart";
-									this.width = 48;
-									this.height = 28;
-									return;
-								}
-								if (type == 2344)
-								{
-									this.name = "Ammo Reservation Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 112;
-									this.buffTime = 25200;
-									this.toolTip = "Gives 15% chance to not consume ammo";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2345)
-								{
-									this.name = "Lifeforce Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 113;
-									this.buffTime = 18000;
-									this.toolTip = "Increases max life by 20%";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2346)
-								{
-									this.name = "Endurance Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 114;
-									this.buffTime = 14400;
-									this.toolTip = "Reduces damage taken by 10%";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2347)
-								{
-									this.name = "Rage Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 115;
-									this.buffTime = 14400;
-									this.toolTip = "Increases critical strike chance by 10%";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2348)
-								{
-									this.name = "Inferno Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 116;
-									this.buffTime = 14400;
-									this.toolTip = "Ignites nearby enemies";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2349)
-								{
-									this.name = "Wrath Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 117;
-									this.buffTime = 14400;
-									this.toolTip = "Increases damage by 10%";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2350)
-								{
-									this.name = "Recall Potion";
-									this.useSound = 6;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.toolTip = "Teleports you home";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2351)
-								{
-									this.name = "Teleportation Potion";
-									this.useSound = 6;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.toolTip = "Teleports you to a random location";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2352)
-								{
 									this.useStyle = 1;
-									this.name = "Love Potion";
-									this.shootSpeed = 9f;
-									this.shoot = 370;
-									this.width = 18;
-									this.height = 20;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.useSound = 1;
-									this.useAnimation = 15;
-									this.useTime = 15;
-									this.noUseGraphic = true;
-									this.noMelee = true;
-									this.value = 200;
-									this.toolTip = "Throw at someone to make them fall in love";
-									return;
-								}
-								if (type == 2353)
-								{
-									this.useStyle = 1;
-									this.name = "Stink Potion";
-									this.shootSpeed = 9f;
-									this.shoot = 371;
-									this.width = 18;
-									this.height = 20;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.useSound = 1;
-									this.useAnimation = 15;
-									this.useTime = 15;
-									this.noUseGraphic = true;
-									this.noMelee = true;
-									this.value = 200;
-									this.toolTip = "Throw at someone to make them smell terrible";
-									return;
-								}
-								if (type == 2354)
-								{
-									this.name = "Fishing Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 121;
-									this.buffTime = 28800;
-									this.toolTip = "Increases fishing skill";
-									this.rare = 1;
-									return;
-								}
-								if (type == 2355)
-								{
-									this.name = "Sonar Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 122;
-									this.buffTime = 14400;
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2356)
-								{
-									this.name = "Crate Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 123;
-									this.buffTime = 10800;
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2357)
-								{
-									this.name = "Shiverthorn Seeds";
-									this.useTurn = true;
-									this.useStyle = 1;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 82;
-									this.placeStyle = 6;
-									this.width = 12;
-									this.height = 14;
-									this.value = 80;
-									return;
-								}
-								if (type == 2358)
-								{
-									this.name = "Shiverthorn";
-									this.maxStack = 99;
-									this.width = 12;
-									this.height = 14;
-									this.value = 100;
-									return;
-								}
-								if (type == 2359)
-								{
-									this.name = "Warmth Potion";
-									this.useSound = 3;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 14;
-									this.height = 24;
-									this.buffType = 124;
-									this.buffTime = 54000;
-									this.toolTip = "Reduces damage from cold sources";
-									this.value = 1000;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2360)
-								{
-									this.noUseGraphic = true;
-									this.damage = 0;
-									this.useStyle = 5;
-									this.name = "Fish Hook";
-									this.shootSpeed = 13f;
-									this.shoot = 372;
-									this.width = 18;
-									this.height = 28;
-									this.useSound = 1;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 3;
-									this.noMelee = true;
-									this.value = 20000;
-									return;
-								}
-								if (type == 2361)
-								{
-									this.name = "Bee Headgear";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 4;
-									this.headSlot = 160;
-									this.rare = 3;
-									this.value = 45000;
-									this.toolTip = "Increases minion damage by 4%";
-									return;
-								}
-								if (type == 2362)
-								{
-									this.name = "Bee Breastplate";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 5;
-									this.bodySlot = 168;
-									this.rare = 3;
-									this.value = 30000;
-									this.toolTip = "Increases minion damage by 6%";
-									return;
-								}
-								if (type == 2363)
-								{
-									this.name = "Bee Greaves";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 4;
-									this.legSlot = 103;
-									this.rare = 3;
-									this.value = 30000;
-									this.toolTip = "Increases minion damage by 5%";
-									return;
-								}
-								if (type == 2364)
-								{
-									this.mana = 10;
-									this.damage = 9;
-									this.useStyle = 1;
-									this.name = "Hornet Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 373;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 22;
-									this.useTime = 22;
-									this.rare = 3;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons a hornet to fight for you";
-									this.buffType = 125;
-									this.value = 10000;
-									this.summon = true;
-									return;
-								}
-								if (type == 2365)
-								{
-									this.mana = 10;
-									this.damage = 21;
-									this.useStyle = 1;
-									this.name = "Imp Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 375;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 3;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons an imp to fight for you";
-									this.buffType = 126;
-									this.value = 10000;
-									this.summon = true;
-									return;
-								}
-								if (type == 2366)
-								{
-									this.damage = 19;
-									this.name = "Spider Queen Staff";
-									this.useStyle = 1;
-									this.shootSpeed = 14f;
-									this.shoot = 377;
-									this.width = 18;
-									this.height = 20;
-									this.useSound = 1;
-									this.useAnimation = 30;
-									this.useTime = 30;
-									this.noMelee = true;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									this.knockBack = 7.5f;
-									this.rare = 4;
-									this.summon = true;
-									return;
-								}
-								if (type == 2367)
-								{
-									this.name = "Angler Hat";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.headSlot = 161;
-									this.rare = 1;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2368)
-								{
-									this.name = "Angler Vest";
-									this.width = 18;
-									this.height = 18;
-									this.bodySlot = 169;
-									this.defense = 2;
-									this.rare = 1;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2369)
-								{
-									this.name = "Angler Pants";
-									this.width = 18;
-									this.height = 18;
-									this.legSlot = 104;
-									this.defense = 1;
-									this.rare = 1;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2370)
-								{
-									this.name = "Spider Mask";
-									this.width = 18;
-									this.height = 18;
-									this.headSlot = 162;
-									this.rare = 4;
-									this.value = Item.sellPrice(0, 0, 75, 0);
-									this.toolTip = "Increases your max number of minions";
-									this.toolTip2 = "Increases minion damage by 5%";
-									this.defense = 5;
-									return;
-								}
-								if (type == 2371)
-								{
-									this.name = "Spider Breastplate";
-									this.width = 18;
-									this.height = 18;
-									this.bodySlot = 170;
-									this.rare = 4;
-									this.value = Item.sellPrice(0, 0, 75, 0);
-									this.toolTip = "Increases your max number of minions";
-									this.toolTip2 = "Increases minion damage by 6%";
-									this.defense = 8;
-									return;
-								}
-								if (type == 2372)
-								{
-									this.name = "Spider Greaves";
-									this.width = 18;
-									this.height = 18;
-									this.legSlot = 105;
-									this.rare = 4;
-									this.value = Item.sellPrice(0, 0, 75, 0);
-									this.toolTip = "Increases your max number of minions";
-									this.toolTip2 = "Increases minion damage by 6%";
-									this.defense = 7;
-									return;
-								}
-								if (type >= 2373 && type <= 2375)
-								{
-									this.name = "Fishing Accessories";
-									this.width = 26;
-									this.height = 30;
-									this.maxStack = 1;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.rare = 1;
-									this.accessory = true;
-									return;
-								}
-								if (type >= 2376 && type <= 2385)
-								{
-									this.name = "More Pianos";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 11 + type - 2376;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type >= 2386 && type <= 2396)
-								{
-									this.name = "More Dressers";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 5 + type - 2386;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type >= 2397 && type <= 2416)
-								{
-									this.name = "Sofas";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 1 + type - 2397;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2417)
-								{
-									this.name = "Seashell Hairpin";
-									this.width = 18;
-									this.height = 18;
-									this.headSlot = 163;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2418)
-								{
-									this.name = "Mermaid Adornment";
-									this.width = 18;
-									this.height = 18;
-									this.bodySlot = 171;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2419)
-								{
-									this.name = "Mermaid Tail";
-									this.width = 18;
-									this.height = 18;
-									this.legSlot = 106;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2420)
-								{
-									this.damage = 0;
-									this.useStyle = 1;
-									this.name = "Zephyr Fish";
-									this.shoot = 380;
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 2;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 3;
-									this.noMelee = true;
-									this.toolTip = "Summons a Zephyr Fish";
-									this.value = Item.sellPrice(0, 3, 0, 0);
-									this.buffType = 127;
-									return;
-								}
-								if (type == 2423)
-								{
-									this.name = "Frog Leg";
-									this.width = 16;
-									this.height = 24;
-									this.accessory = true;
-									this.rare = 1;
-									this.toolTip = "Increases Jump Speed";
-									this.toolTip2 = "Allows constant jumping";
-									this.value = 50000;
-									this.shoeSlot = 15;
-									return;
-								}
-								if (type == 2424)
-								{
-									this.noMelee = true;
-									this.useStyle = 1;
-									this.name = "Anchor";
-									this.shootSpeed = 20f;
-									this.shoot = 383;
-									this.damage = 30;
-									this.knockBack = 5f;
-									this.width = 34;
-									this.height = 34;
-									this.useSound = 1;
-									this.useAnimation = 30;
-									this.useTime = 30;
-									this.noUseGraphic = true;
-									this.rare = 3;
-									this.value = 50000;
-									this.melee = true;
-									return;
-								}
-								if (type >= 2425 && type <= 2427)
-								{
-									this.name = "Fishing Food";
-									this.useSound = 2;
-									this.useStyle = 2;
-									this.useTurn = true;
-									this.useAnimation = 17;
-									this.useTime = 17;
-									this.maxStack = 30;
-									this.consumable = true;
-									this.width = 10;
-									this.height = 10;
-									this.buffType = 26;
-									this.buffTime = 10800;
-									this.rare = 1;
-									this.toolTip = "Minor improvements to all stats";
-									this.value = Item.sellPrice(0, 0, 5, 0);
-									return;
-								}
-								if (type == 2428)
-								{
-									this.useStyle = 1;
-									this.name = "Fuzzy Carrot";
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 25;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 8;
-									this.noMelee = true;
-									this.mountType = 1;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									return;
-								}
-								if (type == 2429)
-								{
-									this.useStyle = 1;
-									this.name = "Scaly Truffle";
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 25;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 8;
-									this.noMelee = true;
-									this.mountType = 2;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									return;
-								}
-								if (type == 2430)
-								{
-									this.useStyle = 1;
-									this.name = "Slimy Saddle";
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 25;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 8;
-									this.noMelee = true;
-									this.mountType = 3;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									return;
-								}
-								if (type == 2431)
-								{
-									this.name = "Bee Wax";
-									this.width = 18;
-									this.height = 16;
-									this.maxStack = 99;
-									this.value = 100;
-									return;
-								}
-								if (type >= 2432 && type <= 2434)
-								{
-									this.name = "Some walls";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 146 + type - 2432;
-									this.width = 12;
-									this.height = 12;
-									if (type == 2434)
-									{
-										this.value = Item.buyPrice(0, 0, 0, 50);
-										return;
-									}
-									return;
-								}
-								if (type == 2435)
-								{
-									this.name = "Coralstone Block";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 315;
-									this.width = 12;
-									this.height = 12;
-									this.value = Item.buyPrice(0, 0, 0, 50);
-									return;
-								}
-								if (type >= 2436 && type <= 2438)
-								{
-									this.name = "Jellyfish(es)";
-									this.useStyle = 1;
-									this.autoReuse = true;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.width = 12;
-									this.height = 12;
-									this.noUseGraphic = true;
-									this.bait = 20;
-									return;
-								}
-								if (type >= 2439 && type <= 2441)
-								{
-									this.name = "Jellyfish Jar";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 316 + type - 2439;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type >= 2442 && type <= 2449)
-								{
-									this.name = "Fishing Wall Hangings";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 240;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.sellPrice(0, 0, 10, 0);
-									this.placeStyle = 46 + type - 2442;
-									return;
-								}
-								if (type >= 2450 && type <= 2488)
-								{
-									this.name = "Quest Fish";
-									this.questItem = true;
-									this.maxStack = 1;
-									this.width = 26;
-									this.height = 26;
-									this.uniqueStack = true;
-									this.rare = -11;
-									return;
-								}
-								if (type == 2489)
-								{
-									this.name = "King Slime Trophy";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 240;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.placeStyle = 54;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2490)
-								{
-									this.name = "Ship in a Bottle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 319;
-									this.width = 12;
-									this.height = 12;
-									this.value = Item.buyPrice(0, 10, 0, 0);
-									return;
-								}
-								if (type == 2491)
-								{
-									this.useStyle = 1;
-									this.name = "Hardy Saddle";
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 25;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 8;
-									this.noMelee = true;
-									this.mountType = 4;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									return;
-								}
-								if (type == 2492)
-								{
-									this.name = "Pressure Track";
-									this.useStyle = 1;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.width = 16;
-									this.height = 16;
-									this.maxStack = 99;
-									this.createTile = 314;
-									this.placeStyle = 1;
-									this.consumable = true;
-									this.cartTrack = true;
-									this.mech = true;
-									this.tileBoost = 1;
-									this.value = Item.sellPrice(0, 0, 10, 0);
-									return;
-								}
-								if (type == 2493)
-								{
-									this.name = "King Slime Mask";
-									this.width = 28;
-									this.height = 20;
-									this.headSlot = 164;
-									this.rare = 1;
-									this.vanity = true;
-									return;
-								}
-								if (type == 2494)
-								{
-									this.name = "Fin Wings";
-									this.width = 22;
-									this.height = 20;
-									this.accessory = true;
-									this.toolTip = "Allows flight and slow fall";
-									this.value = Item.buyPrice(0, 1, 0, 0);
-									this.rare = 4;
-									this.wingSlot = 25;
-									return;
-								}
-								if (type == 2495)
-								{
-									this.name = "Treasure Map";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 242;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.buyPrice(0, 1, 0, 0);
-									this.placeStyle = 25;
-									return;
-								}
-								if (type == 2496)
-								{
-									this.name = "Seaweed Planter";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 320;
-									this.placeStyle = 0;
-									this.width = 22;
-									this.height = 30;
-									this.value = Item.buyPrice(0, 0, 1, 0);
-									return;
-								}
-								if (type == 2497)
-								{
-									this.name = "Pillagin Me Pixels";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 242;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.buyPrice(0, 1, 0, 0);
-									this.placeStyle = 26;
-									return;
-								}
-								if (type == 2498)
-								{
-									this.name = "Fish Costume Mask";
-									this.width = 18;
-									this.height = 18;
-									this.headSlot = 165;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2499)
-								{
-									this.name = "Fish Costume Shirt";
-									this.width = 18;
-									this.height = 18;
-									this.bodySlot = 172;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2500)
-								{
-									this.name = "Fish Costume Finskirt";
-									this.width = 18;
-									this.height = 18;
-									this.legSlot = 107;
-									this.vanity = true;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									return;
-								}
-								if (type == 2501)
-								{
-									this.name = "Ginger Beard";
-									this.width = 18;
-									this.height = 12;
-									this.maxStack = 1;
-									this.value = Item.buyPrice(0, 40, 0, 0);
-									this.rare = 5;
-									this.accessory = true;
-									this.faceSlot = 8;
-									this.vanity = true;
-									return;
-								}
-								if (type == 2502)
-								{
-									this.useStyle = 1;
-									this.name = "Honeyed Goggles";
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 25;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 8;
-									this.noMelee = true;
-									this.mountType = 5;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									return;
-								}
-								if (type == 2503)
-								{
-									this.name = "Boreal Wood";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 321;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2504)
-								{
-									this.name = "Palm Wood";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 322;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2505)
-								{
-									this.name = "Boreal Wood Wall";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 149;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2506)
-								{
-									this.name = "Palm Wood Wall";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 151;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2507)
-								{
-									this.name = "Boreal Wood Fence";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 150;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2508)
-								{
-									this.name = "Palm Wood Fence";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 7;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createWall = 152;
-									this.width = 12;
-									this.height = 12;
-									return;
-								}
-								if (type == 2509)
-								{
-									this.name = "Boreal Wood Helmet";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.headSlot = 166;
-									return;
-								}
-								if (type == 2510)
-								{
-									this.name = "Boreal Wood Breastplate";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.bodySlot = 173;
-									return;
-								}
-								if (type == 2511)
-								{
-									this.name = "Boreal Wood Greaves";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.legSlot = 108;
-									return;
-								}
-								if (type == 2512)
-								{
-									this.name = "Palm Wood Helmet";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.headSlot = 167;
-									return;
-								}
-								if (type == 2513)
-								{
-									this.name = "Palm Wood Breastplate";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.bodySlot = 174;
-									return;
-								}
-								if (type == 2514)
-								{
-									this.name = "Palm Wood Greaves";
-									this.width = 18;
-									this.height = 18;
-									this.defense = 1;
-									this.legSlot = 109;
-									return;
-								}
-								if (type == 2517)
-								{
-									this.name = "Palm Wood Sword";
-									this.useStyle = 1;
-									this.useTurn = false;
-									this.useAnimation = 23;
-									this.useTime = 23;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 8;
-									this.knockBack = 5f;
-									this.useSound = 1;
-									this.scale = 1f;
-									this.value = 100;
-									this.melee = true;
-									return;
-								}
-								if (type == 2516)
-								{
-									this.name = "Palm Wood Hammer";
-									this.autoReuse = true;
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 33;
-									this.useTime = 23;
-									this.hammer = 35;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 4;
-									this.knockBack = 5.5f;
-									this.scale = 1.1f;
-									this.useSound = 1;
-									this.value = 50;
-									this.melee = true;
-									return;
-								}
-								if (type == 2515)
-								{
-									this.name = "Palm Wood Bow";
-									this.useStyle = 5;
-									this.useAnimation = 29;
-									this.useTime = 29;
-									this.width = 12;
-									this.height = 28;
-									this.shoot = 1;
-									this.useAmmo = 1;
-									this.useSound = 5;
-									this.damage = 6;
-									this.shootSpeed = 6.6f;
-									this.noMelee = true;
-									this.value = 100;
-									this.ranged = true;
-									return;
-								}
-								if (type == 2518)
-								{
-									this.name = "Palm Wood Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 17;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2519)
-								{
-									this.name = "Palm Wood Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 17;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2520)
-								{
-									this.name = "Palm Wood Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 22;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2521)
-								{
-									this.name = "Palm Wood Bench";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 21;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2527)
-								{
-									this.name = "Palm Wood Sofa";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 22;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2522)
-								{
-									this.name = "Palm Wood Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 18;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2523)
-								{
-									this.noWet = true;
-									this.name = "Palm Wood Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 18;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2524)
-								{
-									this.name = "Palm Wood Chair";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 15;
-									this.placeStyle = 29;
-									this.width = 12;
-									this.height = 30;
-									return;
-								}
-								if (type == 2525)
-								{
-									this.name = "Palm Wood Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 23;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2526)
-								{
-									this.name = "Palm Wood Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 31;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2528)
-								{
-									this.name = "Palm Wood Door";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 10;
-									this.placeStyle = 29;
-									this.width = 14;
-									this.height = 28;
-									this.value = 200;
-									return;
-								}
-								if (type == 2529)
-								{
-									this.name = "Palm Wood Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 16;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2530)
-								{
-									this.name = "Palm Wood Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.width = 12;
-									this.height = 28;
-									this.placeStyle = 27;
-									return;
-								}
-								if (type == 2531)
-								{
-									this.name = "Palm Wood Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 21;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2535)
-								{
-									this.mana = 10;
-									this.damage = 30;
-									this.useStyle = 1;
-									this.name = "Optic Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 387;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 5;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons twins to fight for you";
-									this.buffType = 134;
-									this.value = Item.buyPrice(0, 10, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2532)
-								{
-									this.name = "Palm Wood Table";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 14;
-									this.placeStyle = 26;
-									this.width = 26;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2533)
-								{
-									this.name = "Palm Wood Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 18;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2534)
-								{
-									this.name = "Palm Wood Work Bench";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 18;
-									this.placeStyle = 22;
-									this.width = 28;
-									this.height = 14;
-									this.value = 150;
-									this.toolTip = "Used for basic crafting";
-									return;
-								}
-								if (type == 2536)
-								{
-									this.name = "Palm Wood Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									this.placeStyle = 23;
-									return;
-								}
-								if (type == 2549)
-								{
-									this.name = "Mushroom Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 18;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2537)
-								{
-									this.name = "Mushroom Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 18;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2538)
-								{
-									this.name = "Mushroom Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 23;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2539)
-								{
-									this.name = "Mushroom Bench";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 23;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2540)
-								{
-									this.name = "Mushroom Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									this.placeStyle = 24;
-									return;
-								}
-								if (type == 2541)
-								{
-									this.name = "Mushroom Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 19;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2542)
-								{
-									this.noWet = true;
-									this.name = "Mushroom Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 19;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2543)
-								{
-									this.name = "Mushroom Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 24;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2544)
-								{
-									this.name = "Mushroom Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 32;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2545)
-								{
-									this.name = "Mushroom Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 17;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2547)
-								{
-									this.name = "Mushroom Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 19;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2546)
-								{
-									this.name = "Mushroom Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.width = 12;
-									this.height = 28;
-									this.placeStyle = 28;
-									return;
-								}
-								if (type == 2548)
-								{
-									this.name = "Mushroom Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 22;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2413)
-								{
-									this.name = "Mushroom Sofa";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 23;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2550)
-								{
-									this.name = "Mushroom Table";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 14;
-									this.placeStyle = 27;
-									this.width = 26;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2551)
-								{
-									this.mana = 10;
-									this.damage = 25;
-									this.useStyle = 1;
-									this.name = "Spider Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 390;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 4;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons spiders to fight for you";
-									this.buffType = 133;
-									this.value = Item.buyPrice(0, 5, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2552)
-								{
-									this.name = "Boreal Wood Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 19;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2553)
-								{
-									this.name = "Boreal Wood Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 24;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2554)
-								{
-									this.name = "Boreal Wood Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									this.placeStyle = 25;
-									return;
-								}
-								if (type == 2555)
-								{
-									this.name = "Boreal Wood Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 20;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2556)
-								{
-									this.noWet = true;
-									this.name = "Boreal Wood Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 20;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2557)
-								{
-									this.name = "Boreal Wood Chair";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 15;
-									this.placeStyle = 30;
-									this.width = 12;
-									this.height = 30;
-									return;
-								}
-								if (type == 2558)
-								{
-									this.name = "Boreal Wood Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 25;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2559)
-								{
-									this.name = "Boreal Wood Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 33;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2560)
-								{
-									this.name = "Boreal Wood Clock";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 104;
-									this.placeStyle = 6;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2561)
-								{
-									this.name = "Boreal Wood Door";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 10;
-									this.placeStyle = 30;
-									this.width = 14;
-									this.height = 28;
-									this.value = 200;
-									return;
-								}
-								if (type == 2562)
-								{
-									this.name = "Boreal Wood Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 18;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2563)
-								{
-									this.name = "Boreal Wood Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 20;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2564)
-								{
-									this.name = "Boreal Wood Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.placeStyle = 29;
-									this.width = 12;
-									this.height = 28;
-									return;
-								}
-								if (type == 2565)
-								{
-									this.name = "Boreal Wood Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 23;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2566)
-								{
-									this.name = "Boreal Wood Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 19;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2567)
-								{
-									this.name = "Slime Bathtub";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 90;
-									this.placeStyle = 20;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2568)
-								{
-									this.name = "Slime Bed";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.autoReuse = true;
-									this.createTile = 79;
-									this.placeStyle = 25;
-									this.width = 28;
-									this.height = 20;
-									this.value = 2000;
-									return;
-								}
-								if (type == 2569)
-								{
-									this.name = "Slime Bookcase";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 101;
-									this.placeStyle = 26;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2570)
-								{
-									this.name = "Slime Candelabra";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 100;
-									this.placeStyle = 21;
-									this.width = 20;
-									this.height = 20;
-									this.value = 1500;
-									return;
-								}
-								if (type == 2571)
-								{
-									this.noWet = true;
-									this.name = "Slime Candle";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 33;
-									this.placeStyle = 21;
-									this.width = 8;
-									this.height = 18;
-									return;
-								}
-								if (type == 2572)
-								{
-									this.name = "Slime Chair";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 15;
-									this.placeStyle = 31;
-									this.width = 12;
-									this.height = 30;
-									return;
-								}
-								if (type == 2573)
-								{
-									this.name = "Slime Chandelier";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 34;
-									this.placeStyle = 26;
-									this.width = 26;
-									this.height = 26;
-									this.value = 3000;
-									return;
-								}
-								if (type == 2574)
-								{
-									this.name = "Slime Chest";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 21;
-									this.placeStyle = 34;
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2575)
-								{
-									this.name = "Slime Clock";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 104;
-									this.placeStyle = 7;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2576)
-								{
-									this.name = "Slime Door";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 10;
-									this.placeStyle = 31;
-									this.width = 14;
-									this.height = 28;
-									this.value = 200;
-									return;
-								}
-								if (type == 2577)
-								{
-									this.name = "Slime Dresser";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 88;
-									this.placeStyle = 19;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2578)
-								{
-									this.name = "Slime Lamp";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 93;
-									this.placeStyle = 21;
-									this.width = 10;
-									this.height = 24;
-									this.value = 500;
-									return;
-								}
-								if (type == 2579)
-								{
-									this.name = "Slime Lantern";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 999;
-									this.consumable = true;
-									this.createTile = 42;
-									this.placeStyle = 30;
-									this.width = 12;
-									this.height = 28;
-									return;
-								}
-								if (type == 2580)
-								{
-									this.name = "Slime Piano";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 87;
-									this.placeStyle = 24;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2581)
-								{
-									this.name = "Slime Platform";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 19;
-									this.placeStyle = 20;
-									this.width = 8;
-									this.height = 10;
-									return;
-								}
-								if (type == 2582)
-								{
-									this.name = "Slime Sofa";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 89;
-									this.placeStyle = 25;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2583)
-								{
-									this.name = "Slime Table";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 14;
-									this.placeStyle = 29;
-									this.width = 26;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2584)
-								{
-									this.mana = 10;
-									this.damage = 32;
-									this.useStyle = 1;
-									this.name = "Pirate Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 393;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 5;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons pirates to fight for you";
-									this.buffType = 135;
-									this.value = Item.buyPrice(0, 5, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2585)
-								{
-									this.noUseGraphic = true;
-									this.damage = 0;
-									this.useStyle = 5;
-									this.name = "Slime Hook";
-									this.shootSpeed = 13f;
-									this.shoot = 396;
-									this.width = 18;
-									this.height = 28;
-									this.useSound = 1;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 3;
-									this.noMelee = true;
-									this.value = 20000;
-									return;
-								}
-								if (type == 2586)
-								{
-									this.useStyle = 5;
-									this.name = "Sticky Grenade";
-									this.shootSpeed = 5.5f;
-									this.shoot = 397;
-									this.width = 20;
-									this.height = 20;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.useSound = 1;
-									this.useAnimation = 45;
-									this.useTime = 45;
-									this.noUseGraphic = true;
-									this.noMelee = true;
-									this.value = 75;
-									this.damage = 60;
-									this.knockBack = 8f;
-									this.toolTip = "A small explosion that will not destroy tiles";
-									this.toolTip2 = "Tossing may be difficult";
-									this.ranged = true;
-									return;
-								}
-								if (type == 2587)
-								{
-									this.damage = 0;
-									this.useStyle = 1;
-									this.name = "Tartar Sauce";
-									this.shoot = 398;
-									this.width = 16;
-									this.height = 30;
-									this.useSound = 2;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.rare = 3;
-									this.noMelee = true;
-									this.toolTip = "Summons a mini minotaur";
-									this.buffType = 136;
-									this.value = Item.sellPrice(0, 2, 0, 0);
-									return;
-								}
-								if (type == 2588)
-								{
-									this.name = "Duke Fishron Mask";
-									this.width = 28;
-									this.height = 20;
-									this.headSlot = 168;
-									this.rare = 1;
-									this.vanity = true;
-									return;
-								}
-								if (type == 2589)
-								{
-									this.name = "Duke Fishron Trophy";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 240;
-									this.width = 30;
-									this.height = 30;
-									this.value = Item.sellPrice(0, 1, 0, 0);
-									this.placeStyle = 55;
-									this.rare = 1;
-									return;
-								}
-								if (type == 2590)
-								{
-									this.useStyle = 5;
-									this.name = "Molotov Cocktail";
-									this.shootSpeed = 6.5f;
-									this.shoot = 399;
-									this.width = 20;
-									this.height = 20;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.useSound = 1;
-									this.useAnimation = 30;
-									this.useTime = 30;
-									this.noUseGraphic = true;
-									this.noMelee = true;
-									this.value = 75;
-									this.damage = 40;
-									this.knockBack = 8f;
-									this.toolTip = "A small explosion that puts enemies on fire";
-									this.toolTip2 = "Lights nearby area on fire for a while";
-									this.ranged = true;
-									return;
-								}
-								if (type >= 2591 && type <= 2606)
-								{
-									this.name = "Grandfather Clock";
-									this.useStyle = 1;
-									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 104;
-									this.placeStyle = 8 + type - 2591;
-									this.width = 20;
-									this.height = 20;
-									this.value = 300;
-									return;
-								}
-								if (type == 2607)
-								{
-									this.name = "Spider Fang";
-									this.maxStack = 99;
-									this.width = 12;
-									this.height = 12;
-									this.rare = 4;
-									this.value = Item.sellPrice(0, 0, 5, 0);
-									return;
-								}
-								if (type == 2608)
-								{
-									this.name = "Falcon Blade";
-									this.useStyle = 1;
-									this.useAnimation = 15;
+									this.useAnimation = 24;
+									this.useTime = 14;
+									this.hammer = 70;
 									this.knockBack = 6f;
-									this.width = 24;
-									this.height = 28;
-									this.damage = 25;
+									this.damage = 24;
 									this.scale = 1.05f;
 									this.useSound = 1;
-									this.rare = 4;
-									this.value = 10000;
+									this.rare = 3;
 									this.melee = true;
 									return;
 								}
-								if (type == 2609)
+								if (type == 2314)
 								{
-									this.name = "Fishron Wings";
-									this.width = 22;
-									this.height = 20;
-									this.accessory = true;
-									this.toolTip = "Allows flight and slow fall";
-									this.value = Item.buyPrice(0, 10, 0, 0);
-									this.rare = 8;
-									this.wingSlot = 26;
-									return;
-								}
-								if (type == 2610)
-								{
-									this.name = "Slime Gun";
-									this.useStyle = 5;
-									this.useAnimation = 12;
-									this.useTime = 12;
-									this.width = 38;
-									this.height = 10;
-									this.damage = 0;
-									this.scale = 0.9f;
-									this.shoot = 406;
-									this.shootSpeed = 8f;
-									this.autoReuse = true;
-									this.value = Item.buyPrice(0, 1, 50, 0);
-									return;
-								}
-								if (type == 2611)
-								{
-									this.autoReuse = false;
-									this.name = "Flairon";
-									this.useStyle = 5;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.autoReuse = true;
-									this.knockBack = 4.5f;
-									this.width = 30;
-									this.height = 10;
-									this.damage = 66;
-									this.shoot = 404;
-									this.shootSpeed = 14f;
-									this.useSound = 1;
-									this.rare = 8;
-									this.value = Item.sellPrice(0, 5, 0, 0);
-									this.melee = true;
-									this.noUseGraphic = true;
-									return;
-								}
-								if (type >= 2612 && type <= 2620)
-								{
-									this.name = "Many Chests";
-									this.useStyle = 1;
+									this.name = "Honeyfin";
+									this.maxStack = 30;
+									this.width = 26;
+									this.height = 26;
+									this.value = Item.sellPrice(0, 0, 15, 0);
+									this.rare = 1;
+									this.useSound = 3;
+									this.healLife = 120;
+									this.useStyle = 2;
 									this.useTurn = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.autoReuse = true;
-									this.maxStack = 99;
+									this.useAnimation = 17;
+									this.useTime = 17;
 									this.consumable = true;
-									this.createTile = 21;
-									if (type <= 2614)
+									this.potion = true;
+									return;
+								}
+								if (type >= 2290 && type <= 2321)
+								{
+									this.name = "Fish";
+									this.maxStack = 999;
+									this.width = 26;
+									this.height = 26;
+									this.value = Item.sellPrice(0, 0, 5, 0);
+									if (type == 2308)
 									{
-										this.placeStyle = 35 + (type - 2612) * 2;
+										this.value = Item.sellPrice(0, 10, 0, 0);
+										this.rare = 4;
 									}
-									else
+									if (type == 2312)
 									{
-										this.placeStyle = 41 + type - 2615;
+										this.value = Item.sellPrice(0, 0, 50, 0);
+										this.rare = 2;
 									}
-									this.width = 26;
-									this.height = 22;
-									this.value = 500;
-									return;
-								}
-								if (type == 2621)
-								{
-									this.mana = 10;
-									this.damage = 50;
-									this.useStyle = 1;
-									this.name = "Tempest Staff";
-									this.shootSpeed = 10f;
-									this.shoot = 407;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 44;
-									this.useAnimation = 36;
-									this.useTime = 36;
-									this.rare = 8;
-									this.noMelee = true;
-									this.knockBack = 2f;
-									this.toolTip = "Summons sharknados to fight for you";
-									this.buffType = 139;
-									this.value = Item.buyPrice(0, 5, 0, 0);
-									this.summon = true;
-									return;
-								}
-								if (type == 2624)
-								{
-									this.useStyle = 5;
-									this.useAnimation = 24;
-									this.useTime = 24;
-									this.name = "Tsunami";
-									this.width = 50;
-									this.height = 18;
-									this.shoot = 1;
-									this.useAmmo = 1;
-									this.useSound = 5;
-									this.damage = 60;
-									this.shootSpeed = 10f;
-									this.noMelee = true;
-									this.value = this.value = Item.sellPrice(0, 5, 0, 0);
-									this.ranged = true;
-									this.rare = 8;
-									this.knockBack = 2f;
-									return;
-								}
-								if (type == 2622)
-								{
-									this.mana = 18;
-									this.damage = 60;
-									this.useStyle = 5;
-									this.name = "Razorblade Typhoon";
-									this.shootSpeed = 6f;
-									this.shoot = 409;
-									this.width = 26;
-									this.height = 28;
-									this.useSound = 8;
-									this.useAnimation = 20;
-									this.useTime = 20;
-									this.autoReuse = true;
-									this.rare = 8;
-									this.noMelee = true;
-									this.knockBack = 5f;
-									this.scale = 0.9f;
-									this.toolTip = "Casts a typhoon";
-									this.value = this.value = Item.sellPrice(0, 5, 0, 0);
-									this.magic = true;
-									return;
-								}
-								if (type == 2625 || type == 2626)
-								{
-									this.name = "Beach Stuff";
-									this.useStyle = 1;
-									this.autoReuse = true;
-									this.useAnimation = 15;
-									this.useTime = 10;
-									this.maxStack = 99;
-									this.consumable = true;
-									this.createTile = 324;
-									if (type == 2626)
+									if (type == 2317)
 									{
-										this.placeStyle = 1;
-										this.width = 26;
-										this.height = 24;
+										this.value = Item.sellPrice(0, 3, 0, 0);
+										this.rare = 4;
+									}
+									if (type == 2310)
+									{
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										this.rare = 3;
+									}
+									if (type == 2321)
+									{
+										this.value = Item.sellPrice(0, 0, 25, 0);
+										this.rare = 1;
+									}
+									if (type == 2315)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+										this.rare = 2;
+									}
+									if (type == 2303)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+										this.rare = 1;
+									}
+									if (type == 2304)
+									{
+										this.value = Item.sellPrice(0, 0, 30, 0);
+										this.rare = 1;
+									}
+									if (type == 2316)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+									}
+									if (type == 2311)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+										this.rare = 1;
+									}
+									if (type == 2313)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+										this.rare = 1;
+									}
+									if (type == 2306)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+										this.rare = 1;
+									}
+									if (type == 2307)
+									{
+										this.value = Item.sellPrice(0, 0, 25, 0);
+										this.rare = 2;
+									}
+									if (type == 2319)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+										this.rare = 1;
+									}
+									if (type == 2318)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+										this.rare = 1;
+									}
+									if (type == 2298)
+									{
+										this.value = Item.sellPrice(0, 0, 7, 50);
+									}
+									if (type == 2309)
+									{
+										this.value = Item.sellPrice(0, 0, 7, 50);
+										this.rare = 1;
+									}
+									if (type == 2300)
+									{
+										this.value = Item.sellPrice(0, 0, 7, 50);
+									}
+									if (type == 2301)
+									{
+										this.value = Item.sellPrice(0, 0, 7, 50);
+									}
+									if (type == 2302)
+									{
+										this.value = Item.sellPrice(0, 0, 15, 0);
+									}
+									if (type == 2299)
+									{
+										this.value = Item.sellPrice(0, 0, 7, 50);
+									}
+									if (type == 2305)
+									{
+										this.value = Item.sellPrice(0, 0, 7, 50);
+										this.rare = 1;
 										return;
 									}
-									this.width = 22;
-									this.height = 22;
-									return;
 								}
 								else
 								{
-									if (type >= 2627 && type <= 2630)
+									if (type == 2322)
 									{
-										this.name = "More Platforms";
-										this.useStyle = 1;
+										this.name = "Mining Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
 										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
 										this.consumable = true;
-										this.createTile = 19;
-										this.placeStyle = 21 + type - 2627;
-										this.width = 8;
-										this.height = 10;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 104;
+										this.buffTime = 18000;
+										this.toolTip = "Increases mining speed";
+										this.value = 1000;
+										this.rare = 1;
 										return;
 									}
-									if (type >= 2631 && type <= 2633)
+									if (type == 2323)
 									{
-										this.name = "More Work Benches";
+										this.name = "Heartreach Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 105;
+										this.buffTime = 28800;
+										this.toolTip = "Increases pickup range for life hearts";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2324)
+									{
+										this.name = "Calming Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 106;
+										this.buffTime = 18000;
+										this.toolTip = "Reduces enemy aggression and spawn rate";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2325)
+									{
+										this.name = "Builder Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 107;
+										this.buffTime = 54000;
+										this.toolTip = "Increases placement speed and range";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2326)
+									{
+										this.name = "Titan Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 108;
+										this.buffTime = 14400;
+										this.toolTip = "Increases knockback";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2327)
+									{
+										this.name = "Flipper Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 109;
+										this.buffTime = 28800;
+										this.toolTip = "Lets you to move swiftly in liquids";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2328)
+									{
+										this.name = "Summoning Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 110;
+										this.buffTime = 21600;
+										this.toolTip = "Increases your max number of minions";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2329)
+									{
+										this.name = "Trapsight Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 111;
+										this.buffTime = 36000;
+										this.toolTip = "Allows you to see nearby traps";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2330)
+									{
+										this.name = "Purple Clubberfish";
+										this.autoReuse = true;
+										this.useStyle = 1;
+										this.useAnimation = 35;
+										this.width = 24;
+										this.height = 28;
+										this.damage = 24;
+										this.knockBack = 7f;
+										this.scale = 1.15f;
+										this.useSound = 1;
+										this.rare = 1;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										this.melee = true;
+										return;
+									}
+									if (type == 2331)
+									{
+										this.name = "Obsidian Swordfish";
+										this.useStyle = 5;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.shootSpeed = 4f;
+										this.knockBack = 6.5f;
+										this.width = 40;
+										this.height = 40;
+										this.damage = 70;
+										this.crit = 20;
+										this.useSound = 1;
+										this.shoot = 367;
+										this.rare = 7;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										this.noMelee = true;
+										this.noUseGraphic = true;
+										this.melee = true;
+										return;
+									}
+									if (type == 2332)
+									{
+										this.name = "Swordfish";
+										this.useStyle = 5;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.shootSpeed = 4f;
+										this.knockBack = 5f;
+										this.width = 40;
+										this.height = 40;
+										this.damage = 16;
+										this.useSound = 1;
+										this.shoot = 368;
+										this.rare = 2;
+										this.value = Item.sellPrice(0, 0, 50, 0);
+										this.noMelee = true;
+										this.noUseGraphic = true;
+										this.melee = true;
+										return;
+									}
+									if (type == 2333)
+									{
+										this.name = "Iron Fence";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
-										this.useTime = 10;
+										this.useTime = 7;
 										this.autoReuse = true;
+										this.maxStack = 999;
+										this.consumable = true;
+										this.createWall = 145;
+										this.width = 12;
+										this.height = 12;
+										return;
+									}
+									if (type == 2334)
+									{
+										this.name = "Wooden Crate";
+										this.width = 12;
+										this.height = 12;
+										this.rare = 1;
+										this.toolTip = "Right click to open";
+										this.maxStack = 99;
+										this.value = Item.sellPrice(0, 0, 10, 0);
+										return;
+									}
+									if (type == 2335)
+									{
+										this.name = "Iron Crate";
+										this.width = 12;
+										this.height = 12;
+										this.rare = 2;
+										this.toolTip = "Right click to open";
+										this.maxStack = 99;
+										this.value = Item.sellPrice(0, 0, 50, 0);
+										return;
+									}
+									if (type == 2336)
+									{
+										this.name = "Golden Crate";
+										this.width = 12;
+										this.height = 12;
+										this.rare = 3;
+										this.toolTip = "Right click to open";
+										this.maxStack = 99;
+										this.value = Item.sellPrice(0, 2, 0, 0);
+										return;
+									}
+									if (type >= 2337 && type <= 2339)
+									{
+										this.name = "Junk";
+										this.width = 12;
+										this.height = 12;
+										this.rare = -1;
+										this.maxStack = 99;
+										return;
+									}
+									if (type == 2340)
+									{
+										this.name = "Tracks";
+										this.useStyle = 1;
+										this.useAnimation = 15;
+										this.useTime = 7;
+										this.useTurn = true;
+										this.autoReuse = true;
+										this.width = 16;
+										this.height = 16;
+										this.maxStack = 999;
+										this.createTile = 314;
+										this.placeStyle = 0;
+										this.consumable = true;
+										this.cartTrack = true;
+										this.tileBoost = 1;
+										return;
+									}
+									if (type == 2341)
+									{
+										this.name = "Reaver Shark";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 22;
+										this.useTime = 18;
+										this.autoReuse = true;
+										this.width = 24;
+										this.height = 28;
+										this.damage = 16;
+										this.pick = 100;
+										this.scale = 1.15f;
+										this.useSound = 1;
+										this.knockBack = 3f;
+										this.rare = 3;
+										this.value = Item.sellPrice(0, 1, 50, 0);
+										this.melee = true;
+										return;
+									}
+									if (type == 2342)
+									{
+										this.name = "Sawtooth Shark";
+										this.useStyle = 5;
+										this.useAnimation = 25;
+										this.useTime = 8;
+										this.shootSpeed = 48f;
+										this.knockBack = 2.25f;
+										this.width = 20;
+										this.height = 12;
+										this.damage = 13;
+										this.axe = 14;
+										this.useSound = 23;
+										this.shoot = 369;
+										this.rare = 3;
+										this.value = Item.sellPrice(0, 1, 50, 0);
+										this.noMelee = true;
+										this.noUseGraphic = true;
+										this.melee = true;
+										this.channel = true;
+										return;
+									}
+									if (type == 2343)
+									{
+										this.name = "Minecart";
+										this.width = 48;
+										this.height = 28;
+										return;
+									}
+									if (type == 2344)
+									{
+										this.name = "Ammo Reservation Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 112;
+										this.buffTime = 25200;
+                                        this.buffMagnitude = 1;
+										this.toolTip = "Gives 15% chance to not consume ammo";
+										this.value = 1000;
+                                        this.rare = 1;
+                                        this.craftingLvl = 1;
+										return;
+									}
+									if (type == 2345)
+									{
+										this.name = "Lifeforce Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 113;
+										this.buffTime = 18000;
+                                        this.buffMagnitude = 1;
+										this.toolTip = "Increases max life by 15%";
+										this.value = 1000;
+                                        this.rare = 1;
+                                        this.craftingLvl = 1;
+										return;
+									}
+									if (type == 2346)
+									{
+										this.name = "Endurance Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 114;
+										this.buffTime = 14400;
+                                        this.buffMagnitude = 1;
+										this.toolTip = "Reduces damage taken by 10%";
+										this.value = 1000;
+                                        this.rare = 1;
+                                        this.craftingLvl = 1;
+										return;
+									}
+									if (type == 2347)
+									{
+										this.name = "Rage Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 115;
+										this.buffTime = 14400;
+                                        this.buffMagnitude = 1;
+										this.toolTip = "Increases critical strike chance by 10%";
+										this.value = 1000;
+                                        this.rare = 1;
+                                        this.craftingLvl = 1;
+										return;
+									}
+									if (type == 2348)
+									{
+										this.name = "Inferno Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 116;
+										this.buffTime = 14400;
+										this.toolTip = "Ignites nearby enemies";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2349)
+									{
+										this.name = "Wrath Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 117;
+										this.buffTime = 14400;
+                                        this.buffMagnitude = 1;
+										this.toolTip = "Increases damage by 10%";
+										this.value = 1000;
+                                        this.rare = 1;
+                                        this.craftingLvl = 1;
+										return;
+									}
+									if (type == 2350)
+									{
+										this.name = "Recall Potion";
+										this.useSound = 6;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.toolTip = "Teleports you home";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2351)
+									{
+										this.name = "Teleportation Potion";
+										this.useSound = 6;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.toolTip = "Teleports you to a random location";
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2352)
+									{
+										this.useStyle = 1;
+										this.name = "Love Potion";
+										this.shootSpeed = 9f;
+										this.shoot = 370;
+										this.width = 18;
+										this.height = 20;
 										this.maxStack = 99;
 										this.consumable = true;
-										this.createTile = 18;
-										this.placeStyle = 24 + type - 2631;
-										this.width = 28;
+										this.useSound = 1;
+										this.useAnimation = 15;
+										this.useTime = 15;
+										this.noUseGraphic = true;
+										this.noMelee = true;
+										this.value = 200;
+										this.toolTip = "Throw at someone to make them fall in love";
+										return;
+									}
+									if (type == 2353)
+									{
+										this.useStyle = 1;
+										this.name = "Stink Potion";
+										this.shootSpeed = 9f;
+										this.shoot = 371;
+										this.width = 18;
+										this.height = 20;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.useSound = 1;
+										this.useAnimation = 15;
+										this.useTime = 15;
+										this.noUseGraphic = true;
+										this.noMelee = true;
+										this.value = 200;
+										this.toolTip = "Throw at someone to make them smell terrible";
+										return;
+									}
+									if (type == 2354)
+									{
+										this.name = "Fishing Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 121;
+										this.buffTime = 28800;
+										this.toolTip = "Increases fishing skill";
+										this.rare = 1;
+										return;
+									}
+									if (type == 2355)
+									{
+										this.name = "Sonar Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 122;
+										this.buffTime = 14400;
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2356)
+									{
+										this.name = "Crate Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 123;
+										this.buffTime = 10800;
+										this.value = 1000;
+										this.rare = 1;
+										return;
+									}
+									if (type == 2357)
+									{
+										this.name = "Shiverthorn Seeds";
+										this.useTurn = true;
+										this.useStyle = 1;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 82;
+										this.placeStyle = 6;
+										this.width = 12;
 										this.height = 14;
-										this.value = 150;
-										this.toolTip = "Used for basic crafting";
+										this.value = 80;
 										return;
 									}
-									if (type >= 2634 && type <= 2636)
+									if (type == 2358)
+									{
+										this.name = "Shiverthorn";
+										this.maxStack = 99;
+										this.width = 12;
+										this.height = 14;
+										this.value = 100;
+										return;
+									}
+									if (type == 2359)
+									{
+										this.name = "Warmth Potion";
+										this.useSound = 3;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 14;
+										this.height = 24;
+										this.buffType = 124;
+										this.buffTime = 54000;
+                                        this.buffMagnitude = 1;
+										this.toolTip = "Reduces damage from cold sources";
+										this.value = 1000;
+                                        this.rare = 1;
+                                        this.craftingLvl = 1;
+										return;
+									}
+									if (type == 2360)
+									{
+										this.noUseGraphic = true;
+										this.damage = 0;
+										this.useStyle = 5;
+										this.name = "Fish Hook";
+										this.shootSpeed = 13f;
+										this.shoot = 372;
+										this.width = 18;
+										this.height = 28;
+										this.useSound = 1;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 3;
+										this.noMelee = true;
+										this.value = 20000;
+										return;
+									}
+									if (type == 2361)
+									{
+										this.name = "Bee Headgear";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 4;
+										this.headSlot = 160;
+										this.rare = 3;
+										this.value = 45000;
+										this.toolTip = "Increases minion damage by 4%";
+
+                                        this.skillType = (int)Skill.Magic;
+                                        this.requiredLvl = 20;
+                                        this.craftingLvl = 20;
+										return;
+									}
+									if (type == 2362)
+									{
+										this.name = "Bee Breastplate";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 5;
+										this.bodySlot = 168;
+										this.rare = 3;
+										this.value = 30000;
+										this.toolTip = "Increases minion damage by 6%";
+
+                                        this.skillType = (int)Skill.Magic;
+                                        this.requiredLvl = 20;
+                                        this.craftingLvl = 20;
+										return;
+									}
+									if (type == 2363)
+									{
+										this.name = "Bee Greaves";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 4;
+										this.legSlot = 103;
+										this.rare = 3;
+										this.value = 30000;
+										this.toolTip = "Increases minion damage by 5%";
+
+                                        this.skillType = (int)Skill.Magic;
+                                        this.requiredLvl = 20;
+                                        this.craftingLvl = 20;
+										return;
+									}
+									if (type == 2364)
+									{
+										this.mana = 10;
+										this.damage = 9;
+										this.useStyle = 1;
+										this.name = "Hornet Staff";
+										this.shootSpeed = 10f;
+										this.shoot = 373;
+										this.width = 26;
+										this.height = 28;
+										this.useSound = 44;
+										this.useAnimation = 22;
+										this.useTime = 22;
+										this.rare = 3;
+										this.noMelee = true;
+										this.knockBack = 2f;
+										this.toolTip = "Summons a hornet to fight for you";
+										this.buffType = 125;
+										this.value = 10000;
+										this.summon = true;
+
+                                        this.craftingLvl = 20;
+										return;
+									}
+									if (type == 2365)
+									{
+										this.mana = 10;
+										this.damage = 21;
+										this.useStyle = 1;
+										this.name = "Imp Staff";
+										this.shootSpeed = 10f;
+										this.shoot = 375;
+										this.width = 26;
+										this.height = 28;
+										this.useSound = 44;
+										this.useAnimation = 36;
+										this.useTime = 36;
+										this.rare = 3;
+										this.noMelee = true;
+										this.knockBack = 2f;
+										this.toolTip = "Summons an imp to fight for you";
+										this.buffType = 126;
+										this.value = 10000;
+										this.summon = true;
+
+                                        this.craftingLvl = 36;
+										return;
+									}
+									if (type == 2366)
+									{
+										this.mana = 10;
+										this.damage = 19;
+										this.name = "Spider Queen Staff";
+										this.useStyle = 1;
+										this.shootSpeed = 14f;
+										this.shoot = 377;
+										this.width = 18;
+										this.height = 20;
+										this.useSound = 1;
+										this.useAnimation = 30;
+										this.useTime = 30;
+										this.noMelee = true;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										this.knockBack = 7.5f;
+										this.rare = 4;
+										this.summon = true;
+
+                                        this.craftingLvl = 40;
+										return;
+									}
+									if (type == 2367)
+									{
+										this.name = "Angler Hat";
+										this.width = 18;
+										this.height = 18;
+										this.defense = 1;
+										this.headSlot = 161;
+										this.rare = 1;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2368)
+									{
+										this.name = "Angler Vest";
+										this.width = 18;
+										this.height = 18;
+										this.bodySlot = 169;
+										this.defense = 2;
+										this.rare = 1;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2369)
+									{
+										this.name = "Angler Pants";
+										this.width = 18;
+										this.height = 18;
+										this.legSlot = 104;
+										this.defense = 1;
+										this.rare = 1;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2370)
+									{
+										this.name = "Spider Mask";
+										this.width = 18;
+										this.height = 18;
+										this.headSlot = 162;
+										this.rare = 4;
+										this.value = Item.sellPrice(0, 0, 75, 0);
+										this.toolTip = "Increases your max number of minions";
+										this.toolTip2 = "Increases minion damage by 5%";
+										this.defense = 5;
+
+                                        this.skillType = (int)Skill.Magic;
+                                        this.requiredLvl = 40;
+                                        this.craftingLvl = 40;
+										return;
+									}
+									if (type == 2371)
+									{
+										this.name = "Spider Breastplate";
+										this.width = 18;
+										this.height = 18;
+										this.bodySlot = 170;
+										this.rare = 4;
+										this.value = Item.sellPrice(0, 0, 75, 0);
+										this.toolTip = "Increases your max number of minions";
+										this.toolTip2 = "Increases minion damage by 6%";
+										this.defense = 8;
+
+                                        this.skillType = (int)Skill.Magic;
+                                        this.requiredLvl = 40;
+                                        this.craftingLvl = 40;
+										return;
+									}
+									if (type == 2372)
+									{
+										this.name = "Spider Greaves";
+										this.width = 18;
+										this.height = 18;
+										this.legSlot = 105;
+										this.rare = 4;
+										this.value = Item.sellPrice(0, 0, 75, 0);
+										this.toolTip = "Increases your max number of minions";
+										this.toolTip2 = "Increases minion damage by 6%";
+										this.defense = 7;
+
+                                        this.skillType = (int)Skill.Magic;
+                                        this.requiredLvl = 40;
+                                        this.craftingLvl = 40;
+										return;
+									}
+									if (type >= 2373 && type <= 2375)
+									{
+										this.name = "Fishing Accessories";
+										this.width = 26;
+										this.height = 30;
+										this.maxStack = 1;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										this.rare = 1;
+										this.accessory = true;
+										return;
+									}
+									if (type >= 2376 && type <= 2385)
+									{
+										this.name = "More Pianos";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 87;
+										this.placeStyle = 11 + type - 2376;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type >= 2386 && type <= 2396)
+									{
+										this.name = "More Dressers";
+										this.useStyle = 1;
+										this.useTurn = true;
+										this.useAnimation = 15;
+										this.useTime = 10;
+										this.autoReuse = true;
+										this.maxStack = 99;
+										this.consumable = true;
+										this.createTile = 88;
+										this.placeStyle = 5 + type - 2386;
+										this.width = 20;
+										this.height = 20;
+										this.value = 300;
+										return;
+									}
+									if (type >= 2397 && type <= 2416)
 									{
 										this.name = "Sofas";
 										this.useStyle = 1;
@@ -36181,266 +35661,190 @@ namespace Terraria
 										this.maxStack = 99;
 										this.consumable = true;
 										this.createTile = 89;
-										this.placeStyle = 26 + type - 2634;
+										this.placeStyle = 1 + type - 2397;
 										this.width = 20;
 										this.height = 20;
 										this.value = 300;
 										return;
 									}
-									if (type == 2623)
+									if (type == 2417)
 									{
-										this.autoReuse = true;
-										this.name = "Bubble Gun";
-										this.mana = 4;
-										this.useSound = 39;
-										this.useStyle = 5;
-										this.damage = 70;
-										this.useAnimation = 9;
-										this.useTime = 9;
-										this.width = 40;
-										this.height = 40;
-										this.shoot = 410;
-										this.shootSpeed = 11f;
-										this.knockBack = 3f;
-										this.value = Item.sellPrice(0, 5, 0, 0);
-										this.magic = true;
+										this.name = "Seashell Hairpin";
+										this.width = 18;
+										this.height = 18;
+										this.headSlot = 163;
+										this.vanity = true;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2418)
+									{
+										this.name = "Mermaid Adornment";
+										this.width = 18;
+										this.height = 18;
+										this.bodySlot = 171;
+										this.vanity = true;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2419)
+									{
+										this.name = "Mermaid Tail";
+										this.width = 18;
+										this.height = 18;
+										this.legSlot = 106;
+										this.vanity = true;
+										this.value = Item.sellPrice(0, 1, 0, 0);
+										return;
+									}
+									if (type == 2420)
+									{
+										this.damage = 0;
+										this.useStyle = 1;
+										this.name = "Zephyr Fish";
+										this.shoot = 380;
+										this.width = 16;
+										this.height = 30;
+										this.useSound = 2;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 3;
+										this.noMelee = true;
+										this.toolTip = "Summons a Zephyr Fish";
+										this.value = Item.sellPrice(0, 3, 0, 0);
+										this.buffType = 127;
+										return;
+									}
+									if (type == 2423)
+									{
+										this.name = "Frog Leg";
+										this.width = 16;
+										this.height = 24;
+										this.accessory = true;
+										this.rare = 1;
+										this.toolTip = "Increases Jump Speed";
+										this.toolTip2 = "Allows constant jumping";
+										this.value = 50000;
+										this.shoeSlot = 15;
+										return;
+									}
+									if (type == 2424)
+									{
+										this.noMelee = true;
+										this.useStyle = 1;
+										this.name = "Anchor";
+										this.shootSpeed = 20f;
+										this.shoot = 383;
+										this.damage = 30;
+										this.knockBack = 5f;
+										this.width = 34;
+										this.height = 34;
+										this.useSound = 1;
+										this.useAnimation = 30;
+										this.useTime = 30;
+										this.noUseGraphic = true;
+										this.rare = 3;
+										this.value = 50000;
+										this.melee = true;
+										return;
+									}
+									if (type >= 2425 && type <= 2427)
+									{
+										this.name = "Fishing Food";
+										this.useSound = 2;
+										this.useStyle = 2;
+										this.useTurn = true;
+										this.useAnimation = 17;
+										this.useTime = 17;
+										this.maxStack = 30;
+										this.consumable = true;
+										this.width = 10;
+										this.height = 10;
+										this.buffType = 26;
+										this.buffTime = 10800;
+										this.rare = 1;
+										this.toolTip = "Minor health regeneration";
+										this.value = Item.sellPrice(0, 0, 5, 0);
+										return;
+									}
+									if (type == 2428)
+									{
+										this.useStyle = 1;
+										this.name = "Fuzzy Carrot";
+										this.width = 16;
+										this.height = 30;
+										this.useSound = 25;
+										this.useAnimation = 20;
+										this.useTime = 20;
 										this.rare = 8;
 										this.noMelee = true;
+										this.mountType = 1;
+										this.value = Item.sellPrice(0, 5, 0, 0);
 										return;
 									}
-									if (type >= 2637 && type <= 2640)
+									if (type == 2429)
 									{
-										this.name = "Dressers";
 										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
+										this.name = "Scaly Truffle";
+										this.width = 16;
+										this.height = 30;
+										this.useSound = 25;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 8;
+										this.noMelee = true;
+										this.mountType = 2;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										return;
+									}
+									if (type == 2430)
+									{
+										this.useStyle = 1;
+										this.name = "Slimy Saddle";
+										this.width = 16;
+										this.height = 30;
+										this.useSound = 25;
+										this.useAnimation = 20;
+										this.useTime = 20;
+										this.rare = 8;
+										this.noMelee = true;
+										this.mountType = 3;
+										this.value = Item.sellPrice(0, 5, 0, 0);
+										return;
+									}
+									if (type == 2431)
+									{
+										this.name = "Bee Wax";
+										this.width = 18;
+										this.height = 16;
 										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 88;
-										this.placeStyle = 20 + type - 2637;
-										this.width = 20;
-										this.height = 20;
-										this.value = 300;
+										this.value = 100;
 										return;
 									}
-									if (type == 2641 || type == 2642)
+									if (type >= 2432 && type <= 2434)
 									{
-										this.name = "Lantern 1";
+										this.name = "Some walls";
 										this.useStyle = 1;
 										this.useTurn = true;
 										this.useAnimation = 15;
-										this.useTime = 10;
+										this.useTime = 7;
 										this.autoReuse = true;
 										this.maxStack = 999;
 										this.consumable = true;
-										this.createTile = 42;
-										if (type == 2641)
-										{
-											this.placeStyle = 31;
-										}
-										else
-										{
-											this.placeStyle = 32;
-										}
-										this.width = 12;
-										this.height = 28;
-										return;
-									}
-									if (type >= 2643 && type <= 2647)
-									{
-										this.name = "More Lamps";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 93;
-										this.placeStyle = 22 + type - 2643;
-										this.width = 10;
-										this.height = 24;
-										this.value = 500;
-										return;
-									}
-									if (type >= 2648 && type <= 2651)
-									{
-										this.noWet = true;
-										this.name = "even more candles";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 33;
-										this.width = 8;
-										this.height = 18;
-										this.placeStyle = 22 + type - 2648;
-										return;
-									}
-									if (type >= 2652 && type <= 2657)
-									{
-										this.name = "More Chandeliers";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 34;
-										this.placeStyle = 27 + type - 2652;
-										this.width = 26;
-										this.height = 26;
-										this.value = 3000;
-										return;
-									}
-									if (type >= 2658 && type <= 2663)
-									{
-										this.name = "more bathtubs";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 90;
-										this.placeStyle = 21 + type - 2658;
-										this.width = 20;
-										this.height = 20;
-										this.value = 300;
-										return;
-									}
-									if (type >= 2664 && type <= 2668)
-									{
-										this.name = "even more candelabras";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 100;
-										this.placeStyle = 22 + type - 2664;
-										this.width = 20;
-										this.height = 20;
-										this.value = 1500;
-										return;
-									}
-									if (type == 2669)
-									{
-										this.name = "Pumpkin Bed";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.autoReuse = true;
-										this.createTile = 79;
-										this.placeStyle = 26;
-										this.width = 28;
-										this.height = 20;
-										this.value = 2000;
-										return;
-									}
-									if (type == 2670)
-									{
-										this.name = "Pumpkin Bookcase";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 101;
-										this.width = 20;
-										this.height = 20;
-										this.value = 300;
-										this.placeStyle = 27;
-										return;
-									}
-									if (type == 2671)
-									{
-										this.name = "Pumpkin Piano";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 87;
-										this.placeStyle = 25;
-										this.width = 20;
-										this.height = 20;
-										this.value = 300;
-										return;
-									}
-									if (type == 2672)
-									{
-										this.name = "Shark Statue";
-										this.useStyle = 1;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.autoReuse = true;
-										this.maxStack = 99;
-										this.consumable = true;
-										this.createTile = 105;
-										this.width = 20;
-										this.height = 20;
-										this.value = 300;
-										this.placeStyle = 50;
-										return;
-									}
-									if (type == 2673)
-									{
-										this.name = "Truffle Worm";
-										this.useStyle = 1;
-										this.autoReuse = true;
-										this.useTurn = true;
-										this.useAnimation = 15;
-										this.useTime = 10;
-										this.maxStack = 999;
-										this.consumable = true;
+										this.createWall = 146 + type - 2432;
 										this.width = 12;
 										this.height = 12;
-										this.makeNPC = 374;
-										this.noUseGraphic = true;
-										this.bait = 666;
-										return;
-									}
-									if (type >= 2674 && type <= 2676)
-									{
-										this.name = "baits";
-										this.maxStack = 999;
-										this.consumable = true;
-										this.width = 12;
-										this.height = 12;
-										this.bait = 15;
-										if (type == 2675)
+										if (type == 2434)
 										{
-											this.bait = 30;
-										}
-										if (type == 2676)
-										{
-											this.bait = 50;
+											this.value = Item.buyPrice(0, 0, 0, 50);
 											return;
 										}
 									}
 									else
 									{
-										if (type >= 2677 && type <= 2690)
+										if (type == 2435)
 										{
-											this.name = "gemspark walls";
+											this.name = "Coralstone Block";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36448,178 +35852,31 @@ namespace Terraria
 											this.autoReuse = true;
 											this.maxStack = 999;
 											this.consumable = true;
-											switch (type)
-											{
-											case 2677:
-												this.createWall = 153;
-												break;
-											case 2678:
-												this.createWall = 157;
-												break;
-											case 2679:
-												this.createWall = 154;
-												break;
-											case 2680:
-												this.createWall = 158;
-												break;
-											case 2681:
-												this.createWall = 155;
-												break;
-											case 2682:
-												this.createWall = 159;
-												break;
-											case 2683:
-												this.createWall = 156;
-												break;
-											case 2684:
-												this.createWall = 160;
-												break;
-											case 2685:
-												this.createWall = 164;
-												break;
-											case 2686:
-												this.createWall = 161;
-												break;
-											case 2687:
-												this.createWall = 165;
-												break;
-											case 2688:
-												this.createWall = 162;
-												break;
-											case 2689:
-												this.createWall = 166;
-												break;
-											case 2690:
-												this.createWall = 163;
-												break;
-											}
+											this.createTile = 315;
 											this.width = 12;
 											this.height = 12;
+											this.value = Item.buyPrice(0, 0, 0, 50);
 											return;
 										}
-										if (type == 2691)
+										if (type >= 2436 && type <= 2438)
 										{
-											this.name = "Tin Plating Wall";
+											this.name = "Jellyfish(es)";
 											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 7;
 											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createWall = 167;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2692)
-										{
-											this.name = "Tin Plating";
-											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
 											this.useTime = 10;
-											this.autoReuse = true;
 											this.maxStack = 999;
 											this.consumable = true;
-											this.createTile = 325;
 											this.width = 12;
 											this.height = 12;
+											this.noUseGraphic = true;
+											this.bait = 20;
 											return;
 										}
-										if (type == 2693)
+										if (type >= 2439 && type <= 2441)
 										{
-											this.name = "Waterfall Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 326;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2694)
-										{
-											this.name = "Lavafall Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 327;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2695)
-										{
-											this.name = "Confetti Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 328;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2696)
-										{
-											this.name = "Confetti Wall";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 7;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createWall = 168;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2697)
-										{
-											this.name = "Confetti Block";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createTile = 329;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2698)
-										{
-											this.name = "Confetti Wall";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 7;
-											this.autoReuse = true;
-											this.maxStack = 999;
-											this.consumable = true;
-											this.createWall = 169;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2699)
-										{
-											this.name = "Weapon Rack";
+											this.name = "Jellyfish Jar";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36627,15 +35884,42 @@ namespace Terraria
 											this.autoReuse = true;
 											this.maxStack = 99;
 											this.consumable = true;
-											this.createTile = 334;
+											this.createTile = 316 + type - 2439;
+											this.width = 12;
+											this.height = 12;
+											return;
+										}
+										if (type >= 2442 && type <= 2449)
+										{
+											this.name = "Fishing Wall Hangings";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 240;
 											this.width = 30;
 											this.height = 30;
 											this.value = Item.sellPrice(0, 0, 10, 0);
+											this.placeStyle = 46 + type - 2442;
 											return;
 										}
-										if (type == 2700)
+										if (type >= 2450 && type <= 2488)
 										{
-											this.name = "Fireworks Box";
+											this.name = "Quest Fish";
+											this.questItem = true;
+											this.maxStack = 1;
+											this.width = 26;
+											this.height = 26;
+											this.uniqueStack = true;
+											this.rare = -11;
+											return;
+										}
+										if (type == 2489)
+										{
+											this.name = "King Slime Trophy";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36643,66 +35927,48 @@ namespace Terraria
 											this.autoReuse = true;
 											this.maxStack = 99;
 											this.consumable = true;
-											this.createTile = 335;
-											this.width = 26;
-											this.height = 22;
-											this.value = Item.buyPrice(0, 5, 0, 0);
-											this.mech = true;
+											this.createTile = 240;
+											this.width = 30;
+											this.height = 30;
+											this.value = Item.sellPrice(0, 1, 0, 0);
+											this.placeStyle = 54;
+											this.rare = 1;
 											return;
 										}
-										if (type == 2701)
+										if (type == 2490)
 										{
-											this.name = "Living Fire Block";
+											this.name = "Ship in a Bottle";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
 											this.useTime = 10;
 											this.autoReuse = true;
-											this.maxStack = 999;
+											this.maxStack = 99;
 											this.consumable = true;
-											this.createTile = 336;
+											this.createTile = 319;
 											this.width = 12;
 											this.height = 12;
+											this.value = Item.buyPrice(0, 10, 0, 0);
 											return;
 										}
-										if (type >= 2702 && type <= 2737)
+										if (type == 2491)
 										{
-											this.name = "statues";
 											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 99;
-											this.consumable = true;
-											this.createTile = 337;
-											this.width = 20;
-											this.height = 20;
-											this.value = 300;
-											this.placeStyle = type - 2702;
-											return;
-										}
-										if (type == 2738)
-										{
-											this.name = "Firework Fountain";
-											this.createTile = 338;
-											this.placeStyle = 0;
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 99;
-											this.consumable = true;
-											this.width = 12;
+											this.name = "Hardy Saddle";
+											this.width = 16;
 											this.height = 30;
-											this.value = Item.buyPrice(0, 3, 0, 0);
-											this.mech = true;
+											this.useSound = 25;
+											this.useAnimation = 20;
+											this.useTime = 20;
+											this.rare = 8;
+											this.noMelee = true;
+											this.mountType = 4;
+											this.value = Item.sellPrice(0, 5, 0, 0);
 											return;
 										}
-										if (type == 2739)
+										if (type == 2492)
 										{
-											this.name = "Booster Track";
+											this.name = "Pressure Track";
 											this.useStyle = 1;
 											this.useAnimation = 15;
 											this.useTime = 7;
@@ -36712,99 +35978,316 @@ namespace Terraria
 											this.height = 16;
 											this.maxStack = 99;
 											this.createTile = 314;
-											this.placeStyle = 2;
+											this.placeStyle = 1;
 											this.consumable = true;
 											this.cartTrack = true;
 											this.mech = true;
 											this.tileBoost = 1;
-											this.value = Item.buyPrice(0, 0, 50, 0);
+											this.value = Item.sellPrice(0, 0, 10, 0);
 											return;
 										}
-										if (type == 2740)
+										if (type == 2493)
 										{
-											this.name = "Grasshopper";
+											this.name = "King Slime Mask";
+											this.width = 28;
+											this.height = 20;
+											this.headSlot = 164;
+											this.rare = 1;
+											this.vanity = true;
+											return;
+										}
+										if (type == 2494)
+										{
+											this.name = "Fin Wings";
+											this.width = 22;
+											this.height = 20;
+											this.accessory = true;
+											this.toolTip = "Allows flight and slow fall";
+											this.value = Item.buyPrice(0, 1, 0, 0);
+											this.rare = 4;
+											this.wingSlot = 25;
+											return;
+										}
+										if (type == 2495)
+										{
+											this.name = "Treasure Map";
 											this.useStyle = 1;
-											this.autoReuse = true;
 											this.useTurn = true;
 											this.useAnimation = 15;
 											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 242;
+											this.width = 30;
+											this.height = 30;
+											this.value = Item.buyPrice(0, 1, 0, 0);
+											this.placeStyle = 25;
+											return;
+										}
+										if (type == 2496)
+										{
+											this.name = "Seaweed Planter";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 320;
+											this.placeStyle = 0;
+											this.width = 22;
+											this.height = 30;
+											this.value = Item.buyPrice(0, 0, 1, 0);
+											return;
+										}
+										if (type == 2497)
+										{
+											this.name = "Pillagin Me Pixels";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 242;
+											this.width = 30;
+											this.height = 30;
+											this.value = Item.buyPrice(0, 1, 0, 0);
+											this.placeStyle = 26;
+											return;
+										}
+										if (type == 2498)
+										{
+											this.name = "Fish Costume Mask";
+											this.width = 18;
+											this.height = 18;
+											this.headSlot = 165;
+											this.vanity = true;
+											this.value = Item.sellPrice(0, 1, 0, 0);
+											return;
+										}
+										if (type == 2499)
+										{
+											this.name = "Fish Costume Shirt";
+											this.width = 18;
+											this.height = 18;
+											this.bodySlot = 172;
+											this.vanity = true;
+											this.value = Item.sellPrice(0, 1, 0, 0);
+											return;
+										}
+										if (type == 2500)
+										{
+											this.name = "Fish Costume Finskirt";
+											this.width = 18;
+											this.height = 18;
+											this.legSlot = 107;
+											this.vanity = true;
+											this.value = Item.sellPrice(0, 1, 0, 0);
+											return;
+										}
+										if (type == 2501)
+										{
+											this.name = "Ginger Beard";
+											this.width = 18;
+											this.height = 12;
+											this.maxStack = 1;
+											this.value = Item.buyPrice(0, 40, 0, 0);
+											this.rare = 5;
+											this.accessory = true;
+											this.faceSlot = 8;
+											this.vanity = true;
+											return;
+										}
+										if (type == 2502)
+										{
+											this.useStyle = 1;
+											this.name = "Honeyed Goggles";
+											this.width = 16;
+											this.height = 30;
+											this.useSound = 25;
+											this.useAnimation = 20;
+											this.useTime = 20;
+											this.rare = 8;
+											this.noMelee = true;
+											this.mountType = 5;
+											this.value = Item.sellPrice(0, 5, 0, 0);
+											return;
+										}
+										if (type == 2503)
+										{
+											this.name = "Boreal Wood";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
 											this.maxStack = 999;
 											this.consumable = true;
-											this.width = 12;
-											this.height = 12;
-											this.makeNPC = 377;
-											this.noUseGraphic = true;
-											this.bait = 10;
-											return;
-										}
-										if (type == 2741)
-										{
-											this.name = "Critter Cage";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 99;
-											this.consumable = true;
-											this.createTile = 339;
-											this.width = 12;
-											this.height = 12;
-											return;
-										}
-										if (type == 2742)
-										{
-											this.name = "Music Box (Underground Crimson)";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.consumable = true;
-											this.createTile = 139;
-											this.placeStyle = 31;
-											this.width = 24;
-											this.height = 24;
-											this.rare = 4;
-											this.value = 100000;
-											this.accessory = true;
-										}
-										if (type == 2743)
-										{
-											this.name = "Cactus Table";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 99;
-											this.consumable = true;
-											this.createTile = 14;
-											this.placeStyle = 30;
-											this.width = 26;
-											this.height = 20;
-											this.value = 300;
-											return;
-										}
-										if (type == 2744)
-										{
-											this.name = "Cactus Platform";
-											this.useStyle = 1;
-											this.useTurn = true;
-											this.useAnimation = 15;
-											this.useTime = 10;
-											this.autoReuse = true;
-											this.maxStack = 99;
-											this.consumable = true;
-											this.createTile = 19;
-											this.placeStyle = 25;
+											this.createTile = 321;
 											this.width = 8;
 											this.height = 10;
 											return;
 										}
-										if (type == 2745)
+										if (type == 2504)
 										{
-											this.name = "Boreal Wood Sword";
+											this.name = "Palm Wood";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createTile = 322;
+											this.width = 8;
+											this.height = 10;
+											return;
+										}
+										if (type == 2505)
+										{
+											this.name = "Boreal Wood Wall";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 7;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createWall = 149;
+											this.width = 12;
+											this.height = 12;
+											return;
+										}
+										if (type == 2506)
+										{
+											this.name = "Palm Wood Wall";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 7;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createWall = 151;
+											this.width = 12;
+											this.height = 12;
+											return;
+										}
+										if (type == 2507)
+										{
+											this.name = "Boreal Wood Fence";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 7;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createWall = 150;
+											this.width = 12;
+											this.height = 12;
+											return;
+										}
+										if (type == 2508)
+										{
+											this.name = "Palm Wood Fence";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 7;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createWall = 152;
+											this.width = 12;
+											this.height = 12;
+											return;
+										}
+										if (type == 2509)
+										{
+											this.name = "Boreal Wood Helmet";
+											this.width = 18;
+											this.height = 18;
+											this.defense = 1;
+											this.headSlot = 166;
+
+                                            this.skillType = (int)Skill.Combat;
+                                            this.requiredLvl = 1;
+                                            this.craftingLvl = 1;
+											return;
+										}
+										if (type == 2510)
+										{
+											this.name = "Boreal Wood Breastplate";
+											this.width = 18;
+											this.height = 18;
+											this.defense = 1;
+											this.bodySlot = 173;
+
+                                            this.skillType = (int)Skill.Combat;
+                                            this.requiredLvl = 1;
+                                            this.craftingLvl = 1;
+											return;
+										}
+										if (type == 2511)
+										{
+											this.name = "Boreal Wood Greaves";
+											this.width = 18;
+											this.height = 18;
+											this.defense = 1;
+											this.legSlot = 108;
+
+                                            this.skillType = (int)Skill.Combat;
+                                            this.requiredLvl = 1;
+                                            this.craftingLvl = 1;
+											return;
+										}
+										if (type == 2512)
+										{
+											this.name = "Palm Wood Helmet";
+											this.width = 18;
+											this.height = 18;
+											this.defense = 1;
+											this.headSlot = 167;
+
+                                            this.skillType = (int)Skill.Combat;
+                                            this.requiredLvl = 1;
+                                            this.craftingLvl = 1;
+											return;
+										}
+										if (type == 2513)
+										{
+											this.name = "Palm Wood Breastplate";
+											this.width = 18;
+											this.height = 18;
+											this.defense = 1;
+											this.bodySlot = 174;
+
+                                            this.skillType = (int)Skill.Combat;
+                                            this.requiredLvl = 1;
+                                            this.craftingLvl = 1;
+											return;
+										}
+										if (type == 2514)
+										{
+											this.name = "Palm Wood Greaves";
+											this.width = 18;
+											this.height = 18;
+											this.defense = 1;
+											this.legSlot = 109;
+
+                                            this.skillType = (int)Skill.Combat;
+                                            this.requiredLvl = 1;
+                                            this.craftingLvl = 1;
+											return;
+										}
+										if (type == 2517)
+										{
+											this.name = "Palm Wood Sword";
 											this.useStyle = 1;
 											this.useTurn = false;
 											this.useAnimation = 23;
@@ -36817,11 +36300,13 @@ namespace Terraria
 											this.scale = 1f;
 											this.value = 100;
 											this.melee = true;
+
+                                            this.craftingLvl = 1;
 											return;
 										}
-										if (type == 2746)
+										if (type == 2516)
 										{
-											this.name = "Boreal Wood Hammer";
+											this.name = "Palm Wood Hammer";
 											this.autoReuse = true;
 											this.useStyle = 1;
 											this.useTurn = true;
@@ -36838,9 +36323,9 @@ namespace Terraria
 											this.melee = true;
 											return;
 										}
-										if (type == 2747)
+										if (type == 2515)
 										{
-											this.name = "Boreal Wood Bow";
+											this.name = "Palm Wood Bow";
 											this.useStyle = 5;
 											this.useAnimation = 29;
 											this.useTime = 29;
@@ -36854,11 +36339,164 @@ namespace Terraria
 											this.noMelee = true;
 											this.value = 100;
 											this.ranged = true;
+
+                                            this.craftingLvl = 1;
 											return;
 										}
-										if (type == 2748)
+										if (type == 2518)
 										{
-											this.name = "Glass Chest";
+											this.name = "Palm Wood Platform";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 19;
+											this.placeStyle = 17;
+											this.width = 8;
+											this.height = 10;
+											return;
+										}
+										if (type == 2519)
+										{
+											this.name = "Palm Wood Bathtub";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 90;
+											this.placeStyle = 17;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2520)
+										{
+											this.name = "Palm Wood Bed";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.autoReuse = true;
+											this.createTile = 79;
+											this.placeStyle = 22;
+											this.width = 28;
+											this.height = 20;
+											this.value = 2000;
+											return;
+										}
+										if (type == 2521)
+										{
+											this.name = "Palm Wood Bench";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 89;
+											this.placeStyle = 21;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2527)
+										{
+											this.name = "Palm Wood Sofa";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 89;
+											this.placeStyle = 22;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2522)
+										{
+											this.name = "Palm Wood Candelabra";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 100;
+											this.placeStyle = 18;
+											this.width = 20;
+											this.height = 20;
+											this.value = 1500;
+											return;
+										}
+										if (type == 2523)
+										{
+											this.noWet = true;
+											this.name = "Palm Wood Candle";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 33;
+											this.placeStyle = 18;
+											this.width = 8;
+											this.height = 18;
+											return;
+										}
+										if (type == 2524)
+										{
+											this.name = "Palm Wood Chair";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 15;
+											this.placeStyle = 29;
+											this.width = 12;
+											this.height = 30;
+											return;
+										}
+										if (type == 2525)
+										{
+											this.name = "Palm Wood Chandelier";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 34;
+											this.placeStyle = 23;
+											this.width = 26;
+											this.height = 26;
+											this.value = 3000;
+											return;
+										}
+										if (type == 2526)
+										{
+											this.name = "Palm Wood Chest";
 											this.useStyle = 1;
 											this.useTurn = true;
 											this.useAnimation = 15;
@@ -36867,1261 +36505,3505 @@ namespace Terraria
 											this.maxStack = 99;
 											this.consumable = true;
 											this.createTile = 21;
-											this.placeStyle = 47;
+											this.placeStyle = 31;
 											this.width = 26;
 											this.height = 22;
 											this.value = 500;
-                                            return;
+											return;
 										}
+										if (type == 2528)
+										{
+											this.name = "Palm Wood Door";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 10;
+											this.placeStyle = 29;
+											this.width = 14;
+											this.height = 28;
+											this.value = 200;
+											return;
+										}
+										if (type == 2529)
+										{
+											this.name = "Palm Wood Dresser";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 88;
+											this.placeStyle = 16;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2530)
+										{
+											this.name = "Palm Wood Lantern";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createTile = 42;
+											this.width = 12;
+											this.height = 28;
+											this.placeStyle = 27;
+											return;
+										}
+										if (type == 2531)
+										{
+											this.name = "Palm Wood Piano";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 87;
+											this.placeStyle = 21;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2535)
+										{
+											this.mana = 10;
+											this.damage = 30;
+											this.useStyle = 1;
+											this.name = "Optic Staff";
+											this.shootSpeed = 10f;
+											this.shoot = 387;
+											this.width = 26;
+											this.height = 28;
+											this.useSound = 44;
+											this.useAnimation = 36;
+											this.useTime = 36;
+											this.rare = 5;
+											this.noMelee = true;
+											this.knockBack = 2f;
+											this.toolTip = "Summons twins to fight for you";
+											this.buffType = 134;
+											this.value = Item.buyPrice(0, 10, 0, 0);
+											this.summon = true;
 
-                                        // GitFlip 
-                                        // Add new items
-                                        if (type == Terraria.ID.STWItemID.CopperArrow)
-                                        {
-                                            this.name = "Copper Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.CopperArrow;   // This is Project.type copper should be 423
-                                            this.damage = 4;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.TinArrow)
-                                        {
-                                            this.name = "Tin Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.TinArrow;   // This is Project.type
-                                            this.damage = 4;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.IronArrow)
-                                        {
-                                            this.name = "Iron Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.IronArrow;   // This is Project.type
-                                            this.damage = 6;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LeadArrow)
-                                        {
-                                            this.name = "Lead Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.LeadArrow;   // This is Project.type
-                                            this.damage = 6;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SilverArrow)
-                                        {
-                                            this.name = "Silver Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.SilverArrow;   // This is Project.type
-                                            this.damage = 7;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.TungstenArrow)
-                                        {
-                                            this.name = "Tungsten Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.TungstenArrow;   // This is Project.type
-                                            this.damage = 7;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GoldArrow)
-                                        {
-                                            this.name = "Gold Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.GoldArrow;   // This is Project.type
-                                            this.damage = 8;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.PlatinumArrow)
-                                        {
-                                            this.name = "Platinum Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.PlatinumArrow;   // This is Project.type
-                                            this.damage = 8;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.DemoniteArrow)
-                                        {
-                                            this.name = "Demonite Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.DemoniteArrow;   // This is Project.type
-                                            this.damage = 9;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.CrimtaneArrow)
-                                        {
-                                            this.name = "Crimtane Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.CrimtaneArrow;   // This is Project.type
-                                            this.damage = 9;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HellstoneArrow)
-                                        {
-                                            this.name = "Hellstone Arrow";
-                                            this.shootSpeed = 6f;
-                                            this.shoot = Terraria.ID.STWProjectileID.HellstoneArrow;   // This is Project.type
-                                            this.damage = 12;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.CobaltArrow)
-                                        {
-                                            this.name = "Cobalt Arrow";
-                                            this.shootSpeed = 3.5f;
-                                            this.shoot = Terraria.ID.STWProjectileID.CobaltArrow;   // This is Project.type
-                                            this.damage = 13;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.PalladiumArrow)
-                                        {
-                                            this.name = "Palladium Arrow";
-                                            this.shootSpeed = 3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.PalladiumArrow;   // This is Project.type
-                                            this.damage = 13;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.MythrilArrow)
-                                        {
-                                            this.name = "Mythril Arrow";
-                                            this.shootSpeed = 4f;
-                                            this.shoot = Terraria.ID.STWProjectileID.MythrilArrow;   // This is Project.type
-                                            this.damage = 14;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 3f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.OrichalcumArrow)
-                                        {
-                                            this.name = "Orichalcum Arrow";
-                                            this.shootSpeed = 4f;
-                                            this.shoot = Terraria.ID.STWProjectileID.OrichalcumArrow;   // This is Project.type
-                                            this.damage = 14;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 3f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.AdamantiteArrow)
-                                        {
-                                            this.name = "Adamantite Arrow";
-                                            this.shootSpeed = 4.25f;
-                                            this.shoot = Terraria.ID.STWProjectileID.AdamantiteArrow;   // This is Project.type
-                                            this.damage = 15;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 3f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.TitaniumArrow)
-                                        {
-                                            this.name = "Titanium Arrow";
-                                            this.shootSpeed = 4.25f;
-                                            this.shoot = Terraria.ID.STWProjectileID.TitaniumArrow;   // This is Project.type
-                                            this.damage = 15;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 3f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HallowedArrow)
-                                        {
-                                            this.name = "Hallowed Arrow";
-                                            this.shootSpeed = 5f;
-                                            this.shoot = Terraria.ID.STWProjectileID.HallowedArrow;   // This is Project.type
-                                            this.damage = 16;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 4f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.ShroomiteArrow)
-                                        {
-                                            this.name = "Shroomite Arrow";
-                                            this.shootSpeed = 4.3f;
-                                            this.shoot = Terraria.ID.STWProjectileID.ShroomiteArrow;   // This is Project.type
-                                            this.damage = 18;
-                                            this.width = 10;
-                                            this.height = 28;
-                                            this.maxStack = 999;
-                                            this.consumable = true;
-                                            this.ammo = 1;
-                                            this.knockBack = 4.2f;
-                                            this.value = 10;
-                                            this.ranged = true;
-                                            return;
-                                            
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserAmmoReservationPotion)
-                                        {
-                                            this.name = "Lesser Ammo Reservation Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 112;
-                                            this.buffTime = 25200;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Gives 10% chance to not consume ammo";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterAmmoReservationPotion)
-                                        {
-                                            this.name = "Greater Ammo Reservation Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 112;
-                                            this.buffTime = 25200;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Gives 20% chance to not consume ammo";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperAmmoReservationPotion)
-                                        {
-                                            this.name = "Super Ammo Reservation Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 112;
-                                            this.buffTime = 25200;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Gives 25% chance to not consume ammo";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserArcheryPotion)
-                                        {
-                                            this.name = "Lesser Archery Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 16;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "10% increased arrow speed and damage";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterArcheryPotion)
-                                        {
-                                            this.name = "Greater Archery Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 16;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "20% increased arrow speed and damage";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperArcheryPotion)
-                                        {
-                                            this.name = "Super Archery Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 16;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "25% increased arrow speed and damage";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserEndurancePotion)
-                                        {
-                                            this.name = "Lesser Endurance Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 114;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Reduces damage taken by 10%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterEndurancePotion)
-                                        {
-                                            this.name = "Greater Endurance Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 114;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Reduces damage taken by 15%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperEndurancePotion)
-                                        {
-                                            this.name = "Super Endurance Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 114;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Reduces damage taken by 20%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserIronskinPotion)
-                                        {
-                                            this.name = "Lesser Ironskin Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 5;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Increase defense by 2";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterIronskinPotion)
-                                        {
-                                            this.name = "Greater Ironskin Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 5;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Increase defense by 8";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperIronskinPotion)
-                                        {
-                                            this.name = "Super Ironskin Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 5;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Increase defense by 16";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserLifeforcePotion)
-                                        {
-                                            this.name = "Lesser Lifeforce Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 113;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Increases max life by 10%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterLifeforcePotion)
-                                        {
-                                            this.name = "Greater Lifeforce Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 113;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Increases max life by 20%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperLifeforcePotion)
-                                        {
-                                            this.name = "Super Lifeforce Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 113;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Increases max life by 25%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserMagicPowerPotion)
-                                        {
-                                            this.name = "Lesser Magic Power Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 7;
-                                            this.buffTime = 7200;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "10% increased magic damage";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterMagicPowerPotion)
-                                        {
-                                            this.name = "Greater Magic Power Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 7;
-                                            this.buffTime = 7200;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "20% increased magic damage";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperMagicPowerPotion)
-                                        {
-                                            this.name = "Super Magic Power Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 7;
-                                            this.buffTime = 7200;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "25% increased magic damage";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserManaRegenPotion)
-                                        {
-                                            this.name = "Lesser Mana Regeneration Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 6;
-                                            this.buffTime = 7200;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Slightly increased mana regeneration";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterManaRegenPotion)
-                                        {
-                                            this.name = "Greater Mana Regeneration Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 6;
-                                            this.buffTime = 7200;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Greatly increased mana regeneration";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperManaRegenPotion)
-                                        {
-                                            this.name = "Super Mana Regeneration Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 6;
-                                            this.buffTime = 7200;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Hugely, ginormously, insanely increased mana regeneration";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserRagePotion)
-                                        {
-                                            this.name = "Lesser Rage Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 115;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Increases critical strike chance by 5%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterRagePotion)
-                                        {
-                                            this.name = "Greater Rage Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 115;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Increases critical strike chance by 15%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperRagePotion)
-                                        {
-                                            this.name = "Super Rage Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 115;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Increases critical strike chance by 20%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserRegenerationPotion)
-                                        {
-                                            this.name = "Lesser Regeneration Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 2;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Provides minor life regeneration";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterRegenerationPotion)
-                                        {
-                                            this.name = "Greater Regeneration Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 2;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Provides greater life regeneration";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperRegenerationPotion)
-                                        {
-                                            this.name = "Super Regeneration Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 2;
-                                            this.buffTime = 18000;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Provides super life regeneration";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserSwiftnessPotion)
-                                        {
-                                            this.name = "Lesser Swiftness Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 3;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "5% increased movement speed";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterSwiftnessPotion)
-                                        {
-                                            this.name = "Greater Swiftness Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 3;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "25% increased movement speed";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperSwiftnessPotion)
-                                        {
-                                            this.name = "Super Swiftness Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 3;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "35% increased movement speed";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserWarmthPotion)
-                                        {
-                                            this.name = "Lesser Warmth Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 124;
-                                            this.buffTime = 54000;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Slightly reduces damage from cold sources";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterWarmthPotion)
-                                        {
-                                            this.name = "Greater Warmth Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 124;
-                                            this.buffTime = 54000;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Greatly reduces damage from cold sources";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperWarmthPotion)
-                                        {
-                                            this.name = "Super Warmth Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 124;
-                                            this.buffTime = 54000;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Significantly reduces damage from cold sources";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.LesserWrathPotion)
-                                        {
-                                            this.name = "Lesser Wrath Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 117;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 0;
-                                            this.toolTip = "Increases damage by 5%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.GreaterWrathPotion)
-                                        {
-                                            this.name = "Greater Wrath Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 117;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 2;
-                                            this.toolTip = "Increases damage by 15%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SuperWrathPotion)
-                                        {
-                                            this.name = "Super Wrath Potion";
-                                            this.useSound = 3;
-                                            this.useStyle = 2;
-                                            this.useTurn = true;
-                                            this.useAnimation = 17;
-                                            this.useTime = 17;
-                                            this.maxStack = 30;
-                                            this.consumable = true;
-                                            this.width = 14;
-                                            this.height = 24;
-                                            this.buffType = 117;
-                                            this.buffTime = 14400;
-                                            this.buffMagnitude = 3;
-                                            this.toolTip = "Increases damage by 20%";
-                                            this.value = 1000;
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SmallArmoredCavefish)
-                                        {
-                                            this.name = "Small Armored Cavefish";
-                                            this.maxStack = 999;
-                                            this.width = 20;
-                                            this.height = 20;
-                                            this.value = Item.sellPrice(0, 0, 25, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.BigArmoredCavefish)
-                                        {
-                                            this.name = "Big Armored Cavefish";
-                                            this.maxStack = 999;
-                                            this.width = 32;
-                                            this.height = 32;
-                                            this.value = Item.sellPrice(0, 0, 50, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HugeArmoredCavefish)
-                                        {
-                                            this.name = "Huge Armored Cavefish";
-                                            this.maxStack = 999;
-                                            this.width = 38;
-                                            this.height = 38;
-                                            this.value = Item.sellPrice(0, 0, 75, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SmallDoubleCod)
-                                        {
-                                            this.name = "Small Double Cod";
-                                            this.maxStack = 999;
-                                            this.width = 20;
-                                            this.height = 20;
-                                            this.value = Item.sellPrice(0, 0, 25, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.BigDoubleCod)
-                                        {
-                                            this.name = "Big Double Cod";
-                                            this.maxStack = 999;
-                                            this.width = 32;
-                                            this.height = 32;
-                                            this.value = Item.sellPrice(0, 0, 50, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HugeDoubleCod)
-                                        {
-                                            this.name = "Huge Double Cod";
-                                            this.maxStack = 999;
-                                            this.width = 38;
-                                            this.height = 38;
-                                            this.value = Item.sellPrice(0, 0, 75, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SmallHemopiranha)
-                                        {
-                                            this.name = "Small Hemopiranha";
-                                            this.maxStack = 999;
-                                            this.width = 20;
-                                            this.height = 20;
-                                            this.value = Item.sellPrice(0, 0, 25, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.BigHemopiranha)
-                                        {
-                                            this.name = "Big Hemopiranha";
-                                            this.maxStack = 999;
-                                            this.width = 32;
-                                            this.height = 32;
-                                            this.value = Item.sellPrice(0, 0, 50, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HugeHemopiranha)
-                                        {
-                                            this.name = "Huge Hemopiranha";
-                                            this.maxStack = 999;
-                                            this.width = 38;
-                                            this.height = 38;
-                                            this.value = Item.sellPrice(0, 0, 75, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SmallFrostMinnow)
-                                        {
-                                            this.name = "Small Frost Minnow";
-                                            this.maxStack = 999;
-                                            this.width = 20;
-                                            this.height = 20;
-                                            this.value = Item.sellPrice(0, 0, 25, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.BigFrostMinnow)
-                                        {
-                                            this.name = "Big Frost Minnow";
-                                            this.maxStack = 999;
-                                            this.width = 32;
-                                            this.height = 32;
-                                            this.value = Item.sellPrice(0, 0, 50, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HugeFrostMinnow)
-                                        {
-                                            this.name = "Huge Frost Minnow";
-                                            this.maxStack = 999;
-                                            this.width = 38;
-                                            this.height = 38;
-                                            this.value = Item.sellPrice(0, 0, 75, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SmallEbonkoi)
-                                        {
-                                            this.name = "Small Ebonkoi";
-                                            this.maxStack = 999;
-                                            this.width = 20;
-                                            this.height = 20;
-                                            this.value = Item.sellPrice(0, 0, 25, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.BigEbonkoi)
-                                        {
-                                            this.name = "Big Ebonkoi";
-                                            this.maxStack = 999;
-                                            this.width = 32;
-                                            this.height = 32;
-                                            this.value = Item.sellPrice(0, 0, 50, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HugeEbonkoi)
-                                        {
-                                            this.name = "Huge Ebonkoi";
-                                            this.maxStack = 999;
-                                            this.width = 38;
-                                            this.height = 38;
-                                            this.value = Item.sellPrice(0, 0, 75, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.SmallPrismite)
-                                        {
-                                            this.name = "Small Prismite";
-                                            this.maxStack = 999;
-                                            this.width = 20;
-                                            this.height = 20;
-                                            this.value = Item.sellPrice(0, 0, 25, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.BigPrismite)
-                                        {
-                                            this.name = "Big Prismite";
-                                            this.maxStack = 999;
-                                            this.width = 32;
-                                            this.height = 32;
-                                            this.value = Item.sellPrice(0, 0, 50, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.HugePrismite)
-                                        {
-                                            this.name = "Huge Prismite";
-                                            this.maxStack = 999;
-                                            this.width = 38;
-                                            this.height = 38;
-                                            this.value = Item.sellPrice(0, 0, 75, 0);
-                                            this.rare = 1;
-                                            return;
-                                        }
-                                        if (type == Terraria.ID.STWItemID.WoodenStaff)
-                                        {
-                                            this.name = "Wooden Staff";
-                                            this.mana = 3;
-                                            this.useSound = 43;
-                                            this.useStyle = 5;
-                                            this.damage = 10;
-                                            this.useAnimation = 40;
-                                            this.useTime = 40;
-                                            this.width = 40;
-                                            this.height = 40;
-                                            this.shoot = 121;
-                                            this.shootSpeed = 6f;
-                                            this.knockBack = 3.25f;
-                                            this.value = 20;
-                                            this.magic = true;
-                                            this.noMelee = true;
+                                            this.craftingLvl = 70;
+											return;
+										}
+										if (type == 2532)
+										{
+											this.name = "Palm Wood Table";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 14;
+											this.placeStyle = 26;
+											this.width = 26;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2533)
+										{
+											this.name = "Palm Wood Lamp";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 93;
+											this.placeStyle = 18;
+											this.width = 10;
+											this.height = 24;
+											this.value = 500;
+											return;
+										}
+										if (type == 2534)
+										{
+											this.name = "Palm Wood Work Bench";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 18;
+											this.placeStyle = 22;
+											this.width = 28;
+											this.height = 14;
+											this.value = 150;
+											this.toolTip = "Used for basic crafting";
+											return;
+										}
+										if (type == 2536)
+										{
+											this.name = "Palm Wood Bookcase";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 101;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											this.placeStyle = 23;
+											return;
+										}
+										if (type == 2549)
+										{
+											this.name = "Mushroom Platform";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 19;
+											this.placeStyle = 18;
+											this.width = 8;
+											this.height = 10;
+											return;
+										}
+										if (type == 2537)
+										{
+											this.name = "Mushroom Bathtub";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 90;
+											this.placeStyle = 18;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2538)
+										{
+											this.name = "Mushroom Bed";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.autoReuse = true;
+											this.createTile = 79;
+											this.placeStyle = 23;
+											this.width = 28;
+											this.height = 20;
+											this.value = 2000;
+											return;
+										}
+										if (type == 2539)
+										{
+											this.name = "Mushroom Bench";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 89;
+											this.placeStyle = 23;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2540)
+										{
+											this.name = "Mushroom Bookcase";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 101;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											this.placeStyle = 24;
+											return;
+										}
+										if (type == 2541)
+										{
+											this.name = "Mushroom Candelabra";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 100;
+											this.placeStyle = 19;
+											this.width = 20;
+											this.height = 20;
+											this.value = 1500;
+											return;
+										}
+										if (type == 2542)
+										{
+											this.noWet = true;
+											this.name = "Mushroom Candle";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 33;
+											this.placeStyle = 19;
+											this.width = 8;
+											this.height = 18;
+											return;
+										}
+										if (type == 2543)
+										{
+											this.name = "Mushroom Chandelier";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 34;
+											this.placeStyle = 24;
+											this.width = 26;
+											this.height = 26;
+											this.value = 3000;
+											return;
+										}
+										if (type == 2544)
+										{
+											this.name = "Mushroom Chest";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 21;
+											this.placeStyle = 32;
+											this.width = 26;
+											this.height = 22;
+											this.value = 500;
+											return;
+										}
+										if (type == 2545)
+										{
+											this.name = "Mushroom Dresser";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 88;
+											this.placeStyle = 17;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2547)
+										{
+											this.name = "Mushroom Lamp";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 93;
+											this.placeStyle = 19;
+											this.width = 10;
+											this.height = 24;
+											this.value = 500;
+											return;
+										}
+										if (type == 2546)
+										{
+											this.name = "Mushroom Lantern";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createTile = 42;
+											this.width = 12;
+											this.height = 28;
+											this.placeStyle = 28;
+											return;
+										}
+										if (type == 2548)
+										{
+											this.name = "Mushroom Piano";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 87;
+											this.placeStyle = 22;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2413)
+										{
+											this.name = "Mushroom Sofa";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 89;
+											this.placeStyle = 23;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2550)
+										{
+											this.name = "Mushroom Table";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 14;
+											this.placeStyle = 27;
+											this.width = 26;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2551)
+										{
+											this.mana = 10;
+											this.damage = 25;
+											this.useStyle = 1;
+											this.name = "Spider Staff";
+											this.shootSpeed = 10f;
+											this.shoot = 390;
+											this.width = 26;
+											this.height = 28;
+											this.useSound = 44;
+											this.useAnimation = 36;
+											this.useTime = 36;
+											this.rare = 4;
+											this.noMelee = true;
+											this.knockBack = 2f;
+											this.toolTip = "Summons spiders to fight for you";
+											this.buffType = 133;
+											this.value = Item.buyPrice(0, 5, 0, 0);
+											this.summon = true;
 
-                                            return;
-                                        }
+                                            this.craftingLvl = 40;
+											return;
+										}
+										if (type == 2552)
+										{
+											this.name = "Boreal Wood Bathtub";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 90;
+											this.placeStyle = 19;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2553)
+										{
+											this.name = "Boreal Wood Bed";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.autoReuse = true;
+											this.createTile = 79;
+											this.placeStyle = 24;
+											this.width = 28;
+											this.height = 20;
+											this.value = 2000;
+											return;
+										}
+										if (type == 2554)
+										{
+											this.name = "Boreal Wood Bookcase";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 101;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											this.placeStyle = 25;
+											return;
+										}
+										if (type == 2555)
+										{
+											this.name = "Boreal Wood Candelabra";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 100;
+											this.placeStyle = 20;
+											this.width = 20;
+											this.height = 20;
+											this.value = 1500;
+											return;
+										}
+										if (type == 2556)
+										{
+											this.noWet = true;
+											this.name = "Boreal Wood Candle";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 33;
+											this.placeStyle = 20;
+											this.width = 8;
+											this.height = 18;
+											return;
+										}
+										if (type == 2557)
+										{
+											this.name = "Boreal Wood Chair";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 15;
+											this.placeStyle = 30;
+											this.width = 12;
+											this.height = 30;
+											return;
+										}
+										if (type == 2558)
+										{
+											this.name = "Boreal Wood Chandelier";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 34;
+											this.placeStyle = 25;
+											this.width = 26;
+											this.height = 26;
+											this.value = 3000;
+											return;
+										}
+										if (type == 2559)
+										{
+											this.name = "Boreal Wood Chest";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 21;
+											this.placeStyle = 33;
+											this.width = 26;
+											this.height = 22;
+											this.value = 500;
+											return;
+										}
+										if (type == 2560)
+										{
+											this.name = "Boreal Wood Clock";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 104;
+											this.placeStyle = 6;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2561)
+										{
+											this.name = "Boreal Wood Door";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 10;
+											this.placeStyle = 30;
+											this.width = 14;
+											this.height = 28;
+											this.value = 200;
+											return;
+										}
+										if (type == 2562)
+										{
+											this.name = "Boreal Wood Dresser";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 88;
+											this.placeStyle = 18;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2563)
+										{
+											this.name = "Boreal Wood Lamp";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 93;
+											this.placeStyle = 20;
+											this.width = 10;
+											this.height = 24;
+											this.value = 500;
+											return;
+										}
+										if (type == 2564)
+										{
+											this.name = "Boreal Wood Lantern";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createTile = 42;
+											this.placeStyle = 29;
+											this.width = 12;
+											this.height = 28;
+											return;
+										}
+										if (type == 2565)
+										{
+											this.name = "Boreal Wood Piano";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 87;
+											this.placeStyle = 23;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2566)
+										{
+											this.name = "Boreal Wood Platform";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 19;
+											this.placeStyle = 19;
+											this.width = 8;
+											this.height = 10;
+											return;
+										}
+										if (type == 2567)
+										{
+											this.name = "Slime Bathtub";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 90;
+											this.placeStyle = 20;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2568)
+										{
+											this.name = "Slime Bed";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.autoReuse = true;
+											this.createTile = 79;
+											this.placeStyle = 25;
+											this.width = 28;
+											this.height = 20;
+											this.value = 2000;
+											return;
+										}
+										if (type == 2569)
+										{
+											this.name = "Slime Bookcase";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 101;
+											this.placeStyle = 26;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2570)
+										{
+											this.name = "Slime Candelabra";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 100;
+											this.placeStyle = 21;
+											this.width = 20;
+											this.height = 20;
+											this.value = 1500;
+											return;
+										}
+										if (type == 2571)
+										{
+											this.noWet = true;
+											this.name = "Slime Candle";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 33;
+											this.placeStyle = 21;
+											this.width = 8;
+											this.height = 18;
+											return;
+										}
+										if (type == 2572)
+										{
+											this.name = "Slime Chair";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 15;
+											this.placeStyle = 31;
+											this.width = 12;
+											this.height = 30;
+											return;
+										}
+										if (type == 2573)
+										{
+											this.name = "Slime Chandelier";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 34;
+											this.placeStyle = 26;
+											this.width = 26;
+											this.height = 26;
+											this.value = 3000;
+											return;
+										}
+										if (type == 2574)
+										{
+											this.name = "Slime Chest";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 21;
+											this.placeStyle = 34;
+											this.width = 26;
+											this.height = 22;
+											this.value = 500;
+											return;
+										}
+										if (type == 2575)
+										{
+											this.name = "Slime Clock";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 104;
+											this.placeStyle = 7;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2576)
+										{
+											this.name = "Slime Door";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 10;
+											this.placeStyle = 31;
+											this.width = 14;
+											this.height = 28;
+											this.value = 200;
+											return;
+										}
+										if (type == 2577)
+										{
+											this.name = "Slime Dresser";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 88;
+											this.placeStyle = 19;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2578)
+										{
+											this.name = "Slime Lamp";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 93;
+											this.placeStyle = 21;
+											this.width = 10;
+											this.height = 24;
+											this.value = 500;
+											return;
+										}
+										if (type == 2579)
+										{
+											this.name = "Slime Lantern";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 999;
+											this.consumable = true;
+											this.createTile = 42;
+											this.placeStyle = 30;
+											this.width = 12;
+											this.height = 28;
+											return;
+										}
+										if (type == 2580)
+										{
+											this.name = "Slime Piano";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 87;
+											this.placeStyle = 24;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2581)
+										{
+											this.name = "Slime Platform";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 19;
+											this.placeStyle = 20;
+											this.width = 8;
+											this.height = 10;
+											return;
+										}
+										if (type == 2582)
+										{
+											this.name = "Slime Sofa";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 89;
+											this.placeStyle = 25;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2583)
+										{
+											this.name = "Slime Table";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 14;
+											this.placeStyle = 29;
+											this.width = 26;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2584)
+										{
+											this.mana = 10;
+											this.damage = 32;
+											this.useStyle = 1;
+											this.name = "Pirate Staff";
+											this.shootSpeed = 10f;
+											this.shoot = 393;
+											this.width = 26;
+											this.height = 28;
+											this.useSound = 44;
+											this.useAnimation = 36;
+											this.useTime = 36;
+											this.rare = 5;
+											this.noMelee = true;
+											this.knockBack = 2f;
+											this.toolTip = "Summons pirates to fight for you";
+											this.buffType = 135;
+											this.value = Item.buyPrice(0, 5, 0, 0);
+											this.summon = true;
+											return;
+										}
+										if (type == 2585)
+										{
+											this.noUseGraphic = true;
+											this.damage = 0;
+											this.useStyle = 5;
+											this.name = "Slime Hook";
+											this.shootSpeed = 13f;
+											this.shoot = 396;
+											this.width = 18;
+											this.height = 28;
+											this.useSound = 1;
+											this.useAnimation = 20;
+											this.useTime = 20;
+											this.rare = 3;
+											this.noMelee = true;
+											this.value = 20000;
+											return;
+										}
+										if (type == 2586)
+										{
+											this.useStyle = 5;
+											this.name = "Sticky Grenade";
+											this.shootSpeed = 5.5f;
+											this.shoot = 397;
+											this.width = 20;
+											this.height = 20;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.useSound = 1;
+											this.useAnimation = 45;
+											this.useTime = 45;
+											this.noUseGraphic = true;
+											this.noMelee = true;
+											this.value = 75;
+											this.damage = 60;
+											this.knockBack = 8f;
+											this.toolTip = "A small explosion that will not destroy tiles";
+											this.toolTip2 = "Tossing may be difficult";
+											this.ranged = true;
+											return;
+										}
+										if (type == 2587)
+										{
+											this.damage = 0;
+											this.useStyle = 1;
+											this.name = "Tartar Sauce";
+											this.shoot = 398;
+											this.width = 16;
+											this.height = 30;
+											this.useSound = 2;
+											this.useAnimation = 20;
+											this.useTime = 20;
+											this.rare = 3;
+											this.noMelee = true;
+											this.toolTip = "Summons a mini minotaur";
+											this.buffType = 136;
+											this.value = Item.sellPrice(0, 2, 0, 0);
+											return;
+										}
+										if (type == 2588)
+										{
+											this.name = "Duke Fishron Mask";
+											this.width = 28;
+											this.height = 20;
+											this.headSlot = 168;
+											this.rare = 1;
+											this.vanity = true;
+											return;
+										}
+										if (type == 2589)
+										{
+											this.name = "Duke Fishron Trophy";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 240;
+											this.width = 30;
+											this.height = 30;
+											this.value = Item.sellPrice(0, 1, 0, 0);
+											this.placeStyle = 55;
+											this.rare = 1;
+											return;
+										}
+										if (type == 2590)
+										{
+											this.useStyle = 5;
+											this.name = "Molotov Cocktail";
+											this.shootSpeed = 6.5f;
+											this.shoot = 399;
+											this.width = 20;
+											this.height = 20;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.useSound = 1;
+											this.useAnimation = 30;
+											this.useTime = 30;
+											this.noUseGraphic = true;
+											this.noMelee = true;
+											this.value = 75;
+											this.damage = 40;
+											this.knockBack = 8f;
+											this.toolTip = "A small explosion that puts enemies on fire";
+											this.toolTip2 = "Lights nearby area on fire for a while";
+											this.ranged = true;
+											return;
+										}
+										if (type >= 2591 && type <= 2606)
+										{
+											this.name = "Grandfather Clock";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 104;
+											this.placeStyle = 8 + type - 2591;
+											this.width = 20;
+											this.height = 20;
+											this.value = 300;
+											return;
+										}
+										if (type == 2607)
+										{
+											this.name = "Spider Fang";
+											this.maxStack = 99;
+											this.width = 12;
+											this.height = 12;
+											this.rare = 4;
+											this.value = Item.sellPrice(0, 0, 5, 0);
+											return;
+										}
+										if (type == 2608)
+										{
+											this.name = "Falcon Blade";
+											this.useStyle = 1;
+											this.useAnimation = 15;
+											this.knockBack = 6f;
+											this.width = 24;
+											this.height = 28;
+											this.damage = 25;
+											this.scale = 1.05f;
+											this.useSound = 1;
+											this.rare = 4;
+											this.value = 10000;
+											this.melee = true;
+											return;
+										}
+										if (type == 2609)
+										{
+											this.name = "Fishron Wings";
+											this.width = 22;
+											this.height = 20;
+											this.accessory = true;
+											this.toolTip = "Allows flight and slow fall";
+											this.value = Item.buyPrice(0, 10, 0, 0);
+											this.rare = 8;
+											this.wingSlot = 26;
+											return;
+										}
+										if (type == 2610)
+										{
+											this.name = "Slime Gun";
+											this.useStyle = 5;
+											this.useAnimation = 12;
+											this.useTime = 12;
+											this.width = 38;
+											this.height = 10;
+											this.damage = 0;
+											this.scale = 0.9f;
+											this.shoot = 406;
+											this.shootSpeed = 8f;
+											this.autoReuse = true;
+											this.value = Item.buyPrice(0, 1, 50, 0);
+											return;
+										}
+										if (type == 2611)
+										{
+											this.autoReuse = false;
+											this.name = "Flairon";
+											this.useStyle = 5;
+											this.useAnimation = 20;
+											this.useTime = 20;
+											this.autoReuse = true;
+											this.knockBack = 4.5f;
+											this.width = 30;
+											this.height = 10;
+											this.damage = 66;
+											this.shoot = 404;
+											this.shootSpeed = 14f;
+											this.useSound = 1;
+											this.rare = 8;
+											this.value = Item.sellPrice(0, 5, 0, 0);
+											this.melee = true;
+											this.noUseGraphic = true;
+											return;
+										}
+										if (type >= 2612 && type <= 2620)
+										{
+											this.name = "Many Chests";
+											this.useStyle = 1;
+											this.useTurn = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.autoReuse = true;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 21;
+											if (type <= 2614)
+											{
+												this.placeStyle = 35 + (type - 2612) * 2;
+											}
+											else
+											{
+												this.placeStyle = 41 + type - 2615;
+											}
+											this.width = 26;
+											this.height = 22;
+											this.value = 500;
+											return;
+										}
+										if (type == 2621)
+										{
+											this.mana = 10;
+											this.damage = 50;
+											this.useStyle = 1;
+											this.name = "Tempest Staff";
+											this.shootSpeed = 10f;
+											this.shoot = 407;
+											this.width = 26;
+											this.height = 28;
+											this.useSound = 44;
+											this.useAnimation = 36;
+											this.useTime = 36;
+											this.rare = 8;
+											this.noMelee = true;
+											this.knockBack = 2f;
+											this.toolTip = "Summons sharknados to fight for you";
+											this.buffType = 139;
+											this.value = Item.sellPrice(0, 5, 0, 0);
+											this.summon = true;
+											return;
+										}
+										if (type == 2624)
+										{
+											this.useStyle = 5;
+											this.useAnimation = 24;
+											this.useTime = 24;
+											this.name = "Tsunami";
+											this.width = 50;
+											this.height = 18;
+											this.shoot = 1;
+											this.useAmmo = 1;
+											this.useSound = 5;
+											this.damage = 60;
+											this.shootSpeed = 10f;
+											this.noMelee = true;
+											this.value = Item.sellPrice(0, 5, 0, 0);
+											this.ranged = true;
+											this.rare = 8;
+											this.knockBack = 2f;
+											return;
+										}
+										if (type == 2622)
+										{
+											this.mana = 18;
+											this.damage = 60;
+											this.useStyle = 5;
+											this.name = "Razorblade Typhoon";
+											this.shootSpeed = 6f;
+											this.shoot = 409;
+											this.width = 26;
+											this.height = 28;
+											this.useSound = 8;
+											this.useAnimation = 20;
+											this.useTime = 20;
+											this.autoReuse = true;
+											this.rare = 8;
+											this.noMelee = true;
+											this.knockBack = 5f;
+											this.scale = 0.9f;
+											this.toolTip = "Casts a typhoon";
+											this.value = Item.sellPrice(0, 5, 0, 0);
+											this.magic = true;
+											return;
+										}
+										if (type == 2625 || type == 2626)
+										{
+											this.name = "Beach Stuff";
+											this.useStyle = 1;
+											this.autoReuse = true;
+											this.useAnimation = 15;
+											this.useTime = 10;
+											this.maxStack = 99;
+											this.consumable = true;
+											this.createTile = 324;
+											if (type == 2626)
+											{
+												this.placeStyle = 1;
+												this.width = 26;
+												this.height = 24;
+												return;
+											}
+											this.width = 22;
+											this.height = 22;
+											return;
+										}
+										else
+										{
+											if (type >= 2627 && type <= 2630)
+											{
+												this.name = "More Platforms";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 19;
+												this.placeStyle = 21 + type - 2627;
+												this.width = 8;
+												this.height = 10;
+												return;
+											}
+											if (type >= 2631 && type <= 2633)
+											{
+												this.name = "More Work Benches";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 18;
+												this.placeStyle = 24 + type - 2631;
+												this.width = 28;
+												this.height = 14;
+												this.value = 150;
+												this.toolTip = "Used for basic crafting";
+												return;
+											}
+											if (type >= 2634 && type <= 2636)
+											{
+												this.name = "Sofas";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 89;
+												this.placeStyle = 26 + type - 2634;
+												this.width = 20;
+												this.height = 20;
+												this.value = 300;
+												return;
+											}
+											if (type == 2623)
+											{
+												this.autoReuse = true;
+												this.name = "Bubble Gun";
+												this.mana = 4;
+												this.useSound = 39;
+												this.useStyle = 5;
+												this.damage = 70;
+												this.useAnimation = 9;
+												this.useTime = 9;
+												this.width = 40;
+												this.height = 40;
+												this.shoot = 410;
+												this.shootSpeed = 11f;
+												this.knockBack = 3f;
+												this.value = Item.sellPrice(0, 5, 0, 0);
+												this.magic = true;
+												this.rare = 8;
+												this.noMelee = true;
+												return;
+											}
+											if (type >= 2637 && type <= 2640)
+											{
+												this.name = "Dressers";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 88;
+												this.placeStyle = 20 + type - 2637;
+												this.width = 20;
+												this.height = 20;
+												this.value = 300;
+												return;
+											}
+											if (type == 2641 || type == 2642)
+											{
+												this.name = "Lantern 1";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.createTile = 42;
+												if (type == 2641)
+												{
+													this.placeStyle = 31;
+												}
+												else
+												{
+													this.placeStyle = 32;
+												}
+												this.width = 12;
+												this.height = 28;
+												return;
+											}
+											if (type >= 2643 && type <= 2647)
+											{
+												this.name = "More Lamps";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 93;
+												this.placeStyle = 22 + type - 2643;
+												this.width = 10;
+												this.height = 24;
+												this.value = 500;
+												return;
+											}
+											if (type >= 2648 && type <= 2651)
+											{
+												this.noWet = true;
+												this.name = "even more candles";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 33;
+												this.width = 8;
+												this.height = 18;
+												this.placeStyle = 22 + type - 2648;
+												return;
+											}
+											if (type >= 2652 && type <= 2657)
+											{
+												this.name = "More Chandeliers";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 34;
+												this.placeStyle = 27 + type - 2652;
+												this.width = 26;
+												this.height = 26;
+												this.value = 3000;
+												return;
+											}
+											if (type >= 2658 && type <= 2663)
+											{
+												this.name = "more bathtubs";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 90;
+												this.placeStyle = 21 + type - 2658;
+												this.width = 20;
+												this.height = 20;
+												this.value = 300;
+												return;
+											}
+											if (type >= 2664 && type <= 2668)
+											{
+												this.name = "even more candelabras";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 100;
+												this.placeStyle = 22 + type - 2664;
+												this.width = 20;
+												this.height = 20;
+												this.value = 1500;
+												return;
+											}
+											if (type == 2669)
+											{
+												this.name = "Pumpkin Bed";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.autoReuse = true;
+												this.createTile = 79;
+												this.placeStyle = 26;
+												this.width = 28;
+												this.height = 20;
+												this.value = 2000;
+												return;
+											}
+											if (type == 2670)
+											{
+												this.name = "Pumpkin Bookcase";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 101;
+												this.width = 20;
+												this.height = 20;
+												this.value = 300;
+												this.placeStyle = 27;
+												return;
+											}
+											if (type == 2671)
+											{
+												this.name = "Pumpkin Piano";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 87;
+												this.placeStyle = 25;
+												this.width = 20;
+												this.height = 20;
+												this.value = 300;
+												return;
+											}
+											if (type == 2672)
+											{
+												this.name = "Shark Statue";
+												this.useStyle = 1;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.autoReuse = true;
+												this.maxStack = 99;
+												this.consumable = true;
+												this.createTile = 105;
+												this.width = 20;
+												this.height = 20;
+												this.value = 300;
+												this.placeStyle = 50;
+												return;
+											}
+											if (type == 2673)
+											{
+												this.name = "Truffle Worm";
+												this.useStyle = 1;
+												this.autoReuse = true;
+												this.useTurn = true;
+												this.useAnimation = 15;
+												this.useTime = 10;
+												this.maxStack = 999;
+												this.consumable = true;
+												this.width = 12;
+												this.height = 12;
+												this.makeNPC = 374;
+												this.noUseGraphic = true;
+												this.bait = 666;
+												return;
+											}
+											if (type >= 2674 && type <= 2676)
+											{
+												this.name = "baits";
+												this.maxStack = 999;
+												this.consumable = true;
+												this.width = 12;
+												this.height = 12;
+												this.bait = 15;
+												if (type == 2675)
+												{
+													this.bait = 30;
+												}
+												if (type == 2676)
+												{
+													this.bait = 50;
+													return;
+												}
+											}
+											else
+											{
+												if (type >= 2677 && type <= 2690)
+												{
+													this.name = "gemspark walls";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													switch (type)
+													{
+													case 2677:
+														this.createWall = 153;
+														break;
+													case 2678:
+														this.createWall = 157;
+														break;
+													case 2679:
+														this.createWall = 154;
+														break;
+													case 2680:
+														this.createWall = 158;
+														break;
+													case 2681:
+														this.createWall = 155;
+														break;
+													case 2682:
+														this.createWall = 159;
+														break;
+													case 2683:
+														this.createWall = 156;
+														break;
+													case 2684:
+														this.createWall = 160;
+														break;
+													case 2685:
+														this.createWall = 164;
+														break;
+													case 2686:
+														this.createWall = 161;
+														break;
+													case 2687:
+														this.createWall = 165;
+														break;
+													case 2688:
+														this.createWall = 162;
+														break;
+													case 2689:
+														this.createWall = 166;
+														break;
+													case 2690:
+														this.createWall = 163;
+														break;
+													}
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2691)
+												{
+													this.name = "Tin Plating Wall";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 7;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createWall = 167;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2692)
+												{
+													this.name = "Tin Plating";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createTile = 325;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2693)
+												{
+													this.name = "Waterfall Block";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createTile = 326;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2694)
+												{
+													this.name = "Lavafall Block";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createTile = 327;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2695)
+												{
+													this.name = "Confetti Block";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createTile = 328;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2696)
+												{
+													this.name = "Confetti Wall";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 7;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createWall = 168;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2697)
+												{
+													this.name = "Confetti Block";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createTile = 329;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2698)
+												{
+													this.name = "Confetti Wall";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 7;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createWall = 169;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2699)
+												{
+													this.name = "Weapon Rack";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.createTile = 334;
+													this.width = 30;
+													this.height = 30;
+													this.value = Item.sellPrice(0, 0, 10, 0);
+													return;
+												}
+												if (type == 2700)
+												{
+													this.name = "Fireworks Box";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.createTile = 335;
+													this.width = 26;
+													this.height = 22;
+													this.value = Item.buyPrice(0, 5, 0, 0);
+													this.mech = true;
+													return;
+												}
+												if (type == 2701)
+												{
+													this.name = "Living Fire Block";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.createTile = 336;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type >= 2702 && type <= 2737)
+												{
+													this.name = "statues";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.createTile = 337;
+													this.width = 20;
+													this.height = 20;
+													this.value = 300;
+													this.placeStyle = type - 2702;
+													return;
+												}
+												if (type == 2738)
+												{
+													this.name = "Firework Fountain";
+													this.createTile = 338;
+													this.placeStyle = 0;
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.width = 12;
+													this.height = 30;
+													this.value = Item.buyPrice(0, 3, 0, 0);
+													this.mech = true;
+													return;
+												}
+												if (type == 2739)
+												{
+													this.name = "Booster Track";
+													this.useStyle = 1;
+													this.useAnimation = 15;
+													this.useTime = 7;
+													this.useTurn = true;
+													this.autoReuse = true;
+													this.width = 16;
+													this.height = 16;
+													this.maxStack = 99;
+													this.createTile = 314;
+													this.placeStyle = 2;
+													this.consumable = true;
+													this.cartTrack = true;
+													this.mech = true;
+													this.tileBoost = 1;
+													this.value = Item.buyPrice(0, 0, 50, 0);
+													return;
+												}
+												if (type == 2740)
+												{
+													this.name = "Grasshopper";
+													this.useStyle = 1;
+													this.autoReuse = true;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.maxStack = 999;
+													this.consumable = true;
+													this.width = 12;
+													this.height = 12;
+													this.makeNPC = 377;
+													this.noUseGraphic = true;
+													this.bait = 10;
+													return;
+												}
+												if (type == 2741)
+												{
+													this.name = "Critter Cage";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.createTile = 339;
+													this.width = 12;
+													this.height = 12;
+													return;
+												}
+												if (type == 2742)
+												{
+													this.name = "Music Box (Underground Crimson)";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.consumable = true;
+													this.createTile = 139;
+													this.placeStyle = 31;
+													this.width = 24;
+													this.height = 24;
+													this.rare = 4;
+													this.value = 100000;
+													this.accessory = true;
+													return;
+												}
+												if (type == 2743)
+												{
+													this.name = "Cactus Table";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.createTile = 14;
+													this.placeStyle = 30;
+													this.width = 26;
+													this.height = 20;
+													this.value = 300;
+													return;
+												}
+												if (type == 2744)
+												{
+													this.name = "Cactus Platform";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.createTile = 19;
+													this.placeStyle = 25;
+													this.width = 8;
+													this.height = 10;
+													return;
+												}
+												if (type == 2745)
+												{
+													this.name = "Boreal Wood Sword";
+													this.useStyle = 1;
+													this.useTurn = false;
+													this.useAnimation = 23;
+													this.useTime = 23;
+													this.width = 24;
+													this.height = 28;
+													this.damage = 8;
+													this.knockBack = 5f;
+													this.useSound = 1;
+													this.scale = 1f;
+													this.value = 100;
+													this.melee = true;
 
+                                                    this.craftingLvl = 1;
+													return;
+												}
+												if (type == 2746)
+												{
+													this.name = "Boreal Wood Hammer";
+													this.autoReuse = true;
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 33;
+													this.useTime = 23;
+													this.hammer = 35;
+													this.width = 24;
+													this.height = 28;
+													this.damage = 4;
+													this.knockBack = 5.5f;
+													this.scale = 1.1f;
+													this.useSound = 1;
+													this.value = 50;
+													this.melee = true;
+													return;
+												}
+												if (type == 2747)
+												{
+													this.name = "Boreal Wood Bow";
+													this.useStyle = 5;
+													this.useAnimation = 29;
+													this.useTime = 29;
+													this.width = 12;
+													this.height = 28;
+													this.shoot = 1;
+													this.useAmmo = 1;
+													this.useSound = 5;
+													this.damage = 6;
+													this.shootSpeed = 6.6f;
+													this.noMelee = true;
+													this.value = 100;
+													this.ranged = true;
 
+                                                    this.craftingLvl = 1;
+													return;
+												}
+												if (type == 2748)
+												{
+													this.name = "Glass Chest";
+													this.useStyle = 1;
+													this.useTurn = true;
+													this.useAnimation = 15;
+													this.useTime = 10;
+													this.autoReuse = true;
+													this.maxStack = 99;
+													this.consumable = true;
+													this.createTile = 21;
+													this.placeStyle = 47;
+													this.width = 26;
+													this.height = 22;
+													this.value = 500;
+												}
+                                                // GitFlip 
+                                                // Add new items
+                                                if (type == Terraria.ID.STWItemID.CopperArrow)
+                                                {
+                                                    this.name = "Copper Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.CopperArrow;   // This is Project.type copper should be 423
+                                                    this.damage = 4;    
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
 
-									} //End new Items
+                                                    this.craftingLvl = 1;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.TinArrow)
+                                                {
+                                                    this.name = "Tin Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.TinArrow;   // This is Project.type
+                                                    this.damage = 4;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 1;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.IronArrow)
+                                                {
+                                                    this.name = "Iron Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.IronArrow;   // This is Project.type
+                                                    this.damage = 6;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 8;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LeadArrow)
+                                                {
+                                                    this.name = "Lead Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.LeadArrow;   // This is Project.type
+                                                    this.damage = 6;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 8;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SilverArrow)
+                                                {
+                                                    this.name = "Silver Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.SilverArrow;   // This is Project.type
+                                                    this.damage = 7;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 15;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.TungstenArrow)
+                                                {
+                                                    this.name = "Tungsten Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.TungstenArrow;   // This is Project.type
+                                                    this.damage = 7;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 15;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GoldArrow)
+                                                {
+                                                    this.name = "Gold Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.GoldArrow;   // This is Project.type
+                                                    this.damage = 8;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 20;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.PlatinumArrow)
+                                                {
+                                                    this.name = "Platinum Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.PlatinumArrow;   // This is Project.type
+                                                    this.damage = 8;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 20;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.DemoniteArrow)
+                                                {
+                                                    this.name = "Demonite Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.DemoniteArrow;   // This is Project.type
+                                                    this.damage = 9;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 25;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.CrimtaneArrow)
+                                                {
+                                                    this.name = "Crimtane Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.CrimtaneArrow;   // This is Project.type
+                                                    this.damage = 9;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 25;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.MeteoriteArrow)
+                                                {
+                                                    this.name = "Meteorite Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.MeteoriteArrow;   // This is Project.type
+                                                    this.damage = 10;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 30;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.ObsidianArrow)
+                                                {
+                                                    this.name = "Obsidian Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.ObsidianArrow;   // This is Project.type
+                                                    this.damage = 11;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 35;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HellstoneArrow)
+                                                {
+                                                    this.name = "Hellstone Arrow";
+                                                    this.shootSpeed = 6f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.HellstoneArrow;   // This is Project.type
+                                                    this.damage = 12;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 40;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.CobaltArrow)
+                                                {
+                                                    this.name = "Cobalt Arrow";
+                                                    this.shootSpeed = 3.5f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.CobaltArrow;   // This is Project.type
+                                                    this.damage = 13;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 50;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.PalladiumArrow)
+                                                {
+                                                    this.name = "Palladium Arrow";
+                                                    this.shootSpeed = 3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.PalladiumArrow;   // This is Project.type
+                                                    this.damage = 13;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 50;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.MythrilArrow)
+                                                {
+                                                    this.name = "Mythril Arrow";
+                                                    this.shootSpeed = 4f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.MythrilArrow;   // This is Project.type
+                                                    this.damage = 14;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 3f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 60;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.OrichalcumArrow)
+                                                {
+                                                    this.name = "Orichalcum Arrow";
+                                                    this.shootSpeed = 4f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.OrichalcumArrow;   // This is Project.type
+                                                    this.damage = 14;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 3f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 60;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.AdamantiteArrow)
+                                                {
+                                                    this.name = "Adamantite Arrow";
+                                                    this.shootSpeed = 4.25f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.AdamantiteArrow;   // This is Project.type
+                                                    this.damage = 15;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 3f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 70;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.TitaniumArrow)
+                                                {
+                                                    this.name = "Titanium Arrow";
+                                                    this.shootSpeed = 4.25f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.TitaniumArrow;   // This is Project.type
+                                                    this.damage = 15;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 3f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 70;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HallowedArrow)
+                                                {
+                                                    this.name = "Hallowed Arrow";
+                                                    this.shootSpeed = 5f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.HallowedArrow;   // This is Project.type
+                                                    this.damage = 16;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 4f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 75;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.ShroomiteArrow)
+                                                {
+                                                    this.name = "Shroomite Arrow";
+                                                    this.shootSpeed = 4.3f;
+                                                    this.shoot = Terraria.ID.STWProjectileID.ShroomiteArrow;   // This is Project.type
+                                                    this.damage = 18;
+                                                    this.width = 10;
+                                                    this.height = 28;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.ammo = 1;
+                                                    this.knockBack = 4.2f;
+                                                    this.value = 10;
+                                                    this.ranged = true;
+
+                                                    this.craftingLvl = 85;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserAmmoReservationPotion)
+                                                {
+                                                    this.name = "Lesser Ammo Reservation Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 112;
+                                                    this.buffTime = 25200;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Gives 10% chance to not consume ammo";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterAmmoReservationPotion)
+                                                {
+                                                    this.name = "Greater Ammo Reservation Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 112;
+                                                    this.buffTime = 25200;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Gives 20% chance to not consume ammo";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperAmmoReservationPotion)
+                                                {
+                                                    this.name = "Super Ammo Reservation Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 112;
+                                                    this.buffTime = 25200;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Gives 25% chance to not consume ammo";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserArcheryPotion)
+                                                {
+                                                    this.name = "Lesser Archery Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 16;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "10% increased arrow speed and damage";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterArcheryPotion)
+                                                {
+                                                    this.name = "Greater Archery Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 16;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "20% increased arrow speed and damage";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperArcheryPotion)
+                                                {
+                                                    this.name = "Super Archery Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 16;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "25% increased arrow speed and damage";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserEndurancePotion)
+                                                {
+                                                    this.name = "Lesser Endurance Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 114;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Reduces damage taken by 10%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterEndurancePotion)
+                                                {
+                                                    this.name = "Greater Endurance Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 114;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Reduces damage taken by 15%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperEndurancePotion)
+                                                {
+                                                    this.name = "Super Endurance Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 114;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Reduces damage taken by 20%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserIronskinPotion)
+                                                {
+                                                    this.name = "Lesser Ironskin Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 5;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Increase defense by 2";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterIronskinPotion)
+                                                {
+                                                    this.name = "Greater Ironskin Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 5;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Increase defense by 8";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperIronskinPotion)
+                                                {
+                                                    this.name = "Super Ironskin Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 5;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Increase defense by 16";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserLifeforcePotion)
+                                                {
+                                                    this.name = "Lesser Lifeforce Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 113;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Increases max life by 10%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterLifeforcePotion)
+                                                {
+                                                    this.name = "Greater Lifeforce Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 113;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Increases max life by 20%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperLifeforcePotion)
+                                                {
+                                                    this.name = "Super Lifeforce Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 113;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Increases max life by 25%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserMagicPowerPotion)
+                                                {
+                                                    this.name = "Lesser Magic Power Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 7;
+                                                    this.buffTime = 7200;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "10% increased magic damage";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterMagicPowerPotion)
+                                                {
+                                                    this.name = "Greater Magic Power Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 7;
+                                                    this.buffTime = 7200;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "20% increased magic damage";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperMagicPowerPotion)
+                                                {
+                                                    this.name = "Super Magic Power Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 7;
+                                                    this.buffTime = 7200;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "25% increased magic damage";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserManaRegenPotion)
+                                                {
+                                                    this.name = "Lesser Mana Regeneration Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 6;
+                                                    this.buffTime = 7200;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Slightly increased mana regeneration";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterManaRegenPotion)
+                                                {
+                                                    this.name = "Greater Mana Regeneration Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 6;
+                                                    this.buffTime = 7200;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Greatly increased mana regeneration";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperManaRegenPotion)
+                                                {
+                                                    this.name = "Super Mana Regeneration Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 6;
+                                                    this.buffTime = 7200;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Hugely, ginormously, insanely increased mana regeneration";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserRagePotion)
+                                                {
+                                                    this.name = "Lesser Rage Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 115;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Increases critical strike chance by 5%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterRagePotion)
+                                                {
+                                                    this.name = "Greater Rage Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 115;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Increases critical strike chance by 15%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperRagePotion)
+                                                {
+                                                    this.name = "Super Rage Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 115;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Increases critical strike chance by 20%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserRegenerationPotion)
+                                                {
+                                                    this.name = "Lesser Regeneration Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 2;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Provides minor life regeneration";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterRegenerationPotion)
+                                                {
+                                                    this.name = "Greater Regeneration Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 2;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Provides greater life regeneration";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperRegenerationPotion)
+                                                {
+                                                    this.name = "Super Regeneration Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 2;
+                                                    this.buffTime = 18000;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Provides super life regeneration";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserSwiftnessPotion)
+                                                {
+                                                    this.name = "Lesser Swiftness Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 3;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "5% increased movement speed";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterSwiftnessPotion)
+                                                {
+                                                    this.name = "Greater Swiftness Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 3;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "25% increased movement speed";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperSwiftnessPotion)
+                                                {
+                                                    this.name = "Super Swiftness Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 3;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "35% increased movement speed";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserWarmthPotion)
+                                                {
+                                                    this.name = "Lesser Warmth Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 124;
+                                                    this.buffTime = 54000;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Slightly reduces damage from cold sources";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterWarmthPotion)
+                                                {
+                                                    this.name = "Greater Warmth Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 124;
+                                                    this.buffTime = 54000;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Greatly reduces damage from cold sources";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperWarmthPotion)
+                                                {
+                                                    this.name = "Super Warmth Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 124;
+                                                    this.buffTime = 54000;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Significantly reduces damage from cold sources";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LesserWrathPotion)
+                                                {
+                                                    this.name = "Lesser Wrath Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 117;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 0;
+                                                    this.toolTip = "Increases damage by 5%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GreaterWrathPotion)
+                                                {
+                                                    this.name = "Greater Wrath Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 117;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 2;
+                                                    this.toolTip = "Increases damage by 15%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SuperWrathPotion)
+                                                {
+                                                    this.name = "Super Wrath Potion";
+                                                    this.useSound = 3;
+                                                    this.useStyle = 2;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.maxStack = 30;
+                                                    this.consumable = true;
+                                                    this.width = 14;
+                                                    this.height = 24;
+                                                    this.buffType = 117;
+                                                    this.buffTime = 14400;
+                                                    this.buffMagnitude = 3;
+                                                    this.toolTip = "Increases damage by 20%";
+                                                    this.value = 1000;
+                                                    this.rare = 1;
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+
+                                                if (type == Terraria.ID.STWItemID.SmallArmoredCavefish)
+                                                {
+                                                    this.name = "Small Armored Cavefish";
+                                                    this.maxStack = 999;
+                                                    this.width = 20;
+                                                    this.height = 20;
+                                                    this.value = Item.sellPrice(0, 0, 25, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.BigArmoredCavefish)
+                                                {
+                                                    this.name = "Big Armored Cavefish";
+                                                    this.maxStack = 999;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.value = Item.sellPrice(0, 0, 50, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HugeArmoredCavefish)
+                                                {
+                                                    this.name = "Huge Armored Cavefish";
+                                                    this.maxStack = 999;
+                                                    this.width = 38;
+                                                    this.height = 38;
+                                                    this.value = Item.sellPrice(0, 0, 75, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SmallDoubleCod)
+                                                {
+                                                    this.name = "Small Double Cod";
+                                                    this.maxStack = 999;
+                                                    this.width = 20;
+                                                    this.height = 20;
+                                                    this.value = Item.sellPrice(0, 0, 25, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.BigDoubleCod)
+                                                {
+                                                    this.name = "Big Double Cod";
+                                                    this.maxStack = 999;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.value = Item.sellPrice(0, 0, 50, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HugeDoubleCod)
+                                                {
+                                                    this.name = "Huge Double Cod";
+                                                    this.maxStack = 999;
+                                                    this.width = 38;
+                                                    this.height = 38;
+                                                    this.value = Item.sellPrice(0, 0, 75, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SmallHemopiranha)
+                                                {
+                                                    this.name = "Small Hemopiranha";
+                                                    this.maxStack = 999;
+                                                    this.width = 20;
+                                                    this.height = 20;
+                                                    this.value = Item.sellPrice(0, 0, 25, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.BigHemopiranha)
+                                                {
+                                                    this.name = "Big Hemopiranha";
+                                                    this.maxStack = 999;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.value = Item.sellPrice(0, 0, 50, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HugeHemopiranha)
+                                                {
+                                                    this.name = "Huge Hemopiranha";
+                                                    this.maxStack = 999;
+                                                    this.width = 38;
+                                                    this.height = 38;
+                                                    this.value = Item.sellPrice(0, 0, 75, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SmallFrostMinnow)
+                                                {
+                                                    this.name = "Small Frost Minnow";
+                                                    this.maxStack = 999;
+                                                    this.width = 20;
+                                                    this.height = 20;
+                                                    this.value = Item.sellPrice(0, 0, 25, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.BigFrostMinnow)
+                                                {
+                                                    this.name = "Big Frost Minnow";
+                                                    this.maxStack = 999;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.value = Item.sellPrice(0, 0, 50, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HugeFrostMinnow)
+                                                {
+                                                    this.name = "Huge Frost Minnow";
+                                                    this.maxStack = 999;
+                                                    this.width = 38;
+                                                    this.height = 38;
+                                                    this.value = Item.sellPrice(0, 0, 75, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SmallEbonkoi)
+                                                {
+                                                    this.name = "Small Ebonkoi";
+                                                    this.maxStack = 999;
+                                                    this.width = 20;
+                                                    this.height = 20;
+                                                    this.value = Item.sellPrice(0, 0, 25, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.BigEbonkoi)
+                                                {
+                                                    this.name = "Big Ebonkoi";
+                                                    this.maxStack = 999;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.value = Item.sellPrice(0, 0, 50, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HugeEbonkoi)
+                                                {
+                                                    this.name = "Huge Ebonkoi";
+                                                    this.maxStack = 999;
+                                                    this.width = 38;
+                                                    this.height = 38;
+                                                    this.value = Item.sellPrice(0, 0, 75, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SmallPrismite)
+                                                {
+                                                    this.name = "Small Prismite";
+                                                    this.maxStack = 999;
+                                                    this.width = 20;
+                                                    this.height = 20;
+                                                    this.value = Item.sellPrice(0, 0, 25, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.BigPrismite)
+                                                {
+                                                    this.name = "Big Prismite";
+                                                    this.maxStack = 999;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.value = Item.sellPrice(0, 0, 50, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HugePrismite)
+                                                {
+                                                    this.name = "Huge Prismite";
+                                                    this.maxStack = 999;
+                                                    this.width = 38;
+                                                    this.height = 38;
+                                                    this.value = Item.sellPrice(0, 0, 75, 0);
+                                                    this.rare = 1;
+                                                    return;
+                                                }
+
+                                                if (type == Terraria.ID.STWItemID.WoodenStaff)
+                                                {
+                                                    this.name = "Wooden Staff";
+                                                    this.mana = 3;
+                                                    this.useSound = 43;
+                                                    this.useStyle = 5;
+                                                    this.damage = 10;
+                                                    this.useAnimation = 40;
+                                                    this.useTime = 40;
+                                                    this.width = 40;
+                                                    this.height = 40;
+                                                    this.shoot = 121;
+                                                    this.shootSpeed = 6f;
+                                                    this.knockBack = 3.25f;
+                                                    this.value = 20;
+                                                    this.magic = true;
+                                                    this.noMelee = true;
+
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+
+                                                if (type == Terraria.ID.STWItemID.ObsidianBar)
+                                                {
+                                                    this.name = "Obsidian Bar";
+                                                    this.width = 20;
+                                                    this.height = 20;
+                                                    this.maxStack = 99;
+                                                    this.rare = 2;
+                                                    this.toolTip = "'Made from pure Obsidian'";
+                                                    this.value = 10000;
+                                                    this.useStyle = 1;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 15;
+                                                    this.useTime = 10;
+                                                    this.autoReuse = true;
+                                                    this.consumable = true;
+
+                                                    this.craftingLvl = 35;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HallowedOre)
+                                                {
+                                                    this.name = "Hallowed Ore";
+                                                    this.useStyle = 1;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 15;
+                                                    this.useTime = 10;
+                                                    this.autoReuse = true;
+                                                    this.maxStack = 999;
+                                                    this.consumable = true;
+                                                    this.width = 12;
+                                                    this.height = 12;
+                                                    this.value = 10000;
+                                                    this.rare = 3;
+                                                    return;
+                                                }
+
+                                                if (type == Terraria.ID.STWItemID.ShadowMagicHelm)
+                                                {
+                                                    this.name = "Shadow Magic Helmet";
+                                                    this.width = 18;
+                                                    this.height = 18;
+                                                    this.defense = 5;
+                                                    this.headSlot = 5;
+                                                    this.rare = 1;
+                                                    this.value = 37500;
+                                                    this.toolTip = "Increases magic potency.";
+                                                    this.skillType = (int)Skill.Range;
+                                                    this.requiredLvl = 25;
+                                                    this.craftingLvl = 25;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.ShadowRangedHelm)
+                                                {
+                                                    this.name = "Shadow Ranged Helmet";
+                                                    this.width = 18;
+                                                    this.height = 18;
+                                                    this.defense = 5;
+                                                    this.headSlot = 5;
+                                                    this.rare = 1;
+                                                    this.value = 37500;
+                                                    this.toolTip = "Increases ranged potency.";
+                                                    this.skillType = (int)Skill.Magic;
+                                                    this.requiredLvl = 25;
+                                                    this.craftingLvl = 25;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SlimeyMushroom)
+                                                {
+                                                    this.name = "Slimey Mushroom";
+                                                    this.toolTip = "Yuck! It's slimey...";
+                                                    this.useStyle = 2;
+                                                    this.useSound = 2;
+                                                    this.useTurn = false;
+                                                    this.useAnimation = 17;
+                                                    this.useTime = 17;
+                                                    this.width = 16;
+                                                    this.height = 18;
+                                                    this.maxStack = 99;
+                                                    this.value = 25;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.CopperSpear)
+                                                {
+                                                    this.name = "Copper Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = 49; //This is Projectile.type; change dis
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 1;
+                                                    return;
+                                                }
+
+                                                // End new items
+                                                /*
+                                                 * // GitFlip Add Broken anvil.
+                                                if (type == 2749)
+                                                {
+                                                    Main.NewText("Broken Anvil", 50, 255, 130, false);
+                                                    this.name = "Broken Anvil";
+                                                    this.useStyle = 1;
+                                                    this.useTurn = true;
+                                                    this.useAnimation = 15;
+                                                    this.useTime = 10;
+                                                    this.autoReuse = true;
+                                                    this.maxStack = 99;
+                                                    this.consumable = true;
+                                                    this.createTile = 16;
+                                                    this.width = 28;
+                                                    this.height = 14;
+                                                    this.value = 5000;
+                                                    this.toolTip = "Used to craft copper items from copper bars";
+                                                }
+                                                */
+											}
+										}
+									}
 								}
 							}
 						}
@@ -38129,13 +40011,7 @@ namespace Terraria
 				}
 			}
 		}
-		public void SetDefaults(int type, bool noMatCheck = false)
-		{
-			if (!ServerApi.Hooks.InvokeItemSetDefaultsInt(ref type, this))
-				RealSetDefaults(type, noMatCheck);
-		}
-
-		public void RealSetDefaults(int Type, bool noMatCheck = false)
+		public void SetDefaults(int Type, bool noMatCheck = false)
 		{
 			if (Main.netMode == 1 || Main.netMode == 2)
 			{
@@ -38167,6 +40043,7 @@ namespace Terraria
 			this.placeStyle = 0;
 			this.buffTime = 0;
 			this.buffType = 0;
+            this.buffMagnitude = 0;
 			this.mountType = -1;
 			this.cartTrack = false;
 			this.material = false;
@@ -38222,7 +40099,6 @@ namespace Terraria
 			this.value = 0;
 			this.useTurn = false;
 			this.buy = false;
-			this.explosive = 0;
 			this.handOnSlot = -1;
 			this.handOffSlot = -1;
 			this.backSlot = -1;
@@ -38235,7 +40111,10 @@ namespace Terraria
 			this.faceSlot = -1;
 			this.balloonSlot = -1;
 			this.uniqueStack = false;
-            if (this.type >= Main.maxItemTypes)
+
+            // GitFlip
+            // This is our max items
+            if (this.type >= (Main.maxItemTypes + Main.maxSTWItemTypes))
 			{
 				this.type = 0;
 			}
@@ -38245,17 +40124,23 @@ namespace Terraria
 				this.name = "";
 				this.stack = 0;
 			}
-			else if (this.type <= 1000)
-			{
-				this.SetDefaults1(this.type);
-			}
-			else if (this.type <= 2001)
-			{
-				this.SetDefaults2(this.type);
-			}
 			else
 			{
-				this.SetDefaults3(this.type);
+				if (this.type <= 1000)
+				{
+					this.SetDefaults1(this.type);
+				}
+				else
+				{
+					if (this.type <= 2001)
+					{
+						this.SetDefaults2(this.type);
+					}
+					else
+					{
+						this.SetDefaults3(this.type);
+					}
+				}
 			}
 			if (this.dye > 0)
 			{
@@ -38278,13 +40163,19 @@ namespace Terraria
 				{
 					result = "Jungle Hat";
 				}
-				else if (oldName == "Cobalt Breastplate")
+				else
 				{
-					result = "Jungle Shirt";
-				}
-				else if (oldName == "Cobalt Greaves")
-				{
-					result = "Jungle Pants";
+					if (oldName == "Cobalt Breastplate")
+					{
+						result = "Jungle Shirt";
+					}
+					else
+					{
+						if (oldName == "Cobalt Greaves")
+						{
+							result = "Jungle Pants";
+						}
+					}
 				}
 			}
 			if (release <= 13 && oldName == "Jungle Rose")
@@ -38297,13 +40188,19 @@ namespace Terraria
 				{
 					result = "Gills Potion";
 				}
-				else if (oldName == "Thorn Chakrum")
+				else
 				{
-					result = "Thorn Chakram";
-				}
-				else if (oldName == "Ball 'O Hurt")
-				{
-					result = "Ball O' Hurt";
+					if (oldName == "Thorn Chakrum")
+					{
+						result = "Thorn Chakram";
+					}
+					else
+					{
+						if (oldName == "Ball 'O Hurt")
+						{
+							result = "Ball O' Hurt";
+						}
+					}
 				}
 			}
 			if (release <= 41 && oldName == "Iron Chain")
@@ -38480,8 +40377,7 @@ namespace Terraria
 					}
 				}
 			}
-
-			return ServerApi.Hooks.InvokeGameStatueSpawn(num2, num3, num, (int)(x / 16), (int)(y / 16), type, false);
+			return num2 < 3 && num3 < 6 && num < 10;
 		}
 		public static int buyPrice(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
 		{
@@ -38522,10 +40418,13 @@ namespace Terraria
 					num = 0.05f;
 					num2 = 3f;
 				}
-				else if (this.wet)
+				else
 				{
-					num2 = 5f;
-					num = 0.08f;
+					if (this.wet)
+					{
+						num2 = 5f;
+						num = 0.08f;
+					}
 				}
 				Vector2 value = this.velocity * 0.5f;
 				if (this.ownTime > 0)
@@ -38669,9 +40568,12 @@ namespace Terraria
 							this.wet = true;
 						}
 					}
-					else if (this.wet)
+					else
 					{
-						this.wet = false;
+						if (this.wet)
+						{
+							this.wet = false;
+						}
 					}
 					if (!this.wet)
 					{
@@ -38725,22 +40627,25 @@ namespace Terraria
 										{
 											NetMessage.SendData(28, -1, -1, "", n, 9999f, 10f, (float)(-(float)Main.npc[n].direction), 0);
 										}
-										Main.npc[n].StrikeNPC(9999, 10f, -Main.npc[n].direction, false, false);
+										Main.npc[n].StrikeNPC(9999, 10f, -Main.npc[n].direction, false, false); //1
 										NPC.SpawnWOF(this.position);
 									}
 								}
 								NetMessage.SendData(21, -1, -1, "", i, 0f, 0f, 0f, 0);
 							}
 						}
-						else if (this.owner == Main.myPlayer && this.type != 312 && this.type != 318 && this.type != 173 && this.type != 174 && this.type != 175 && this.type != 2701 && this.rare == 0)
+						else
 						{
-							this.active = false;
-							this.type = 0;
-							this.name = "";
-							this.stack = 0;
-							if (Main.netMode != 0)
+							if (this.owner == Main.myPlayer && this.type != 312 && this.type != 318 && this.type != 173 && this.type != 174 && this.type != 175 && this.type != 2701 && this.rare == 0)
 							{
-								NetMessage.SendData(21, -1, -1, "", i, 0f, 0f, 0f, 0);
+								this.active = false;
+								this.type = 0;
+								this.name = "";
+								this.stack = 0;
+								if (Main.netMode != 0)
+								{
+									NetMessage.SendData(21, -1, -1, "", i, 0f, 0f, 0f, 0);
+								}
 							}
 						}
 					}
@@ -38750,59 +40655,86 @@ namespace Terraria
 						num10 *= Main.essScale;
 						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.5f * num10, 0.1f * num10, 0.25f * num10);
 					}
-					else if (this.type == 521)
+					else
 					{
-						float num11 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num11 *= Main.essScale;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.25f * num11, 0.1f * num11, 0.5f * num11);
-					}
-					else if (this.type == 547)
-					{
-						float num12 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num12 *= Main.essScale;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.5f * num12, 0.3f * num12, 0.05f * num12);
-					}
-					else if (this.type == 548)
-					{
-						float num13 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num13 *= Main.essScale;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num13, 0.1f * num13, 0.6f * num13);
-					}
-					else if (this.type == 575)
-					{
-						float num14 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num14 *= Main.essScale;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num14, 0.3f * num14, 0.5f * num14);
-					}
-					else if (this.type == 549)
-					{
-						float num15 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num15 *= Main.essScale;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num15, 0.5f * num15, 0.2f * num15);
-					}
-					else if (this.type == 58 || this.type == 1734 || this.type == 1867)
-					{
-						float num16 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num16 *= Main.essScale * 0.5f;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.5f * num16, 0.1f * num16, 0.1f * num16);
-					}
-					else if (this.type == 184 || this.type == 1735 || this.type == 1868)
-					{
-						float num17 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num17 *= Main.essScale * 0.5f;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num17, 0.1f * num17, 0.5f * num17);
-					}
-					else if (this.type == 522)
-					{
-						float num18 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num18 *= Main.essScale * 0.2f;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.5f * num18, 1f * num18, 0.1f * num18);
-					}
-					else if (this.type == 1332)
-					{
-						float num19 = (float)Main.rand.Next(90, 111) * 0.01f;
-						num19 *= Main.essScale * 0.2f;
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1f * num19, 1f * num19, 0.1f * num19);
+						if (this.type == 521)
+						{
+							float num11 = (float)Main.rand.Next(90, 111) * 0.01f;
+							num11 *= Main.essScale;
+							Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.25f * num11, 0.1f * num11, 0.5f * num11);
+						}
+						else
+						{
+							if (this.type == 547)
+							{
+								float num12 = (float)Main.rand.Next(90, 111) * 0.01f;
+								num12 *= Main.essScale;
+								Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.5f * num12, 0.3f * num12, 0.05f * num12);
+							}
+							else
+							{
+								if (this.type == 548)
+								{
+									float num13 = (float)Main.rand.Next(90, 111) * 0.01f;
+									num13 *= Main.essScale;
+									Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num13, 0.1f * num13, 0.6f * num13);
+								}
+								else
+								{
+									if (this.type == 575)
+									{
+										float num14 = (float)Main.rand.Next(90, 111) * 0.01f;
+										num14 *= Main.essScale;
+										Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num14, 0.3f * num14, 0.5f * num14);
+									}
+									else
+									{
+										if (this.type == 549)
+										{
+											float num15 = (float)Main.rand.Next(90, 111) * 0.01f;
+											num15 *= Main.essScale;
+											Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num15, 0.5f * num15, 0.2f * num15);
+										}
+										else
+										{
+											if (this.type == 58 || this.type == 1734 || this.type == 1867)
+											{
+												float num16 = (float)Main.rand.Next(90, 111) * 0.01f;
+												num16 *= Main.essScale * 0.5f;
+												Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.5f * num16, 0.1f * num16, 0.1f * num16);
+											}
+											else
+											{
+												if (this.type == 184 || this.type == 1735 || this.type == 1868)
+												{
+													float num17 = (float)Main.rand.Next(90, 111) * 0.01f;
+													num17 *= Main.essScale * 0.5f;
+													Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.1f * num17, 0.1f * num17, 0.5f * num17);
+												}
+												else
+												{
+													if (this.type == 522)
+													{
+														float num18 = (float)Main.rand.Next(90, 111) * 0.01f;
+														num18 *= Main.essScale * 0.2f;
+														Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.5f * num18, 1f * num18, 0.1f * num18);
+													}
+													else
+													{
+														if (this.type == 1332)
+														{
+															float num19 = (float)Main.rand.Next(90, 111) * 0.01f;
+															num19 *= Main.essScale * 0.2f;
+															Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1f * num19, 1f * num19, 0.1f * num19);
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 					if (this.type == 75 && Main.dayTime)
 					{
@@ -38836,178 +40768,262 @@ namespace Terraria
 						Main.dust[num22].scale *= 0.5f;
 					}
 				}
-				else if (this.type == 1970)
+				else
 				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0f, 0.75f);
-				}
-				else if (this.type == 1972)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0f, 0.75f);
-				}
-				else if (this.type == 1971)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0.75f, 0f);
-				}
-				else if (this.type == 1973)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0.75f, 0f);
-				}
-				else if (this.type == 1974)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0f, 0f);
-				}
-				else if (this.type == 1975)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0.75f, 0.75f);
-				}
-				else if (this.type == 1976)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0.375f, 0f);
-				}
-				else if (this.type == 2679)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0f, 0.6f);
-				}
-				else if (this.type == 2687)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0f, 0.6f);
-				}
-				else if (this.type == 2689)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0.6f, 0f);
-				}
-				else if (this.type == 2683)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0.6f, 0f);
-				}
-				else if (this.type == 2685)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0f, 0f);
-				}
-				else if (this.type == 2681)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0.6f, 0.6f);
-				}
-				else if (this.type == 2677)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0.375f, 0f);
-				}
-				else if (this.type == 8 || this.type == 105)
-				{
-					if (!this.wet)
+					if (this.type == 1970)
 					{
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1f, 0.95f, 0.8f);
+						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0f, 0.75f);
 					}
-				}
-				else if (this.type == 2701)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 0.65f, 0.55f);
-				}
-				else if (this.type == 523)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.85f, 1f, 0.7f);
-				}
-				else if (this.type == 974)
-				{
-					if (!this.wet)
+					else
 					{
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 0.85f, 1f);
+						if (this.type == 1972)
+						{
+							Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0f, 0.75f);
+						}
+						else
+						{
+							if (this.type == 1971)
+							{
+								Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0.75f, 0f);
+							}
+							else
+							{
+								if (this.type == 1973)
+								{
+									Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0.75f, 0f);
+								}
+								else
+								{
+									if (this.type == 1974)
+									{
+										Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0f, 0f);
+									}
+									else
+									{
+										if (this.type == 1975)
+										{
+											Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0.75f, 0.75f);
+										}
+										else
+										{
+											if (this.type == 1976)
+											{
+												Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.75f, 0.375f, 0f);
+											}
+											else
+											{
+												if (this.type == 2679)
+												{
+													Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0f, 0.6f);
+												}
+												else
+												{
+													if (this.type == 2687)
+													{
+														Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0f, 0.6f);
+													}
+													else
+													{
+														if (this.type == 2689)
+														{
+															Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0.6f, 0f);
+														}
+														else
+														{
+															if (this.type == 2683)
+															{
+																Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0f, 0.6f, 0f);
+															}
+															else
+															{
+																if (this.type == 2685)
+																{
+																	Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0f, 0f);
+																}
+																else
+																{
+																	if (this.type == 2681)
+																	{
+																		Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0.6f, 0.6f);
+																	}
+																	else
+																	{
+																		if (this.type == 2677)
+																		{
+																			Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.6f, 0.375f, 0f);
+																		}
+																		else
+																		{
+																			if (this.type == 8 || this.type == 105)
+																			{
+																				if (!this.wet)
+																				{
+																					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1f, 0.95f, 0.8f);
+																				}
+																			}
+																			else
+																			{
+																				if (this.type == 2701)
+																				{
+																					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 0.65f, 0.55f);
+																				}
+																				else
+																				{
+																					if (this.type == 523)
+																					{
+																						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.85f, 1f, 0.7f);
+																					}
+																					else
+																					{
+																						if (this.type == 974)
+																						{
+																							if (!this.wet)
+																							{
+																								Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 0.85f, 1f);
+																							}
+																						}
+																						else
+																						{
+																							if (this.type == 1333)
+																							{
+																								Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1.25f, 1.25f, 0.8f);
+																							}
+																							else
+																							{
+																								if (this.type == 2274)
+																								{
+																									float r = 0.75f;
+																									float g = 1.3499999f;
+																									float b = 1.5f;
+																									if (!this.wet)
+																									{
+																										Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), r, g, b);
+																									}
+																								}
+																								else
+																								{
+																									if (this.type >= 427 && this.type <= 432)
+																									{
+																										if (!this.wet)
+																										{
+																											float r2 = 0f;
+																											float g2 = 0f;
+																											float b2 = 0f;
+																											int num23 = this.type - 426;
+																											if (num23 == 1)
+																											{
+																												r2 = 0.1f;
+																												g2 = 0.2f;
+																												b2 = 1.1f;
+																											}
+																											if (num23 == 2)
+																											{
+																												r2 = 1f;
+																												g2 = 0.1f;
+																												b2 = 0.1f;
+																											}
+																											if (num23 == 3)
+																											{
+																												r2 = 0f;
+																												g2 = 1f;
+																												b2 = 0.1f;
+																											}
+																											if (num23 == 4)
+																											{
+																												r2 = 0.9f;
+																												g2 = 0f;
+																												b2 = 0.9f;
+																											}
+																											if (num23 == 5)
+																											{
+																												r2 = 1.3f;
+																												g2 = 1.3f;
+																												b2 = 1.3f;
+																											}
+																											if (num23 == 6)
+																											{
+																												r2 = 0.9f;
+																												g2 = 0.9f;
+																												b2 = 0f;
+																											}
+																											Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), r2, g2, b2);
+																										}
+																									}
+																									else
+																									{
+																										if (this.type == 41)
+																										{
+																											if (!this.wet)
+																											{
+																												Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1f, 0.75f, 0.55f);
+																											}
+																										}
+																										else
+																										{
+																											if (this.type == 988)
+																											{
+																												if (!this.wet)
+																												{
+																													Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.35f, 0.65f, 1f);
+																												}
+																											}
+																											else
+																											{
+																												if (this.type == 282)
+																												{
+																													Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 1f, 0.8f);
+																												}
+																												else
+																												{
+																													if (this.type == 286)
+																													{
+																														Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 0.8f, 1f);
+																													}
+																													else
+																													{
+																														if (this.type == 331)
+																														{
+																															Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.55f, 0.75f, 0.6f);
+																														}
+																														else
+																														{
+																															if (this.type == 183)
+																															{
+																																Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.15f, 0.45f, 0.9f);
+																															}
+																															else
+																															{
+																																if (this.type == 75)
+																																{
+																																	Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.8f, 0.7f, 0.1f);
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
-				}
-				else if (this.type == 1333)
-				{
-					Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1.25f, 1.25f, 0.8f);
-				}
-				else if (this.type == 2274)
-				{
-					float r = 0.75f;
-					float g = 1.3499999f;
-					float b = 1.5f;
-					if (!this.wet)
-					{
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), r, g, b);
-					}
-				}
-				else if (this.type >= 427 && this.type <= 432)
-				{
-					if (!this.wet)
-					{
-						float r2 = 0f;
-						float g2 = 0f;
-						float b2 = 0f;
-						int num23 = this.type - 426;
-						if (num23 == 1)
-						{
-							r2 = 0.1f;
-							g2 = 0.2f;
-							b2 = 1.1f;
-						}
-						if (num23 == 2)
-						{
-							r2 = 1f;
-							g2 = 0.1f;
-							b2 = 0.1f;
-						}
-						if (num23 == 3)
-						{
-							r2 = 0f;
-							g2 = 1f;
-							b2 = 0.1f;
-						}
-						if (num23 == 4)
-						{
-							r2 = 0.9f;
-							g2 = 0f;
-							b2 = 0.9f;
-						}
-						if (num23 == 5)
-						{
-							r2 = 1.3f;
-							g2 = 1.3f;
-							b2 = 1.3f;
-						}
-						if (num23 == 6)
-						{
-							r2 = 0.9f;
-							g2 = 0.9f;
-							b2 = 0f;
-						}
-						Lighting.addLight((int)((this.position.X + (float)(this.width / 2)) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), r2, g2, b2);
-					}
-				}
-				else if (this.type == 41)
-				{
-					if (!this.wet)
-					{
-						Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 1f, 0.75f, 0.55f);
-					}
-				}
-				else if (this.type == 988)
-				{
-					if (!this.wet)
-					{
-						Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.35f, 0.65f, 1f);
-					}
-				}
-				else if (this.type == 282)
-				{
-					Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 1f, 0.8f);
-				}
-				else if (this.type == 286)
-				{
-					Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.7f, 0.8f, 1f);
-				}
-				else if (this.type == 331)
-				{
-					Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.55f, 0.75f, 0.6f);
-				}
-				else if (this.type == 183)
-				{
-					Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.15f, 0.45f, 0.9f);
-				}
-				else if (this.type == 75)
-				{
-					Lighting.addLight((int)((this.position.X + (float)this.width) / 16f), (int)((this.position.Y + (float)(this.height / 2)) / 16f), 0.8f, 0.7f, 0.1f);
 				}
 				if (this.type == 75)
 				{
@@ -39049,6 +41065,8 @@ namespace Terraria
 				{
 					this.noGrabDelay--;
 				}
+
+                
 			}
 		}
 		public static int NewItem(int X, int Y, int Width, int Height, int Type, int Stack = 1, bool noBroadcast = false, int pfix = 0, bool noGrabDelay = false)
@@ -39138,9 +41156,12 @@ namespace Terraria
 				NetMessage.SendData(21, -1, -1, "", num, (float)num3, 0f, 0f, 0);
 				Main.item[num].FindOwner(num);
 			}
-			else if (Main.netMode == 0)
+			else
 			{
-				Main.item[num].owner = Main.myPlayer;
+				if (Main.netMode == 0)
+				{
+					Main.item[num].owner = Main.myPlayer;
+				}
 			}
 			return num;
 		}

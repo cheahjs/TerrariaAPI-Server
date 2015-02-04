@@ -132,6 +132,8 @@
     <Compile Include="Terraria\Minecart.cs" />
     <Compile Include="Terraria\Mount.cs" />
     <Compile Include="Terraria\Rain.cs" />
+    <Compile Include="Terraria\Skill.cs" />
+    <Compile Include="Terraria.ID\STWNPCID.cs" />
     <Compile Include="Terraria\Utils.cs" />
     <Compile Include="Terraria\Wiring.cs" />
     <Compile Include="Terraria\WorldFile.cs" />

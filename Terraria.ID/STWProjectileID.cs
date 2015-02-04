@@ -4,7 +4,7 @@ namespace Terraria.ID
 	public class  STWProjectileID
 	{
 		// GitFlip New items:
-        // New arrow projectils batch 1
+        // New arrow projectiles batch 1
         public const short CopperArrow = Main.maxProjectileTypes + 0;
         public const short TinArrow = Main.maxProjectileTypes + 1;
         public const short IronArrow = Main.maxProjectileTypes + 2;
@@ -25,8 +25,24 @@ namespace Terraria.ID
         public const short HallowedArrow = Main.maxProjectileTypes + 17;
         public const short ShroomiteArrow = Main.maxProjectileTypes + 18;
 
-        public const short Count = 19;
+        //New arrow projectiles batch 1 addendum
+        public const short MeteoriteArrow = Main.maxProjectileTypes + 19;
+        public const short ObsidianArrow = Main.maxProjectileTypes + 20;
 
+        //New spear projectiles
+        public const short CopperSpear = Main.maxProjectileTypes + 21;
+        public const short TinSpear = Main.maxProjectileTypes + 22;
+        public const short IronSpear = Main.maxProjectileTypes + 23;
+        public const short LeadSpear = Main.maxProjectileTypes + 24;
+        public const short SilverSpear = Main.maxProjectileTypes + 25;
+        public const short TungstenSpear = Main.maxProjectileTypes + 26;
+        public const short GoldSpear = Main.maxProjectileTypes + 27;
+        public const short PlatinumSpear = Main.maxProjectileTypes + 28;
+        public const short MeteoriteSpear = Main.maxProjectileTypes + 29;
+        public const short ObsidianSpear = Main.maxProjectileTypes + 30;
+        public const short HellstoneSpear = Main.maxProjectileTypes + 31;
+
+        public const short Count = 21;
         
 	}
 }
