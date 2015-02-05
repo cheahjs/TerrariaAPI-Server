@@ -18439,5 +18439,21 @@ namespace Terraria
 				}
 			}
 		}
+        public void SpawnNPC(int type, string name, int amount, int tileXRange = 100,
+                             int tileYRange = 50)
+        {
+            int startTileX = (int)this.center().X / 16;
+            int startTileY = (int)this.center().Y / 16;
+            for (int i = 0; i < amount; i++)
+            {
+                int spawnTileX;
+                int spawnTileY;
+                Utils.GetRandomClearTileWithInRange(startTileX, startTileY, tileXRange, tileYRange, out spawnTileX,
+                                                           out spawnTileY);
+                int npcid = NPC.NewNPC(spawnTileX * 16, spawnTileY * 16, type, 0);
+                // This is for special slimes
+                //Main.npc[npcid].SetDefaults(name);
+            }
+        }
 	}
 }

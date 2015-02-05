@@ -2717,6 +2717,22 @@ namespace Terraria
 			{
 				this.localAI[m] = 0f;
 			}
+
+            if (this.type == Terraria.ID.STWNPCID.MushroomSlime)
+            {
+                this.name = "Mushroom Slime";
+                this.width = 32;
+                this.height = 26;
+                this.aiStyle = 1;
+                this.damage = 10;
+                this.defense = 4;
+                this.lifeMax = 45;
+                this.soundHit = 1;
+                this.soundKilled = 1;
+                this.value = 25f;
+                this.buffImmune[20] = true;
+                this.buffImmune[31] = false;
+            }
 			if (this.type == 1)
 			{
 				this.name = "Blue Slime";
@@ -26823,7 +26839,8 @@ namespace Terraria
 			{
 				num2 = 4;
 			}
-			if (this.type == 1 || this.type == 16 || this.type == 59 || this.type == 71 || this.type == 81 || this.type == 138 || this.type == 147 || this.type == 183 || this.type == 184 || this.type == 204 || this.type == 225 || this.type == 302 || this.type == 304 || (this.type >= 333 && this.type <= 336))
+            // Find the frames of Slimes here
+            if (this.type == Terraria.ID.STWNPCID.MushroomSlime || this.type == 1 || this.type == 16 || this.type == 59 || this.type == 71 || this.type == 81 || this.type == 138 || this.type == 147 || this.type == 183 || this.type == 184 || this.type == 204 || this.type == 225 || this.type == 302 || this.type == 304 || (this.type >= 333 && this.type <= 336))
 			{
 				if (this.type == 302 || this.type == 304)
 				{
@@ -36205,13 +36222,20 @@ namespace Terraria
 			{
 				DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, 1906, 1, false, 0, false);
 			}
-			if (this.type == 1 || this.type == 16 || this.type == 138 || this.type == 141 || this.type == 147 || this.type == 184 || this.type == 187 || this.type == 204 || this.type == 302 || (this.type >= 333 && this.type <= 336))
+            // Slimes
+			if (this.type == 1 || this.type == 16 || this.type == 138 || this.type == 141 || this.type == 147 || this.type == 184 || this.type == 187 || this.type == 204 || this.type == 302 || (this.type >= 333 && this.type <= 336) || this.type == Terraria.ID.STWNPCID.MushroomSlime)
 			{
 				DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, 23, Main.rand.Next(1, 3), false, 0, false);
 				if (Main.rand.Next(10000) == 0)
 				{
 					DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, 1309, 1, false, -1, false);
 				}
+                // For initial testing, always drop a slimey mushroom if we are Mushroom Slime
+                if (this.type == Terraria.ID.STWNPCID.MushroomSlime)
+                {
+                    // We handle updating quest status only on the client side.
+                    Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.SlimeyMushroom, 1, false, -1, false);
+                }
 			}
 			if (this.type == 75)
 			{

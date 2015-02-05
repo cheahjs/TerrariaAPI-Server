@@ -722,7 +722,7 @@ namespace Terraria
 		public static int invasionSize = 0;
 		public static int invasionDelay = 0;
 		public static int invasionWarn = 0;
-		public static int[] npcFrameCount = new int[]
+        public static int[] npcFrameCount = new int[] //If you add a new NPC you MUST update this damn thing.
 		{
 			1,
 			2,
@@ -1101,7 +1101,8 @@ namespace Terraria
 			4,
 			4,
 			2,
-			2
+			2,
+            2 // Terraria.ID.STWNPCID.MushroomSlime: 2 Frames of animation
 		};
 		public static Dictionary<int, byte> npcLifeBytes = new Dictionary<int, byte>();
 		private static bool mouseExit = false;
