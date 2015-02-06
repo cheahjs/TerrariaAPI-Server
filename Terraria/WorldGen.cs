@@ -291,7 +291,7 @@ namespace Terraria
 					return true;
 				}
 			}
-			for (int j = 0; j < 378; j++)
+            for (int j = 0; j < Main.maxNPCTypes + Main.maxSTWNPCTypes; j++)
 			{
 				if (Main.nextNPC[j] && WorldGen.CheckConditions(j))
 				{
@@ -32994,6 +32994,7 @@ namespace Terraria
                                         // Spawn Mushroom slime
                                         slimeBlockBelow = true;
                                         var npc = Utils.GetNPCById(Terraria.ID.STWNPCID.MushroomSlime);
+                                        //var npc = Utils.GetNPCById(1);
                                         NPC.SpawnNPC(npc.type, npc.name, 1, i, j, 10, 10);
                                     }
 

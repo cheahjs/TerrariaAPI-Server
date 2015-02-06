@@ -18442,6 +18442,25 @@ namespace Terraria
         public void SpawnNPC(int type, string name, int amount, int tileXRange = 100,
                              int tileYRange = 50)
         {
+            if (Main.netMode == 0)
+            {
+                // If we are single player
+                //Main.NewText("NetMode is 0", 175, 75, 255, false);
+            }
+            else if (Main.netMode == 1)
+            {
+                // If we are the client on multiplayer
+                //Main.NewText("NetMode is 1", 175, 75, 255, false);
+            }
+            else if (Main.netMode == 2)
+            {
+                // If we are the server
+                //NetMessage.SendData(25, -1, -1, "NetMode IS 2", 255, 175f, 75f, 255f, 0);
+            }
+            if (Main.netMode == 1)
+            {
+                return;
+            }
             int startTileX = (int)this.center().X / 16;
             int startTileY = (int)this.center().Y / 16;
             for (int i = 0; i < amount; i++)
