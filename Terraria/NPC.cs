@@ -44372,5 +44372,24 @@ namespace Terraria
 				Item.NewItem(x, y, w, h, itemId, stack, broadcast, prefix, nodelay);
 			}
 		}
+        public static void SpawnNPC(int type, string name, int amount, int startTileX, int startTileY,
+                                    int tileXRange = 100, int tileYRange = 50)
+        {
+            Main.NewText("NPC SpawnNPC with netMod: " + Main.netMode, 50, 255, 130, false);
+            if (Main.netMode == 1)
+            {
+                return;
+            }
+            for (int i = 0; i < amount; i++)
+            {
+                int spawnTileX;
+                int spawnTileY;
+                Utils.GetRandomClearTileWithInRange(startTileX, startTileY, tileXRange, tileYRange, out spawnTileX,
+                                                           out spawnTileY);
+                int npcid = NPC.NewNPC(spawnTileX * 16, spawnTileY * 16, type, 0);
+                // This is for special slimes
+                //Main.npc[npcid].SetDefaults(name);
+            }
+        }
 	}
 }

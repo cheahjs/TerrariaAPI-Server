@@ -32994,7 +32994,7 @@ namespace Terraria
                                         // Spawn Mushroom slime
                                         slimeBlockBelow = true;
                                         var npc = Utils.GetNPCById(Terraria.ID.STWNPCID.MushroomSlime);
-                                        Main.player[Main.myPlayer].SpawnNPC(npc.type, npc.name, 1, 10, 10);
+                                        NPC.SpawnNPC(npc.type, npc.name, 1, i, j, 10, 10);
                                     }
 
                                 }
