@@ -13,7 +13,7 @@ namespace Terraria
 	public class Main
 	{
         public const int maxSTWItemTypes = Terraria.ID.STWItemID.Count;
-        public const int maxItemTypes = Terraria.ID.ItemID.Count + Terraria.ID.STWItemID.Count;
+        public const int maxItemTypes = Terraria.ID.ItemID.Count;
         public const int maxProjectileTypes = 423;  // GitFlip - Max projectiles. Must be +1 of last projectile type
         public const int maxSTWProjectileTypes = Terraria.ID.STWProjectileID.Count;
 		public const int maxNPCTypes = 378;
