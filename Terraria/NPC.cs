@@ -36234,7 +36234,7 @@ namespace Terraria
                 if (this.type == Terraria.ID.STWNPCID.MushroomSlime)
                 {
                     // We handle updating quest status only on the client side.
-                    Item.NewItem((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.SlimeyMushroom, 1, false, -1, false);
+                    DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.SlimeyMushroom, 1, false, -1, false);
                 }
 			}
 			if (this.type == 75)

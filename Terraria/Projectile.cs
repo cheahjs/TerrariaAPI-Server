@@ -18729,7 +18729,7 @@ namespace Terraria
 						Rectangle value13 = new Rectangle((int)Main.player[this.owner].position.X, (int)Main.player[this.owner].position.Y, Main.player[this.owner].width, Main.player[this.owner].height);
 						if (rectangle5.Intersects(value13))
 						{
-							if (this.ai[1] > 0f && this.ai[1] < (float)Main.maxItemTypes)
+                            if (this.ai[1] > 0f && this.ai[1] < (float)(Main.maxItemTypes + Main.maxSTWItemTypes))
 							{
 								int num711 = (int)this.ai[1];
 								Item item = new Item();

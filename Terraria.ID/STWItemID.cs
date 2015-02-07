@@ -227,8 +227,8 @@ namespace Terraria.ID
         public const short HallowedStaff = Main.maxItemTypes + 173;
         public const short ChlorophyteStaff = Main.maxItemTypes + 174;
 
-		public const short TrueCount = 175;    // True Item Count
-        public const short Count = 19;      // Item Count of max new sprites we actually have
+		public const short Count = 175;    // True Item Count
+        //public const short Count = 19;      // Item Count of max new sprites we actually have
         
 	}
 }
