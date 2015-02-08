@@ -39971,7 +39971,7 @@ namespace Terraria
                                                     this.damage = 8;
                                                     this.scale = 1f;
                                                     this.useSound = 1;
-                                                    this.shoot = 49; //This is Projectile.type; change dis
+                                                    this.shoot = Terraria.ID.STWProjectileID.CopperSpear; //This is Projectile.type
                                                     this.value = 1000;
                                                     this.noMelee = true;
                                                     this.noUseGraphic = true;
@@ -39980,28 +39980,227 @@ namespace Terraria
                                                     this.craftingLvl = 1;
                                                     return;
                                                 }
-
-                                                // End new items
-                                                /*
-                                                 * // GitFlip Add Broken anvil.
-                                                if (type == 2749)
+                                                if (type == Terraria.ID.STWItemID.TinSpear)
                                                 {
-                                                    Main.NewText("Broken Anvil", 50, 255, 130, false);
-                                                    this.name = "Broken Anvil";
-                                                    this.useStyle = 1;
-                                                    this.useTurn = true;
-                                                    this.useAnimation = 15;
-                                                    this.useTime = 10;
-                                                    this.autoReuse = true;
-                                                    this.maxStack = 99;
-                                                    this.consumable = true;
-                                                    this.createTile = 16;
-                                                    this.width = 28;
-                                                    this.height = 14;
-                                                    this.value = 5000;
-                                                    this.toolTip = "Used to craft copper items from copper bars";
+                                                    this.name = "Tin Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.TinSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 1;
+                                                    return;
                                                 }
-                                                */
+                                                if (type == Terraria.ID.STWItemID.IronSpear)
+                                                {
+                                                    this.name = "Iron Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.IronSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 8;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.LeadSpear)
+                                                {
+                                                    this.name = "Lead Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.LeadSpear; //This is Projectile.type; change dis
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 8;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.SilverSpear)
+                                                {
+                                                    this.name = "Silver Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.SilverSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 15;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.TungstenSpear)
+                                                {
+                                                    this.name = "Tungsten Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.TungstenSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 15;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.GoldSpear)
+                                                {
+                                                    this.name = "Gold Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.GoldSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 20;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.PlatinumSpear)
+                                                {
+                                                    this.name = "Platinum Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.PlatinumSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 20;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.MeteoriteSpear)
+                                                {
+                                                    this.name = "Meteor Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.MeteoriteSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 30;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.ObsidianSpear)
+                                                {
+                                                    this.name = "Obsidian Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.ObsidianSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 35;
+                                                    return;
+                                                }
+                                                if (type == Terraria.ID.STWItemID.HellstoneSpear)
+                                                {
+                                                    this.name = "Molten Spear";
+                                                    this.useStyle = 5;
+                                                    this.useAnimation = 31;
+                                                    this.useTime = 31;
+                                                    this.shootSpeed = 3.7f;
+                                                    this.knockBack = 6.5f;
+                                                    this.width = 32;
+                                                    this.height = 32;
+                                                    this.damage = 8;
+                                                    this.scale = 1f;
+                                                    this.useSound = 1;
+                                                    this.shoot = Terraria.ID.STWProjectileID.HellstoneSpear; //This is Projectile.type
+                                                    this.value = 1000;
+                                                    this.noMelee = true;
+                                                    this.noUseGraphic = true;
+                                                    this.melee = true;
+
+                                                    this.craftingLvl = 40;
+                                                    return;
+                                                }
+                                                // End new items
 											}
 										}
 									}

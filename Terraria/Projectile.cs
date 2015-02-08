@@ -4647,7 +4647,7 @@ namespace Terraria
 				this.aiStyle = 73;
 				this.friendly = true;
 			}
-            else if (this.type == 423)
+            else if (this.type == Terraria.ID.STWProjectileID.CopperArrow)
             {
                 this.name = "Copper Arrow";
                 this.width = 10;
@@ -4656,7 +4656,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 424)
+            else if (this.type == Terraria.ID.STWProjectileID.TinArrow)
             {
                 this.name = "Tin Arrow";
                 this.width = 10;
@@ -4665,7 +4665,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 425)
+            else if (this.type == Terraria.ID.STWProjectileID.IronArrow)
             {
                 this.name = "Iron Arrow";
                 this.width = 10;
@@ -4674,7 +4674,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 426)
+            else if (this.type == Terraria.ID.STWProjectileID.LeadArrow)
             {
                 this.name = "Lead Arrow";
                 this.width = 10;
@@ -4683,7 +4683,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 427)
+            else if (this.type == Terraria.ID.STWProjectileID.SilverArrow)
             {
                 this.name = "Silver Arrow";
                 this.width = 10;
@@ -4692,7 +4692,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 428)
+            else if (this.type == Terraria.ID.STWProjectileID.TungstenArrow)
             {
                 this.name = "Tungsten Arrow";
                 this.width = 10;
@@ -4701,7 +4701,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 429)
+            else if (this.type == Terraria.ID.STWProjectileID.GoldArrow)
             {
                 this.name = "Gold Arrow";
                 this.width = 10;
@@ -4710,7 +4710,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 430)
+            else if (this.type == Terraria.ID.STWProjectileID.PlatinumArrow)
             {
                 this.name = "Platinum Arrow";
                 this.width = 10;
@@ -4719,7 +4719,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 431)
+            else if (this.type == Terraria.ID.STWProjectileID.DemoniteArrow)
             {
                 this.name = "Demonite Arrow";
                 this.width = 10;
@@ -4728,7 +4728,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 432)
+            else if (this.type == Terraria.ID.STWProjectileID.CrimtaneArrow)
             {
                 this.name = "Crimtane Arrow";
                 this.width = 10;
@@ -4737,7 +4737,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 433)
+            else if (this.type == Terraria.ID.STWProjectileID.HellstoneArrow)
             {
                 this.name = "Hellstone Arrow";
                 this.width = 10;
@@ -4746,7 +4746,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 434)
+            else if (this.type == Terraria.ID.STWProjectileID.CobaltArrow)
             {
                 this.name = "Cobalt Arrow";
                 this.width = 10;
@@ -4755,7 +4755,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 435)
+            else if (this.type == Terraria.ID.STWProjectileID.PalladiumArrow)
             {
                 this.name = "Palladium Arrow";
                 this.width = 10;
@@ -4764,7 +4764,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 436)
+            else if (this.type == Terraria.ID.STWProjectileID.MythrilArrow)
             {
                 this.name = "Mythril Arrow";
                 this.width = 10;
@@ -4773,7 +4773,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 437)
+            else if (this.type == Terraria.ID.STWProjectileID.OrichalcumArrow)
             {
                 this.name = "Orichalcum Arrow";
                 this.width = 10;
@@ -4782,7 +4782,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 438)
+            else if (this.type == Terraria.ID.STWProjectileID.AdamantiteArrow)
             {
                 this.name = "Adamantite Arrow";
                 this.width = 10;
@@ -4791,7 +4791,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 439)
+            else if (this.type == Terraria.ID.STWProjectileID.TitaniumArrow)
             {
                 this.name = "Titanium Arrow";
                 this.width = 10;
@@ -4800,7 +4800,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 440)
+            else if (this.type == Terraria.ID.STWProjectileID.HallowedArrow)
             {
                 this.name = "Hallowed Arrow";
                 this.width = 10;
@@ -4809,7 +4809,7 @@ namespace Terraria
                 this.friendly = true;
                 this.ranged = true;
             }
-            else if (this.type == 441)
+            else if (this.type == Terraria.ID.STWProjectileID.ShroomiteArrow)
             {
                 this.name = "Shroomite Arrow";
                 this.width = 10;
@@ -4817,6 +4817,174 @@ namespace Terraria
                 this.aiStyle = 1;
                 this.friendly = true;
                 this.ranged = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.CopperSpear)
+            {
+                this.name = "Copper Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.TinSpear)
+            {
+                this.name = "Tin Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.IronSpear)
+            {
+                this.name = "Iron Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.LeadSpear)
+            {
+                this.name = "Lead Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.SilverSpear)
+            {
+                this.name = "Silver Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.TungstenSpear)
+            {
+                this.name = "Tungsten Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.GoldSpear)
+            {
+                this.name = "Gold Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.PlatinumSpear)
+            {
+                this.name = "Platinum Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.DemoniteSpear)
+            {
+                this.name = "Demonite Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.MeteoriteSpear)
+            {
+                this.name = "Meteorite Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.ObsidianSpear)
+            {
+                this.name = "Obsidian Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
+            }
+            else if (this.type == Terraria.ID.STWProjectileID.HellstoneSpear)
+            {
+                this.name = "Molten Spear";
+                this.width = 18;
+                this.height = 18;
+                this.aiStyle = 19;
+                this.friendly = true;
+                this.penetrate = -1;
+                this.tileCollide = false;
+                this.scale = 1.2f;
+                this.hide = true;
+                this.ownerHitCheck = true;
+                this.melee = true;
             }
 			else
 			{
@@ -12133,7 +12301,19 @@ namespace Terraria
 							this.ai[0] += 1.3f;
 						}
 					}
-					else if (this.type == 49)
+					else if (this.type == 49 ||
+                             this.type == Terraria.ID.STWProjectileID.CopperSpear    ||
+                             this.type == Terraria.ID.STWProjectileID.TinSpear       ||
+                             this.type == Terraria.ID.STWProjectileID.IronSpear      ||
+                             this.type == Terraria.ID.STWProjectileID.LeadSpear      ||
+                             this.type == Terraria.ID.STWProjectileID.SilverSpear    ||
+                             this.type == Terraria.ID.STWProjectileID.TungstenSpear  ||
+                             this.type == Terraria.ID.STWProjectileID.GoldSpear      ||
+                             this.type == Terraria.ID.STWProjectileID.PlatinumSpear  ||
+                             this.type == Terraria.ID.STWProjectileID.DemoniteSpear  ||
+                             this.type == Terraria.ID.STWProjectileID.MeteoriteSpear ||
+                             this.type == Terraria.ID.STWProjectileID.ObsidianSpear  ||
+                             this.type == Terraria.ID.STWProjectileID.HellstoneSpear)
 					{
 						if (this.ai[0] == 0f)
 						{

@@ -42,7 +42,10 @@ namespace Terraria.ID
         public const short ObsidianSpear = Main.maxProjectileTypes + 30;
         public const short HellstoneSpear = Main.maxProjectileTypes + 31;
 
-        public const short Count = 21;
+        //New spear projectiles addendum
+        public const short DemoniteSpear = Main.maxProjectileTypes + 32;
+
+        public const short Count = 33;
         
 	}
 }
