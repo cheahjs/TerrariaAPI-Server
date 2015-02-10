@@ -64,7 +64,7 @@ namespace Terraria
 		public static int maxCloudTypes = 22;
 		public static int maxHair = 123;
 		public static int maxCharSelectHair = 51;
-		public static int curRelease = 102;
+        public static int curRelease = 103;     // This is used for loading player data and verifying client + server match
 		public static string versionNumber = "v1.2.4.1";
 		public static string versionNumber2 = "v1.2.4.1";
 		public static WorldSections sectionManager;
