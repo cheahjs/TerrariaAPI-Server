@@ -2794,6 +2794,7 @@ namespace Terraria.ID
 		public const short Grasshopper = 2740;
 		public const short GrasshopperCage = 2741;
 		public const short MusicBoxUndergroundCrimson = 2742;
-		public const short Count = 2743;
+
+		public const short Count = 2749;
 	}
 }

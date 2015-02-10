@@ -12,9 +12,12 @@ namespace Terraria
 {
 	public class Main
 	{
-		public static int maxItemTypes = 2749;
-		public static int maxProjectileTypes = 423;
-		public static int maxNPCTypes = 378;
+        public const int maxSTWItemTypes = Terraria.ID.STWItemID.Count;
+        public const int maxItemTypes = Terraria.ID.ItemID.Count;
+        public const int maxProjectileTypes = 423;  // GitFlip - Max projectiles. Must be +1 of last projectile type
+        public const int maxSTWProjectileTypes = Terraria.ID.STWProjectileID.Count;
+		public const int maxNPCTypes = 378;
+        public const int maxSTWNPCTypes = Terraria.ID.STWNPCID.Count;
 		public static int maxTileSets = 340;
 		public static int maxWallTypes = 172;
 		public static int maxGoreTypes = 587;
@@ -61,7 +64,7 @@ namespace Terraria
 		public static int maxCloudTypes = 22;
 		public static int maxHair = 123;
 		public static int maxCharSelectHair = 51;
-		public static int curRelease = 102;
+        public static int curRelease = 103;     // This is used for loading player data and verifying client + server match
 		public static string versionNumber = "v1.2.4.1";
 		public static string versionNumber2 = "v1.2.4.1";
 		public static WorldSections sectionManager;
@@ -77,12 +80,12 @@ namespace Terraria
 		public static bool[] hairLoaded = new bool[123];
 		public static bool[] wingsLoaded = new bool[27];
 		public static bool[] goreLoaded = new bool[587];
-		public static bool[] projectileLoaded = new bool[423];
-		public static bool[] itemFlameLoaded = new bool[2749];
+        public static bool[] projectileLoaded = new bool[maxProjectileTypes + maxSTWProjectileTypes];
+        public static bool[] itemFlameLoaded = new bool[maxItemTypes + maxSTWItemTypes];
 		public static bool[] backgroundLoaded = new bool[185];
 		public static bool[] tileSetsLoaded = new bool[340];
 		public static bool[] wallLoaded = new bool[172];
-		public static bool[] NPCLoaded = new bool[378];
+		public static bool[] NPCLoaded = new bool[Main.maxNPCTypes + Main.maxSTWNPCTypes];
 		public static bool[] armorHeadLoaded = new bool[169];
 		public static bool[] armorBodyLoaded = new bool[175];
 		public static bool[] armorLegsLoaded = new bool[110];
@@ -134,7 +137,7 @@ namespace Terraria
 		public static bool stopTimeOuts = false;
 		public static bool showSpam = false;
 		public static bool showItemOwner = false;
-		public static bool[] nextNPC = new bool[378];
+        public static bool[] nextNPC = new bool[Main.maxNPCTypes + Main.maxSTWNPCTypes];
 		public static int musicBox = -1;
 		public static int musicBox2 = -1;
 		public static byte hbPosition = 1;
@@ -229,7 +232,7 @@ namespace Terraria
 		public static int zoneX = 99;
 		public static int zoneY = 87;
 		public static float harpNote = 0f;
-		public static bool[] projHostile = new bool[423];
+        public static bool[] projHostile = new bool[maxProjectileTypes + maxSTWProjectileTypes];
 		public static bool[] pvpBuff = new bool[140];
 		public static bool[] vanityPet = new bool[140];
 		public static bool[] lightPet = new bool[140];
@@ -430,8 +433,8 @@ namespace Terraria
 		public static int helpText = 0;
 		public static bool autoGen = false;
 		public static bool autoPause = false;
-		public static int[] projFrames = new int[423];
-		public static bool[] projPet = new bool[423];
+        public static int[] projFrames = new int[maxProjectileTypes + maxSTWProjectileTypes];
+        public static bool[] projPet = new bool[maxProjectileTypes + maxSTWProjectileTypes];
 		public static float demonTorch = 1f;
 		public static int demonTorchDir = 1;
 		public static int numStars;
@@ -550,7 +553,7 @@ namespace Terraria
 		public static int[] grasshopperCageFrameCounter = new int[Main.cageFrames];
 		public static bool[] tileSand = new bool[340];
 		public static bool[] tileFlame = new bool[340];
-		public static bool[] npcCatchable = new bool[378];
+        public static bool[] npcCatchable = new bool[Main.maxNPCTypes + Main.maxSTWNPCTypes];
 		public static int[] tileFrame = new int[340];
 		public static int[] tileFrameCounter = new int[340];
 		public static byte[] wallFrame = new byte[172];
@@ -712,14 +715,14 @@ namespace Terraria
 		});
 		public static string WorldPath = Main.SavePath + Path.DirectorySeparatorChar + "Worlds";
 		public static string PlayerPath = Main.SavePath + Path.DirectorySeparatorChar + "Players";
-		public static string[] itemName = new string[2749];
-		public static string[] npcName = new string[378];
+        public static string[] itemName = new string[maxItemTypes + maxSTWItemTypes];
+        public static string[] npcName = new string[Main.maxNPCTypes + Main.maxSTWNPCTypes];
 		public static int invasionType = 0;
 		public static double invasionX = 0.0;
 		public static int invasionSize = 0;
 		public static int invasionDelay = 0;
 		public static int invasionWarn = 0;
-		public static int[] npcFrameCount = new int[]
+        public static int[] npcFrameCount = new int[] //If you add a new NPC you MUST update this damn thing.
 		{
 			1,
 			2,
@@ -1098,7 +1101,8 @@ namespace Terraria
 			4,
 			4,
 			2,
-			2
+			2,
+            2 // Terraria.ID.STWNPCID.MushroomSlime: 2 Frames of animation
 		};
 		public static Dictionary<int, byte> npcLifeBytes = new Dictionary<int, byte>();
 		private static bool mouseExit = false;
@@ -1988,7 +1992,7 @@ namespace Terraria
 			Main.showSplash = false;
 			this.Initialize();
 			Lang.setLang(false);
-			for (int i = 0; i < 378; i++)
+            for (int i = 0; i < Main.maxNPCTypes + Main.maxSTWNPCTypes; i++)
 			{
 				NPC nPC = new NPC();
 				nPC.SetDefaults(i, -1f);
@@ -2696,7 +2700,7 @@ namespace Terraria
 			Main.bgAlpha[0] = 1f;
 			Main.bgAlpha2[0] = 1f;
 			this.invBottom = 258;
-			for (int i = 0; i < 423; i++)
+            for (int i = 0; i < maxProjectileTypes + maxSTWProjectileTypes; i++)
 			{
 				Main.projFrames[i] = 1;
 			}
@@ -3016,7 +3020,7 @@ namespace Terraria
 			Main.tilePile[331] = true;
 			Main.tilePile[332] = true;
 			Main.tilePile[333] = true;
-			for (int j = 0; j < 378; j++)
+            for (int j = 0; j < Main.maxNPCTypes + Main.maxSTWNPCTypes; j++)
 			{
 				Main.npcCatchable[j] = false;
 			}
@@ -4376,7 +4380,7 @@ namespace Terraria
 			{
 				Main.rain[num12] = new Rain();
 			}
-			for (int num16 = 0; num16 < 2749; num16++)
+            for (int num16 = 0; num16 < maxItemTypes + maxSTWItemTypes; num16++)
 			{
 				Item item = new Item();
 				item.SetDefaults(num16, false);
@@ -4395,7 +4399,7 @@ namespace Terraria
 				}
 			}
 			NPC nPC = new NPC();
-			for (int num17 = -65; num17 < 378; num17++)
+            for (int num17 = -65; num17 < Main.maxNPCTypes + Main.maxSTWNPCTypes; num17++)
 			{
 				if (num17 != 0)
 				{
@@ -4445,7 +4449,7 @@ namespace Terraria
 			{
 				Main.LoadPlayers();
 			}*/
-			for (int num23 = 1; num23 < 423; num23++)
+            for (int num23 = 1; num23 < maxProjectileTypes + maxSTWProjectileTypes; num23++)
 			{
 				Projectile projectile = new Projectile();
 				projectile.SetDefaults(num23);
@@ -9912,7 +9916,7 @@ namespace Terraria
 								num11++;
 							}
 						}
-						for (int num13 = 0; num13 < 378; num13++)
+                        for (int num13 = 0; num13 < Main.maxNPCTypes + Main.maxSTWNPCTypes; num13++)
 						{
 							Main.nextNPC[num13] = false;
 						}

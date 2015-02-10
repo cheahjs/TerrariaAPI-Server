@@ -291,7 +291,7 @@ namespace Terraria
 					return true;
 				}
 			}
-			for (int j = 0; j < 378; j++)
+            for (int j = 0; j < Main.maxNPCTypes + Main.maxSTWNPCTypes; j++)
 			{
 				if (Main.nextNPC[j] && WorldGen.CheckConditions(j))
 				{
@@ -28315,14 +28315,21 @@ namespace Terraria
 							}
 						}
 					}
+                    // If we are placing a mushroom plant
 					else if (type == 71)
 					{
-						if (j + 1 < Main.maxTilesY && Main.tile[i, j + 1].active() && Main.tile[i, j + 1].slope() == 0 && !Main.tile[i, j + 1].halfBrick() && Main.tile[i, j + 1].type == 70)
-						{
-							tile.active(true);
-							tile.type = (ushort)type;
-							tile.frameX = (short)(WorldGen.genRand.Next(5) * 18);
-						}
+                        // Do some validation checks to grow a mushroom plant, this includes
+                        // check that the tile below is either a mushroom grass or a slime block
+                        if (j + 1 < Main.maxTilesY && Main.tile[i, j + 1].active() && Main.tile[i, j + 1].slope() == 0 && !Main.tile[i, j + 1].halfBrick() && (Main.tile[i, j + 1].type == 70 || Main.tile[i, j + 1].type == Terraria.ID.TileID.SlimeBlock))
+                        {
+                            //if (Main.tile[i, j + 1].type == 193)
+                            //{
+                                //Main.NewText("Setting tile to active", 50, 255, 130, false);
+                            //}
+                            tile.active(true);
+                            tile.type = (ushort)type;
+                            tile.frameX = (short)(WorldGen.genRand.Next(5) * 18);
+                        }
 					}
 					else if (type == 129)
 					{
@@ -32954,17 +32961,65 @@ namespace Terraria
 						{
 							num43 = 183;
 						}
-						else if (tile.type == 71 || tile.type == 72)
-						{
-							if (WorldGen.genRand.Next(50) == 0)
-							{
-								num43 = 194;
-							}
-							else if (WorldGen.genRand.Next(2) == 0)
-							{
-								num43 = 183;
-							}
-						}
+                        if (tile.type == Terraria.ID.TileID.MushroomPlants || tile.type == Terraria.ID.TileID.MushroomTrees)
+                        {
+                            // Check if the player is destroying mushroom plants on a slimeblock
+                            // Main.NewText("Kill MushroomPlants at: " + i + "," + j, 50, 255, 130, false);
+                            bool slimeBlockBelow = false;
+                            if (j + 1 >= 0 && j + 1 < Main.maxTilesY)
+                            {
+                                //Main.NewText("j+1 is valid: " + (j + 1), 50, 255, 130, false);
+                                Tile tileBelow = Main.tile[i, j + 1];
+                                if (tileBelow == null)
+                                {
+
+                                    // This Should never be the case
+                                    // If we built are maps correctly
+                                    // But let's just do nothing to prevent
+                                    // an error
+                                    //Main.NewText("tile below is null and it's type is: " + tileBelow.type, 50, 255, 130, false);
+                                }
+                                else
+                                {
+                                    // If the tile below is a Slime Block then the 
+                                    // Mushroom Plants should spawn a mushroom slime
+                                    // when destoryed
+                                    //Main.NewText("tile below is valid: ", 50, 255, 130, false);
+                                    if (tileBelow.type == Terraria.ID.TileID.SlimeBlock)
+                                    {
+                                        // Main.NewText("tile below's type: is slimeblock", 50, 255, 130, false);
+
+                                        // We handle updating quest logic on the client here as well.
+
+                                        // Spawn Mushroom slime
+                                        slimeBlockBelow = true;
+                                        var npc = Utils.GetNPCById(Terraria.ID.STWNPCID.MushroomSlime);
+                                        //var npc = Utils.GetNPCById(1);
+                                        NPC.SpawnNPC(npc.type, npc.name, 1, i, j, 10, 10);
+                                    }
+
+                                }
+                            }
+                            // GitFlip If the tile we are killing
+                            // is Mushroom plant and not on a slime block
+                            // 1/50 drop 
+                            // mushroom grass seeds
+                            // else 1/2 drop glowing mushroom
+                            if (!slimeBlockBelow)
+                            {
+                                if (WorldGen.genRand.Next(50) == 0)
+                                {
+                                    num43 = 194;
+                                }
+                                else
+                                {
+                                    if (WorldGen.genRand.Next(2) == 0)
+                                    {
+                                        num43 = 183;
+                                    }
+                                }
+                            }
+                        }
 						else if (tile.type >= 63 && tile.type <= 68)
 						{
 							num43 = (int)(tile.type - 63 + 177);
@@ -35867,6 +35922,21 @@ namespace Terraria
 									NetMessage.SendTileSquare(-1, num57, num58, 3);
 								}
 							}
+                            // Grow Mushroom plants on slime blocks
+                            else if (Main.tile[num57, num58].type == Terraria.ID.TileID.SlimeBlock)
+                            {
+                                // If we get here and the tile already doesn't have a mushroom plant
+                                // 1/2 chances of growing the mushroom plant.
+                                if (!Main.tile[num57, num61].active() && WorldGen.genRand.Next(1) == 0)
+                                {
+                                    //Main.NewText("Grow mushroom plants for slime block", 50, 255, 130, false);
+                                    WorldGen.PlaceTile(num57, num61, Terraria.ID.TileID.MushroomPlants, true, false, -1, 0);
+                                    if (Main.netMode == 2 && Main.tile[num57, num61].active())
+                                    {
+                                        NetMessage.SendTileSquare(-1, num57, num61, 1);
+                                    }
+                                }
+                            }
 						}
 						else
 						{

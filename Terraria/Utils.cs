@@ -5,6 +5,7 @@ namespace Terraria
 {
 	public static class Utils
 	{
+        public static Random Random = new Random();
 		public static bool FloatIntersect(float r1StartX, float r1StartY, float r1Width, float r1Height, float r2StartX, float r2StartY, float r2Width, float r2Height)
 		{
 			return r1StartX <= r2StartX + r2Width && r1StartY <= r2StartY + r2Height && r1StartX + r1Width >= r2StartX && r1StartY + r1Height >= r2StartY;
@@ -50,5 +51,67 @@ namespace Terraria
 		{
 			return new Color((int)((byte)((float)(firstColor.R * secondColor.R) / 255f)), (int)((byte)((float)(firstColor.G * secondColor.G) / 255f)), (int)((byte)((float)(firstColor.B * secondColor.B) / 255f)));
 		}
+        /// <summary>
+        /// Gets an NPC by ID
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns>NPC</returns>
+        public static NPC GetNPCById(int id)
+        {
+            NPC npc = new NPC();
+            npc.netDefaults(id);
+            return npc;
+        }
+        /// <summary>
+        /// Gets a random clear tile in range
+        /// </summary>
+        /// <param name="startTileX">Bound X</param>
+        /// <param name="startTileY">Bound Y</param>
+        /// <param name="tileXRange">Range on the X axis</param>
+        /// <param name="tileYRange">Range on the Y axis</param>
+        /// <param name="tileX">X location</param>
+        /// <param name="tileY">Y location</param>
+        public static void GetRandomClearTileWithInRange(int startTileX, int startTileY, int tileXRange, int tileYRange,
+                                                  out int tileX, out int tileY)
+        {
+            int j = 0;
+            do
+            {
+                if (j == 100)
+                {
+                    tileX = startTileX;
+                    tileY = startTileY;
+                    break;
+                }
+
+                tileX = startTileX + Random.Next(tileXRange * -1, tileXRange);
+                tileY = startTileY + Random.Next(tileYRange * -1, tileYRange);
+                j++;
+            } while (TilePlacementValid(tileX, tileY) && TileSolid(tileX, tileY));
+        }
+
+        /// <summary>
+        /// Determines if a tile is valid.
+        /// </summary>
+        /// <param name="tileX">Location X</param>
+        /// <param name="tileY">Location Y</param>
+        /// <returns>If the tile is valid</returns>
+        public static bool TilePlacementValid(int tileX, int tileY)
+        {
+            return tileX >= 0 && tileX < Main.maxTilesX && tileY >= 0 && tileY < Main.maxTilesY;
+        }
+
+        /// <summary>
+        /// Checks if the tile is solid.
+        /// </summary>
+        /// <param name="tileX">Location X</param>
+        /// <param name="tileY">Location Y</param>
+        /// <returns>The tile's solidity.</returns>
+        public static bool TileSolid(int tileX, int tileY)
+        {
+            return TilePlacementValid(tileX, tileY) && Main.tile[tileX, tileY] != null &&
+                Main.tile[tileX, tileY].active() && Main.tileSolid[Main.tile[tileX, tileY].type] &&
+                !Main.tile[tileX, tileY].inActive() && !Main.tile[tileX, tileY].halfBrick() && Main.tile[tileX, tileY].slope() == 0;
+        }
 	}
 }

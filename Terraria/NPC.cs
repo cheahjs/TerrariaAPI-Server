@@ -2717,6 +2717,22 @@ namespace Terraria
 			{
 				this.localAI[m] = 0f;
 			}
+
+            if (this.type == Terraria.ID.STWNPCID.MushroomSlime)
+            {
+                this.name = "Mushroom Slime";
+                this.width = 32;
+                this.height = 26;
+                this.aiStyle = 1;
+                this.damage = 10;
+                this.defense = 4;
+                this.lifeMax = 45;
+                this.soundHit = 1;
+                this.soundKilled = 1;
+                this.value = 25f;
+                this.buffImmune[20] = true;
+                this.buffImmune[31] = false;
+            }
 			if (this.type == 1)
 			{
 				this.name = "Blue Slime";
@@ -26823,7 +26839,8 @@ namespace Terraria
 			{
 				num2 = 4;
 			}
-			if (this.type == 1 || this.type == 16 || this.type == 59 || this.type == 71 || this.type == 81 || this.type == 138 || this.type == 147 || this.type == 183 || this.type == 184 || this.type == 204 || this.type == 225 || this.type == 302 || this.type == 304 || (this.type >= 333 && this.type <= 336))
+            // Find the frames of Slimes here
+            if (this.type == Terraria.ID.STWNPCID.MushroomSlime || this.type == 1 || this.type == 16 || this.type == 59 || this.type == 71 || this.type == 81 || this.type == 138 || this.type == 147 || this.type == 183 || this.type == 184 || this.type == 204 || this.type == 225 || this.type == 302 || this.type == 304 || (this.type >= 333 && this.type <= 336))
 			{
 				if (this.type == 302 || this.type == 304)
 				{
@@ -34049,7 +34066,9 @@ namespace Terraria
 			if (num >= 0)
 			{
 				Main.npc[num] = new NPC();
-				Main.npc[num].SetDefaults(Type, -1f);
+                Main.npc[num].SetDefaults(Type, -1f);
+                Main.npc[num].position.X = (float)(X - Main.npc[num].width / 2);
+                Main.npc[num].position.Y = (float)(Y - Main.npc[num].height);
 				if (ServerApi.Hooks.InvokeNpcSpawn(Main.npc[num]))
 				{
 					Main.npc[num].active = false;
@@ -34059,8 +34078,6 @@ namespace Terraria
 				{
 					Main.npc[num].displayName = NPC.getNewNPCName(Type);
 				}
-				Main.npc[num].position.X = (float)(X - Main.npc[num].width / 2);
-				Main.npc[num].position.Y = (float)(Y - Main.npc[num].height);
 				Main.npc[num].active = true;
 				Main.npc[num].timeLeft = (int)((double)NPC.activeTime * 1.25);
 				Main.npc[num].wet = Collision.WetCollision(Main.npc[num].position, Main.npc[num].width, Main.npc[num].height);
@@ -36205,13 +36222,20 @@ namespace Terraria
 			{
 				DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, 1906, 1, false, 0, false);
 			}
-			if (this.type == 1 || this.type == 16 || this.type == 138 || this.type == 141 || this.type == 147 || this.type == 184 || this.type == 187 || this.type == 204 || this.type == 302 || (this.type >= 333 && this.type <= 336))
+            // Slimes
+			if (this.type == 1 || this.type == 16 || this.type == 138 || this.type == 141 || this.type == 147 || this.type == 184 || this.type == 187 || this.type == 204 || this.type == 302 || (this.type >= 333 && this.type <= 336) || this.type == Terraria.ID.STWNPCID.MushroomSlime)
 			{
 				DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, 23, Main.rand.Next(1, 3), false, 0, false);
 				if (Main.rand.Next(10000) == 0)
 				{
 					DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, 1309, 1, false, -1, false);
 				}
+                // For initial testing, always drop a slimey mushroom if we are Mushroom Slime
+                if (this.type == Terraria.ID.STWNPCID.MushroomSlime)
+                {
+                    // We handle updating quest status only on the client side.
+                    DropLoot((int)this.position.X, (int)this.position.Y, this.width, this.height, Terraria.ID.STWItemID.SlimeyMushroom, 1, false, -1, false);
+                }
 			}
 			if (this.type == 75)
 			{
@@ -44348,5 +44372,38 @@ namespace Terraria
 				Item.NewItem(x, y, w, h, itemId, stack, broadcast, prefix, nodelay);
 			}
 		}
+        public static void SpawnNPC(int type, string name, int amount, int startTileX, int startTileY,
+                                    int tileXRange = 100, int tileYRange = 50)
+        {
+            if (Main.netMode == 0)
+            {
+                // If we are single player
+                //Main.NewText("NetMode is 0", 175, 75, 255, false);
+            }
+            else if (Main.netMode == 1)
+            {
+                // If we are the client on multiplayer
+                //Main.NewText("NetMode is 1", 175, 75, 255, false);
+            }
+            else if (Main.netMode == 2)
+            {
+                // If we are the server
+                //NetMessage.SendData(25, -1, -1, "NetMode IS 2", 255, 175f, 75f, 255f, 0);
+            }
+            if (Main.netMode == 1)
+            {
+                return;
+            }
+            for (int i = 0; i < amount; i++)
+            {
+                int spawnTileX;
+                int spawnTileY;
+                Utils.GetRandomClearTileWithInRange(startTileX, startTileY, tileXRange, tileYRange, out spawnTileX,
+                                                           out spawnTileY);
+                int npcid = NPC.NewNPC(spawnTileX * 16, spawnTileY * 16, type, 0);
+                // This is for special slimes
+                //Main.npc[npcid].SetDefaults(name);
+            }
+        }
 	}
 }
