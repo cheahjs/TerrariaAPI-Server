@@ -321,7 +321,7 @@ namespace TerrariaApi.Server
 			ref int msgType, ref int remoteClient, ref int ignoreClient, ref string text, 
 			ref int number, ref float number2, ref float number3, ref float number4, ref int number5)
 		{
-			if (Main.netMode != 2 && msgType == (int)PacketTypes.ChatText && this.InvokeClientChat(ref text))
+			if (msgType == (int)PacketTypes.ChatText && this.InvokeClientChat(ref text))
 				return true;
 
 			SendDataEventArgs args = new SendDataEventArgs
